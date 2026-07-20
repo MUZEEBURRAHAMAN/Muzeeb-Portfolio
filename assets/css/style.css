@@ -495,7 +495,7 @@ h1, h2, h3, h4, h5, h6,
     z-index: 99999;
     overflow: hidden;
     pointer-events: none;
-    background: #ffffff;
+    background: #faf9f7;
 }
 [data-theme="light"] .mz-preloader { background: #0f0f0f; }
 .mz-preloader canvas { position: absolute; inset: 0; display: block; }
@@ -847,10 +847,16 @@ body.mz-cursor-on button { cursor: none; }
 [data-theme="light"] .mz-drawer__panel { background: #faf9f7; border-color: #e6e4df; }
 [data-theme="light"] .mz-drawer__links a { color: #17170f; border-color: #e6e4df; }
 [data-theme="light"] .mz-drawer__close { color: #17170f; }
-@media (max-width: 640px) {
-    .mz-nav { justify-content: space-between; width: 100%; max-width: 440px; }
-    .mz-nav__pill, .mz-nav__resume, .mz-nav__mail { display: none; }
-    .mz-nav__burger { display: flex; }
+@media (max-width: 760px) {
+    .mz-nav {
+        justify-content: space-between !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
+        box-sizing: border-box !important;
+    }
+    .mz-nav__pill, .mz-nav__resume, .mz-nav__mail { display: none !important; }
+    .mz-nav__burger { display: flex !important; }
 }
 
 /* ===== Hero (xhulia-style mask reveal) ===== */
@@ -1224,8 +1230,8 @@ body.mz-cursor-on button { cursor: none; }
 
 /* ---- light theme: nav contrast + hardcoded white-stroke card arrows ---- */
 [data-theme="light"] .mz-nav__pill a { color:#3a3a38 !important; }
-[data-theme="light"] .mz-nav__pill a:hover { color:#111 !important; }
-[data-theme="light"] .mz-nav__pill a.active { color:#ffffff !important; }
+[data-theme="light"] .mz-nav__pill a:hover { background:rgba(0,0,0,.05) !important; color:#111 !important; }
+[data-theme="light"] .mz-nav__pill a.active, [data-theme="light"] .mz-nav__pill a.active:hover { background:#17170f !important; color:#ffffff !important; }
 [data-theme="light"] .mz-nav__mail svg { stroke:#faf9f7 !important; }
 /* card "↗" arrows are inline SVGs hardcoded stroke="#ffffff"; dark on light cards */
 [data-theme="light"] path[stroke="#ffffff"] { stroke:#17170f; }

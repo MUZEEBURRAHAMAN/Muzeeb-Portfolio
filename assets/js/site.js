@@ -6,6 +6,9 @@
   "use strict";
   document.documentElement.classList.add("js");
 
+  var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
+  var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+
   /* ---------- Scroll reveal (opt-in via .mz-reveal) ---------- */
   function initReveal() {
     var els = document.querySelectorAll(".mz-reveal");
@@ -28,8 +31,8 @@
     // Already shown this session → the inline guard set display:none; just remove.
     if (getComputedStyle(wrap).display === "none") { wrap.remove(); return; }
 
-    // Cover color follows theme: white cover on dark page, dark cover on light page.
-    var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#faf9f7" : "#0f0f0f";
+    // Cover color follows theme: dark cover on light page, light cover on dark page.
+    var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#0f0f0f" : "#faf9f7";
     var GRID = 16, EDGE = 0.12, DUR = 2.4;
 
     var canvas = wrap.querySelector("canvas");
@@ -315,8 +318,6 @@
     var cur = root.getAttribute("data-theme") || saved || sys;
     root.setAttribute("data-theme", cur);
 
-    var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
-    var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
     var btns = [];
     function setTheme(t) {
       root.setAttribute("data-theme", t);

@@ -105,7 +105,6 @@
         .pgchips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
         .pgchips span { font-size: .7rem; color: #cfcfcd; background: rgba(255,255,255,.07); border: 1px solid #2f2f2f; border-radius: 999px; padding: 4px 10px; }
         .pgsoon { margin-top: 14px; font-size: .72rem; color: #6f6f6c; font-style: italic; }
-        @media (max-width: 640px) { .pgdock__tip { display: none; } .pgdock__i { width: 42px; height: 42px; } .pgdock { gap: 7px; padding: 8px 10px; } }
         .pgzoom { position: fixed; right: 24px; bottom: 24px; z-index: 40; display: flex; align-items: center; gap: 4px; background: #1a1a1a; border: 1px solid #242424; border-radius: 999px; padding: 5px; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
         .pgzoom button { width: 34px; height: 34px; border: none; background: none; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: #e6e6e6; display: flex; align-items: center; justify-content: center; }
         .pgzoom button:hover { background: rgba(255,255,255,.08); }
@@ -313,11 +312,38 @@
         .buggrid .cell { aspect-ratio: 1; border-radius: 8px; background: #161616; border: 1px solid #262626; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; cursor: pointer; }
         .buggrid .cell.bug { background: #2a1414; border-color: #5a2a2a; }
         .buggrid .cell.hit { background: #14261a; border-color: #2a5a3a; }
+
+        @media (max-width: 768px) {
+            .pgtour-btn {
+                bottom: 96px !important;
+                left: 16px !important;
+            }
+            .pgzoom {
+                bottom: 96px !important;
+                right: 16px !important;
+            }
+            .pgdock {
+                bottom: 20px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                height: 60px !important;
+                box-sizing: border-box !important;
+                align-items: center !important;
+                padding: 0 12px !important;
+                gap: 8px !important;
+            }
+            .pgdock__i {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .pgdock__tip { display: none; }
+        }
+        .mz-nav::before { display: none !important; }
     </style>
 </head>
 
 <body>
-    <div id="main" style="position:relative;z-index:60;padding:40px 40px 0;width:100%;display:flex;flex-direction:column;align-items:center">
+    <div id="main" style="position:absolute;top:0;left:0;right:0;z-index:150;padding-top:40px;pointer-events:none;">
     <nav class="mz-nav">
         <a class="mz-nav__logo" href="index.html" aria-label="Home"><img src="assets/images/logo.png" alt="Muzeeb"></a>
         <div class="mz-nav__pill">

@@ -2,474 +2,1034 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <meta property="og:title" content="Best Work — Muzeeb Urrahaman">
-    <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/best-work.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Muzeeb Urrahaman">
-    <meta property="og:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
-    <meta name="twitter:title" content="Best Work — Muzeeb Urrahaman">
-    <meta name="twitter:description" content="A draggable, zoomable canvas of best work — click any tile to open the case study.">
-    <title>Best Work — Muzeeb Urrahaman</title>
-    <meta name="description" content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work — pan the grid, click any tile to open its case study.">
-    <!-- anti-FOUC: set theme before paint -->
-    <script>try{var t=localStorage.getItem('mz-theme');document.documentElement.setAttribute('data-theme',t||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));}catch(e){document.documentElement.setAttribute('data-theme','dark');}</script>
-    <link rel="stylesheet" href="assets/css/style.css?v=89">
-    <style>
-      /* ===== theme tokens (portfolio colours + Geist/Inter) ===== */
-      :root{
-        --bwg-disp:'Poppins','Inter Tight',system-ui,sans-serif;
-        --bwg-sans:'Inter',system-ui,sans-serif;
-        --ease:cubic-bezier(.87,0,.13,1);
-        /* dark (default) */
-        --bwg-bg:#0f0f0f; --bwg-ink:#f4f2ed; --bwg-sub:#9a9a98;
-        --bwg-cell:#141414; --bwg-stroke:rgba(255,255,255,.10);
-        --bwg-panel:#191919; --bwg-panel-bd:rgba(255,255,255,.14); --bwg-panel-ink:#d6d6d6;
-        --bwg-chip-bg:#f0f0f0; --bwg-chip-ink:#17170f;
-        --bwg-btn:rgba(255,255,255,.10); --bwg-btn-bd:rgba(255,255,255,.20); --bwg-btn-ink:#fff; --bwg-btn-hov:rgba(255,255,255,.22);
-        --bwg-overlay:rgba(10,10,11,.82);
-        --bwg-vig:linear-gradient(180deg,rgba(0,0,0,.55),transparent 20%,transparent 82%,rgba(0,0,0,.45));
-        --bwg-chip-num:rgba(0,0,0,.42);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+  <meta property="og:title" content="Best Work — Muzeeb Urrahaman">
+  <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/best-work.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Muzeeb Urrahaman">
+  <meta property="og:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
+  <meta name="twitter:title" content="Best Work — Muzeeb Urrahaman">
+  <meta name="twitter:description"
+    content="A draggable, zoomable canvas of best work — click any tile to open the case study.">
+  <title>Best Work — Muzeeb Urrahaman</title>
+  <meta name="description"
+    content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work — pan the grid, click any tile to open its case study.">
+  <!-- anti-FOUC: set theme before paint -->
+  <script>try { var t = localStorage.getItem('mz-theme'); document.documentElement.setAttribute('data-theme', t || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }</script>
+  <link rel="stylesheet" href="assets/css/style.css?v=89">
+  <style>
+    /* ===== theme tokens (portfolio colours + Geist/Inter) ===== */
+    :root {
+      --bwg-disp: 'Poppins', 'Inter Tight', system-ui, sans-serif;
+      --bwg-sans: 'Inter', system-ui, sans-serif;
+      --ease: cubic-bezier(.87, 0, .13, 1);
+      /* dark (default) */
+      --bwg-bg: #0f0f0f;
+      --bwg-ink: #f4f2ed;
+      --bwg-sub: #9a9a98;
+      --bwg-cell: #141414;
+      --bwg-stroke: rgba(255, 255, 255, .10);
+      --bwg-panel: #191919;
+      --bwg-panel-bd: rgba(255, 255, 255, .14);
+      --bwg-panel-ink: #d6d6d6;
+      --bwg-chip-bg: #f0f0f0;
+      --bwg-chip-ink: #17170f;
+      --bwg-btn: rgba(255, 255, 255, .10);
+      --bwg-btn-bd: rgba(255, 255, 255, .20);
+      --bwg-btn-ink: #fff;
+      --bwg-btn-hov: rgba(255, 255, 255, .22);
+      --bwg-overlay: rgba(10, 10, 11, .82);
+      --bwg-vig: linear-gradient(180deg, rgba(0, 0, 0, .55), transparent 20%, transparent 82%, rgba(0, 0, 0, .45));
+      --bwg-chip-num: rgba(0, 0, 0, .42);
+    }
+
+    [data-theme="light"] {
+      --bwg-bg: #faf9f7;
+      --bwg-ink: #17170f;
+      --bwg-sub: #6b6b66;
+      --bwg-cell: #ffffff;
+      --bwg-stroke: rgba(0, 0, 0, .12);
+      --bwg-panel: #ffffff;
+      --bwg-panel-bd: #e6e4df;
+      --bwg-panel-ink: #3a3a36;
+      --bwg-chip-bg: #17170f;
+      --bwg-chip-ink: #faf9f7;
+      --bwg-btn: rgba(0, 0, 0, .05);
+      --bwg-btn-bd: rgba(0, 0, 0, .14);
+      --bwg-btn-ink: #17170f;
+      --bwg-btn-hov: rgba(0, 0, 0, .10);
+      --bwg-overlay: rgba(250, 249, 247, .86);
+      --bwg-vig: linear-gradient(180deg, rgba(0, 0, 0, .05), transparent 16%, transparent 86%, rgba(0, 0, 0, .04));
+      --bwg-chip-num: rgba(255, 255, 255, .72);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      background: var(--bwg-bg);
+      font-family: var(--bwg-sans);
+      color: var(--bwg-ink);
+      overflow: hidden;
+      cursor: grab;
+      -webkit-user-select: none;
+      user-select: none;
+      transition: background .3s ease, color .3s ease
+    }
+
+    body.bwg-dragging {
+      cursor: grabbing
+    }
+
+    body.bwg-zoom {
+      cursor: default
+    }
+
+    img {
+      -webkit-user-drag: none
+    }
+
+    /* portfolio nav floats above the fullscreen canvas */
+    .mz-nav {
+      position: fixed;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%) !important;
+      z-index: 100;
+      pointer-events: none
+    }
+
+    .mz-nav::before {
+      display: none !important
+    }
+
+    /* remove the top background scrim shadow bar on fullscreen pages */
+    .mz-nav>* {
+      pointer-events: auto
+    }
+
+    /* empty nav strip must not eat clicks meant for the theme toggle */
+    .mz-nav a {
+      cursor: pointer
+    }
+
+    /* theme toggle: force clear contrast on the fullscreen canvas (both themes) */
+    .mz-theme-btn {
+      background: var(--bwg-panel) !important;
+      border: 1px solid var(--bwg-panel-bd) !important;
+      color: var(--bwg-ink) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .28) !important;
+      z-index: 120 !important
+    }
+
+    @media(min-width:761px) {
+      .mz-theme-btn {
+        top: 44px !important;
+        right: 40px !important
       }
-      [data-theme="light"]{
-        --bwg-bg:#faf9f7; --bwg-ink:#17170f; --bwg-sub:#6b6b66;
-        --bwg-cell:#ffffff; --bwg-stroke:rgba(0,0,0,.12);
-        --bwg-panel:#ffffff; --bwg-panel-bd:#e6e4df; --bwg-panel-ink:#3a3a36;
-        --bwg-chip-bg:#17170f; --bwg-chip-ink:#faf9f7;
-        --bwg-btn:rgba(0,0,0,.05); --bwg-btn-bd:rgba(0,0,0,.14); --bwg-btn-ink:#17170f; --bwg-btn-hov:rgba(0,0,0,.10);
-        --bwg-overlay:rgba(250,249,247,.86);
-        --bwg-vig:linear-gradient(180deg,rgba(0,0,0,.05),transparent 16%,transparent 86%,rgba(0,0,0,.04));
-        --bwg-chip-num:rgba(255,255,255,.72);
+    }
+
+    /* desktop: vertically centered with the nav row */
+    @media(max-width:760px) {
+      .mz-theme-btn {
+        bottom: 90px !important;
+        left: 24px !important;
+        right: auto !important;
+        top: auto !important;
       }
 
-      *{margin:0;padding:0;box-sizing:border-box}
-      html,body{height:100%}
-      body{background:var(--bwg-bg);font-family:var(--bwg-sans);color:var(--bwg-ink);overflow:hidden;cursor:grab;-webkit-user-select:none;user-select:none;transition:background .3s ease,color .3s ease}
-      body.bwg-dragging{cursor:grabbing}
-      body.bwg-zoom{cursor:default}
-      img{-webkit-user-drag:none}
+      #cw-launcher {
+        bottom: 90px !important;
+        right: 24px !important;
+        left: auto !important;
+        top: auto !important;
+      }
+    }
 
-      /* portfolio nav floats above the fullscreen canvas */
-      .mz-nav{position:fixed;top:40px;left:0;right:0;z-index:100;pointer-events:none}
-      .mz-nav>*{pointer-events:auto}          /* empty nav strip must not eat clicks meant for the theme toggle */
-      .mz-nav a{cursor:pointer}
-      /* theme toggle: force clear contrast on the fullscreen canvas (both themes) */
-      .mz-theme-btn{background:var(--bwg-panel)!important;border:1px solid var(--bwg-panel-bd)!important;color:var(--bwg-ink)!important;box-shadow:0 8px 24px rgba(0,0,0,.28)!important;z-index:120!important}
-      @media(min-width:761px){ .mz-theme-btn{top:44px!important;right:40px!important} }  /* desktop: vertically centered with the nav row */
-      .mz-theme-btn:hover{background:var(--bwg-btn-hov)!important}
-      /* hide the zoom controls + footer while a card is expanded — not needed there */
-      body.bwg-zoom .controls, body.bwg-zoom .foot { opacity:0!important; pointer-events:none!important; }
+    .mz-theme-btn:hover {
+      background: var(--bwg-btn-hov) !important
+    }
 
-      /* VIEWPORT / GRID */
-      .viewport{position:fixed;inset:0;overflow:hidden;z-index:1;opacity:0}
-      .canvas{position:absolute;top:0;left:0;transform-origin:0 0;will-change:transform}
-      .grid{position:relative;width:100%;height:100%}
-      .cell{position:absolute;width:1024px;height:768px;background:var(--bwg-cell);cursor:pointer;overflow:hidden;
-        will-change:transform,opacity;border-radius:10px;opacity:1;
-        border:1px solid var(--bwg-stroke);              /* minimal stroke — keeps white images from bleeding into a light bg */
-        transition:opacity .5s ease}
-      .cell.dim{opacity:.12}
-      .cell img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
-      .cell::after{content:attr(data-n);position:absolute;left:10px;top:10px;font-family:var(--bwg-sans);font-size:11px;font-weight:600;letter-spacing:.04em;color:#fff;
-        background:var(--bwg-chip-num);padding:2px 7px;border-radius:5px;opacity:0;transition:opacity .3s}
-      .cell:hover::after{opacity:1}
+    /* hide the zoom controls + footer + theme toggle + chat while a card is expanded — not needed there */
+    body.bwg-zoom .controls,
+    body.bwg-zoom .mz-theme-btn,
+    body.bwg-zoom #cw-launcher {
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
 
-      /* SPLIT / ZOOM */
-      .split{position:fixed;inset:0;display:flex;z-index:2;opacity:0;pointer-events:none;background:var(--bwg-overlay);backdrop-filter:blur(3px)}
-      .split.active{opacity:1;pointer-events:auto}
-      .split__l,.split__r{width:50vw;height:100vh;background:transparent;cursor:pointer}
-      .zoom-target{display:none}
-      .scaler{position:fixed;top:0;left:0;z-index:3;pointer-events:none;will-change:transform;overflow:hidden;border-radius:12px;box-shadow:0 0 0 1px var(--bwg-stroke),0 30px 80px rgba(0,0,0,.4)}
-      .scaler img{width:100%;height:100%;object-fit:cover;display:block}
+    /* VIEWPORT / GRID */
+    .viewport {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+      opacity: 0
+    }
 
-      .detail{position:absolute;bottom:48px;left:48px;max-width:420px;z-index:4;opacity:0;pointer-events:none}
-      .detail .n{font-family:var(--bwg-sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--bwg-sub);overflow:hidden}
-      .detail .n span,.detail h1 span,.detail .d span{display:block;will-change:transform}
-      .detail h1{font-family:var(--bwg-disp);font-size:44px;font-weight:600;letter-spacing:-.02em;line-height:1.15;margin:10px 0 14px;overflow:hidden;color:var(--bwg-ink)}
-      .detail .d{color:var(--bwg-sub);font-size:16px;font-weight:400;line-height:1.55;overflow:hidden}
-      @media(max-width:900px){.detail{left:24px;bottom:24px;max-width:70vw}.detail h1{font-size:30px}}
+    .canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      will-change: transform
+    }
 
-      .close{position:fixed;top:26px;right:26px;width:46px;height:46px;transform:translateX(40px);background:var(--bwg-btn);
-        border:1px solid var(--bwg-btn-bd);border-radius:50%;cursor:pointer;opacity:0;pointer-events:none;color:var(--bwg-btn-ink);
-        display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:30}
-      .close.active{pointer-events:auto}
-      .close:hover{background:var(--bwg-btn-hov)}
-      .close svg{width:20px;height:20px;transform:rotate(180deg);stroke:currentColor}
+    .grid {
+      position: relative;
+      width: 100%;
+      height: 100%
+    }
 
-      /* prev / next arrows in the lightbox */
-      .navbtn{position:fixed;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;
-        background:var(--bwg-btn);border:1px solid var(--bwg-btn-bd);color:var(--bwg-btn-ink);cursor:pointer;z-index:30;
-        display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:background .2s}
-      .navbtn.active{pointer-events:auto}
-      .navbtn:hover{background:var(--bwg-btn-hov)}
-      .navbtn svg{width:22px;height:22px}
-      .navbtn.left{left:26px}
-      .navbtn.right{right:26px}
+    .cell {
+      position: absolute;
+      width: 1024px;
+      height: 768px;
+      background: var(--bwg-cell);
+      cursor: pointer;
+      overflow: hidden;
+      will-change: transform, opacity;
+      border-radius: 10px;
+      opacity: 1;
+      border: 1px solid var(--bwg-stroke);
+      /* minimal stroke — keeps white images from bleeding into a light bg */
+      transition: opacity .5s ease
+    }
 
-      /* CONTROLS */
-      .controls{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;z-index:30;opacity:0;
-        transition:left 1s var(--ease),opacity .5s}
-      .controls.split-mode{left:75%}
-      .switch{display:flex;align-items:center;gap:4px;background:var(--bwg-panel);border:1px solid var(--bwg-panel-bd);padding:6px 8px;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.25);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-      .pct-badge{font-family:var(--bwg-sans);font-size:11px;font-weight:700;color:var(--bwg-sub);padding:0 12px;letter-spacing:.04em;text-transform:uppercase;cursor:default;user-select:none}
-      .divider{width:1px;height:16px;background:var(--bwg-stroke);margin:0 4px}
-      .switch button{background:none;border:none;color:var(--bwg-panel-ink);cursor:pointer;font-family:var(--bwg-sans);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:7px 12px;border-radius:6px;transition:color .2s,background .2s;white-space:nowrap}
-      .switch button:hover{color:var(--bwg-ink);background:var(--bwg-btn)}
-      .switch button.cur{color:var(--bwg-chip-ink);background:var(--bwg-chip-bg)}
+    .cell.dim {
+      opacity: .12
+    }
 
-      .foot{position:fixed;bottom:22px;left:22px;z-index:6;font-family:var(--bwg-sans);font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--bwg-sub);opacity:0;transition:opacity .6s}
-      .foot.in{opacity:1}
-      @media(max-width:640px){.foot{display:none}}
+    .cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none
+    }
 
-      /* vignette */
-      .vig{position:fixed;inset:0;pointer-events:none;z-index:8;background:var(--bwg-vig)}
+    .cell::after {
+      content: attr(data-n);
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-family: var(--bwg-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: #fff;
+      background: var(--bwg-chip-num);
+      padding: 2px 7px;
+      border-radius: 5px;
+      opacity: 0;
+      transition: opacity .3s
+    }
 
-      /* PRELOADER */
-      .pre{position:fixed;inset:0;z-index:1000;background:var(--bwg-bg);display:flex;align-items:center;justify-content:center;transition:opacity .8s ease}
-      .pre .ring{width:46px;height:46px;border:2px solid var(--bwg-stroke);border-top-color:var(--bwg-ink);border-radius:50%;animation:spin .8s linear infinite}
-      .pre .t{position:absolute;bottom:60px;font-family:var(--bwg-sans);font-size:12px;font-weight:500;letter-spacing:.2em;color:var(--bwg-sub);text-transform:uppercase}
-      @keyframes spin{to{transform:rotate(360deg)}}
-    </style>
+    .cell:hover::after {
+      opacity: 1
+    }
+
+    /* SPLIT / ZOOM */
+    .split {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      background: var(--bwg-overlay);
+      backdrop-filter: blur(3px)
+    }
+
+    .split.active {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    .split__l,
+    .split__r {
+      width: 50vw;
+      height: 100vh;
+      background: transparent;
+      cursor: pointer
+    }
+
+    .zoom-target {
+      display: none
+    }
+
+    .scaler {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      pointer-events: none;
+      will-change: transform;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px var(--bwg-stroke), 0 30px 80px rgba(0, 0, 0, .4)
+    }
+
+    .scaler img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .detail {
+      position: absolute;
+      bottom: 48px;
+      left: 48px;
+      max-width: 420px;
+      z-index: 4;
+      opacity: 0;
+      pointer-events: none
+    }
+
+    .detail .n {
+      font-family: var(--bwg-sans);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--bwg-sub);
+      overflow: hidden
+    }
+
+    .detail .n span,
+    .detail h1 span,
+    .detail .d span {
+      display: block;
+      will-change: transform
+    }
+
+    .detail h1 {
+      font-family: var(--bwg-disp);
+      font-size: 44px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      margin: 10px 0 14px;
+      overflow: hidden;
+      color: var(--bwg-ink)
+    }
+
+    .detail .d {
+      color: var(--bwg-sub);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.55;
+      overflow: hidden
+    }
+
+    @media(max-width:900px) {
+      .detail {
+        left: 24px;
+        bottom: 24px;
+        max-width: 70vw
+      }
+
+      .detail h1 {
+        font-size: 30px
+      }
+    }
+
+    .close {
+      position: fixed;
+      top: 26px;
+      right: 26px;
+      width: 46px;
+      height: 46px;
+      transform: translateX(40px);
+      background: var(--bwg-btn);
+      border: 1px solid var(--bwg-btn-bd);
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      color: var(--bwg-btn-ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+      z-index: 30
+    }
+
+    .close.active {
+      pointer-events: auto
+    }
+
+    .close:hover {
+      background: var(--bwg-btn-hov)
+    }
+
+    .close svg {
+      width: 20px;
+      height: 20px;
+      transform: rotate(180deg);
+      stroke: currentColor
+    }
+
+    /* prev / next arrows in the lightbox */
+    .navbtn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--bwg-btn);
+      border: 1px solid var(--bwg-btn-bd);
+      color: var(--bwg-btn-ink);
+      cursor: pointer;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: background .2s
+    }
+
+    .navbtn.active {
+      pointer-events: auto
+    }
+
+    .navbtn:hover {
+      background: var(--bwg-btn-hov)
+    }
+
+    .navbtn svg {
+      width: 22px;
+      height: 22px
+    }
+
+    .navbtn.left {
+      left: 26px
+    }
+
+    .navbtn.right {
+      right: 26px
+    }
+
+    /* CONTROLS */
+    .controls {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      z-index: 30;
+      opacity: 0;
+      transition: left 1s var(--ease), opacity .5s
+    }
+
+    .controls.split-mode {
+      left: 75%
+    }
+
+    .switch {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bwg-panel);
+      border: 1px solid var(--bwg-panel-bd);
+      padding: 6px 8px;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px)
+    }
+
+    .pct-badge {
+      font-family: var(--bwg-sans);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--bwg-sub);
+      padding: 0 8px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      user-select: none
+    }
+
+    #zoomSlider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 64px;
+      height: 3px;
+      background: var(--bwg-stroke);
+      border-radius: 2px;
+      outline: none;
+      margin: 0 4px;
+    }
+
+    #zoomSlider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--bwg-ink);
+      cursor: pointer;
+      transition: transform 0.12s;
+    }
+
+    #zoomSlider::-webkit-slider-thumb:hover {
+      transform: scale(1.35);
+    }
+
+    #zoomSlider::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+      border: none;
+      border-radius: 50%;
+      background: var(--bwg-ink);
+      cursor: pointer;
+      transition: transform 0.12s;
+    }
+
+    #zoomSlider::-moz-range-thumb:hover {
+      transform: scale(1.35);
+    }
+
+    .divider {
+      width: 1px;
+      height: 16px;
+      background: var(--bwg-stroke);
+      margin: 0 4px
+    }
+
+    .switch button {
+      background: none;
+      border: none;
+      color: var(--bwg-panel-ink);
+      cursor: pointer;
+      font-family: var(--bwg-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 7px 12px;
+      border-radius: 6px;
+      transition: color .2s, background .2s;
+      white-space: nowrap
+    }
+
+    .switch button:hover {
+      color: var(--bwg-ink);
+      background: var(--bwg-btn)
+    }
+
+    .switch button.cur {
+      color: var(--bwg-chip-ink);
+      background: var(--bwg-chip-bg)
+    }
+
+    @media(max-width:640px) {
+      .switch button {
+        padding: 6px 8px;
+        font-size: 10px;
+      }
+
+      .pct-badge {
+        padding: 0 4px;
+      }
+
+      #zoomSlider {
+        display: none !important;
+      }
+    }
+
+
+
+    /* PRELOADER */
+    .pre {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: var(--bwg-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .8s ease
+    }
+
+    .pre .ring {
+      width: 46px;
+      height: 46px;
+      border: 2px solid var(--bwg-stroke);
+      border-top-color: var(--bwg-ink);
+      border-radius: 50%;
+      animation: spin .8s linear infinite
+    }
+
+    .pre .t {
+      position: absolute;
+      bottom: 60px;
+      font-family: var(--bwg-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      color: var(--bwg-sub);
+      text-transform: uppercase
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="pre" id="pre"><div class="ring"></div><div class="t">Loading best work</div></div>
+  <div class="pre" id="pre">
+    <div class="ring"></div>
+    <div class="t">Loading best work</div>
+  </div>
 
-<!-- Portfolio nav (site.js builds the mobile drawer from this) -->
-<nav class="mz-nav">
+  <!-- Portfolio nav (site.js builds the mobile drawer from this) -->
+  <nav class="mz-nav">
     <a class="mz-nav__logo" href="index.html" aria-label="Home"><img src="assets/images/logo.png" alt="Muzeeb"></a>
     <div class="mz-nav__pill">
-        <a href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></a>
-        <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span>About</span></a>
-        <a href="best-work.html" class="active" aria-label="Best work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><span>Best work</span></a>
-        <a href="playground.html" aria-label="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg><span>Playground</span></a>
+      <a href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <path d="M9 22V12h6v10" />
+        </svg><span>Home</span></a>
+      <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+          <line x1="9" x2="9.01" y1="9" y2="9" />
+          <line x1="15" x2="15.01" y1="9" y2="9" />
+        </svg><span>About</span></a>
+      <a href="best-work.html" class="active" aria-label="Best work"><svg viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z" />
+        </svg><span>Best work</span></a>
+      <a href="playground.html" aria-label="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <circle cx="17.5" cy="17.5" r="3.5" />
+        </svg><span>Playground</span></a>
     </div>
     <a class="mz-nav__resume" href="resume.html" target="_blank" aria-label="Download resume">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        <span class="mz-nav__tip">Download résumé</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" x2="12" y1="15" y2="3" />
+      </svg>
+      <span class="mz-nav__tip">Download résumé</span>
     </a>
     <a class="mz-nav__mail" href="mailto:rahamanmuzeeb1108@gmail.com" aria-label="Email me">
-        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        <span class="mz-nav__tip">Let’s work together</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </svg>
+      <span class="mz-nav__tip">Let’s work together</span>
     </a>
-</nav>
+  </nav>
 
-<!-- GALLERY -->
-<div class="viewport" id="viewport">
-  <div class="canvas" id="canvas"><div class="grid" id="grid"></div></div>
-</div>
-
-<!-- SPLIT ZOOM -->
-<div class="split" id="split">
-  <div class="split__l" id="splitL"><div class="zoom-target" id="zoomTarget"></div></div>
-  <div class="split__r" id="splitR"></div>
-</div>
-
-<!-- DETAIL -->
-<div class="detail" id="detail">
-  <div class="n"><span id="dN">01</span></div>
-  <h1><span id="dT">Title</span></h1>
-  <div class="d"><span id="dD">Description</span></div>
-</div>
-
-<button class="close" id="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-<button class="navbtn left" id="prevBtn" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
-<button class="navbtn right" id="nextBtn" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
-
-<!-- CONTROLS -->
-<div class="controls" id="controls">
-  <div class="switch">
-    <span class="pct-badge" id="pct">60%</span>
-    <div class="divider"></div>
-    <button onclick="gallery.setZoom(0.1,this)">Zoom out</button>
-    <button class="cur" onclick="gallery.setZoom(0.6,this)">Normal</button>
-    <button onclick="gallery.setZoom(1.0,this)">Zoom in</button>
-    <button onclick="gallery.fit(this)">Fit</button>
+  <!-- GALLERY -->
+  <div class="viewport" id="viewport">
+    <div class="canvas" id="canvas">
+      <div class="grid" id="grid"></div>
+    </div>
   </div>
-</div>
-<div class="foot" id="foot">MUZEEB · SELECTED WORK · 2026</div>
-<div class="vig"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-<script>
-gsap.registerPlugin(Draggable, Flip, CustomEase);
+  <!-- SPLIT ZOOM -->
+  <div class="split" id="split">
+    <div class="split__l" id="splitL">
+      <div class="zoom-target" id="zoomTarget"></div>
+    </div>
+    <div class="split__r" id="splitR"></div>
+  </div>
 
-// ---- work images ----
-const IMAGES = [
-  "assets/images/bw_image 01(Eve_company employee mental wellness).webp",
-  "assets/images/bw_image 02 (Eve_company employee mental wellness).webp",
-  "assets/images/bw_image 03(pharflow_medical ecommerce app).webp",
-  "assets/images/bw_image 04(eve_landing page).webp",
-  "assets/images/bw_image 05(q group logo branding).webp",
-  "assets/images/bw_image 06(mental health section).webp",
-  "assets/images/bw_image 6(pharmflow_branding).webp",
-  "assets/images/bw_image 7(oodle_dating app screenshot).webp",
-  "assets/images/bw_image 8(y combinator website redesign_we forest).webp",
-  "assets/images/bw_image 9(y combinator website redesign_mail tester).webp",
-  "assets/images/bw_image 10 (y combinator website redesign_healthtech -1).webp",
-  "assets/images/bw_image 11 (affil.ai).webp",
-  "assets/images/bw_image 12(y combinator website redesign_relaw).webp",
-  "assets/images/bw_image 13(y combinator website redesign_rivet).webp",
-  "assets/images/bw_image 14(click logo branding).webp",
-  "assets/images/bw_image 15(removebg app screenshot).webp",
-  "assets/images/bw_image 16(eve landing page footer).webp",
-  "assets/images/bw_image 17(bundled design app screen).webp",
-  "assets/images/bw_image 18(math ai app onboarding).webp",
-  "assets/images/bw_image 19(rosify app onboarding).webp",
-  "assets/images/bw_image 20(pricing modal).webp",
-  "assets/images/bw_image 21(sales dashboard design).webp",
-  "assets/images/bw_image 22(dashboard design).webp",
-  "assets/images/bw_image 23(donation app light_dark theme).webp",
-  "assets/images/bw_image 24(math ai app screenshot).webp",
-  "assets/images/bw_image 25(linkedin feature cover design).webp",
-  "assets/images/bw_image 26(insta post design).webp",
-  "assets/images/bw_image 27(roomlocker branding).webp",
-  "assets/images/bw_image 28(thumbnail design).webp",
-  "assets/images/bw_image 29(instagram post design).webp",
-  "assets/images/bw_image 30(thumbnail design).webp",
-  "assets/bw_image 31(thumbnail design).webp",
-  "assets/bw_image 32(splash screen design).webp",
-  "assets/bw_image 33(onboarding design).webp",
-  "assets/bw_image 34(unique post design).webp",
-  "assets/bw_image 35(login screen mockup_letmegrab).webp",
-  "assets/images/bw_image 36(oodle screen design).webp",
-  "assets/images/bw_image 37(chat ui design).webp",
-  "assets/images/bw_image 38(component design).webp",
-  "assets/images/bw_image 39(landing page design).webp",
-  "assets/images/bw_image 40(upload design).webp"
-];
-// ---- projects (title + description shown on zoom) ----
-const META = [
-  { n: "01", t: "Eve Wellness", d: "Company employee mental wellness app design and user flows." },
-  { n: "02", t: "Eve Wellness App", d: "Company employee mental wellness mobile screen design." },
-  { n: "03", t: "Pharmflow", d: "Medical e-commerce application interface and purchase design." },
-  { n: "04", t: "Eve Landing Page", d: "Landing page design and visual layout for the Eve platform." },
-  { n: "05", t: "Q Group Branding", d: "Logo, identity and corporate branding assets design." },
-  { n: "06", t: "Mental Health UI", d: "Section design focusing on employee wellness tracking." },
-  { n: "07", t: "Pharmflow Branding", d: "Branding guidelines, color systems, and visual design assets." },
-  { n: "08", t: "Oodle Dating App", d: "Dating application screen design and matchmaking flows." },
-  { n: "09", t: "We Forest Redesign", d: "Y Combinator website redesign project for We Forest." },
-  { n: "10", t: "Mail Tester Redesign", d: "Y Combinator website redesign project for Mail Tester." },
-  { n: "11", t: "Healthtech Platform", d: "Y Combinator healthtech website redesign concept." },
-  { n: "12", t: "Affil.ai Interface", d: "Affiliated marketing platform UI design and metrics dashboard." },
-  { n: "13", t: "Relaw Platform Redesign", d: "Y Combinator legaltech website redesign concept." },
-  { n: "14", t: "Rivet Platform Redesign", d: "Y Combinator devtools website redesign concept." },
-  { n: "15", t: "Click Branding", d: "Logo design, branding concepts and visual identity guidelines." },
-  { n: "16", t: "RemoveBG Application", d: "Background removal mobile application design." },
-  { n: "17", t: "Eve Footer Design", d: "Landing page footer structure and responsive layout." },
-  { n: "18", t: "Bundled Design", d: "App screen mockup and UI component layout." },
-  { n: "19", t: "Math AI Tutor", d: "App onboarding experience for an AI-powered math tutor." },
-  { n: "20", t: "Rosify Onboarding", d: "Dating application onboarding flow and setup screens." },
-  { n: "21", t: "Pricing Modal UI", d: "SaaS plan selection and subscription pricing popup dialog." },
-  { n: "22", t: "Sales Dashboard", d: "Analytics dashboard showcasing metrics, graphs and sales." },
-  { n: "23", t: "Dashboard Interface", d: "Data-heavy dashboard layout with clean visualization panels." },
-  { n: "24", t: "Donation App UI", d: "Light and dark theme exploration for a donation interface." },
-  { n: "25", t: "Math AI Interface", d: "Main workspace screens of the AI math helper application." },
-  { n: "26", t: "LinkedIn Visuals", d: "Custom LinkedIn cover banner and graphic design." },
-  { n: "27", t: "Instagram Template", d: "Social media post templates and visual styling guidelines." },
-  { n: "28", t: "Roomlocker Identity", d: "Corporate identity, logo design, and brand assets." },
-  { n: "29", t: "Thumbnail Graphic", d: "Video and blog thumbnail design layout." },
-  { n: "30", t: "Instagram Post Design", d: "Creative visual layout for Instagram brand messaging." },
-  { n: "31", t: "Thumbnail Concept", d: "Video preview thumbnail layout mockup." },
-  { n: "32", t: "Thumbnail Mockup", d: "Alternative thumbnail layout options." },
-  { n: "33", t: "Splash Screen UI", d: "Application splash and intro screen presentation." },
-  { n: "34", t: "Onboarding Flow", d: "Detailed onboarding step screens and user interactions." },
-  { n: "35", t: "Unique Post Design", d: "Creative social media post templates for branding." },
-  { n: "36", t: "LetmeGrab Login", d: "E-commerce platform login screen mockup and brand tokens." },
-  { n: "37", t: "Oodle Interface", d: "Match discovery and profile viewer interface." },
-  { n: "38", t: "Chat User Interface", d: "Interactive chat message history design." },
-  { n: "39", t: "Component Library", d: "Figma-ready UI component library specifications." },
-  { n: "40", t: "SaaS Landing Page", d: "SaaS platform landing page sections and hero illustrations." },
-  { n: "41", t: "Upload UI State", d: "File uploading state interface elements design." }
-];
+  <!-- DETAIL -->
+  <div class="detail" id="detail">
+    <div class="n"><span id="dN">01</span></div>
+    <h1><span id="dT">Title</span></h1>
+    <div class="d"><span id="dD">Description</span></div>
+  </div>
 
-class Gallery {
-  constructor(){
-    this.vp=document.getElementById('viewport');
-    this.canvas=document.getElementById('canvas');
-    this.grid=document.getElementById('grid');
-    this.split=document.getElementById('split');
-    this.detail=document.getElementById('detail');
-    this.close=document.getElementById('close');
-    this.prevBtn=document.getElementById('prevBtn');
-    this.nextBtn=document.getElementById('nextBtn');
-    this.prevBtn.addEventListener('click',()=>this.navigate(-1));
-    this.nextBtn.addEventListener('click',()=>this.navigate(1));
-    this.controls=document.getElementById('controls');
-    this.ease=CustomEase.create("smooth",".87,0,.13,1");
-    this.cfg={width:1024,height:768,rows:5,cols:8,zoom:0.6,gap:32};
-    this.items=[]; this.zoomOn=false; this.sel=null; this.overlay=null; this.drag=null;
-    this.buildGrid();
-  }
-  gapFor(z){ return z>=1?16:z>=0.6?32:64; }
-  dims(gap){ const w=this.cfg.cols*(this.cfg.width+gap)-gap, h=this.cfg.rows*(this.cfg.height+gap)-gap;
-    this.gw=w; this.gh=h; return {w,h}; }
-  buildGrid(){
-    this.cfg.gap=this.gapFor(this.cfg.zoom); this.dims(this.cfg.gap);
-    this.canvas.style.width=this.gw+'px'; this.canvas.style.height=this.gh+'px';
-    let k=0;
-    for(let r=0;r<this.cfg.rows;r++)for(let c=0;c<this.cfg.cols;c++){
-      const x=c*(this.cfg.width+this.cfg.gap), y=r*(this.cfg.height+this.cfg.gap);
-      const el=document.createElement('div'); el.className='cell'; el.style.left=x+'px'; el.style.top=y+'px'; el.style.opacity=0;
-      el.dataset.n=String((k%META.length)+1).padStart(2,'0');
-      const img=document.createElement('img');
-      img.src=IMAGES[k%IMAGES.length].replace('.webp', '_thumb.webp') + '?v=hq';
-      img.loading='lazy';
-      img.alt='';
-      el.appendChild(img);
-      const data={el,img,r,c,x,y,index:k};
-      el.addEventListener('click',()=>{ if(!this.zoomOn) this.enter(data); });
-      this.grid.appendChild(el); this.items.push(data); k++;
+  <button class="close" id="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg></button>
+  <button class="navbtn left" id="prevBtn" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m15 18-6-6 6-6" />
+    </svg></button>
+  <button class="navbtn right" id="nextBtn" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 18 6-6-6-6" />
+    </svg></button>
+
+  <!-- CONTROLS -->
+  <div class="controls" id="controls">
+    <div class="switch">
+      <div style="display:flex;align-items:center;gap:4px;padding-left:4px;">
+        <span class="pct-badge" id="pct" style="font-variant-numeric:tabular-nums;">60%</span>
+        <input type="range" id="zoomSlider" min="10" max="140" value="60">
+      </div>
+      <div class="divider"></div>
+      <button onclick="gallery.setZoom(0.1,this)">Zoom out</button>
+      <button class="cur" onclick="gallery.setZoom(0.6,this)">Normal</button>
+      <button onclick="gallery.setZoom(1.0,this)">Zoom in</button>
+      <button onclick="gallery.fit(this)">Fit</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script>
+    gsap.registerPlugin(Draggable, Flip, CustomEase);
+
+    // ---- work images ----
+    const IMAGES = [
+      "assets/images/bw_image 01(Eve_company employee mental wellness).webp",
+      "assets/images/bw_image 02 (Eve_company employee mental wellness).webp",
+      "assets/images/bw_image 03(pharflow_medical ecommerce app).webp",
+      "assets/images/bw_image 04(eve_landing page).webp",
+      "assets/images/bw_image 05(q group logo branding).webp",
+      "assets/images/bw_image 06(mental health section).webp",
+      "assets/images/bw_image 6(pharmflow_branding).webp",
+      "assets/images/bw_image 7(oodle_dating app screenshot).webp",
+      "assets/images/bw_image 8(y combinator website redesign_we forest).webp",
+      "assets/images/bw_image 9(y combinator website redesign_mail tester).webp",
+      "assets/images/bw_image 10 (y combinator website redesign_healthtech -1).webp",
+      "assets/images/bw_image 11 (affil.ai).webp",
+      "assets/images/bw_image 12(y combinator website redesign_relaw).webp",
+      "assets/images/bw_image 13(y combinator website redesign_rivet).webp",
+      "assets/images/bw_image 14(click logo branding).webp",
+      "assets/images/bw_image 15(removebg app screenshot).webp",
+      "assets/images/bw_image 16(eve landing page footer).webp",
+      "assets/images/bw_image 17(bundled design app screen).webp",
+      "assets/images/bw_image 18(math ai app onboarding).webp",
+      "assets/images/bw_image 19(rosify app onboarding).webp",
+      "assets/images/bw_image 20(pricing modal).webp",
+      "assets/images/bw_image 21(sales dashboard design).webp",
+      "assets/images/bw_image 22(dashboard design).webp",
+      "assets/images/bw_image 23(donation app light_dark theme).webp",
+      "assets/images/bw_image 24(math ai app screenshot).webp",
+      "assets/images/bw_image 25(linkedin feature cover design).webp",
+      "assets/images/bw_image 26(insta post design).webp",
+      "assets/images/bw_image 27(roomlocker branding).webp",
+      "assets/images/bw_image 28(thumbnail design).webp",
+      "assets/images/bw_image 29(instagram post design).webp",
+      "assets/images/bw_image 30(thumbnail design).webp",
+      "assets/bw_image 31(thumbnail design).webp",
+      "assets/bw_image 32(splash screen design).webp",
+      "assets/bw_image 33(onboarding design).webp",
+      "assets/bw_image 34(unique post design).webp",
+      "assets/bw_image 35(login screen mockup_letmegrab).webp",
+      "assets/images/bw_image 36(oodle screen design).webp",
+      "assets/images/bw_image 37(chat ui design).webp",
+      "assets/images/bw_image 38(component design).webp",
+      "assets/images/bw_image 39(landing page design).webp",
+      "assets/images/bw_image 40(upload design).webp"
+    ];
+    // ---- projects (title + description shown on zoom) ----
+    const META = [
+      { n: "01", t: "Eve Wellness", d: "Company employee mental wellness app design and user flows." },
+      { n: "02", t: "Eve Wellness App", d: "Company employee mental wellness mobile screen design." },
+      { n: "03", t: "Pharmflow", d: "Medical e-commerce application interface and purchase design." },
+      { n: "04", t: "Eve Landing Page", d: "Landing page design and visual layout for the Eve platform." },
+      { n: "05", t: "Q Group Branding", d: "Logo, identity and corporate branding assets design." },
+      { n: "06", t: "Mental Health UI", d: "Section design focusing on employee wellness tracking." },
+      { n: "07", t: "Pharmflow Branding", d: "Branding guidelines, color systems, and visual design assets." },
+      { n: "08", t: "Oodle Dating App", d: "Dating application screen design and matchmaking flows." },
+      { n: "09", t: "We Forest Redesign", d: "Y Combinator website redesign project for We Forest." },
+      { n: "10", t: "Mail Tester Redesign", d: "Y Combinator website redesign project for Mail Tester." },
+      { n: "11", t: "Healthtech Platform", d: "Y Combinator healthtech website redesign concept." },
+      { n: "12", t: "Affil.ai Interface", d: "Affiliated marketing platform UI design and metrics dashboard." },
+      { n: "13", t: "Relaw Platform Redesign", d: "Y Combinator legaltech website redesign concept." },
+      { n: "14", t: "Rivet Platform Redesign", d: "Y Combinator devtools website redesign concept." },
+      { n: "15", t: "Click Branding", d: "Logo design, branding concepts and visual identity guidelines." },
+      { n: "16", t: "RemoveBG Application", d: "Background removal mobile application design." },
+      { n: "17", t: "Eve Footer Design", d: "Landing page footer structure and responsive layout." },
+      { n: "18", t: "Bundled Design", d: "App screen mockup and UI component layout." },
+      { n: "19", t: "Math AI Tutor", d: "App onboarding experience for an AI-powered math tutor." },
+      { n: "20", t: "Rosify Onboarding", d: "Dating application onboarding flow and setup screens." },
+      { n: "21", t: "Pricing Modal UI", d: "SaaS plan selection and subscription pricing popup dialog." },
+      { n: "22", t: "Sales Dashboard", d: "Analytics dashboard showcasing metrics, graphs and sales." },
+      { n: "23", t: "Dashboard Interface", d: "Data-heavy dashboard layout with clean visualization panels." },
+      { n: "24", t: "Donation App UI", d: "Light and dark theme exploration for a donation interface." },
+      { n: "25", t: "Math AI Interface", d: "Main workspace screens of the AI math helper application." },
+      { n: "26", t: "LinkedIn Visuals", d: "Custom LinkedIn cover banner and graphic design." },
+      { n: "27", t: "Instagram Template", d: "Social media post templates and visual styling guidelines." },
+      { n: "28", t: "Roomlocker Identity", d: "Corporate identity, logo design, and brand assets." },
+      { n: "29", t: "Thumbnail Graphic", d: "Video and blog thumbnail design layout." },
+      { n: "30", t: "Instagram Post Design", d: "Creative visual layout for Instagram brand messaging." },
+      { n: "31", t: "Thumbnail Concept", d: "Video preview thumbnail layout mockup." },
+      { n: "32", t: "Thumbnail Mockup", d: "Alternative thumbnail layout options." },
+      { n: "33", t: "Splash Screen UI", d: "Application splash and intro screen presentation." },
+      { n: "34", t: "Onboarding Flow", d: "Detailed onboarding step screens and user interactions." },
+      { n: "35", t: "Unique Post Design", d: "Creative social media post templates for branding." },
+      { n: "36", t: "LetmeGrab Login", d: "E-commerce platform login screen mockup and brand tokens." },
+      { n: "37", t: "Oodle Interface", d: "Match discovery and profile viewer interface." },
+      { n: "38", t: "Chat User Interface", d: "Interactive chat message history design." },
+      { n: "39", t: "Component Library", d: "Figma-ready UI component library specifications." },
+      { n: "40", t: "SaaS Landing Page", d: "SaaS platform landing page sections and hero illustrations." },
+      { n: "41", t: "Upload UI State", d: "File uploading state interface elements design." }
+    ];
+
+    class Gallery {
+      constructor() {
+        this.vp = document.getElementById('viewport');
+        this.canvas = document.getElementById('canvas');
+        this.grid = document.getElementById('grid');
+        this.split = document.getElementById('split');
+        this.detail = document.getElementById('detail');
+        this.close = document.getElementById('close');
+        this.close.addEventListener('click', () => this.exit());
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.prevBtn.addEventListener('click', () => this.navigate(-1));
+        this.nextBtn.addEventListener('click', () => this.navigate(1));
+        this.controls = document.getElementById('controls');
+        this.ease = CustomEase.create("smooth", ".87,0,.13,1");
+        this.cfg = { width: 1024, height: 768, rows: 5, cols: 8, zoom: 0.6, gap: 32 };
+        this.items = []; this.zoomOn = false; this.sel = null; this.overlay = null; this.drag = null;
+        this.buildGrid();
+        this.slider = document.getElementById('zoomSlider');
+        if (this.slider) {
+          this.slider.addEventListener('input', (e) => this.sliderZoom(parseFloat(e.target.value) / 100));
+        }
+        const pctLabel = document.getElementById('pct');
+        if (pctLabel) {
+          pctLabel.addEventListener('click', () => {
+            const current = this.cfg.zoom;
+            let next = 0.6;
+            if (current < 0.45) next = 0.6;
+            else if (current < 0.75) next = 1.0;
+            else if (current < 1.2) next = 1.4;
+            else next = 0.3;
+            this.sliderZoom(next);
+          });
+        }
+      }
+      gapFor(z) { return z >= 1 ? 16 : z >= 0.6 ? 32 : 64; }
+      dims(gap) {
+        const w = this.cfg.cols * (this.cfg.width + gap) - gap, h = this.cfg.rows * (this.cfg.height + gap) - gap;
+        this.gw = w; this.gh = h; return { w, h };
+      }
+      buildGrid() {
+        this.cfg.gap = this.gapFor(this.cfg.zoom); this.dims(this.cfg.gap);
+        this.canvas.style.width = this.gw + 'px'; this.canvas.style.height = this.gh + 'px';
+        let k = 0;
+        for (let r = 0; r < this.cfg.rows; r++)for (let c = 0; c < this.cfg.cols; c++) {
+          const x = c * (this.cfg.width + this.cfg.gap), y = r * (this.cfg.height + this.cfg.gap);
+          const el = document.createElement('div'); el.className = 'cell'; el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.opacity = 0;
+          el.dataset.n = String((k % META.length) + 1).padStart(2, '0');
+          const img = document.createElement('img');
+          img.src = IMAGES[k % IMAGES.length].replace('.webp', '_thumb.webp') + '?v=hq';
+          img.loading = 'lazy';
+          img.alt = '';
+          el.appendChild(img);
+          const data = { el, img, r, c, x, y, index: k };
+          el.addEventListener('click', () => { if (!this.zoomOn) this.enter(data); });
+          this.grid.appendChild(el); this.items.push(data); k++;
+        }
+      }
+      center(z) {
+        const vw = innerWidth, vh = innerHeight; this.dims(this.cfg.gap);
+        return { x: (vw - this.gw * z) / 2, y: (vh - this.gh * z) / 2 };
+      }
+      initDrag() {
+        if (this.drag) this.drag.kill();
+        const z = this.cfg.zoom, vw = innerWidth, vh = innerHeight, m = this.cfg.gap * z;
+        this.dims(this.cfg.gap); const sw = this.gw * z, sh = this.gh * z;
+        let minX, maxX, minY, maxY;
+        if (sw <= vw) { minX = maxX = (vw - sw) / 2 } else { maxX = m; minX = vw - sw - m }
+        if (sh <= vh) { minY = maxY = (vh - sh) / 2 } else { maxY = m; minY = vh - sh - m }
+        this.drag = Draggable.create(this.canvas, {
+          type: "x,y", bounds: { minX, maxX, minY, maxY }, edgeResistance: .85, dragResistance: .06,
+          onDragStart: () => document.body.classList.add('bwg-dragging'),
+          onDragEnd: () => document.body.classList.remove('bwg-dragging')
+        })[0];
+      }
+      intro() {
+        const z = this.cfg.zoom; gsap.set(this.canvas, { scale: z });
+        const c = this.center(z); gsap.set(this.canvas, { x: c.x, y: c.y });
+        const vw = innerWidth, vh = innerHeight;
+        const cx = (vw / 2 - c.x) / z - this.cfg.width / 2, cy = (vh / 2 - c.y) / z - this.cfg.height / 2;
+        this.items.forEach((it, i) => gsap.set(it.el, { left: cx, top: cy, scale: .8, opacity: 0, zIndex: this.items.length - i }));
+        gsap.to(this.vp, { opacity: 1, duration: .5 });
+        gsap.to(this.items.map(i => i.el), {
+          duration: .5, left: i => this.items[i].x, top: i => this.items[i].y, scale: 1, opacity: 1, ease: "power2.out",
+          stagger: { amount: 1.4, grid: [this.cfg.rows, this.cfg.cols], from: "center" },
+          onComplete: () => {
+            this.items.forEach(it => gsap.set(it.el, { zIndex: 1 })); this.initDrag(); this.observe();
+            gsap.to(this.controls, { opacity: 1, duration: .5 });
+          }
+        });
+        this.pct(z);
+      }
+      observe() {
+        this.io = new IntersectionObserver((es) => es.forEach(e => {
+          if (this.sel && e.target === this.sel.el) return;
+          e.target.classList.toggle('dim', !e.isIntersecting);
+        }), { threshold: .1, rootMargin: '8%' });
+        this.items.forEach(it => this.io.observe(it.el));
+      }
+      pct(z) {
+        document.getElementById('pct').textContent = Math.round(z * 100) + '%';
+        const slider = document.getElementById('zoomSlider');
+        if (slider) slider.value = Math.round(z * 100);
+      }
+      setZoom(z, btn) {
+        if (this.zoomOn) { this.exit(); return; }
+        const gap = this.gapFor(z); this.cfg.zoom = z;
+        if (gap !== this.cfg.gap) {
+          this.cfg.gap = gap;
+          this.items.forEach(it => {
+            it.x = it.c * (this.cfg.width + gap); it.y = it.r * (this.cfg.height + gap);
+            gsap.to(it.el, { left: it.x, top: it.y, duration: .9, ease: this.ease });
+          });
+          this.dims(gap); gsap.to(this.canvas, { width: this.gw, height: this.gh, duration: .9, ease: this.ease });
+        }
+        const c = this.center(z);
+        gsap.to(this.canvas, { scale: z, x: c.x, y: c.y, duration: 1, ease: this.ease, onComplete: () => this.initDrag() });
+        this.pct(z);
+        document.querySelectorAll('.switch button').forEach(b => b.classList.remove('cur')); if (btn) btn.classList.add('cur');
+      }
+      sliderZoom(z) {
+        if (this.zoomOn) { this.exit(); return; }
+        const gap = this.gapFor(z); this.cfg.zoom = z;
+        if (gap !== this.cfg.gap) {
+          this.cfg.gap = gap;
+          this.items.forEach(it => {
+            it.x = it.c * (this.cfg.width + gap); it.y = it.r * (this.cfg.height + gap);
+            gsap.set(it.el, { left: it.x, top: it.y });
+          });
+          this.dims(gap); gsap.set(this.canvas, { width: this.gw, height: this.gh });
+        }
+        const c = this.center(z);
+        gsap.to(this.canvas, { scale: z, x: c.x, y: c.y, duration: 0.2, ease: "power2.out", onComplete: () => this.initDrag() });
+        document.getElementById('pct').textContent = Math.round(z * 100) + '%';
+        document.querySelectorAll('.switch button').forEach(b => b.classList.remove('cur'));
+      }
+      fit(btn) {
+        if (this.zoomOn) { this.exit(); return; }
+        const gap = this.gapFor(1), w = this.cfg.cols * (this.cfg.width + gap) - gap, h = this.cfg.rows * (this.cfg.height + gap) - gap;
+        const z = Math.max(.1, Math.min(1.4, Math.min((innerWidth - 80) / w, (innerHeight - 140) / h)));
+        this.setZoom(Math.round(z * 100) / 100, btn);
+      }
+      enter(data) {
+        this.zoomOn = true; this.sel = data; document.body.classList.add('bwg-zoom'); if (this.drag) this.drag.disable();
+        const r = data.img.getBoundingClientRect();
+        const ov = document.createElement('div'); ov.className = 'scaler';
+        const im = document.createElement('img'); im.src = IMAGES[data.index] + '?v=hq'; ov.appendChild(im);
+        document.body.appendChild(ov); this.overlay = ov;
+        gsap.set(ov, { left: r.left, top: r.top, width: r.width, height: r.height, opacity: 1 });
+        gsap.set(data.img, { opacity: 0 });
+        this.split.classList.add('active'); gsap.to(this.split, { opacity: 1, duration: .6, ease: this.ease });
+        // grow the image to a centered, undistorted 1024x768 rectangle fitting the screen
+        const maxW = innerWidth * 0.6;
+        const maxH = innerHeight * 0.74;
+        let W = maxW;
+        let H = W * (768 / 1024);
+        if (H > maxH) {
+          H = maxH;
+          W = H * (1024 / 768);
+        }
+        gsap.to(ov, {
+          left: (innerWidth - W) / 2, top: (innerHeight - H) / 2, width: W, height: H,
+          duration: .9, ease: this.ease, onComplete: () => this.showDetail(data.index)
+        });
+        this.close.classList.add('active');
+        gsap.fromTo(this.close, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: .6, delay: .5, ease: "power2.out" });
+        this.prevBtn.classList.add('active'); this.nextBtn.classList.add('active');
+        gsap.to([this.prevBtn, this.nextBtn], { opacity: 1, duration: .4, delay: .5 });
+        document.getElementById('splitL').addEventListener('click', this._areaClick = (e) => { if (e.target === e.currentTarget) this.exit(); });
+        document.getElementById('splitR').addEventListener('click', this._areaClick);
+        document.addEventListener('keydown', this._key = (e) => {
+          if (e.key === 'Escape') this.exit();
+          else if (e.key === 'ArrowLeft') this.navigate(-1);
+          else if (e.key === 'ArrowRight') this.navigate(1);
+        });
+      }
+      navigate(dir) {
+        if (!this.zoomOn || !this.overlay) return;
+        const total = this.items.length;
+        gsap.set(this.sel.img, { opacity: 1 });                       // restore the cell we're leaving
+        this.sel = this.items[(this.sel.index + dir + total) % total];
+        gsap.set(this.sel.img, { opacity: 0 });                       // hide the new cell (overlay stands in)
+        const im = this.overlay.querySelector('img');
+        gsap.to(this.overlay, {
+          x: dir > 0 ? -44 : 44, opacity: 0, duration: .22, ease: "power2.in", onComplete: () => {
+            im.src = IMAGES[this.sel.index] + '?v=hq';
+            gsap.set(this.overlay, { x: dir > 0 ? 44 : -44 });
+            gsap.to(this.overlay, { x: 0, opacity: 1, duration: .4, ease: this.ease });
+            this.showDetail(this.sel.index);
+          }
+        });
+      }
+      showDetail(i) {
+        const m = META[i % META.length];
+        document.getElementById('dN').textContent = m.n; document.getElementById('dT').textContent = m.t; document.getElementById('dD').textContent = m.d;
+        gsap.set('#dN', { y: 20, opacity: 0 }); gsap.set('#dT', { y: 60, opacity: 0 }); gsap.set('#dD', { y: 80, opacity: 0 });
+        this.detail.style.pointerEvents = 'none'; gsap.to(this.detail, { opacity: 1, duration: .3 });
+        gsap.to('#dN', { y: 0, opacity: 1, duration: .8, delay: .1, ease: this.ease });
+        gsap.to('#dT', { y: 0, opacity: 1, duration: .8, delay: .15, ease: this.ease });
+        gsap.to('#dD', { y: 0, opacity: 1, duration: .8, delay: .2, ease: this.ease });
+      }
+      exit() {
+        if (!this.zoomOn || !this.sel || !this.overlay) return;
+        const ov = this.overlay, img = this.sel.img;
+        document.removeEventListener('keydown', this._key);
+        document.getElementById('splitL').removeEventListener('click', this._areaClick);
+        document.getElementById('splitR').removeEventListener('click', this._areaClick);
+        gsap.to(this.detail, { opacity: 0, duration: .3 });
+        gsap.to(['#dN', '#dT', '#dD'], { y: -40, opacity: 0, duration: .35, ease: "power2.out" });
+        gsap.to(this.close, { opacity: 0, x: 40, duration: .3 });
+        gsap.to([this.prevBtn, this.nextBtn], { opacity: 0, duration: .3 });
+        this.prevBtn.classList.remove('active'); this.nextBtn.classList.remove('active');
+        this.split.classList.remove('active'); gsap.to(this.split, { opacity: 0, duration: .6 });
+        const r = img.getBoundingClientRect();
+        gsap.to(ov, {
+          left: r.left, top: r.top, width: r.width, height: r.height, duration: .8, ease: this.ease, onComplete: () => {
+            gsap.set(img, { opacity: 1 }); ov.remove();
+            document.body.classList.remove('bwg-zoom'); this.close.classList.remove('active');
+            if (this.drag) this.drag.enable(); this.zoomOn = false; this.sel = null; this.overlay = null;
+          }
+        });
+      }
     }
-  }
-  center(z){ const vw=innerWidth,vh=innerHeight; this.dims(this.cfg.gap);
-    return {x:(vw-this.gw*z)/2, y:(vh-this.gh*z)/2}; }
-  initDrag(){
-    if(this.drag) this.drag.kill();
-    const z=this.cfg.zoom, vw=innerWidth, vh=innerHeight, m=this.cfg.gap*z;
-    this.dims(this.cfg.gap); const sw=this.gw*z, sh=this.gh*z;
-    let minX,maxX,minY,maxY;
-    if(sw<=vw){ minX=maxX=(vw-sw)/2 } else { maxX=m; minX=vw-sw-m }
-    if(sh<=vh){ minY=maxY=(vh-sh)/2 } else { maxY=m; minY=vh-sh-m }
-    this.drag=Draggable.create(this.canvas,{type:"x,y",bounds:{minX,maxX,minY,maxY},edgeResistance:.85,dragResistance:.06,
-      onDragStart:()=>document.body.classList.add('bwg-dragging'),
-      onDragEnd:()=>document.body.classList.remove('bwg-dragging')})[0];
-  }
-  intro(){
-    const z=this.cfg.zoom; gsap.set(this.canvas,{scale:z});
-    const c=this.center(z); gsap.set(this.canvas,{x:c.x,y:c.y});
-    const vw=innerWidth,vh=innerHeight;
-    const cx=(vw/2-c.x)/z-this.cfg.width/2, cy=(vh/2-c.y)/z-this.cfg.height/2;
-    this.items.forEach((it,i)=>gsap.set(it.el,{left:cx,top:cy,scale:.8,opacity:0,zIndex:this.items.length-i}));
-    gsap.to(this.vp,{opacity:1,duration:.5});
-    gsap.to(this.items.map(i=>i.el),{duration:.5,left:i=>this.items[i].x,top:i=>this.items[i].y,scale:1,opacity:1,ease:"power2.out",
-      stagger:{amount:1.4,grid:[this.cfg.rows,this.cfg.cols],from:"center"},
-      onComplete:()=>{ this.items.forEach(it=>gsap.set(it.el,{zIndex:1})); this.initDrag(); this.observe();
-        gsap.to(this.controls,{opacity:1,duration:.5}); document.getElementById('foot').classList.add('in'); }});
-    this.pct(z);
-  }
-  observe(){
-    this.io=new IntersectionObserver((es)=>es.forEach(e=>{
-      if(this.sel && e.target===this.sel.el) return;
-      e.target.classList.toggle('dim',!e.isIntersecting);
-    }),{threshold:.1,rootMargin:'8%'});
-    this.items.forEach(it=>this.io.observe(it.el));
-  }
-  pct(z){ document.getElementById('pct').textContent=Math.round(z*100)+'%'; }
-  setZoom(z,btn){
-    if(this.zoomOn){ this.exit(); return; }
-    const gap=this.gapFor(z); this.cfg.zoom=z;
-    if(gap!==this.cfg.gap){ this.cfg.gap=gap;
-      this.items.forEach(it=>{ it.x=it.c*(this.cfg.width+gap); it.y=it.r*(this.cfg.height+gap);
-        gsap.to(it.el,{left:it.x,top:it.y,duration:.9,ease:this.ease}); });
-      this.dims(gap); gsap.to(this.canvas,{width:this.gw,height:this.gh,duration:.9,ease:this.ease});
-    }
-    const c=this.center(z);
-    gsap.to(this.canvas,{scale:z,x:c.x,y:c.y,duration:1,ease:this.ease,onComplete:()=>this.initDrag()});
-    this.pct(z);
-    document.querySelectorAll('.switch button').forEach(b=>b.classList.remove('cur')); if(btn)btn.classList.add('cur');
-  }
-  fit(btn){
-    if(this.zoomOn){ this.exit(); return; }
-    const gap=this.gapFor(1), w=this.cfg.cols*(this.cfg.width+gap)-gap, h=this.cfg.rows*(this.cfg.height+gap)-gap;
-    const z=Math.max(.1,Math.min(1.4,Math.min((innerWidth-80)/w,(innerHeight-140)/h)));
-    this.setZoom(Math.round(z*100)/100,btn);
-  }
-  enter(data){
-    this.zoomOn=true; this.sel=data; document.body.classList.add('bwg-zoom'); if(this.drag)this.drag.disable();
-    const r=data.img.getBoundingClientRect();
-    const ov=document.createElement('div'); ov.className='scaler';
-    const im=document.createElement('img'); im.src=IMAGES[data.index] + '?v=hq'; ov.appendChild(im);
-    document.body.appendChild(ov); this.overlay=ov;
-    gsap.set(ov,{left:r.left,top:r.top,width:r.width,height:r.height,opacity:1});
-    gsap.set(data.img,{opacity:0});
-    this.split.classList.add('active'); gsap.to(this.split,{opacity:1,duration:.6,ease:this.ease});
-    // grow the image to a centered, undistorted 1024x768 rectangle fitting the screen
-    const maxW = innerWidth * 0.6;
-    const maxH = innerHeight * 0.74;
-    let W = maxW;
-    let H = W * (768/1024);
-    if (H > maxH) {
-      H = maxH;
-      W = H * (1024/768);
-    }
-    gsap.to(ov,{left:(innerWidth-W)/2, top:(innerHeight-H)/2, width:W, height:H,
-      duration:.9, ease:this.ease, onComplete:()=>this.showDetail(data.index)});
-    this.close.classList.add('active');
-    gsap.fromTo(this.close,{x:40,opacity:0},{x:0,opacity:1,duration:.6,delay:.5,ease:"power2.out"});
-    this.prevBtn.classList.add('active'); this.nextBtn.classList.add('active');
-    gsap.to([this.prevBtn,this.nextBtn],{opacity:1,duration:.4,delay:.5});
-    document.getElementById('splitL').addEventListener('click',this._areaClick=(e)=>{if(e.target===e.currentTarget)this.exit();});
-    document.getElementById('splitR').addEventListener('click',this._areaClick);
-    document.addEventListener('keydown',this._key=(e)=>{
-      if(e.key==='Escape')this.exit();
-      else if(e.key==='ArrowLeft')this.navigate(-1);
-      else if(e.key==='ArrowRight')this.navigate(1);
-    });
-  }
-  navigate(dir){
-    if(!this.zoomOn||!this.overlay) return;
-    const total=this.items.length;
-    gsap.set(this.sel.img,{opacity:1});                       // restore the cell we're leaving
-    this.sel=this.items[(this.sel.index+dir+total)%total];
-    gsap.set(this.sel.img,{opacity:0});                       // hide the new cell (overlay stands in)
-    const im=this.overlay.querySelector('img');
-    gsap.to(this.overlay,{x:dir>0?-44:44,opacity:0,duration:.22,ease:"power2.in",onComplete:()=>{
-      im.src=IMAGES[this.sel.index] + '?v=hq';
-      gsap.set(this.overlay,{x:dir>0?44:-44});
-      gsap.to(this.overlay,{x:0,opacity:1,duration:.4,ease:this.ease});
-      this.showDetail(this.sel.index);
-    }});
-  }
-  showDetail(i){
-    const m=META[i%META.length];
-    document.getElementById('dN').textContent=m.n; document.getElementById('dT').textContent=m.t; document.getElementById('dD').textContent=m.d;
-    gsap.set('#dN',{y:20,opacity:0}); gsap.set('#dT',{y:60,opacity:0}); gsap.set('#dD',{y:80,opacity:0});
-    this.detail.style.pointerEvents='none'; gsap.to(this.detail,{opacity:1,duration:.3});
-    gsap.to('#dN',{y:0,opacity:1,duration:.8,delay:.1,ease:this.ease});
-    gsap.to('#dT',{y:0,opacity:1,duration:.8,delay:.15,ease:this.ease});
-    gsap.to('#dD',{y:0,opacity:1,duration:.8,delay:.2,ease:this.ease});
-  }
-  exit(){
-    if(!this.zoomOn||!this.sel||!this.overlay) return;
-    const ov=this.overlay, img=this.sel.img;
-    document.removeEventListener('keydown',this._key);
-    document.getElementById('splitL').removeEventListener('click',this._areaClick);
-    document.getElementById('splitR').removeEventListener('click',this._areaClick);
-    gsap.to(this.detail,{opacity:0,duration:.3});
-    gsap.to(['#dN','#dT','#dD'],{y:-40,opacity:0,duration:.35,ease:"power2.out"});
-    gsap.to(this.close,{opacity:0,x:40,duration:.3});
-    gsap.to([this.prevBtn,this.nextBtn],{opacity:0,duration:.3});
-    this.prevBtn.classList.remove('active'); this.nextBtn.classList.remove('active');
-    this.split.classList.remove('active'); gsap.to(this.split,{opacity:0,duration:.6});
-    const r=img.getBoundingClientRect();
-    gsap.to(ov,{left:r.left,top:r.top,width:r.width,height:r.height,duration:.8,ease:this.ease,onComplete:()=>{
-      gsap.set(img,{opacity:1}); ov.remove();
-      document.body.classList.remove('bwg-zoom'); this.close.classList.remove('active');
-      if(this.drag)this.drag.enable(); this.zoomOn=false; this.sel=null; this.overlay=null;
-    }});
-  }
-}
 
-let gallery;
-function boot(){
-  gallery=new Gallery();
-  gallery.intro();
-  const pre=document.getElementById('pre'); pre.style.opacity=0; setTimeout(()=>pre.remove(),800);
-  addEventListener('resize',()=>{ clearTimeout(gallery._rz); gallery._rz=setTimeout(()=>gallery.initDrag(),120); });
-}
-addEventListener('load',()=>setTimeout(boot,700));
-</script>
-<script src="assets/js/site.js?v=89"></script>
+    let gallery;
+    function boot() {
+      gallery = new Gallery();
+      gallery.intro();
+      const pre = document.getElementById('pre'); pre.style.opacity = 0; setTimeout(() => pre.remove(), 800);
+      addEventListener('resize', () => { clearTimeout(gallery._rz); gallery._rz = setTimeout(() => gallery.initDrag(), 120); });
+    }
+    addEventListener('load', () => setTimeout(boot, 700));
+  </script>
+  <script src="assets/js/site.js?v=89"></script>
 </body>
+
 </html>
