@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<title>Edge-State Fixer — Case Study · Muzeeb Urrahaman</title>
+<link rel="stylesheet" href="assets/css/style.css?v=89">
+<style>
+  :root{
+    --bg:#FBFBFA; --surface:#fff; --ink:#0B0B0C; --muted:#57574f; --soft:#8b8b84;
+    --line:rgba(11,11,12,.09); --line-2:rgba(11,11,12,.06);
+    --accent:#2F6DF0; --accent-soft:#EAF1FE;
+    --red:#E5484D; --red-soft:#FDECEC; --green:#2FA96A; --green-soft:#E9F6EF;
+    --amber:#F5A623; --violet:#6E56CF;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --display:'Poppins',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --mono:'Geist Mono',monospace;
+    --maxw:1320px; --pad:32px; --read:940px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+  a{color:inherit} img{max-width:100%;display:block}
+  section{scroll-margin-top:150px}
+  .hero__in,.stats,.chapters,.intro,.cards,.chips,.ba,.tbl,.metrics,.gallery,.divider,.steps,.footer,.diff,.classify{margin-left:auto;margin-right:auto}
+  .stats,.cards,.metrics,.gallery,.divider{max-width:var(--maxw)}
+
+  /* NAV */
+  .nav{position:fixed;top:20px;left:0;right:0;z-index:70;display:flex;justify-content:center;align-items:center;gap:12px;padding:0 16px}
+  .nav__logo{width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.82rem;font-family:var(--display);color:var(--ink);text-decoration:none}
+  .nav__pill{display:flex;align-items:center;gap:2px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.06);border-radius:999px;padding:6px 7px}
+  .nav__pill a{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;color:#2b2b2b;font-size:.9rem;font-weight:500;text-decoration:none;transition:background .25s}
+  .nav__pill a:hover{background:#f1f1ee}
+  .nav__pill svg{width:15px;height:15px;opacity:.65}
+  .nav__mail{width:48px;height:48px;border-radius:50%;background:#FFCB33;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(255,203,51,.35);text-decoration:none}
+  @media(max-width:720px){.nav__pill a span{display:none}.nav__pill a{padding:9px 11px}}
+
+  /* CHAPTER NAV */
+  .chapters{position:sticky;top:80px;z-index:50;width:max-content;max-width:calc(100vw - 32px);
+    display:flex;gap:4px;padding:6px;background:rgba(255,255,255,.75);backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.08);overflow-x:auto;scrollbar-width:none}
+  .chapters::-webkit-scrollbar{display:none}
+  .chapters a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--soft);text-decoration:none;transition:.2s}
+  .chapters a:hover{color:var(--ink)}
+  .chapters a.active{background:var(--ink);color:#fff}
+  @media(max-width:720px){.chapters{top:78px}}
+
+  /* LAYOUT */
+  .prose{max-width:760px;margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+  h2.h{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:22px;color:var(--ink)}
+  .prose p{color:var(--muted);font-size:1.05rem;line-height:1.72;margin-bottom:16px}
+  .prose b{color:var(--ink);font-weight:600}
+  .prose em{font-style:normal;color:var(--accent)}
+  .prose ul{list-style:none;margin:10px 0 18px}
+  .prose li{position:relative;padding-left:22px;color:var(--muted);margin-bottom:11px;font-size:1.02rem;line-height:1.6}
+  .prose li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent);opacity:.7}
+  .prose li b{color:var(--ink)}
+  .mono{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:1px 6px;border-radius:5px;color:var(--ink)}
+
+  .figure{margin:40px auto;max-width:860px}
+  .figure .frame{border:1px solid var(--line);border-radius:20px;padding:14px;background:var(--surface);box-shadow:0 20px 50px rgba(0,0,0,.06)}
+  .figure img{border-radius:12px;width:100%}
+  .figure figcaption{text-align:center;color:var(--soft);font-size:.82rem;margin-top:14px;max-width:720px;margin-left:auto;margin-right:auto}
+
+  .divider{margin:92px auto;padding:0 28px;display:flex;align-items:center;gap:18px}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+  .divider span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+
+  /* HERO */
+  .hero{position:relative;padding:150px 28px 56px;overflow:hidden;
+    background:radial-gradient(120% 90% at 50% -10%, var(--accent-soft) 0%, transparent 55%)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:radial-gradient(rgba(11,11,12,.07) 1px,transparent 1px);background-size:24px 24px;
+    -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent)}
+  .hero__in{position:relative;z-index:1;max-width:900px;text-align:center}
+  .hero__badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:26px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+  .hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.04;letter-spacing:-.035em}
+  .hero h1 .grad{background:linear-gradient(100deg,var(--accent),#7aa5f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero__sub{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.22rem);line-height:1.6;margin:24px auto 0;max-width:660px}
+  .hero__meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 10px;margin-top:30px}
+  .hero__meta .m{font-family:var(--mono);font-size:.76rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+  .hero__meta .m b{color:var(--ink);font-weight:500}
+  .hero__cta{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:var(--ink);color:#fff;text-decoration:none;font-size:.9rem;font-weight:500;padding:11px 20px;border-radius:999px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+  .hero__cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+  .hero__cta svg{width:15px;height:15px}
+
+  /* STATS */
+  .stats{margin-top:52px;padding:0 28px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .stat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
+  .stat .n{font-family:var(--display);font-size:1.6rem;font-weight:700;letter-spacing:-.03em}
+  .stat .l{font-size:.72rem;color:var(--soft);margin-top:5px;line-height:1.3}
+  @media(max-width:820px){.stats{grid-template-columns:repeat(3,1fr)}}
+
+  /* INTRO + META */
+  .intro{display:grid;grid-template-columns:1.7fr 1fr;gap:64px;max-width:1160px;margin:60px auto;padding:0 28px}
+  .intro .lead{font-family:var(--display);font-size:1.32rem;font-weight:500;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin-bottom:16px}
+  .intro p{color:var(--muted);font-size:1rem;line-height:1.7}
+  .intro b{color:var(--ink);font-weight:600}
+  .side{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;height:max-content}
+  .side .g{padding:12px 0;border-top:1px solid var(--line-2)}
+  .side .g:first-child{border-top:none;padding-top:0}
+  .side .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:5px}
+  .side .v{font-size:.95rem;font-weight:500}
+
+  /* 3 CARDS */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:0 28px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.07)}
+  .card__ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-bottom:14px;letter-spacing:-.01em}
+  .card ul{list-style:none}
+  .card li{position:relative;padding-left:18px;font-size:.9rem;color:var(--muted);margin-bottom:11px;line-height:1.5}
+  .card li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--soft)}
+  .card li b{color:var(--ink);font-weight:600}
+
+  /* STATE RULE GRID */
+  .rules{max-width:var(--maxw);margin:6px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .rule{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .rule .rk{flex:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:7px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+  .rule.v1 .rk{background:#efe9fb;color:var(--violet)}
+  .rule h4{font-family:var(--display);font-weight:600;font-size:1rem;margin-bottom:4px}
+  .rule p{font-size:.9rem;color:var(--muted);line-height:1.55}
+  .rule p b{color:var(--ink)}
+  @media(max-width:820px){.rules{grid-template-columns:1fr}}
+
+  /* CODE DIFF */
+  .diff{max-width:1120px;padding:0 28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .diff .pane{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0E0E11}
+  .diff .head{display:flex;align-items:center;gap:9px;padding:12px 18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(255,255,255,.07)}
+  .diff .before .head{color:#f2a2a4;background:rgba(229,72,77,.12)}
+  .diff .after .head{color:#8fe0b3;background:rgba(47,169,106,.12)}
+  .diff .head .dot{width:8px;height:8px;border-radius:50%}
+  .diff .before .head .dot{background:var(--red)}.diff .after .head .dot{background:var(--green)}
+  .diff pre{margin:0;padding:18px 20px;font-family:var(--mono);font-size:.76rem;line-height:1.7;color:#e7e7e2;overflow-x:auto}
+  .diff .c{color:#8a8f98}.diff .g{color:#7fd18c}.diff .r{color:#f2a2a4}.diff .k{color:#c4b5fd}.diff .s{color:#f0a868}.diff .t{color:#7fb8f5}
+  @media(max-width:820px){.diff{grid-template-columns:1fr}}
+
+  /* CLASSIFY */
+  .classify{max-width:1120px;padding:0 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cl{border-radius:16px;padding:20px;border:1px solid var(--line);background:var(--surface)}
+  .cl .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .cl.present .lab{color:var(--green)}.cl.lazy .lab{color:var(--amber)}.cl.missing .lab{color:var(--red)}.cl.na .lab{color:var(--soft)}
+  .cl p{font-size:.86rem;color:var(--muted);line-height:1.5}
+  .cl .out{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:.72rem;color:var(--ink);background:#f1f1ee;padding:3px 8px;border-radius:6px}
+  @media(max-width:820px){.classify{grid-template-columns:repeat(2,1fr)}}
+
+  /* TABLE */
+  .tbl{max-width:1120px;margin:26px auto;padding:0 28px}
+  .tbl table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);font-size:.9rem}
+  .tbl th,.tbl td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top}
+  .tbl th{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);background:#fafaf8;font-weight:500}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl td:first-child{font-weight:500;color:var(--ink)}
+  .tbl td.b{color:#b3532b}.tbl td.a{color:#1f7a4c;font-weight:500}
+  .tbl.stack td:first-child{font-family:var(--mono);font-size:.8rem;color:var(--accent);width:120px}
+  .tbl.stack td:nth-child(2){color:var(--muted)}
+  @media(max-width:640px){.tbl.hidecol th:nth-child(1),.tbl.hidecol td:first-child{display:none}}
+
+  /* METRICS */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px auto;padding:0 28px}
+  .metric{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
+  .metric .n{font-family:var(--display);font-size:2.5rem;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
+  .metric h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:8px 0 8px}
+  .metric p{font-size:.85rem;color:var(--soft);line-height:1.5}
+  @media(max-width:820px){.cards,.metrics{grid-template-columns:1fr}.intro{grid-template-columns:1fr;gap:34px}}
+
+  /* CODE (single) */
+  .code{max-width:760px;margin:24px auto;padding:0 28px}
+  .code pre{background:#0E0E11;color:#e7e7e2;border-radius:16px;padding:22px 24px;font-family:var(--mono);font-size:.82rem;line-height:1.75;overflow-x:auto;border:1px solid rgba(255,255,255,.08)}
+  .code .c{color:#8a8f98}.code .g{color:#7fd18c}.code .k{color:#c4b5fd}.code .s{color:#f0a868}.code .t{color:#7fb8f5}
+
+  /* GALLERY */
+  .gallery{padding:0 28px;display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .shot{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .shot:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+  .shot img{border-radius:11px;width:100%}
+  .shot .sc{font-size:.78rem;color:var(--soft);margin-top:11px;padding:0 4px 2px;line-height:1.45}
+  .shot .sc b{color:var(--ink);font-weight:600}
+  @media(max-width:640px){.gallery{grid-template-columns:1fr}}
+
+  /* Q&A */
+  .faq{max-width:760px;margin:0 auto;padding:0 28px}
+  .faq details{border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:10px;overflow:hidden}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-family:var(--display);font-weight:500;font-size:1rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:1.3rem;color:var(--soft);transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq .a{padding:0 20px 20px;color:var(--muted);font-size:.94rem;line-height:1.65}
+  .faq .a b{color:var(--ink)}
+
+  /* callout */
+  .note{max-width:700px;margin:26px auto;padding:18px 22px;background:var(--accent-soft);border:1px solid rgba(47,109,240,.18);border-radius:14px;color:#274b96;font-size:.95rem;line-height:1.6}
+  .note b{color:#1b3a78}
+
+  /* STEPS */
+  .steps{max-width:900px;margin:30px auto 0;padding:0 28px;display:grid;gap:14px}
+  .step{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+  .step .num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+  .step h4{font-family:var(--display);font-weight:600;font-size:1.02rem;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:.92rem;line-height:1.55}
+  .step code{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:2px 6px;border-radius:5px;color:var(--ink)}
+
+  /* FOOTER */
+  .footer{background:#0B0B0C;color:#fff;border-radius:36px 36px 0 0;padding:60px clamp(28px,5vw,64px) 32px;margin-top:96px;overflow:hidden}
+  .footer__top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px}
+  .footer__lead{font-family:var(--display);font-size:1.15rem;line-height:1.4;color:#f0f0ee;font-weight:500}
+  .footer__social{display:flex;gap:10px}
+  .footer__social a{width:42px;height:42px;border-radius:50%;background:#1b1b1e;display:flex;align-items:center;justify-content:center;color:#cfcfcf;text-decoration:none;transition:.2s;font-size:.9rem}
+  .footer__social a:hover{background:#2a2a2e;color:#fff}
+  .footer__name{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,12vw,8rem);line-height:1;letter-spacing:-.04em;margin:28px 0 24px;white-space:nowrap;overflow:hidden}
+  .footer__bottom{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.74rem;color:#7a7a78;border-top:1px solid #1e1e21;padding-top:18px;flex-wrap:wrap;gap:10px}
+
+  /* ── UNIFIED SINGLE-COLUMN LAYOUT ──
+     every content block shares the same left/right edge, like a Notion doc.
+     text no longer pinches narrow while images/cards run wide. */
+  .hero__in,.prose,.intro,.cards,.stats,.rules,.diff,.classify,.tbl,.metrics,
+  .code,.gallery,.steps,.faq,.figure{
+    max-width:var(--maxw)!important;
+    margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad);
+  }
+  .divider{max-width:var(--maxw)!important;margin-left:auto;margin-right:auto;padding-left:var(--pad);padding-right:var(--pad)}
+  /* callouts align to the same column but keep their card inset */
+  .note{max-width:var(--maxw)!important;margin-left:auto;margin-right:auto}
+  .figure{max-width:var(--maxw)!important}
+  .figure img{width:100%}
+  /* text spans the same left AND right edges as every other block — even margins */
+  .prose{max-width:var(--maxw)!important}
+  .prose .lead,.prose p,.prose ul,.prose li,.prose h2.h,.prose .eyebrow{max-width:100%;margin-left:0;margin-right:0}
+  .prose[style*="center"] .lead,.prose[style*="center"] p{margin-left:auto;margin-right:auto}
+  .note{max-width:var(--maxw)!important;margin-left:auto;margin-right:auto}
+  @media(max-width:520px){:root{--pad:18px}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+  /* ===== portfolio header offset + theme-aware (dark/light) ===== */
+  .mz-nav{position:fixed;top:40px;left:0;right:0}
+  .chapters{top:104px}
+  [data-theme="dark"]{
+    --bg:#0f0f0f;--surface:#161616;--ink:#f4f2ed;--muted:#a3a39d;--soft:#78786f;
+    --line:rgba(255,255,255,.12);--line-2:rgba(255,255,255,.07);
+    --accent:#6ea8ff;--accent-soft:#16233c;
+    --red-soft:#2a1414;--green-soft:#12271b;--amber-soft:#2a2110;
+  }
+  [data-theme="dark"] .hero{background:radial-gradient(120% 90% at 50% -10%,#16233c 0%,transparent 55%)}
+  [data-theme="dark"] .hero::before{background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px)}
+  [data-theme="dark"] .hero__badge,[data-theme="dark"] .hero__meta .m{background:#161616}
+  [data-theme="dark"] .hero__cta{background:#f4f2ed;color:#0f0f0f}
+  [data-theme="dark"] .chapters{background:rgba(20,20,20,.8)}
+  [data-theme="dark"] .chapters a.active{background:#f4f2ed;color:#0f0f0f}
+  [data-theme="dark"] .mono,[data-theme="dark"] .cl .out,[data-theme="dark"] .step code,[data-theme="dark"] .tbl code{background:#232323;color:#e7e7e2}
+  [data-theme="dark"] .tbl th{background:#1a1a1a}
+  [data-theme="dark"] .note{color:#bcd3ff}
+  [data-theme="dark"] .note b{color:#dbe8ff}
+  /* dark-theme contrast: comparison table had hardcoded light-theme text */
+  [data-theme="dark"] .tbl td.b{color:#ff9e7a}
+  [data-theme="dark"] .tbl td.a{color:#6fdfa6}
+  /* dark-theme feature badges */
+  [data-theme="dark"] .rule .rk{background:rgba(110,168,255,.16);color:#8fbaff}
+  [data-theme="dark"] .rule.v1 .rk{background:rgba(139,124,246,.20);color:#c4b5fd}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="mz-nav">
+        <a class="mz-nav__logo" href="index.html" aria-label="Home"><img src="assets/images/logo.png" alt="Muzeeb"></a>
+        <div class="mz-nav__pill">
+            <a href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></a>
+            <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span>About</span></a>
+            <a href="best-work.html" aria-label="Best work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><span>Best work</span></a>
+            <a href="playground.html" aria-label="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg><span>Playground</span></a>
+        </div>
+        <a class="mz-nav__resume" href="resume.html" target="_blank" aria-label="Download resume">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            <span class="mz-nav__tip">Download résumé</span>
+        </a>
+        <a class="mz-nav__mail" href="mailto:rahamanmuzeeb1108@gmail.com" aria-label="Email me">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span class="mz-nav__tip">Let’s work together</span>
+        </a>
+    </nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__in">
+    <span class="hero__badge"><span class="dot"></span> Case Study · Product Designer &amp; Builder</span>
+    <h1>AI writes the happy path.<br>It skips the <span class="grad">other 40%</span>.</h1>
+    <p class="hero__sub">v0, Lovable, Bolt and Cursor build the screen where everything works — and quietly skip the ones where it doesn't. <b style="color:var(--ink)">Edge-State Fixer</b> takes an AI-generated React component, detects which of ten edge states it's missing, and writes designed, drop-in code for each — with the reasoning, a live preview, and a real before/after.</p>
+    <a class="hero__cta" href="https://edge-state-fixer.vercel.app" target="_blank" rel="noopener">Try the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <div class="hero__meta">
+      <span class="m"><b>Muzeeb Urrahaman</b></span>
+      <span class="m">Solo designer + builder</span>
+      <span class="m">Spec-driven · Jul 2026</span>
+      <span class="m">Engine · Web · MCP</span>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat"><div class="n">10</div><div class="l">Edge states, detect → generate</div></div>
+  <div class="stat"><div class="n">~40%</div><div class="l">Of real UX AI skips (my estimate)</div></div>
+  <div class="stat"><div class="n">3</div><div class="l">Surfaces off one engine</div></div>
+  <div class="stat"><div class="n">292</div><div class="l">Cross-browser tests, green</div></div>
+  <div class="stat"><div class="n">24/24</div><div class="l">Engine + MCP unit tests</div></div>
+  <div class="stat"><div class="n">WCAG AA</div><div class="l">axe-verified app</div></div>
+</div>
+
+<!-- CHAPTER NAV -->
+<nav class="chapters" id="chapters" style="margin-top:52px">
+  <a href="#overview" class="active">Overview</a>
+  <a href="#insight">The bet</a>
+  <a href="#states">The 10 states</a>
+  <a href="#how">How it works</a>
+  <a href="#diff">Before → After</a>
+  <a href="#judgment">Judgment calls</a>
+  <a href="#stack">Stack</a>
+  <a href="#results">Results</a>
+  <a href="#next">What's next</a>
+  <a href="#qa">Q&amp;A</a>
+</nav>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="intro reveal">
+    <div>
+      <div class="eyebrow">In one line</div>
+      <p class="lead">Paste an AI-generated component. A free static pre-pass works out which edge states it's missing; the model then writes designed, copy-paste code for each — with a one-line reason, a live preview, and a before/after toggle.</p>
+      <p>Code generators are excellent at the screen where <b>everything works</b>. They skip the states where it doesn't: the blank screen before data exists, the wait while it loads, the failure when it breaks, the silent submit, the raw validation popup. Those states are roughly <b>40% of a real product's experience</b> — my estimate from tearing down AI-generated apps, not a measured figure — and they're skipped <em>by design</em>: nobody prompts for them, and a better model writes a better happy path, not a better failure state. That makes this a <b>designer-shaped problem</b> — I'd weight it ~90% design judgment, 10% model (how I think about it, not a metric).</p>
+      <p><b>What the teardowns changed:</b> pasting components out of v0, Lovable, Bolt and Cursor, the striking thing wasn't that they skipped states — it's that they skipped the <em>same</em> states, the same way, every time. Because the gap is <b>predictable</b>, detection didn't need a model at all: I made it a <b>free, deterministic pre-pass</b> that decides which states are missing before any AI is called. That one finding — the gap is regular, not random — is why the detector is rules, not a prompt.</p>
+    </div>
+    <aside class="side">
+      <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Solo — problem, design, architecture &amp; all code</div></div>
+      <div class="g"><div class="k">Method</div><div class="v">Spec-Driven Development (GitHub Spec Kit)</div></div>
+      <div class="g"><div class="k">Surfaces</div><div class="v">Web app · MCP server · CLI</div></div>
+      <div class="g"><div class="k">Started</div><div class="v">July 2026 · portfolio-first indie build</div></div>
+    </aside>
+  </div>
+
+  <div class="cards reveal">
+    <div class="card">
+      <div class="card__ic" style="background:var(--red-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+      <h3>Problem</h3>
+      <ul>
+        <li>AI generators ship the happy path &amp; leave the <b>failure states blank</b>.</li>
+        <li>Those states are <b>~40% of the real experience</b> — skipped by design.</li>
+        <li>Re-prompting gives <b>inconsistent, taste-free</b> output every run.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic" style="background:var(--accent-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
+      <h3>Solution</h3>
+      <ul>
+        <li>A <b>written state-design ruleset</b> is the system prompt — the taste, encoded once.</li>
+        <li><b>Deterministic detection</b> decides what applies; the model only fills in code.</li>
+        <li>Each fix drops in: <b>matches your Tailwind, names variables you used</b>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>Results</h3>
+      <ul>
+        <li>10 states detected &amp; generated <b>end to end</b> from a paste.</li>
+        <li>One engine ships to <b>web, an MCP server &amp; a CLI</b>.</li>
+        <li><b>292 cross-browser tests</b> green; the app passes an a11y gate.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span>The bet</span></div>
+
+<!-- INSIGHT -->
+<section id="insight">
+  <div class="prose reveal">
+    <div class="eyebrow">Why this exists</div>
+    <h2 class="h">The model is a commodity. The taste is the moat.</h2>
+    <p>The lazy version of this is a thin call to an LLM: "add edge states to this component." A better model erases that overnight, and it produces different, taste-free output every run. So the valuable asset here isn't generation — it's <b>encoded taste</b>: a written, opinionated definition of what a <em>good</em> empty, error or validation state actually is, applied identically every time.</p>
+    <p>That taste lives in one file — <span class="mono">packages/engine/src/prompt/system.ts</span> — and it <em>is</em> the system prompt. The few-shot examples come from hand-designed fixtures beside it. This document, not the model, is the defense against "just re-prompt the generator." "Did you handle the empty case?" is a forever question, not a generation trick — which is exactly why the product survives the models getting better.</p>
+    <div class="note"><b>Built spec-first.</b> The whole thing was built with Spec-Driven Development (GitHub Spec Kit): a written <span style="font-family:var(--mono);font-size:.85em">constitution.md</span> of guardrails, then spec → plan → tasks per feature. The top guardrail — <b>"design quality is the product; if a generated state doesn't clearly out-design a lazy re-prompt, the feature isn't done"</b> — is what kept scope honest.</div>
+  </div>
+</section>
+
+<div class="divider"><span>The ten states</span></div>
+
+<!-- STATES -->
+<section id="states">
+  <div class="prose reveal">
+    <div class="eyebrow">The taste, written down</div>
+    <h2 class="h">Ten states — each with one opinionated rule.</h2>
+    <p>These aren't generic categories; each carries a specific design stance from the ruleset. Five shipped in the MVP; five more (the states products hit <em>after</em> launch — auth, real networks, scale, limits) landed in V1.</p>
+  </div>
+  <div class="rules reveal">
+    <div class="rule"><span class="rk">Empty</span><div><h4>Onboarding, not an error</h4><p>Icon → headline → why it's empty → a primary "first action" CTA. A blank div wastes the most common first impression.</p></div></div>
+    <div class="rule"><span class="rk">Loading</span><div><h4>A skeleton, never a spinner</h4><p>Shape mirrors the real content (rows for a table, cards for a grid) so nothing jumps when data lands. <span class="mono">aria-busy</span> + live region.</p></div></div>
+    <div class="rule"><span class="rk">Error</span><div><h4>Human copy plus a way out</h4><p>Four beats: what happened + why + what to do + a retry. <span class="mono">role="alert"</span>. Never "Something went wrong," never a raw error object.</p></div></div>
+    <div class="rule"><span class="rk">Success toast</span><div><h4>Never a silent submit</h4><p>Past-tense confirm ("Saved", "Sent"), placement, ~4s duration, dismissible. Chooses optimistic vs confirm-on-success by risk.</p></div></div>
+    <div class="rule"><span class="rk">Validation</span><div><h4>Inline, per-field, human</h4><p>Message under each field, <span class="mono">aria-invalid</span> + <span class="mono">aria-describedby</span>, validate on blur. Assumed rules surfaced, never invented.</p></div></div>
+    <div class="rule v1"><span class="rk">No-permission</span><div><h4>A boundary, not a bug</h4><p>Names the wall, shows current-vs-required role, offers a forward path. Amber, not alarm-red. A 403 rendered blank reads as broken.</p></div></div>
+    <div class="rule v1"><span class="rk">Offline</span><div><h4>Preserve, communicate, recover</h4><p>Keep the last-loaded UI (dim, don't blank), non-blocking banner, auto-refetch on reconnect. Never an infinite spinner.</p></div></div>
+    <div class="rule v1"><span class="rk">No search results</span><div><h4>Echo the query, offer an exit</h4><p>"No matches for '&lt;query&gt;'" + clear-filters. Distinct from first-run empty — here data exists, the query excluded it.</p></div></div>
+    <div class="rule v1"><span class="rk">End of list</span><div><h4>A terminal marker, not a phantom spinner</h4><p>Gate the loader on <span class="mono">hasNextPage</span>; replace the endless spinner with "You're all caught up." "Loading more" and "no more" must look different.</p></div></div>
+    <div class="rule v1"><span class="rk">Over-limit</span><div><h4>Name the limit, show the way forward</h4><p>"You've used all 50 of your monthly generations" + a usage meter + when it resets / how to upgrade. Blameless copy. Design the feedback, never the limiter.</p></div></div>
+  </div>
+</section>
+
+<div class="divider"><span>How it works</span></div>
+
+<!-- HOW -->
+<section id="how">
+  <div class="prose reveal">
+    <div class="eyebrow">The pipeline</div>
+    <h2 class="h">Deterministic detection, generative fixing.</h2>
+    <p>The split is deliberate: <b>a cheap, free static pass decides what applies</b> — reproducibly, with no model call — and the model only does the subjective part, writing the designed code. That's what makes the tool cheap to run and predictable to reason about.</p>
+  </div>
+  <div class="steps reveal">
+    <div class="step"><div class="num">1</div><div><h4>Paste a component</h4><p>Any AI-generated React/JSX — a table, form, dashboard, feed, search view.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h4>Detect signals — no model</h4><p>An AST/regex pre-pass reads the code for real cues: <code>fetch</code>/<code>useEffect</code>/<code>useQuery</code> → data-dependent; <code>onSubmit</code>/mutations → mutating; a form; auth cues like <code>403</code>/<code>useSession</code>/<code>isAdmin</code>/<code>ShieldAlert</code>; <code>429</code>/quota; infinite-scroll. It even <em>refuses</em> to treat a bare <code>role</code> as an auth signal — it's usually a data column, not permission.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h4>Classify each state</h4><p>Every state is marked <code>present</code>, <code>lazy</code>, <code>missing</code> or <code>not-applicable</code> — so the tool fixes real gaps and pads nothing.</p></div></div>
+    <div class="step"><div class="num">4</div><div><h4>Generate to the ruleset</h4><p>For each <code>missing</code>/<code>lazy</code> state the model returns <b>zod-validated structured output</b> (retry-once on a bad shape): designed code + a one-line rationale, matching your existing Tailwind and variable names.</p></div></div>
+    <div class="step"><div class="num">5</div><div><h4>Review &amp; copy</h4><p>Each fix arrives with a live in-document preview, a before/after toggle, and copy-to-clipboard — paste it straight back into your project.</p></div></div>
+  </div>
+
+  <div class="prose reveal" style="margin-top:44px">
+    <div class="eyebrow">The classification</div>
+    <h2 class="h">Applicability is a first-class decision.</h2>
+    <p>Most tools pad their output to look thorough. This one does the opposite — a read-only table gets <em>no</em> validation; a pure form gets <em>no</em> first-run empty. Four verdicts, and two of them emit nothing:</p>
+  </div>
+  <div class="classify reveal">
+    <div class="cl present"><div class="lab">● Present</div><p>Already handled well.</p><span class="out">emits nothing</span></div>
+    <div class="cl lazy"><div class="lab">● Lazy</div><p>Handled but under-designed — a bare spinner, a blank div, "Something went wrong."</p><span class="out">emits a redesign</span></div>
+    <div class="cl missing"><div class="lab">● Missing</div><p>Not handled at all.</p><span class="out">emits designed code</span></div>
+    <div class="cl na"><div class="lab">● Not-applicable</div><p>Doesn't fit this component.</p><span class="out">emits nothing</span></div>
+  </div>
+
+  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img src="assets/media/edge-state/01-home.png" alt="Edge-State Fixer landing page"/></div><figcaption>The single paste-and-fix flow. The app dogfoods its own empty, loading, error, toast and validation states — including the waitlist form.</figcaption></figure>
+</section>
+
+<div class="divider"><span>Before → After</span></div>
+
+<!-- DIFF -->
+<section id="diff">
+  <div class="prose reveal">
+    <div class="eyebrow">A worked example</div>
+    <h2 class="h">One real component, its real gaps, filled.</h2>
+    <p>Take <span class="mono">UserTable.tsx</span> — a data table the generator shipped happy-path only. It fetches, shows a bare spinner while loading, and has <b>no error path</b> and <b>no empty state</b>: a failed request renders nothing, and zero users renders an empty <span class="mono">&lt;tbody&gt;</span>. Detection flags it as data-dependent, so empty · loading · error all apply. Here is the error state — the actual before and after code from the repo:</p>
+  </div>
+
+  <div class="diff reveal">
+    <div class="pane before">
+      <div class="head"><span class="dot"></span> Before · what AI shipped</div>
+<pre><span class="k">const</span> [users, setUsers] = <span class="t">useState</span>([]);
+<span class="k">const</span> [loading, setLoading] = <span class="t">useState</span>(<span class="k">true</span>);
+
+<span class="t">useEffect</span>(() => {
+  <span class="t">fetch</span>(<span class="s">"/api/users"</span>)
+    .then(r => r.json())
+    .then(data => {
+      setUsers(data);
+      setLoading(<span class="k">false</span>);
+    });
+  <span class="c">// no .catch → failure renders nothing</span>
+  <span class="c">// users.length === 0 → empty &lt;tbody&gt;</span>
+}, []);
+
+<span class="k">if</span> (loading) <span class="k">return</span> (
+  <span class="c">// a bare spinner — no layout, no context</span>
+  &lt;div className=<span class="s">"animate-spin ..."</span> /&gt;
+);</pre>
+    </div>
+    <div class="pane after">
+      <div class="head"><span class="dot"></span> After · what the engine generates</div>
+<pre>&lt;div role=<span class="s">"alert"</span> className=<span class="s">"... py-16 text-center"</span>&gt;
+  &lt;<span class="t">AlertTriangle</span> className=<span class="s">"h-5 w-5 text-red-600"</span> /&gt;
+  &lt;h3&gt;<span class="g">Couldn't load your team</span>&lt;/h3&gt;
+  &lt;p&gt;<span class="g">We hit a problem reaching the server, so</span>
+     <span class="g">the list didn't load. This is usually</span>
+     <span class="g">temporary. Try again, and if it keeps</span>
+     <span class="g">happening, check your connection…</span>&lt;/p&gt;
+  &lt;button onClick={onRetry} disabled={isRetrying}&gt;
+    &lt;<span class="t">RotateCw</span> className={isRetrying
+      ? <span class="s">"animate-spin"</span> : <span class="s">""</span>} /&gt;
+    {isRetrying ? <span class="s">"Retrying…"</span> : <span class="s">"Try again"</span>}
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+    </div>
+  </div>
+  <div class="prose reveal" style="margin-top:6px">
+    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">Rationale (verbatim from the fixture):</b> the error state is UX writing, not a stack trace — it names what happened, why in human terms, and what to do, with recovery one click away via a spinning "Try again." It never surfaces raw <span class="mono">error.message</span>, which would leak internals and mean nothing to the reader.</p>
+  </div>
+
+  <div class="prose reveal" style="margin-top:40px">
+    <p>The same loop runs for every applicable state. These are real designed states from the tool:</p>
+  </div>
+  <div class="gallery reveal">
+    <div class="shot"><img src="assets/media/edge-state/04-loading-after.png" alt="Loading skeleton"/><div class="sc"><b>Loading</b> — a layout-matched skeleton that mirrors the real rows, so nothing reflows when data arrives.</div></div>
+    <div class="shot"><img src="assets/media/edge-state/05-empty-after.png" alt="Empty state"/><div class="sc"><b>Empty</b> — treated as onboarding: what belongs here plus a primary action, not a blank container.</div></div>
+    <div class="shot"><img src="assets/media/edge-state/06-validation-after.png" alt="Inline validation"/><div class="sc"><b>Validation</b> — inline, per-field, in plain language, wired with <span class="mono">aria-describedby</span> — never a raw popup.</div></div>
+    <div class="shot"><img src="assets/media/edge-state/07-toast-after.png" alt="Success toast"/><div class="sc"><b>Success</b> — a confirming toast fired after the request resolves, so the submit is never silent.</div></div>
+  </div>
+</section>
+
+<div class="divider"><span>The hard parts</span></div>
+
+<!-- JUDGMENT -->
+<section id="judgment">
+  <div class="prose reveal">
+    <div class="eyebrow">The judgment calls</div>
+    <h2 class="h">Anyone can ask a model for an error state.</h2>
+    <p>The valuable decisions were about how a tool like this becomes something a developer trusts on their own code. Three examples, all real, from the ruleset and fixtures:</p>
+    <ul>
+      <li><b>Optimistic vs confirm-on-success — chosen by risk, not by default.</b> A notifications feed's "mark as read" is low-risk, reversible and high-frequency, so the UI flips immediately and rolls back with a Retry toast on failure. A contact form is a one-shot, non-reversible action, so it <em>waits</em> for the server before claiming success. Showing a form as "sent" before the server agrees is a lie the user can't undo — so the engine encodes both patterns and picks per component.</li>
+      <li><b>Design the feedback, never invent the logic.</b> For no-permission the frontend can only guess the rule, so the assumed requirement (e.g. <span class="mono">admin</span> role) is written as an explicit <em>assumption</em> and surfaced to the user as the required role — the state announces the rule it believes applies rather than inventing and hiding business logic the backend owns. Validation surfaces required/email/min-length the same way.</li>
+      <li><b>Detection that refuses false positives.</b> A bare <span class="mono">role</span> in the code is <em>not</em> treated as an auth cue — it's almost always a data column (<span class="mono">user.role</span>). The detector keys on explicit permission signals only. Precision here is what makes an always-on (lint / PR / MCP) form trustworthy.</li>
+    </ul>
+    <div class="note"><b>The engine is the asset; every surface is a thin wrapper.</b> Web, MCP and CLI all call one decoupled <span style="font-family:var(--mono);font-size:.85em">detectAndFix()</span> — a guardrail from day one — which is why the exact same taste ships everywhere and the app can dogfood its own states as living proof.</div>
+  </div>
+
+  <div class="prose reveal" style="margin-top:40px">
+    <div class="eyebrow">The engine contract</div>
+    <h2 class="h">One call, typed and honest.</h2>
+    <p>The public API is a single function returning a validated result — what the component does, and each state classified with its designed code and rationale.</p>
+  </div>
+  <div class="code reveal"><pre><span class="k">import</span> { detectAndFix } <span class="k">from</span> <span class="s">"edge-state-fixer-engine"</span>;
+
+<span class="k">const</span> result = <span class="k">await</span> detectAndFix(code);
+<span class="c">// { dataDependent, mutating, hasForm, summary, states }</span>
+
+result.states.error  <span class="c">// → { status: "missing", code, rationale }</span>
+result.states.empty  <span class="c">// → { status: "not-applicable" }   ← emits nothing</span>
+<span class="c">// toast carries placement, durationMs, dismissible, pattern;</span>
+<span class="c">// validation carries the assumptions it surfaced (never invented rules)</span></pre></div>
+</section>
+
+<div class="divider"><span>The stack</span></div>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="prose reveal">
+    <div class="eyebrow">The stack</div>
+    <h2 class="h">One engine, three surfaces, one codebase.</h2>
+    <p>A pnpm monorepo built engine-first. The engine holds all the value; the web app and MCP server are thin wrappers on the same <span class="mono">detectAndFix()</span>.</p>
+  </div>
+  <div class="tbl stack hidecol reveal">
+    <table>
+      <tr><th>Package</th><th>What it is</th></tr>
+      <tr><td>engine</td><td>Framework-agnostic TypeScript, no web deps — the asset. <code>detect()</code> static pre-pass + <code>detectAndFix()</code> LLM generation, zod-validated structured output, retry-once.</td></tr>
+      <tr><td>providers</td><td>An <code>LlmProvider</code> interface with three modes: subscription CLI (drives the local <code>claude</code> CLI — <b>no API key</b>), Anthropic API, and a deterministic mock for demos &amp; CI.</td></tr>
+      <tr><td>prompt</td><td><code>system.ts</code> — the encoded state-design ruleset. <code>examples.ts</code> — few-shot from the hand-designed fixtures.</td></tr>
+      <tr><td>apps/web</td><td>Next.js 15 App Router + Tailwind v4 · Sandpack live previews · Shiki code · sonner toasts. First load ~206 kB; key stays server-side.</td></tr>
+      <tr><td>packages/mcp</td><td>MCP server — <code>scan</code> / <code>fix</code> / <code>ruleset</code> tools for Claude Code, Cursor &amp; Windsurf. <b>Published on npm</b> as <span class="mono">edge-state-fixer-mcp</span>.</td></tr>
+      <tr><td>quality</td><td>TypeScript strict · Biome · Vitest · a Playwright suite of 292 tests across Chromium, Firefox, WebKit &amp; mobile · a written TEST-PLAN mapping every requirement to a test.</td></tr>
+    </table>
+  </div>
+  <div class="prose reveal" style="margin-top:36px">
+    <div class="eyebrow">In your IDE</div>
+    <h2 class="h">It meets developers where they already are.</h2>
+    <p>The MCP server exposes the engine to any MCP client. Generate a screen, then ask the IDE to scan and fix — <span class="mono">scan</span> is free and local (no model); <span class="mono">fix</span> generates designed code; <span class="mono">ruleset</span> hands the IDE's own model the design standard.</p>
+  </div>
+  <div class="code reveal"><pre><span class="c"># one command to add it to Claude Code</span>
+claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
+
+<span class="c"># then, after generating a screen:</span>
+<span class="g">"scan this component for missing edge states"</span>  <span class="c"># free, local</span>
+<span class="g">"add the empty and error states"</span>              <span class="c"># generates code</span></pre></div>
+</section>
+
+<div class="divider"><span>Results</span></div>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="prose reveal">
+    <div class="eyebrow">Results</div>
+    <h2 class="h">Working, end to end — and proven on real components.</h2>
+    <p>Ten edge states are detected and generated from a single pasted component. Output is real and component-specific on the Claude subscription — no API key needed. The taste is validated against <b>five hand-designed reference components</b> — an analytics dashboard, a contact form, a data table, a notifications feed, and a search view — each producing states that visibly out-design a re-prompt. The full test matrix is green.</p>
+  </div>
+
+  <div class="metrics reveal">
+    <div class="metric"><div class="n">10</div><h4>states, detect → generate</h4><p>Five MVP + five V1 states, end to end from a paste, each emitted only where it applies.</p></div>
+    <div class="metric"><div class="n">292</div><h4>tests, all green</h4><p>Playwright across Chromium, Firefox, WebKit &amp; mobile — plus 24/24 engine + MCP unit tests, and a WCAG AA axe gate.</p></div>
+    <div class="metric"><div class="n">3</div><h4>surfaces, one engine</h4><p>Web app, MCP server (on npm) &amp; CLI — the same encoded taste everywhere, fully decoupled.</p></div>
+  </div>
+</section>
+
+<div class="divider"><span>Reflection</span></div>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="prose reveal">
+    <div class="eyebrow">Reflection</div>
+    <h2 class="h">What I got wrong before I got it right.</h2>
+    <p>The first version was the lazy one: a single prompt — <em>"add the missing edge states to this component."</em> It demoed fine and fell apart in use. Every run produced different, taste-free output, and a better model would erase the whole thing overnight. That failure is what forced the real insight — the value isn't generation, it's <b>encoded taste</b> — so I threw the thin wrapper out and moved the judgment into a written ruleset the model only fills in.</p>
+    <p><b>What I'd do differently:</b> I built breadth — web, MCP, CLI, ten states — before proving anyone wants it. Next time I'd ship the <b>free detector alone</b> first and watch fix-acceptance before building the generator: demand data, then surface area.</p>
+    <p><b>Built for leverage:</b> the taste lives in one engine, so it isn't a single app — it's an <b>MCP server</b> (on npm) and a CLI that other tools and coding agents call directly. The encoded judgment travels wherever a developer already works, instead of living behind one UI.</p>
+  </div>
+</section>
+
+<div class="divider"><span>What's next</span></div>
+
+<!-- NEXT -->
+<section id="next">
+  <div class="prose reveal">
+    <div class="eyebrow">What I'd do next</div>
+    <h2 class="h">Ordered by leverage, not flash.</h2>
+    <ul>
+      <li><b>Cross-file detection</b> — read a parent <span class="mono">ErrorBoundary</span> / <span class="mono">Suspense</span> / route loader so the scanner never flags an already-handled state. This is the precision that makes an always-on form trustworthy.</li>
+      <li><b>Reframe as "ESLint for UX completeness"</b> — a free local detector on every PR, paid autofix. "Did you handle the empty case?" is a forever check, so it survives the models improving.</li>
+      <li><b>Editor + CI surfaces</b> — a Claude Code skill and a GitHub PR bot on changed files, so it lands in the developer's flow instead of a paste-in detour.</li>
+      <li><b>Measure demand before breadth</b> — retention and fix-acceptance, not signups, decide whether this is a product or a very good portfolio piece.</li>
+    </ul>
+    <div class="note"><b>The through-line.</b> I didn't stop at <em>designing</em> good edge states — I built the system that detects the gap and produces them consistently, and made deliberate calls about how that system earns trust rather than merely impresses.</div>
+  </div>
+</section>
+
+<div class="divider"><span>Interview brief</span></div>
+
+<!-- Q&A -->
+<section id="qa">
+  <div class="prose reveal" style="margin-bottom:34px">
+    <div class="eyebrow">Anticipated questions</div>
+    <h2 class="h">The things people probe for.</h2>
+  </div>
+  <div class="faq reveal">
+    <details open><summary>Isn't this just a wrapper around an LLM?</summary><div class="a">No — two things sit around the model that are the actual product. First, a <b>written ruleset</b> that defines what "good" is for each state, applied identically every run. Second, a <b>free, deterministic detector</b> that decides what applies before any model call. Swap the model out and the product still knows what good looks like and where it's needed. The generation is the commodity part.</div></details>
+    <details><summary>Why not just re-prompt the code generator to "add edge states"?</summary><div class="a">Because you get inconsistent, taste-free output that changes every run, and no control over <b>which</b> states apply. This applies one explicit standard — skeleton-not-spinner, empty-as-onboarding, human error copy, inline validation — and only for the states that fit that specific component, classified as present / lazy / missing / not-applicable.</div></details>
+    <details><summary>How does it decide what applies without wasting a model call?</summary><div class="a">A static AST/regex pre-pass reads the code for real cues: <b>data</b> (fetch / useEffect / useQuery), <b>mutation</b> (onSubmit / save / delete), a form, auth cues (403, useSession, isAdmin, ShieldAlert), 429/quota, infinite-scroll. It's reproducible and free. It also avoids obvious false positives — a bare <span style="font-family:var(--mono);font-size:.85em">role</span> is treated as a data column, not an auth signal.</div></details>
+    <details><summary>How does it avoid inventing business logic it shouldn't?</summary><div class="a">Hard boundary: it designs the <b>feedback and UI</b>, never the logic. It doesn't write the mutation, the auth check, or the rate limiter. Where it has to assume a rule — a required field, an <span style="font-family:var(--mono);font-size:.85em">admin</span> requirement — it surfaces that as an explicit <b>assumption</b> the user can see and correct, rather than silently enforcing something the backend actually owns.</div></details>
+    <details><summary>Do I need an API key to try it?</summary><div class="a">No. Provider selection is automatic: a deterministic mock (used by the e2e suite and offline demos), an Anthropic API key if present, or — the default — the local <span style="font-family:var(--mono);font-size:.85em">claude</span> CLI on your logged-in Claude subscription. The live demo runs in mock mode; running locally gives real, component-specific output with no key.</div></details>
+    <details><summary>How is it tested, and how do you know the output is actually good?</summary><div class="a">Two different things, tested separately. <b>Mechanics</b>: a Playwright suite of 292 tests across Chromium, Firefox, WebKit and mobile, engine + MCP unit tests at 24/24, TS strict, Biome, and a written TEST-PLAN mapping every requirement to a test, plus a WCAG AA axe gate. <b>Taste</b>: the five hand-designed fixtures are the ground truth — generated output has to out-design a lazy re-prompt of the original, which is a human design-QA judgment, not something Playwright can assert.</div></details>
+    <details><summary>Are you a designer or a developer?</summary><div class="a">A product designer first — this is a designer-shaped problem, roughly 90% design judgment, 10% model. The building is what makes it unusual: I owned the problem framing, the design, the architecture and every line, and shipped it across web, an MCP server and a CLI myself instead of waiting for a handoff.</div></details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="mz-footer">
+                <div class="mz-footer__row">
+                    <div class="mz-footer__id">
+                        <img class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
+                        <span class="mz-footer__name">Muzeeb Urrahaman</span>
+                    </div>
+                    <div class="mz-footer__socials">
+                        <a href="resume.html" target="_blank" aria-label="Résumé / CV">
+                            <svg class="mz-footer__social" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
+                        </a>
+                        <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
+                            <svg class="mz-footer__social" viewBox="0 -55 256 256" fill="currentColor"><path d="M72.2 0C112.08 0 144.4 32.55 144.4 72.7 144.4 112.84 112.07 145.39 72.2 145.39 32.33 145.39 0 112.84 0 72.7 0 32.55 32.33 0 72.2 0ZM187.5 4.26C207.44 4.26 223.6 34.9 223.6 72.7 223.6 110.49 207.44 141.13 187.5 141.13 167.57 141.13 151.4 110.49 151.4 72.7 151.4 34.91 167.56 4.26 187.5 4.26ZM243.3 11.39C250.31 11.39 256 38.84 256 72.7 256 106.55 250.32 134.01 243.3 134.01 236.29 134.01 230.61 106.55 230.61 72.7 230.61 38.84 236.29 11.39 243.3 11.39Z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" aria-label="LinkedIn">
+                            <svg class="mz-footer__social" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+                        </a>
+                        <a href="https://www.behance.net/muzeeb0786" target="_blank" aria-label="Behance">
+                            <svg class="mz-footer__social" viewBox="0 0 26 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12.2H9.4C11.44 12.2 13 13.76 13 15.8C13 17.84 11.44 19.4 9.4 19.4H2.2C1.48 19.4 1 18.92 1 18.2V6.2C1 5.48 1.48 5 2.2 5H8.2C10.24 5 11.8 6.56 11.8 8.6C11.8 10.64 10.24 12.2 8.2 12.2H1Z"/><path d="M15.4 14.6H25C25 11.96 22.84 9.8 20.2 9.8C17.56 9.8 15.4 11.96 15.4 14.6ZM15.4 14.6C15.4 17.24 17.56 19.4 20.2 19.4H22.24"/><path d="M22 6.8H18.4"/></svg>
+                        </a>
+                        <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" aria-label="Dribbble">
+                            <svg class="mz-footer__social" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.35C17.68 9.81 11.67 12.94 5.4 12.38L1.6 12.03"/><path d="M5.2 21.84C8.32 16.38 14.33 13.25 20.6 13.82L24.4 14.16"/><path d="M13 25C19.63 25 25 19.63 25 13C25 6.37 19.63 1 13 1C6.37 1 1 6.37 1 13C1 19.63 6.37 25 13 25Z"/><path d="M7.76 2.2L11.57 6.94C14.13 10.11 15.94 13.79 16.9 17.74L18.35 23.73"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/muzeebuiux" target="_blank" aria-label="Instagram">
+                            <svg class="mz-footer__social" viewBox="0 0 14 14" fill="currentColor"><path d="M7.00547 3.35841C5.01797 3.35841 3.41485 4.93649 3.41485 6.89293C3.41485 8.84938 5.01797 10.4275 7.00547 10.4275C8.99297 10.4275 10.5961 8.84938 10.5961 6.89293C10.5961 4.93649 8.99297 3.35841 7.00547 3.35841ZM7.00547 9.19083C5.7211 9.19083 4.6711 8.16032 4.6711 6.89293C4.6711 5.62555 5.71797 4.59503 7.00547 4.59503C8.29297 4.59503 9.33985 5.62555 9.33985 6.89293C9.33985 8.16032 8.28985 9.19083 7.00547 9.19083ZM11.5805 3.21383C11.5805 3.67218 11.2055 4.03825 10.743 4.03825C10.2773 4.03825 9.90547 3.6691 9.90547 3.21383C9.90547 2.75856 10.2805 2.38942 10.743 2.38942C11.2055 2.38942 11.5805 2.75856 11.5805 3.21383ZM13.9586 4.05055C13.9055 2.9462 13.6492 1.96798 12.8273 1.16202C12.0086 0.356067 11.0148 0.103821 9.89297 0.0484497C8.73672 -0.0161499 5.2711 -0.0161499 4.11485 0.0484497C2.9961 0.100745 2.00234 0.352991 1.18047 1.15895C0.358594 1.96491 0.105469 2.94313 0.0492188 4.04747C-0.0164063 5.18566 -0.0164063 8.59713 0.0492188 9.73532C0.102344 10.8397 0.358594 11.8179 1.18047 12.6238C2.00234 13.4298 2.99297 13.682 4.11485 13.7374C5.2711 13.802 8.73672 13.802 9.89297 13.7374C11.0148 13.6851 12.0086 13.4329 12.8273 12.6238C13.6461 11.8179 13.9024 10.8397 13.9586 9.73532C14.0242 8.59713 14.0242 5.18873 13.9586 4.05055Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="mz-footer__band">
+                    <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+                    <div class="mz-footer__copy">© 2026 Muzeeb Urrahaman · All rights reserved</div>
+                </div>
+            </footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const links=[...document.querySelectorAll('.chapters a')];
+  const map={}; links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
+  const spy=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.remove('active')); const a=map[e.target.id]; if(a){a.classList.add('active'); a.scrollIntoView({inline:'center',block:'nearest'});} } });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+</script>
+<script src="assets/js/site.js?v=89"></script>
+</body>
+</html>

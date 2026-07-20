@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<title>Catchly — Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="A privacy-first Chrome extension that tracks your subscriptions without ever touching your bank. Case study: the problem, the bet, how it works, the stack, and the results." />
+<link rel="stylesheet" href="assets/css/style.css?v=89">
+<style>
+  :root{
+    --bg:#FBFBFA; --surface:#fff; --ink:#0B0B0C; --muted:#57574f; --soft:#8b8b84;
+    --line:rgba(11,11,12,.09); --line-2:rgba(11,11,12,.06);
+    --accent:#2F6DF0; --accent-soft:#EAF1FE;
+    --red:#E5484D; --red-soft:#FDECEC; --green:#2FA96A; --green-soft:#E9F6EF;
+    --amber:#F5A623; --amber-soft:#FEF4E1; --violet:#6E56CF; --yellow:#FFCB33;
+    --ease:cubic-bezier(.16,1,.3,1);
+    --display:'Poppins',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --mono:'Geist Mono',monospace;
+    --maxw:1320px; --pad:32px; --read:940px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+  a{color:inherit} img{max-width:100%;display:block}
+  section{scroll-margin-top:150px}
+
+  /* NAV */
+  .nav{position:fixed;top:20px;left:0;right:0;z-index:70;display:flex;justify-content:center;align-items:center;gap:12px;padding:0 16px}
+  .nav__logo{width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;font-family:var(--display);color:var(--ink);text-decoration:none}
+  .nav__pill{display:flex;align-items:center;gap:2px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.06);border-radius:999px;padding:6px 7px}
+  .nav__pill a{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;color:#2b2b2b;font-size:.9rem;font-weight:500;text-decoration:none;transition:background .25s}
+  .nav__pill a:hover{background:#f1f1ee}
+  .nav__pill svg{width:15px;height:15px;opacity:.65}
+  .nav__mail{width:48px;height:48px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(255,203,51,.35);text-decoration:none}
+  @media(max-width:720px){.nav__pill a span{display:none}.nav__pill a{padding:9px 11px}}
+
+  /* CHAPTER NAV */
+  .chapters{position:sticky;top:80px;z-index:50;width:max-content;max-width:calc(100vw - 32px);
+    display:flex;gap:4px;padding:6px;background:rgba(255,255,255,.75);backdrop-filter:blur(14px);
+    border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.08);overflow-x:auto;scrollbar-width:none;margin-left:auto;margin-right:auto}
+  .chapters::-webkit-scrollbar{display:none}
+  .chapters a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--soft);text-decoration:none;transition:.2s}
+  .chapters a:hover{color:var(--ink)}
+  .chapters a.active{background:var(--ink);color:#fff}
+  @media(max-width:720px){.chapters{top:78px}}
+
+  /* LAYOUT */
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
+  h2.h{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:22px;color:var(--ink)}
+  .prose p{color:var(--muted);font-size:1.05rem;line-height:1.72;margin-bottom:16px}
+  .prose b{color:var(--ink);font-weight:600}
+  .prose em{font-style:normal;color:var(--accent)}
+  .prose ul{list-style:none;margin:10px 0 18px}
+  .prose li{position:relative;padding-left:22px;color:var(--muted);margin-bottom:11px;font-size:1.02rem;line-height:1.6}
+  .prose li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent);opacity:.7}
+  .prose li b{color:var(--ink)}
+  .mono{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:1px 6px;border-radius:5px;color:var(--ink)}
+
+  .figure{margin:40px auto}
+  .figure .frame{border:1px solid var(--line);border-radius:20px;padding:14px;background:var(--surface);box-shadow:0 20px 50px rgba(0,0,0,.06)}
+  .figure img{border-radius:12px;width:100%}
+  .figure figcaption{text-align:center;color:var(--soft);font-size:.82rem;margin-top:14px;max-width:720px;margin-left:auto;margin-right:auto}
+
+  .divider{margin:92px auto;padding:0 28px;display:flex;align-items:center;gap:18px}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+  .divider span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+
+  /* HERO */
+  .hero{position:relative;padding:150px 28px 56px;overflow:hidden;
+    background:radial-gradient(120% 90% at 50% -10%, var(--accent-soft) 0%, transparent 55%)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background-image:radial-gradient(rgba(11,11,12,.07) 1px,transparent 1px);background-size:24px 24px;
+    -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent)}
+  .hero__in{position:relative;z-index:1;max-width:900px;text-align:center;margin:0 auto}
+  .hero__badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:26px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+  .hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.04;letter-spacing:-.035em}
+  .hero h1 .grad{background:linear-gradient(100deg,var(--accent),#7aa5f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero__sub{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.22rem);line-height:1.6;margin:24px auto 0;max-width:680px}
+  .hero__meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 10px;margin-top:30px}
+  .hero__meta .m{font-family:var(--mono);font-size:.76rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+  .hero__meta .m b{color:var(--ink);font-weight:500}
+  .hero__cta{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:var(--ink);color:#fff;text-decoration:none;font-size:.9rem;font-weight:500;padding:11px 20px;border-radius:999px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+  .hero__cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
+  .hero__cta svg{width:15px;height:15px}
+
+  /* STATS */
+  .stats{margin-top:52px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .stat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
+  .stat .n{font-family:var(--display);font-size:1.6rem;font-weight:700;letter-spacing:-.03em}
+  .stat .l{font-size:.72rem;color:var(--soft);margin-top:5px;line-height:1.3}
+  @media(max-width:820px){.stats{grid-template-columns:repeat(3,1fr)}}
+
+  /* INTRO + META */
+  .intro{display:grid;grid-template-columns:1.7fr 1fr;gap:64px;margin:60px auto}
+  .intro .lead{font-family:var(--display);font-size:1.32rem;font-weight:500;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin-bottom:16px}
+  .intro p{color:var(--muted);font-size:1rem;line-height:1.7}
+  .intro b{color:var(--ink);font-weight:600}
+  .side{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;height:max-content}
+  .side .g{padding:12px 0;border-top:1px solid var(--line-2)}
+  .side .g:first-child{border-top:none;padding-top:0}
+  .side .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:5px}
+  .side .v{font-size:.95rem;font-weight:500}
+
+  /* 3 CARDS */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.07)}
+  .card__ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-bottom:14px;letter-spacing:-.01em}
+  .card ul{list-style:none}
+  .card li{position:relative;padding-left:18px;font-size:.9rem;color:var(--muted);margin-bottom:11px;line-height:1.5}
+  .card li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--soft)}
+  .card li b{color:var(--ink);font-weight:600}
+
+  /* FEATURE / CATCH RULE GRID */
+  .rules{margin:6px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .rule{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .rule .rk{flex:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:7px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+  .rule.warn .rk{background:var(--amber-soft);color:#a56a05}
+  .rule.risk .rk{background:var(--red-soft);color:var(--red)}
+  .rule h4{font-family:var(--display);font-weight:600;font-size:1rem;margin-bottom:4px}
+  .rule p{font-size:.9rem;color:var(--muted);line-height:1.55}
+  .rule p b{color:var(--ink)}
+  @media(max-width:820px){.rules{grid-template-columns:1fr}}
+
+  /* DIFF / COMPARISON */
+  .diff{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .diff .pane{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0E0E11}
+  .diff .head{display:flex;align-items:center;gap:9px;padding:12px 18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(255,255,255,.07)}
+  .diff .before .head{color:#f2a2a4;background:rgba(229,72,77,.12)}
+  .diff .after .head{color:#8fe0b3;background:rgba(47,169,106,.12)}
+  .diff .head .dot{width:8px;height:8px;border-radius:50%}
+  .diff .before .head .dot{background:var(--red)}.diff .after .head .dot{background:var(--green)}
+  .diff pre{margin:0;padding:18px 20px;font-family:var(--mono);font-size:.76rem;line-height:1.7;color:#e7e7e2;overflow-x:auto}
+  .diff .c{color:#8a8f98}.diff .g{color:#7fd18c}.diff .r{color:#f2a2a4}.diff .k{color:#c4b5fd}.diff .s{color:#f0a868}.diff .t{color:#7fb8f5}
+  @media(max-width:820px){.diff{grid-template-columns:1fr}}
+
+  /* CLASSIFY */
+  .classify{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cl{border-radius:16px;padding:20px;border:1px solid var(--line);background:var(--surface)}
+  .cl .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+  .cl.g1 .lab{color:var(--green)}.cl.g2 .lab{color:var(--accent)}.cl.g3 .lab{color:var(--amber)}.cl.g4 .lab{color:var(--violet)}
+  .cl p{font-size:.86rem;color:var(--muted);line-height:1.5}
+  .cl .out{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:.72rem;color:var(--ink);background:#f1f1ee;padding:3px 8px;border-radius:6px}
+  @media(max-width:820px){.classify{grid-template-columns:repeat(2,1fr)}}
+
+  /* TABLE */
+  .tbl{margin:26px auto}
+  .tbl table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);font-size:.9rem}
+  .tbl th,.tbl td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top}
+  .tbl th{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);background:#fafaf8;font-weight:500}
+  .tbl tr:last-child td{border-bottom:none}
+  .tbl td:first-child{font-weight:500;color:var(--ink)}
+  .tbl.stack td:first-child{font-family:var(--mono);font-size:.8rem;color:var(--accent);width:150px}
+  .tbl.stack td:nth-child(2){color:var(--muted)}
+  .tbl code{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:1px 5px;border-radius:5px;color:var(--ink)}
+  @media(max-width:640px){.tbl.hidecol th:nth-child(1),.tbl.hidecol td:first-child{display:none}}
+
+  /* METRICS */
+  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px auto}
+  .metric{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
+  .metric .n{font-family:var(--display);font-size:2.5rem;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
+  .metric h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:8px 0 8px}
+  .metric p{font-size:.85rem;color:var(--soft);line-height:1.5}
+  @media(max-width:820px){.cards,.metrics{grid-template-columns:1fr}.intro{grid-template-columns:1fr;gap:34px}}
+
+  /* CODE (single) */
+  .code{margin:24px auto}
+  .code pre{background:#0E0E11;color:#e7e7e2;border-radius:16px;padding:22px 24px;font-family:var(--mono);font-size:.82rem;line-height:1.75;overflow-x:auto;border:1px solid rgba(255,255,255,.08)}
+  .code .c{color:#8a8f98}.code .g{color:#7fd18c}.code .k{color:#c4b5fd}.code .s{color:#f0a868}.code .t{color:#7fb8f5}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .shot{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .shot:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+  .shot img{border-radius:11px;width:100%;background:#f1f1ee}
+  .shot .sc{font-size:.78rem;color:var(--soft);margin-top:11px;padding:0 4px 2px;line-height:1.45}
+  .shot .sc b{color:var(--ink);font-weight:600}
+  @media(max-width:640px){.gallery{grid-template-columns:1fr}}
+
+  /* Q&A */
+  .faq{max-width:820px;margin:0 auto}
+  .faq details{border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:10px;overflow:hidden}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-family:var(--display);font-weight:500;font-size:1rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:1.3rem;color:var(--soft);transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq .a{padding:0 20px 20px;color:var(--muted);font-size:.94rem;line-height:1.65}
+  .faq .a b{color:var(--ink)}
+
+  /* callout */
+  .note{margin:26px auto;padding:18px 22px;background:var(--accent-soft);border:1px solid rgba(47,109,240,.18);border-radius:14px;color:#274b96;font-size:.95rem;line-height:1.6}
+  .note b{color:#1b3a78}
+
+  /* STEPS */
+  .steps{margin:30px auto 0;display:grid;gap:14px}
+  .step{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+  .step .num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+  .step h4{font-family:var(--display);font-weight:600;font-size:1.02rem;margin-bottom:4px}
+  .step p{color:var(--muted);font-size:.92rem;line-height:1.55}
+  .step code{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:2px 6px;border-radius:5px;color:var(--ink)}
+
+  /* FOOTER */
+  .footer{background:#0B0B0C;color:#fff;border-radius:36px 36px 0 0;padding:60px clamp(28px,5vw,64px) 32px;margin-top:96px;overflow:hidden}
+  .footer__top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px}
+  .footer__lead{font-family:var(--display);font-size:1.15rem;line-height:1.4;color:#f0f0ee;font-weight:500}
+  .footer__social{display:flex;gap:10px}
+  .footer__social a{width:42px;height:42px;border-radius:50%;background:#1b1b1e;display:flex;align-items:center;justify-content:center;color:#cfcfcf;text-decoration:none;transition:.2s;font-size:.9rem}
+  .footer__social a:hover{background:#2a2a2e;color:#fff}
+  .footer__name{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,12vw,8rem);line-height:1;letter-spacing:-.04em;margin:28px 0 24px;white-space:nowrap;overflow:hidden}
+  .footer__bottom{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.74rem;color:#7a7a78;border-top:1px solid #1e1e21;padding-top:18px;flex-wrap:wrap;gap:10px}
+
+  /* UNIFIED SINGLE-COLUMN LAYOUT — every block shares the same edges */
+  .hero__in,.prose,.intro,.cards,.stats,.rules,.diff,.classify,.tbl,.metrics,
+  .code,.gallery,.steps,.faq,.figure,.chapters{
+    max-width:var(--maxw);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad);
+  }
+  .divider{max-width:var(--maxw);margin-left:auto;margin-right:auto;padding-left:var(--pad);padding-right:var(--pad)}
+  .note{max-width:var(--maxw);margin-left:auto;margin-right:auto}
+  .prose .lead,.prose p,.prose ul,.prose li,.prose h2.h,.prose .eyebrow{max-width:100%;margin-left:0;margin-right:0}
+  .prose[data-center] .lead,.prose[data-center] p{margin-left:auto;margin-right:auto}
+  @media(max-width:520px){:root{--pad:18px}}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+  /* ===== portfolio header offset + theme-aware (dark/light) ===== */
+  .mz-nav{position:fixed;top:40px;left:0;right:0}
+  .chapters{top:104px}
+  [data-theme="dark"]{
+    --bg:#0f0f0f;--surface:#161616;--ink:#f4f2ed;--muted:#a3a39d;--soft:#78786f;
+    --line:rgba(255,255,255,.12);--line-2:rgba(255,255,255,.07);
+    --accent:#6ea8ff;--accent-soft:#16233c;
+    --red-soft:#2a1414;--green-soft:#12271b;--amber-soft:#2a2110;
+  }
+  [data-theme="dark"] .hero{background:radial-gradient(120% 90% at 50% -10%,#16233c 0%,transparent 55%)}
+  [data-theme="dark"] .hero::before{background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px)}
+  [data-theme="dark"] .hero__badge,[data-theme="dark"] .hero__meta .m{background:#161616}
+  [data-theme="dark"] .hero__cta{background:#f4f2ed;color:#0f0f0f}
+  [data-theme="dark"] .chapters{background:rgba(20,20,20,.8)}
+  [data-theme="dark"] .chapters a.active{background:#f4f2ed;color:#0f0f0f}
+  [data-theme="dark"] .mono,[data-theme="dark"] .cl .out,[data-theme="dark"] .step code,[data-theme="dark"] .tbl code{background:#232323;color:#e7e7e2}
+  [data-theme="dark"] .tbl th{background:#1a1a1a}
+  [data-theme="dark"] .note{color:#bcd3ff}
+  [data-theme="dark"] .note b{color:#dbe8ff}
+  /* dark-theme feature badges: brighter text + consistent tinted bg (was washed / low-contrast amber) */
+  [data-theme="dark"] .rule .rk{background:rgba(110,168,255,.16);color:#8fbaff}
+  [data-theme="dark"] .rule.warn .rk{background:rgba(245,166,35,.16);color:#f6c569}
+  [data-theme="dark"] .rule.risk .rk{background:rgba(229,72,77,.18);color:#ff9195}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="mz-nav">
+        <a class="mz-nav__logo" href="index.html" aria-label="Home"><img src="assets/images/logo.png" alt="Muzeeb"></a>
+        <div class="mz-nav__pill">
+            <a href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></a>
+            <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span>About</span></a>
+            <a href="best-work.html" aria-label="Best work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><span>Best work</span></a>
+            <a href="playground.html" aria-label="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg><span>Playground</span></a>
+        </div>
+        <a class="mz-nav__resume" href="resume.html" target="_blank" aria-label="Download resume">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+            <span class="mz-nav__tip">Download résumé</span>
+        </a>
+        <a class="mz-nav__mail" href="mailto:rahamanmuzeeb1108@gmail.com" aria-label="Email me">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span class="mz-nav__tip">Let’s work together</span>
+        </a>
+    </nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__in">
+    <span class="hero__badge"><span class="dot"></span> Case Study · Privacy-First Chrome Extension</span>
+    <h1>You forget the subscriptions.<br>They <span class="grad">never forget you</span>.</h1>
+    <p class="hero__sub">Every rival subscription tracker starts by asking for your bank login. <b style="color:var(--ink)">Catchly</b> refuses to — it watches sign-ups, renewals and price hikes on 24 services you already use, keeps the whole list on your device, and warns you before the card gets charged. No bank connection. No account. Nothing leaves your browser.</p>
+    <a class="hero__cta" href="https://getcatchly.com" target="_blank" rel="noopener">See the live site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <div class="hero__meta">
+      <span class="m"><b>Muzeeb Urrahaman</b></span>
+      <span class="m">Solo designer + builder</span>
+      <span class="m">v0.1.0 · Web Store review</span>
+      <span class="m">MV3 · Chrome / Brave / Edge</span>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat"><div class="n">24</div><div class="l">Services auto-detected</div></div>
+  <div class="stat"><div class="n">0</div><div class="l">Bank logins ever required</div></div>
+  <div class="stat"><div class="n">0</div><div class="l">Outbound calls in normal use</div></div>
+  <div class="stat"><div class="n">18</div><div class="l">Working features, not stubs</div></div>
+  <div class="stat"><div class="n">22</div><div class="l">Playwright smoke tests</div></div>
+  <div class="stat"><div class="n">MIT</div><div class="l">Source-available, verifiable</div></div>
+</div>
+
+<!-- CHAPTER NAV -->
+<nav class="chapters" id="chapters" style="margin-top:52px">
+  <a href="#overview" class="active">Overview</a>
+  <a href="#insight">The bet</a>
+  <a href="#catches">What it catches</a>
+  <a href="#how">How it works</a>
+  <a href="#diff">Old way vs Catchly</a>
+  <a href="#judgment">Judgment calls</a>
+  <a href="#stack">The stack</a>
+  <a href="#results">Results</a>
+  <a href="#next">What's next</a>
+  <a href="#qa">Q&amp;A</a>
+</nav>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="intro reveal">
+    <div>
+      <div class="eyebrow">In one line</div>
+      <p class="lead">Catchly is a Chrome extension that spots your recurring charges the moment you sign up, keeps that list on your own device, and warns you before every renewal, free-trial conversion, and price hike — without a bank login or an account.</p>
+      <p>The subscriptions costing you the most are the ones you've forgotten. The obvious fix — an app that reads your bank feed — means handing a startup your banking credentials and paying it a cut of your "savings." Catchly takes the opposite bet: it never touches your bank. It watches only the 24 subscription sites you already visit, notices when you sign up or hit a renewal page, and does <b>all of the tracking, reminding and math locally in your browser</b>. Nothing about your subscriptions is ever uploaded anywhere.</p>
+    </div>
+    <aside class="side">
+      <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Solo — problem, design, architecture &amp; all code</div></div>
+      <div class="g"><div class="k">Type</div><div class="v">Chrome Extension (Manifest V3)</div></div>
+      <div class="g"><div class="k">Surfaces</div><div class="v">In-page toast · Popup dashboard · Notifications</div></div>
+      <div class="g"><div class="k">Status</div><div class="v">v0.1.0 · in Chrome Web Store review</div></div>
+    </aside>
+  </div>
+
+  <div class="cards reveal">
+    <div class="card">
+      <div class="card__ic" style="background:var(--red-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+      <h3>Problem</h3>
+      <ul>
+        <li>People lose money to <b>subscriptions they forgot they have</b> — trials that convert, quiet price hikes, apps they stopped opening.</li>
+        <li>The usual fix <b>demands your bank login</b> and takes a cut of "savings."</li>
+        <li>Cancelling is a maze of <b>dark patterns</b> designed to make you give up.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic" style="background:var(--accent-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
+      <h3>Solution</h3>
+      <ul>
+        <li>Detects sign-ups <b>on the sites you already use</b> — no bank, no account.</li>
+        <li>Everything lives in <b>your browser's local storage</b>; nothing is uploaded.</li>
+        <li>Warns before renewals, flags price hikes, and <b>guides you to the real cancel page</b>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>Results</h3>
+      <ul>
+        <li><b>18 features</b> shipping as real code, exercised by a 22-test smoke suite.</li>
+        <li><b>Zero telemetry</b> — no analytics, crash reporter, or usage ping anywhere.</li>
+        <li>v0.1.0 <b>submitted to the Chrome Web Store</b>, live preview at getcatchly.com.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><span>The bet</span></div>
+
+<!-- INSIGHT -->
+<section id="insight">
+  <div class="prose reveal">
+    <div class="eyebrow">Why this exists</div>
+    <h2 class="h">The bank login is the industry default. Refusing it is the whole product.</h2>
+    <p>Every popular subscription tracker works the same way: connect it to your bank through a data aggregator, let it read every transaction, and let it charge you — often <b>30–60% of the money it "saves" you</b>. That model is powerful, but it asks you to trust a third party with the keys to your entire financial life, and it quietly reads every purchase you make, not just the subscriptions.</p>
+    <p><b>That teardown is the research.</b> I went through the popular trackers, and the pattern was unanimous: every one starts by asking for a bank connection and takes a cut. There was no privacy-first option on the shelf. That gap, not a feature wish, is the decision the whole product is built on: <b>refuse the bank entirely</b> and see how much value survives. Most of it does.</p>
+    <p>Catchly's bet is that most of the value comes without any of that risk. It never sees your bank. Instead it watches only a <em>narrow, fixed list of 24 subscription sites</em> — the streaming, AI, productivity, news, design and storage services people actually pay for — and detects the subscription right where it happens: at the sign-up or renewal page. The tracking, the reminders and the spend math all run <b>on your device</b>. This isn't a privacy footnote; it <em>is</em> the product.</p>
+    <div class="note"><b>Privacy is a design constraint, not a marketing line.</b> The extension is limited by Chrome itself to a 24-domain allowlist — it is technically incapable of running on your bank, brokerage, healthcare portal, or any login page. And it makes <b>zero outbound network calls during normal use</b>: no analytics SDK, no telemetry, no error logger. Every claim is checkable in the open-source code.</div>
+  </div>
+</section>
+
+<div class="divider"><span>What it catches</span></div>
+
+<!-- CATCHES -->
+<section id="catches">
+  <div class="prose reveal">
+    <div class="eyebrow">The job, plainly</div>
+    <h2 class="h">Nine things Catchly catches for you.</h2>
+    <p>Each one is a specific moment where money slips away silently. Catchly's job is to make that moment visible before the charge lands — in plain language, with a way to act on it.</p>
+  </div>
+  <div class="rules reveal">
+    <div class="rule"><span class="rk">Auto-detect</span><div><h4>Catches sign-ups as they happen</h4><p>Land on a checkout or sign-up page for a supported service and an in-page toast slides in offering to track it. No copying, no manual entry.</p></div></div>
+    <div class="rule"><span class="rk">Reminders</span><div><h4>Warns you before every renewal</h4><p>Chrome notifications 1, 3, or 7 days ahead (your choice). The one before the charge, not the statement after it.</p></div></div>
+    <div class="rule warn"><span class="rk">Free trial</span><div><h4>24-hour warning before a trial converts</h4><p>The most expensive kind of forgetting — a "free" trial quietly turning into a paid plan — gets its own countdown alert.</p></div></div>
+    <div class="rule warn"><span class="rk">Price hike</span><div><h4>Flags increases the day they appear</h4><p>When a renewal page shows a higher price than last time, Catchly surfaces the change (e.g. Netflix $22.99 → $24.99) instead of letting it slide by.</p></div></div>
+    <div class="rule risk"><span class="rk">Shadow charge</span><div><h4>Finds subscriptions you've stopped using</h4><p>Haven't opened a service in 30+ days but it's still billing you? A local usage sweep flags it — the classic "still paying for Audible" case.</p></div></div>
+    <div class="rule"><span class="rk">Cancel guide</span><div><h4>Points you to the real cancel page</h4><p>"Cancel this" deep-links straight to the service's cancellation page and lists the dark-pattern steps in plain English — honest guidance, not fake automation.</p></div></div>
+    <div class="rule"><span class="rk">Calendar</span><div><h4>A 30-day view of what's coming</h4><p>A renewal calendar with day-by-day dots so the next month is never a surprise, plus a rolling "next 30 days" list.</p></div></div>
+    <div class="rule"><span class="rk">Insights</span><div><h4>Monthly, yearly &amp; annual run-rate</h4><p>A spend summary that stays honest with mixed currencies — USD, EUR, GBP, CAD, AUD, JPY and INR totals are kept separate, never mashed together.</p></div></div>
+    <div class="rule"><span class="rk">Badge</span><div><h4>Days-to-renewal at a glance</h4><p>Pin the toolbar icon and its badge counts down to your most urgent renewal, colour-coded safe → soon → urgent → overdue.</p></div></div>
+  </div>
+</section>
+
+<div class="divider"><span>How it works</span></div>
+
+<!-- HOW -->
+<section id="how">
+  <div class="prose reveal">
+    <div class="eyebrow">The flow</div>
+    <h2 class="h">Detect locally, remember locally, remind locally.</h2>
+    <p>There's no server in the loop. A small script runs only on the 24 allowlisted sites, spots a subscription, and hands it to a background worker that stores it on your device and schedules the reminders. Here's the whole path, start to finish:</p>
+  </div>
+  <div class="steps reveal">
+    <div class="step"><div class="num">1</div><div><h4>You visit a supported service</h4><p>Say <code>netflix.com/signup</code> or <code>spotify.com/premium</code>. A content script — allowed to run <em>only</em> on the 24 listed domains — reads the page.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h4>Catchly recognises the charge</h4><p>It matches the site against a local service catalogue (<code>lib/merchants.js</code>) that knows the brand, typical price, billing cycle and real cancel URL — then slides in an in-page toast offering to track it.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h4>You save it in one click</h4><p>The subscription is written to <code>chrome.storage.local</code> — your browser, your device. Never <code>chrome.storage.sync</code>, never a server. Can't auto-detect a service? Add any name manually in about ten seconds.</p></div></div>
+    <div class="step"><div class="num">4</div><div><h4>The background worker does the watching</h4><p>A service worker schedules Chrome <code>alarms</code> for each renewal, runs a daily shadow-charge sweep, and updates the toolbar badge — all offline, all on-device.</p></div></div>
+    <div class="step"><div class="num">5</div><div><h4>You get warned in time</h4><p>Local Chrome notifications fire before renewals and trial conversions. Open the popup to see the dashboard, the calendar, the price-hike alerts, and a one-click link to cancel.</p></div></div>
+  </div>
+
+  <div class="prose reveal" style="margin-top:44px">
+    <div class="eyebrow">The permission model</div>
+    <h2 class="h">Four permissions, each with one honest reason.</h2>
+    <p>Catchly asks for the minimum it needs and nothing more. There is no <code>&lt;all_urls&gt;</code> — the browser itself blocks it from running anywhere outside the allowlist. Here's exactly what each permission is for:</p>
+  </div>
+  <div class="classify reveal">
+    <div class="cl g1"><div class="lab">● storage</div><p>Saves your subscription list, settings and usage history to your device.</p><span class="out">local only</span></div>
+    <div class="cl g2"><div class="lab">● alarms</div><p>Schedules the renewal, trial and shadow-charge reminders for a future time.</p><span class="out">no server timers</span></div>
+    <div class="cl g3"><div class="lab">● notifications</div><p>Shows the desktop reminders — generated locally, never from a remote payload.</p><span class="out">on-device</span></div>
+    <div class="cl g4"><div class="lab">● tabs</div><p>Opens the cancel page, and notices when you visit a known service (for shadow charges).</p><span class="out">matched locally</span></div>
+  </div>
+
+  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img src="assets/media/catchly/01-subscriptions.jpg" alt="Catchly subscriptions dashboard showing tracked services organised by next renewal"/></div><figcaption>The main dashboard — every recurring charge in one place, organised by next renewal, with a monthly / yearly / active-count summary strip that stays currency-aware.</figcaption></figure>
+</section>
+
+<div class="divider"><span>Old way vs Catchly</span></div>
+
+<!-- DIFF -->
+<section id="diff">
+  <div class="prose reveal">
+    <div class="eyebrow">The difference that matters</div>
+    <h2 class="h">Same goal, opposite data path.</h2>
+    <p>Both a bank-linked tracker and Catchly want to answer "what am I paying for?" The difference is where your data goes to get the answer. On the left, the model everyone else uses; on the right, Catchly's:</p>
+  </div>
+
+  <div class="diff reveal">
+    <div class="pane before">
+      <div class="head"><span class="dot"></span> The bank-linked model</div>
+<pre><span class="c">// 1. Hand over your bank credentials</span>
+<span class="t">aggregator</span>.link(<span class="s">bankUsername</span>, <span class="s">bankPassword</span>);
+
+<span class="c">// 2. Every transaction is read &amp; uploaded</span>
+<span class="k">const</span> all = <span class="k">await</span> server.<span class="t">fetchTransactions</span>();
+<span class="c">//    …groceries, rent, everything — not</span>
+<span class="c">//    just your subscriptions</span>
+
+<span class="c">// 3. Data lives on their servers</span>
+cloud.<span class="t">store</span>(all);            <span class="c">// synced, mineable</span>
+
+<span class="c">// 4. They bill you a cut of "savings"</span>
+subscription.<span class="t">charge</span>(<span class="r">0.4 * saved</span>);</pre>
+    </div>
+    <div class="pane after">
+      <div class="head"><span class="dot"></span> How Catchly works</div>
+<pre><span class="c">// 1. No login. Nothing to hand over.</span>
+<span class="c">//    Runs only on 24 allowlisted sites.</span>
+
+<span class="c">// 2. Detects the sub at the source</span>
+<span class="k">const</span> sub = <span class="t">detectOnPage</span>(location.host);
+
+<span class="c">// 3. Saved on YOUR device — never synced</span>
+<span class="k">await</span> chrome.storage.<span class="g">local</span>.set({ sub });
+<span class="c">// no chrome.storage.sync, no backend</span>
+
+<span class="c">// 4. Free, forever. Zero outbound calls</span>
+<span class="c">//    during normal use.</span>
+notifications.<span class="g">local</span>(renewalSoon);</pre>
+    </div>
+  </div>
+  <div class="prose reveal" style="margin-top:6px">
+    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">The trade-off, stated honestly:</b> because Catchly never reads your bank, it only knows about services it can see you use in the browser — that's why the supported list is explicit and grows over time. In exchange, you never share a banking credential, your subscription list never leaves your device, and there's no percentage-of-savings fee. That's the deal, and it's the point.</p>
+  </div>
+
+  <div class="prose reveal" style="margin-top:40px">
+    <p>The same on-device approach powers every screen in the popup. These are the real listing shots:</p>
+  </div>
+  <div class="gallery reveal">
+    <div class="shot"><img src="assets/media/catchly/02-alerts.jpg" alt="Alerts pane showing price hikes, trial endings and shadow charges"/><div class="sc"><b>Alerts</b> — price hikes, trials about to convert, and shadow charges you've stopped using, in one place.</div></div>
+    <div class="shot"><img src="assets/media/catchly/03-calendar.jpg" alt="Renewal calendar drawer showing the next 30 days"/><div class="sc"><b>Calendar</b> — a 30-day renewal view with day-by-day dots, so the coming month is never a surprise.</div></div>
+    <div class="shot"><img src="assets/media/catchly/04-insights.jpg" alt="Insights pane showing spend by category and yearly recap"/><div class="sc"><b>Insights</b> — spend by category and an annual run-rate, kept honest across mixed currencies.</div></div>
+    <div class="shot"><img src="assets/media/catchly/05-settings.jpg" alt="Settings pane with theme, notifications, currency and privacy controls"/><div class="sc"><b>Settings</b> — four themes, reminder timing, currency, and full JSON import/export of your own data.</div></div>
+  </div>
+</section>
+
+<div class="divider"><span>The hard parts</span></div>
+
+<!-- JUDGMENT -->
+<section id="judgment">
+  <div class="prose reveal">
+    <div class="eyebrow">The judgment calls</div>
+    <h2 class="h">The interesting decisions were about restraint.</h2>
+    <p>Anyone can build a subscription list. The decisions that make Catchly trustworthy were mostly about what to <em>not</em> do — and being honest about the limits. Four real ones:</p>
+    <ul>
+      <li><b>A 24-domain allowlist, not <span class="mono">&lt;all_urls&gt;</span>.</b> Catchly could technically request access to every site and detect more. It deliberately doesn't. The narrow allowlist means the browser itself guarantees the extension cannot run on your bank, brokerage, healthcare portal or any login page — a promise enforced by Chrome, not by trust. The Web Store even rejected an early listing for naming brands like SEO keywords, so the public description now uses category descriptors while the reviewer-only fields carry the exhaustive 24-domain list.</li>
+      <li><b>Guide the cancellation — never fake-automate it.</b> Catchly deep-links to each service's real cancel page and spells out the dark-pattern steps in plain English. It does <em>not</em> auto-click cancel buttons. Per-service automation breaks every week when sites redesign; the honest product is a reliable guide, not a brittle robot that charges a percentage of "savings" for humans doing the clicking behind the scenes.</li>
+      <li><b>The Gmail scan is a waitlist, not a bait-and-switch.</b> Reading receipt emails would catch far more, but it needs Gmail OAuth and a restricted-scope Google review — a v1.0 milestone. Rather than ship it half-done, the current build offers an <em>opt-in</em> waitlist. Clicking "Notify me" is the single outbound call the extension ever makes, it sends only your email, and it's disclosed in the privacy policy.</li>
+      <li><b>Bundle the brand logos; don't phone a CDN.</b> Icons used to load from a third-party CDN. They're now committed SVGs in <span class="mono">logos/</span>, so even rendering a Netflix logo doesn't reach the network. When the claim is "zero outbound calls," it has to be literally true.</li>
+    </ul>
+    <div class="note"><b>The content catalogue is the moat.</b> <span class="mono">lib/merchants.js</span> maps messy statement descriptors ("GOOGLE *YOUTUBE PREMIUM") to a clean service, with the real cancel URL, default price, billing cycle and brand colour for each. Every new entry takes about five minutes — and that hand-curated knowledge, not the code, is what would be slow for a competitor to copy.</div>
+  </div>
+</section>
+
+<div class="divider"><span>The stack</span></div>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="prose reveal">
+    <div class="eyebrow">Under the hood</div>
+    <h2 class="h">A Manifest V3 extension, built to be audited.</h2>
+    <p>No framework, no build-time magic to hide behind — plain modules that a reviewer can read top to bottom. Every file has one job:</p>
+  </div>
+  <div class="tbl stack hidecol reveal">
+    <table>
+      <tr><th>File / folder</th><th>What it does</th></tr>
+      <tr><td>manifest.json</td><td>MV3 config. Permissions: <code>storage</code>, <code>alarms</code>, <code>notifications</code>, <code>tabs</code>. <code>host_permissions</code> is a narrow 24-domain allowlist — never <code>&lt;all_urls&gt;</code>.</td></tr>
+      <tr><td>background.js</td><td>The service worker — schedules alarms, draws the toolbar badge, fires notifications, routes messages, and tracks usage via <code>chrome.tabs.onUpdated</code>.</td></tr>
+      <tr><td>content.js / .css</td><td>Runs only on the 24 allowlisted hosts. Detects a subscription and renders the in-page capture toast.</td></tr>
+      <tr><td>popup.*</td><td>The dashboard — four tabs (Subs, Alerts, Insights, Settings), drawers, the renewal calendar, first-run onboarding and the "What's New" popover.</td></tr>
+      <tr><td>lib/merchants.js</td><td><b>The content moat.</b> 20+ services with aliases, real cancel URLs &amp; steps, default prices and brand colours.</td></tr>
+      <tr><td>lib/storage.js</td><td>A <code>chrome.storage.local</code> wrapper with a sample-data seeder and schema-versioned migrate-on-read.</td></tr>
+      <tr><td>worker/</td><td>A ~60-line Cloudflare Worker — the <em>only</em> backend, used solely for the opt-in Gmail-scan waitlist. KV-backed; stores an email and nothing else.</td></tr>
+      <tr><td>tests/smoke.spec.js</td><td>A Playwright smoke suite — 22 tests across boot, storage, brand-logo loading, worker CORS, onboarding and integration, run against the real unpacked extension.</td></tr>
+    </table>
+  </div>
+  <div class="prose reveal" style="margin-top:36px">
+    <div class="eyebrow">Try it in two minutes</div>
+    <h2 class="h">Load it unpacked, load the sample data, done.</h2>
+    <p>No login, no account, no setup. The fastest way to see everything working:</p>
+  </div>
+  <div class="code reveal"><pre><span class="c"># 1. Open chrome://extensions, enable Developer mode,</span>
+<span class="c">#    click "Load unpacked" and pick this folder.</span>
+
+<span class="c"># 2. Click the Catchly icon → 3-screen onboarding plays.</span>
+<span class="c"># 3. Settings → "Load sample data" for a 2-second tour</span>
+<span class="c">#    (includes a Netflix price hike + an Audible shadow charge).</span>
+
+<span class="c"># 4. Visit a supported site to see live detection:</span>
+<span class="g">netflix.com/signup</span>   <span class="c"># the in-page toast slides in</span></pre></div>
+</section>
+
+<div class="divider"><span>Results</span></div>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="prose reveal">
+    <div class="eyebrow">Where it stands</div>
+    <h2 class="h">Shipping, verifiable, and honest about scope.</h2>
+    <p>Catchly v0.1.0 is submitted to the Chrome Web Store with a live preview on getcatchly.com. Everything in the feature list is working code, not placeholder — the smoke suite exercises the critical paths on every run, and because the whole thing is source-available under MIT, every privacy claim can be checked line by line.</p>
+    <div class="note"><b>The unglamorous states, designed on purpose.</b> First-run popup is a real <b>empty state</b> — an icon, "No subscriptions tracked yet," and a one-line nudge to visit a supported site — not a blank panel. Detection that fails <b>never blocks the page</b>: the in-page toast just doesn't appear. And the insights view stays correct at the edges — mixed currencies (USD, EUR, GBP, INR…) are kept in <b>separate totals</b>, never mashed into one wrong number.</div>
+  </div>
+
+  <div class="metrics reveal">
+    <div class="metric"><div class="n">18</div><h4>features, all functional</h4><p>Auto-detect, reminders, price-hike &amp; shadow-charge alerts, calendar, insights, guided cancel, import/export, four themes — real code, not stubs.</p></div>
+    <div class="metric"><div class="n">0</div><h4>trackers, by design</h4><p>No analytics SDK, crash reporter, telemetry beacon or usage ping. Zero outbound calls in normal use; one optional, disclosed waitlist call.</p></div>
+    <div class="metric"><div class="n">24</div><h4>services, growing weekly</h4><p>A hand-curated catalogue across streaming, AI, productivity, news, design &amp; storage — each new entry takes about five minutes to add.</p></div>
+  </div>
+</section>
+
+<div class="divider"><span>Reflection</span></div>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="prose reveal">
+    <div class="eyebrow">Reflection</div>
+    <h2 class="h">The version I didn't build — and what I'd change.</h2>
+    <p>The obvious build is the one every rival ships: connect to the bank through an aggregator, read every transaction, take a cut of the "savings." I followed that path to its end and killed it — it means holding someone's financial keys and reading purchases that have nothing to do with subscriptions. Refusing it <em>is</em> the product, but I'm honest that it <b>costs real coverage</b>: Catchly only sees the 24 sites on its allowlist, so a subscription bought somewhere off-list is invisible. I took a smaller, honest scope over a broader, creepier one.</p>
+    <p><b>What I'd do differently:</b> I hand-curated the 24-domain allowlist, which doesn't scale — every new service is a code change by me. I'd invest earlier in a <b>community-editable detection-rule format</b> so coverage can grow without me in the loop.</p>
+  </div>
+</section>
+
+<div class="divider"><span>What's next</span></div>
+
+<!-- NEXT -->
+<section id="next">
+  <div class="prose reveal">
+    <div class="eyebrow">What I'd do next</div>
+    <h2 class="h">Ordered by value, not novelty.</h2>
+    <ul>
+      <li><b>Web Store approval</b> — in review now; the listing link goes live once it clears.</li>
+      <li><b>Grow the merchant catalogue</b> — the content moat. Each new service is about five minutes of work and directly widens what Catchly can catch.</li>
+      <li><b>Gmail auto-scan (v1.0)</b> — opt-in, on-device parsing of receipt emails to catch subscriptions outside the allowlist. Gated on Gmail OAuth and a restricted-scope Google review, which is why it's a waitlist today.</li>
+      <li><b>Cancellation copilot</b> — guided, one-click cancellation for the top services, still without ever charging a cut of "savings."</li>
+      <li><b>Family-plan splitting</b> — track which subscriptions are shared and whose card they hit.</li>
+    </ul>
+    <div class="note"><b>The through-line.</b> Every future feature follows one rule: local-first, no data sold, no bank login required. The privacy stance isn't a phase of the product — it's the reason the product exists.</div>
+  </div>
+</section>
+
+<div class="divider"><span>Interview brief</span></div>
+
+<!-- Q&A -->
+<section id="qa">
+  <div class="prose reveal" style="margin-bottom:34px">
+    <div class="eyebrow">Anticipated questions</div>
+    <h2 class="h">The things people probe for.</h2>
+  </div>
+  <div class="faq reveal">
+    <details open><summary>Isn't this just Rocket Money without the bank feature?</summary><div class="a">It's the opposite trade. Bank-linked trackers read <b>every</b> transaction you make and typically charge a cut of your "savings." Catchly deliberately never touches your bank — it detects subscriptions at the source (the sign-up and renewal pages you already visit), keeps the list on your device, and is free. You give up some coverage (it only sees services in the browser) in exchange for never sharing a banking credential and never uploading your data.</div></details>
+    <details><summary>Do I need to log in or create an account?</summary><div class="a">No. There's no account, no password, no sign-up, and no bank connection. You install it, open the toolbar icon, and you're in the dashboard. It works entirely offline for the core product.</div></details>
+    <details><summary>How does it detect a subscription without reading my private data?</summary><div class="a">A content script runs <b>only</b> on the 24 subscription domains listed in the manifest, and matches the page against a local catalogue of known services (<span class="mono">lib/merchants.js</span>). Chrome enforces that allowlist at the platform level — the extension is technically unable to run on your bank, email, or any site outside the list. Nothing about the visit is transmitted anywhere.</div></details>
+    <details><summary>Where does my subscription data actually live?</summary><div class="a">In <span class="mono">chrome.storage.local</span> — your browser, on your device. Never <span class="mono">chrome.storage.sync</span>, never a server. You can verify it in DevTools, and you can export the whole thing to a JSON file (and re-import it) whenever you want. Your data, your file.</div></details>
+    <details><summary>You say "zero outbound calls." Is that literally true?</summary><div class="a">In normal use, yes. There's no analytics SDK, crash reporter, telemetry beacon or error logger anywhere in the code, and even brand logos are bundled rather than fetched from a CDN. The single exception fires only if <b>you</b> click "Notify me" on the optional Gmail-scan waitlist — that POSTs your email (and nothing about your subscriptions) to a small Cloudflare Worker, and it's disclosed in the privacy policy.</div></details>
+    <details><summary>Why doesn't it just cancel subscriptions for me?</summary><div class="a">Because honest guidance beats brittle automation. Sites redesign their cancel flows constantly, and per-service auto-clicking breaks weekly — which is why services that promise it quietly use humans and charge a percentage. Catchly deep-links you straight to the real cancel page and lists the dark-pattern steps in plain English, so you keep control and it keeps working.</div></details>
+    <details><summary>Can I trust the privacy claims?</summary><div class="a">You don't have to trust them — the full source is on GitHub under the MIT license, so every claim in the listing is checkable in code. The narrow permission model is right there in <span class="mono">manifest.json</span>, and the storage, alarms, notifications and tabs permissions each have a documented, single-purpose justification.</div></details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="mz-footer">
+                <div class="mz-footer__row">
+                    <div class="mz-footer__id">
+                        <img class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
+                        <span class="mz-footer__name">Muzeeb Urrahaman</span>
+                    </div>
+                    <div class="mz-footer__socials">
+                        <a href="resume.html" target="_blank" aria-label="Résumé / CV">
+                            <svg class="mz-footer__social" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
+                        </a>
+                        <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
+                            <svg class="mz-footer__social" viewBox="0 -55 256 256" fill="currentColor"><path d="M72.2 0C112.08 0 144.4 32.55 144.4 72.7 144.4 112.84 112.07 145.39 72.2 145.39 32.33 145.39 0 112.84 0 72.7 0 32.55 32.33 0 72.2 0ZM187.5 4.26C207.44 4.26 223.6 34.9 223.6 72.7 223.6 110.49 207.44 141.13 187.5 141.13 167.57 141.13 151.4 110.49 151.4 72.7 151.4 34.91 167.56 4.26 187.5 4.26ZM243.3 11.39C250.31 11.39 256 38.84 256 72.7 256 106.55 250.32 134.01 243.3 134.01 236.29 134.01 230.61 106.55 230.61 72.7 230.61 38.84 236.29 11.39 243.3 11.39Z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" aria-label="LinkedIn">
+                            <svg class="mz-footer__social" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+                        </a>
+                        <a href="https://www.behance.net/muzeeb0786" target="_blank" aria-label="Behance">
+                            <svg class="mz-footer__social" viewBox="0 0 26 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12.2H9.4C11.44 12.2 13 13.76 13 15.8C13 17.84 11.44 19.4 9.4 19.4H2.2C1.48 19.4 1 18.92 1 18.2V6.2C1 5.48 1.48 5 2.2 5H8.2C10.24 5 11.8 6.56 11.8 8.6C11.8 10.64 10.24 12.2 8.2 12.2H1Z"/><path d="M15.4 14.6H25C25 11.96 22.84 9.8 20.2 9.8C17.56 9.8 15.4 11.96 15.4 14.6ZM15.4 14.6C15.4 17.24 17.56 19.4 20.2 19.4H22.24"/><path d="M22 6.8H18.4"/></svg>
+                        </a>
+                        <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" aria-label="Dribbble">
+                            <svg class="mz-footer__social" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.35C17.68 9.81 11.67 12.94 5.4 12.38L1.6 12.03"/><path d="M5.2 21.84C8.32 16.38 14.33 13.25 20.6 13.82L24.4 14.16"/><path d="M13 25C19.63 25 25 19.63 25 13C25 6.37 19.63 1 13 1C6.37 1 1 6.37 1 13C1 19.63 6.37 25 13 25Z"/><path d="M7.76 2.2L11.57 6.94C14.13 10.11 15.94 13.79 16.9 17.74L18.35 23.73"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/muzeebuiux" target="_blank" aria-label="Instagram">
+                            <svg class="mz-footer__social" viewBox="0 0 14 14" fill="currentColor"><path d="M7.00547 3.35841C5.01797 3.35841 3.41485 4.93649 3.41485 6.89293C3.41485 8.84938 5.01797 10.4275 7.00547 10.4275C8.99297 10.4275 10.5961 8.84938 10.5961 6.89293C10.5961 4.93649 8.99297 3.35841 7.00547 3.35841ZM7.00547 9.19083C5.7211 9.19083 4.6711 8.16032 4.6711 6.89293C4.6711 5.62555 5.71797 4.59503 7.00547 4.59503C8.29297 4.59503 9.33985 5.62555 9.33985 6.89293C9.33985 8.16032 8.28985 9.19083 7.00547 9.19083ZM11.5805 3.21383C11.5805 3.67218 11.2055 4.03825 10.743 4.03825C10.2773 4.03825 9.90547 3.6691 9.90547 3.21383C9.90547 2.75856 10.2805 2.38942 10.743 2.38942C11.2055 2.38942 11.5805 2.75856 11.5805 3.21383ZM13.9586 4.05055C13.9055 2.9462 13.6492 1.96798 12.8273 1.16202C12.0086 0.356067 11.0148 0.103821 9.89297 0.0484497C8.73672 -0.0161499 5.2711 -0.0161499 4.11485 0.0484497C2.9961 0.100745 2.00234 0.352991 1.18047 1.15895C0.358594 1.96491 0.105469 2.94313 0.0492188 4.04747C-0.0164063 5.18566 -0.0164063 8.59713 0.0492188 9.73532C0.102344 10.8397 0.358594 11.8179 1.18047 12.6238C2.00234 13.4298 2.99297 13.682 4.11485 13.7374C5.2711 13.802 8.73672 13.802 9.89297 13.7374C11.0148 13.6851 12.0086 13.4329 12.8273 12.6238C13.6461 11.8179 13.9024 10.8397 13.9586 9.73532C14.0242 8.59713 14.0242 5.18873 13.9586 4.05055Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="mz-footer__band">
+                    <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+                    <div class="mz-footer__copy">© 2026 Muzeeb Urrahaman · All rights reserved</div>
+                </div>
+            </footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const links=[...document.querySelectorAll('.chapters a')];
+  const map={}; links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
+  const spy=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.remove('active')); const a=map[e.target.id]; if(a){a.classList.add('active'); a.scrollIntoView({inline:'center',block:'nearest'});} } });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+</script>
+<script src="assets/js/site.js?v=89"></script>
+</body>
+</html>

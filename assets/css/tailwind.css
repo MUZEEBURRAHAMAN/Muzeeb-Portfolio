@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Common css start */
+:root {
+    --primary: 45 100% 51%;
+}
+
+*{
+    @apply font-lexend;
+}
+
+.container{
+    @apply  max-w-[1048px] px-3 mx-auto w-full;
+}
+
+.typed-cursor{
+    @apply opacity-100;
+    -webkit-animation: blink 1s infinite;
+    -moz-animation: blink 1s infinite;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink{
+    0% {
+        @apply opacity-100;
+    }
+    50% {
+        @apply opacity-0;
+    }
+    100% {
+        @apply opacity-100;
+    }
+}
+/* Common css end */

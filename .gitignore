@@ -1,0 +1,13 @@
+# internal audit / working notes — not for public repo
+PORTFOLIO-AUDIT-AND-CONTENT.md
+PORTFOLIO-CONTENT-UPDATE.md
+
+# deps / os / editor
+node_modules/
+.DS_Store
+*.log
+.vercel
+.env*
+
+# Local Claude Code tooling (not site content)
+.claude/

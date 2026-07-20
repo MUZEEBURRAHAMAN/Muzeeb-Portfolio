@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://muzeeb-urrahaman.vercel.app/sitemap.xml
