@@ -2,11 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "",
   "outputDirectory": ".",
-  "//redirects": [
-    {
-      "source": "/((?!coming-soon\\.html$|assets/).*)",
-      "destination": "/coming-soon.html",
-      "permanent": false
-    }
-  ]
+  "redirects": []
 }
