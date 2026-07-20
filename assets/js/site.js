@@ -29,7 +29,7 @@
     if (getComputedStyle(wrap).display === "none") { wrap.remove(); return; }
 
     // Cover color follows theme: white cover on dark page, dark cover on light page.
-    var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#0f0f0f" : "#ffffff";
+    var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#faf9f7" : "#0f0f0f";
     var GRID = 16, EDGE = 0.12, DUR = 2.4;
 
     var canvas = wrap.querySelector("canvas");
@@ -91,7 +91,7 @@
     var parent = null;
     if (/(case-study|design-system|zebralearn|30-days|cashnex|split-wise|ecommerce|product-vision|ux-review|uxd-for|swipe)/i.test(path)) parent = "best-work.html";
     else if (/-blog\.html$/i.test(path)) parent = "blog.html";
-    var links = document.querySelectorAll(".mz-nav__pill a");
+    var links = document.querySelectorAll(".mz-nav__pill a, .mz-drawer__links a");
     links.forEach(function (a) {
       var href = (a.getAttribute("href") || "").split("/").pop();
       var on = href === path || (parent !== null && href === parent);
@@ -403,10 +403,10 @@
 
   ready(function () {
     initTheme();
+    initMobileNav();
     setActiveNav();
     initCursor();
     initChat();
     initReveal();
-    initMobileNav();
   });
 })();
