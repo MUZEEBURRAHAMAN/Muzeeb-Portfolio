@@ -36,11 +36,21 @@ export default async function handler(req, res) {
     return;
   }
   try {
-    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : (req.body || {});
+    let body = {};
+    if (typeof req.body === "string") {
+      try {
+        body = JSON.parse(req.body || "{}");
+      } catch (err) {
+        res.status(400).json({ error: "Invalid JSON body" });
+        return;
+      }
+    } else {
+      body = req.body || {};
+    }
     const message = (body.message || "").toString().slice(0, 500).trim();
     if (!message) { res.status(400).json({ error: "Empty message" }); return; }
 
-    const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + key;
+    const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + key;
     const r = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

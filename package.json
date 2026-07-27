@@ -12,7 +12,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/output.css --watch",
-    "build:css": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/output.css --minify",
+    "build:css": "npx --yes tailwindcss@3.4.6 -i ./assets/css/tailwind.css -o ./assets/css/output.css --minify",
     "serve": "python3 -m http.server 8777",
     "deploy": "npx --yes vercel@latest deploy --prod --yes",
     "deploy:preview": "npx --yes vercel@latest deploy --yes"
