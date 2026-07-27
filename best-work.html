@@ -972,18 +972,41 @@
           else if (e.key === 'ArrowRight') this.navigate(1);
         });
       }
+      panToCell(data) {
+        if (!data) return;
+        const z = this.cfg.zoom;
+        const cx = data.x * z + (this.cfg.width * z) / 2;
+        const cy = data.y * z + (this.cfg.height * z) / 2;
+        const targetX = innerWidth / 2 - cx;
+        const targetY = innerHeight / 2 - cy;
+        gsap.to(this.canvas, {
+          x: targetX, y: targetY, duration: 0.6, ease: this.ease,
+          onComplete: () => this.initDrag()
+        });
+      }
       navigate(dir) {
-        if (!this.zoomOn || !this.overlay) return;
+        if (!this.zoomOn || !this.overlay || this.isNavigating) return;
+        this.isNavigating = true;
         const total = this.items.length;
         gsap.set(this.sel.img, { opacity: 1 });                       // restore the cell we're leaving
         this.sel = this.items[(this.sel.index + dir + total) % total];
         gsap.set(this.sel.img, { opacity: 0 });                       // hide the new cell (overlay stands in)
+        
+        this.panToCell(this.sel);
+
         const im = this.overlay.querySelector('img');
+        const slideOutX = dir > 0 ? -60 : 60;
+        const slideInX = dir > 0 ? 60 : -60;
+
         gsap.to(this.overlay, {
-          x: dir > 0 ? -44 : 44, opacity: 0, duration: .22, ease: "power2.in", onComplete: () => {
+          x: slideOutX, opacity: 0, duration: 0.2, ease: "power2.in", onComplete: () => {
             im.src = IMAGES[this.sel.index] + '?v=hq';
-            gsap.set(this.overlay, { x: dir > 0 ? 44 : -44 });
-            gsap.to(this.overlay, { x: 0, opacity: 1, duration: .4, ease: this.ease });
+            gsap.set(this.overlay, { x: slideInX });
+            gsap.to(this.overlay, {
+              x: 0, opacity: 1, duration: 0.35, ease: this.ease, onComplete: () => {
+                this.isNavigating = false;
+              }
+            });
             this.showDetail(this.sel.index);
           }
         });
@@ -1014,7 +1037,7 @@
           left: r.left, top: r.top, width: r.width, height: r.height, duration: .8, ease: this.ease, onComplete: () => {
             gsap.set(img, { opacity: 1 }); ov.remove();
             document.body.classList.remove('bwg-zoom'); this.close.classList.remove('active');
-            if (this.drag) this.drag.enable(); this.zoomOn = false; this.sel = null; this.overlay = null;
+            if (this.drag) this.drag.enable(); this.zoomOn = false; this.isNavigating = false; this.sel = null; this.overlay = null;
           }
         });
       }
