@@ -972,18 +972,6 @@
           else if (e.key === 'ArrowRight') this.navigate(1);
         });
       }
-      panToCell(data) {
-        if (!data) return;
-        const z = this.cfg.zoom;
-        const cx = data.x * z + (this.cfg.width * z) / 2;
-        const cy = data.y * z + (this.cfg.height * z) / 2;
-        const targetX = innerWidth / 2 - cx;
-        const targetY = innerHeight / 2 - cy;
-        gsap.to(this.canvas, {
-          x: targetX, y: targetY, duration: 0.6, ease: this.ease,
-          onComplete: () => this.initDrag()
-        });
-      }
       navigate(dir) {
         if (!this.zoomOn || !this.overlay || this.isNavigating) return;
         this.isNavigating = true;
@@ -992,8 +980,6 @@
         this.sel = this.items[(this.sel.index + dir + total) % total];
         gsap.set(this.sel.img, { opacity: 0 });                       // hide the new cell (overlay stands in)
         
-        this.panToCell(this.sel);
-
         const im = this.overlay.querySelector('img');
         const slideOutX = dir > 0 ? -60 : 60;
         const slideInX = dir > 0 ? 60 : -60;
