@@ -131,7 +131,7 @@ Tokens in `:root`:
 - **Avatar (unified):** line-art `assets/images/logo.png` everywhere — nav, favicon,
   hero eyebrow, footer. One consistent mark. (Color photo `muzeeb.jpg` still used in
   About carousel / playground contexts only.)
-- **Hero image:** `assets/images/hero-04.webp` (monochrome halftone mountains +
+- **Hero image:** `assets/images/hero/hero-04.webp` (monochrome halftone mountains +
   silhouette). Converted from PNG → webp (~309KB). Keep hero art dark + on-theme.
 - **Tool icons:** `figma.webp, framer.webp, adobeIllustrator.webp, adobePhotoshop.webp,
   adobeAfterEffects.webp, webflow.webp, cursor.png, claude.png`.

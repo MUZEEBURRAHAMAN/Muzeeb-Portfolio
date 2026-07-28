@@ -50,34 +50,41 @@ e.g. `about.html` → `/about.html`). Media is grouped under `assets/`.
 ├── about.html                     # About + GSAP 3D ring carousel
 ├── best-work.html                 # Draggable/zoomable WebGL "best work" canvas
 ├── playground.html                # Experiments (dark-only)
-├── blog.html                      # Writing index
-├── coming-soon.html               # Pre-launch gate page (see Deployment)
+├── coming-soon.html               # Pre-launch gate page
 │
 ├── *-case-study.html              # Case studies  → see "Pages map" below
 ├── *-blog.html                    # Blog posts    → see "Pages map" below
 │
-├── assets/
-│   ├── css/
-│   │   ├── tailwind.css            # Tailwind source (@tailwind directives)
-│   │   ├── output.css              # Generated — do NOT hand-edit
-│   │   └── style.css               # Custom styles (nav, chat, ring, carousel, themes…)
-│   ├── js/
-│   │   ├── site.js                 # Theme toggle, mobile drawer, AI chat, custom cursor
-│   │   └── *.min.js                # Vendored libs (gsap, jquery, lenis, three…)
-│   ├── images/                     # Site imagery (logo, hero, project shots)
-│   ├── media/                      # Case-study screenshots, grouped by project
-│   │   ├── audit/                  #   Omnis UX Audit Assistant
-│   │   ├── edge-state/             #   Edge-State Fixer
-│   │   ├── fontlens/               #   FontLens
-│   │   └── catchly/                #   Catchly
-│   └── font/
+├── api/                           # Vercel serverless functions
+│   └── chat.mjs                   # Serverless endpoint for AI chat widget (Gemini 2.0 Flash)
+├── archive/                       # Archived iterations & legacy templates
+│   ├── README.md                  # Documentation on legacy versions
+│   └── index-v2.html              # Legacy v2 landing page
+├── config/                        # Deployment & environment configurations
+│   └── vercel.soon.json           # Secondary Vercel maintenance gate config
 │
-├── api/chat.mjs                   # Serverless endpoint for the AI chat widget
-├── archive/                       # Retired drafts (not linked / not served)
-├── vercel.json                    # Hosting config + the coming-soon gate
-├── tailwind.config.js
-├── robots.txt · sitemap.xml
-└── package.json
+├── assets/
+│   ├── css/                       # Stylesheets
+│   │   ├── tailwind.css           # Tailwind source (@tailwind directives)
+│   │   ├── output.css             # Compiled CSS output (generated via npm run build:css)
+│   │   ├── style.css              # Bespoke UI styles & component rules (.mz-*)
+│   │   └── *.css                  # Plugin & library styles (lightgallery, slick, etc.)
+│   ├── js/                        # JavaScript
+│   │   ├── site.js                # Core site logic, theme toggle, drawer & AI chat integration
+│   │   └── *.min.js               # Vendor scripts (gsap, jquery, lenis, lightgallery...)
+│   ├── fonts/                     # Self-hosted web fonts & icon fonts
+│   │   ├── GeistMono.woff2, InterDisplay.woff2, Poppins-*.woff2
+│   │   └── lg/                    # Consolidated LightGallery font icons (lg.ttf, lg.woff)
+│   ├── images/                    # Site imagery & portfolio assets
+│   │   ├── best-work/             # Best Work gallery mockups & screenshots
+│   │   ├── about-images/          # About page media
+│   │   └── ...                    # Hero assets, logos, and case study visuals
+│   └── media/                     # Project-specific case-study media stores
+│
+├── vercel.json                    # Primary Vercel hosting & build config
+├── tailwind.config.js             # Tailwind design tokens & configuration
+├── robots.txt · sitemap.xml       # SEO crawler index & sitemap specification
+└── package.json · package-lock.json
 ```
 
 ## Pages map

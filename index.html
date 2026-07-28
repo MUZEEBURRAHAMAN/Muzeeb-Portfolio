@@ -717,7 +717,7 @@
     <script>
     (function () {
       // 20 hero designs split across the two marquee rows; card width follows each image's aspect.
-      function heroes(from, to) { var a = []; for (var i = from; i <= to; i++) a.push('assets/images/hero-' + String(i).padStart(2, '0') + '.jpg'); return a; }
+      function heroes(from, to) { var a = []; for (var i = from; i <= to; i++) a.push('assets/images/hero/hero-' + String(i).padStart(2, '0') + '.jpg'); return a; }
       var A = heroes(1, 10), B = heroes(11, 20);
       function fill(id, imgs) {
         var t = document.getElementById(id); if (!t) return;
