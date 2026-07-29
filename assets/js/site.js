@@ -402,6 +402,69 @@
     if (pl) pl.remove();
   });
 
+  /* ---------- Social Profile Popovers & GitHub Contribution Heatmap ---------- */
+  function initSocialPopovers() {
+    var ghGrids = document.querySelectorAll(".mz-js-gh-grid");
+    ghGrids.forEach(function (grid) {
+      if (grid.childElementCount > 0) return;
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < 196; i++) {
+        var cell = document.createElement("div");
+        cell.className = "mz-gh-cell";
+        var rand = Math.random();
+        var level = "0";
+        if (rand > 0.88) level = "4";
+        else if (rand > 0.72) level = "3";
+        else if (rand > 0.52) level = "2";
+        else if (rand > 0.32) level = "1";
+        cell.setAttribute("data-level", level);
+        frag.appendChild(cell);
+      }
+      grid.appendChild(frag);
+    });
+
+    var copyBtn = document.getElementById("mz-copyEmail");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var email = copyBtn.getAttribute("data-email") || "rahamanmuzeeb1108@gmail.com";
+        var label = document.getElementById("mz-copyLabel") || copyBtn;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () {
+            var origText = label.textContent;
+            label.textContent = "Copied!";
+            setTimeout(function () { label.textContent = origText; }, 1800);
+          });
+        }
+      });
+    }
+
+    // Smooth hover handling with intent delay & focus accessibility
+    var items = document.querySelectorAll(".mz-social-item");
+    items.forEach(function (item) {
+      var popover = item.querySelector(".mz-social-popover");
+      if (!popover) return;
+      var timer = null;
+
+      item.addEventListener("mouseenter", function () {
+        if (timer) clearTimeout(timer);
+        popover.classList.add("is-active");
+      });
+
+      item.addEventListener("mouseleave", function () {
+        timer = setTimeout(function () {
+          popover.classList.remove("is-active");
+        }, 180);
+      });
+
+      item.addEventListener("focusin", function () {
+        popover.classList.add("is-active");
+      });
+      item.addEventListener("focusout", function () {
+        popover.classList.remove("is-active");
+      });
+    });
+  }
+
   ready(function () {
     initTheme();
     initMobileNav();
@@ -409,5 +472,6 @@
     initCursor();
     initChat();
     initReveal();
+    initSocialPopovers();
   });
 })();
