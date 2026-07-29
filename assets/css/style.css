@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6,
 .mz-bio b { color: #f4f2ed; font-weight: 600; }
 .mz-bio__label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #f4f2ed; margin: 34px 0 10px; font-weight: 600; }
 .mz-bio__chat { margin-top: 34px; font-size: 1.1rem; color: #f4f2ed; }
-.mz-ab-contact { display: inline-flex; align-items: center; gap: 10px; margin: 26px auto 0; padding: 6px; background: #141415; border: 1px solid #262628; border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); flex-wrap: wrap; }
+.mz-ab-contact { display: inline-flex; align-items: center; gap: 10px; margin: 26px 0 0; padding: 6px; background: #141415; border: 1px solid #262628; border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); flex-wrap: wrap; }
 .mz-ab-email { display: inline-flex; align-items: center; gap: 8px; background: #222225; border: 1px solid #333338; border-radius: 999px; padding: 9px 18px; font-size: 0.9rem; font-weight: 500; color: #f4f4f5; cursor: pointer; transition: all 0.25s; text-decoration: none; }
 .mz-ab-email:hover { background: #2d2d32; color: #fff; border-color: #44444a; }
 .mz-ab-icon { width: 40px; height: 40px; border-radius: 50%; background: #222225; border: 1px solid #333338; display: flex; align-items: center; justify-content: center; color: #e4e4e7; transition: all 0.25s; position: relative; text-decoration: none; }
