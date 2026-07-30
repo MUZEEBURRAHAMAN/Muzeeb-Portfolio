@@ -227,13 +227,13 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-github {
     width: 310px;
     padding: 16px;
-    background: #ffffff;
-    color: #18181b;
-    border: 1px solid #e4e4e7;
+    background: #121214;
+    color: #f4f4f5;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .mz-popover-github::after {
-    background: #ffffff;
-    border-color: #e4e4e7;
+    background: #121214;
+    border-color: rgba(255, 255, 255, 0.14);
 }
 .mz-popover-gh__head {
     display: flex;
@@ -246,7 +246,7 @@ h1, h2, h3, h4, h5, h6,
     height: 42px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
 }
 .mz-popover-gh__info {
     display: flex;
@@ -255,12 +255,12 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-gh__user {
     font-size: 0.95rem;
     font-weight: 600;
-    color: #18181b;
+    color: #f4f4f5;
     line-height: 1.2;
 }
 .mz-popover-gh__sub {
     font-size: 0.76rem;
-    color: #71717a;
+    color: #a1a1aa;
     margin-top: 2px;
 }
 .mz-popover-gh__graph {
@@ -268,53 +268,40 @@ h1, h2, h3, h4, h5, h6,
     grid-template-columns: repeat(28, 1fr);
     grid-template-rows: repeat(7, 1fr);
     gap: 3px;
-    background: #f8fafc;
+    background: rgba(255, 255, 255, 0.03);
     padding: 8px;
     border-radius: 10px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .mz-gh-cell {
     width: 100%;
     aspect-ratio: 1;
     border-radius: 2px;
-    background: #ebedf0;
+    background: rgba(255, 255, 255, 0.08);
 }
-.mz-gh-cell[data-level="0"] { background: #ebedf0; }
-.mz-gh-cell[data-level="1"] { background: #9be9a8; }
-.mz-gh-cell[data-level="2"] { background: #40c463; }
-.mz-gh-cell[data-level="3"] { background: #30a14e; }
-.mz-gh-cell[data-level="4"] { background: #216e39; }
-
-[data-theme="dark"] .mz-popover-github {
-    background: #121214;
-    color: #f4f4f5;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-github::after {
-    background: #121214;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-gh__user { color: #f4f4f5; }
-[data-theme="dark"] .mz-popover-gh__sub { color: #a1a1aa; }
-[data-theme="dark"] .mz-popover-gh__graph { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.08); }
+.mz-gh-cell[data-level="0"] { background: rgba(255, 255, 255, 0.08); }
+.mz-gh-cell[data-level="1"] { background: #0e4429; }
+.mz-gh-cell[data-level="2"] { background: #006d32; }
+.mz-gh-cell[data-level="3"] { background: #26a641; }
+.mz-gh-cell[data-level="4"] { background: #39d353; }
 
 /* ===== LinkedIn Popover Card ===== */
 .mz-popover-linkedin {
     width: 280px;
-    background: #ffffff;
-    color: #18181b;
-    border: 1px solid #e4e4e7;
+    background: #15181c;
+    color: #f4f4f5;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .mz-popover-linkedin::after {
-    background: #ffffff;
-    border-color: #e4e4e7;
+    background: #15181c;
+    border-color: rgba(255, 255, 255, 0.14);
 }
 .mz-popover-li__banner {
     height: 54px;
     background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
 }
 .mz-popover-li__body {
-    padding: 14px 16px 14px;
+    padding: 16px 16px 14px;
     position: relative;
 }
 .mz-popover-li__toprow {
@@ -322,7 +309,7 @@ h1, h2, h3, h4, h5, h6,
     justify-content: flex-end;
     align-items: center;
     height: 28px;
-    margin-top: 8px;
+    margin-top: 10px;
     margin-bottom: 8px;
 }
 .mz-popover-li__avatar {
@@ -333,9 +320,9 @@ h1, h2, h3, h4, h5, h6,
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffffff;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    border: 3px solid #15181c;
+    background: #15181c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     z-index: 2;
 }
 .mz-popover-li__btn {
@@ -351,7 +338,7 @@ h1, h2, h3, h4, h5, h6,
     border-radius: 999px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3);
+    box-shadow: 0 2px 8px rgba(10, 102, 194, 0.4);
 }
 .mz-popover-li__btn:hover {
     background: #004182;
@@ -360,53 +347,37 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-li__name {
     font-size: 0.94rem;
     font-weight: 700;
-    color: #000000;
+    color: #f4f4f5;
     margin-bottom: 2px;
 }
 .mz-popover-li__role {
     font-size: 0.78rem;
-    color: #4b5563;
+    color: #94a3b8;
     line-height: 1.3;
 }
 .mz-popover-li__loc {
     font-size: 0.72rem;
-    color: #6b7280;
+    color: #64748b;
     margin-top: 4px;
 }
-
-[data-theme="dark"] .mz-popover-linkedin {
-    background: #15181c;
-    color: #f4f4f5;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-linkedin::after {
-    background: #15181c;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-li__avatar {
-    border-color: #15181c;
-}
-[data-theme="dark"] .mz-popover-li__name { color: #f4f4f5; }
-[data-theme="dark"] .mz-popover-li__role { color: #94a3b8; }
-[data-theme="dark"] .mz-popover-li__loc { color: #64748b; }
 
 /* ===== Twitter / X Popover Card ===== */
 .mz-popover-twitter {
     width: 280px;
-    background: #ffffff;
-    color: #0f1419;
-    border: 1px solid #e4e4e7;
+    background: #15181c;
+    color: #f4f4f5;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .mz-popover-twitter::after {
-    background: #ffffff;
-    border-color: #e4e4e7;
+    background: #15181c;
+    border-color: rgba(255, 255, 255, 0.14);
 }
 .mz-popover-tw__banner {
     height: 54px;
     background: linear-gradient(135deg, #1d9bf0 0%, #0f1419 100%);
 }
 .mz-popover-tw__body {
-    padding: 14px 16px 14px;
+    padding: 16px 16px 14px;
     position: relative;
 }
 .mz-popover-tw__toprow {
@@ -414,7 +385,7 @@ h1, h2, h3, h4, h5, h6,
     justify-content: flex-end;
     align-items: center;
     height: 28px;
-    margin-top: 8px;
+    margin-top: 10px;
     margin-bottom: 8px;
 }
 .mz-popover-tw__avatar {
@@ -425,9 +396,9 @@ h1, h2, h3, h4, h5, h6,
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffffff;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    border: 3px solid #15181c;
+    background: #15181c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     z-index: 2;
 }
 .mz-popover-tw__btn {
@@ -435,71 +406,49 @@ h1, h2, h3, h4, h5, h6,
     align-items: center;
     justify-content: center;
     height: 28px;
-    background: #0f1419;
-    color: #ffffff !important;
+    background: #eff3f4;
+    color: #0f1419 !important;
     font-size: 0.76rem;
     font-weight: 700;
     padding: 0 14px;
     border-radius: 999px;
     text-decoration: none;
-    transition: opacity 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(15, 20, 25, 0.25);
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
 }
 .mz-popover-tw__btn:hover {
-    opacity: 0.88;
+    background: #d7dbdc;
     transform: translateY(-1px);
 }
 .mz-popover-tw__handle {
     font-size: 0.92rem;
     font-weight: 700;
-    color: #0f1419;
+    color: #f4f4f5;
 }
 .mz-popover-tw__bio {
     font-size: 0.78rem;
-    color: #536471;
+    color: #94a3b8;
     margin-top: 4px;
     line-height: 1.35;
 }
 
-[data-theme="dark"] .mz-popover-twitter {
-    background: #15181c;
-    color: #f4f4f5;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-twitter::after {
-    background: #15181c;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-tw__avatar {
-    border-color: #15181c;
-}
-[data-theme="dark"] .mz-popover-tw__btn {
-    background: #eff3f4;
-    color: #0f1419 !important;
-}
-[data-theme="dark"] .mz-popover-tw__btn:hover {
-    background: #d7dbdc;
-}
-[data-theme="dark"] .mz-popover-tw__handle { color: #f4f4f5; }
-[data-theme="dark"] .mz-popover-tw__bio { color: #94a3b8; }
-
 /* ===== Behance Popover Card ===== */
 .mz-popover-behance {
     width: 280px;
-    background: #ffffff;
-    color: #18181b;
-    border: 1px solid #e4e4e7;
+    background: #15181c;
+    color: #f4f4f5;
+    border: 1px solid rgba(255, 255, 255, 0.14);
 }
 .mz-popover-behance::after {
-    background: #ffffff;
-    border-color: #e4e4e7;
+    background: #15181c;
+    border-color: rgba(255, 255, 255, 0.14);
 }
 .mz-popover-bh__banner {
     height: 54px;
     background: linear-gradient(135deg, #0057ff 0%, #1769ff 100%);
 }
 .mz-popover-bh__body {
-    padding: 14px 16px 14px;
+    padding: 16px 16px 14px;
     position: relative;
 }
 .mz-popover-bh__toprow {
@@ -507,7 +456,7 @@ h1, h2, h3, h4, h5, h6,
     justify-content: flex-end;
     align-items: center;
     height: 28px;
-    margin-top: 8px;
+    margin-top: 10px;
     margin-bottom: 8px;
 }
 .mz-popover-bh__avatar {
@@ -518,9 +467,9 @@ h1, h2, h3, h4, h5, h6,
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #ffffff;
-    background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    border: 3px solid #15181c;
+    background: #15181c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     z-index: 2;
 }
 .mz-popover-bh__btn {
@@ -536,7 +485,7 @@ h1, h2, h3, h4, h5, h6,
     border-radius: 999px;
     text-decoration: none;
     transition: background 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(0, 87, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 87, 255, 0.4);
 }
 .mz-popover-bh__btn:hover {
     background: #0044d4;
@@ -545,29 +494,14 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-bh__name {
     font-size: 0.92rem;
     font-weight: 700;
-    color: #000;
+    color: #f4f4f5;
 }
 .mz-popover-bh__bio {
     font-size: 0.78rem;
-    color: #52525b;
+    color: #94a3b8;
     margin-top: 4px;
     line-height: 1.35;
 }
-
-[data-theme="dark"] .mz-popover-behance {
-    background: #15181c;
-    color: #f4f4f5;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-behance::after {
-    background: #15181c;
-    border-color: rgba(255, 255, 255, 0.14);
-}
-[data-theme="dark"] .mz-popover-bh__avatar {
-    border-color: #15181c;
-}
-[data-theme="dark"] .mz-popover-bh__name { color: #f4f4f5; }
-[data-theme="dark"] .mz-popover-bh__bio { color: #94a3b8; }
 
 /* Hide cursor trailing label when over social icons/popovers */
 body.mz-hide-cursor-follow .mz-cursor-follow {

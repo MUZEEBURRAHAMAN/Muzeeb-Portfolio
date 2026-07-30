@@ -438,8 +438,10 @@
       });
     }
 
-    // Smooth morphing social popover cards
-    var items = document.querySelectorAll(".mz-social-item");
+    // Smooth morphing social popover cards (profile section only)
+    var container = document.querySelector(".mz-ab-contact");
+    if (!container) return;
+    var items = container.querySelectorAll(".mz-social-item");
     var activeItem = null;
     var leaveTimer = null;
 
