@@ -1925,32 +1925,12 @@ body.mz-cursor-on button { cursor: none; }
 .klarna-author {
     display: flex;
     align-items: center;
-    gap: 12px;
-}
-.klarna-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #242424;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
     justify-content: center;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: #ffffff;
-    flex-shrink: 0;
-    letter-spacing: 0.04em;
-}
-[data-theme="light"] .klarna-avatar {
-    background: #e6e4df;
-    border-color: rgba(0, 0, 0, 0.12);
-    color: #17170f;
 }
 .klarna-info {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
 }
 .klarna-name {
     font-family: 'Acorn', sans-serif;
