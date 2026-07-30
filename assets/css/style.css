@@ -8,6 +8,14 @@
 @font-face { font-family: 'Poppins'; src: url('../fonts/Poppins-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Poppins'; src: url('../fonts/Poppins-700.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Poppins'; src: url('../fonts/Poppins-800.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+/* Acorn custom font family */
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-Thin.otf') format('opentype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-ExtraLight.otf') format('opentype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Acorn'; src: url('../fonts/Acorn/Acorn-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
 
 /* ===== Unified interaction system ===== */
 :root {
@@ -140,7 +148,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ===== About page ===== */
 .mz-ab-hero { text-align: center; padding: 40px 24px 0; }
-.mz-ab-hero h1 { font-size: clamp(1.8rem, 4.4vw, 3rem); font-weight: 600; line-height: 1.22; letter-spacing: -0.02em; color: #f4f2ed; }
+.mz-ab-hero h1 { font-family: 'Acorn', var(--font-display); font-size: clamp(1.8rem, 4.4vw, 3rem); font-weight: 600; line-height: 1.22; letter-spacing: -0.02em; color: #f4f2ed; }
 .mz-ab-hero h1 em { font-style: italic; color: #f4f2ed; }
 .mz-ab-hero p { color: #8a8a8a; font-size: 1rem; margin-top: 16px; }
 /* (old photo-carousel .mz-carousel base removed — replaced by ring; class now used by the project carousel below) */
@@ -1440,7 +1448,9 @@ body.mz-cursor-on button { cursor: none; }
 @keyframes mz-portrait {
     to { clip-path: inset(0 0 0% 0); }
 }
-.mz-hero__title {
+.mz-hero__title,
+.ttl h1 {
+    font-family: 'Acorn', var(--font-display);
     font-weight: 500;
     font-size: clamp(1.5rem, 5.9vw, 4.75rem);
     line-height: 1.18;
