@@ -47,9 +47,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, input:focus-vis
 :root {
     --primary: 0 0% 100%;                                  /* was gold; now white — flips every accent */
     --font-sans: 'Inter Tight', system-ui, -apple-system, sans-serif;  /* primary — body/UI */
-    --font-display: 'Poppins', 'Inter Tight', system-ui, sans-serif;  /* primary — display/headings */
+    --font-display: 'Acorn', 'Poppins', 'Inter Tight', system-ui, sans-serif;  /* primary — display/headings */
 }
-body, p, a, span, div, li, button, input, textarea {
+body, p, a, div, li, button, input, textarea {
+    font-family: var(--font-sans);
+}
+body span:not(.mz-hero__title span):not(.mz-ab-hero span):not(.ttl span) {
     font-family: var(--font-sans);
 }
 /* Geist = secondary display face: every heading, big numerals, brand mark */
@@ -148,7 +151,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* ===== About page ===== */
 .mz-ab-hero { text-align: center; padding: 40px 24px 0; }
-.mz-ab-hero h1 { font-family: 'Acorn', var(--font-display); font-size: clamp(1.8rem, 4.4vw, 3rem); font-weight: 600; line-height: 1.22; letter-spacing: -0.02em; color: #f4f2ed; }
+.mz-ab-hero h1, .mz-ab-hero h1 * { font-family: 'Acorn', var(--font-display) !important; font-size: clamp(1.8rem, 4.4vw, 3rem); font-weight: 600; line-height: 1.22; letter-spacing: -0.02em; color: #f4f2ed; }
 .mz-ab-hero h1 em { font-style: italic; color: #f4f2ed; }
 .mz-ab-hero p { color: #8a8a8a; font-size: 1rem; margin-top: 16px; }
 /* (old photo-carousel .mz-carousel base removed — replaced by ring; class now used by the project carousel below) */
@@ -1449,8 +1452,12 @@ body.mz-cursor-on button { cursor: none; }
     to { clip-path: inset(0 0 0% 0); }
 }
 .mz-hero__title,
-.ttl h1 {
-    font-family: 'Acorn', var(--font-display);
+.mz-hero__title *,
+.mz-hero__title .mz-line,
+.mz-hero__title .mz-mask,
+.ttl h1,
+.ttl h1 * {
+    font-family: 'Acorn', var(--font-display) !important;
     font-weight: 500;
     font-size: clamp(1.5rem, 5.9vw, 4.75rem);
     line-height: 1.18;
