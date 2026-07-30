@@ -1856,6 +1856,183 @@ body.mz-cursor-on button { cursor: none; }
 .mzw-btn:hover { transform: translateY(-2px); background: #242424; }
 .mzw-btn svg { width: 16px; height: 16px; }
 [data-theme="light"] .mzw-btn { background: #fff; border-color: #e6e4df; color: #17170f; }
+
+/* ===== Connected Testimonials Curved Arc Section ===== */
+.mz-testimonials-flow {
+    width: 100%;
+    max-width: 1320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin-bottom: -55px;
+    position: relative;
+    z-index: 1;
+}
+.klarna-flow-stage {
+    position: relative;
+    width: 100%;
+    max-width: 660px;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+.klarna-flow-item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0.95) translateY(14px);
+    pointer-events: none;
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.klarna-flow-item.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+.klarna-quote-mark {
+    font-family: 'Acorn', Georgia, serif;
+    font-size: 3.2rem;
+    line-height: 0.5;
+    color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 12px;
+}
+[data-theme="light"] .klarna-quote-mark {
+    color: rgba(0, 0, 0, 0.2);
+}
+.klarna-quote {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.6;
+    color: #f4f2ed;
+    margin: 0 0 18px;
+    font-weight: 400;
+    max-width: 54ch;
+}
+[data-theme="light"] .klarna-quote {
+    color: #17170f;
+}
+.klarna-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.klarna-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #242424;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #ffffff;
+    flex-shrink: 0;
+    letter-spacing: 0.04em;
+}
+[data-theme="light"] .klarna-avatar {
+    background: #e6e4df;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #17170f;
+}
+.klarna-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.klarna-name {
+    font-family: 'Acorn', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+[data-theme="light"] .klarna-name {
+    color: #17170f;
+}
+.klarna-role {
+    font-size: 0.82rem;
+    color: #9a9a98;
+    margin-top: 1px;
+}
+[data-theme="light"] .klarna-role {
+    color: #6a6a66;
+}
+.klarna-strip-wrapper {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    z-index: 1;
+}
+.klarna-button-slot {
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    margin-left: -24px;
+    margin-top: -24px;
+    width: 48px;
+    height: 48px;
+    transform-origin: center;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    z-index: 1;
+}
+.klarna-button-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    transition: border-color 0.3s, background 0.3s, color 0.3s, transform 0.3s;
+}
+[data-theme="light"] .klarna-button-inner {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #17170f;
+}
+.klarna-button-slot.active .klarna-button-inner {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #0f0f0f;
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+}
+[data-theme="light"] .klarna-button-slot.active .klarna-button-inner {
+    border-color: #17170f;
+    background: #17170f;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.mz-footer {
+    position: relative;
+    z-index: 10;
+}
 [data-theme="light"] .mzw-btn:hover { background: #f1f1ee; }
 @media (max-width: 640px) { #mzwA .mzw-card, #mzwB .mzw-card { height: 200px; } }
 @media (prefers-reduced-motion: reduce) { .mzw-track { animation: none; } }

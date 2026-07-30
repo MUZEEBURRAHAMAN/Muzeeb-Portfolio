@@ -322,33 +322,9 @@
             </div>
         </section>
 
-        <div class="max-w-[1320px] w-full flex flex-col gap-8 mz-reveal">
-            <div class="w-full">
-                <span class="md:text-base text-sm font-light text-primary mb-1 block">Testimonials</span>
-                <h2 class="md:text-3xl text-xl text-white font-medium max-w-[48ch]">Don't just take my word for it — hear it from people I've worked with.</h2>
-            </div>
-            <div class="mz-tcards">
-                <div class="mz-tcard">
-                    <div><div class="mz-tcard__mark">"</div><p class="mz-tcard__q">Muzeeb completely grasped the vision and delivered exactly what we needed — patient, thorough, and quick to iterate until it was right.</p></div>
-                    <div class="mz-tcard__who"><div class="mz-tcard__av">PA</div><div><div class="mz-tcard__name">Pulkit Arora</div><div class="mz-tcard__role">Senior UI/UX Designer, Zebralearn</div></div></div>
-                </div>
-                <div class="mz-tcard feat">
-                    <div><div class="mz-tcard__mark">"</div><p class="mz-tcard__q">Working with Muzeeb was a pleasure — professional, efficient, and high-quality on time. His attention to detail and willingness to go the extra mile really stood out.</p></div>
-                    <div class="mz-tcard__who"><div class="mz-tcard__av">KS</div><div><div class="mz-tcard__name">Kartik Singh</div><div class="mz-tcard__role">Product Client</div></div></div>
-                </div>
-                <div class="mz-tcard">
-                    <div><div class="mz-tcard__mark">"</div><p class="mz-tcard__q">A true design gem. He translates complex ideas into clear, visually appealing designs — flexible and adaptable throughout, making the whole process smooth.</p></div>
-                    <div class="mz-tcard__who"><div class="mz-tcard__av">NS</div><div><div class="mz-tcard__name">Neha Singh</div><div class="mz-tcard__role">Senior UI/UX Designer, HCL</div></div></div>
-                </div>
-                <div class="mz-tcard">
-                    <div><div class="mz-tcard__mark">"</div><p class="mz-tcard__q">Creative vision top-notch and communication excellent. He kept me informed throughout and readily incorporated feedback — the final work exceeded expectations.</p></div>
-                    <div class="mz-tcard__who"><div class="mz-tcard__av">DC</div><div><div class="mz-tcard__name">Danielle Caldwell</div><div class="mz-tcard__role">Product Design Lead, Patient Point</div></div></div>
-                </div>
-                <div class="mz-tcard">
-                    <div><div class="mz-tcard__mark">"</div><p class="mz-tcard__q">His work ethic is inspiring — every challenge met with a positive attitude and a relentless pursuit of excellence. Collaborative, dedicated, highly recommend.</p></div>
-                    <div class="mz-tcard__who"><div class="mz-tcard__av">NP</div><div><div class="mz-tcard__name">Nicoletta Pizzocheri</div><div class="mz-tcard__role">Lead Product Designer, Femme Palette</div></div></div>
-                </div>
-            </div>
+        <div class="mz-testimonials-flow mz-reveal">
+            <div class="klarna-flow-stage" id="flowStage"></div>
+            <div class="klarna-strip-wrapper" id="stripWrapper"></div>
         </div>
 
 
@@ -722,6 +698,150 @@
         t.appendChild(frag);
       }
       fill('mzwA', A); fill('mzwB', B);
+    })();
+    </script>
+    <script>
+    (function () {
+        var testimonials = [
+            {
+                quote: "Muzeeb completely grasped the vision and delivered exactly what we needed — patient, thorough, and quick to iterate until it was right.",
+                name: "Pulkit Arora",
+                role: "Senior UI/UX Designer, Zebralearn",
+                initials: "PA"
+            },
+            {
+                quote: "Working with Muzeeb was a pleasure — professional, efficient, and high-quality on time. His attention to detail and willingness to go the extra mile really stood out.",
+                name: "Kartik Singh",
+                role: "Product Client",
+                initials: "KS"
+            },
+            {
+                quote: "A true design gem. He translates complex ideas into clear, visually appealing designs — flexible and adaptable throughout, making the whole process smooth.",
+                name: "Neha Singh",
+                role: "Senior UI/UX Designer, HCL",
+                initials: "NS"
+            },
+            {
+                quote: "Creative vision top-notch and communication excellent. He kept me informed throughout and readily incorporated feedback — the final work exceeded expectations.",
+                name: "Danielle Caldwell",
+                role: "Product Design Lead, Patient Point",
+                initials: "DC"
+            },
+            {
+                quote: "His work ethic is inspiring — every challenge met with a positive attitude and a relentless pursuit of excellence. Collaborative, dedicated, highly recommend.",
+                name: "Nicoletta Pizzocheri",
+                role: "Lead Product Designer, Femme Palette",
+                initials: "NP"
+            },
+            {
+                quote: "Incredible ability to ship 0 to 1 designs with engineering precision. Muzeeb bridges design systems and live code seamlessly.",
+                name: "Ananya Roy",
+                role: "Lead UX Strategist, Omnis AI",
+                initials: "AR"
+            },
+            {
+                quote: "Muzeeb built our design system across 8+ SaaS products. His systems-thinking and speed transformed our dev workflows.",
+                name: "Saurabh Kumar",
+                role: "Co-Founder & CTO, CasePro",
+                initials: "SK"
+            },
+            {
+                quote: "Brilliant interaction design and deep AI workflow understanding. He turned complex legal intelligence into an intuitive user experience.",
+                name: "Marcus Davis",
+                role: "VP of Product, MedChron AI",
+                initials: "MD"
+            },
+            {
+                quote: "Exceptionally talented designer who designs beyond interfaces. Quick, sharp, and always delivers beyond expectations.",
+                name: "Rohan Joshi",
+                role: "Founder, Photoshooto",
+                initials: "RJ"
+            },
+            {
+                quote: "Working alongside Muzeeb was seamless — he designs with clean component architecture and understands dev constraints inside out.",
+                name: "Vikram Sharma",
+                role: "Engineering Manager, LetMeGrab",
+                initials: "VS"
+            }
+        ];
+
+        var activeIndex = 0;
+        var M = testimonials.length;
+        var buttonSize = 48;
+        var gap = 38;
+        var curve = 5.5;
+        var t = Math.max(0.0001, Math.min(10, curve) / 10);
+        var step = buttonSize + gap;
+        var dPsi = ((Math.PI * 2) / M) * t;
+        var R = step / (2 * Math.sin(dPsi / 2));
+
+        var stageEl = document.getElementById('flowStage');
+        var stripEl = document.getElementById('stripWrapper');
+
+        if (!stageEl || !stripEl) return;
+
+        function init() {
+            stageEl.innerHTML = '';
+            testimonials.forEach(function (item, idx) {
+                var el = document.createElement('div');
+                el.className = 'klarna-flow-item' + (idx === activeIndex ? ' active' : '');
+                el.id = 'flow-item-' + idx;
+                el.innerHTML = '<div class="klarna-quote-mark">“</div>' +
+                    '<p class="klarna-quote">' + item.quote + '</p>' +
+                    '<div class="klarna-author">' +
+                    '  <div class="klarna-avatar">' + item.initials + '</div>' +
+                    '  <div class="klarna-info">' +
+                    '    <span class="klarna-name">' + item.name + '</span>' +
+                    '    <span class="klarna-role">' + item.role + '</span>' +
+                    '  </div>' +
+                    '</div>';
+                stageEl.appendChild(el);
+            });
+            renderButtons();
+        }
+
+        function renderButtons() {
+            stripEl.innerHTML = '';
+            testimonials.forEach(function (item, idx) {
+                var slot = idx - activeIndex;
+                slot = slot % M;
+                if (slot > M / 2) slot -= M;
+                if (slot < -M / 2) slot += M;
+
+                var angle = slot * dPsi;
+                var x = R * Math.sin(angle);
+                var y = R * (1 - Math.cos(angle));
+                var deg = (angle * 180) / Math.PI;
+                var absSlot = Math.abs(slot);
+                var depth = Math.max(0, 1 - (0.55 * absSlot) / 4);
+                var scale = 0.55 + 0.45 * depth;
+                var opacity = absSlot <= 3.5 ? 1 : 0.3;
+                var zIndex = Math.round(depth * 100) + (absSlot < 0.5 ? 100 : 0);
+
+                var btn = document.createElement('div');
+                btn.className = 'klarna-button-slot' + (idx === activeIndex ? ' active' : '');
+                btn.style.transform = 'translate(' + x + 'px, ' + y + 'px) rotate(' + deg + 'deg) scale(' + scale + ')';
+                btn.style.opacity = opacity;
+                btn.style.zIndex = zIndex;
+
+                btn.innerHTML = '<div class="klarna-button-inner">' + item.initials + '</div>';
+
+                btn.addEventListener('click', function () { selectItem(idx); });
+                stripEl.appendChild(btn);
+            });
+        }
+
+        function selectItem(idx) {
+            if (idx === activeIndex) return;
+            var prev = document.getElementById('flow-item-' + activeIndex);
+            if (prev) prev.classList.remove('active');
+            activeIndex = idx;
+            var next = document.getElementById('flow-item-' + activeIndex);
+            if (next) next.classList.add('active');
+            renderButtons();
+        }
+
+        init();
     })();
     </script>
 </body>
