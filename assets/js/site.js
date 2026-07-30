@@ -300,6 +300,34 @@
   }
 
   function ready(fn) {
+    // Enhanced mail icon click handler: copies email and opens mailto link
+    document.addEventListener("click", function (e) {
+      var mailBtn = e.target.closest(".mz-nav__mail");
+      if (!mailBtn) return;
+
+      var email = "rahamanmuzeeb1108@gmail.com";
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email);
+        }
+      } catch (err) {}
+
+      var toast = document.getElementById("mz-email-toast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "mz-email-toast";
+        toast.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#18181b;color:#ffffff;padding:10px 20px;border-radius:999px;font-size:0.85rem;font-weight:600;z-index:99999;box-shadow:0 10px 30px rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s, transform 0.2s;pointer-events:none;";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = "Copied rahamanmuzeeb1108@gmail.com!";
+      toast.style.opacity = "1";
+      toast.style.transform = "translateX(-50%) translateY(-4px)";
+
+      setTimeout(function () {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(-50%) translateY(0)";
+      }, 2400);
+    });
     if (document.readyState !== "loading") fn();
     else document.addEventListener("DOMContentLoaded", fn);
   }
