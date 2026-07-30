@@ -765,19 +765,20 @@
             }
         ];
 
-        var posRef = 0;
-        var posDisplay = 0;
-        var rafId = null;
-        var animData = { startPos: 0, targetPos: 0, startTime: 0 };
         var activeIndex = 0;
+        var M = testimonials.length;
+        var buttonSize = 48;
+        var gap = 38;
+        var curve = 5.5;
+        var t = Math.max(0.0001, Math.min(10, curve) / 10);
+        var step = buttonSize + gap;
+        var dPsi = ((Math.PI * 2) / M) * t;
+        var R = step / (2 * Math.sin(dPsi / 2));
 
-        function modIdx(i, n) {
-            return ((i % n) + n) % n;
-        }
+        var stageEl = document.getElementById('flowStage');
+        var stripEl = document.getElementById('stripWrapper');
 
-        function easeCubicInOut(p) {
-            return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-        }
+        if (!stageEl || !stripEl) return;
 
         function init() {
             stageEl.innerHTML = '';
@@ -796,35 +797,13 @@
                     '</div>';
                 stageEl.appendChild(el);
             });
-
-            stripEl.innerHTML = '';
-            testimonials.forEach(function (item, idx) {
-                var btn = document.createElement('div');
-                btn.className = 'klarna-button-slot';
-                btn.id = 'slot-btn-' + idx;
-                btn.innerHTML = '<div class="klarna-button-inner">' + item.initials + '</div>';
-                btn.addEventListener('click', function () { selectItem(idx); });
-                stripEl.appendChild(btn);
-            });
-
             renderButtons();
         }
 
         function renderButtons() {
-            var currentActive = modIdx(Math.round(posDisplay), M);
-            if (currentActive !== activeIndex) {
-                var prev = document.getElementById('flow-item-' + activeIndex);
-                if (prev) prev.classList.remove('active');
-                activeIndex = currentActive;
-                var next = document.getElementById('flow-item-' + activeIndex);
-                if (next) next.classList.add('active');
-            }
-
+            stripEl.innerHTML = '';
             testimonials.forEach(function (item, idx) {
-                var btn = document.getElementById('slot-btn-' + idx);
-                if (!btn) return;
-
-                var slot = idx - posDisplay;
+                var slot = idx - activeIndex;
                 slot = slot % M;
                 if (slot > M / 2) slot -= M;
                 if (slot < -M / 2) slot += M;
@@ -839,51 +818,27 @@
                 var opacity = absSlot <= 3.5 ? 1 : 0.3;
                 var zIndex = Math.round(depth * 100) + (absSlot < 0.5 ? 100 : 0);
 
+                var btn = document.createElement('div');
+                btn.className = 'klarna-button-slot' + (idx === activeIndex ? ' active' : '');
                 btn.style.transform = 'translate(' + x.toFixed(2) + 'px, ' + y.toFixed(2) + 'px) rotate(' + deg.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
                 btn.style.opacity = opacity.toFixed(2);
                 btn.style.zIndex = zIndex;
 
-                if (idx === currentActive) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+                btn.innerHTML = '<div class="klarna-button-inner">' + item.initials + '</div>';
+
+                btn.addEventListener('click', function () { selectItem(idx); });
+                stripEl.appendChild(btn);
             });
         }
 
-        function selectItem(itemIdx) {
-            var currentActive = modIdx(Math.round(posRef), M);
-            if (itemIdx === currentActive) return;
-
-            var delta = itemIdx - Math.round(posRef);
-            delta = ((delta % M) + M) % M;
-            if (delta > M / 2) delta -= M;
-
-            if (rafId) cancelAnimationFrame(rafId);
-
-            animData = {
-                startPos: posRef,
-                targetPos: posRef + delta,
-                startTime: performance.now()
-            };
-
-            var DURATION = 380;
-            function tick(now) {
-                var progress = Math.min(1, (now - animData.startTime) / DURATION);
-                posRef = animData.startPos + (animData.targetPos - animData.startPos) * easeCubicInOut(progress);
-                posDisplay = posRef;
-                renderButtons();
-
-                if (progress < 1) {
-                    rafId = requestAnimationFrame(tick);
-                } else {
-                    posRef = animData.targetPos;
-                    posDisplay = posRef;
-                    renderButtons();
-                    rafId = null;
-                }
-            }
-            rafId = requestAnimationFrame(tick);
+        function selectItem(idx) {
+            if (idx === activeIndex) return;
+            var prev = document.getElementById('flow-item-' + activeIndex);
+            if (prev) prev.classList.remove('active');
+            activeIndex = idx;
+            var next = document.getElementById('flow-item-' + activeIndex);
+            if (next) next.classList.add('active');
+            renderButtons();
         }
 
         init();
