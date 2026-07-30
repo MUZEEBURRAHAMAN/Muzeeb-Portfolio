@@ -310,19 +310,16 @@ h1, h2, h3, h4, h5, h6,
     border-color: #e4e4e7;
 }
 .mz-popover-li__banner {
-    height: 52px;
+    height: 54px;
     background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
-    position: relative;
 }
 .mz-popover-li__body {
     padding: 0 16px 14px;
-    position: relative;
 }
 .mz-popover-li__toprow {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: -24px;
+    align-items: flex-end;
     margin-bottom: 10px;
 }
 .mz-popover-li__avatar {
@@ -332,22 +329,25 @@ h1, h2, h3, h4, h5, h6,
     object-fit: cover;
     border: 3px solid #ffffff;
     background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
     flex-shrink: 0;
 }
 .mz-popover-li__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 28px;
     background: #0a66c2;
     color: #ffffff !important;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 600;
-    padding: 0 16px;
+    padding: 0 14px;
     border-radius: 999px;
     text-decoration: none;
-    margin-top: 24px;
+    margin-top: 8px;
     flex-shrink: 0;
     transition: background 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3);
@@ -357,7 +357,7 @@ h1, h2, h3, h4, h5, h6,
     transform: translateY(-1px);
 }
 .mz-popover-li__name {
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     font-weight: 700;
     color: #000000;
     margin-bottom: 2px;
@@ -401,20 +401,16 @@ h1, h2, h3, h4, h5, h6,
     border-color: #e4e4e7;
 }
 .mz-popover-tw__banner {
-    height: 52px;
+    height: 54px;
     background: linear-gradient(135deg, #1d9bf0 0%, #0f1419 100%);
-    position: relative;
-    overflow: hidden;
 }
 .mz-popover-tw__body {
     padding: 0 16px 14px;
-    position: relative;
 }
 .mz-popover-tw__toprow {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: -24px;
+    align-items: flex-end;
     margin-bottom: 8px;
 }
 .mz-popover-tw__avatar {
@@ -424,22 +420,25 @@ h1, h2, h3, h4, h5, h6,
     object-fit: cover;
     border: 3px solid #ffffff;
     background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
     flex-shrink: 0;
 }
 .mz-popover-tw__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 28px;
     background: #0f1419;
     color: #ffffff !important;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 700;
-    padding: 0 16px;
+    padding: 0 14px;
     border-radius: 999px;
     text-decoration: none;
-    margin-top: 24px;
+    margin-top: 8px;
     flex-shrink: 0;
     transition: opacity 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(15, 20, 25, 0.25);
@@ -494,7 +493,7 @@ h1, h2, h3, h4, h5, h6,
     border-color: #e4e4e7;
 }
 .mz-popover-bh__banner {
-    height: 52px;
+    height: 54px;
     background: linear-gradient(135deg, #0057ff 0%, #1769ff 100%);
 }
 .mz-popover-bh__body {
@@ -503,8 +502,7 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-bh__toprow {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: -24px;
+    align-items: flex-end;
     margin-bottom: 8px;
 }
 .mz-popover-bh__avatar {
@@ -514,22 +512,25 @@ h1, h2, h3, h4, h5, h6,
     object-fit: cover;
     border: 3px solid #ffffff;
     background: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.14);
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
     flex-shrink: 0;
 }
 .mz-popover-bh__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 30px;
+    height: 28px;
     background: #0057ff;
     color: #ffffff !important;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 600;
-    padding: 0 16px;
+    padding: 0 14px;
     border-radius: 999px;
     text-decoration: none;
-    margin-top: 24px;
+    margin-top: 8px;
     flex-shrink: 0;
     transition: background 0.2s, transform 0.2s;
     box-shadow: 0 2px 8px rgba(0, 87, 255, 0.3);
