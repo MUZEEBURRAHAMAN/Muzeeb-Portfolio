@@ -156,12 +156,85 @@ h1, h2, h3, h4, h5, h6,
 .mz-bio b { color: #f4f2ed; font-weight: 600; }
 .mz-bio__label { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: #f4f2ed; margin: 34px 0 10px; font-weight: 600; }
 .mz-bio__chat { margin-top: 34px; font-size: 1.1rem; color: #f4f2ed; }
-.mz-ab-contact { display: inline-flex; align-items: center; gap: 10px; margin: 26px 0 0; padding: 6px; background: #141415; border: 1px solid #262628; border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,0.35); flex-wrap: wrap; }
-.mz-ab-email { display: inline-flex; align-items: center; gap: 8px; background: #222225; border: 1px solid #333338; border-radius: 999px; padding: 9px 18px; font-size: 0.9rem; font-weight: 500; color: #f4f4f5; cursor: pointer; transition: all 0.25s; text-decoration: none; }
-.mz-ab-email:hover { background: #2d2d32; color: #fff; border-color: #44444a; }
-.mz-ab-icon { width: 40px; height: 40px; border-radius: 50%; background: #222225; border: 1px solid #333338; display: flex; align-items: center; justify-content: center; color: #e4e4e7; transition: all 0.25s; position: relative; text-decoration: none; }
-.mz-ab-icon:hover { background: #2d2d32; color: #fff; border-color: #44444a; transform: translateY(-2px); }
-.mz-ab-icon svg { width: 18px; height: 18px; }
+.mz-ab-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 26px 0 0;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: none !important;
+    border-radius: 999px;
+    box-shadow: none !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background-color 0.25s ease;
+}
+
+[data-theme="light"] .mz-ab-contact {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.mz-ab-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f4f4f5;
+    color: #0f1419 !important;
+    border: none !important;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+[data-theme="light"] .mz-ab-email {
+    background: #0f1419;
+    color: #ffffff !important;
+}
+
+.mz-ab-email:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+}
+
+.mz-ab-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: transparent;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a1a1aa;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+[data-theme="light"] .mz-ab-icon {
+    color: #666666;
+}
+
+.mz-ab-icon:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .mz-ab-icon:hover {
+    color: #000000;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.mz-ab-icon svg {
+    width: 18px;
+    height: 18px;
+}
 
 /* ===== Social Icon Wrapper & Smooth Hover Design ===== */
 .mz-social-item {
