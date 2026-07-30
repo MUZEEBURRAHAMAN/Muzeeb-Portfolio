@@ -1439,14 +1439,7 @@ body.mz-cursor-on button { cursor: none; }
     flex: none;
 }
 .mz-hero__portrait {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: top center;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    clip-path: inset(0 0 100% 0);
-    animation: mz-portrait 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    display: none !important;
 }
 @keyframes mz-portrait {
     to { clip-path: inset(0 0 0% 0); }
@@ -1791,10 +1784,14 @@ body.mz-cursor-on button { cursor: none; }
         url("../images/portfolio_hero_light.webp") center/cover no-repeat;
     background-color: #faf9f7;
 }
-[data-theme="light"] .mz-hero__title, [data-theme="light"] .mz-hero__title em { color:#17170f; }
-[data-theme="light"] .mz-hero__sub { color:#3a3a38; }
-[data-theme="light"] .mz-hero__sub b { color:#17170f; }
-[data-theme="light"] .mz-hero__eyebrow { background:rgba(255,255,255,.72); border-color:rgba(0,0,0,.10); color:#17170f; }
+[data-theme="light"] .mz-hero__title,
+[data-theme="light"] .mz-hero__title *,
+[data-theme="light"] .mz-hero__title .mz-line,
+[data-theme="light"] .mz-hero__title .mz-mask,
+[data-theme="light"] .mz-hero__title em { color: #0f0f0f !important; }
+[data-theme="light"] .mz-hero__sub { color: #2a2a28; }
+[data-theme="light"] .mz-hero__sub b { color: #0f0f0f; }
+[data-theme="light"] .mz-hero__eyebrow { background: rgba(255,255,255,.85); border-color: rgba(0,0,0,.15); color: #0f0f0f; }
 
 /* ============================================================
    PAGE HERO (.mz-pagehero) — theme-aware image hero (blog, etc.)
