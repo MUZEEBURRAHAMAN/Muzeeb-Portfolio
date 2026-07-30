@@ -1489,10 +1489,10 @@ body.mz-cursor-on button { cursor: none; }
 .mz-mask:nth-child(3) .mz-line { animation-delay: 0.46s; }
 .mz-hero__sub {
     margin: 34px auto 0;
-    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
     line-height: 1.5;
     color: #9a9a98;
-    max-width: 46ch;
+    max-width: 52ch;
     opacity: 0;
     animation: mz-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
 }
