@@ -1443,7 +1443,7 @@ body.mz-cursor-on button { cursor: none; }
 .mz-hero__title {
     font-weight: 500;
     font-size: clamp(1.5rem, 5.9vw, 4.75rem);
-    line-height: 1.08;
+    line-height: 1.18;
     letter-spacing: -0.025em;
     color: #f4f2ed;
     max-width: none;
@@ -1459,6 +1459,8 @@ body.mz-cursor-on button { cursor: none; }
 .mz-mask {
     overflow: hidden;
     display: block;
+    padding-bottom: 0.15em;
+    margin-bottom: -0.08em;
 }
 .mz-line {
     display: block;
