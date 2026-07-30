@@ -797,12 +797,25 @@
                     '</div>';
                 stageEl.appendChild(el);
             });
-            renderButtons();
-        }
 
-        function renderButtons() {
             stripEl.innerHTML = '';
             testimonials.forEach(function (item, idx) {
+                var btn = document.createElement('div');
+                btn.className = 'klarna-button-slot' + (idx === activeIndex ? ' active' : '');
+                btn.id = 'slot-btn-' + idx;
+                btn.innerHTML = '<div class="klarna-button-inner">' + item.initials + '</div>';
+                btn.addEventListener('click', function () { selectItem(idx); });
+                stripEl.appendChild(btn);
+            });
+
+            updateButtonPositions();
+        }
+
+        function updateButtonPositions() {
+            testimonials.forEach(function (item, idx) {
+                var btn = document.getElementById('slot-btn-' + idx);
+                if (!btn) return;
+
                 var slot = idx - activeIndex;
                 slot = slot % M;
                 if (slot > M / 2) slot -= M;
@@ -818,16 +831,15 @@
                 var opacity = absSlot <= 3.5 ? 1 : 0.3;
                 var zIndex = Math.round(depth * 100) + (absSlot < 0.5 ? 100 : 0);
 
-                var btn = document.createElement('div');
-                btn.className = 'klarna-button-slot' + (idx === activeIndex ? ' active' : '');
                 btn.style.transform = 'translate(' + x.toFixed(2) + 'px, ' + y.toFixed(2) + 'px) rotate(' + deg.toFixed(2) + 'deg) scale(' + scale.toFixed(3) + ')';
                 btn.style.opacity = opacity.toFixed(2);
                 btn.style.zIndex = zIndex;
 
-                btn.innerHTML = '<div class="klarna-button-inner">' + item.initials + '</div>';
-
-                btn.addEventListener('click', function () { selectItem(idx); });
-                stripEl.appendChild(btn);
+                if (idx === activeIndex) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             });
         }
 
@@ -838,7 +850,7 @@
             activeIndex = idx;
             var next = document.getElementById('flow-item-' + activeIndex);
             if (next) next.classList.add('active');
-            renderButtons();
+            updateButtonPositions();
         }
 
         init();
