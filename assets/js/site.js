@@ -472,6 +472,5 @@
     initCursor();
     initChat();
     initReveal();
-    initSocialPopovers();
   });
 })();
