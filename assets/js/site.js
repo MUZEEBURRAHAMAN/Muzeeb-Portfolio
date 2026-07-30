@@ -438,29 +438,50 @@
       });
     }
 
-    // Smooth hover handling with intent delay & focus accessibility
+    // Smooth morphing social popover cards
     var items = document.querySelectorAll(".mz-social-item");
+    var activeItem = null;
+    var leaveTimer = null;
+
     items.forEach(function (item) {
       var popover = item.querySelector(".mz-social-popover");
       if (!popover) return;
-      var timer = null;
 
       item.addEventListener("mouseenter", function () {
-        if (timer) clearTimeout(timer);
-        popover.classList.add("is-active");
+        if (leaveTimer) {
+          clearTimeout(leaveTimer);
+          leaveTimer = null;
+        }
+
+        if (activeItem && activeItem !== item) {
+          var prevPopover = activeItem.querySelector(".mz-social-popover");
+          if (prevPopover) {
+            prevPopover.classList.remove("is-active", "is-morphing");
+          }
+          popover.classList.add("is-morphing");
+          void popover.offsetWidth;
+          popover.classList.add("is-active");
+        } else {
+          popover.classList.remove("is-morphing");
+          popover.classList.add("is-active");
+        }
+        activeItem = item;
       });
 
       item.addEventListener("mouseleave", function () {
-        timer = setTimeout(function () {
-          popover.classList.remove("is-active");
-        }, 180);
+        leaveTimer = setTimeout(function () {
+          if (activeItem === item) {
+            popover.classList.remove("is-active", "is-morphing");
+            activeItem = null;
+          }
+        }, 140);
       });
 
       item.addEventListener("focusin", function () {
         popover.classList.add("is-active");
       });
       item.addEventListener("focusout", function () {
-        popover.classList.remove("is-active");
+        popover.classList.remove("is-active", "is-morphing");
       });
     });
   }
@@ -472,5 +493,6 @@
     initCursor();
     initChat();
     initReveal();
+    initSocialPopovers();
   });
 })();

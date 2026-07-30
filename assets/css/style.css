@@ -172,8 +172,51 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .mz-social-popover {
-    display: none !important;
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px) scale(0.94);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.28s,
+                width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 9999;
+    box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    font-family: inherit;
+    text-align: left;
+    white-space: normal;
+    overflow: hidden;
 }
+
+.mz-social-item:hover .mz-social-popover,
+.mz-social-item:focus-within .mz-social-popover,
+.mz-social-popover.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.mz-social-popover.is-morphing {
+    transition: opacity 0.22s ease,
+                transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mz-social-popover::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
     background: inherit;
     border-right: 1px solid rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
@@ -245,20 +288,15 @@ h1, h2, h3, h4, h5, h6,
 [data-theme="dark"] .mz-popover-github {
     background: #121214;
     color: #f4f4f5;
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.14);
 }
 [data-theme="dark"] .mz-popover-github::after {
     background: #121214;
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.14);
 }
 [data-theme="dark"] .mz-popover-gh__user { color: #f4f4f5; }
 [data-theme="dark"] .mz-popover-gh__sub { color: #a1a1aa; }
 [data-theme="dark"] .mz-popover-gh__graph { background: rgba(255, 255, 255, 0.03); border-color: rgba(255, 255, 255, 0.08); }
-[data-theme="dark"] .mz-gh-cell[data-level="0"] { background: rgba(255, 255, 255, 0.08); }
-[data-theme="dark"] .mz-gh-cell[data-level="1"] { background: #0e4429; }
-[data-theme="dark"] .mz-gh-cell[data-level="2"] { background: #006d32; }
-[data-theme="dark"] .mz-gh-cell[data-level="3"] { background: #26a641; }
-[data-theme="dark"] .mz-gh-cell[data-level="4"] { background: #39d353; }
 
 /* ===== LinkedIn Popover Card ===== */
 .mz-popover-linkedin {
@@ -272,7 +310,7 @@ h1, h2, h3, h4, h5, h6,
     border-color: #e4e4e7;
 }
 .mz-popover-li__banner {
-    height: 56px;
+    height: 52px;
     background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
     position: relative;
 }
@@ -283,34 +321,40 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-li__toprow {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-top: -25px;
-    margin-bottom: 8px;
+    align-items: center;
+    margin-top: -24px;
+    margin-bottom: 10px;
 }
 .mz-popover-li__avatar {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #ffffff;
     background: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    flex-shrink: 0;
 }
 .mz-popover-li__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    height: 30px;
     background: #0a66c2;
     color: #ffffff !important;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    padding: 6px 16px;
+    padding: 0 16px;
     border-radius: 999px;
     text-decoration: none;
-    transition: background 0.2s;
+    margin-top: 24px;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3);
 }
 .mz-popover-li__btn:hover {
     background: #004182;
+    transform: translateY(-1px);
 }
 .mz-popover-li__name {
     font-size: 0.95rem;
@@ -329,6 +373,22 @@ h1, h2, h3, h4, h5, h6,
     margin-top: 4px;
 }
 
+[data-theme="dark"] .mz-popover-linkedin {
+    background: #15181c;
+    color: #f4f4f5;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] .mz-popover-linkedin::after {
+    background: #15181c;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] .mz-popover-li__avatar {
+    border-color: #15181c;
+}
+[data-theme="dark"] .mz-popover-li__name { color: #f4f4f5; }
+[data-theme="dark"] .mz-popover-li__role { color: #94a3b8; }
+[data-theme="dark"] .mz-popover-li__loc { color: #64748b; }
+
 /* ===== Twitter / X Popover Card ===== */
 .mz-popover-twitter {
     width: 280px;
@@ -341,7 +401,7 @@ h1, h2, h3, h4, h5, h6,
     border-color: #e4e4e7;
 }
 .mz-popover-tw__banner {
-    height: 56px;
+    height: 52px;
     background: linear-gradient(135deg, #1d9bf0 0%, #0f1419 100%);
     position: relative;
     overflow: hidden;
@@ -353,31 +413,40 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-tw__toprow {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-top: -25px;
-    margin-bottom: 6px;
+    align-items: center;
+    margin-top: -24px;
+    margin-bottom: 8px;
 }
 .mz-popover-tw__avatar {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #ffffff;
     background: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    flex-shrink: 0;
 }
 .mz-popover-tw__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
     background: #0f1419;
     color: #ffffff !important;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    padding: 5px 16px;
+    padding: 0 16px;
     border-radius: 999px;
     text-decoration: none;
-    transition: opacity 0.2s;
+    margin-top: 24px;
+    flex-shrink: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(15, 20, 25, 0.25);
 }
 .mz-popover-tw__btn:hover {
-    opacity: 0.85;
+    opacity: 0.88;
+    transform: translateY(-1px);
 }
 .mz-popover-tw__handle {
     font-size: 0.92rem;
@@ -391,6 +460,28 @@ h1, h2, h3, h4, h5, h6,
     line-height: 1.35;
 }
 
+[data-theme="dark"] .mz-popover-twitter {
+    background: #15181c;
+    color: #f4f4f5;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] .mz-popover-twitter::after {
+    background: #15181c;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] .mz-popover-tw__avatar {
+    border-color: #15181c;
+}
+[data-theme="dark"] .mz-popover-tw__btn {
+    background: #eff3f4;
+    color: #0f1419 !important;
+}
+[data-theme="dark"] .mz-popover-tw__btn:hover {
+    background: #d7dbdc;
+}
+[data-theme="dark"] .mz-popover-tw__handle { color: #f4f4f5; }
+[data-theme="dark"] .mz-popover-tw__bio { color: #94a3b8; }
+
 /* ===== Behance Popover Card ===== */
 .mz-popover-behance {
     width: 280px;
@@ -403,7 +494,7 @@ h1, h2, h3, h4, h5, h6,
     border-color: #e4e4e7;
 }
 .mz-popover-bh__banner {
-    height: 56px;
+    height: 52px;
     background: linear-gradient(135deg, #0057ff 0%, #1769ff 100%);
 }
 .mz-popover-bh__body {
@@ -412,27 +503,40 @@ h1, h2, h3, h4, h5, h6,
 .mz-popover-bh__toprow {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin-top: -25px;
-    margin-bottom: 6px;
+    align-items: center;
+    margin-top: -24px;
+    margin-bottom: 8px;
 }
 .mz-popover-bh__avatar {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #ffffff;
     background: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    flex-shrink: 0;
 }
 .mz-popover-bh__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
     background: #0057ff;
     color: #ffffff !important;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 600;
-    padding: 5px 16px;
+    padding: 0 16px;
     border-radius: 999px;
     text-decoration: none;
+    margin-top: 24px;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 87, 255, 0.3);
+}
+.mz-popover-bh__btn:hover {
+    background: #0044d4;
+    transform: translateY(-1px);
 }
 .mz-popover-bh__name {
     font-size: 0.92rem;
@@ -445,6 +549,22 @@ h1, h2, h3, h4, h5, h6,
     margin-top: 4px;
     line-height: 1.35;
 }
+
+[data-theme="dark"] .mz-popover-behance {
+    background: #15181c;
+    color: #f4f4f5;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] .mz-popover-behance::after {
+    background: #15181c;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+[data-theme="dark"] .mz-popover-bh__avatar {
+    border-color: #15181c;
+}
+[data-theme="dark"] .mz-popover-bh__name { color: #f4f4f5; }
+[data-theme="dark"] .mz-popover-bh__bio { color: #94a3b8; }
+
 .mz-abfoot { margin-top: 120px; }
 @media (max-width: 760px) { .mz-abfoot { margin-top: 80px; } }
 .mz-footer img.mz-footer__pic { width: 44px; height: 44px; max-width: 44px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 0; display: block; border: 1px solid rgba(255,255,255,0.16); }
