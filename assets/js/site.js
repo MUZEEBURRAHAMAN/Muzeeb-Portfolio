@@ -448,6 +448,7 @@
       if (!popover) return;
 
       item.addEventListener("mouseenter", function () {
+        document.body.classList.add("mz-hide-cursor-follow");
         if (leaveTimer) {
           clearTimeout(leaveTimer);
           leaveTimer = null;
@@ -473,6 +474,7 @@
           if (activeItem === item) {
             popover.classList.remove("is-active", "is-morphing");
             activeItem = null;
+            document.body.classList.remove("mz-hide-cursor-follow");
           }
         }, 140);
       });
