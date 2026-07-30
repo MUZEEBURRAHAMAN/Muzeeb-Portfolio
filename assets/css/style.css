@@ -1458,7 +1458,7 @@ body.mz-cursor-on button { cursor: none; }
 .ttl h1,
 .ttl h1 * {
     font-family: 'Acorn', var(--font-display) !important;
-    font-weight: 500;
+    font-weight: 600 !important;
     font-size: clamp(1.5rem, 5.9vw, 4.75rem);
     line-height: 1.18;
     letter-spacing: -0.025em;
