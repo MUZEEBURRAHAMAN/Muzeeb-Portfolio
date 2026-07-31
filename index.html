@@ -300,27 +300,221 @@
             </div>
         </section>
 
-        <section class="mz-wib mz-reveal" id="mz-wib">
-            <div class="mz-wib__center">
-                <span class="mz-wib__icon" id="mz-wibIcon">
-                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-                </span>
-                <h2 class="mz-wib__title">What I bring<br>to the table</h2>
-                <p class="mz-wib__sub">Digital products that turn complexity into clarity — designed end-to-end and built to ship with confidence.</p>
+        <section class="mz-sp-beyond mz-reveal" id="mz-sp-beyond">
+            <div class="mz-sp-beyond__header">
+                <div class="mz-sp-beyond__title-group">
+                    <span class="mz-sp-beyond__eyebrow">SELECTED WORKFLOWS &amp; SYSTEMS</span>
+                    <h2 class="mz-sp-beyond__title">Solving Problems Beyond the Interface</h2>
+                </div>
+                <div class="mz-sp-beyond__nav">
+                    <button class="mz-sp-beyond__btn" type="button" id="mzSpPrev" aria-label="Previous item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="mz-sp-beyond__btn" type="button" id="mzSpNext" aria-label="Next item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
             </div>
-            <div class="mz-wib__pills">
-                <span class="mz-pill mz-p1" data-rot="-4">Product Design</span>
-                <span class="mz-pill mz-p2" data-rot="6">UX Design</span>
-                <span class="mz-pill mz-p3" data-rot="-8">Design Systems</span>
-                <span class="mz-pill mz-p4" data-rot="4">User Research</span>
-                <span class="mz-pill mz-p5" data-rot="5">UI Design</span>
-                <span class="mz-pill mz-p6" data-rot="-3">Prototyping</span>
-                <span class="mz-pill mz-p7" data-rot="6">Design Engineering</span>
-                <span class="mz-pill mz-p8" data-rot="-5">AI Workflows</span>
-                <span class="mz-pill mz-p9" data-rot="8">Visual Design</span>
-                <span class="mz-pill mz-p10" data-rot="-6">Prototype in code</span>
+
+            <div class="mz-sp-beyond__track-wrapper">
+                <div class="mz-sp-beyond__track" id="mzSpTrack">
+                    <!-- Card 1: Honest Review -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 20% 20%, #4c1d7f 0%, #210d38 50%, #0d0617 100%);">
+                            <span class="mz-sp-cover__title">Honest Review</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Critical AI Feedback</p>
+                            <h3 class="mz-sp-card__title">Honest Review</h3>
+                            <p class="mz-sp-card__desc">Most AI assistants default to positive encouragement instead of critical analysis. Whether evaluating product decisions, code, or UX patterns, they often optimize for agreement rather than accuracy.<br><br>I built Honest Review to <strong>challenge assumptions</strong>, highlight weak reasoning, and deliver <strong>direct evidence-based feedback</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Claude Skills</span>
+                                <span class="mz-sp-tag">Prompt Engineering</span>
+                                <span class="mz-sp-tag">MCP</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: UX Audit Assistant -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 80% 20%, #1c4b82 0%, #0a223f 50%, #06111f 100%);">
+                            <span class="mz-sp-cover__title">UX Audit Assistant</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Automated Design QA</p>
+                            <h3 class="mz-sp-card__title">UX Audit Assistant</h3>
+                            <p class="mz-sp-card__desc">Waiting for manual QA or design review catches UI bugs too late. I built an automated workflow that runs on pull requests, auditing code against original Figma specs to detect visual and usability flaws.<br><br>The report feeds into Claude to auto-apply fixes, creating a <strong>continuous AI-powered review loop</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Claude</span>
+                                <span class="mz-sp-tag">Figma MCP</span>
+                                <span class="mz-sp-tag">GitHub Actions</span>
+                                <span class="mz-sp-tag">Slack</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Huly AI -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 30% 80%, #0c6346 0%, #042e20 50%, #021710 100%);">
+                            <span class="mz-sp-cover__title">Huly AI</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Deep Work Automation</p>
+                            <h3 class="mz-sp-card__title">Huly AI</h3>
+                            <p class="mz-sp-card__desc">Switching between chat tools and task managers constantly breaks deep focus. Instead of manual ticket management, I built a Claude workflow that creates, updates, and assigns Huly tasks via natural language.<br><br>It keeps Slack automatically synced, enabling <strong>frictionless project management</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Claude</span>
+                                <span class="mz-sp-tag">Huly API</span>
+                                <span class="mz-sp-tag">Slack</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4: Forge -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 70% 30%, #7c3a1e 0%, #3d1b0d 50%, #1f0b04 100%);">
+                            <span class="mz-sp-cover__title">Forge</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Design System Ops</p>
+                            <h3 class="mz-sp-card__title">Forge</h3>
+                            <p class="mz-sp-card__desc">Maintaining design system components manually becomes a bottleneck as products scale. I created Forge, an internal automation workflow that empowers Claude to create and manage system components.<br><br>It preserves tokens and naming conventions to achieve <strong>system consistency at scale</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Claude</span>
+                                <span class="mz-sp-tag">Figma MCP</span>
+                                <span class="mz-sp-tag">Design Tokens</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5: Pixel Perfect AI -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 20% 70%, #701c4e 0%, #380a26 50%, #1c0312 100%);">
+                            <span class="mz-sp-cover__title">Pixel Perfect AI</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Production-Ready AI UI</p>
+                            <h3 class="mz-sp-card__title">Pixel Perfect AI</h3>
+                            <p class="mz-sp-card__desc">Generic AI UI generators ignore spacing, typography grids, and existing design systems. I engineered a workflow that generates UI components directly inside our production design system using Claude and Figma MCP.<br><br>This produces <strong>production-ready interfaces</strong> ready for deployment.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Claude MCP</span>
+                                <span class="mz-sp-tag">Figma MCP</span>
+                                <span class="mz-sp-tag">SouthLeft Bridge</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: Product Discovery -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 50% 20%, #615a1c 0%, #302c0b 50%, #191704 100%);">
+                            <span class="mz-sp-cover__title">Product Discovery</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">0 to 1 Discovery</p>
+                            <h3 class="mz-sp-card__title">Product Discovery</h3>
+                            <p class="mz-sp-card__desc">Great digital products begin long before high-fidelity interface design. As founding designer, I led discovery by defining user journeys, mapping architecture, and validating assumptions.<br><br>From workshops and wireframes to prototypes, I turned early concepts into <strong>engineer-ready product specs</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Product Strategy</span>
+                                <span class="mz-sp-tag">UX Research</span>
+                                <span class="mz-sp-tag">Wireframing</span>
+                                <span class="mz-sp-tag">Prototyping</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 7: Unified Design System -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 80% 80%, #1f6575 0%, #0a333c 50%, #04191e 100%);">
+                            <span class="mz-sp-cover__title">Unified Design System</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Scalable System Architecture</p>
+                            <h3 class="mz-sp-card__title">Unified Design System</h3>
+                            <p class="mz-sp-card__desc">Scaling multiple SaaS products often leads to fragmented user experiences. I architected a shared design system that provided designers and engineers with a unified component foundation.<br><br>This accelerated delivery while maintaining a <strong>consistent brand experience across 8+ products</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Design Systems</span>
+                                <span class="mz-sp-tag">Components</span>
+                                <span class="mz-sp-tag">Design Tokens</span>
+                                <span class="mz-sp-tag">Documentation</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 8: Solo Builder -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 30% 30%, #781e1e 0%, #3a0a0a 50%, #1d0303 100%);">
+                            <span class="mz-sp-cover__title">Solo Builder</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">End-to-End Product Shipping</p>
+                            <h3 class="mz-sp-card__title">Solo Builder</h3>
+                            <p class="mz-sp-card__desc">The best way to master product strategy is by building software end-to-end. Beyond client work, I build independent products, like a QR food scanner, handling strategy, UX, UI, and code.<br><br>Shipping solo deepens my grasp on <strong>design, engineering, and business trade-offs</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">React</span>
+                                <span class="mz-sp-tag">TypeScript</span>
+                                <span class="mz-sp-tag">Product Design</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 9: AI Workflow Automation -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 70% 70%, #3d1c7c 0%, #1d0a3d 50%, #0e031f 100%);">
+                            <span class="mz-sp-cover__title">AI Workflow Automation</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Automated Designer Workflows</p>
+                            <h3 class="mz-sp-card__title">AI Workflow Automation</h3>
+                            <p class="mz-sp-card__desc">Repetitive tasks like documentation, UX writing, and handoff reviews follow predictable rules. I created custom Claude Skills and MCP workflows to automate these routine overhead tasks.<br><br>Eliminating busywork frees up time to focus on <strong>solving core product problems</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Claude Skills</span>
+                                <span class="mz-sp-tag">Cursor</span>
+                                <span class="mz-sp-tag">MCP</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 10: Design → Development -->
+                    <article class="mz-sp-card">
+                        <div class="mz-sp-cover" style="background: radial-gradient(130% 130% at 40% 60%, #1c7553 0%, #093927 50%, #031c12 100%);">
+                            <span class="mz-sp-cover__title">Design → Development</span>
+                        </div>
+                        <div class="mz-sp-card__content">
+                            <p class="mz-sp-card__sub">Seamless Engineering Handoff</p>
+                            <h3 class="mz-sp-card__title">Design → Development</h3>
+                            <p class="mz-sp-card__desc">Product quality gaps most frequently occur during engineering handoff. I craft production specifications, reusable components, and AI-assisted handoff workflows.<br><br>This eliminates ambiguity, speeds up implementation, and helps engineering teams <strong>ship features with confidence</strong>.</p>
+                            <div class="mz-sp-card__tags">
+                                <span class="mz-sp-tag">Figma MCP</span>
+                                <span class="mz-sp-tag">Cursor</span>
+                                <span class="mz-sp-tag">GitHub</span>
+                                <span class="mz-sp-tag">Interactive Prototypes</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
+        <script>
+        (function () {
+            var track = document.getElementById('mzSpTrack');
+            var prevBtn = document.getElementById('mzSpPrev');
+            var nextBtn = document.getElementById('mzSpNext');
+            if (!track || !prevBtn || !nextBtn) return;
+
+            function getCardWidth() {
+                var card = track.querySelector('.mz-sp-card');
+                return card ? card.offsetWidth + 24 : 380;
+            }
+
+            prevBtn.addEventListener('click', function () {
+                track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+            });
+
+            nextBtn.addEventListener('click', function () {
+                track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+            });
+        })();
+        </script>
 
         <div class="mz-testimonials-flow mz-reveal">
             <div class="klarna-flow-stage" id="flowStage"></div>
@@ -796,7 +990,7 @@
                 var el = document.createElement('div');
                 el.className = 'klarna-flow-item' + (idx === activeIndex ? ' active' : '');
                 el.id = 'flow-item-' + idx;
-                el.innerHTML = '<div class="klarna-quote-mark">“</div>' +
+                el.innerHTML = '<div class="klarna-quote-mark"><svg class="klarna-quote-icon" viewBox="0 0 52 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M0 24C0 10.745 8.582 2.67 22.5 0l2.87 5.086C17.618 6.96 13.333 10.706 12.53 16.32H22.5V40H0V24zm29.5 0C29.5 10.745 38.082 2.67 52 0l2.87 5.086C47.118 6.96 42.833 10.706 42.03 16.32H52V40H29.5V24z"/></svg></div>' +
                     '<p class="klarna-quote">' + item.quote + '</p>' +
                     '<div class="klarna-author">' +
                     '  <div class="klarna-info">' +
