@@ -831,6 +831,10 @@
         }
       }
       gapFor(z) { return z >= 1 ? 16 : z >= 0.6 ? 32 : 64; }
+      dims(gap) {
+        const w = this.cfg.cols * (this.cfg.width + gap) - gap, h = this.cfg.rows * (this.cfg.height + gap) - gap;
+        this.gw = w; this.gh = h; return { w, h };
+      }
       buildGrid() {
         this.cfg.gap = this.gapFor(this.cfg.zoom); this.dims(this.cfg.gap);
         this.canvas.style.width = this.gw + 'px'; this.canvas.style.height = this.gh + 'px';
