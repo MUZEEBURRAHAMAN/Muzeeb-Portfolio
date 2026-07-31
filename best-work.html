@@ -584,42 +584,53 @@
 
 
 
-    /* PRELOADER */
+    /* SKELETON PRELOADER */
     .pre {
       position: fixed;
       inset: 0;
       z-index: 1000;
       background: var(--bwg-bg);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity .8s ease
+      gap: 24px;
+      transition: opacity .4s ease;
+      pointer-events: none;
     }
 
-    .pre .ring {
-      width: 46px;
-      height: 46px;
-      border: 2px solid var(--bwg-stroke);
-      border-top-color: var(--bwg-ink);
-      border-radius: 50%;
-      animation: spin .8s linear infinite
+    .mz-skeleton-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 110px);
+      gap: 14px;
+    }
+
+    .mz-sk-card {
+      width: 110px;
+      height: 80px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--bwg-stroke);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mz-sk-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: mz-shimmer 1.5s infinite linear;
     }
 
     .pre .t {
-      position: absolute;
-      bottom: 60px;
       font-family: var(--bwg-sans);
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: .2em;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .18em;
       color: var(--bwg-sub);
       text-transform: uppercase
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg)
-      }
     }
   </style>
 </head>
@@ -627,8 +638,15 @@
 <body>
 
   <div class="pre" id="pre">
-    <div class="ring"></div>
-    <div class="t">Loading best work</div>
+    <div class="mz-skeleton-grid">
+      <div class="mz-sk-card"></div>
+      <div class="mz-sk-card"></div>
+      <div class="mz-sk-card"></div>
+      <div class="mz-sk-card"></div>
+      <div class="mz-sk-card"></div>
+      <div class="mz-sk-card"></div>
+    </div>
+    <div class="t">Loading Best Work</div>
   </div>
 
   <!-- Portfolio nav (site.js builds the mobile drawer from this) -->
@@ -1147,12 +1165,23 @@
 
     let gallery;
     function boot() {
+      if (window._booted) return;
+      window._booted = true;
       gallery = new Gallery();
       gallery.intro();
-      const pre = document.getElementById('pre'); pre.style.opacity = 0; setTimeout(() => pre.remove(), 800);
+      const pre = document.getElementById('pre');
+      if (pre) {
+        pre.style.opacity = 0;
+        setTimeout(() => pre.remove(), 400);
+      }
       addEventListener('resize', () => { clearTimeout(gallery._rz); gallery._rz = setTimeout(() => gallery.initDrag(), 120); });
     }
-    addEventListener('load', () => setTimeout(boot, 700));
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
+      boot();
+    } else {
+      document.addEventListener('DOMContentLoaded', boot);
+      addEventListener('load', boot);
+    }
   </script>
   <script src="assets/js/site.js?v=89"></script>
 </body>
