@@ -747,7 +747,14 @@
       "assets/images/best-work/bw_image 37(chat ui design).webp",
       "assets/images/best-work/bw_image 38(component design).webp",
       "assets/images/best-work/bw_image 39(landing page design).webp",
-      "assets/images/best-work/bw_image 40(upload design).webp"
+      "assets/images/best-work/bw_image 40(upload design).webp",
+      "assets/images/best-work/bw_image 41(Screenshot Redesign).webp",
+      "assets/images/best-work/bw_image 43(Screenshot Redesign).webp",
+      "assets/images/best-work/bw_image 44(shopify home page design).webp",
+      "assets/images/best-work/bw_image 45(EVE Needs section Redesign).webp",
+      "assets/images/best-work/bw_image 46(E-sign Component Design).webp",
+      "assets/images/best-work/bw_image 47(Mental Health wellness landing page).webp",
+      "assets/images/best-work/bw_image 48(Ecommerce bussiness landing page).webp"
     ];
     // ---- projects (title + description shown on zoom) ----
     const META = [
@@ -791,7 +798,14 @@
       { n: "38", t: "Chat User Interface", d: "Interactive chat message history design." },
       { n: "39", t: "Component Library", d: "Figma-ready UI component library specifications." },
       { n: "40", t: "SaaS Landing Page", d: "SaaS platform landing page sections and hero illustrations." },
-      { n: "41", t: "Upload UI State", d: "File uploading state interface elements design." }
+      { n: "41", t: "Upload UI State", d: "File uploading state interface elements design." },
+      { n: "42", t: "Screenshot Redesign", d: "High-fidelity mobile screenshot redesign and visual layout." },
+      { n: "43", t: "App Flow Redesign", d: "User flow optimization and mobile app screen redesign." },
+      { n: "44", t: "Shopify Home Page", d: "E-commerce homepage design layout for high-converting stores." },
+      { n: "45", t: "EVE Needs Section", d: "Feature redesign section for the EVE mental wellness platform." },
+      { n: "46", t: "E-Sign Component", d: "Digital signature UI component design and user interaction." },
+      { n: "47", t: "Mental Health Page", d: "Wellness landing page design focused on health awareness." },
+      { n: "48", t: "E-commerce Landing Page", d: "High-performance e-commerce landing page architecture." }
     ];
 
     class Gallery {
@@ -810,9 +824,9 @@
         this.controls = document.getElementById('controls');
         this.ease = CustomEase.create("smooth", ".87,0,.13,1");
         const initialGap = 32;
-        const totalW = 8 * (1024 + initialGap) - initialGap, totalH = 5 * (768 + initialGap) - initialGap;
+        const totalW = 8 * (1024 + initialGap) - initialGap, totalH = 6 * (768 + initialGap) - initialGap;
         const defaultFitZoom = Math.round(Math.max(.1, Math.min(1.4, Math.min((innerWidth - 80) / totalW, (innerHeight - 140) / totalH))) * 100) / 100;
-        this.cfg = { width: 1024, height: 768, rows: 5, cols: 8, zoom: defaultFitZoom, gap: initialGap };
+        this.cfg = { width: 1024, height: 768, rows: 6, cols: 8, zoom: defaultFitZoom, gap: initialGap };
         this.items = []; this.zoomOn = false; this.sel = null; this.overlay = null; this.drag = null;
         this.buildGrid();
         this.slider = document.getElementById('zoomSlider');
