@@ -858,7 +858,7 @@
           const el = document.createElement('div'); el.className = 'cell'; el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.opacity = 0;
           el.dataset.n = String((k % META.length) + 1).padStart(2, '0');
           const img = document.createElement('img');
-          img.src = IMAGES[k % IMAGES.length].replace('.webp', '_thumb.webp') + '?v=hq';
+          img.src = IMAGES[k % IMAGES.length] + '?v=hd';
           img.loading = 'lazy';
           img.alt = '';
           el.appendChild(img);
