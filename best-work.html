@@ -692,10 +692,8 @@
         <input type="range" id="zoomSlider" min="10" max="140" value="60">
       </div>
       <div class="divider"></div>
+      <button id="fitBtn" class="cur" onclick="gallery.fit(this)">Fit</button>
       <button onclick="gallery.setZoom(0.1,this)">Zoom out</button>
-      <button class="cur" onclick="gallery.setZoom(0.6,this)">Normal</button>
-      <button onclick="gallery.setZoom(1.0,this)">Zoom in</button>
-      <button onclick="gallery.fit(this)">Fit</button>
     </div>
   </div>
 
@@ -811,7 +809,10 @@
         this.nextBtn.addEventListener('click', () => this.navigate(1));
         this.controls = document.getElementById('controls');
         this.ease = CustomEase.create("smooth", ".87,0,.13,1");
-        this.cfg = { width: 1024, height: 768, rows: 5, cols: 8, zoom: 0.6, gap: 32 };
+        const initialGap = 32;
+        const totalW = 8 * (1024 + initialGap) - initialGap, totalH = 5 * (768 + initialGap) - initialGap;
+        const defaultFitZoom = Math.round(Math.max(.1, Math.min(1.4, Math.min((innerWidth - 80) / totalW, (innerHeight - 140) / totalH))) * 100) / 100;
+        this.cfg = { width: 1024, height: 768, rows: 5, cols: 8, zoom: defaultFitZoom, gap: initialGap };
         this.items = []; this.zoomOn = false; this.sel = null; this.overlay = null; this.drag = null;
         this.buildGrid();
         this.slider = document.getElementById('zoomSlider');
