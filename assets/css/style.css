@@ -2265,10 +2265,18 @@ body.mz-cursor-on button { cursor: none; }
     color: #f4f2ed;
     margin: 0 0 18px;
     font-weight: 400;
-    max-width: 54ch;
+    max-width: 58ch;
+}
+.klarna-quote b {
+    color: #ffffff;
+    font-weight: 600;
 }
 [data-theme="light"] .klarna-quote {
     color: #17170f;
+}
+[data-theme="light"] .klarna-quote b {
+    color: #0f0f0f;
+    font-weight: 600;
 }
 .klarna-author {
     display: flex;
