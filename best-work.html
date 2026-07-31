@@ -210,6 +210,27 @@
       transition: opacity .5s ease
     }
 
+    /* Glassmorphic Skeleton Shimmer Loader */
+    .cell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0) 100%);
+      background-size: 200% 100%;
+      animation: mz-shimmer 1.8s infinite linear;
+      z-index: 1;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .cell.loaded::before {
+      opacity: 0;
+    }
+
+    @keyframes mz-shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
     .cell.dim {
       opacity: .12
     }
@@ -219,7 +240,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      pointer-events: none
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .cell img.loaded {
+      opacity: 1;
     }
 
     .cell::after {
@@ -753,7 +779,8 @@
       "assets/images/best-work/bw_image 44(shopify home page design).webp",
       "assets/images/best-work/bw_image 46(E-sign Component Design).webp",
       "assets/images/best-work/bw_image 47(Mental Health wellness landing page).webp",
-      "assets/images/best-work/bw_image 48(Ecommerce bussiness landing page).webp"
+      "assets/images/best-work/bw_image 48(Ecommerce bussiness landing page).webp",
+      "assets/images/best-work/bw_image 49(how it works(eve ai).webp"
     ];
     // ---- projects (title + description shown on zoom) ----
     const META = [
@@ -803,7 +830,8 @@
       { n: "44", t: "Shopify Home Page", d: "E-commerce homepage design layout for high-converting stores." },
       { n: "45", t: "E-Sign Component", d: "Digital signature UI component design and user interaction." },
       { n: "46", t: "Mental Health Page", d: "Wellness landing page design focused on health awareness." },
-      { n: "47", t: "E-commerce Landing Page", d: "High-performance e-commerce landing page architecture." }
+      { n: "47", t: "E-commerce Landing Page", d: "High-performance e-commerce landing page architecture." },
+      { n: "48", t: "Eve AI How It Works", d: "Interactive AI process flow and user journey map for Eve platform." }
     ];
 
     class Gallery {
@@ -861,6 +889,18 @@
           img.src = IMAGES[k % IMAGES.length] + '?v=hd';
           img.loading = 'lazy';
           img.alt = '';
+
+          const markLoaded = () => {
+            img.classList.add('loaded');
+            el.classList.add('loaded');
+          };
+          if (img.complete) {
+            markLoaded();
+          } else {
+            img.onload = markLoaded;
+            img.onerror = markLoaded;
+          }
+
           el.appendChild(img);
           const data = { el, img, r, c, x, y, index: k };
           el.addEventListener('click', () => { if (!this.zoomOn) this.enter(data); });
