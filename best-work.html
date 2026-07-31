@@ -584,70 +584,10 @@
 
 
 
-    /* SKELETON PRELOADER */
-    .pre {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: var(--bwg-bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      transition: opacity .4s ease;
-      pointer-events: none;
-    }
-
-    .mz-skeleton-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 110px);
-      gap: 14px;
-    }
-
-    .mz-sk-card {
-      width: 110px;
-      height: 80px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--bwg-stroke);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mz-sk-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
-      background-size: 200% 100%;
-      animation: mz-shimmer 1.5s infinite linear;
-    }
-
-    .pre .t {
-      font-family: var(--bwg-sans);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      color: var(--bwg-sub);
-      text-transform: uppercase
-    }
   </style>
 </head>
 
 <body>
-
-  <div class="pre" id="pre">
-    <div class="mz-skeleton-grid">
-      <div class="mz-sk-card"></div>
-      <div class="mz-sk-card"></div>
-      <div class="mz-sk-card"></div>
-      <div class="mz-sk-card"></div>
-      <div class="mz-sk-card"></div>
-      <div class="mz-sk-card"></div>
-    </div>
-    <div class="t">Loading Best Work</div>
-  </div>
 
   <!-- Portfolio nav (site.js builds the mobile drawer from this) -->
   <nav class="mz-nav">
@@ -1169,11 +1109,6 @@
       window._booted = true;
       gallery = new Gallery();
       gallery.intro();
-      const pre = document.getElementById('pre');
-      if (pre) {
-        pre.style.opacity = 0;
-        setTimeout(() => pre.remove(), 400);
-      }
       addEventListener('resize', () => { clearTimeout(gallery._rz); gallery._rz = setTimeout(() => gallery.initDrag(), 120); });
     }
     if (document.readyState === 'interactive' || document.readyState === 'complete') {
