@@ -910,6 +910,13 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     -ms-overflow-style: none;
     scroll-behavior: smooth;
     padding: 8px 4px 20px;
+    cursor: grab;
+    user-select: none;
+}
+.mz-sp-beyond__track.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
 }
 .mz-sp-beyond__track::-webkit-scrollbar {
     display: none;
@@ -928,10 +935,31 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+    will-change: transform;
+    backface-visibility: hidden;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                 background 0.35s ease,
                 border-color 0.35s ease,
                 box-shadow 0.35s ease;
+}
+@media (max-width: 640px) {
+    .mz-sp-beyond__track {
+        gap: 16px;
+        padding: 4px 2px 16px;
+    }
+    .mz-sp-card {
+        flex: 0 0 calc(100% - 16px);
+        min-width: 280px;
+        max-width: 100%;
+        padding: 18px;
+    }
+    .mz-sp-cover {
+        height: 145px !important;
+        padding: 16px !important;
+    }
+    .mz-sp-cover__title {
+        font-size: 1.35rem !important;
+    }
 }
 .mz-sp-card:hover,
 .mz-sp-card:focus-within {

@@ -67,7 +67,7 @@
     build(); draw(0);
     // Canvas now fully covers — drop the fallback bg so dissolving cells reveal the page.
     wrap.style.background = "transparent";
-    window.addEventListener("resize", function () { build(); });
+    window.addEventListener("resize", function () { build(); }, { passive: true });
 
     var t0 = null;
     function frame(now) {

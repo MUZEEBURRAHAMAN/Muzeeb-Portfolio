@@ -951,6 +951,17 @@
         const z = Math.max(.1, Math.min(1.4, Math.min((innerWidth - 80) / w, (innerHeight - 140) / h)));
         this.setZoom(Math.round(z * 100) / 100, btn);
       }
+      preloadAdjacent(i) {
+        const total = this.items.length;
+        const nextIdx = (i + 1) % total;
+        const prevIdx = (i - 1 + total) % total;
+        [nextIdx, prevIdx].forEach(idx => {
+          if (IMAGES[idx]) {
+            const img = new Image();
+            img.src = IMAGES[idx] + '?v=hq';
+          }
+        });
+      }
       enter(data) {
         this.zoomOn = true; this.sel = data; document.body.classList.add('bwg-zoom'); if (this.drag) this.drag.disable();
         const r = data.img.getBoundingClientRect();
@@ -960,18 +971,23 @@
         gsap.set(ov, { left: r.left, top: r.top, width: r.width, height: r.height, opacity: 1 });
         gsap.set(data.img, { opacity: 0 });
         this.split.classList.add('active'); gsap.to(this.split, { opacity: 1, duration: .6, ease: this.ease });
-        // grow the image to a centered, undistorted 1024x768 rectangle fitting the screen
-        const maxW = innerWidth * 0.6;
-        const maxH = innerHeight * 0.74;
+        
+        const isMobile = innerWidth < 768;
+        const maxW = isMobile ? innerWidth * 0.9 : innerWidth * 0.6;
+        const maxH = isMobile ? innerHeight * 0.45 : innerHeight * 0.74;
         let W = maxW;
         let H = W * (768 / 1024);
         if (H > maxH) {
           H = maxH;
           W = H * (1024 / 768);
         }
+        const topPos = isMobile ? innerHeight * 0.12 : (innerHeight - H) / 2;
         gsap.to(ov, {
-          left: (innerWidth - W) / 2, top: (innerHeight - H) / 2, width: W, height: H,
-          duration: .9, ease: this.ease, onComplete: () => this.showDetail(data.index)
+          left: (innerWidth - W) / 2, top: topPos, width: W, height: H,
+          duration: .9, ease: this.ease, onComplete: () => {
+            this.showDetail(data.index);
+            this.preloadAdjacent(data.index);
+          }
         });
         this.close.classList.add('active');
         gsap.fromTo(this.close, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: .6, delay: .5, ease: "power2.out" });
@@ -984,6 +1000,37 @@
           else if (e.key === 'ArrowLeft') this.navigate(-1);
           else if (e.key === 'ArrowRight') this.navigate(1);
         });
+
+        // Mouse Wheel & Trackpad Navigation Listener
+        let lastWheelTime = 0;
+        window.addEventListener('wheel', this._wheel = (e) => {
+          if (!this.zoomOn) return;
+          e.preventDefault();
+          const now = Date.now();
+          if (now - lastWheelTime < 220) return;
+          if (Math.abs(e.deltaY) > 10 || Math.abs(e.deltaX) > 10) {
+            lastWheelTime = now;
+            const dir = (e.deltaY > 0 || e.deltaX > 0) ? 1 : -1;
+            this.navigate(dir);
+          }
+        }, { passive: false });
+
+        // Touch Swipe Gestures for Mobile
+        let touchStartX = 0, touchStartY = 0;
+        window.addEventListener('touchstart', this._touchStart = (e) => {
+          if (!this.zoomOn || e.touches.length > 1) return;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', this._touchEnd = (e) => {
+          if (!this.zoomOn || e.changedTouches.length === 0) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy)) {
+            this.navigate(dx < 0 ? 1 : -1);
+          }
+        }, { passive: true });
       }
       navigate(dir) {
         if (!this.zoomOn || !this.overlay || this.isNavigating) return;
@@ -998,11 +1045,12 @@
         const slideInX = dir > 0 ? 60 : -60;
 
         gsap.to(this.overlay, {
-          x: slideOutX, opacity: 0, duration: 0.2, ease: "power2.in", onComplete: () => {
+          x: slideOutX, opacity: 0, duration: 0.18, ease: "power2.in", onComplete: () => {
             im.src = IMAGES[this.sel.index] + '?v=hq';
+            this.preloadAdjacent(this.sel.index);
             gsap.set(this.overlay, { x: slideInX });
             gsap.to(this.overlay, {
-              x: 0, opacity: 1, duration: 0.35, ease: this.ease, onComplete: () => {
+              x: 0, opacity: 1, duration: 0.3, ease: this.ease, onComplete: () => {
                 this.isNavigating = false;
               }
             });
@@ -1023,6 +1071,9 @@
         if (!this.zoomOn || !this.sel || !this.overlay) return;
         const ov = this.overlay, img = this.sel.img;
         document.removeEventListener('keydown', this._key);
+        if (this._wheel) window.removeEventListener('wheel', this._wheel);
+        if (this._touchStart) window.removeEventListener('touchstart', this._touchStart);
+        if (this._touchEnd) window.removeEventListener('touchend', this._touchEnd);
         document.getElementById('splitL').removeEventListener('click', this._areaClick);
         document.getElementById('splitR').removeEventListener('click', this._areaClick);
         gsap.to(this.detail, { opacity: 0, duration: .3 });

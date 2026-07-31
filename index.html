@@ -507,11 +507,29 @@
             }
 
             prevBtn.addEventListener('click', function () {
-                track.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+                track.scrollBy({ left: -getCardWidth() });
             });
 
             nextBtn.addEventListener('click', function () {
-                track.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+                track.scrollBy({ left: getCardWidth() });
+            });
+
+            // Desktop Click & Drag to Scroll
+            var isDown = false, startX, scrollLeft;
+            track.addEventListener('mousedown', function (e) {
+                isDown = true;
+                track.classList.add('is-dragging');
+                startX = e.pageX - track.offsetLeft;
+                scrollLeft = track.scrollLeft;
+            });
+            track.addEventListener('mouseleave', function () { isDown = false; track.classList.remove('is-dragging'); });
+            track.addEventListener('mouseup', function () { isDown = false; track.classList.remove('is-dragging'); });
+            track.addEventListener('mousemove', function (e) {
+                if (!isDown) return;
+                e.preventDefault();
+                var x = e.pageX - track.offsetLeft;
+                var walk = (x - startX) * 1.5;
+                track.scrollLeft = scrollLeft - walk;
             });
         })();
         </script>
