@@ -175,18 +175,6 @@
         .pgstack__chip.dim { opacity: .25; }
 
         /* ===== command palette (⌘K) ===== */
-        .pgcmd { position: fixed; inset: 0; z-index: 200; display: none; align-items: flex-start; justify-content: center; padding-top: 14vh; background: rgba(0,0,0,.5); backdrop-filter: blur(3px); }
-        .pgcmd.on { display: flex; }
-        .pgcmd__box { width: min(520px, 92vw); background: #1a1a1a; border: 1px solid #2f2f2f; border-radius: 16px; box-shadow: 0 30px 80px rgba(0,0,0,.6); overflow: hidden; }
-        .pgcmd__in { width: 100%; box-sizing: border-box; background: none; border: none; border-bottom: 1px solid #262626; padding: 16px 20px; color: #f4f2ed; font-family: 'Inter Tight', sans-serif; font-size: 1rem; outline: none; }
-        .pgcmd__list { max-height: 320px; overflow-y: auto; padding: 6px; }
-        .pgcmd__item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 10px; cursor: pointer; color: #cfcfcd; font-size: .9rem; }
-        .pgcmd__item .k { font-size: .62rem; color: #6f6f6c; margin-left: auto; }
-        .pgcmd__item.sel, .pgcmd__item:hover { background: rgba(255,255,255,.07); color: #f4f2ed; }
-        .pgcmd__item .ic { width: 26px; height: 26px; border-radius: 7px; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; font-size: .8rem; }
-        .pgcmd__hint { position: fixed; right: 24px; top: 24px; z-index: 45; background: #1a1a1a; border: 1px solid #242424; border-radius: 999px; padding: 7px 13px; font-size: .74rem; color: #9a9a98; display: none; align-items: center; gap: 6px; }
-        @media(min-width:761px){ .pgcmd__hint { display: inline-flex; } }
-        .pgcmd__hint kbd { background: rgba(255,255,255,.08); border-radius: 5px; padding: 1px 6px; font-family: 'Inter Tight', sans-serif; font-size: .7rem; color: #cfcfcd; }
 
         /* ===== easter eggs ===== */
         .pghire { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%) translateY(20px); z-index: 210; background: #f4f2ed; color: #141414; border-radius: 14px; padding: 16px 20px; box-shadow: 0 20px 50px rgba(0,0,0,.6); opacity: 0; pointer-events: none; transition: opacity .35s, transform .35s; text-align: center; }
@@ -695,17 +683,6 @@
         </div>
     </div>
 
-    <!-- ⌘K hint -->
-    <div class="pgcmd__hint" id="pgCmdHint"><kbd>⌘</kbd><kbd>K</kbd> to jump anywhere</div>
-
-    <!-- command palette -->
-    <div class="pgcmd" id="pgCmd">
-        <div class="pgcmd__box">
-            <input class="pgcmd__in" id="pgCmdIn" type="text" placeholder="Jump to a zone, toy, or link…" autocomplete="off">
-            <div class="pgcmd__list" id="pgCmdList"></div>
-        </div>
-    </div>
-
     <!-- easter egg: hire toast -->
     <div class="pghire" id="pgHire"><b>You typed "hire" 👀</b><a href="mailto:rahamanmuzeeb1108@gmail.com">Let's talk →</a></div>
 
@@ -1007,51 +984,6 @@
             });
         })();
 
-        // ---- Command palette (⌘K) ----
-        (function () {
-            var overlay = document.getElementById('pgCmd'), input = document.getElementById('pgCmdIn'), list = document.getElementById('pgCmdList');
-            if (!overlay) return;
-            var CMDS = [
-                { t: 'Overview', ic: '🗺', x: 1620, y: 900, s: 0.85 },
-                { t: 'Designer playground', ic: '🎨', x: 360, y: 1500, s: 1.0 },
-                { t: 'Builder playground', ic: '🛠', x: 2820, y: 1500, s: 1.0 },
-                { t: 'Type tester', ic: '⌨️', x: 1700, y: 1120, s: 1.1 },
-                { t: 'Before / after', ic: '🖼', x: 720, y: 2120, s: 1.1 },
-                { t: 'Contrast checker', ic: '◐', x: 1130, y: 2140, s: 1.1 },
-                { t: 'Stack map', ic: '🔗', x: 1520, y: 1520, s: 1.1 },
-                { t: 'Résumé', ic: '📄', href: 'resume.html' },
-                { t: 'Email me', ic: '✉️', href: 'mailto:rahamanmuzeeb1108@gmail.com' },
-                { t: 'Home', ic: '🏠', href: 'index.html' },
-                { t: 'Best work', ic: '⭐', href: 'best-work.html' }
-            ];
-            var sel = 0, shown = CMDS.slice();
-            function render() {
-                list.innerHTML = '';
-                shown.forEach(function (c, i) {
-                    var el = document.createElement('div'); el.className = 'pgcmd__item' + (i === sel ? ' sel' : '');
-                    el.innerHTML = '<span class="ic">' + c.ic + '</span>' + c.t + '<span class="k">' + (c.href ? 'open' : 'jump') + '</span>';
-                    el.addEventListener('click', function () { run(c); });
-                    el.addEventListener('mousemove', function () { sel = i; paint(); });
-                    list.appendChild(el);
-                });
-            }
-            function paint() { [].forEach.call(list.children, function (el, i) { el.classList.toggle('sel', i === sel); }); }
-            function run(c) { close(); if (c.href) { if (/^(https?:|mailto:)/.test(c.href)) window.open(c.href, '_blank'); else location.href = c.href; } else panTo(c.x, c.y, c.s); }
-            function open() { overlay.classList.add('on'); input.value = ''; shown = CMDS.slice(); sel = 0; render(); setTimeout(function () { input.focus(); }, 30); }
-            function close() { overlay.classList.remove('on'); }
-            input.addEventListener('input', function () { var q = input.value.toLowerCase(); shown = CMDS.filter(function (c) { return c.t.toLowerCase().indexOf(q) > -1; }); sel = 0; render(); });
-            input.addEventListener('keydown', function (e) {
-                if (e.key === 'ArrowDown') { e.preventDefault(); sel = Math.min(shown.length - 1, sel + 1); paint(); }
-                else if (e.key === 'ArrowUp') { e.preventDefault(); sel = Math.max(0, sel - 1); paint(); }
-                else if (e.key === 'Enter') { e.preventDefault(); if (shown[sel]) run(shown[sel]); }
-                else if (e.key === 'Escape') { close(); }
-            });
-            overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
-            window.addEventListener('keydown', function (e) {
-                if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); overlay.classList.contains('on') ? close() : open(); }
-            });
-        })();
-
         // ---- Easter eggs: "hire" keyword + Konami ----
         (function () {
             var hire = document.getElementById('pgHire'), buf = '';
@@ -1145,7 +1077,7 @@
                 .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
             // …and when interactive controls toggle open (palette, dock, etc.)
             document.addEventListener('click', function (e) {
-                if (e.target.closest && e.target.closest('button, [data-focus], .pgcmd, a')) react('?');
+                if (e.target.closest && e.target.closest('button, [data-focus], a')) react('?');
             }, true);
 
             function dropPaw(x, y, ang) {
@@ -1235,7 +1167,7 @@
         })();
     })();
     </script>
-    <script src="assets/js/uisfx.min.js"></script>
+    <script src="assets/js/nachi-sfx.js"></script>
     <script src="assets/js/sfx.js"></script>
     <script src="assets/js/site.js?v=97"></script>
 </body>

@@ -2086,6 +2086,25 @@ body.mz-cursor-on button { cursor: none; }
   .mz-sound-btn { top:auto; bottom:24px; left:70px; right:auto; width:42px; height:42px; }
 }
 
+/* docked in the footer (pages that have one): sits inline with the social
+   icons inside .mz-footer__socials, normal flow, not fixed */
+.mz-footer__sfx { display:flex; align-items:center; gap:10px; margin-left:4px; padding-left:14px; border-left:1px solid var(--border); }
+.mz-footer__sfx .mz-theme-btn,
+.mz-footer__sfx .mz-sound-btn { position:static; width:38px; height:38px; box-shadow:none; }
+@media (max-width:480px){
+  .mz-footer__sfx { padding-left:0; border-left:none; margin-left:0; }
+}
+
+/* docked in the header nav (pages with no footer: best-work, playground):
+   ordinary nav flex children instead of floating fixed circles, so they
+   shrink/hide with the rest of the pill nav instead of overlapping it */
+.mz-nav > .mz-theme-btn,
+.mz-nav > .mz-sound-btn { position:static; width:44px; height:44px; flex:none; }
+@media (max-width:760px){
+  .mz-nav > .mz-theme-btn,
+  .mz-nav > .mz-sound-btn { width:38px; height:38px; }
+}
+
 /* hero CTA — Book a 1:1 call */
 .mz-hero__cta { display:inline-flex; align-items:center; gap:9px; margin-top:30px; padding:13px 24px; border-radius:999px; background:hsl(var(--primary)); color:#0f0f0f; font-weight:600; font-size:.98rem; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.25); transition:transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); opacity:0; animation:mz-fade-up .8s cubic-bezier(0.16,1,0.3,1) .35s forwards; }
 .mz-hero__cta:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.32); }

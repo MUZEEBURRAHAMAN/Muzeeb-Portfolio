@@ -458,7 +458,7 @@
       parent.appendChild(b);
       btns.push(b);
     }
-    make("mz-theme-btn", false, document.body);
+    make("mz-theme-btn", false, getSFXHost());
   }
 
   /* ---------- Mobile nav: logo left, hamburger right -> slide-in drawer ---------- */
@@ -606,20 +606,52 @@
     });
   }
 
+  /* ---------- Theme/sound toggle placement ----------
+     Pages with a <footer> get the two toggle buttons docked there (out of the
+     header, so the nav pill has room to breathe on narrow viewports). Pages
+     with no footer (best-work, playground) get them appended as ordinary
+     flex children of .mz-nav instead of floating fixed circles, so they
+     shrink/wrap with the rest of the nav instead of overlapping it. */
+  function getSFXHost() {
+    var footer = document.querySelector("footer");
+    if (footer) {
+      var row = footer.querySelector(".mz-footer__socials") || footer.querySelector(".mz-footer__row") || footer;
+      var wrap = row.querySelector(".mz-footer__sfx");
+      if (!wrap) {
+        wrap = document.createElement("div");
+        wrap.className = "mz-footer__sfx";
+        row.appendChild(wrap);
+      }
+      return wrap;
+    }
+    var nav = document.querySelector(".mz-nav");
+    if (nav) return nav;
+    return document.body;
+  }
+
+  function placeSoundBtn() {
+    var btn = document.querySelector(".mz-sound-btn");
+    if (btn) getSFXHost().appendChild(btn);
+  }
+
   function ensureSFXLoaded() {
     if (window.mzSFX) {
-      if (typeof window.mzSFX.initSoundToggle === "function") window.mzSFX.initSoundToggle();
+      if (typeof window.mzSFX.initSoundToggle === "function") {
+        window.mzSFX.initSoundToggle();
+        placeSoundBtn();
+      }
       return;
     }
-    if (!window.uisfx) {
+    if (!window.nachiSFX) {
       var s1 = document.createElement("script");
-      s1.src = "assets/js/uisfx.min.js";
+      s1.src = "assets/js/nachi-sfx.js";
       s1.onload = function () {
         var s2 = document.createElement("script");
         s2.src = "assets/js/sfx.js";
         s2.onload = function () {
           if (window.mzSFX && typeof window.mzSFX.initSoundToggle === "function") {
             window.mzSFX.initSoundToggle();
+            placeSoundBtn();
           }
         };
         document.head.appendChild(s2);

@@ -1,0 +1,255 @@
+/* Web Audio synthesis engine — ported from nachi.design's UI sound system
+   (reverse-engineered from their production JS bundle: named presets of
+   sine-tone + filtered-noise layers through a shimmer/delay send, no
+   audio files, everything generated at play-time via AudioContext). */
+(function (factory) {
+  if (typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = factory();
+  } else {
+    globalThis.nachiSFX = factory();
+  }
+}(function () {
+  'use strict';
+
+  var root = globalThis;
+
+  var PRESETS = {
+    chime: {
+      masterGain: 0.5,
+      layers: [
+        { kind: 'tone', waveform: 'sine', frequency: 1046.5, attack: 0.006, decay: 0.22, peak: 0.09 },
+        { kind: 'tone', waveform: 'sine', frequency: 1568, offset: 0.09, attack: 0.006, decay: 0.26, peak: 0.08 }
+      ],
+      shimmer: { delay: 0.12, feedback: 0.25, wet: 0.18, lowpass: 4000 }
+    },
+    sparkle: {
+      masterGain: 0.5,
+      layers: [
+        { kind: 'tone', waveform: 'sine', frequency: 1760, attack: 0.003, decay: 0.09, peak: 0.045 },
+        { kind: 'tone', waveform: 'sine', frequency: 2217, offset: 0.045, attack: 0.003, decay: 0.09, peak: 0.04 },
+        { kind: 'tone', waveform: 'sine', frequency: 2637, offset: 0.09, attack: 0.003, decay: 0.1, peak: 0.038 },
+        { kind: 'tone', waveform: 'sine', frequency: 3520, offset: 0.135, attack: 0.003, decay: 0.12, peak: 0.032 }
+      ],
+      shimmer: { delay: 0.07, feedback: 0.35, wet: 0.22, lowpass: 6000 }
+    },
+    droplet: {
+      masterGain: 0.55,
+      layers: [
+        { kind: 'tone', waveform: 'sine', frequency: 1200, glideTo: 550, glideTime: 0.14, attack: 0.004, decay: 0.2, peak: 0.075 }
+      ],
+      shimmer: { delay: 0.09, feedback: 0.2, wet: 0.15, lowpass: 3000 }
+    },
+    bloom: {
+      masterGain: 0.5,
+      layers: [
+        { kind: 'tone', waveform: 'sine', frequency: 528, attack: 0.06, decay: 0.32, peak: 0.06 },
+        { kind: 'tone', waveform: 'sine', frequency: 528, detune: 12, attack: 0.06, decay: 0.34, peak: 0.05 }
+      ],
+      shimmer: { delay: 0.15, feedback: 0.2, wet: 0.12, lowpass: 2500 }
+    },
+    whisper: {
+      masterGain: 0.5,
+      layers: [
+        { kind: 'noise', filterType: 'lowpass', filterFrequency: 1200, filterQ: 0.7, attack: 0.04, decay: 0.16, peak: 0.05 }
+      ]
+    },
+    tick: {
+      masterGain: 0.4,
+      layers: [
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 5400, filterQ: 1.8, attack: 0.001, decay: 0.018, peak: 0.14 },
+        { kind: 'tone', waveform: 'sine', frequency: 2600, attack: 0.001, decay: 0.012, peak: 0.018 }
+      ]
+    },
+    press: {
+      masterGain: 0.4,
+      layers: [
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 1700, filterQ: 1.4, attack: 0.001, decay: 0.02, peak: 0.13 }
+      ]
+    },
+    release: {
+      masterGain: 0.4,
+      layers: [
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 4600, filterQ: 1.8, attack: 0.001, decay: 0.016, peak: 0.12 },
+        { kind: 'tone', waveform: 'sine', frequency: 3200, offset: 0.006, attack: 0.001, decay: 0.05, peak: 0.02 }
+      ]
+    },
+    toggle: {
+      masterGain: 0.4,
+      layers: [
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 2200, filterQ: 1.6, attack: 0.001, decay: 0.016, peak: 0.12 },
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 3800, filterQ: 1.6, offset: 0.024, attack: 0.001, decay: 0.02, peak: 0.1 }
+      ]
+    },
+    success: {
+      masterGain: 0.5,
+      layers: [
+        { kind: 'tone', waveform: 'sine', frequency: 880, attack: 0.004, decay: 0.09, peak: 0.06 },
+        { kind: 'tone', waveform: 'sine', frequency: 1108.73, offset: 0.06, attack: 0.004, decay: 0.1, peak: 0.06 },
+        { kind: 'tone', waveform: 'sine', frequency: 1318.51, offset: 0.12, attack: 0.004, decay: 0.18, peak: 0.07 }
+      ],
+      shimmer: { delay: 0.1, feedback: 0.22, wet: 0.16, lowpass: 4500 }
+    },
+    error: {
+      masterGain: 0.42,
+      layers: [
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 850, filterQ: 1.1, attack: 0.001, decay: 0.035, peak: 0.13 },
+        { kind: 'tone', waveform: 'triangle', frequency: 440, offset: 0.025, attack: 0.004, decay: 0.09, peak: 0.045 },
+        { kind: 'tone', waveform: 'triangle', frequency: 349.23, offset: 0.1, attack: 0.004, decay: 0.14, peak: 0.04 }
+      ]
+    },
+    page: {
+      masterGain: 0.38,
+      layers: [
+        { kind: 'noise', filterType: 'lowpass', filterFrequency: 1800, filterQ: 0.7, attack: 0.006, decay: 0.08, peak: 0.11 },
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 4200, filterQ: 1.2, offset: 0.04, attack: 0.004, decay: 0.065, peak: 0.08 },
+        { kind: 'tone', waveform: 'sine', frequency: 2400, offset: 0.075, attack: 0.002, decay: 0.045, peak: 0.02 }
+      ]
+    },
+    loading: {
+      masterGain: 0.42,
+      layers: [
+        { kind: 'noise', filterType: 'lowpass', filterFrequency: 1400, filterQ: 0.6, attack: 0.035, decay: 0.14, peak: 0.035 },
+        { kind: 'tone', waveform: 'sine', frequency: 420, glideTo: 630, glideTime: 0.18, attack: 0.025, decay: 0.18, peak: 0.05 }
+      ],
+      shimmer: { delay: 0.11, feedback: 0.18, wet: 0.12, lowpass: 2800 }
+    },
+    ready: {
+      masterGain: 0.45,
+      layers: [
+        { kind: 'noise', filterType: 'bandpass', filterFrequency: 3200, filterQ: 1.7, attack: 0.001, decay: 0.018, peak: 0.1 },
+        { kind: 'tone', waveform: 'sine', frequency: 659.25, offset: 0.025, attack: 0.012, decay: 0.2, peak: 0.05 },
+        { kind: 'tone', waveform: 'sine', frequency: 987.77, offset: 0.025, attack: 0.012, decay: 0.22, peak: 0.035 }
+      ],
+      shimmer: { delay: 0.13, feedback: 0.2, wet: 0.13, lowpass: 3600 }
+    }
+  };
+
+  var ctx = null;
+
+  function getContext() {
+    if (ctx) return ctx;
+    var Ctor = root.AudioContext || root.webkitAudioContext;
+    if (!Ctor) return null;
+    try { ctx = new Ctor(); } catch (e) { return null; }
+    return ctx;
+  }
+
+  function playTone(context, dest, layer, startAt) {
+    var osc = context.createOscillator();
+    osc.type = layer.waveform;
+    osc.frequency.setValueAtTime(layer.frequency, startAt);
+    if (layer.detune) osc.detune.value = layer.detune;
+    if (layer.glideTo !== undefined) {
+      var glideTime = layer.glideTime !== undefined ? layer.glideTime : layer.attack + layer.decay;
+      osc.frequency.exponentialRampToValueAtTime(layer.glideTo, startAt + glideTime);
+    }
+    var gain = context.createGain();
+    gain.gain.setValueAtTime(0.0001, startAt);
+    gain.gain.exponentialRampToValueAtTime(layer.peak, startAt + layer.attack);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startAt + layer.attack + layer.decay);
+    osc.connect(gain).connect(dest);
+    osc.start(startAt);
+    osc.stop(startAt + layer.attack + layer.decay + 0.05);
+  }
+
+  function playNoise(context, dest, layer, startAt) {
+    var total = layer.attack + layer.decay + 0.05;
+    var frames = Math.max(1, Math.floor(total * context.sampleRate));
+    var buffer = context.createBuffer(1, frames, context.sampleRate);
+    var data = buffer.getChannelData(0);
+    for (var i = 0; i < frames; i++) data[i] = Math.random() * 2 - 1;
+
+    var src = context.createBufferSource();
+    src.buffer = buffer;
+    var filter = context.createBiquadFilter();
+    filter.type = layer.filterType;
+    filter.frequency.value = layer.filterFrequency;
+    if (layer.filterQ !== undefined) filter.Q.value = layer.filterQ;
+
+    var gain = context.createGain();
+    gain.gain.setValueAtTime(0.0001, startAt);
+    gain.gain.exponentialRampToValueAtTime(layer.peak, startAt + layer.attack);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startAt + layer.attack + layer.decay);
+
+    src.connect(filter).connect(gain).connect(dest);
+    src.start(startAt);
+    src.stop(startAt + total);
+  }
+
+  function trigger(context, preset, volumeScale) {
+    var now = context.currentTime;
+    var master = context.createGain();
+    master.gain.value = preset.masterGain * (volumeScale === undefined ? 1 : volumeScale);
+    master.connect(context.destination);
+
+    var shimmerNodes = [];
+    if (preset.shimmer) {
+      var s = preset.shimmer;
+      var delay = context.createDelay(1);
+      delay.delayTime.value = s.delay;
+      var lowpass = context.createBiquadFilter();
+      lowpass.type = 'lowpass';
+      lowpass.frequency.value = s.lowpass;
+      var feedback = context.createGain();
+      feedback.gain.value = s.feedback;
+      var wet = context.createGain();
+      wet.gain.value = s.wet;
+      master.connect(delay);
+      delay.connect(lowpass);
+      lowpass.connect(feedback);
+      feedback.connect(delay);
+      lowpass.connect(wet);
+      wet.connect(context.destination);
+      shimmerNodes = [delay, lowpass, feedback, wet];
+    }
+
+    var maxTail = 0;
+    preset.layers.forEach(function (layer) {
+      var startAt = now + (layer.offset || 0);
+      if (layer.kind === 'tone') playTone(context, master, layer, startAt);
+      else playNoise(context, master, layer, startAt);
+      maxTail = Math.max(maxTail, (layer.offset || 0) + layer.attack + layer.decay + 0.05);
+    });
+
+    var shimmerTail = 0;
+    if (preset.shimmer && preset.shimmer.feedback > 0 && preset.shimmer.feedback < 1) {
+      shimmerTail = preset.shimmer.delay * (1 + Math.ceil(Math.log(0.001) / Math.log(preset.shimmer.feedback)));
+    } else if (preset.shimmer && preset.shimmer.feedback >= 1) {
+      shimmerTail = preset.shimmer.delay;
+    }
+
+    setTimeout(function () {
+      master.disconnect();
+      shimmerNodes.forEach(function (n) { n.disconnect(); });
+    }, (maxTail + shimmerTail + 0.05) * 1000);
+  }
+
+  function play(name, opts) {
+    var preset = PRESETS[name];
+    if (!preset) return false;
+    var context = getContext();
+    if (!context) return false;
+    var volumeScale = opts && opts.volume !== undefined ? opts.volume : 1;
+    if (context.state === 'running') {
+      trigger(context, preset, volumeScale);
+    } else {
+      context.resume().then(function () {
+        if (context.state === 'running') trigger(context, preset, volumeScale);
+      }, function () {});
+    }
+    return true;
+  }
+
+  function unlock() {
+    var context = getContext();
+    if (!context) return Promise.resolve(false);
+    if (context.state === 'running') return Promise.resolve(true);
+    return context.resume().then(function () { return context.state === 'running'; }, function () { return false; });
+  }
+
+  return {
+    presetNames: Object.keys(PRESETS),
+    play: play,
+    unlock: unlock
+  };
+}));

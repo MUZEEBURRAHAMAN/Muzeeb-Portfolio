@@ -1,26 +1,49 @@
-/* Muzeeb Portfolio — UI SFX Module (uisfx)
-   Selected Sound Pack: studio
-   Tactile editing precision with warm cinematic restraint for AI & SaaS portfolio.
+/* Muzeeb Portfolio — UI SFX Module
+   Engine: nachi-sfx (ported Web Audio synth from nachi.design, see nachi-sfx.js)
 */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['uisfx'], factory);
+    define(['nachiSFX'], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory(require('uisfx'));
+    module.exports = factory(require('./nachi-sfx.js'));
   } else {
-    root.mzSFX = factory(root.uisfx);
+    root.mzSFX = factory(root.nachiSFX);
   }
-}(typeof self !== 'undefined' ? self : this, function (uisfx) {
+}(typeof self !== 'undefined' ? self : this, function (engine) {
   'use strict';
 
-  var SELECTED_PACK = 'studio';
+  var ENGINE_NAME = 'nachi-sfx';
   var DEFAULT_VOLUME = 0.7;
   var PREF_KEY = 'mz-sound';
 
-  var player = null;
-  var unlocked = false;
-  var activeLoops = new Map();
+  /* Every semantic cue used across the site, mapped to the nearest matching
+     preset from nachi.design's sound set. */
+  var CUE_MAP = {
+    hover: 'tick',
+    press: 'press',
+    release: 'release',
+    focus: 'droplet',
+    typing: 'tick',
+    select: 'sparkle',
+    check: 'toggle',
+    uncheck: 'toggle',
+    open: 'page',
+    close: 'page',
+    forward: 'page',
+    undo: 'release',
+    error: 'error',
+    receive: 'droplet',
+    send: 'chime',
+    success: 'success',
+    processing: 'loading',
+    'toggle-on': 'ready',
+    'toggle-off': 'toggle'
+  };
+
+  var enabled = true;
   var isSSR = typeof window === 'undefined';
+  var lastPlayedAt = {};
+  var activeLoops = new Map();
 
   function getSavedSoundPreference() {
     if (isSSR || !window.localStorage) return true;
@@ -32,28 +55,22 @@
     }
   }
 
-  function getPlayer() {
-    if (isSSR) return null;
-    var lib = uisfx || (typeof window !== 'undefined' ? window.uisfx : null);
-    if (!player && lib && typeof lib.createUISFX === 'function') {
-      var enabled = getSavedSoundPreference();
-      player = lib.createUISFX({
-        pack: SELECTED_PACK,
-        volume: DEFAULT_VOLUME,
-        enabled: enabled
-      });
-    }
-    return player;
+  function getEngine() {
+    return engine || (typeof window !== 'undefined' ? window.nachiSFX : null);
+  }
+
+  var initialized = false;
+  function ensureInit() {
+    if (initialized) return;
+    initialized = true;
+    enabled = getSavedSoundPreference();
   }
 
   function unlockAudio() {
-    if (unlocked || isSSR) return Promise.resolve(false);
-    var p = getPlayer();
-    if (p && typeof p.unlock === 'function') {
-      return p.unlock().then(function (res) {
-        if (res) unlocked = true;
-        return res;
-      }).catch(function () { return false; });
+    if (isSSR) return Promise.resolve(false);
+    var e = getEngine();
+    if (e && typeof e.unlock === 'function') {
+      return e.unlock().catch(function () { return false; });
     }
     return Promise.resolve(false);
   }
@@ -63,40 +80,54 @@
     var events = ['pointerdown', 'keydown', 'touchstart'];
     function onGesture() {
       unlockAudio();
-      events.forEach(function (e) {
-        window.removeEventListener(e, onGesture, true);
+      events.forEach(function (ev) {
+        window.removeEventListener(ev, onGesture, true);
       });
     }
-    events.forEach(function (e) {
-      window.addEventListener(e, onGesture, true);
+    events.forEach(function (ev) {
+      window.addEventListener(ev, onGesture, true);
     });
   }
 
   function playSFX(cue, options) {
-    var p = getPlayer();
-    if (!p || !p.isEnabled()) return null;
+    ensureInit();
+    if (!enabled) return null;
+    var e = getEngine();
+    if (!e) return null;
+    var preset = CUE_MAP[cue] || cue;
+    if (e.presetNames && e.presetNames.indexOf(preset) === -1) return null;
+
+    var cooldownMs = options && options.cooldownMs;
+    if (cooldownMs) {
+      var now = Date.now();
+      var last = lastPlayedAt[cue] || 0;
+      if (now - last < cooldownMs) return null;
+      lastPlayedAt[cue] = now;
+    }
+
     try {
-      return p.play(cue, options) || null;
+      var ok = e.play(preset, { volume: DEFAULT_VOLUME });
+      return ok ? { cue: cue, preset: preset } : null;
     } catch (err) {
       return null;
     }
   }
 
   function startLoop(cue, options) {
-    var p = getPlayer();
-    if (!p || !p.isEnabled()) return null;
-    if (activeLoops.has(cue)) {
-      return activeLoops.get(cue);
-    }
-    try {
-      var handle = p.play(cue, Object.assign({ loop: true }, options));
-      if (handle) {
-        activeLoops.set(cue, handle);
-      }
-      return handle;
-    } catch (err) {
-      return null;
-    }
+    ensureInit();
+    if (!enabled) return null;
+    if (activeLoops.has(cue)) return activeLoops.get(cue);
+    var preset = CUE_MAP[cue] || cue;
+    var intervalMs = (options && options.intervalMs) || 700;
+    var e = getEngine();
+    if (!e) return null;
+    try { e.play(preset, { volume: DEFAULT_VOLUME }); } catch (err) {}
+    var timer = setInterval(function () {
+      try { e.play(preset, { volume: DEFAULT_VOLUME }); } catch (err) {}
+    }, intervalMs);
+    var handle = { stop: function () { clearInterval(timer); } };
+    activeLoops.set(cue, handle);
+    return handle;
   }
 
   function stopLoop(cue) {
@@ -116,37 +147,32 @@
       }
     });
     activeLoops.clear();
-    var p = getPlayer();
-    if (p && typeof p.stopAll === 'function') {
-      try { p.stopAll(); } catch (e) {}
-    }
   }
 
   function isSoundEnabled() {
-    var p = getPlayer();
-    return p ? p.isEnabled() : getSavedSoundPreference();
+    ensureInit();
+    return enabled;
   }
 
-  function setSoundEnabled(enabled) {
+  function setSoundEnabled(nextEnabled) {
+    ensureInit();
+    enabled = !!nextEnabled;
     if (!isSSR && window.localStorage) {
       try { localStorage.setItem(PREF_KEY, enabled ? 'true' : 'false'); } catch (e) {}
     }
-    var p = getPlayer();
     if (!enabled) {
       stopAllLoops();
-      if (p) p.setEnabled(false);
     } else {
-      if (p) p.setEnabled(true);
       playSFX('toggle-on');
     }
     updateToggleUI(enabled);
   }
 
-  function updateToggleUI(enabled) {
+  function updateToggleUI(isEnabled) {
     if (isSSR) return;
     var btns = document.querySelectorAll('.mz-sound-btn');
     btns.forEach(function (b) {
-      b.setAttribute('aria-checked', enabled ? 'true' : 'false');
+      b.setAttribute('aria-checked', isEnabled ? 'true' : 'false');
       if (typeof b.render === 'function') b.render();
     });
   }
@@ -164,9 +190,9 @@
     btn.setAttribute('role', 'switch');
     btn.setAttribute('aria-label', 'Toggle sound effects');
     btn.render = function () {
-      var enabled = isSoundEnabled();
-      btn.setAttribute('aria-checked', enabled ? 'true' : 'false');
-      btn.innerHTML = enabled ? SPEAKER_ON : SPEAKER_OFF;
+      var isEnabled = isSoundEnabled();
+      btn.setAttribute('aria-checked', isEnabled ? 'true' : 'false');
+      btn.innerHTML = isEnabled ? SPEAKER_ON : SPEAKER_OFF;
     };
     btn.render();
     btn.addEventListener('click', function () {
@@ -177,11 +203,8 @@
 
   function destroy() {
     stopAllLoops();
-    if (player && typeof player.destroy === 'function') {
-      player.destroy();
-    }
-    player = null;
-    unlocked = false;
+    lastPlayedAt = {};
+    initialized = false;
   }
 
   if (!isSSR) {
@@ -189,8 +212,9 @@
   }
 
   return {
-    SELECTED_PACK: SELECTED_PACK,
-    getPlayer: getPlayer,
+    ENGINE: ENGINE_NAME,
+    CUE_MAP: CUE_MAP,
+    getEngine: getEngine,
     play: playSFX,
     startLoop: startLoop,
     stopLoop: stopLoop,
