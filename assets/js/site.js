@@ -6,6 +6,23 @@
   "use strict";
   document.documentElement.classList.add("js");
 
+  /* ---------- Sound Effect Helper Utilities ---------- */
+  function mzPlay(cue, opts) { if (window.mzSFX) window.mzSFX.play(cue, opts); }
+  function mzStartLoop(cue, opts) { return window.mzSFX ? window.mzSFX.startLoop(cue, opts) : null; }
+  function mzStopLoop(cue) { if (window.mzSFX) window.mzSFX.stopLoop(cue); }
+
+  function initHoverSFX() {
+    if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    document.addEventListener("pointerover", function (e) {
+      var target = e.target.closest(".mz-theme-btn, .mz-sound-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn");
+      if (!target) return;
+      var related = e.relatedTarget ? e.relatedTarget.closest(".mz-theme-btn, .mz-sound-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn") : null;
+      if (target !== related) {
+        mzPlay("hover", { cooldownMs: 80 });
+      }
+    });
+  }
+
   var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
   var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
 
@@ -235,9 +252,13 @@
 
     var launcher = document.getElementById("cw-launcher"), panel = document.getElementById("cw-panel"),
         body = document.getElementById("cw-body"), input = document.getElementById("cw-input"), send = document.getElementById("cw-send");
-    document.getElementById("cw-close").onclick = function () { toggle(false); };
-    document.getElementById("cw-reset").onclick = function () { body.innerHTML = ""; greet(); };
-    launcher.onclick = function () { toggle(!panel.classList.contains("open")); };
+    document.getElementById("cw-close").onclick = function () { toggle(false); mzPlay("close"); };
+    document.getElementById("cw-reset").onclick = function () { body.innerHTML = ""; greet(); mzPlay("undo"); };
+    launcher.onclick = function () {
+      var willOpen = !panel.classList.contains("open");
+      toggle(willOpen);
+      mzPlay(willOpen ? "open" : "close");
+    };
     function toggle(on) {
       panel.classList.toggle("open", on);
       launcher.style.display = on ? "none" : "block";
@@ -252,7 +273,7 @@
       bubble("Ask me anything about Muzeeb's work, experience, or projects — or pick one below.", "bot");
       var l = document.createElement("div"); l.className = "cw-suggest-label"; l.textContent = "Suggested questions"; body.appendChild(l);
       var c = document.createElement("div"); c.className = "cw-chips";
-      SUGGEST.forEach(function (q) { var b = document.createElement("button"); b.className = "cw-chip"; b.textContent = q; b.onclick = function () { ask(q); }; c.appendChild(b); });
+      SUGGEST.forEach(function (q) { var b = document.createElement("button"); b.className = "cw-chip"; b.textContent = q; b.onclick = function () { ask(q); mzPlay("select"); }; c.appendChild(b); });
       body.appendChild(c); scroll();
     }
     function matchEntry(q) { var s = q.toLowerCase(), best = null, sc = 0; KB.forEach(function (e) { var n = 0; e.k.forEach(function (k) { if (s.indexOf(k) !== -1) n++; }); if (n > sc) { sc = n; best = e; } }); return sc > 0 ? best : null; }
@@ -279,11 +300,23 @@
       var t = document.createElement("div"); t.className = "cw-think";
       t.innerHTML = word + '<span class="cw-dots"><i></i><i></i><i></i></span>';
       body.appendChild(t); scroll();
+
+      var loopHandle = mzStartLoop("processing");
       var done = false, started = Date.now();
-      function finish(text) {
+      function finish(text, isError) {
         if (done) return; done = true;
         var wait = Math.max(0, 500 - (Date.now() - started));
-        setTimeout(function () { t.remove(); bubble(text, "bot"); renderLinks(entry && entry.l); }, wait);
+        setTimeout(function () {
+          if (loopHandle && typeof loopHandle.stop === "function") {
+            try { loopHandle.stop(); } catch (err) {}
+            loopHandle = null;
+          }
+          mzStopLoop("processing");
+          t.remove();
+          bubble(text, "bot");
+          renderLinks(entry && entry.l);
+          mzPlay(isError ? "error" : "receive");
+        }, wait);
       }
       fetch("/api/chat", {
         method: "POST",
@@ -291,12 +324,19 @@
         body: JSON.stringify({ message: q })
       })
         .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-        .then(function (d) { finish((d && d.reply) ? d.reply : answer(q)); })
-        .catch(function () { finish(answer(q)); });
+        .then(function (d) { finish((d && d.reply) ? d.reply : answer(q), false); })
+        .catch(function () { finish(answer(q), false); });
     }
-    function submit() { var q = input.value.trim(); if (!q) return; input.value = ""; ask(q); }
+    function submit() {
+      var q = input.value.trim();
+      if (!q) return;
+      input.value = "";
+      mzPlay("send");
+      ask(q);
+    }
     send.onclick = submit;
     input.addEventListener("keydown", function (e) { if (e.key === "Enter") submit(); });
+    input.addEventListener("input", function () { mzPlay("typing"); });
   }
 
   function ready(fn) {
@@ -367,13 +407,13 @@
       };
       b.render();
       b.addEventListener("click", function () {
-        setTheme(root.getAttribute("data-theme") === "light" ? "dark" : "light");
+        var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+        setTheme(next);
+        mzPlay(next === "dark" ? "toggle-on" : "toggle-off");
       });
       parent.appendChild(b);
       btns.push(b);
     }
-    // Floating top-right toggle on every themed page (playground +
-    // coming-soon return early above, so they never get it). No footer toggle.
     make("mz-theme-btn", false, document.body);
   }
 
@@ -415,11 +455,11 @@
       document.body.style.overflow = o ? "hidden" : "";
       burger.setAttribute("aria-expanded", o ? "true" : "false");
     }
-    burger.addEventListener("click", function () { open(true); });
-    overlay.addEventListener("click", function () { open(false); });
-    drawer.querySelector(".mz-drawer__close").addEventListener("click", function () { open(false); });
+    burger.addEventListener("click", function () { open(true); mzPlay("open"); });
+    overlay.addEventListener("click", function () { open(false); mzPlay("close"); });
+    drawer.querySelector(".mz-drawer__close").addEventListener("click", function () { open(false); mzPlay("close"); });
     [].forEach.call(drawer.querySelectorAll(".mz-drawer__links a"), function (a) {
-      a.addEventListener("click", function () { open(false); });
+      a.addEventListener("click", function () { open(false); mzPlay("forward"); });
     });
   }
 
@@ -522,7 +562,30 @@
     });
   }
 
+  function ensureSFXLoaded() {
+    if (window.mzSFX) {
+      if (typeof window.mzSFX.initSoundToggle === "function") window.mzSFX.initSoundToggle();
+      return;
+    }
+    if (!window.uisfx) {
+      var s1 = document.createElement("script");
+      s1.src = "assets/js/uisfx.min.js";
+      s1.onload = function () {
+        var s2 = document.createElement("script");
+        s2.src = "assets/js/sfx.js";
+        s2.onload = function () {
+          if (window.mzSFX && typeof window.mzSFX.initSoundToggle === "function") {
+            window.mzSFX.initSoundToggle();
+          }
+        };
+        document.head.appendChild(s2);
+      };
+      document.head.appendChild(s1);
+    }
+  }
+
   ready(function () {
+    ensureSFXLoaded();
     initTheme();
     initMobileNav();
     setActiveNav();
@@ -530,5 +593,6 @@
     initChat();
     initReveal();
     initSocialPopovers();
+    initHoverSFX();
   });
 })();

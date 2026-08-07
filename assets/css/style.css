@@ -2078,7 +2078,13 @@ body.mz-cursor-on button { cursor: none; }
 .mz-theme-btn { position:fixed; top:24px; right:24px; z-index:61; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--surface); border:1px solid var(--border); color:var(--text); box-shadow:0 6px 20px rgba(0,0,0,.18); transition:transform var(--t-base) var(--ease), background var(--t-base) var(--ease); }
 .mz-theme-btn:hover { transform:translateY(-2px); }
 .mz-theme-btn svg { width:20px; height:20px; }
-@media (max-width:760px){ .mz-theme-btn { top:auto; bottom:24px; left:20px; right:auto; width:42px; height:42px; } }
+.mz-sound-btn { position:fixed; top:24px; right:76px; z-index:61; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--surface); border:1px solid var(--border); color:var(--text); box-shadow:0 6px 20px rgba(0,0,0,.18); transition:transform var(--t-base) var(--ease), background var(--t-base) var(--ease); }
+.mz-sound-btn:hover { transform:translateY(-2px); }
+.mz-sound-btn svg { width:20px; height:20px; }
+@media (max-width:760px){
+  .mz-theme-btn { top:auto; bottom:24px; left:20px; right:auto; width:42px; height:42px; }
+  .mz-sound-btn { top:auto; bottom:24px; left:70px; right:auto; width:42px; height:42px; }
+}
 
 /* hero CTA — Book a 1:1 call */
 .mz-hero__cta { display:inline-flex; align-items:center; gap:9px; margin-top:30px; padding:13px 24px; border-radius:999px; background:hsl(var(--primary)); color:#0f0f0f; font-weight:600; font-size:.98rem; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.25); transition:transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); opacity:0; animation:mz-fade-up .8s cubic-bezier(0.16,1,0.3,1) .35s forwards; }
