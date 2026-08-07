@@ -90,7 +90,13 @@
     var wrap = document.getElementById("mz-preloader");
     if (!wrap) return;
     // Already shown this session → the inline guard set display:none; just remove.
-    if (getComputedStyle(wrap).display === "none") { wrap.remove(); return; }
+    if (getComputedStyle(wrap).display === "none") {
+      wrap.remove();
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      return;
+    }
+    try { sessionStorage.setItem("mz-preloaded", "1"); } catch (e) {}
 
     // Cover color follows theme: dark cover on light page, light cover on dark page.
     var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#0f0f0f" : "#faf9f7";
