@@ -13,13 +13,57 @@
 
   function initHoverSFX() {
     if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    var HOVER_SEL = "button, a[href], input, select, textarea, [role='button'], label[for], .mz-theme-btn, .mz-sound-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn";
     document.addEventListener("pointerover", function (e) {
-      var target = e.target.closest(".mz-theme-btn, .mz-sound-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn");
+      var target = e.target.closest(HOVER_SEL);
       if (!target) return;
-      var related = e.relatedTarget ? e.relatedTarget.closest(".mz-theme-btn, .mz-sound-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn") : null;
+      var related = e.relatedTarget ? e.relatedTarget.closest(HOVER_SEL) : null;
       if (target !== related) {
         mzPlay("hover", { cooldownMs: 80 });
       }
+    });
+  }
+
+  /* ---------- Global interaction SFX ----------
+     Delegated listeners so every button/link/input on every page gets sound,
+     without hand-wiring each one. Elements that already play a tailored cue
+     via their own click handler (chat widget, drawer, theme/sound toggles)
+     are skipped here to avoid a double-fire. */
+  var SFX_HANDLED_SEL = "#cw-widget, .mz-drawer, .mz-theme-btn, .mz-sound-btn, #cw-launcher";
+
+  function initGlobalSFX() {
+    document.addEventListener("click", function (e) {
+      if (e.target.closest(SFX_HANDLED_SEL)) return;
+      var el = e.target.closest("button, a[href], [role='button'], input[type='button'], input[type='submit']");
+      if (!el || el.disabled) return;
+      mzPlay("press", { cooldownMs: 60 });
+    }, true);
+
+    document.addEventListener("focusin", function (e) {
+      if (e.target.id === "cw-input") return;
+      var el = e.target.closest("input, textarea, select");
+      if (!el || el.type === "checkbox" || el.type === "radio" || el.type === "range" || el.type === "color") return;
+      mzPlay("focus", { cooldownMs: 80 });
+    });
+
+    document.addEventListener("input", function (e) {
+      if (e.target.id === "cw-input") return;
+      var el = e.target;
+      if (el.tagName !== "INPUT" && el.tagName !== "TEXTAREA") return;
+      if (el.type === "checkbox" || el.type === "radio") return;
+      if (el.type === "range" || el.type === "color") {
+        mzPlay("select", { cooldownMs: 100 });
+        return;
+      }
+      mzPlay("typing", { cooldownMs: 120 });
+    });
+
+    document.addEventListener("change", function (e) {
+      var el = e.target;
+      if (el.tagName === "SELECT") { mzPlay("select"); return; }
+      if (el.tagName !== "INPUT") return;
+      if (el.type === "checkbox") { mzPlay(el.checked ? "check" : "uncheck"); return; }
+      if (el.type === "radio") { mzPlay("select"); return; }
     });
   }
 
@@ -594,5 +638,6 @@
     initReveal();
     initSocialPopovers();
     initHoverSFX();
+    initGlobalSFX();
   });
 })();
