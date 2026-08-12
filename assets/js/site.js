@@ -442,8 +442,7 @@
 
     // Single theme toggle, always docked in the header nav (same circle
     // treatment as the mail/resume buttons) — no separate footer variant.
-    var nav = document.querySelector(".mz-nav");
-    if (!nav || nav.querySelector(".mz-theme-btn")) return;
+    if (document.querySelector(".mz-theme-btn")) return;
 
     var btn = document.createElement("button");
     btn.className = "mz-theme-btn";
@@ -461,7 +460,7 @@
       render();
       mzPlay(next === "dark" ? "toggle-on" : "toggle-off");
     });
-    nav.appendChild(btn);
+    document.body.appendChild(btn);
   }
 
   /* ---------- Mobile nav: logo left, hamburger right -> slide-in drawer ---------- */
