@@ -164,18 +164,20 @@
       background: var(--bwg-btn-hov) !important
     }
 
-    /* hide the zoom controls + footer + theme toggle + chat while a card is expanded — not needed there */
-    body.bwg-zoom .controls,
+    /* hide the footer theme toggle + chat while a card is expanded — not needed there */
     body.bwg-zoom .mz-theme-btn,
     body.bwg-zoom #cw-launcher {
       opacity: 0 !important;
       pointer-events: none !important;
     }
 
-    /* VIEWPORT / GRID */
+    /* VIEWPORT / GRID — starts below the floating nav pill, flush with the bottom of the screen */
     .viewport {
       position: fixed;
-      inset: 0;
+      top: 128px;
+      left: 0;
+      right: 0;
+      bottom: 0;
       overflow: hidden;
       z-index: 1;
       opacity: 0
@@ -197,8 +199,8 @@
 
     .cell {
       position: absolute;
-      width: 1024px;
-      height: 768px;
+      width: 1320px;
+      height: 990px;
       background: var(--bwg-cell);
       cursor: pointer;
       overflow: hidden;
@@ -452,138 +454,6 @@
       right: 26px
     }
 
-    /* CONTROLS */
-    .controls {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      z-index: 30;
-      opacity: 0;
-      transition: left 1s var(--ease), opacity .5s
-    }
-
-    .controls.split-mode {
-      left: 75%
-    }
-
-    .switch {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--bwg-panel);
-      border: 1px solid var(--bwg-panel-bd);
-      padding: 6px 8px;
-      border-radius: 10px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .25);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px)
-    }
-
-    .pct-badge {
-      font-family: var(--bwg-sans);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--bwg-sub);
-      padding: 0 8px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      cursor: pointer;
-      user-select: none
-    }
-
-    #zoomSlider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 64px;
-      height: 3px;
-      background: var(--bwg-stroke);
-      border-radius: 2px;
-      outline: none;
-      margin: 0 4px;
-    }
-
-    #zoomSlider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--bwg-ink);
-      cursor: pointer;
-      transition: transform 0.12s;
-    }
-
-    #zoomSlider::-webkit-slider-thumb:hover {
-      transform: scale(1.35);
-    }
-
-    #zoomSlider::-moz-range-thumb {
-      width: 10px;
-      height: 10px;
-      border: none;
-      border-radius: 50%;
-      background: var(--bwg-ink);
-      cursor: pointer;
-      transition: transform 0.12s;
-    }
-
-    #zoomSlider::-moz-range-thumb:hover {
-      transform: scale(1.35);
-    }
-
-    .divider {
-      width: 1px;
-      height: 16px;
-      background: var(--bwg-stroke);
-      margin: 0 4px
-    }
-
-    .switch button {
-      background: none;
-      border: none;
-      color: var(--bwg-panel-ink);
-      cursor: pointer;
-      font-family: var(--bwg-sans);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      padding: 7px 12px;
-      border-radius: 6px;
-      transition: color .2s, background .2s;
-      white-space: nowrap
-    }
-
-    .switch button:hover {
-      color: var(--bwg-ink);
-      background: var(--bwg-btn)
-    }
-
-    .switch button.cur {
-      color: var(--bwg-chip-ink);
-      background: var(--bwg-chip-bg)
-    }
-
-    @media(max-width:640px) {
-      .switch button {
-        padding: 6px 8px;
-        font-size: 10px;
-      }
-
-      .pct-badge {
-        padding: 0 4px;
-      }
-
-      #zoomSlider {
-        display: none !important;
-      }
-    }
-
-
-
   </style>
 </head>
 
@@ -667,20 +537,6 @@
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="m9 18 6-6-6-6" />
     </svg></button>
-
-  <!-- CONTROLS -->
-  <div class="controls" id="controls">
-    <div class="switch">
-      <div style="display:flex;align-items:center;gap:4px;padding-left:4px;">
-        <span class="pct-badge" id="pct" style="font-variant-numeric:tabular-nums;">60%</span>
-        <input type="range" id="zoomSlider" min="10" max="140" value="60">
-      </div>
-      <div class="divider"></div>
-      <button id="fitBtn" class="cur" onclick="gallery.fit(this)">Fit</button>
-      <button onclick="gallery.setZoom(0.1,this)">Zoom out</button>
-    </div>
-  </div>
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
@@ -805,30 +661,26 @@
         this.nextBtn = document.getElementById('nextBtn');
         this.prevBtn.addEventListener('click', () => this.navigate(-1));
         this.nextBtn.addEventListener('click', () => this.navigate(1));
-        this.controls = document.getElementById('controls');
         this.ease = CustomEase.create("smooth", ".87,0,.13,1");
-        const initialGap = 32;
-        const totalW = 8 * (1024 + initialGap) - initialGap, totalH = 6 * (768 + initialGap) - initialGap;
-        const defaultFitZoom = Math.round(Math.max(.1, Math.min(1.4, Math.min((innerWidth - 80) / totalW, (innerHeight - 140) / totalH))) * 100) / 100;
-        this.cfg = { width: 1024, height: 768, rows: 6, cols: 8, zoom: defaultFitZoom, gap: initialGap };
+        // Fixed zoom (no controls to change it) — matches the "32%" view this was tuned against.
+        this.cfg = { width: 1320, height: 990, rows: 12, cols: 4, zoom: 0.32, gap: 32 };
         this.items = []; this.zoomOn = false; this.sel = null; this.overlay = null; this.drag = null;
         this.buildGrid();
-        this.slider = document.getElementById('zoomSlider');
-        if (this.slider) {
-          this.slider.addEventListener('input', (e) => this.sliderZoom(parseFloat(e.target.value) / 100));
+        this.vp.addEventListener('wheel', (e) => this.onGridWheel(e), { passive: false });
+      }
+      // Mouse-wheel / trackpad panning of the grid — scrolls through the canvas like a normal
+      // page scroll, feeding the elastic stretch effect below via pan velocity.
+      onGridWheel(e) {
+        if (this.zoomOn || !this.drag || this.drag.isDragging || !this.bounds) return;
+        e.preventDefault();
+        const b = this.bounds, now = performance.now();
+        if (!this._wt || now - (this._wtT || 0) > 200) {
+          this._wt = { x: gsap.getProperty(this.canvas, 'x'), y: gsap.getProperty(this.canvas, 'y') };
         }
-        const pctLabel = document.getElementById('pct');
-        if (pctLabel) {
-          pctLabel.addEventListener('click', () => {
-            const current = this.cfg.zoom;
-            let next = 0.6;
-            if (current < 0.45) next = 0.6;
-            else if (current < 0.75) next = 1.0;
-            else if (current < 1.2) next = 1.4;
-            else next = 0.3;
-            this.sliderZoom(next);
-          });
-        }
+        this._wtT = now;
+        this._wt.x = gsap.utils.clamp(b.minX, b.maxX, this._wt.x - e.deltaX);
+        this._wt.y = gsap.utils.clamp(b.minY, b.maxY, this._wt.y - e.deltaY);
+        gsap.to(this.canvas, { x: this._wt.x, y: this._wt.y, duration: .5, ease: 'power3.out', overwrite: 'auto' });
       }
       gapFor(z) { return z >= 1 ? 16 : z >= 0.6 ? 32 : 64; }
       dims(gap) {
@@ -874,16 +726,17 @@
         }
       }
       center(z) {
-        const vw = innerWidth, vh = innerHeight; this.dims(this.cfg.gap);
+        const vw = this.vp.clientWidth, vh = this.vp.clientHeight; this.dims(this.cfg.gap);
         return { x: (vw - this.gw * z) / 2, y: (vh - this.gh * z) / 2 };
       }
       initDrag() {
         if (this.drag) this.drag.kill();
-        const z = this.cfg.zoom, vw = innerWidth, vh = innerHeight, m = this.cfg.gap * z;
+        const z = this.cfg.zoom, vw = this.vp.clientWidth, vh = this.vp.clientHeight, m = this.cfg.gap * z;
         this.dims(this.cfg.gap); const sw = this.gw * z, sh = this.gh * z;
         let minX, maxX, minY, maxY;
         if (sw <= vw) { minX = maxX = (vw - sw) / 2 } else { maxX = m; minX = vw - sw - m }
         if (sh <= vh) { minY = maxY = (vh - sh) / 2 } else { maxY = m; minY = vh - sh - m }
+        this.bounds = { minX, maxX, minY, maxY };
         this.drag = Draggable.create(this.canvas, {
           type: "x,y", bounds: { minX, maxX, minY, maxY }, edgeResistance: .85, dragResistance: .06,
           force3D: true,
@@ -898,10 +751,55 @@
         })[0];
       }
 
+      // ---- ElasticGridScroll-inspired stretch (github.com/codrops/ElasticGridScroll) ----
+      // Tiles squish/stretch along the scroll/drag direction based on pan velocity, with each
+      // column trailing at a different rate so the grid settles in a ripple, like the original.
+      initElastic() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const mid = (this.cfg.cols - 1) / 2;
+        this.items.forEach(it => {
+          it.si = 1; it.sy = 1;
+          it.lag = 0.1 + Math.abs(it.c - mid) * 0.035; // columns farther from center feel lazier
+        });
+        this._elX = gsap.getProperty(this.canvas, "x"); this._elY = gsap.getProperty(this.canvas, "y");
+        this._elT = null;
+        if (this._elTick) gsap.ticker.remove(this._elTick);
+        gsap.ticker.add(this._elTick = () => this.tickElastic());
+      }
+      tickElastic() {
+        if (this.zoomOn) return;
+        const now = performance.now();
+        const x = gsap.getProperty(this.canvas, "x"), y = gsap.getProperty(this.canvas, "y");
+        if (this._elT === null) { this._elX = x; this._elY = y; this._elT = now; return; }
+        const dt = Math.max((now - this._elT) / 1000, 1 / 120);
+        const vx = (x - this._elX) / dt, vy = (y - this._elY) / dt;
+        this._elX = x; this._elY = y; this._elT = now;
+
+        const threshold = 60, sensitivity = 900, maxStretch = 1.24, minSqueeze = .82;
+        const avx = Math.abs(vx), avy = Math.abs(vy);
+        let targetSi = 1, targetSy = 1, origin = '50% 50%';
+        if (avy >= avx) {
+          const n = Math.min(Math.max(0, avy - threshold) / sensitivity, 1);
+          targetSy = 1 + (maxStretch - 1) * n; targetSi = 1 + (minSqueeze - 1) * n;
+          origin = vy < 0 ? '50% 0%' : '50% 100%';
+        } else {
+          const n = Math.min(Math.max(0, avx - threshold) / sensitivity, 1);
+          targetSi = 1 + (maxStretch - 1) * n; targetSy = 1 + (minSqueeze - 1) * n;
+          origin = vx < 0 ? '0% 50%' : '100% 50%';
+        }
+        this.items.forEach(it => {
+          const speed = Math.min(1, dt / it.lag);
+          it.si += (targetSi - it.si) * speed;
+          it.sy += (targetSy - it.sy) * speed;
+          it.el.style.transformOrigin = origin;
+          it.el.style.transform = `scale(${it.si.toFixed(4)}, ${it.sy.toFixed(4)})`;
+        });
+      }
+
       intro() {
         const z = this.cfg.zoom; gsap.set(this.canvas, { scale: z });
         const c = this.center(z); gsap.set(this.canvas, { x: c.x, y: c.y });
-        const vw = innerWidth, vh = innerHeight;
+        const vw = this.vp.clientWidth, vh = this.vp.clientHeight;
         const cx = (vw / 2 - c.x) / z - this.cfg.width / 2, cy = (vh / 2 - c.y) / z - this.cfg.height / 2;
         this.items.forEach((it, i) => gsap.set(it.el, { left: cx, top: cy, scale: .8, opacity: 0, zIndex: this.items.length - i }));
         gsap.to(this.vp, { opacity: 1, duration: .5 });
@@ -909,11 +807,9 @@
           duration: .5, left: i => this.items[i].x, top: i => this.items[i].y, scale: 1, opacity: 1, ease: "power2.out",
           stagger: { amount: 1.4, grid: [this.cfg.rows, this.cfg.cols], from: "center" },
           onComplete: () => {
-            this.items.forEach(it => gsap.set(it.el, { zIndex: 1 })); this.initDrag(); this.observe();
-            gsap.to(this.controls, { opacity: 1, duration: .5 });
+            this.items.forEach(it => gsap.set(it.el, { zIndex: 1 })); this.initDrag(); this.observe(); this.initElastic();
           }
         });
-        this.pct(z);
       }
       observe() {
         this.io = new IntersectionObserver((es) => es.forEach(e => {
@@ -921,49 +817,6 @@
           e.target.classList.toggle('dim', !e.isIntersecting);
         }), { threshold: .1, rootMargin: '8%' });
         this.items.forEach(it => this.io.observe(it.el));
-      }
-      pct(z) {
-        document.getElementById('pct').textContent = Math.round(z * 100) + '%';
-        const slider = document.getElementById('zoomSlider');
-        if (slider) slider.value = Math.round(z * 100);
-      }
-      setZoom(z, btn) {
-        if (this.zoomOn) { this.exit(); return; }
-        const gap = this.gapFor(z); this.cfg.zoom = z;
-        if (gap !== this.cfg.gap) {
-          this.cfg.gap = gap;
-          this.items.forEach(it => {
-            it.x = it.c * (this.cfg.width + gap); it.y = it.r * (this.cfg.height + gap);
-            gsap.to(it.el, { left: it.x, top: it.y, duration: .9, ease: this.ease });
-          });
-          this.dims(gap); gsap.to(this.canvas, { width: this.gw, height: this.gh, duration: .9, ease: this.ease });
-        }
-        const c = this.center(z);
-        gsap.to(this.canvas, { scale: z, x: c.x, y: c.y, duration: 1, ease: this.ease, onComplete: () => this.initDrag() });
-        this.pct(z);
-        document.querySelectorAll('.switch button').forEach(b => b.classList.remove('cur')); if (btn) btn.classList.add('cur');
-      }
-      sliderZoom(z) {
-        if (this.zoomOn) { this.exit(); return; }
-        const gap = this.gapFor(z); this.cfg.zoom = z;
-        if (gap !== this.cfg.gap) {
-          this.cfg.gap = gap;
-          this.items.forEach(it => {
-            it.x = it.c * (this.cfg.width + gap); it.y = it.r * (this.cfg.height + gap);
-            gsap.set(it.el, { left: it.x, top: it.y });
-          });
-          this.dims(gap); gsap.set(this.canvas, { width: this.gw, height: this.gh });
-        }
-        const c = this.center(z);
-        gsap.to(this.canvas, { scale: z, x: c.x, y: c.y, duration: 0.2, ease: "power2.out", onComplete: () => this.initDrag() });
-        document.getElementById('pct').textContent = Math.round(z * 100) + '%';
-        document.querySelectorAll('.switch button').forEach(b => b.classList.remove('cur'));
-      }
-      fit(btn) {
-        if (this.zoomOn) { this.exit(); return; }
-        const gap = this.gapFor(1), w = this.cfg.cols * (this.cfg.width + gap) - gap, h = this.cfg.rows * (this.cfg.height + gap) - gap;
-        const z = Math.max(.1, Math.min(1.4, Math.min((innerWidth - 80) / w, (innerHeight - 140) / h)));
-        this.setZoom(Math.round(z * 100) / 100, btn);
       }
       preloadAdjacent(i) {
         const total = this.items.length;
@@ -990,10 +843,10 @@
         const maxW = isMobile ? innerWidth * 0.9 : innerWidth * 0.6;
         const maxH = isMobile ? innerHeight * 0.45 : innerHeight * 0.74;
         let W = maxW;
-        let H = W * (768 / 1024);
+        let H = W * (this.cfg.height / this.cfg.width);
         if (H > maxH) {
           H = maxH;
-          W = H * (1024 / 768);
+          W = H * (this.cfg.width / this.cfg.height);
         }
         const topPos = isMobile ? innerHeight * 0.12 : (innerHeight - H) / 2;
         gsap.to(ov, {
