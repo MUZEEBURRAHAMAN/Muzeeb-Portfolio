@@ -2082,8 +2082,6 @@ body.mz-cursor-on button { cursor: none; }
     height: 52px;
     border-radius: 50%;
     background: rgba(26, 26, 26, 0.85);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
     border: 1px solid hsl(var(--primary) / 0.55);
     color: hsl(var(--primary));
     display: flex;
