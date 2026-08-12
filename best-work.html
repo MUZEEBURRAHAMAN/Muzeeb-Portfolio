@@ -22,7 +22,7 @@
     content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work — pan the grid, click any tile to open its case study.">
   <!-- anti-FOUC: set theme before paint -->
   <script>try { var t = localStorage.getItem('mz-theme'); document.documentElement.setAttribute('data-theme', t || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=89">
+  <link rel="stylesheet" href="assets/css/style.css?v=98">
   <style>
     /* ===== theme tokens (portfolio colours + Geist/Inter) ===== */
     :root {
@@ -127,31 +127,7 @@
       cursor: pointer
     }
 
-    /* theme toggle: force clear contrast on the fullscreen canvas (both themes) */
-    .mz-theme-btn {
-      background: var(--bwg-panel) !important;
-      border: 1px solid var(--bwg-panel-bd) !important;
-      color: var(--bwg-ink) !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .28) !important;
-      z-index: 120 !important
-    }
-
-    @media(min-width:761px) {
-      .mz-theme-btn {
-        top: 44px !important;
-        right: 40px !important
-      }
-    }
-
-    /* desktop: vertically centered with the nav row */
     @media(max-width:760px) {
-      .mz-theme-btn {
-        bottom: 90px !important;
-        left: 24px !important;
-        right: auto !important;
-        top: auto !important;
-      }
-
       #cw-launcher {
         bottom: 90px !important;
         right: 24px !important;
@@ -160,11 +136,7 @@
       }
     }
 
-    .mz-theme-btn:hover {
-      background: var(--bwg-btn-hov) !important
-    }
-
-    /* hide the footer theme toggle + chat while a card is expanded — not needed there */
+    /* hide the theme toggle + chat while a card is expanded — not needed there */
     body.bwg-zoom .mz-theme-btn,
     body.bwg-zoom #cw-launcher {
       opacity: 0 !important;
@@ -977,7 +949,7 @@
   </script>
   <script src="assets/js/nachi-sfx.js"></script>
   <script src="assets/js/sfx.js"></script>
-  <script src="assets/js/site.js?v=89"></script>
+  <script src="assets/js/site.js?v=98"></script>
 </body>
 
 </html>

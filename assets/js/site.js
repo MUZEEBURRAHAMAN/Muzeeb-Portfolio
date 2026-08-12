@@ -13,7 +13,7 @@
 
   function initHoverSFX() {
     if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    var HOVER_SEL = "button, a[href], input, select, textarea, [role='button'], label[for], .mz-theme-btn, .mz-sound-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn";
+    var HOVER_SEL = "button, a[href], input, select, textarea, [role='button'], label[for], .mz-theme-btn, .mz-nav__mail, .mz-nav__resume, #cw-launcher, .pgtour-btn";
     document.addEventListener("pointerover", function (e) {
       var target = e.target.closest(HOVER_SEL);
       if (!target) return;
@@ -27,9 +27,9 @@
   /* ---------- Global interaction SFX ----------
      Delegated listeners so every button/link/input on every page gets sound,
      without hand-wiring each one. Elements that already play a tailored cue
-     via their own click handler (chat widget, drawer, theme/sound toggles)
+     via their own click handler (chat widget, drawer, theme toggle)
      are skipped here to avoid a double-fire. */
-  var SFX_HANDLED_SEL = "#cw-widget, .mz-drawer, .mz-theme-btn, .mz-sound-btn, #cw-launcher";
+  var SFX_HANDLED_SEL = "#cw-widget, .mz-drawer, .mz-theme-btn, #cw-launcher";
 
   function initGlobalSFX() {
     document.addEventListener("click", function (e) {
@@ -440,31 +440,28 @@
     var cur = root.getAttribute("data-theme") || saved || sys;
     root.setAttribute("data-theme", cur);
 
-    var btns = [];
-    function setTheme(t) {
-      root.setAttribute("data-theme", t);
-      try { localStorage.setItem("mz-theme", t); } catch (e) {}
-      btns.forEach(function (b) { b.render(); });
+    // Single theme toggle, always docked in the header nav (same circle
+    // treatment as the mail/resume buttons) — no separate footer variant.
+    var nav = document.querySelector(".mz-nav");
+    if (!nav || nav.querySelector(".mz-theme-btn")) return;
+
+    var btn = document.createElement("button");
+    btn.className = "mz-theme-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "Toggle light or dark theme");
+    function render() {
+      var light = root.getAttribute("data-theme") === "light";
+      btn.innerHTML = (light ? MOON : SUN) + '<span class="mz-nav__tip">' + (light ? "Dark mode" : "Light mode") + "</span>";
     }
-    function make(cls, withLabel, parent) {
-      var b = document.createElement("button");
-      b.className = cls;
-      b.type = "button";
-      b.setAttribute("aria-label", "Toggle light or dark theme");
-      b.render = function () {
-        var light = root.getAttribute("data-theme") === "light";
-        b.innerHTML = (light ? MOON : SUN) + (withLabel ? "<span>" + (light ? "Dark mode" : "Light mode") + "</span>" : "");
-      };
-      b.render();
-      b.addEventListener("click", function () {
-        var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-        setTheme(next);
-        mzPlay(next === "dark" ? "toggle-on" : "toggle-off");
-      });
-      parent.appendChild(b);
-      btns.push(b);
-    }
-    make("mz-theme-btn", false, getSFXHost());
+    render();
+    btn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("mz-theme", next); } catch (e) {}
+      render();
+      mzPlay(next === "dark" ? "toggle-on" : "toggle-off");
+    });
+    nav.appendChild(btn);
   }
 
   /* ---------- Mobile nav: logo left, hamburger right -> slide-in drawer ---------- */
@@ -612,58 +609,18 @@
     });
   }
 
-  /* ---------- Theme/sound toggle placement ----------
-     Pages with a <footer> get the two toggle buttons docked there (out of the
-     header, so the nav pill has room to breathe on narrow viewports). Pages
-     with no footer (best-work, playground) get them appended as ordinary
-     flex children of .mz-nav instead of floating fixed circles, so they
-     shrink/wrap with the rest of the nav instead of overlapping it. */
-  function getSFXHost() {
-    var footer = document.querySelector("footer");
-    if (footer) {
-      var row = footer.querySelector(".mz-footer__socials") || footer.querySelector(".mz-footer__row") || footer;
-      var wrap = row.querySelector(".mz-footer__sfx");
-      if (!wrap) {
-        wrap = document.createElement("div");
-        wrap.className = "mz-footer__sfx";
-        row.appendChild(wrap);
-      }
-      return wrap;
-    }
-    var nav = document.querySelector(".mz-nav");
-    if (nav) return nav;
-    return document.body;
-  }
-
-  function placeSoundBtn() {
-    var btn = document.querySelector(".mz-sound-btn");
-    if (btn) getSFXHost().appendChild(btn);
-  }
-
+  // Loads the SFX engine (used by hover/click sound cues elsewhere on the
+  // page) without any visible sound toggle — there's no UI for muting.
   function ensureSFXLoaded() {
-    if (window.mzSFX) {
-      if (typeof window.mzSFX.initSoundToggle === "function") {
-        window.mzSFX.initSoundToggle();
-        placeSoundBtn();
-      }
-      return;
-    }
-    if (!window.nachiSFX) {
-      var s1 = document.createElement("script");
-      s1.src = "assets/js/nachi-sfx.js";
-      s1.onload = function () {
-        var s2 = document.createElement("script");
-        s2.src = "assets/js/sfx.js";
-        s2.onload = function () {
-          if (window.mzSFX && typeof window.mzSFX.initSoundToggle === "function") {
-            window.mzSFX.initSoundToggle();
-            placeSoundBtn();
-          }
-        };
-        document.head.appendChild(s2);
-      };
-      document.head.appendChild(s1);
-    }
+    if (window.mzSFX || window.nachiSFX) return;
+    var s1 = document.createElement("script");
+    s1.src = "assets/js/nachi-sfx.js";
+    s1.onload = function () {
+      var s2 = document.createElement("script");
+      s2.src = "assets/js/sfx.js";
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(s1);
   }
 
   ready(function () {

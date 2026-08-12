@@ -1691,7 +1691,7 @@ body.mz-cursor-on button { cursor: none; }
     .mz-nav__pill a span { display: none; }
     .mz-nav__pill a { padding: 9px; }
     .mz-nav { gap: 7px; padding: 0 8px; }
-    .mz-nav__logo, .mz-nav__resume, .mz-nav__mail { width: 42px; height: 42px; }
+    .mz-nav__logo, .mz-nav__resume, .mz-nav__mail, .mz-theme-btn { width: 42px; height: 42px; }
     .mz-nav__pill { padding: 5px 6px; gap: 0; }
     .mz-nav__pill svg { width: 16px; height: 16px; }
 }
@@ -1979,11 +1979,11 @@ body.mz-cursor-on button { cursor: none; }
 [data-theme="light"] .border-white\/20 { border-color:rgba(0,0,0,.14) !important; }
 
 /* nav */
-[data-theme="light"] .mz-nav__pill, [data-theme="light"] .mz-nav__logo, [data-theme="light"] .mz-nav__resume { background:#ffffff; border-color:#e6e4df; box-shadow:0 6px 22px rgba(0,0,0,.08); }
+[data-theme="light"] .mz-nav__pill, [data-theme="light"] .mz-nav__logo, [data-theme="light"] .mz-nav__resume, [data-theme="light"] .mz-theme-btn { background:#ffffff; border-color:#e6e4df; box-shadow:0 6px 22px rgba(0,0,0,.08); }
 [data-theme="light"] .mz-nav__pill a { color:#3a3a38; }
 [data-theme="light"] .mz-nav__pill a:hover { background:rgba(0,0,0,.05); color:#111; }
 [data-theme="light"] .mz-nav__pill a.active { color:#fff; }
-[data-theme="light"] .mz-nav__logo, [data-theme="light"] .mz-nav__resume svg { color:#17170f; }
+[data-theme="light"] .mz-nav__logo, [data-theme="light"] .mz-nav__resume svg, [data-theme="light"] .mz-theme-btn svg { color:#17170f; }
 [data-theme="light"] .mz-nav::before { background:linear-gradient(180deg,#faf9f7 0%,rgba(250,249,247,.9) 38%,rgba(250,249,247,0) 100%); }
 
 /* bento / stats / tool drop */
@@ -2074,36 +2074,27 @@ body.mz-cursor-on button { cursor: none; }
 .mz-wc-tip.on { opacity:1; transform:translate(-50%,-165%) scale(1); }
 .mz-wc-tip::after { content:""; position:absolute; left:50%; bottom:-5px; transform:translateX(-50%); border:5px solid transparent; border-top-color:#f4f2ed; border-bottom:0; }
 
-/* theme toggle button (injected by site.js) */
-.mz-theme-btn { position:fixed; top:24px; right:24px; z-index:61; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--surface); border:1px solid var(--border); color:var(--text); box-shadow:0 6px 20px rgba(0,0,0,.18); transition:transform var(--t-base) var(--ease), background var(--t-base) var(--ease); }
-.mz-theme-btn:hover { transform:translateY(-2px); }
-.mz-theme-btn svg { width:20px; height:20px; }
-.mz-sound-btn { position:fixed; top:24px; right:76px; z-index:61; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--surface); border:1px solid var(--border); color:var(--text); box-shadow:0 6px 20px rgba(0,0,0,.18); transition:transform var(--t-base) var(--ease), background var(--t-base) var(--ease); }
-.mz-sound-btn:hover { transform:translateY(-2px); }
-.mz-sound-btn svg { width:20px; height:20px; }
-@media (max-width:760px){
-  .mz-theme-btn { top:auto; bottom:24px; left:20px; right:auto; width:42px; height:42px; }
-  .mz-sound-btn { top:auto; bottom:24px; left:70px; right:auto; width:42px; height:42px; }
+/* theme toggle button (injected by site.js) — always docked in the header
+   nav, same circle treatment as the mail/resume buttons next to it */
+.mz-theme-btn {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(26, 26, 26, 0.85);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--primary) / 0.55);
+    color: hsl(var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s, color 0.25s;
 }
-
-/* docked in the footer (pages that have one): sits inline with the social
-   icons inside .mz-footer__socials, normal flow, not fixed */
-.mz-footer__sfx { display:flex; align-items:center; gap:10px; margin-left:4px; padding-left:14px; border-left:1px solid var(--border); }
-.mz-footer__sfx .mz-theme-btn,
-.mz-footer__sfx .mz-sound-btn { position:static; width:38px; height:38px; box-shadow:none; }
-@media (max-width:480px){
-  .mz-footer__sfx { padding-left:0; border-left:none; margin-left:0; }
-}
-
-/* docked in the header nav (pages with no footer: best-work, playground):
-   ordinary nav flex children instead of floating fixed circles, so they
-   shrink/hide with the rest of the pill nav instead of overlapping it */
-.mz-nav > .mz-theme-btn,
-.mz-nav > .mz-sound-btn { position:static; width:44px; height:44px; flex:none; }
-@media (max-width:760px){
-  .mz-nav > .mz-theme-btn,
-  .mz-nav > .mz-sound-btn { width:38px; height:38px; }
-}
+.mz-theme-btn svg { width: 21px; height: 21px; stroke-width: 2; }
+.mz-theme-btn:hover { transform: translateY(-2px); background: hsl(var(--primary)); color: #141414; }
 
 /* hero CTA — Book a 1:1 call */
 .mz-hero__cta { display:inline-flex; align-items:center; gap:9px; margin-top:30px; padding:13px 24px; border-radius:999px; background:hsl(var(--primary)); color:#0f0f0f; font-weight:600; font-size:.98rem; text-decoration:none; box-shadow:0 10px 30px rgba(0,0,0,.25); transition:transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease); opacity:0; animation:mz-fade-up .8s cubic-bezier(0.16,1,0.3,1) .35s forwards; }
