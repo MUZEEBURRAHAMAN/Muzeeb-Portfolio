@@ -451,7 +451,7 @@
     btn.setAttribute("aria-label", "Toggle light or dark theme");
     function render() {
       var light = root.getAttribute("data-theme") === "light";
-      btn.innerHTML = (light ? MOON : SUN) + '<span class="mz-nav__tip">' + (light ? "Dark mode" : "Light mode") + "</span>";
+      btn.innerHTML = (light ? MOON : SUN);
     }
     render();
     btn.addEventListener("click", function () {
