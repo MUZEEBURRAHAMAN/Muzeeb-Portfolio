@@ -192,6 +192,13 @@
 
 
 
+        <!-- Works marquee (full-bleed) -->
+        <section class="mzw" aria-label="Selected works">
+            <div class="mzw-row"><div class="mzw-track mzw-left" id="mzwA"></div></div>
+            <div class="mzw-row" style="margin-top:18px"><div class="mzw-track mzw-right" id="mzwB"></div></div>
+            <div class="mzw-cta"><a class="mzw-btn" href="best-work.html">View all works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        </section>
+
         <section class="mz-projects" id="work">
             <div class="mz-projects__head">
                 <div class="mz-projects__title">
@@ -888,6 +895,25 @@
       document.querySelectorAll('.mz-filter__btn').forEach(function (b) { b.addEventListener('click', function () { c.scrollLeft = 0; setTimeout(upd, 60); }); });
       upd();
       window.addEventListener('resize', upd);
+    })();
+    </script>
+    <script>
+    (function () {
+      // 20 hero designs split across the two marquee rows; card width follows each image's aspect.
+      function heroes(from, to) { var a = []; for (var i = from; i <= to; i++) a.push('assets/images/hero/hero-' + String(i).padStart(2, '0') + '.jpg'); return a; }
+      var A = heroes(1, 10), B = heroes(11, 20);
+      function fill(id, imgs) {
+        var t = document.getElementById(id); if (!t) return;
+        var frag = document.createDocumentFragment();
+        imgs.concat(imgs).forEach(function (src) {          // duplicate for a seamless loop
+          var el = document.createElement('div'); el.className = 'mzw-card';
+          var im = document.createElement('img'); im.src = src; im.alt = ''; im.loading = 'lazy';
+          im.onerror = function () { el.style.display = 'none'; };
+          el.appendChild(im); frag.appendChild(el);
+        });
+        t.appendChild(frag);
+      }
+      fill('mzwA', A); fill('mzwB', B);
     })();
     </script>
 
