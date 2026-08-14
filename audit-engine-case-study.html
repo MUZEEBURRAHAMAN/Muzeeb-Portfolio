@@ -48,7 +48,7 @@
   .prose{max-width:760px;margin:0 auto}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
   .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
-  h2.h{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:22px;color:var(--ink)}
+  h2.h{font-family:var(--display);font-weight:600;font-size:clamp(2rem,3vw,2.5rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:22px;color:var(--ink)}
   .prose p{color:var(--muted);font-size:1.05rem;line-height:1.72;margin-bottom:16px}
   .prose b{color:var(--ink);font-weight:600}
   .prose ul{list-style:none;margin:10px 0 18px}
@@ -81,16 +81,16 @@
   .hero__meta .m{font-family:var(--mono);font-size:.76rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
   .hero__meta .m b{color:var(--ink);font-weight:500}
 
-  /* STATS */
-  .stats{max-width:1320px;margin:52px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  /* STATS — fix #1: reduced margin-top from 52px to 32px */
+  .stats{max-width:1320px;margin:32px auto 0;padding:0 28px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
   .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
   .stat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
   .stat .n{font-family:var(--display);font-size:1.7rem;font-weight:700;letter-spacing:-.03em}
   .stat .l{font-size:.72rem;color:var(--soft);margin-top:5px;line-height:1.3}
   @media(max-width:820px){.stats{grid-template-columns:repeat(3,1fr)}}
 
-  /* INTRO + META */
-  .intro{display:grid;grid-template-columns:1.7fr 1fr;gap:72px;max-width:1200px;margin:60px auto;padding:0 28px}
+  /* INTRO + META — fix #1: reduced margin from 60px to 40px */
+  .intro{display:grid;grid-template-columns:1.7fr 1fr;gap:72px;max-width:1200px;margin:40px auto;padding:0 28px}
   .intro .lead{font-family:var(--display);font-size:1.35rem;font-weight:500;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin-bottom:16px}
   .intro p{color:var(--muted);font-size:1rem;line-height:1.7}
   .intro b{color:var(--ink);font-weight:600}
@@ -111,7 +111,7 @@
   .card li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--soft)}
   .card li b{color:var(--ink);font-weight:600}
 
-  /* BEFORE/AFTER split */
+  /* BEFORE/AFTER split — fix #10: use var(--muted) instead of hardcoded */
   .ba{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1120px;margin:0 auto 30px;padding:0 28px}
   .ba .col{border-radius:20px;padding:26px;border:1px solid var(--line)}
   .ba .before{background:var(--red-soft);border-color:rgba(229,72,77,.2)}
@@ -119,9 +119,18 @@
   .ba .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;font-weight:500}
   .ba .before .tag{color:#b3383c}.ba .after .tag{color:#1f7a4c}
   .ba ul{list-style:none}
-  .ba li{position:relative;padding-left:22px;font-size:.92rem;color:#3a3a36;margin-bottom:10px;line-height:1.5}
-  .ba .before li::before{content:"✕";position:absolute;left:0;color:var(--red);font-size:.8rem}
-  .ba .after li::before{content:"✓";position:absolute;left:0;color:var(--green);font-size:.8rem}
+  .ba li{position:relative;padding-left:22px;font-size:.92rem;color:var(--muted);margin-bottom:10px;line-height:1.5}
+  .ba .before li::before{content:"\2715";position:absolute;left:0;color:var(--red);font-size:.8rem}
+  .ba .after li::before{content:"\2713";position:absolute;left:0;color:var(--green);font-size:.8rem}
+
+  /* CHALLENGE CARDS */
+  .challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:1120px;margin:0 auto;padding:0 28px}
+  .challenge-card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .challenge-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.07)}
+  .challenge-card .cc-num{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:500}
+  .challenge-card h3{font-family:var(--display);font-weight:600;font-size:1.05rem;margin-bottom:10px;letter-spacing:-.01em}
+  .challenge-card p{font-size:.9rem;color:var(--muted);line-height:1.55}
+  @media(max-width:820px){.challenge-grid{grid-template-columns:1fr}}
 
   /* TABLE */
   .tbl{max-width:1120px;margin:26px auto;padding:0 28px}
@@ -141,7 +150,7 @@
   .metric .n{font-family:var(--display);font-size:2.6rem;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
   .metric h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:8px 0 8px}
   .metric p{font-size:.85rem;color:var(--soft);line-height:1.5}
-  @media(max-width:820px){.cards,.metrics{grid-template-columns:1fr}.ba{grid-template-columns:1fr}.intro{grid-template-columns:1fr;gap:34px}}
+  @media(max-width:820px){.cards,.metrics{grid-template-columns:1fr}.ba{grid-template-columns:1fr}.intro{grid-template-columns:1fr;gap:34px}.challenge-grid{grid-template-columns:1fr}}
 
   /* CODE */
   .code{max-width:760px;margin:24px auto;padding:0 28px}
@@ -165,9 +174,17 @@
   .faq details[open] summary::after{transform:rotate(45deg)}
   .faq .a{padding:0 20px 20px;color:var(--muted);font-size:.94rem;line-height:1.65}
 
-  /* callout */
-  .note{max-width:680px;margin:26px auto;padding:18px 22px;background:var(--accent-soft);border:1px solid rgba(47,109,240,.18);border-radius:14px;color:#274b96;font-size:.95rem;line-height:1.6}
+  /* callout — fix #17: match prose width */
+  .note{max-width:760px;margin:26px auto;padding:18px 22px;background:var(--accent-soft);border:1px solid rgba(47,109,240,.18);border-radius:14px;color:#274b96;font-size:.95rem;line-height:1.6}
   .note b{color:#1b3a78}
+
+  /* CLOSING */
+  .closing{max-width:760px;margin:0 auto;padding:0 28px;text-align:center}
+  .closing .lead{font-family:var(--display);font-size:1.15rem;font-weight:500;line-height:1.5;color:var(--muted);margin-bottom:28px}
+  .closing .reframe{list-style:none;margin:0 0 28px;padding:0}
+  .closing .reframe li{font-size:1.05rem;color:var(--muted);margin-bottom:12px;line-height:1.6}
+  .closing .reframe li b{color:var(--ink);font-weight:600}
+  .closing .final{font-family:var(--display);font-size:clamp(1.3rem,2.5vw,1.65rem);font-weight:600;line-height:1.3;letter-spacing:-.02em;color:var(--ink)}
 
   /* FOOTER */
   .footer{background:#0B0B0C;color:#fff;border-radius:36px 36px 0 0;padding:60px clamp(28px,5vw,64px) 32px;margin-top:96px;overflow:hidden}
@@ -206,7 +223,6 @@
   [data-theme="dark"] .tbl th{background:#1a1a1a}
   [data-theme="dark"] .note{color:#bcd3ff}
   [data-theme="dark"] .note b{color:#dbe8ff}
-  /* dark-theme contrast: before/after cards + comparison table had hardcoded light-theme text */
   [data-theme="dark"] .ba li{color:#cfcfc9}
   [data-theme="dark"] .ba .before .tag{color:#ff9ea1}
   [data-theme="dark"] .ba .after .tag{color:#6fdfa6}
@@ -217,13 +233,13 @@
 
   /* ── UNIFIED SINGLE-COLUMN LAYOUT (match catchly / edge-state widths) ── */
   .hero__in,.prose,.intro,.cards,.stats,.rules,.diff,.classify,.tbl,.metrics,
-  .code,.gallery,.steps,.faq,.figure{
+  .code,.gallery,.steps,.faq,.figure,.challenge-grid,.closing{
     max-width:var(--maxw)!important;
     margin-left:auto;margin-right:auto;
     padding-left:var(--pad);padding-right:var(--pad);
   }
   .divider{max-width:var(--maxw)!important;margin-left:auto;margin-right:auto;padding-left:var(--pad);padding-right:var(--pad)}
-  .note{max-width:var(--maxw)!important;margin-left:auto;margin-right:auto}
+  .note{max-width:760px!important;margin-left:auto;margin-right:auto}
   .figure img{width:100%}
   .prose .lead,.prose p,.prose ul,.prose li,.prose h2.h,.prose .eyebrow{max-width:100%;margin-left:0;margin-right:0}
   .prose[style*="center"] .lead,.prose[style*="center"] p{margin-left:auto;margin-right:auto}
@@ -243,60 +259,64 @@
         </div>
         <a class="mz-nav__resume" href="resume.html" target="_blank" aria-label="Download resume">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-            <span class="mz-nav__tip">Download résumé</span>
+            <span class="mz-nav__tip">Download r&eacute;sum&eacute;</span>
         </a>
         <a class="mz-nav__mail" href="mailto:rahamanmuzeeb1108@gmail.com" aria-label="Email me">
             <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <span class="mz-nav__tip">Let’s work together</span>
+            <span class="mz-nav__tip">Let's work together</span>
         </a>
     </nav>
 
-<!-- HERO -->
+<!-- FIX #2 + #3: Hero — personal story hook + restructured sub-copy -->
 <header class="hero">
   <div class="hero__in">
     <span class="hero__badge"><span class="dot"></span> Case Study · Product Designer &amp; Builder</span>
-    <h1>Omnis <span class="grad">UX Audit Engine</span> — a day-long chore, automated.</h1>
-    <p class="hero__sub">I turned a manual, screen-by-screen design review into an engine that logs into any web product, audits every state, and ships developer-ready annotated reports — at <b style="color:var(--ink)">~$0.30 a screen, versus hours of a senior's manual review</b>.</p>
+    <h1>I was spending a day finding UX problems. So I built the <span class="grad">audit engine</span>.</h1>
+    <p class="hero__sub">At Omnis AI, I was the solo product designer across five legal-tech products. Manual staging reviews were slow, inconsistent, and broke at scale — so I built an engine that logs in, explores every state, and ships developer-ready reports at <b style="color:var(--ink)">~$0.30 a screen</b>.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Solo designer + builder</span>
       <span class="m">Jun – Jul 2026</span>
-      <span class="m">v5.0</span>
+      <span class="m">Omnis AI</span>
     </div>
   </div>
 </header>
 
-<!-- STATS -->
+<!-- FIX #16: Stats bar — clearer labels -->
 <div class="stats reveal">
   <div class="stat"><div class="n">229</div><div class="l">Deterministic checks</div></div>
-  <div class="stat"><div class="n">342</div><div class="l">Audit rules</div></div>
-  <div class="stat"><div class="n">31</div><div class="l">AI skill packs</div></div>
+  <div class="stat"><div class="n">342</div><div class="l">Total audit rules</div></div>
+  <div class="stat"><div class="n">31</div><div class="l">AI analysis lenses</div></div>
   <div class="stat"><div class="n">187</div><div class="l">Passing tests</div></div>
   <div class="stat"><div class="n">~27k</div><div class="l">Lines of TypeScript</div></div>
-  <div class="stat"><div class="n">90%+</div><div class="l">Element-grounded</div></div>
+  <div class="stat"><div class="n">90%+</div><div class="l">Findings tied to real elements</div></div>
 </div>
 
-<!-- CHAPTER NAV -->
-<nav class="chapters" id="chapters" style="margin-top:52px">
-  <a href="#overview" class="active">Overview</a>
-  <a href="#workflow">Before → After</a>
+<!-- CHAPTER NAV — updated to match new section structure -->
+<nav class="chapters" id="chapters" style="margin-top:32px">
+  <a href="#context" class="active">Context</a>
+  <a href="#insight">Insight</a>
+  <a href="#challenge">Challenge</a>
+  <a href="#workflow">Before &rarr; After</a>
+  <a href="#principle">Principle</a>
   <a href="#product">Product</a>
   <a href="#stack">Stack</a>
   <a href="#scenarios">Scenarios</a>
-  <a href="#hard">Hard parts</a>
+  <a href="#trust">Trust</a>
+  <a href="#turning">Turning point</a>
   <a href="#results">Results</a>
   <a href="#reflection">Reflection</a>
   <a href="#qa">Q&amp;A</a>
 </nav>
 
-<!-- OVERVIEW / INTRO -->
-<section id="overview">
+<!-- FIX #4 + #5 + #6: Split overview into Context + Insight, fix eyebrow, fix lead sentence -->
+<section id="context">
   <div class="intro reveal">
     <div>
-      <div class="eyebrow">In one line</div>
-      <p class="lead">Point it at a product URL with credentials, and it logs in, walks every screen, clicks through to every interactive state, and produces a self-contained report — one clean numbered box per problem.</p>
-      <p>At Omnis AI I was the solo product designer across five legal-tech products, asked to manually audit our live staging apps screen by screen. That's slow, inconsistent, and doesn't scale — so instead of doing it by hand forever, I <b>built the thing that does it for me</b>. The non-negotiable principle that shaped everything: <b>findings must be grounded in the real DOM, not guessed</b>.</p>
-      <p><b>The signal, from being the bottleneck myself:</b> auditing those five products by hand, the issues I <em>consistently</em> missed were the hidden states — modals, error and empty screens I simply forgot to open. That finding, not a spec, is why <b>exhaustive state exploration</b> — clicking every control and auditing each resulting state — became the engine's first-class job rather than a nice-to-have.</p>
+      <div class="eyebrow">Context</div>
+      <p class="lead">Point it at a product URL with credentials. It logs in, walks every screen, explores every interactive state, and produces a self-contained report — one numbered box per problem.</p>
+      <p>At Omnis AI I was the solo product designer across five legal-tech products, asked to manually audit our live staging apps screen by screen. That's slow, inconsistent, and doesn't scale — so instead of doing it by hand forever, I <b>built the thing that does it for me</b>.</p>
+      <p>A typical audit meant opening screens one by one, taking screenshots, annotating problems in Figma, checking interactions, and documenting everything for engineering. Then the cycle restarted after fixes. As the number of products grew, <b>I became the bottleneck</b>.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
@@ -338,14 +358,60 @@
   </div>
 </section>
 
+<div class="divider"><span>The insight</span></div>
+
+<!-- FIX #6: Dedicated insight section -->
+<section id="insight">
+  <div class="prose reveal">
+    <div class="eyebrow">The insight</div>
+    <h2 class="h">The problems I kept missing weren't on the screen.</h2>
+    <p>They were behind it.</p>
+    <p>A default dashboard could look perfectly fine until you opened a filter, triggered an error, expanded a menu, submitted an incomplete form, or hit an empty state.</p>
+    <p>Those hidden states were the ones most likely to be skipped during a manual review — and they were the ones that shipped broken.</p>
+    <p>That changed the problem. I wasn't trying to build a faster screenshot reviewer. I needed a system that could <b>explore the product itself</b>.</p>
+  </div>
+</section>
+
+<div class="divider"><span>The challenge</span></div>
+
+<!-- FIX #7: Dedicated challenge section -->
+<section id="challenge">
+  <div class="prose reveal" style="margin-bottom:34px">
+    <div class="eyebrow">The challenge</div>
+    <h2 class="h">Four questions the engine had to answer.</h2>
+  </div>
+  <div class="challenge-grid reveal">
+    <div class="challenge-card">
+      <div class="cc-num">01</div>
+      <h3>Can it see the whole product?</h3>
+      <p>Not just the default screen — every state behind every control.</p>
+    </div>
+    <div class="challenge-card">
+      <div class="cc-num">02</div>
+      <h3>Can it prove a finding is real?</h3>
+      <p>A convincing explanation isn't enough. Every finding needs evidence tied to a real element.</p>
+    </div>
+    <div class="challenge-card">
+      <div class="cc-num">03</div>
+      <h3>Can someone act on the result?</h3>
+      <p>The output has to explain what's wrong, where it is, and what to do next.</p>
+    </div>
+    <div class="challenge-card">
+      <div class="cc-num">04</div>
+      <h3>Can I trust it at scale?</h3>
+      <p>More findings don't help if half are wrong. The system had to earn trust, not just produce volume.</p>
+    </div>
+  </div>
+</section>
+
 <div class="divider"><span>The workflow</span></div>
 
-<!-- WORKFLOW -->
+<!-- FIX #11: Stronger workflow heading -->
 <section id="workflow">
   <div class="prose reveal">
-    <div class="eyebrow">Before → After</div>
-    <h2 class="h">How the workday changed.</h2>
-    <p>The whole project is really a story about a broken workflow and the one I replaced it with.</p>
+    <div class="eyebrow">Before &rarr; After</div>
+    <h2 class="h">The whole project is a story about a broken workflow.</h2>
+    <p>And the one I replaced it with.</p>
   </div>
 
   <div class="ba reveal">
@@ -356,16 +422,16 @@
         <li>Screenshot, paste into Figma, hand-draw boxes + notes</li>
         <li>Try to remember modals, dropdowns, error &amp; empty states (usually skipped)</li>
         <li>Export images, field "which element?" questions</li>
-        <li>After every fix → redo the whole pass from scratch</li>
+        <li>After every fix &rarr; redo the whole pass from scratch</li>
       </ul>
     </div>
     <div class="col after">
       <div class="tag">After · the engine — ~3 min per screen</div>
       <ul>
         <li>Run one command: <span style="font-family:var(--mono);font-size:.85em">audit &lt;url&gt; &lt;credentials&gt;</span></li>
-        <li>Logs in → walks every screen + state → analyzes</li>
-        <li>Grounds each finding on a real element → annotates → builds report</li>
-        <li>Developer opens a finding → exact selector + copy-paste fix</li>
+        <li>Logs in &rarr; walks every screen + state &rarr; analyzes</li>
+        <li>Grounds each finding on a real element &rarr; annotates &rarr; builds report</li>
+        <li>Developer opens a finding &rarr; exact selector + copy-paste fix</li>
         <li>Re-audit after a fix = one command</li>
       </ul>
     </div>
@@ -392,16 +458,30 @@
   </div>
 </section>
 
+<div class="divider"><span>The principle</span></div>
+
+<!-- FIX #6 (part 2): Dedicated grounding principle section -->
+<section id="principle">
+  <div class="prose reveal">
+    <div class="eyebrow">The principle</div>
+    <h2 class="h">One rule changed the entire product.</h2>
+    <p>The first version analyzed static screenshots. It could identify things that looked wrong, but it couldn't always prove that the issue belonged to a real element.</p>
+    <p>That wasn't good enough. So I introduced a hard constraint:</p>
+    <p><b>If a finding can't be tied to a real DOM element, it doesn't ship.</b></p>
+    <p>That single decision pushed the product toward live DOM access, element coordinates, verification, and grounded findings. The system wasn't just looking at an interface anymore. It was building <b>evidence</b> about it.</p>
+  </div>
+</section>
+
 <div class="divider"><span>The product</span></div>
 
-<!-- PRODUCT -->
+<!-- PRODUCT — kept as-is (strongest existing section) -->
 <section id="product">
   <div class="prose reveal">
     <div class="eyebrow">The product</div>
     <h2 class="h">What it does today.</h2>
     <p>Because it has live access — not just a static screenshot — it:</p>
     <ul>
-      <li><b>Logs in</b> automatically (reuse a saved session → scripted login → AI fallback).</li>
+      <li><b>Logs in</b> automatically (reuse a saved session &rarr; scripted login &rarr; AI fallback).</li>
       <li><b>Captures</b> each screen as a full-page screenshot + complete DOM inventory, and runs the axe accessibility engine live.</li>
       <li><b>Explores states</b> — clicks every button, dropdown, modal, filter &amp; tab; one dashboard expands into 8+ states.</li>
       <li><b>Analyzes</b> on two tracks: deterministic checks (zero-cost, zero-hallucination) and AI skill packs (the right lenses per page type).</li>
@@ -414,14 +494,14 @@
   <div class="prose reveal" style="margin-top:60px">
     <div class="eyebrow">Anatomy</div>
     <h2 class="h">Every issue is one card — and that card <em style="font-style:normal;color:var(--accent)">is</em> the product.</h2>
-    <p>Each finding carries a <b>severity chip</b> for triage, the <b>category + rule ID</b> so it traces to the exact rule that fired, a plain-English <b>title</b>, a <b>Why → How → Impact</b> reasoning chain that names the exact principle, a copy-paste <b>Fix</b>, a <b>confidence score</b>, and a <b>Copy-as-markdown</b> button. A finding missing any of these is rejected before it reaches the card.</p>
+    <p>Each finding carries a <b>severity chip</b> for triage, the <b>category + rule ID</b> so it traces to the exact rule that fired, a plain-English <b>title</b>, a <b>Why &rarr; How &rarr; Impact</b> reasoning chain that names the exact principle, a copy-paste <b>Fix</b>, a <b>confidence score</b>, and a <b>Copy-as-markdown</b> button. A finding missing any of these is rejected before it reaches the card.</p>
   </div>
   <figure class="figure reveal"><div class="frame"><img src="assets/media/audit/audit-04.png" alt=""/></div><figcaption>Anatomy of a finding card — a real COPY-007 finding with every field labelled.</figcaption></figure>
 </section>
 
 <div class="divider"><span>The stack</span></div>
 
-<!-- STACK -->
+<!-- STACK — kept as-is -->
 <section id="stack">
   <div class="prose reveal">
     <div class="eyebrow">The stack</div>
@@ -434,7 +514,7 @@
       <tr><td>runtime</td><td>Node + TypeScript, Model Context Protocol (MCP) SDK</td></tr>
       <tr><td>capture</td><td>Playwright — login, full-page screenshots, DOM inventory, state exploration</td></tr>
       <tr><td>a11y</td><td>@axe-core/playwright — the axe engine, live per page</td></tr>
-      <tr><td>ai-vision</td><td>OpenAI-compatible SDK → Gemini Flash / OpenRouter (multi-provider + fallback)</td></tr>
+      <tr><td>ai-vision</td><td>OpenAI-compatible SDK &rarr; Gemini Flash / OpenRouter (multi-provider + fallback)</td></tr>
       <tr><td>image</td><td>Sharp (annotation), tesseract.js (OCR snapping), pixelmatch (diff)</td></tr>
       <tr><td>service</td><td>Next.js 16, React 19, Tailwind 4 · Prisma 7 + Postgres · BullMQ + Redis · GitHub Actions · Docker</td></tr>
     </table>
@@ -443,17 +523,17 @@
 
 <div class="divider"><span>User scenarios</span></div>
 
-<!-- SCENARIOS -->
+<!-- SCENARIOS — kept as-is with heading tweak -->
 <section id="scenarios">
   <div class="prose reveal">
     <div class="eyebrow">User scenarios</div>
-    <h2 class="h">One audit, six people.</h2>
+    <h2 class="h">One finding. Six different jobs.</h2>
     <p>A deliberate product decision: the same underlying findings are presented six ways so each role gets exactly what it needs.</p>
     <ul>
       <li><b>Product Designer (me)</b> — a pre-release skim by severity; rejecting a false positive turns it into a permanent rule.</li>
       <li><b>Frontend Developer</b> — opens a blocker and gets the exact selector, offending HTML, and a copy-paste fix with before/after proof.</li>
       <li><b>QA Engineer</b> — the State Explorer catches hidden-state bugs a manual pass over the default screen never sees.</li>
-      <li><b>Content writer</b> — a separate Content track: current text in red, a suggested rewrite in green, a Copy button.</li>
+      <li><b>Content Writer</b> — a separate Content track: current text in red, a suggested rewrite in green, a Copy button.</li>
       <li><b>Engineering Manager</b> — a fleet dashboard + a CI gate that blocks any PR introducing a new blocker.</li>
       <li><b>Leadership</b> — coverage proof and before/after tracking: evidence products are measurably improving.</li>
     </ul>
@@ -465,27 +545,42 @@
   </div>
 </section>
 
-<div class="divider"><span>The hard parts</span></div>
+<div class="divider"><span>Trust</span></div>
 
-<!-- HARD -->
-<section id="hard">
+<!-- FIX #12: Renamed "Hard parts" to "Trust" — reframed as design philosophy -->
+<section id="trust">
   <div class="prose reveal">
-    <div class="eyebrow">The hard parts</div>
-    <h2 class="h">Decisions that make it trustworthy.</h2>
-    <p>Anyone can draw a box on a screenshot. The judgment is in making the report trustworthy.</p>
+    <div class="eyebrow">The hard part</div>
+    <h2 class="h">The hard part wasn't finding problems. It was knowing when not to believe the machine.</h2>
+    <p>The easiest thing to optimize was volume — more rules, more findings, more AI suggestions. But a system that creates 500 findings isn't useful if a reviewer has to verify whether 300 of them are real.</p>
+    <p>So the design shifted from <b>more findings</b> to <b>more trustworthy findings</b>.</p>
     <ul>
-      <li><b>Grounding in the real DOM</b> — an accuracy stack (grid coords, OCR + DOM snapping, crop verification) maps every finding to a real element's bounding box. Ungroundable findings are rejected → 90%+ element-grounded.</li>
-      <li><b>Deterministic certainty vs AI opinion</b> — 229 hard-coded checks handle everything objective at zero cost; AI is a second lens only for subjective judgment.</li>
-      <li><b>Designing for AI trust</b> — every AI finding names a principle/WCAG criterion, carries a confidence score, grounds to an element, and passes a four-question false-positive gate. Reviewer corrections become permanent rules.</li>
-      <li><b>Honest resolution</b> — CSS-fixable issues get before/after proof; everything structural is a "recommendation," never faked as resolved.</li>
-      <li><b>Trust over volume</b> — v5.0 consolidated 400+ rules to 342 high-signal ones; no rule ships above a 10% false-positive rate on a real product.</li>
+      <li><b>Ground every finding</b> — map it to a real DOM element. Ungroundable findings are rejected &rarr; 90%+ element-grounded.</li>
+      <li><b>Separate certainty from judgment</b> — 229 hard-coded checks handle everything objective at zero cost; AI is a second lens only for subjective judgment.</li>
+      <li><b>Make confidence visible</b> — every AI finding names a principle/WCAG criterion, carries a confidence score, and passes a four-question false-positive gate.</li>
+      <li><b>Reject weak findings</b> — no evidence means no finding. Reviewer corrections become permanent rules.</li>
+      <li><b>Be honest about resolution</b> — CSS-fixable issues get before/after proof; everything structural is a "recommendation," never faked as resolved.</li>
     </ul>
+  </div>
+</section>
+
+<div class="divider"><span>The turning point</span></div>
+
+<!-- FIX #12: Dedicated turning point section (was buried in Reflection) -->
+<section id="turning">
+  <div class="prose reveal">
+    <div class="eyebrow">The turning point</div>
+    <h2 class="h">I built the wrong version first.</h2>
+    <p>The first version analyzed static screenshots. It was exciting because it produced findings quickly. It was also wrong.</p>
+    <p>The system could confidently point at something that <b>wasn't actually there</b>.</p>
+    <p>That forced a fundamental rethink. Instead of asking "how many issues can the AI find?" I started asking <b>"can I prove this issue exists?"</b></p>
+    <p>That question led to live DOM access, element grounding, and the validation layer that defines the current product. The engine became less of an AI demo and more of a <b>trustworthy audit system</b>.</p>
   </div>
 </section>
 
 <div class="divider"><span>Results</span></div>
 
-<!-- RESULTS -->
+<!-- RESULTS — kept core content, added qualifier per fix #15 -->
 <section id="results">
   <div class="prose reveal">
     <div class="eyebrow">Results</div>
@@ -500,6 +595,8 @@
     <div class="metric"><div class="n">90%+</div><h4>findings element-grounded</h4><p>Every box sits on a real DOM element — never floating near it.</p></div>
   </div>
 
+  <div class="note reveal" style="margin-top:30px">These numbers describe the working system, not a claim that the product reached production-grade validation.</div>
+
   <div class="prose reveal" style="margin-top:50px">
     <div class="eyebrow">Export</div>
     <h2 class="h">A finding is only useful if it can leave the tool.</h2>
@@ -507,7 +604,7 @@
   </div>
   <div class="code reveal"><pre><span class="c">**1. Low contrast on div "Profile": 1.3:1 (need 4.5:1)**</span>
 - Why: Insufficient text contrast makes content hard to read.
-- Impact: Users with low vision cannot read this → WCAG non-compliance.
+- Impact: Users with low vision cannot read this &rarr; WCAG non-compliance.
 - <span class="g">Fix: Increase contrast to at least 4.5:1.</span>
 - rule: DET-CONTRAST-001 · WCAG 1.4.3 (AA) · confidence: 1
 - div.sidebar-footer-profile.expanded</pre></div>
@@ -519,23 +616,60 @@
 
 <div class="divider"><span>Reflection</span></div>
 
-<!-- REFLECTION -->
+<!-- FIX #13: Split reflection into focused sections -->
 <section id="reflection">
   <div class="prose reveal">
-    <div class="eyebrow">Why it matters</div>
-    <h2 class="h">Not a "designer who also codes a bit" story.</h2>
-    <p>It closes the <b>design → build loop</b> most designers never close — so I learned the things only visible once it's real: the bottleneck was trust, not coverage; a box one pixel off destroys credibility; "acceptance %" is a vanity metric.</p>
-    <p>It's evidence of <b>judgment, not pixels</b> — problem-framing, explicit trade-offs, a defined success metric, and the versions I killed. It's <b>systems thinking</b> across states, flows, failure modes and six user roles, with craft in service of trust.</p>
-    <p>The version I killed: an early build analysed <b>static screenshots only</b>. It confidently flagged elements that weren't really there — so I rebuilt it around <b>live DOM access</b>. Every finding now has to point at a real element or it doesn't ship. That single constraint is why the reports are trustworthy, and it's the whole reason "grounded in the real DOM" became the non-negotiable.</p>
-    <div class="note"><b>The maturity is in the honesty.</b> I score the engine at ~5.5–6/10 — a strong, genuinely working tool that competes with a manual audit on coverage, but not a validated GA product. Staging went down and I was laid off, so I no longer hold the login needed to finish the live baseline. Everything up to that line — the design, architecture, ~27,000 lines, 187 tests — is done and demonstrable.</div>
-    <p style="margin-top:20px"><b>What I'd do differently:</b> build the measuring stick first. I spent early weeks adding rules because progress felt fast, then realised the real bottleneck was trust, not coverage. For any AI product, decide how you'll measure "good" before you build it — volume is easy, trust is the hard, valuable part.</p>
-    <p style="margin-top:20px"><b>Leverage, not just output:</b> the engine became the audit method across all <b>five</b> Omnis products, and one run serves <b>six roles</b> — design, PM, three engineering disciplines and leadership — off a single grounded report. The work compounded past my own hands, which is the point.</p>
+    <div class="eyebrow">Reflection</div>
+    <h2 class="h">The real lesson wasn't about coverage.</h2>
+    <p>I started the project thinking the hard problem was finding more issues. It wasn't. The hard problem was <b>trust</b>.</p>
+    <p>A finding that's mostly correct isn't automatically better than no finding. A beautifully annotated screenshot is useless if the annotation points to the wrong element. And an impressive acceptance rate can still hide a weak system.</p>
+    <p>The biggest shift was learning to design around <b>uncertainty</b> — not just around the happy path.</p>
+  </div>
+
+  <div class="prose reveal" style="margin-top:50px">
+    <div class="eyebrow">Next time</div>
+    <h2 class="h">I would build the measuring stick first.</h2>
+    <p>Early on, adding rules felt like progress. Then I realized the more important question was: <em>how do I know whether a finding is actually useful?</em></p>
+    <p>If I continued the project, I would establish a baseline first and measure:</p>
+    <ul>
+      <li>Useful findings per screen</li>
+      <li>False-positive rate</li>
+      <li>Reviewer correction rate</li>
+      <li>Repeatability across audits</li>
+      <li>Time saved versus manual review</li>
+    </ul>
+    <p><b>Don't optimize the number of things an AI can say. Optimize the number of things a human can trust.</b></p>
+  </div>
+
+  <div class="prose reveal" style="margin-top:50px">
+    <div class="eyebrow">Honesty</div>
+    <h2 class="h">The implementation was real. The validation wasn't finished.</h2>
+    <p>I score the engine at ~5.5–6/10 — a strong, genuinely working tool that competes with a manual audit on coverage, but not a validated production product. Staging went down and I was laid off, so I no longer hold the login needed to finish the live baseline.</p>
+    <p>The remaining work: a live baseline across more products, longer-term validation, fix verification, and continuous monitoring.</p>
+    <p>Everything up to that line — the design, architecture, ~27,000 lines, 187 tests — is done and demonstrable.</p>
+    <div class="note"><b>Knowing exactly where the evidence ends is part of good product design.</b></div>
+  </div>
+</section>
+
+<div class="divider"><span>What's next</span></div>
+
+<!-- FIX #15: Future roadmap section -->
+<section id="future">
+  <div class="prose reveal">
+    <div class="eyebrow">What's next</div>
+    <h2 class="h">The next version closes the loop.</h2>
+    <ul>
+      <li><b>Phase 1 — Trusted baseline.</b> A deep initial audit for every product. Every future audit compares against this baseline: what improved, what regressed, what's new.</li>
+      <li><b>Phase 2 — Continuous re-auditing.</b> Connected to releases and pull requests. Instead of asking "what did the last audit find?" the system answers "what changed — and did the UX get better or worse?"</li>
+      <li><b>Phase 3 — Fix verification.</b> Move from Find &rarr; Report to Find &rarr; Fix &rarr; Re-audit &rarr; Verify. The system confirms whether the original problem actually disappeared.</li>
+    </ul>
+    <p style="margin-top:14px">Long-term: reviewer corrections become product knowledge, teams define their own UX standards, and the engine becomes the system that keeps products from quietly accumulating problems.</p>
   </div>
 </section>
 
 <div class="divider"><span>Interview brief</span></div>
 
-<!-- Q&A -->
+<!-- Q&A + FIX #14: Added closing statement after accordion -->
 <section id="qa">
   <div class="prose reveal" style="margin-bottom:34px">
     <div class="eyebrow">Anticipated questions</div>
@@ -549,6 +683,17 @@
     <details><summary>How did you measure success?</summary><div class="a">Absolute human-confirmed useful findings per screen. I deliberately rejected "acceptance %" because you can game it by shrinking the denominator. No rule shipped without a measured false-positive rate on a real product.</div></details>
     <details><summary>Could you take it to production?</summary><div class="a">Yes — the roadmap is written: a live baseline, multi-product validation, a fix-verification loop, and deploying the dashboard service with inline review and continuous monitoring.</div></details>
   </div>
+
+  <!-- FIX #14: Closing statement -->
+  <div class="closing reveal" style="margin-top:64px">
+    <p class="lead">I started by trying to save a day of work.</p>
+    <ul class="reframe">
+      <li>Not: look at more screens. <b>But: explore more states.</b></li>
+      <li>Not: generate more findings. <b>But: make every finding defensible.</b></li>
+      <li>Not: use AI everywhere. <b>But: use certainty where rules are enough, and judgment where judgment is needed.</b></li>
+    </ul>
+    <p class="final">The goal was never to replace the designer. It was to remove the work that keeps the designer from thinking.</p>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -559,7 +704,7 @@
                         <span class="mz-footer__name">Muzeeb Urrahaman</span>
                     </div>
                     <div class="mz-footer__socials">
-                        <a href="resume.html" target="_blank" aria-label="Résumé / CV">
+                        <a href="resume.html" target="_blank" aria-label="R&eacute;sum&eacute; / CV">
                             <svg class="mz-footer__social" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
                         </a>
                         <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
@@ -580,8 +725,8 @@
                     </div>
                 </div>
                 <div class="mz-footer__band">
-                    <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
-                    <div class="mz-footer__copy">© 2026 Muzeeb Urrahaman · All rights reserved</div>
+                    <div class="mz-footer__loc"><span class="mz-footer__flag">&#x1F1EE;&#x1F1F3;</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+                    <div class="mz-footer__copy">&copy; 2026 Muzeeb Urrahaman · All rights reserved</div>
                 </div>
             </footer>
 
@@ -589,7 +734,6 @@
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  // scroll-spy for chapter nav
   const links=[...document.querySelectorAll('.chapters a')];
   const map={}; links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
   const spy=new IntersectionObserver((es)=>{
