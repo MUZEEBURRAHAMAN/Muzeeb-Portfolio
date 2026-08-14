@@ -1346,8 +1346,10 @@ h2 {
     <div class="sec-num">10</div>
     <div class="eyebrow">The turning point</div>
     <h2 class="h">I built the wrong version first.</h2>
-    <p>The first version analyzed static screenshots. It was exciting because it produced findings quickly. It was also wrong.</p>
-    <p>The system could confidently point at something that <b>wasn't actually there</b>.</p>
+    <p>The first version analyzed static screenshots. It was exciting because it produced findings quickly — feed it a page, get back a list of problems in seconds.</p>
+    <p>Then I ran it against a screen I already knew cold. It came back confident: <b>"Low contrast on the secondary button beside the search field."</b> Specific coordinates, a severity chip, a suggested fix — it read like a real finding.</p>
+    <p>There was no secondary button there. The model had pattern-matched on how that region of the layout <em style="font-style:normal;color:var(--accent)">usually</em> looks in a dashboard and described a button that didn't exist on that screen. It wasn't a one-off — once I started checking, a slice of the "findings" were confident descriptions of elements the DOM had no record of.</p>
+    <p>That's the moment the project actually changed. A tool that occasionally invents problems isn't faster than a manual audit — it's slower, because now every finding needs a human to go verify it first. <b>Volume wasn't the product. Trust was.</b></p>
     <p>That forced a fundamental rethink. Instead of asking "how many issues can the AI find?" I started asking <b>"can I prove this issue exists?"</b></p>
     <p>That question led to live DOM access, element grounding, and the validation layer that defines the current product. The engine became less of an AI demo and more of a <b>trustworthy audit system</b>.</p>
   </div>
