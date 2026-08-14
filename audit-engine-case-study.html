@@ -748,36 +748,76 @@ h2 {
   margin: 28px 0 36px;
 }
 .export-file {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
+  flex-direction: column;
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 18px;
   background: var(--surface);
   text-decoration: none;
   color: inherit;
-  transition: transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s;
+  overflow: hidden;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s;
 }
 .export-file:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 44px rgba(0,0,0,.1);
   border-color: var(--accent);
 }
 .export-file .thumb {
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 140px;
   overflow: hidden;
-  flex-shrink: 0;
-  border: 1px solid var(--line-2);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
 }
-.export-file .thumb img { width: 100%; height: 100%; object-fit: cover; }
-.export-file .meta { min-width: 0; }
-.export-file .meta .ft { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 3px; }
-.export-file .meta .fn { font-weight: 600; font-size: .95rem; color: var(--ink); }
-.export-file .meta .fd { font-size: .8rem; color: var(--soft); margin-top: 2px; }
-.export-file .go { margin-left: auto; color: var(--soft); flex-shrink: 0; }
+.export-file .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform .4s var(--ease);
+}
+.export-file:hover .thumb img { transform: scale(1.05); }
+.export-file .badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15);
+}
+.export-file.type-html .badge { background: #EA580C; }
+.export-file.type-md .badge { background: #2F6DF0; }
+.export-file .body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+.export-file .meta { min-width: 0; flex: 1; }
+.export-file .meta .fn { font-weight: 600; font-size: .95rem; color: var(--ink); font-family: var(--mono); }
+.export-file .meta .fd { font-size: .8rem; color: var(--soft); margin-top: 3px; line-height: 1.4; }
+.export-file .go {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: transform .25s var(--ease), background .25s;
+}
+.export-file:hover .go { background: var(--accent); color: #fff; transform: translateX(3px); }
 @media (max-width: 600px) {
   .export-files { grid-template-columns: 1fr; }
 }
@@ -794,32 +834,85 @@ h2 {
   padding: 0 !important;
   max-width: none;
   margin-top: 36px;
+  counter-reset: faq;
 }
 
 .faq details {
   border: 1px solid var(--line);
-  border-radius: 14px;
-  margin: 10px 0;
+  border-radius: 16px;
+  margin: 12px 0;
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
   text-align: left;
+  transition: border-color .2s, box-shadow .2s;
+  counter-increment: faq;
+}
+
+.faq details:hover {
+  border-color: rgba(47,109,240,.35);
+  box-shadow: 0 10px 26px rgba(0,0,0,.06);
+}
+
+.faq details[open] {
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(47,109,240,.1);
 }
 
 .faq summary {
   cursor: pointer;
-  padding: 18px 20px;
+  list-style: none;
+  padding: 20px 22px;
   font-size: 15px;
   font-weight: 600;
   color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::before {
+  content: counter(faq, decimal-leading-zero);
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq summary .q-text { flex: 1; }
+
+.faq summary::after {
+  content: "";
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--soft);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform .25s var(--ease);
+}
+
+.faq details[open] summary::after { transform: rotate(180deg); background: var(--accent); }
+
 .faq .a {
-  padding: 0 20px 20px;
+  padding: 0 22px 22px 66px;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.7;
   text-align: left;
 }
+
+[data-theme="dark"] .faq details { background: var(--surface); }
+[data-theme="dark"] .faq summary::before { background: rgba(110,168,255,.15); }
 
 .reveal {
   opacity: 1;
@@ -1258,23 +1351,31 @@ h2 {
 - div.sidebar-footer-profile.expanded</pre></div>
 
   <div class="export-files reveal">
-    <a class="export-file" href="assets/media/exports/audit-report.html" target="_blank" rel="noopener">
-      <span class="thumb"><img src="assets/media/audit/export-html-icon.png" alt="HTML export preview"/></span>
-      <span class="meta">
-        <span class="ft">HTML export</span>
-        <span class="fn">audit-report.html</span>
-        <span class="fd">Open the real, self-contained report</span>
+    <a class="export-file type-html" href="assets/media/exports/audit-report.html" target="_blank" rel="noopener">
+      <span class="thumb">
+        <span class="badge">.HTML</span>
+        <img src="assets/media/audit/export-html-icon.png" alt="HTML export preview"/>
       </span>
-      <span class="go">&rarr;</span>
+      <span class="body">
+        <span class="meta">
+          <span class="fn">audit-report.html</span>
+          <span class="fd">Self-contained report — open the real file</span>
+        </span>
+        <span class="go">&rarr;</span>
+      </span>
     </a>
-    <a class="export-file" href="assets/media/exports/audit-report.md" target="_blank" rel="noopener">
-      <span class="thumb"><img src="assets/media/audit/export-md-icon.png" alt="Markdown export preview"/></span>
-      <span class="meta">
-        <span class="ft">Markdown export</span>
-        <span class="fn">audit-report.md</span>
-        <span class="fd">Open the real, paste-ready markdown</span>
+    <a class="export-file type-md" href="assets/media/exports/audit-report.md" target="_blank" rel="noopener">
+      <span class="thumb">
+        <span class="badge">.MD</span>
+        <img src="assets/media/audit/export-md-icon.png" alt="Markdown export preview"/>
       </span>
-      <span class="go">&rarr;</span>
+      <span class="body">
+        <span class="meta">
+          <span class="fn">audit-report.md</span>
+          <span class="fd">Paste-ready markdown — open the real file</span>
+        </span>
+        <span class="go">&rarr;</span>
+      </span>
     </a>
   </div>
 
@@ -1343,12 +1444,12 @@ h2 {
     <h2 class="h">The things hiring managers probe for.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary>Are you a designer or a developer?</summary><div class="a">A product designer first — research, UX, UI, design systems are my core. The building is what makes me unusual: I can take a design decision and ship the working thing myself instead of waiting for a handoff. This tool is the proof.</div></details>
-    <details><summary>What was your specific contribution vs. engineers?</summary><div class="a">There were no other engineers on it — I was solo. I owned the problem framing, the design, the architecture, and every line of the implementation.</div></details>
-    <details><summary>How do you stop the AI from hallucinating findings?</summary><div class="a">The objective stuff never touches AI — 229 deterministic checks handle it. Every AI finding must ground to a real DOM element or it's rejected, must name a specific principle/WCAG criterion, and must pass a four-question false-positive gate. Reviewer rejections become permanent rules.</div></details>
-    <details><summary>How is this different from axe-core or Lighthouse?</summary><div class="a">Those see one static page and cover mostly automated accessibility. This logs in and clicks through the product to audit every interactive state, combines deterministic checks with AI design judgment, grounds every finding on a real element, and outputs annotated screenshots plus copy-paste fixes — not just a score. It uses axe-core inside it as one of many inputs.</div></details>
-    <details><summary>How did you measure success?</summary><div class="a">Absolute human-confirmed useful findings per screen. I deliberately rejected "acceptance %" because you can game it by shrinking the denominator. No rule shipped without a measured false-positive rate on a real product.</div></details>
-    <details><summary>Could you take it to production?</summary><div class="a">Yes — the roadmap is written: a live baseline, multi-product validation, a fix-verification loop, and deploying the dashboard service with inline review and continuous monitoring.</div></details>
+    <details open><summary><span class="q-text">Are you a designer or a developer?</span></summary><div class="a">A product designer first — research, UX, UI, design systems are my core. The building is what makes me unusual: I can take a design decision and ship the working thing myself instead of waiting for a handoff. This tool is the proof.</div></details>
+    <details><summary><span class="q-text">What was your specific contribution vs. engineers?</span></summary><div class="a">There were no other engineers on it — I was solo. I owned the problem framing, the design, the architecture, and every line of the implementation.</div></details>
+    <details><summary><span class="q-text">How do you stop the AI from hallucinating findings?</span></summary><div class="a">The objective stuff never touches AI — 229 deterministic checks handle it. Every AI finding must ground to a real DOM element or it's rejected, must name a specific principle/WCAG criterion, and must pass a four-question false-positive gate. Reviewer rejections become permanent rules.</div></details>
+    <details><summary><span class="q-text">How is this different from axe-core or Lighthouse?</span></summary><div class="a">Those see one static page and cover mostly automated accessibility. This logs in and clicks through the product to audit every interactive state, combines deterministic checks with AI design judgment, grounds every finding on a real element, and outputs annotated screenshots plus copy-paste fixes — not just a score. It uses axe-core inside it as one of many inputs.</div></details>
+    <details><summary><span class="q-text">How did you measure success?</span></summary><div class="a">Absolute human-confirmed useful findings per screen. I deliberately rejected "acceptance %" because you can game it by shrinking the denominator. No rule shipped without a measured false-positive rate on a real product.</div></details>
+    <details><summary><span class="q-text">Could you take it to production?</span></summary><div class="a">Yes — the roadmap is written: a live baseline, multi-product validation, a fix-verification loop, and deploying the dashboard service with inline review and continuous monitoring.</div></details>
   </div>
 </section>
 
