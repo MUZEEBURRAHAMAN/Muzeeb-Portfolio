@@ -189,6 +189,118 @@ section {
   text-align: left;
 }
 
+/* CHAPTER STEPPER */
+.chapters {
+  position: sticky;
+  top: 80px;
+  z-index: 50;
+  margin: 0 auto;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.chapters::-webkit-scrollbar { display: none; }
+.chapters a {
+  white-space: nowrap;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--soft);
+  text-decoration: none;
+  transition: .2s;
+}
+.chapters a:hover { color: var(--ink); }
+.chapters a.active { background: var(--ink); color: #fff; }
+
+/* MINIMAP */
+.minimap {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 34px;
+}
+.minimap .rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  max-height: 78vh;
+  padding: 8px 2px;
+}
+.minimap .mm-item {
+  position: relative;
+  width: 28px;
+  height: 3px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.minimap .mm-bar {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  width: 18px;
+  height: 2px;
+  border-radius: 99px;
+  background: #d2d2d2;
+  cursor: pointer;
+  transition: width .16s ease, background .16s ease, height .16s ease;
+}
+.minimap .mm-bar:hover { width: 23px; background: #888; }
+.minimap .mm-bar.active { width: 24px; height: 2px; background: var(--ink); }
+.minimap .mm-tip {
+  position: absolute;
+  right: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 6px 24px rgba(0,0,0,.09);
+  font-size: 12px;
+  animation: mmIn .12s ease-out;
+  pointer-events: none;
+}
+.minimap .mm-tip .mm-idx { color: #999; }
+.minimap .mm-tip .mm-lbl { font-weight: 500; color: var(--ink); }
+@keyframes mmIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(5px); }
+  to { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+@media (max-width: 820px) {
+  .minimap { display: none; }
+}
+@media (max-width: 720px) {
+  .chapters { top: 78px; }
+}
+
+/* DARK THEME */
+[data-theme="dark"] .chapters { background: rgba(20,20,20,.8); }
+[data-theme="dark"] .chapters a.active { background: #f4f2ed; color: #0f0f0f; }
+[data-theme="dark"] .minimap .mm-bar { background: rgba(255,255,255,.15); }
+[data-theme="dark"] .minimap .mm-bar:hover { background: rgba(255,255,255,.4); }
+[data-theme="dark"] .minimap .mm-tip { background: #1a1a1a; border-color: rgba(255,255,255,.12); }
+
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -850,6 +962,24 @@ h2 {
   <div class="stat"><div class="n">90%+</div><div class="l">Findings tied to real elements</div></div>
 </div>
 
+<!-- CHAPTER NAV -->
+<nav class="chapters" id="chapters" style="margin-top:32px">
+  <a href="#context" class="active">Context</a>
+  <a href="#insight">Insight</a>
+  <a href="#challenge">Challenge</a>
+  <a href="#workflow">Before &rarr; After</a>
+  <a href="#principle">Principle</a>
+  <a href="#product">Product</a>
+  <a href="#stack">Stack</a>
+  <a href="#scenarios">Scenarios</a>
+  <a href="#trust">Trust</a>
+  <a href="#turning">Turning point</a>
+  <a href="#results">Results</a>
+  <a href="#reflection">Reflection</a>
+  <a href="#future">What's next</a>
+  <a href="#qa">Q&amp;A</a>
+</nav>
+
 <!-- SECTION 01: CONTEXT -->
 <section id="context">
   <div class="intro reveal">
@@ -1214,6 +1344,11 @@ h2 {
   </div>
 </section>
 
+<!-- MINIMAP -->
+<nav class="minimap" aria-label="Case study minimap">
+  <div class="rail" id="mm-rail"></div>
+</nav>
+
 <!-- FOOTER -->
 <footer class="mz-footer">
   <div class="mz-footer__row">
@@ -1258,6 +1393,76 @@ h2 {
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // CHAPTER STEPPER SCROLL-SPY
+  var links = [].slice.call(document.querySelectorAll('.chapters a'));
+  var linkMap = {};
+  links.forEach(function(a) { linkMap[a.getAttribute('href').slice(1)] = a; });
+  var spy = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        links.forEach(function(l) { l.classList.remove('active'); });
+        var a = linkMap[e.target.id];
+        if (a) { a.classList.add('active'); a.scrollIntoView({ inline: 'center', block: 'nearest' }); }
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('section[id]').forEach(function(s) { spy.observe(s); });
+
+  // MINIMAP
+  (function() {
+    var mmSections = [
+      ["context","Context"],["insight","Insight"],["challenge","Challenge"],
+      ["workflow","Before → After"],["principle","Principle"],["product","Product"],
+      ["stack","Stack"],["scenarios","Scenarios"],["trust","Trust"],
+      ["turning","Turning Point"],["results","Results"],["reflection","Reflection"],
+      ["future","What's Next"],["qa","Q&A"]
+    ];
+    var rail = document.getElementById("mm-rail");
+    var mmActive = "context";
+    mmSections.forEach(function(s, i) {
+      var item = document.createElement("div");
+      item.className = "mm-item";
+      var btn = document.createElement("button");
+      btn.className = "mm-bar";
+      if (i === 0) btn.classList.add("active");
+      btn.setAttribute("aria-label", "Go to " + s[1]);
+      btn.addEventListener("click", function() {
+        document.getElementById(s[0]).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      item.addEventListener("mouseenter", function() {
+        var tip = document.createElement("div");
+        tip.className = "mm-tip";
+        tip.innerHTML = '<span class="mm-idx">' + String(i + 1).padStart(2, "0") + '</span><span class="mm-lbl">' + s[1] + '</span>';
+        item.appendChild(tip);
+      });
+      item.addEventListener("mouseleave", function() {
+        var tip = item.querySelector(".mm-tip");
+        if (tip) tip.remove();
+      });
+      item.appendChild(btn);
+      rail.appendChild(item);
+    });
+    var mmBars = [].slice.call(document.querySelectorAll(".mm-bar"));
+    function mmUpdate() {
+      var marker = window.innerHeight * 0.32;
+      var closest = null, dist = Infinity;
+      mmSections.forEach(function(s) {
+        var el = document.getElementById(s[0]);
+        if (!el) return;
+        var r = el.getBoundingClientRect();
+        var d = Math.abs(r.top - marker);
+        if (r.bottom > 80 && d < dist) { closest = s[0]; dist = d; }
+      });
+      if (closest && closest !== mmActive) {
+        mmActive = closest;
+        mmBars.forEach(function(b, i) { b.classList.toggle("active", mmSections[i][0] === mmActive); });
+      }
+    }
+    window.addEventListener("scroll", mmUpdate, { passive: true });
+    window.addEventListener("resize", mmUpdate);
+    mmUpdate();
+  })();
 </script>
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
