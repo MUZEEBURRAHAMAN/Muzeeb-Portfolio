@@ -783,113 +783,18 @@ h2 {
   font-size: 14.5px;
 }
 
-.code {
-  padding: 0 !important;
-  max-width: none;
-  margin: 36px 0;
-}
-
-.code pre {
-  background: #111;
-  color: #eee;
-  border-radius: 16px;
-  padding: 22px;
-  overflow: auto;
-  font-family: var(--mono);
-  font-size: 12.5px;
-  line-height: 1.7;
-}
-
 /* EXPORT FILE LINKS */
-.export-files {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  max-width: 820px;
-  margin: 28px 0 36px;
-}
-.export-file {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--surface);
-  text-decoration: none;
-  color: inherit;
-  overflow: hidden;
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s;
-}
-.export-file:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 44px var(--shadow-3);
-  border-color: var(--accent);
-}
-.export-file .thumb {
-  position: relative;
-  width: 100%;
-  height: 140px;
-  overflow: hidden;
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
-}
-.export-file .thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transition: transform .4s var(--ease);
-}
-.export-file:hover .thumb img { transform: scale(1.05); }
-.export-file .badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-family: var(--mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .05em;
-  padding: 4px 9px;
-  border-radius: 999px;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,.15);
-}
-.export-file.type-html .badge { background: #EA580C; }
-.export-file.type-md .badge { background: #2F6DF0; }
-.export-file .body {
-  display: flex;
+.export-link {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
-}
-.export-file .meta { min-width: 0; flex: 1; }
-.export-file .meta .fn { font-weight: 600; font-size: .95rem; color: var(--ink); font-family: var(--mono); }
-.export-file .meta .fd { font-size: .8rem; color: var(--soft); margin-top: 3px; line-height: 1.4; }
-.export-file .go {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--accent-soft);
+  gap: 8px;
+  margin-top: 14px;
   color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: transform .25s var(--ease), background .25s;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
 }
-.export-file:hover .go { background: var(--accent); color: #fff; transform: translateX(3px); }
-@media (max-width: 600px) {
-  .export-files { grid-template-columns: 1fr; }
-}
-
-.code pre .c {
-  color: #f87171;
-}
-
-.code pre .g {
-  color: #4ade80;
-}
+.export-link:hover { text-decoration: underline; }
 
 .faq {
   padding: 0 !important;
@@ -1402,48 +1307,14 @@ h2 {
   <div class="prose reveal" style="margin-top:50px">
     <div class="eyebrow">Export</div>
     <h2 class="h">A finding is only useful if it can leave the tool.</h2>
-    <p>The engine exports a complete audit as a self-contained <b>HTML</b> file and clean <b>Markdown</b> (paste into a PR or ticket), and rolls every screen into one product dashboard. A verbatim excerpt from the Markdown export:</p>
-  </div>
-  <div class="code reveal"><pre><span class="c">**1. Low contrast on div "Profile": 1.3:1 (need 4.5:1)**</span>
-- Why: Insufficient text contrast makes content hard to read.
-- Impact: Users with low vision cannot read this &rarr; WCAG non-compliance.
-- <span class="g">Fix: Increase contrast to at least 4.5:1.</span>
-- rule: DET-CONTRAST-001 · WCAG 1.4.3 (AA) · confidence: 1
-- div.sidebar-footer-profile.expanded</pre></div>
-
-  <div class="export-files reveal">
-    <a class="export-file type-html" href="assets/media/exports/audit-report.html" target="_blank" rel="noopener">
-      <span class="thumb">
-        <span class="badge">.HTML</span>
-        <img src="assets/media/audit/export-html-icon.png" alt="HTML export preview"/>
-      </span>
-      <span class="body">
-        <span class="meta">
-          <span class="fn">audit-report.html</span>
-          <span class="fd">Self-contained report — open the real file</span>
-        </span>
-        <span class="go">&rarr;</span>
-      </span>
-    </a>
-    <a class="export-file type-md" href="assets/media/exports/audit-report.md" target="_blank" rel="noopener">
-      <span class="thumb">
-        <span class="badge">.MD</span>
-        <img src="assets/media/audit/export-md-icon.png" alt="Markdown export preview"/>
-      </span>
-      <span class="body">
-        <span class="meta">
-          <span class="fn">audit-report.md</span>
-          <span class="fd">Paste-ready markdown — open the real file</span>
-        </span>
-        <span class="go">&rarr;</span>
-      </span>
-    </a>
+    <p>The engine exports a complete audit as a self-contained <b>HTML</b> file and clean <b>Markdown</b> (paste into a PR or ticket), and rolls every screen into one product dashboard.</p>
   </div>
 
-  <div class="gallery reveal">
-    <div class="shot full"><img src="assets/media/audit/audit-12.png" alt=""/><div class="sc">Auditing a specific state — the search overlay caught mid-interaction, with contrast and touch-target findings grounded to the exact elements.</div></div>
-    <div class="shot full"><img src="assets/media/audit/audit-13.png" alt=""/><div class="sc">A finding inside the self-contained HTML export — same severity chip and fix, plus a prompt-ready block engineers can paste straight into an AI coding tool.</div></div>
-  </div>
+  <figure class="figure reveal"><div class="frame"><img src="assets/media/audit/export-html-icon.png" alt="audit-report.html open in browser"/></div></figure>
+  <a class="export-link" href="assets/media/exports/audit-report.html" target="_blank" rel="noopener">Open audit-report.html &rarr;</a>
+
+  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img src="assets/media/audit/export-md-icon.png" alt="audit-report.md open in an editor"/></div></figure>
+  <a class="export-link" href="assets/media/exports/audit-report.md" target="_blank" rel="noopener">Open audit-report.md &rarr;</a>
 </section>
 
 <!-- SECTION 12: REFLECTION -->
