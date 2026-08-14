@@ -88,9 +88,6 @@
         .steps .row b { font-size: .88rem; color: #f4f2ed; } .steps .row span { display: block; font-size: .78rem; color: #9a9a98; margin-top: 1px; line-height: 1.4; }
         .love { display: inline-flex; align-items: center; gap: 9px; background: #1a1a1a; border: 1px solid #242424; border-radius: 999px; padding: 9px 16px; box-shadow: 0 10px 26px rgba(0,0,0,.4); cursor: grab; font-weight: 600; font-size: .9rem; color: #f4f2ed; }
         .love .hr { color: #ff5a7a; font-size: 1.15rem; }
-        .pghint { position: fixed; left: 50%; top: 100px; transform: translateX(-50%); z-index: 44; display: inline-flex; align-items: center; gap: 8px; background: #1a1a1a; border: 1px solid #242424; border-radius: 999px; padding: 10px 18px; font-size: .88rem; font-weight: 500; color: #cfcfcd; box-shadow: 0 8px 24px rgba(0,0,0,.4); transition: opacity .5s ease, transform .5s ease; }
-        .pghint svg { width: 16px; height: 16px; }
-        .pghint.hide { opacity: 0; transform: translateX(-50%) translateY(-12px); pointer-events: none; }
         /* floating dock */
         .pgdock { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 45; display: flex; align-items: flex-end; gap: 10px; background: #1a1a1a; border: 1px solid #242424; border-radius: 20px; padding: 10px 14px; box-shadow: 0 14px 36px rgba(0,0,0,.5); }
         .pgdock__i { position: relative; width: 46px; height: 46px; border: none; background: rgba(255,255,255,.05); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #e6e6e6; cursor: pointer; text-decoration: none; transition: transform .22s cubic-bezier(.16,1,.3,1), background .22s; }
@@ -109,22 +106,6 @@
         .pgzoom button { width: 34px; height: 34px; border: none; background: none; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: #e6e6e6; display: flex; align-items: center; justify-content: center; }
         .pgzoom button:hover { background: rgba(255,255,255,.08); }
         .pgzoom .pct { font-size: .82rem; color: #9a9a98; min-width: 42px; text-align: center; }
-
-        /* ===== guided tour ===== */
-        .pgtour-btn { position: fixed; left: 24px; bottom: 24px; z-index: 45; display: inline-flex; align-items: center; gap: 8px; background: #f4f2ed; color: #141414; border: none; border-radius: 999px; padding: 11px 18px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .86rem; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,.45); transition: transform .2s; }
-        .pgtour-btn:hover { transform: translateY(-2px); }
-        .pgtour-btn svg { width: 15px; height: 15px; }
-        .pgtour-cap { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(20px); z-index: 60; width: min(440px, 92vw); background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 18px; padding: 20px 22px; box-shadow: 0 20px 50px rgba(0,0,0,.6); opacity: 0; pointer-events: none; transition: opacity .35s, transform .35s; }
-        .pgtour-cap.on { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
-        .pgtour-cap h4 { font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: #f4f2ed; margin: 0 0 6px; }
-        .pgtour-cap p { font-size: .9rem; color: #9a9a98; line-height: 1.5; margin: 0 0 14px; }
-        .pgtour-cap .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-        .pgtour-cap .dots { display: flex; gap: 6px; }
-        .pgtour-cap .dots i { width: 6px; height: 6px; border-radius: 50%; background: #3a3a3a; }
-        .pgtour-cap .dots i.on { background: #f4f2ed; }
-        .pgtour-cap button { border: none; border-radius: 999px; padding: 8px 16px; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .82rem; cursor: pointer; }
-        .pgtour-cap .next { background: #f4f2ed; color: #141414; }
-        .pgtour-cap .skip { background: none; color: #8a8a86; }
 
         /* ===== type-tester toy ===== */
         .pgtype { width: 300px; }
@@ -286,26 +267,7 @@
         .pgdesigns .cap { display: block; font-size: .62rem; color: #9a9a98; padding: 4px 7px; }
 
         /* ===== mini-games ===== */
-        .pggame { user-select: none; }
-        .pggame__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; font-size: .78rem; color: #9a9a98; }
-        .pggame__score b { color: #f4f2ed; }
-        .pgplay { background: #f4f2ed; color: #141414; border: none; border-radius: 999px; padding: 6px 16px; font-weight: 600; font-size: .8rem; cursor: pointer; font-family: inherit; }
-        .pgplay:hover { filter: brightness(.92); }
-        .colorgrid { display: grid; gap: 6px; }
-        .colorgrid .t { border-radius: 7px; cursor: pointer; transition: transform .12s; aspect-ratio: 1; }
-        .colorgrid .t:hover { transform: scale(1.06); }
-        .colorgrid.shake { animation: pgshake .3s; }
-        @keyframes pgshake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-        .buggrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
-        .buggrid .cell { aspect-ratio: 1; border-radius: 8px; background: #161616; border: 1px solid #262626; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; cursor: pointer; }
-        .buggrid .cell.bug { background: #2a1414; border-color: #5a2a2a; }
-        .buggrid .cell.hit { background: #14261a; border-color: #2a5a3a; }
-
         @media (max-width: 768px) {
-            .pgtour-btn {
-                bottom: 96px !important;
-                left: 16px !important;
-            }
             .pgzoom {
                 bottom: 96px !important;
                 right: 16px !important;
@@ -529,17 +491,6 @@
                 </div>
             </a>
 
-            <!-- Designer game: eye for color -->
-            <div class="it" data-x="620" data-y="1230" style="left:620px;top:1230px;--r:-2deg" data-nodrag>
-                <div class="lbl">mini-game · designer</div>
-                <div class="cd pggame" style="width:250px">
-                    <div class="kick">🎨 Eye for color <span class="pill" id="pgColorLvl">Lv 1</span></div>
-                    <p style="margin-bottom:10px">Spot the one tile that's a slightly different shade.</p>
-                    <div class="colorgrid" id="pgColorGrid"></div>
-                    <div class="pggame__foot"><span id="pgColorMsg">Tap a tile</span><span class="pggame__score">Best: <b id="pgColorBest">0</b></span></div>
-                </div>
-            </div>
-
             <!-- ===== Builder zone ===== -->
             <div class="it pgzone" data-x="2820" data-y="1420" style="left:2820px;top:1420px;--r:2deg">
                 <div class="lbl">zone</div>
@@ -593,17 +544,6 @@
                     <div class="kick">Claude in my stack</div>
                     <p>I build with <b style="color:#f4f2ed">Cursor + Claude</b> daily — spec in plain English, generate, then review &amp; refine. MCP servers let Claude touch my real tools &amp; repos.</p>
                     <div class="repo__stack"><span>Claude</span><span>Cursor</span><span>MCP</span></div>
-                </div>
-            </div>
-
-            <!-- Builder game: bug squash -->
-            <div class="it" data-x="3320" data-y="1980" style="left:3320px;top:1980px;--r:-2deg" data-nodrag>
-                <div class="lbl">mini-game · builder</div>
-                <div class="cd pggame" style="width:250px">
-                    <div class="kick">🐛 Bug squash <span class="pill" id="pgBugTime">15s</span></div>
-                    <p style="margin-bottom:10px">Squash the bugs before they ship. 15 seconds.</p>
-                    <div class="buggrid" id="pgBugBoard"></div>
-                    <div class="pggame__foot"><button class="pgplay" id="pgBugStart" type="button">Start</button><span class="pggame__score">Score: <b id="pgBugScore">0</b></span></div>
                 </div>
             </div>
 
@@ -690,26 +630,6 @@
     <div class="pgpet" id="pgPet" aria-hidden="true"><div class="pgpet__s" id="pgPetS"></div></div>
     <div class="pgpet__say" id="pgPetSay"></div>
     <div class="pgpet__heart" id="pgPetHeart">❤</div>
-
-    <button class="pgtour-btn" id="pgTourBtn" type="button">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> Take the tour
-    </button>
-    <div class="pgtour-cap" id="pgTourCap">
-        <h4 id="pgTourTitle"></h4>
-        <p id="pgTourText"></p>
-        <div class="row">
-            <div class="dots" id="pgTourDots"></div>
-            <div style="display:flex;gap:8px;align-items:center">
-                <button class="skip" id="pgTourSkip" type="button">Skip</button>
-                <button class="next" id="pgTourNext" type="button">Next</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="pghint" id="pgHint">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
-        Drag anywhere to move · scroll to zoom
-    </div>
 
     <div class="pgdock" id="pgDock">
         <button class="pgdock__i" type="button" data-focus="1620,900,0.85"><span class="pgdock__tip">Overview</span>
@@ -798,128 +718,6 @@
                 panTo(parseFloat(f[0]), parseFloat(f[1]), parseFloat(f[2]) || scale);
             });
         });
-        // ---- first-time "drag to move" hint ----
-        var hint = document.getElementById('pgHint');
-        if (hint) {
-            var seen = false; try { seen = localStorage.getItem('pg-hint-seen') === '1'; } catch (e) {}
-            if (seen) { hint.remove(); }
-            else {
-                var dismiss = function () {
-                    hint.classList.add('hide');
-                    try { localStorage.setItem('pg-hint-seen', '1'); } catch (e) {}
-                    setTimeout(function () { hint.remove(); }, 600);
-                    canvas.removeEventListener('pointerdown', dismiss);
-                };
-                canvas.addEventListener('pointerdown', dismiss);
-                setTimeout(dismiss, 5000);
-            }
-        }
-
-        // ---- Designer mini-game: Eye for color ----
-        (function () {
-            var grid = document.getElementById('pgColorGrid'), msg = document.getElementById('pgColorMsg'),
-                lvlEl = document.getElementById('pgColorLvl'), bestEl = document.getElementById('pgColorBest');
-            if (!grid) return;
-            var lvl = 1, best = 0;
-            function build() {
-                var n = Math.min(2 + lvl, 6);
-                grid.style.gridTemplateColumns = 'repeat(' + n + ',1fr)';
-                var h = Math.floor(Math.random() * 360), s = 45 + Math.random() * 25, l = 46 + Math.random() * 12;
-                var base = 'hsl(' + h + ',' + s + '%,' + l + '%)';
-                var diff = Math.max(4, 22 - lvl * 2);
-                var odd = 'hsl(' + h + ',' + s + '%,' + (l + diff) + '%)';
-                var oddIdx = Math.floor(Math.random() * n * n);
-                grid.innerHTML = '';
-                for (var i = 0; i < n * n; i++) {
-                    var t = document.createElement('div'); t.className = 't';
-                    t.style.background = i === oddIdx ? odd : base;
-                    (function (idx) {
-                        t.onclick = function () {
-                            if (idx === oddIdx) {
-                                lvl++; if (lvl - 1 > best) { best = lvl - 1; bestEl.textContent = best; }
-                                lvlEl.textContent = 'Lv ' + lvl; msg.textContent = 'Sharp eye — harder now'; build();
-                            } else {
-                                msg.textContent = 'Not it — look again'; grid.classList.add('shake');
-                                setTimeout(function () { grid.classList.remove('shake'); }, 300);
-                            }
-                        };
-                    })(i);
-                    grid.appendChild(t);
-                }
-            }
-            build();
-        })();
-
-        // ---- Builder mini-game: Bug squash ----
-        (function () {
-            var board = document.getElementById('pgBugBoard'), startBtn = document.getElementById('pgBugStart'),
-                scoreEl = document.getElementById('pgBugScore'), timeEl = document.getElementById('pgBugTime');
-            if (!board) return;
-            var N = 16, cells = [], running = false, score = 0, t = 15, spawnTimer, clock;
-            for (var i = 0; i < N; i++) {
-                var c = document.createElement('div'); c.className = 'cell'; board.appendChild(c); cells.push(c);
-                (function (cell) {
-                    cell.onclick = function () {
-                        if (!running || !cell.classList.contains('bug')) return;
-                        cell.classList.remove('bug'); cell.classList.add('hit'); cell.textContent = '';
-                        score++; scoreEl.textContent = score;
-                        setTimeout(function () { cell.classList.remove('hit'); }, 160);
-                    };
-                })(c);
-            }
-            function spawn() {
-                var free = cells.filter(function (c) { return !c.classList.contains('bug'); });
-                if (!free.length) return;
-                var c = free[Math.floor(Math.random() * free.length)];
-                c.classList.add('bug'); c.textContent = '🐛';
-                setTimeout(function () { if (c.classList.contains('bug')) { c.classList.remove('bug'); c.textContent = ''; } }, 900);
-            }
-            startBtn.onclick = function () {
-                if (running) return;
-                running = true; score = 0; t = 15; scoreEl.textContent = 0; timeEl.textContent = '15s'; startBtn.textContent = '…';
-                spawnTimer = setInterval(spawn, 640);
-                clock = setInterval(function () {
-                    t--; timeEl.textContent = t + 's';
-                    if (t <= 0) {
-                        clearInterval(spawnTimer); clearInterval(clock); running = false;
-                        startBtn.textContent = 'Again'; timeEl.textContent = '15s';
-                        cells.forEach(function (c) { c.classList.remove('bug'); c.textContent = ''; });
-                    }
-                }, 1000);
-            };
-        })();
-
-        // ---- Guided tour (auto-pan through the highlights) ----
-        (function () {
-            var btn = document.getElementById('pgTourBtn'), cap = document.getElementById('pgTourCap'),
-                titleEl = document.getElementById('pgTourTitle'), textEl = document.getElementById('pgTourText'),
-                dotsEl = document.getElementById('pgTourDots'), nextBtn = document.getElementById('pgTourNext'),
-                skipBtn = document.getElementById('pgTourSkip');
-            if (!btn) return;
-            var STOPS = [
-                { x: 1620, y: 900, s: 0.9,  title: "Welcome to the playground", text: "An infinite canvas of side builds, experiments and toys. Drag anywhere, scroll to zoom — or let me drive." },
-                { x: 360,  y: 1500, s: 1.0, title: "Designer playground", text: "UI concepts, a research snapshot, and a color-perception mini-game. This is the design side." },
-                { x: 1700, y: 1120, s: 1.1, title: "Type in my fonts", text: "A little toy — type anything and see it rendered live in the site's typefaces." },
-                { x: 2820, y: 1500, s: 1.0, title: "Builder playground", text: "Real GitHub repos, my Claude/AI workflow, and a bug-squash game. This is where I ship code." },
-                { x: 1470, y: 790, s: 1.15, title: "Let's build something", text: "Like what you see? Email me or grab the résumé — open to Product / Founding Designer & Design Engineer roles." }
-            ];
-            var i = 0, active = false;
-            STOPS.forEach(function () { var d = document.createElement('i'); dotsEl.appendChild(d); });
-            var dots = dotsEl.children;
-            function show(n) {
-                i = n; var st = STOPS[i];
-                panTo(st.x, st.y, st.s);
-                titleEl.textContent = st.title; textEl.textContent = st.text;
-                for (var k = 0; k < dots.length; k++) dots[k].classList.toggle('on', k === i);
-                nextBtn.textContent = (i === STOPS.length - 1) ? "Finish" : "Next";
-            }
-            function startTour() { active = true; cap.classList.add('on'); btn.style.display = 'none'; show(0); }
-            function endTour() { active = false; cap.classList.remove('on'); btn.style.display = ''; }
-            btn.addEventListener('click', startTour);
-            skipBtn.addEventListener('click', endTour);
-            nextBtn.addEventListener('click', function () { if (i < STOPS.length - 1) show(i + 1); else endTour(); });
-        })();
-
         // ---- Type tester toy ----
         (function () {
             var input = document.getElementById('pgTypeInput'), prev = document.getElementById('pgTypePrev'),
