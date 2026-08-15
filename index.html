@@ -44,7 +44,7 @@
             <ul class="md:flex items-center gap-4 md:space-y-0 space-y-1">
                 <div class="pb-3 mb-4 md:hidden flex items-center border-b border-dashed border-white/20">
                     <a href="index.html" class="block max-w-10 min-w-10 w-full">
-                        <img src="assets/images/logo.png" class="w-full h-full object-cover" alt="logo"
+                        <img loading="lazy" src="assets/images/logo.png" class="w-full h-full object-cover" alt="logo"
                             draggable="false">
                     </a>
                     <button type="button" class="text-white w-6 h-6 ml-auto block" id="toggle-close-btn">
@@ -140,7 +140,7 @@
         </div>
         <nav class="mz-nav">
             <a class="mz-nav__logo" href="index.html" aria-label="Home">
-                <img src="assets/images/logo.png" alt="Muzeeb logo" draggable="false">
+                <img loading="lazy" src="assets/images/logo.png" alt="Muzeeb logo" draggable="false">
             </a>
             <div class="mz-nav__pill">
                 <a href="index.html" class="active" aria-label="Home">
@@ -547,7 +547,7 @@
             <footer class="mz-footer">
                 <div class="mz-footer__row">
                     <div class="mz-footer__id">
-                        <img class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
+                        <img loading="lazy" class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
                         <span class="mz-footer__name">Muzeeb Urrahaman</span>
                     </div>
                     <div class="mz-footer__socials">
@@ -607,6 +607,7 @@
     <!-- Lenis smooth scroll js end -->
 
     <!-- Typed js start -->
+    <script src="assets/js/typed.min.js"></script>
     <script>
         $("#typed").typed({
             strings: ["Figma", "Cursor", "Claude", "Framer", "Illustrator"],
@@ -835,7 +836,7 @@
             '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></a>';
         sec.innerHTML =
           '<div class="mz-proj__head"><div class="mz-proj__info">' +
-          '<div class="mz-proj__top"><img class="mz-proj__thumb" src="' + encodeURI(p.thumb) + '" alt=""><span class="mz-proj__title">' + p.title + '</span></div>' +
+          '<div class="mz-proj__top"><img loading="lazy" class="mz-proj__thumb" src="' + encodeURI(p.thumb) + '" alt=""><span class="mz-proj__title">' + p.title + '</span></div>' +
           '<h3 class="mz-proj__headline">' + p.headline + '</h3>' +
           '<div class="mz-proj__metrics">' + p.metrics + '</div></div>' + cta + '</div>' +
           '<div class="mz-marquee"><div class="mz-track"></div></div>';

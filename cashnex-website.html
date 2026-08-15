@@ -40,7 +40,7 @@
             <ul class="md:flex items-center gap-4 md:space-y-0 space-y-1">
                 <div class="pb-3 mb-4 md:hidden flex items-center border-b border-dashed border-white/20">
                     <a href="index.html" class="block max-w-10 min-w-10 w-full">
-                        <img src="assets/images/logo.png" class="w-full h-full object-cover" alt="logo"
+                        <img loading="lazy" src="assets/images/logo.png" class="w-full h-full object-cover" alt="logo"
                             draggable="false">
                     </a>
                     <button type="button" class="text-white w-6 h-6 ml-auto block" id="toggle-close-btn">
@@ -136,7 +136,7 @@
         </div>
         <nav class="mz-nav">
             <a class="mz-nav__logo" href="index.html" aria-label="Home">
-                <img src="assets/images/logo.png" alt="Muzeeb logo" draggable="false">
+                <img loading="lazy" src="assets/images/logo.png" alt="Muzeeb logo" draggable="false">
             </a>
             <div class="mz-nav__pill">
                 <a href="index.html" aria-label="Home">
@@ -184,38 +184,38 @@
             <div class="space-y-10">
                 <div class="w-full space-y-4">
                     <div id="animated-thumbnails" class="gallery-container w-full ">
-                        <a class="gallery-item" data-src="assets/images/cashnex/2.png" >
-                            <img src="assets/images/cashnex/2.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/2.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/2.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/2.png" >
-                            <img src="assets/images/cashnex/3.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/2.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/3.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/3.png" >
-                            <img src="assets/images/cashnex/4.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/3.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/4.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/5.png" >
-                            <img src="assets/images/cashnex/5.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/5.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/5.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/6.png" >
-                            <img src="assets/images/cashnex/6.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/6.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/6.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/7.png" >
-                            <img src="assets/images/cashnex/7.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/7.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/7.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/8.png" >
-                            <img src="assets/images/cashnex/8.png"/>
+                        <a class="gallery-item" data-src="assets/images/cashnex/8.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/8.jpg"/>
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/9.png" >
-                            <img src="assets/images/cashnex/9.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/9.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/9.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/10.png" >
-                            <img src="assets/images/cashnex/10.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/10.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/10.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/11.png" >
-                            <img src="assets/images/cashnex/11.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/11.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/11.jpg" class="mb-4" />
                         </a>
-                        <a class="gallery-item" data-src="assets/images/cashnex/12.png" >
-                            <img src="assets/images/cashnex/12.png" class="mb-4" />
+                        <a class="gallery-item" data-src="assets/images/cashnex/12.jpg" >
+                            <img loading="lazy" src="assets/images/cashnex/12.jpg" class="mb-4" />
                         </a>
                        
                     </div>
@@ -237,7 +237,7 @@
             <footer class="mz-footer">
                 <div class="mz-footer__row">
                     <div class="mz-footer__id">
-                        <img class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
+                        <img loading="lazy" class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
                         <span class="mz-footer__name">Muzeeb Urrahaman</span>
                     </div>
                     <div class="mz-footer__socials">
@@ -440,7 +440,7 @@
             designToolsText +=
                 `<div class="flex gap-6">
                     <div class="size-10 min-w-10 rounded-lg overflow-hidden">
-                        <img src='${item.image}' alt='${item.name}' class='size-full object-cover' />
+                        <img loading="lazy" src='${item.image}' alt='${item.name}' class='size-full object-cover' />
                     </div>
                     <div class="flex flex-col gap-1 col-span-9">
                         <p class="text-base text-[#F2F2F2]">${item.name}</p>
