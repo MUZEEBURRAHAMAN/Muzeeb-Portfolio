@@ -22,7 +22,7 @@
     content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work — pan the grid, click any tile to open its case study.">
   <!-- anti-FOUC: set theme before paint -->
   <script>try { var t = localStorage.getItem('mz-theme'); document.documentElement.setAttribute('data-theme', t || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=101">
+  <link rel="stylesheet" href="assets/css/style.css?v=295">
   <style>
     /* ===== theme tokens (portfolio colours + Geist/Inter) ===== */
     :root {
@@ -136,11 +136,13 @@
       }
     }
 
-    /* hide the theme toggle + chat while a card is expanded — not needed there */
+    /* hide header + theme toggle + chat while a card is expanded */
+    body.bwg-zoom .site-header,
     body.bwg-zoom .mz-theme-btn,
     body.bwg-zoom #cw-launcher {
       opacity: 0 !important;
       pointer-events: none !important;
+      transition: opacity .25s ease;
     }
 
     /* VIEWPORT / GRID — starts below the floating nav pill, flush with the bottom of the screen */
@@ -248,11 +250,13 @@
       position: fixed;
       inset: 0;
       display: flex;
-      z-index: 2;
+      z-index: 99998;
       opacity: 0;
       pointer-events: none;
       background: var(--bwg-overlay);
-      backdrop-filter: blur(3px)
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      will-change: opacity;
     }
 
     .split.active {
@@ -276,19 +280,21 @@
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 3;
+      z-index: 99999;
       pointer-events: none;
-      will-change: transform;
+      will-change: transform, opacity;
+      transform: translateZ(0);
       overflow: hidden;
       border-radius: 12px;
-      box-shadow: 0 0 0 1px var(--bwg-stroke), 0 30px 80px rgba(0, 0, 0, .4)
+      box-shadow: 0 0 0 1px var(--bwg-stroke), 0 30px 80px rgba(0, 0, 0, .5)
     }
 
     .scaler img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block
+      display: block;
+      transform: translateZ(0);
     }
 
     .detail {
@@ -296,7 +302,7 @@
       bottom: 48px;
       left: 48px;
       max-width: 420px;
-      z-index: 4;
+      z-index: 100000;
       opacity: 0;
       pointer-events: none
     }
@@ -350,10 +356,10 @@
 
     .close {
       position: fixed;
-      top: 26px;
-      right: 26px;
-      width: 46px;
-      height: 46px;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
       transform: translateX(40px);
       background: var(--bwg-btn);
       border: 1px solid var(--bwg-btn-bd);
@@ -365,8 +371,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background .2s;
-      z-index: 30
+      transition: background .2s, transform .2s, border-color .2s;
+      z-index: 100002 !important;
     }
 
     .close.active {
@@ -374,13 +380,13 @@
     }
 
     .close:hover {
-      background: var(--bwg-btn-hov)
+      background: var(--bwg-btn-hov);
+      transform: scale(1.05);
     }
 
     .close svg {
       width: 20px;
       height: 20px;
-      transform: rotate(180deg);
       stroke: currentColor
     }
 
@@ -389,20 +395,20 @@
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: var(--bwg-btn);
       border: 1px solid var(--bwg-btn-bd);
       color: var(--bwg-btn-ink);
       cursor: pointer;
-      z-index: 30;
+      z-index: 100002 !important;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: background .2s
+      transition: background .2s, transform .2s, opacity .25s, border-color .2s;
     }
 
     .navbtn.active {
@@ -410,7 +416,8 @@
     }
 
     .navbtn:hover {
-      background: var(--bwg-btn-hov)
+      background: var(--bwg-btn-hov);
+      transform: translateY(-50%) scale(1.06);
     }
 
     .navbtn svg {
@@ -431,49 +438,24 @@
 
 <body>
 
-  <!-- Portfolio nav (site.js builds the mobile drawer from this) -->
-  <nav class="mz-nav">
-    <a class="mz-nav__logo" href="index.html" aria-label="Home"><img loading="lazy" src="assets/images/logo.png" alt="Muzeeb"></a>
-    <div class="mz-nav__pill">
-      <a href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-          <path d="M9 22V12h6v10" />
-        </svg><span>Home</span></a>
-      <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-          <line x1="9" x2="9.01" y1="9" y2="9" />
-          <line x1="15" x2="15.01" y1="9" y2="9" />
-        </svg><span>About</span></a>
-      <a href="best-work.html" class="active" aria-label="Best work"><svg viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z" />
-        </svg><span>Best work</span></a>
-      <a href="playground.html" aria-label="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z" />
-          <rect x="3" y="14" width="7" height="7" rx="1" />
-          <circle cx="17.5" cy="17.5" r="3.5" />
-        </svg><span>Playground</span></a>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
+        <img alt="Muzeeb Urrahaman" src="assets/images/logo.png">
+      </a>
+      <nav class="site-header__nav">
+        <a class="site-header__link" href="about.html">About</a>
+        <a class="site-header__link active" href="best-work.html">Best work</a>
+        <a class="site-header__link" href="playground.html">Playground</a>
+        <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+        </button>
+      </nav>
     </div>
-    <a class="mz-nav__resume" href="resume.html" target="_blank" aria-label="Download resume">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-        <polyline points="7 10 12 15 17 10" />
-        <line x1="12" x2="12" y1="15" y2="3" />
-      </svg>
-      <span class="mz-nav__tip">Download résumé</span>
-    </a>
-    <a class="mz-nav__mail" href="mailto:rahamanmuzeeb1108@gmail.com" aria-label="Email me">
-      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-      <span class="mz-nav__tip">Let’s work together</span>
-    </a>
-  </nav>
+  </header>
 
   <!-- GALLERY -->
   <div class="viewport" id="viewport">
@@ -633,10 +615,11 @@
         this.nextBtn = document.getElementById('nextBtn');
         this.prevBtn.addEventListener('click', () => this.navigate(-1));
         this.nextBtn.addEventListener('click', () => this.navigate(1));
-        this.ease = CustomEase.create("smooth", ".87,0,.13,1");
+        this.ease = CustomEase.create("smooth", ".16,1,.3,1");
         // Fixed zoom (no controls to change it) — matches the "32%" view this was tuned against.
         this.cfg = { width: 1320, height: 990, rows: 12, cols: 4, zoom: 0.32, gap: 32 };
         this.items = []; this.zoomOn = false; this.sel = null; this.overlay = null; this.drag = null;
+        this._isElasticSettled = true;
         this.buildGrid();
         this.vp.addEventListener('wheel', (e) => this.onGridWheel(e), { passive: false });
       }
@@ -652,7 +635,7 @@
         this._wtT = now;
         this._wt.x = gsap.utils.clamp(b.minX, b.maxX, this._wt.x - e.deltaX);
         this._wt.y = gsap.utils.clamp(b.minY, b.maxY, this._wt.y - e.deltaY);
-        gsap.to(this.canvas, { x: this._wt.x, y: this._wt.y, duration: .5, ease: 'power3.out', overwrite: 'auto' });
+        gsap.to(this.canvas, { x: this._wt.x, y: this._wt.y, duration: .45, ease: 'power3.out', overwrite: 'auto' });
       }
       gapFor(z) { return z >= 1 ? 16 : z >= 0.6 ? 32 : 64; }
       dims(gap) {
@@ -668,32 +651,28 @@
           const el = document.createElement('div'); el.className = 'cell'; el.style.left = x + 'px'; el.style.top = y + 'px'; el.style.opacity = 0;
           el.dataset.n = String((k % META.length) + 1).padStart(2, '0');
           const img = document.createElement('img');
-          img.src = IMAGES[k % IMAGES.length].replace('.webp', '_thumb.webp') + '?v=hd';
+          img.decoding = 'async';
           img.loading = 'lazy';
-          img.alt = '';
+          img.alt = (META[k % META.length] && META[k % META.length].t) ? META[k % META.length].t : '';
+          img.src = IMAGES[k % IMAGES.length].replace('.webp', '_thumb.webp');
 
           const markLoaded = () => {
             img.classList.add('loaded');
             el.classList.add('loaded');
           };
-          if (img.complete) {
+          if (img.complete && img.naturalWidth > 0) {
             markLoaded();
           } else {
             img.onload = markLoaded;
             img.onerror = markLoaded;
           }
 
-          const itemIndex = k;
-          el.addEventListener('mouseenter', () => {
-            if (IMAGES[itemIndex]) {
-              const hd = new Image();
-              hd.src = IMAGES[itemIndex] + '?v=hd';
-            }
-          });
-
           el.appendChild(img);
           const data = { el, img, r, c, x, y, index: k };
-          el.addEventListener('click', () => { if (!this.zoomOn) this.enter(data); });
+          el.addEventListener('click', (e) => {
+            if (this.drag && this.drag.isDragging) return;
+            if (!this.zoomOn) this.enter(data);
+          });
           this.grid.appendChild(el); this.items.push(data); k++;
         }
       }
@@ -715,6 +694,7 @@
           onDragStart: () => {
             document.body.classList.add('bwg-dragging');
             this.canvas.style.willChange = 'transform';
+            this._isElasticSettled = false;
           },
           onDragEnd: () => {
             document.body.classList.remove('bwg-dragging');
@@ -724,8 +704,6 @@
       }
 
       // ---- ElasticGridScroll-inspired stretch (github.com/codrops/ElasticGridScroll) ----
-      // Tiles squish/stretch along the scroll/drag direction based on pan velocity, with each
-      // column trailing at a different rate so the grid settles in a ripple, like the original.
       initElastic() {
         if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         const mid = (this.cfg.cols - 1) / 2;
@@ -747,8 +725,12 @@
         const vx = (x - this._elX) / dt, vy = (y - this._elY) / dt;
         this._elX = x; this._elY = y; this._elT = now;
 
-        const threshold = 60, sensitivity = 900, maxStretch = 1.24, minSqueeze = .82;
         const avx = Math.abs(vx), avy = Math.abs(vy);
+        if (avx < 0.5 && avy < 0.5 && this._isElasticSettled) {
+          return;
+        }
+
+        const threshold = 60, sensitivity = 900, maxStretch = 1.22, minSqueeze = .84;
         let targetSi = 1, targetSy = 1, origin = '50% 50%';
         if (avy >= avx) {
           const n = Math.min(Math.max(0, avy - threshold) / sensitivity, 1);
@@ -759,13 +741,22 @@
           targetSi = 1 + (maxStretch - 1) * n; targetSy = 1 + (minSqueeze - 1) * n;
           origin = vx < 0 ? '0% 50%' : '100% 50%';
         }
+
+        let allSettled = (targetSi === 1 && targetSy === 1);
         this.items.forEach(it => {
           const speed = Math.min(1, dt / it.lag);
           it.si += (targetSi - it.si) * speed;
           it.sy += (targetSy - it.sy) * speed;
-          it.el.style.transformOrigin = origin;
-          it.el.style.transform = `scale(${it.si.toFixed(4)}, ${it.sy.toFixed(4)})`;
+          if (Math.abs(it.si - 1) > 0.002 || Math.abs(it.sy - 1) > 0.002) {
+            allSettled = false;
+            it.el.style.transformOrigin = origin;
+            it.el.style.transform = `scale(${it.si.toFixed(4)}, ${it.sy.toFixed(4)})`;
+          } else if (it.si !== 1 || it.sy !== 1) {
+            it.si = 1; it.sy = 1;
+            it.el.style.transform = '';
+          }
         });
+        this._isElasticSettled = allSettled;
       }
 
       intro() {
@@ -774,10 +765,10 @@
         const vw = this.vp.clientWidth, vh = this.vp.clientHeight;
         const cx = (vw / 2 - c.x) / z - this.cfg.width / 2, cy = (vh / 2 - c.y) / z - this.cfg.height / 2;
         this.items.forEach((it, i) => gsap.set(it.el, { left: cx, top: cy, scale: .8, opacity: 0, zIndex: this.items.length - i }));
-        gsap.to(this.vp, { opacity: 1, duration: .5 });
+        gsap.to(this.vp, { opacity: 1, duration: .4 });
         gsap.to(this.items.map(i => i.el), {
-          duration: .5, left: i => this.items[i].x, top: i => this.items[i].y, scale: 1, opacity: 1, ease: "power2.out",
-          stagger: { amount: 1.4, grid: [this.cfg.rows, this.cfg.cols], from: "center" },
+          duration: .45, left: i => this.items[i].x, top: i => this.items[i].y, scale: 1, opacity: 1, ease: "power2.out",
+          stagger: { amount: 1.1, grid: [this.cfg.rows, this.cfg.cols], from: "center" },
           onComplete: () => {
             this.items.forEach(it => gsap.set(it.el, { zIndex: 1 })); this.initDrag(); this.observe(); this.initElastic();
           }
@@ -797,41 +788,92 @@
         [nextIdx, prevIdx].forEach(idx => {
           if (IMAGES[idx]) {
             const img = new Image();
-            img.src = IMAGES[idx] + '?v=hq';
+            img.decoding = 'async';
+            img.src = IMAGES[idx];
           }
         });
       }
       enter(data) {
+        if (this.zoomOn) return;
         this.zoomOn = true; this.sel = data; document.body.classList.add('bwg-zoom'); if (this.drag) this.drag.disable();
-        const r = data.img.getBoundingClientRect();
-        const ov = document.createElement('div'); ov.className = 'scaler';
-        const im = document.createElement('img'); im.src = IMAGES[data.index] + '?v=hq'; ov.appendChild(im);
-        document.body.appendChild(ov); this.overlay = ov;
-        gsap.set(ov, { left: r.left, top: r.top, width: r.width, height: r.height, opacity: 1 });
-        gsap.set(data.img, { opacity: 0 });
-        this.split.classList.add('active'); gsap.to(this.split, { opacity: 1, duration: .6, ease: this.ease });
         
-        const isMobile = innerWidth < 768;
-        const maxW = isMobile ? innerWidth * 0.9 : innerWidth * 0.6;
-        const maxH = isMobile ? innerHeight * 0.45 : innerHeight * 0.74;
+        const r = data.img.getBoundingClientRect();
+        const isMobile = window.innerWidth < 768;
+        const maxW = isMobile ? window.innerWidth * 0.92 : window.innerWidth * 0.62;
+        const maxH = isMobile ? window.innerHeight * 0.52 : window.innerHeight * 0.76;
         let W = maxW;
         let H = W * (this.cfg.height / this.cfg.width);
         if (H > maxH) {
           H = maxH;
           W = H * (this.cfg.width / this.cfg.height);
         }
-        const topPos = isMobile ? innerHeight * 0.12 : (innerHeight - H) / 2;
+        const targetLeft = (window.innerWidth - W) / 2;
+        const targetTop = isMobile ? window.innerHeight * 0.10 : (window.innerHeight - H) / 2;
+        this._targetBounds = { W, H, targetLeft, targetTop };
+
+        const ov = document.createElement('div');
+        ov.className = 'scaler';
+        ov.style.width = W + 'px';
+        ov.style.height = H + 'px';
+        ov.style.left = targetLeft + 'px';
+        ov.style.top = targetTop + 'px';
+
+        const im = document.createElement('img');
+        im.decoding = 'async';
+        im.src = data.img.currentSrc || data.img.src;
+        ov.appendChild(im);
+        document.body.appendChild(ov);
+        this.overlay = ov;
+
+        // Upgrade seamlessly to HQ full resolution
+        const hqUrl = IMAGES[data.index];
+        const hqImg = new Image();
+        hqImg.decoding = 'async';
+        hqImg.src = hqUrl;
+        hqImg.onload = () => {
+          if (this.overlay === ov) {
+            im.src = hqUrl;
+          }
+        };
+
+        const scaleX = r.width / W;
+        const scaleY = r.height / H;
+        const dx = r.left - targetLeft;
+        const dy = r.top - targetTop;
+
+        gsap.set(ov, {
+          x: dx,
+          y: dy,
+          scaleX: scaleX,
+          scaleY: scaleY,
+          transformOrigin: '0 0',
+          opacity: 1,
+          force3D: true
+        });
+        gsap.set(data.img, { opacity: 0 });
+
+        this.split.classList.add('active');
+        gsap.to(this.split, { opacity: 1, duration: .45, ease: "power2.out" });
+
         gsap.to(ov, {
-          left: (innerWidth - W) / 2, top: topPos, width: W, height: H,
-          duration: .9, ease: this.ease, onComplete: () => {
+          x: 0,
+          y: 0,
+          scaleX: 1,
+          scaleY: 1,
+          duration: .6,
+          ease: "power3.out",
+          force3D: true,
+          onComplete: () => {
             this.showDetail(data.index);
             this.preloadAdjacent(data.index);
           }
         });
+
         this.close.classList.add('active');
-        gsap.fromTo(this.close, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: .6, delay: .5, ease: "power2.out" });
+        gsap.fromTo(this.close, { x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: .45, delay: .2, ease: "power2.out" });
         this.prevBtn.classList.add('active'); this.nextBtn.classList.add('active');
-        gsap.to([this.prevBtn, this.nextBtn], { opacity: 1, duration: .4, delay: .5 });
+        gsap.to([this.prevBtn, this.nextBtn], { opacity: 1, duration: .35, delay: .2 });
+
         document.getElementById('splitL').addEventListener('click', this._areaClick = (e) => { if (e.target === e.currentTarget) this.exit(); });
         document.getElementById('splitR').addEventListener('click', this._areaClick);
         document.addEventListener('keydown', this._key = (e) => {
@@ -864,10 +906,10 @@
 
         window.addEventListener('touchend', this._touchEnd = (e) => {
           if (!this.zoomOn || e.changedTouches.length === 0) return;
-          const dx = e.changedTouches[0].clientX - touchStartX;
-          const dy = e.changedTouches[0].clientY - touchStartY;
-          if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy)) {
-            this.navigate(dx < 0 ? 1 : -1);
+          const tdx = e.changedTouches[0].clientX - touchStartX;
+          const tdy = e.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(tdx) > 36 && Math.abs(tdx) > Math.abs(tdy)) {
+            this.navigate(tdx < 0 ? 1 : -1);
           }
         }, { passive: true });
       }
@@ -880,16 +922,28 @@
         gsap.set(this.sel.img, { opacity: 0 });                       // hide the new cell (overlay stands in)
         
         const im = this.overlay.querySelector('img');
-        const slideOutX = dir > 0 ? -60 : 60;
-        const slideInX = dir > 0 ? 60 : -60;
+        const slideOutX = dir > 0 ? -40 : 40;
+        const slideInX = dir > 0 ? 40 : -40;
 
         gsap.to(this.overlay, {
-          x: slideOutX, opacity: 0, duration: 0.18, ease: "power2.in", onComplete: () => {
-            im.src = IMAGES[this.sel.index] + '?v=hq';
+          x: slideOutX, opacity: 0, duration: 0.16, ease: "power2.in", onComplete: () => {
+            const thumbUrl = IMAGES[this.sel.index].replace('.webp', '_thumb.webp');
+            const hqUrl = IMAGES[this.sel.index];
+            im.src = thumbUrl;
+
+            const hqImg = new Image();
+            hqImg.decoding = 'async';
+            hqImg.src = hqUrl;
+            hqImg.onload = () => {
+              if (this.overlay && this.sel.index === this.items.indexOf(this.sel)) {
+                im.src = hqUrl;
+              }
+            };
+
             this.preloadAdjacent(this.sel.index);
             gsap.set(this.overlay, { x: slideInX });
             gsap.to(this.overlay, {
-              x: 0, opacity: 1, duration: 0.3, ease: this.ease, onComplete: () => {
+              x: 0, opacity: 1, duration: 0.26, ease: "power2.out", onComplete: () => {
                 this.isNavigating = false;
               }
             });
@@ -900,11 +954,11 @@
       showDetail(i) {
         const m = META[i % META.length];
         document.getElementById('dN').textContent = m.n; document.getElementById('dT').textContent = m.t; document.getElementById('dD').textContent = m.d;
-        gsap.set('#dN', { y: 20, opacity: 0 }); gsap.set('#dT', { y: 60, opacity: 0 }); gsap.set('#dD', { y: 80, opacity: 0 });
-        this.detail.style.pointerEvents = 'none'; gsap.to(this.detail, { opacity: 1, duration: .3 });
-        gsap.to('#dN', { y: 0, opacity: 1, duration: .8, delay: .1, ease: this.ease });
-        gsap.to('#dT', { y: 0, opacity: 1, duration: .8, delay: .15, ease: this.ease });
-        gsap.to('#dD', { y: 0, opacity: 1, duration: .8, delay: .2, ease: this.ease });
+        gsap.set('#dN', { y: 15, opacity: 0 }); gsap.set('#dT', { y: 40, opacity: 0 }); gsap.set('#dD', { y: 50, opacity: 0 });
+        this.detail.style.pointerEvents = 'none'; gsap.to(this.detail, { opacity: 1, duration: .25 });
+        gsap.to('#dN', { y: 0, opacity: 1, duration: .5, delay: .05, ease: "power2.out" });
+        gsap.to('#dT', { y: 0, opacity: 1, duration: .5, delay: .1, ease: "power2.out" });
+        gsap.to('#dD', { y: 0, opacity: 1, duration: .5, delay: .15, ease: "power2.out" });
       }
       exit() {
         if (!this.zoomOn || !this.sel || !this.overlay) return;
@@ -915,15 +969,36 @@
         if (this._touchEnd) window.removeEventListener('touchend', this._touchEnd);
         document.getElementById('splitL').removeEventListener('click', this._areaClick);
         document.getElementById('splitR').removeEventListener('click', this._areaClick);
-        gsap.to(this.detail, { opacity: 0, duration: .3 });
-        gsap.to(['#dN', '#dT', '#dD'], { y: -40, opacity: 0, duration: .35, ease: "power2.out" });
-        gsap.to(this.close, { opacity: 0, x: 40, duration: .3 });
-        gsap.to([this.prevBtn, this.nextBtn], { opacity: 0, duration: .3 });
+
+        gsap.to(this.detail, { opacity: 0, duration: .2 });
+        gsap.to(['#dN', '#dT', '#dD'], { y: -20, opacity: 0, duration: .2, ease: "power2.in" });
+        gsap.to(this.close, { opacity: 0, x: 40, duration: .2 });
+        gsap.to([this.prevBtn, this.nextBtn], { opacity: 0, duration: .2 });
         this.prevBtn.classList.remove('active'); this.nextBtn.classList.remove('active');
-        this.split.classList.remove('active'); gsap.to(this.split, { opacity: 0, duration: .6 });
+        this.split.classList.remove('active'); gsap.to(this.split, { opacity: 0, duration: .4, ease: "power2.out" });
+
         const r = img.getBoundingClientRect();
+        const { W, H, targetLeft, targetTop } = this._targetBounds || {
+          W: parseFloat(ov.style.width),
+          H: parseFloat(ov.style.height),
+          targetLeft: parseFloat(ov.style.left),
+          targetTop: parseFloat(ov.style.top)
+        };
+
+        const scaleX = r.width / W;
+        const scaleY = r.height / H;
+        const dx = r.left - targetLeft;
+        const dy = r.top - targetTop;
+
         gsap.to(ov, {
-          left: r.left, top: r.top, width: r.width, height: r.height, duration: .8, ease: this.ease, onComplete: () => {
+          x: dx,
+          y: dy,
+          scaleX: scaleX,
+          scaleY: scaleY,
+          duration: .5,
+          ease: "power3.inOut",
+          force3D: true,
+          onComplete: () => {
             gsap.set(img, { opacity: 1 }); ov.remove();
             document.body.classList.remove('bwg-zoom'); this.close.classList.remove('active');
             if (this.drag) this.drag.enable(); this.zoomOn = false; this.isNavigating = false; this.sel = null; this.overlay = null;

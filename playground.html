@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <meta property="og:title" content="Playground — Muzeeb Urrahaman">
     <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/playground.html">
@@ -19,7 +20,7 @@
     <title>Playground — Muzeeb Urrahaman</title>
     <meta name="description" content="Muzeeb Urrahaman's playground — solo builds, AI tools, and experiments on an infinite canvas.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=101">
+    <link rel="stylesheet" href="assets/css/style.css?v=280">
     <style>
         html, body { height: 100%; }
         body { background: #0f0f0f; color: #f4f2ed; font-family: 'Inter', system-ui, sans-serif; overflow: hidden; margin: 0; }
@@ -83,9 +84,9 @@
         .gh img { width: 100%; display: block; margin-top: 4px; filter: brightness(1.05); }
         .gh .cap { font-size: .78rem; color: #9a9a98; margin-top: 10px; line-height: 1.45; }
         .steps { width: 280px; }
-        .steps .row { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; justify-content: flex-start; }
-        .steps .num { width: 24px; height: 24px; border-radius: 50%; background: #f4f2ed; color: #0f0f0f; font-size: .74rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none; }
-        .steps .row b { font-size: .88rem; color: #f4f2ed; } .steps .row span { display: block; font-size: .78rem; color: #9a9a98; margin-top: 1px; line-height: 1.4; }
+        .steps .row { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; justify-content: flex-start; }
+        .steps .num { width: 24px; height: 24px; min-width: 24px; border-radius: 50% !important; background: #f4f2ed; color: #0f0f0f; font-size: .76rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; text-align: center; line-height: 1; flex-shrink: 0; margin-top: 1px; box-sizing: border-box; }
+        .steps .row b { font-size: .88rem; color: #f4f2ed; display: block; line-height: 1.3; } .steps .row span { display: block; font-size: .78rem; color: #9a9a98; margin-top: 2px; line-height: 1.4; }
         .love { display: inline-flex; align-items: center; gap: 9px; background: #1a1a1a; border: 1px solid #242424; border-radius: 999px; padding: 9px 16px; box-shadow: 0 10px 26px rgba(0,0,0,.4); cursor: grab; font-weight: 600; font-size: .9rem; color: #f4f2ed; }
         .love .hr { color: #ff5a7a; font-size: 1.15rem; }
         /* floating dock */
@@ -289,29 +290,201 @@
             .pgdock__tip { display: none; }
         }
         .mz-nav::before { display: none !important; }
+
+        /* ============================================================
+           LIGHT THEME SUPPORT FOR PLAYGROUND
+           ============================================================ */
+        html[data-theme="light"] body { background: #faf9f7; color: #17170f; }
+        html[data-theme="light"] .pgc {
+            background-color: #faf9f7;
+            background-image: radial-gradient(rgba(0,0,0,.09) 1.2px, transparent 1.2px);
+        }
+        html[data-theme="light"] .ttl h1 { color: #17170f; }
+        html[data-theme="light"] .ttl p { color: #63635e; }
+        html[data-theme="light"] .lbl { color: #8c8a82; }
+        html[data-theme="light"] .lbl::before { background: #8c8a82; }
+
+        html[data-theme="light"] .cd {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            color: #17170f;
+            box-shadow: 0 12px 30px rgba(0,0,0,.06);
+        }
+        html[data-theme="light"] .cd h3 { color: #17170f; }
+        html[data-theme="light"] .cd p { color: #63635e; }
+        html[data-theme="light"] .kick { color: #7a7a76; }
+        html[data-theme="light"] .kick .pill { background: rgba(0,0,0,.06); color: #4a4a46; }
+
+        html[data-theme="light"] .stat .num { color: #17170f; }
+        html[data-theme="light"] .frame {
+            background: #ffffff;
+            border-color: #2f6df0;
+            box-shadow: 0 12px 34px rgba(0,0,0,.08);
+        }
+        html[data-theme="light"] .frame .h { background: #faf9f7; }
+        html[data-theme="light"] .frame h3 { color: #17170f; }
+        html[data-theme="light"] .frame .sub { color: #63635e; }
+        html[data-theme="light"] .frame p { color: #63635e; }
+
+        html[data-theme="light"] .skills .s {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            box-shadow: 0 4px 10px rgba(0,0,0,.06);
+        }
+        html[data-theme="light"] .venn .c { border-color: #c7c5bc; }
+        html[data-theme="light"] .venn .vE, html[data-theme="light"] .venn .vD { color: #63635e; }
+        html[data-theme="light"] .venn .side { color: #8a8a86; }
+        html[data-theme="light"] .venn .mid { color: #17170f; }
+
+        html[data-theme="light"] .ruler { border-left-color: #e6e4df; }
+        html[data-theme="light"] .ruler .n { color: #8c8a82; }
+        html[data-theme="light"] .ruler .p b { color: #17170f; }
+        html[data-theme="light"] .ruler .p span { color: #63635e; }
+
+        html[data-theme="light"] .clock .t { color: #17170f; }
+        html[data-theme="light"] .clock .d { color: #8c8a82; }
+
+        html[data-theme="light"] .resume {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            color: #17170f;
+            box-shadow: 0 12px 30px rgba(0,0,0,.06);
+        }
+        html[data-theme="light"] .resume b { color: #17170f; }
+        html[data-theme="light"] .resume small { color: #7a7a76; }
+
+        html[data-theme="light"] .me {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            box-shadow: 0 16px 36px rgba(0,0,0,.08);
+        }
+        html[data-theme="light"] .me .cap { color: #63635e; }
+        html[data-theme="light"] .me .cap b { color: #17170f; }
+
+        html[data-theme="light"] .gh .cd { background: #ffffff; border-color: #e6e4df; }
+        html[data-theme="light"] .gh .cap { color: #63635e; }
+
+        html[data-theme="light"] .steps .num { background: #17170f; color: #faf9f7; }
+        html[data-theme="light"] .steps .row b { color: #17170f; }
+        html[data-theme="light"] .steps .row span { color: #63635e; }
+
+        html[data-theme="light"] .love {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            color: #17170f;
+            box-shadow: 0 10px 26px rgba(0,0,0,.08);
+        }
+
+        html[data-theme="light"] .pgdock {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            box-shadow: 0 14px 36px rgba(0,0,0,.10);
+        }
+        html[data-theme="light"] .pgdock__i { background: rgba(0,0,0,.04); color: #17170f; }
+        html[data-theme="light"] .pgdock__i:hover { background: rgba(0,0,0,.08); }
+        html[data-theme="light"] .pgdock__tip { background: #17170f; color: #faf9f7; }
+
+        html[data-theme="light"] .pgshot { border-color: #e6e4df; }
+        html[data-theme="light"] .pgzone-card { border-color: #e6e4df; }
+        html[data-theme="light"] .pgzone-card .kick { color: #17170f; }
+        html[data-theme="light"] .pgchips span { background: rgba(0,0,0,.04); border-color: #e0ded6; color: #4a4a46; }
+        html[data-theme="light"] .pgsoon { color: #8c8a82; }
+
+        html[data-theme="light"] .pgzoom {
+            background: #ffffff;
+            border: 1px solid #e6e4df;
+            box-shadow: 0 8px 24px rgba(0,0,0,.08);
+        }
+        html[data-theme="light"] .pgzoom button { color: #17170f; }
+        html[data-theme="light"] .pgzoom button:hover { background: rgba(0,0,0,.05); }
+        html[data-theme="light"] .pgzoom .pct { color: #63635e; }
+
+        html[data-theme="light"] .pgtype input { background: #f5f4ef; border-color: #e0ded6; color: #17170f; }
+        html[data-theme="light"] .pgtype input:focus { border-color: #a8a69e; }
+        html[data-theme="light"] .pgtype .prev { color: #17170f; }
+        html[data-theme="light"] .pgtype .wts button { background: rgba(0,0,0,.04); border-color: #e0ded6; color: #4a4a46; }
+        html[data-theme="light"] .pgtype .wts button.on { background: #17170f; color: #faf9f7; border-color: #17170f; }
+        html[data-theme="light"] .pgtype__font { border-color: #e0ded6; color: #4a4a46; }
+        html[data-theme="light"] .pgtype__font:hover { background: rgba(0,0,0,.04); }
+
+        html[data-theme="light"] .pgba__stage { border-color: #e6e4df; }
+        html[data-theme="light"] .pgba__line { background: #17170f; }
+        html[data-theme="light"] .pgba__grip { background: #17170f; color: #faf9f7; box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+
+        html[data-theme="light"] .pgcon__prev { border-color: #e6e4df; }
+        html[data-theme="light"] .pgcon__row label { color: #7a7a76; }
+        html[data-theme="light"] .pgcon__row input { border-color: #e0ded6; }
+        html[data-theme="light"] .pgcon__ratio { color: #17170f; }
+
+        html[data-theme="light"] .pgstack__lbl { color: #7a7a76; }
+        html[data-theme="light"] .pgstack__chip { background: #f0eee8; border-color: #e0ded6; color: #3a3a36; }
+        html[data-theme="light"] .pgstack__chip.tool { background: #ebf1ff; border-color: #c4d7ff; color: #1754dd; }
+        html[data-theme="light"] .pgstack__chip.tool:hover, html[data-theme="light"] .pgstack__chip.tool.on { background: #1754dd; color: #ffffff; border-color: #1754dd; }
+        html[data-theme="light"] .pgstack__chip.lit { background: #17170f; color: #faf9f7; border-color: #17170f; }
+
+        html[data-theme="light"] .pgrepo { border-color: #e6e4df; }
+        html[data-theme="light"] .pgrepo__top b { color: #17170f; }
+        html[data-theme="light"] .pgrepo__lang { color: #7a7a76; }
+        html[data-theme="light"] .pgrepo__desc { color: #63635e; }
+        html[data-theme="light"] .pgdesigns a { border-color: #e6e4df; }
+        html[data-theme="light"] .pgdesigns .cap { color: #63635e; }
+
+        html[data-theme="light"] .pghire { background: #17170f; color: #faf9f7; }
+        html[data-theme="light"] .pghire a { background: #ffffff; color: #17170f; }
+
+        html[data-theme="light"] .mock { background: #f5f4ef; border-color: #e0ded6; }
+        html[data-theme="light"] .mock__dot { background: #d0cec5; }
+        html[data-theme="light"] .mock__side b { background: #e0ded6; }
+        html[data-theme="light"] .mock__side b:first-child { background: #17170f; }
+        html[data-theme="light"] .mock__stats span { background: #ffffff; border-color: #e0ded6; }
+        html[data-theme="light"] .mock__chart i { background: linear-gradient(180deg,#17170f,#8a8a8a); }
+        html[data-theme="light"] .mock__nav b { background: #17170f; }
+        html[data-theme="light"] .mock__nav span { background: #e0ded6; }
+        html[data-theme="light"] .mock__nav i { background: #17170f; }
+        html[data-theme="light"] .mock__h1 { background: #17170f; }
+        html[data-theme="light"] .mock__sub { background: #e0ded6; }
+        html[data-theme="light"] .mock__cta { background: #17170f; }
+
+        html[data-theme="light"] .phone { background: #f5f4ef; border-color: #e0ded6; }
+        html[data-theme="light"] .phone__notch { background: #e0ded6; }
+        html[data-theme="light"] .phone__hero { background: linear-gradient(135deg,#e6e4df,#c7c5bc); }
+        html[data-theme="light"] .phone__ln { background: #e0ded6; }
+        html[data-theme="light"] .phone__cards span { background: #ffffff; border-color: #e0ded6; }
+        html[data-theme="light"] .phone__btn { background: #17170f; }
+
+        html[data-theme="light"] .hud { background: #f5f4ef; border-color: #e0ded6; }
+        html[data-theme="light"] .hud__hp { background: #e0ded6; }
+        html[data-theme="light"] .hud__ring { border-color: #17170f; border-right-color: #d0cec5; color: #17170f; }
+        html[data-theme="light"] .hud__slots b { background: #ffffff; border-color: #e0ded6; }
+        html[data-theme="light"] .hud__slots b.on { border-color: #17170f; box-shadow: 0 0 0 2px rgba(23,23,15,.2); }
+
+        html[data-theme="light"] .rsn { color: #4a4a46; }
+        html[data-theme="light"] .rsn__k { background: #17170f; color: #faf9f7; }
+        html[data-theme="light"] .repo__why b { color: #17170f; }
+        html[data-theme="light"] .repo__why { color: #63635e; }
+        html[data-theme="light"] .repo__stack span { background: rgba(0,0,0,.04); border-color: #e0ded6; color: #4a4a46; }
     </style>
 </head>
 
 <body>
-    <div id="main" style="position:absolute;top:0;left:0;right:0;z-index:150;padding-top:40px;pointer-events:none;">
-    <nav class="mz-nav">
-        <a class="mz-nav__logo" href="index.html" aria-label="Home"><img loading="lazy" src="assets/images/logo.png" alt="Muzeeb"></a>
-        <div class="mz-nav__pill">
-            <a href="index.html" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>Home</span></a>
-            <a href="about.html" aria-label="About"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg><span>About</span></a>
-            <a href="best-work.html" aria-label="Best work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><span>Best work</span></a>
-            <a href="playground.html" aria-label="Playground"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8.3 10a.7.7 0 0 1-.626-1.079L11.4 3a.7.7 0 0 1 1.198-.043L16.3 8.9a.7.7 0 0 1-.572 1.1Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17.5" cy="17.5" r="3.5"/></svg><span>Playground</span></a>
+    <header class="site-header" id="siteHeader">
+        <div class="site-header__inner">
+            <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
+                <img alt="Muzeeb Urrahaman" src="assets/images/logo.png">
+            </a>
+            <nav class="site-header__nav">
+                <a class="site-header__link" href="about.html">About</a>
+                <a class="site-header__link" href="best-work.html">Best work</a>
+                <a class="site-header__link active" href="playground.html">Playground</a>
+                <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                </button>
+            </nav>
         </div>
-        <a class="mz-nav__resume" href="resume.html" target="_blank" aria-label="Download resume">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-            <span class="mz-nav__tip">Download résumé</span>
-        </a>
-        <a class="mz-nav__mail" href="mailto:rahamanmuzeeb1108@gmail.com" aria-label="Email me">
-            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <span class="mz-nav__tip">Let’s work together</span>
-        </a>
-    </nav>
-    </div>
+    </header>
 
     <div class="pgc" id="pgc">
         <div class="pgw" id="pgw">
@@ -366,7 +539,7 @@
                 <div class="wave">👋</div>
             </div>
 
-            <div class="it steps" data-x="2130" data-y="720" style="left:2130px;top:720px;--r:2deg">
+            <div class="it steps" data-x="2130" data-y="720" style="left:2130px;top:720px;--r:0deg">
                 <div class="lbl">how I build a tool</div>
                 <div class="cd" style="width:280px">
                     <div class="kick">Designer → maker</div>
@@ -967,7 +1140,7 @@
     </script>
     <script src="assets/js/nachi-sfx.js"></script>
     <script src="assets/js/sfx.js"></script>
-    <script src="assets/js/site.js?v=98"></script>
+    <script src="assets/js/site.js?v=105"></script>
 </body>
 
 </html>

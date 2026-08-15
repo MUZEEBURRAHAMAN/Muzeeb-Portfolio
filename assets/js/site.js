@@ -429,8 +429,8 @@
   function initTheme() {
     var root = document.documentElement;
     var page = (location.pathname.split("/").pop() || "");
-    // Playground + coming-soon are dark-only surfaces.
-    if (page === "playground.html" || page === "coming-soon.html") {
+    // coming-soon is a dark-only surface.
+    if (page === "coming-soon.html") {
       root.setAttribute("data-theme", "dark");
       return;
     }
@@ -440,14 +440,16 @@
     var cur = root.getAttribute("data-theme") || saved || sys;
     root.setAttribute("data-theme", cur);
 
-    // Single theme toggle, always docked in the header nav (same circle
-    // treatment as the mail/resume buttons) — no separate footer variant.
-    if (document.querySelector(".mz-theme-btn")) return;
+    // Theme toggle binding: check for header button or create floating fallback
+    var btn = document.getElementById("siteThemeBtn") || document.querySelector(".mz-theme-btn");
+    if (!btn) {
+      btn = document.createElement("button");
+      btn.className = "mz-theme-btn";
+      btn.type = "button";
+      btn.setAttribute("aria-label", "Toggle light or dark theme");
+      document.body.appendChild(btn);
+    }
 
-    var btn = document.createElement("button");
-    btn.className = "mz-theme-btn";
-    btn.type = "button";
-    btn.setAttribute("aria-label", "Toggle light or dark theme");
     function render() {
       var light = root.getAttribute("data-theme") === "light";
       btn.innerHTML = (light ? MOON : SUN);
@@ -460,7 +462,6 @@
       render();
       mzPlay(next === "dark" ? "toggle-on" : "toggle-off");
     });
-    document.body.appendChild(btn);
   }
 
   /* ---------- Mobile nav: logo left, hamburger right -> slide-in drawer ---------- */
@@ -608,6 +609,57 @@
     });
   }
 
+  /* ---------- Hero Typing Text Animation (Motion-like TypingText) ---------- */
+  function initTypingText() {
+    var target = document.getElementById("heroTypingText");
+    if (!target) return;
+
+    var words = [
+      "scale & ship.",
+      "craft & ship.",
+      "solve & build.",
+      "scale systems.",
+      "ship in code."
+    ];
+    var wordIndex = 0;
+    var charIndex = words[0].length;
+    var isDeleting = true;
+    var typingSpeed = 65;
+    var deletingSpeed = 35;
+    var holdDelay = 2200;
+    var pauseBeforeType = 350;
+
+    // Start cycling only after the hero entrance rise animation has settled (2200ms)
+    setTimeout(tick, 2200);
+
+    function tick() {
+      var currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        charIndex--;
+        if (charIndex <= 0) {
+          charIndex = 0;
+          target.innerHTML = "&nbsp;";
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(tick, pauseBeforeType);
+          return;
+        }
+        target.textContent = currentWord.substring(0, charIndex);
+        setTimeout(tick, deletingSpeed);
+      } else {
+        charIndex++;
+        target.textContent = currentWord.substring(0, charIndex);
+        if (charIndex >= currentWord.length) {
+          isDeleting = true;
+          setTimeout(tick, holdDelay);
+          return;
+        }
+        setTimeout(tick, typingSpeed + (Math.random() * 12));
+      }
+    }
+  }
+
   // Loads the SFX engine (used by hover/click sound cues elsewhere on the
   // page) without any visible sound toggle — there's no UI for muting.
   function ensureSFXLoaded() {
@@ -633,5 +685,6 @@
     initSocialPopovers();
     initHoverSFX();
     initGlobalSFX();
+    initTypingText();
   });
 })();
