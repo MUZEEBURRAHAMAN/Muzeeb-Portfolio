@@ -683,11 +683,22 @@
 
     if (!sheet || !overlay) return;
 
+    var scrollY = 0;
+
     function open() {
+      scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      document.body.classList.add("mz-sheet-open");
+      document.body.style.position = "fixed";
+      document.body.style.top = "-" + scrollY + "px";
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+      document.documentElement.style.overflow = "hidden";
+
       sheet.classList.add("opened");
       overlay.classList.add("opened");
       sheet.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+      
       if (closeBtn) closeBtn.focus();
       mzPlay("press");
     }
@@ -696,7 +707,16 @@
       sheet.classList.remove("opened");
       overlay.classList.remove("opened");
       sheet.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
+
+      document.body.classList.remove("mz-sheet-open");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
+      window.scrollTo(0, scrollY);
+
       if (openBtn) openBtn.focus();
       mzPlay("press");
     }
