@@ -82,8 +82,6 @@ section,
    EXCEPTIONS: CIRCLES (Avatars, Header Profile Icon, AI Glow Orb, Status Dots)
    ============================================================ */
 .mz-nav__logo img,
-.mz-footer__pic,
-img.mz-footer__pic,
 .site-tcard__avatar,
 .site-footer__avatar,
 .mz-ab-hero img,
@@ -717,7 +715,6 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
 
 .mz-abfoot { margin-top: 120px; }
 @media (max-width: 760px) { .mz-abfoot { margin-top: 80px; } }
-.mz-footer img.mz-footer__pic { width: 44px; height: 44px; max-width: 44px; border-radius: 50%; object-fit: cover; object-position: top center; margin-bottom: 0; display: block; border: 1px solid rgba(255,255,255,0.16); }
 
 /* ===== Playground big image cards ===== */
 .mz-pgb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1024px; margin: 0 auto; }
@@ -1600,8 +1597,47 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     gap: 20px;
     flex-wrap: wrap;
 }
-.mz-footer__id { display: flex; align-items: center; gap: 13px; }
-.mz-footer__name { color: #f0f0ee; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; }
+.mz-footer__id {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.mz-footer__logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mz-footer__logo:hover {
+    opacity: 0.82;
+    transform: translateY(-1px);
+}
+.mz-footer__logo-img {
+    height: 24px;
+    width: auto;
+    max-width: 130px;
+    object-fit: contain;
+    border: none !important;
+    border-radius: 0 !important;
+}
+.mz-footer__logo-img--dark {
+    display: block !important;
+}
+.mz-footer__logo-img--light {
+    display: none !important;
+}
+[data-theme="light"] .mz-footer__logo-img--dark {
+    display: none !important;
+}
+[data-theme="light"] .mz-footer__logo-img--light {
+    display: block !important;
+}
+.mz-footer__name {
+    color: #f0f0ee;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
 .mz-footer__socials { display: flex; align-items: center; gap: 12px; }
 .mz-footer__socials a, .mz-ab-icon {
     position: relative;
@@ -1772,9 +1808,6 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
 }
 [data-theme="light"] .mz-footer__copy {
     color: #8c8a82;
-}
-[data-theme="light"] .mz-footer img.mz-footer__pic {
-    border-color: rgba(0, 0, 0, 0.12);
 }
 
 /* ===== Chat widget (Muzeeb AI) ===== */
