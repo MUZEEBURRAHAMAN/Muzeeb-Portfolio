@@ -3640,6 +3640,11 @@ body.mz-cursor-on button,
    PROBLEM SOLVING SIDE SHEET (.mz-sheet)
    Adheres to DESIGN.md tokens, Geist display headings, and Inter body
    ============================================================ */
+html.mz-sheet-open,
+body.mz-sheet-open {
+    overflow: hidden !important;
+}
+
 .mz-sheet-overlay {
     position: fixed;
     inset: 0;
@@ -4148,25 +4153,40 @@ body.mz-cursor-on button,
 
 @media (max-width: 640px) {
     .mz-sheet {
-        inset: 0;
-        top: 0;
+        inset: auto 0 0 0;
+        top: auto;
         bottom: 0;
         left: 0;
         right: 0;
         width: 100%;
-        height: 100%;
-        max-height: 100vh;
-        border-radius: 0;
-        transform: translateY(100%);
+        height: 88vh;
+        max-height: 88vh;
+        border-radius: 24px 24px 0 0;
+        box-shadow: 0 -16px 50px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        transform: translateY(105%);
+        transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .mz-sheet.opened {
         transform: translateY(0);
     }
     .mz-sheet__header {
-        padding: 20px 20px 16px;
+        padding: 16px 20px 16px;
+        position: relative;
+    }
+    .mz-sheet__header::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 4px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.22);
+        margin: 0 auto 14px;
+    }
+    [data-theme="light"] .mz-sheet__header::before {
+        background: rgba(0, 0, 0, 0.18);
     }
     .mz-sheet__body {
-        padding: 20px;
+        padding: 20px 20px 28px;
     }
     .mz-sheet__footer {
         padding: 12px 20px;
