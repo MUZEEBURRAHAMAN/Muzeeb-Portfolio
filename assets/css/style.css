@@ -1897,14 +1897,6 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
 .cw-input:focus, .cw-input:focus-visible { outline: none; }   /* focus is shown by .cw-inrow — kill the global a11y ring on this input */
 .cw-send { width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; flex: none; display: flex; align-items: center; justify-content: center; background: #17170f; color: #fff; transition: transform .2s, filter .2s, background .2s; }
 .cw-send:hover { transform: scale(1.06); filter: brightness(1.05); }
-/* when chat or side sheet is open, restore native cursor + hide custom one */
-body.cw-open, body.cw-open *,
-body.mz-sheet-open, body.mz-sheet-open * { cursor: auto !important; }
-body.cw-open .cw-chip, body.cw-open .cw-send, body.cw-open .cw-head button, body.cw-open #cw-launcher,
-body.mz-sheet-open .mz-sheet__close, body.mz-sheet-open .mz-sheet button { cursor: pointer !important; }
-body.cw-open .mz-cursor, body.cw-open .mz-cursor-follow,
-body.mz-sheet-open .mz-cursor, body.mz-sheet-open .mz-cursor-follow { display: none !important; }
-
 /* ===== Custom cursor ===== */
 .mz-cursor,
 .mz-cursor-follow {
@@ -1912,14 +1904,14 @@ body.mz-sheet-open .mz-cursor, body.mz-sheet-open .mz-cursor-follow { display: n
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 100005;
     opacity: 0;
     transition: opacity 0.2s ease;
     will-change: transform;
 }
 .mz-cursor { color: hsl(var(--primary)); transform-origin: 0 0; }
 .mz-cursor svg { display: block; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4)); }
-.mz-cursor-follow { z-index: 9998; transform-origin: 0% 50%; }
+.mz-cursor-follow { z-index: 100004; transform-origin: 0% 50%; }
 .mz-cursor-follow span {
     display: inline-block;
     background: hsl(var(--primary));
@@ -1933,7 +1925,9 @@ body.mz-sheet-open .mz-cursor, body.mz-sheet-open .mz-cursor-follow { display: n
 }
 body.mz-cursor-on,
 body.mz-cursor-on a,
-body.mz-cursor-on button { cursor: none; }
+body.mz-cursor-on button,
+.mz-sheet,
+.mz-sheet * { cursor: none !important; }
 
 /* ===== Pill navbar ===== */
 /* ===== Clean Editorial Header Nav ===== */
