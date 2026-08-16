@@ -81,7 +81,6 @@ section,
 /* ============================================================
    EXCEPTIONS: CIRCLES (Avatars, Header Profile Icon, AI Glow Orb, Status Dots)
    ============================================================ */
-.site-header__logo img,
 .mz-nav__logo img,
 .mz-footer__pic,
 img.mz-footer__pic,
@@ -2493,20 +2492,35 @@ body.mz-cursor-on button { cursor: none; }
 .site-header__logo {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 40px;
 }
 .site-header__logo:hover {
-    opacity: 0.85;
+    opacity: 0.82;
+    transform: translateY(-1px);
 }
-.site-header__logo img {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    object-fit: cover;
+.site-header__logo img,
+.site-header__logo-img {
+    height: 26px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
     display: block;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: none !important;
+    border-radius: 0 !important;
+}
+.site-header__logo-img--dark {
+    display: block;
+}
+.site-header__logo-img--light {
+    display: none;
+}
+[data-theme="light"] .site-header__logo-img--dark {
+    display: none;
+}
+[data-theme="light"] .site-header__logo-img--light {
+    display: block;
 }
 .site-header__nav {
     display: flex;
@@ -2573,9 +2587,6 @@ body.mz-cursor-on button { cursor: none; }
 [data-theme="light"] .site-header {
     background: rgba(250, 249, 247, 0.90);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-[data-theme="light"] .site-header__logo img {
-    border-color: rgba(0, 0, 0, 0.12);
 }
 [data-theme="light"] .site-header__link {
     color: #5f5f59;
