@@ -1,260 +1,1132 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<title>Catchly — Case Study · Muzeeb Urrahaman</title>
-<meta name="description" content="A privacy-first Chrome extension that tracks your subscriptions without ever touching your bank. Case study: the problem, the bet, how it works, the stack, and the results." />
-<link rel="stylesheet" href="assets/css/style.css?v=101">
+<title>Catchly — Privacy-First Subscription Tracker · Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="A privacy-first Chrome extension that tracks subscriptions on 24 services without touching your bank. Zero telemetry, local storage, 100% on-device." />
+<meta property="og:title" content="Catchly — Privacy-First Subscription Tracker · Case Study · Muzeeb Urrahaman">
+<meta property="og:description" content="A privacy-first Chrome extension that tracks subscriptions without touching your bank. Zero telemetry, 100% on-device.">
+<meta property="og:image" content="assets/images/catchly-cover.webp">
+<link rel="stylesheet" href="assets/css/style.css?v=310">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#FBFBFA; --surface:#fff; --ink:#0B0B0C; --muted:#57574f; --soft:#8b8b84;
-    --line:rgba(11,11,12,.09); --line-2:rgba(11,11,12,.06);
-    --accent:#2F6DF0; --accent-soft:#EAF1FE;
-    --red:#E5484D; --red-soft:#FDECEC; --green:#2FA96A; --green-soft:#E9F6EF;
-    --amber:#F5A623; --amber-soft:#FEF4E1; --violet:#6E56CF; --yellow:#FFCB33;
-    --ease:cubic-bezier(.16,1,.3,1);
-    --display:'Poppins',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --mono:'Geist Mono',monospace;
-    --maxw:1320px; --pad:32px; --read:940px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
-  a{color:inherit} img{max-width:100%;display:block}
-  section{scroll-margin-top:150px}
+:root {
+  --bg: #FBFBFA;
+  --surface: #ffffff;
+  --ink: #0B0B0C;
+  --text: #111111;
+  --muted: #57574f;
+  --soft: #6e6e67;
+  --line: rgba(11, 11, 12, 0.09);
+  --line-2: rgba(11, 11, 12, 0.06);
+  --accent: #2F6DF0;
+  --accent-soft: #EAF1FE;
+  --red: #E5484D;
+  --red-soft: #FDECEC;
+  --green: #2FA96A;
+  --green-soft: #E9F6EF;
+  --amber: #F5A623;
+  --amber-soft: #FEF4E1;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --space-xs: 12px;
+  --space-sm: 18px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 60px;
+  --font-display: "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --shadow-1: rgba(0, 0, 0, 0.04);
+  --shadow-2: rgba(0, 0, 0, 0.06);
+  --shadow-3: rgba(0, 0, 0, 0.1);
+  --diff-bad: #b3383c;
+  --diff-good: #1f7a4c;
+  --note-text: #2451b0;
+  --table-head-bg: #fafafa;
+}
 
-  /* NAV */
-  .nav{position:fixed;top:20px;left:0;right:0;z-index:70;display:flex;justify-content:center;align-items:center;gap:12px;padding:0 16px}
-  .nav__logo{width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;font-family:var(--display);color:var(--ink);text-decoration:none}
-  .nav__pill{display:flex;align-items:center;gap:2px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px rgba(0,0,0,.06);border-radius:999px;padding:6px 7px}
-  .nav__pill a{display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:999px;color:#2b2b2b;font-size:.9rem;font-weight:500;text-decoration:none;transition:background .25s}
-  .nav__pill a:hover{background:#f1f1ee}
-  .nav__pill svg{width:15px;height:15px;opacity:.65}
-  .nav__mail{width:48px;height:48px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(255,203,51,.35);text-decoration:none}
-  @media(max-width:720px){.nav__pill a span{display:none}.nav__pill a{padding:9px 11px}}
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --surface: #171717;
+  --ink: #f4f2ed;
+  --text: #f4f2ed;
+  --muted: #a3a39d;
+  --soft: #83837a;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-2: rgba(255, 255, 255, 0.08);
+  --accent: #6ea8ff;
+  --accent-soft: #182a4a;
+  --red: #ff6b6f;
+  --red-soft: #2a1516;
+  --green: #4fce8f;
+  --green-soft: #123321;
+  --amber: #f5b84f;
+  --amber-soft: #2e2410;
+  --shadow-1: rgba(0, 0, 0, 0.35);
+  --shadow-2: rgba(0, 0, 0, 0.45);
+  --shadow-3: rgba(0, 0, 0, 0.55);
+  --diff-bad: #ff9599;
+  --diff-good: #63d99c;
+  --note-text: #bcd3ff;
+  --table-head-bg: #1c1c1c;
+}
 
-  /* CHAPTER NAV */
-  .chapters{position:sticky;top:80px;z-index:50;width:max-content;max-width:calc(100vw - 32px);
-    display:flex;gap:4px;padding:6px;background:rgba(255,255,255,.75);backdrop-filter:blur(14px);
-    border:1px solid var(--line);border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.08);overflow-x:auto;scrollbar-width:none;margin-left:auto;margin-right:auto}
-  .chapters::-webkit-scrollbar{display:none}
-  .chapters a{white-space:nowrap;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:500;color:var(--soft);text-decoration:none;transition:.2s}
-  .chapters a:hover{color:var(--ink)}
-  .chapters a.active{background:var(--ink);color:#fff}
-  @media(max-width:720px){.chapters{top:78px}}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
 
-  /* LAYOUT */
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.74rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
-  .eyebrow::before{content:"";width:22px;height:1px;background:var(--accent)}
-  h2.h{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.1;letter-spacing:-.03em;margin-bottom:22px;color:var(--ink)}
-  .prose p{color:var(--muted);font-size:1.05rem;line-height:1.72;margin-bottom:16px}
-  .prose b{color:var(--ink);font-weight:600}
-  .prose em{font-style:normal;color:var(--accent)}
-  .prose ul{list-style:none;margin:10px 0 18px}
-  .prose li{position:relative;padding-left:22px;color:var(--muted);margin-bottom:11px;font-size:1.02rem;line-height:1.6}
-  .prose li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent);opacity:.7}
-  .prose li b{color:var(--ink)}
-  .mono{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:1px 6px;border-radius:5px;color:var(--ink)}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
 
-  .figure{margin:40px auto}
-  .figure .frame{border:1px solid var(--line);border-radius:20px;padding:14px;background:var(--surface);box-shadow:0 20px 50px rgba(0,0,0,.06)}
-  .figure img{border-radius:12px;width:100%}
-  .figure figcaption{text-align:center;color:var(--soft);font-size:.82rem;margin-top:14px;max-width:720px;margin-left:auto;margin-right:auto}
+/* HERO (LEFT ALIGNED · 1000px) */
+.hero {
+  position: relative;
+  padding: 140px 24px 60px;
+  background: radial-gradient(120% 90% at 50% -10%, var(--accent-soft) 0%, transparent 55%);
+  text-align: left;
+}
 
-  .divider{margin:92px auto;padding:0 28px;display:flex;align-items:center;gap:18px}
-  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
-  .divider span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.hero__in {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  text-align: left;
+}
 
-  /* HERO */
-  .hero{position:relative;padding:150px 28px 56px;overflow:hidden;
-    background:radial-gradient(120% 90% at 50% -10%, var(--accent-soft) 0%, transparent 55%)}
-  .hero::before{content:"";position:absolute;inset:0;z-index:0;
-    background-image:radial-gradient(rgba(11,11,12,.07) 1px,transparent 1px);background-size:24px 24px;
-    -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent)}
-  .hero__in{position:relative;z-index:1;max-width:900px;text-align:center;margin:0 auto}
-  .hero__badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:26px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
-  .hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
-  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.04;letter-spacing:-.035em}
-  .hero h1 .grad{background:linear-gradient(100deg,var(--accent),#7aa5f5);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero__sub{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.22rem);line-height:1.6;margin:24px auto 0;max-width:680px}
-  .hero__meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 10px;margin-top:30px}
-  .hero__meta .m{font-family:var(--mono);font-size:.76rem;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 12px}
-  .hero__meta .m b{color:var(--ink);font-weight:500}
-  .hero__cta{display:inline-flex;align-items:center;gap:8px;margin-top:26px;background:var(--ink);color:#fff;text-decoration:none;font-size:.9rem;font-weight:500;padding:11px 20px;border-radius:999px;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
-  .hero__cta:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}
-  .hero__cta svg{width:15px;height:15px}
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 7px 15px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 14px var(--shadow-1);
+}
 
-  /* STATS */
-  .stats{margin-top:52px;display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-  .stat{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-  .stat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
-  .stat .n{font-family:var(--display);font-size:1.6rem;font-weight:700;letter-spacing:-.03em}
-  .stat .l{font-size:.72rem;color:var(--soft);margin-top:5px;line-height:1.3}
-  @media(max-width:820px){.stats{grid-template-columns:repeat(3,1fr)}}
+.hero__badge .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+}
 
-  /* INTRO + META */
-  .intro{display:grid;grid-template-columns:1.7fr 1fr;gap:64px;margin:60px auto}
-  .intro .lead{font-family:var(--display);font-size:1.32rem;font-weight:500;line-height:1.4;letter-spacing:-.01em;color:var(--ink);margin-bottom:16px}
-  .intro p{color:var(--muted);font-size:1rem;line-height:1.7}
-  .intro b{color:var(--ink);font-weight:600}
-  .side{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;height:max-content}
-  .side .g{padding:12px 0;border-top:1px solid var(--line-2)}
-  .side .g:first-child{border-top:none;padding-top:0}
-  .side .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:5px}
-  .side .v{font-size:.95rem;font-weight:500}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 68px);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  max-width: 960px;
+  margin: 0 0 24px;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: left;
+}
 
-  /* 3 CARDS */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-  .card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.07)}
-  .card__ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-  .card h3{font-family:var(--display);font-weight:600;font-size:1.15rem;margin-bottom:14px;letter-spacing:-.01em}
-  .card ul{list-style:none}
-  .card li{position:relative;padding-left:18px;font-size:.9rem;color:var(--muted);margin-bottom:11px;line-height:1.5}
-  .card li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--soft)}
-  .card li b{color:var(--ink);font-weight:600}
+.hero h1 .grad {
+  color: var(--ink);
+  background: none;
+}
 
-  /* FEATURE / CATCH RULE GRID */
-  .rules{margin:6px auto 0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .rule{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
-  .rule .rk{flex:none;font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:7px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
-  .rule.warn .rk{background:var(--amber-soft);color:#a56a05}
-  .rule.risk .rk{background:var(--red-soft);color:var(--red)}
-  .rule h4{font-family:var(--display);font-weight:600;font-size:1rem;margin-bottom:4px}
-  .rule p{font-size:.9rem;color:var(--muted);line-height:1.55}
-  .rule p b{color:var(--ink)}
-  @media(max-width:820px){.rules{grid-template-columns:1fr}}
+.hero__sub {
+  max-width: 1000px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0 0 24px;
+  text-align: left;
+  font-weight: 400;
+}
 
-  /* DIFF / COMPARISON */
-  .diff{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .diff .pane{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0E0E11}
-  .diff .head{display:flex;align-items:center;gap:9px;padding:12px 18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(255,255,255,.07)}
-  .diff .before .head{color:#f2a2a4;background:rgba(229,72,77,.12)}
-  .diff .after .head{color:#8fe0b3;background:rgba(47,169,106,.12)}
-  .diff .head .dot{width:8px;height:8px;border-radius:50%}
-  .diff .before .head .dot{background:var(--red)}.diff .after .head .dot{background:var(--green)}
-  .diff pre{margin:0;padding:18px 20px;font-family:var(--mono);font-size:.76rem;line-height:1.7;color:#e7e7e2;overflow-x:auto}
-  .diff .c{color:#8a8f98}.diff .g{color:#7fd18c}.diff .r{color:#f2a2a4}.diff .k{color:#c4b5fd}.diff .s{color:#f0a868}.diff .t{color:#7fb8f5}
-  @media(max-width:820px){.diff{grid-template-columns:1fr}}
+.hero__meta {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
 
-  /* CLASSIFY */
-  .classify{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .cl{border-radius:16px;padding:20px;border:1px solid var(--line);background:var(--surface)}
-  .cl .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-  .cl.g1 .lab{color:var(--green)}.cl.g2 .lab{color:var(--accent)}.cl.g3 .lab{color:var(--amber)}.cl.g4 .lab{color:var(--violet)}
-  .cl p{font-size:.86rem;color:var(--muted);line-height:1.5}
-  .cl .out{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:.72rem;color:var(--ink);background:#f1f1ee;padding:3px 8px;border-radius:6px}
-  @media(max-width:820px){.classify{grid-template-columns:repeat(2,1fr)}}
+.hero__meta .m {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 12px;
+}
 
-  /* TABLE */
-  .tbl{margin:26px auto}
-  .tbl table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);font-size:.9rem}
-  .tbl th,.tbl td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line-2);vertical-align:top}
-  .tbl th{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);background:#fafaf8;font-weight:500}
-  .tbl tr:last-child td{border-bottom:none}
-  .tbl td:first-child{font-weight:500;color:var(--ink)}
-  .tbl.stack td:first-child{font-family:var(--mono);font-size:.8rem;color:var(--accent);width:150px}
-  .tbl.stack td:nth-child(2){color:var(--muted)}
-  .tbl code{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:1px 5px;border-radius:5px;color:var(--ink)}
-  @media(max-width:640px){.tbl.hidecol th:nth-child(1),.tbl.hidecol td:first-child{display:none}}
+.hero__meta .m b {
+  color: var(--ink);
+  font-weight: 600;
+}
 
-  /* METRICS */
-  .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px auto}
-  .metric{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px}
-  .metric .n{font-family:var(--display);font-size:2.5rem;font-weight:700;letter-spacing:-.03em;color:var(--accent)}
-  .metric h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:8px 0 8px}
-  .metric p{font-size:.85rem;color:var(--soft);line-height:1.5}
-  @media(max-width:820px){.cards,.metrics{grid-template-columns:1fr}.intro{grid-template-columns:1fr;gap:34px}}
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 999px;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px var(--shadow-2);
+}
+.hero__cta svg {
+  width: 14px;
+  height: 14px;
+}
 
-  /* CODE (single) */
-  .code{margin:24px auto}
-  .code pre{background:#0E0E11;color:#e7e7e2;border-radius:16px;padding:22px 24px;font-family:var(--mono);font-size:.82rem;line-height:1.75;overflow-x:auto;border:1px solid rgba(255,255,255,.08)}
-  .code .c{color:#8a8f98}.code .g{color:#7fd18c}.code .k{color:#c4b5fd}.code .s{color:#f0a868}.code .t{color:#7fb8f5}
+/* STATS (1000px) */
+.stats {
+  width: min(1000px, calc(100% - 48px));
+  margin: 32px auto 80px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
 
-  /* GALLERY */
-  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  .shot{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-  .shot:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
-  .shot img{border-radius:11px;width:100%;background:#f1f1ee}
-  .shot .sc{font-size:.78rem;color:var(--soft);margin-top:11px;padding:0 4px 2px;line-height:1.45}
-  .shot .sc b{color:var(--ink);font-weight:600}
-  @media(max-width:640px){.gallery{grid-template-columns:1fr}}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 12px;
+  text-align: center;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
 
-  /* Q&A */
-  .faq{max-width:820px;margin:0 auto}
-  .faq details{border:1px solid var(--line);border-radius:14px;background:var(--surface);margin-bottom:10px;overflow:hidden}
-  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-family:var(--display);font-weight:500;font-size:1rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";font-size:1.3rem;color:var(--soft);transition:transform .2s}
-  .faq details[open] summary::after{transform:rotate(45deg)}
-  .faq .a{padding:0 20px 20px;color:var(--muted);font-size:.94rem;line-height:1.65}
-  .faq .a b{color:var(--ink)}
+.stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px var(--shadow-2);
+}
 
-  /* callout */
-  .note{margin:26px auto;padding:18px 22px;background:var(--accent-soft);border:1px solid rgba(47,109,240,.18);border-radius:14px;color:#274b96;font-size:.95rem;line-height:1.6}
-  .note b{color:#1b3a78}
+.stat .n {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
 
-  /* STEPS */
-  .steps{margin:30px auto 0;display:grid;gap:14px}
-  .step{display:flex;gap:18px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
-  .step .num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-family:var(--display);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
-  .step h4{font-family:var(--display);font-weight:600;font-size:1.02rem;margin-bottom:4px}
-  .step p{color:var(--muted);font-size:.92rem;line-height:1.55}
-  .step code{font-family:var(--mono);font-size:.85em;background:#f1f1ee;padding:2px 6px;border-radius:5px;color:var(--ink)}
+.stat .l {
+  font-size: 11px;
+  color: var(--soft);
+  line-height: 1.3;
+  margin-top: 5px;
+}
 
-  /* FOOTER */
-  .footer{background:#0B0B0C;color:#fff;border-radius:36px 36px 0 0;padding:60px clamp(28px,5vw,64px) 32px;margin-top:96px;overflow:hidden}
-  .footer__top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:20px}
-  .footer__lead{font-family:var(--display);font-size:1.15rem;line-height:1.4;color:#f0f0ee;font-weight:500}
-  .footer__social{display:flex;gap:10px}
-  .footer__social a{width:42px;height:42px;border-radius:50%;background:#1b1b1e;display:flex;align-items:center;justify-content:center;color:#cfcfcf;text-decoration:none;transition:.2s;font-size:.9rem}
-  .footer__social a:hover{background:#2a2a2e;color:#fff}
-  .footer__name{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,12vw,8rem);line-height:1;letter-spacing:-.04em;margin:28px 0 24px;white-space:nowrap;overflow:hidden}
-  .footer__bottom{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.74rem;color:#7a7a78;border-top:1px solid #1e1e21;padding-top:18px;flex-wrap:wrap;gap:10px}
+/* SECTIONS (LEFT ALIGNED · 1000px) */
+section {
+  width: min(1000px, calc(100% - 48px));
+  margin: 0 auto;
+  min-height: auto;
+  padding: 90px 0;
+  border-top: 1px solid var(--line-2);
+  scroll-margin-top: 80px;
+  text-align: left;
+}
 
-  /* UNIFIED SINGLE-COLUMN LAYOUT — every block shares the same edges */
-  .hero__in,.prose,.intro,.cards,.stats,.rules,.diff,.classify,.tbl,.metrics,
-  .code,.gallery,.steps,.faq,.figure,.chapters{
-    max-width:var(--maxw);margin-left:auto;margin-right:auto;
-    padding-left:var(--pad);padding-right:var(--pad);
-  }
-  .divider{max-width:var(--maxw);margin-left:auto;margin-right:auto;padding-left:var(--pad);padding-right:var(--pad)}
-  .note{max-width:var(--maxw);margin-left:auto;margin-right:auto}
-  .prose .lead,.prose p,.prose ul,.prose li,.prose h2.h,.prose .eyebrow{max-width:100%;margin-left:0;margin-right:0}
-  .prose[data-center] .lead,.prose[data-center] p{margin-left:auto;margin-right:auto}
-  @media(max-width:520px){:root{--pad:18px}}
+.sec-num,
+.number {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--soft);
+  margin-bottom: 12px;
+  text-align: left;
+}
 
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+/* MINIMAP */
+.minimap {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  width: 34px;
+}
+.minimap .rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7px;
+  max-height: 78vh;
+  padding: 8px 2px;
+}
+.minimap .mm-item {
+  position: relative;
+  width: 28px;
+  height: 3px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.minimap .mm-bar {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  width: 16px;
+  height: 2px;
+  border-radius: 99px;
+  background: #c8c8c8;
+  cursor: pointer;
+  transition: width .18s cubic-bezier(0.16, 1, 0.3, 1), background .18s ease, height .18s ease, box-shadow .18s ease;
+}
+.minimap .mm-bar:hover { width: 22px; background: #888; }
+.minimap .mm-bar.active { width: 26px; height: 2.5px; background: var(--ink); }
+.minimap .mm-tip {
+  position: absolute;
+  right: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 6px 24px var(--shadow-2);
+  font-size: 12px;
+  animation: mmIn .12s ease-out;
+  pointer-events: none;
+}
+.minimap .mm-tip .mm-idx { color: var(--soft); }
+.minimap .mm-tip .mm-lbl { font-weight: 500; color: var(--ink); }
+@keyframes mmIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(5px); }
+  to { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
 
-  /* ===== portfolio header offset + theme-aware (dark/light) ===== */
-  .mz-nav{position:fixed;top:40px;left:0;right:0}
-  .chapters{top:104px}
-  [data-theme="dark"]{
-    --bg:#0f0f0f;--surface:#161616;--ink:#f4f2ed;--muted:#a3a39d;--soft:#78786f;
-    --line:rgba(255,255,255,.12);--line-2:rgba(255,255,255,.07);
-    --accent:#6ea8ff;--accent-soft:#16233c;
-    --red-soft:#2a1414;--green-soft:#12271b;--amber-soft:#2a2110;
-  }
-  [data-theme="dark"] .hero{background:radial-gradient(120% 90% at 50% -10%,#16233c 0%,transparent 55%)}
-  [data-theme="dark"] .hero::before{background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px)}
-  [data-theme="dark"] .hero__badge,[data-theme="dark"] .hero__meta .m{background:#161616}
-  [data-theme="dark"] .hero__cta{background:#f4f2ed;color:#0f0f0f}
-  [data-theme="dark"] .chapters{background:rgba(20,20,20,.8)}
-  [data-theme="dark"] .chapters a.active{background:#f4f2ed;color:#0f0f0f}
-  [data-theme="dark"] .mono,[data-theme="dark"] .cl .out,[data-theme="dark"] .step code,[data-theme="dark"] .tbl code{background:#232323;color:#e7e7e2}
-  [data-theme="dark"] .tbl th{background:#1a1a1a}
-  [data-theme="dark"] .note{color:#bcd3ff}
-  [data-theme="dark"] .note b{color:#dbe8ff}
-  /* dark-theme feature badges: brighter text + consistent tinted bg (was washed / low-contrast amber) */
-  [data-theme="dark"] .rule .rk{background:rgba(110,168,255,.16);color:#8fbaff}
-  [data-theme="dark"] .rule.warn .rk{background:rgba(245,166,35,.16);color:#f6c569}
-  [data-theme="dark"] .rule.risk .rk{background:rgba(229,72,77,.18);color:#ff9195}
+@media (max-width: 820px) {
+  .minimap { display: none; }
+}
+
+/* DARK THEME MINIMAP */
+[data-theme="dark"] .minimap .mm-bar { background: rgba(255, 255, 255, 0.22); }
+[data-theme="dark"] .minimap .mm-bar:hover { background: rgba(255, 255, 255, 0.5); width: 22px; }
+[data-theme="dark"] .minimap .mm-bar.active {
+  width: 26px;
+  height: 2.5px;
+  background: #ffffff !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
+  opacity: 1 !important;
+}
+[data-theme="dark"] .minimap .mm-tip { background: #1a1a1a; border-color: rgba(255, 255, 255, .12); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--accent);
+}
+
+h2.h,
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.038em;
+  margin: 0 0 24px;
+  font-weight: 800;
+  color: var(--ink);
+  max-width: 1000px;
+  text-align: left;
+}
+
+h2.h-sub {
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.prose,
+.prose p,
+.intro p {
+  max-width: 1000px;
+  color: var(--muted);
+  font-size: 16.5px;
+  line-height: 1.75;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.intro {
+  display: grid !important;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 48px;
+  align-items: start;
+  text-align: left;
+  margin-bottom: 36px;
+}
+
+.intro .lead {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.prose ul,
+.card ul,
+.ba ul {
+  max-width: 1000px;
+  padding-left: 20px;
+  color: var(--muted);
+  text-align: left;
+}
+
+.prose li,
+.card li,
+.ba li {
+  margin: 10px 0;
+}
+
+.prose b,
+.intro b,
+.card b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.intro .side {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 4px 20px var(--shadow-1);
+}
+
+.side .g {
+  padding: 12px 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.side .g:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.side .k {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--soft);
+  margin-bottom: 4px;
+}
+
+.side .v {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--line-2);
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: var(--ink);
+}
+
+/* 3 CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: 0 !important;
+  text-align: left;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 26px;
+  text-align: left;
+  box-shadow: 0 4px 20px var(--shadow-1);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px var(--shadow-2);
+}
+
+.card__ic {
+  margin-bottom: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__ic--red { background: var(--red-soft); }
+.card__ic--accent { background: var(--accent-soft); }
+.card__ic--green { background: var(--green-soft); }
+
+.card h3,
+.metric h4,
+.rule h4,
+.step h4,
+.shot h4 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-align: left;
+}
+
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.card li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  line-height: 1.55;
+}
+
+.card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--soft);
+}
+
+/* RULES / FEATURE GRID */
+.rules {
+  margin-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  padding: 0 !important;
+}
+
+.rule {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 4px 20px var(--shadow-1);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.rule:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px var(--shadow-2);
+}
+
+.rule .rk {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: var(--line-2);
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.rule.signal .rk {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(47, 109, 240, 0.2);
+}
+
+.rule.warn .rk {
+  background: var(--amber-soft);
+  color: var(--amber);
+  border: 1px solid rgba(245, 166, 35, 0.25);
+}
+
+.rule.risk .rk {
+  background: var(--red-soft);
+  color: var(--red);
+  border: 1px solid rgba(229, 72, 77, 0.25);
+}
+
+.rule h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.rule p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* DIFF / COMPARISON */
+.diff {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: 0 !important;
+}
+
+.diff .pane {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #0E0E11;
+  box-shadow: 0 4px 20px var(--shadow-1);
+}
+
+.diff .head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 18px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.diff .before .head { color: #ff8588; background: rgba(229, 72, 77, 0.15); }
+.diff .after .head { color: #6ee7b7; background: rgba(47, 169, 106, 0.15); }
+.diff .head .dot { width: 8px; height: 8px; border-radius: 50%; }
+.diff .before .head .dot { background: var(--red); }
+.diff .after .head .dot { background: var(--green); }
+
+.diff pre {
+  margin: 0;
+  padding: 20px 22px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #f4f2ed;
+  overflow-x: auto;
+}
+
+.diff .c { color: #787878; }
+.diff .g { color: #4fce8f; }
+.diff .r { color: #ff8588; }
+.diff .k { color: #c4b5fd; }
+.diff .s { color: #f5b84f; }
+.diff .t { color: #6ea8ff; }
+
+/* CLASSIFY */
+.classify {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: 0 !important;
+}
+
+.cl {
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: 0 4px 20px var(--shadow-1);
+}
+
+.cl .lab {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.cl.g1 .lab { color: var(--green); }
+.cl.g2 .lab { color: var(--accent); }
+.cl.g3 .lab { color: var(--amber); }
+.cl.g4 .lab { color: #8b5cf6; }
+
+.cl p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.cl .out {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--line-2);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/* TABLES */
+.tbl {
+  overflow-x: auto;
+  padding: 0 !important;
+  margin: var(--space-lg) 0 var(--space-md);
+}
+
+.tbl table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+  font-size: 14px;
+  text-align: left;
+}
+
+.tbl th,
+.tbl td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-2);
+  line-height: 1.55;
+}
+
+.tbl th {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--soft);
+  background: var(--table-head-bg);
+}
+
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl td:first-child { font-weight: 600; color: var(--ink); }
+.tbl.stack td:first-child { font-family: var(--mono); font-size: 13px; color: var(--accent); width: 170px; }
+.tbl.stack td:nth-child(2) { color: var(--muted); }
+.tbl code { font-family: var(--mono); font-size: 12px; background: var(--line-2); padding: 2px 6px; border-radius: 5px; color: var(--ink); }
+
+/* METRICS */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  padding: 0 !important;
+  margin-top: var(--space-lg);
+}
+
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 26px;
+  text-align: left;
+  box-shadow: 0 4px 20px var(--shadow-1);
+}
+
+.metric .n {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.metric h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.metric p {
+  font-size: 13.5px;
+  color: var(--soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* CODE (single) */
+.code {
+  margin: var(--space-md) 0;
+  padding: 0 !important;
+}
+
+.code pre {
+  background: #0E0E11;
+  color: #f4f2ed;
+  border-radius: 16px;
+  padding: 22px 24px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.code .c { color: #787878; }
+.code .g { color: #4fce8f; }
+.code .k { color: #c4b5fd; }
+.code .s { color: #f5b84f; }
+.code .t { color: #6ea8ff; }
+
+/* FIGURES & GALLERIES */
+.figure {
+  margin: var(--space-lg) 0;
+  padding: 0 !important;
+}
+
+.figure .frame {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 14px;
+  background: var(--surface);
+  box-shadow: 0 16px 40px var(--shadow-1);
+}
+
+.figure img {
+  border-radius: 12px;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.figure figcaption,
+.shot .sc {
+  color: var(--soft);
+  font-size: 12.5px;
+  text-align: center;
+  margin-top: var(--space-xs);
+  line-height: 1.45;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  padding: 0 !important;
+  margin: var(--space-lg) 0;
+}
+
+.shot {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 12px;
+  background: var(--surface);
+  box-shadow: 0 10px 28px var(--shadow-1);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.shot:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px var(--shadow-2);
+}
+
+.shot img {
+  border-radius: 11px;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.shot .sc b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* STEPS */
+.steps {
+  margin-top: var(--space-lg);
+  display: grid;
+  gap: var(--space-sm);
+  padding: 0 !important;
+}
+
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 4px 20px var(--shadow-1);
+}
+
+.step .num {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.step h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.step p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.step code {
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--line-2);
+  padding: 2px 6px;
+  border-radius: 5px;
+  color: var(--ink);
+}
+
+/* NOTE BOX */
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border: 1px solid rgba(47, 109, 240, 0.25);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  padding: 16px 20px;
+  color: var(--note-text);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 28px 0;
+  text-align: left;
+  line-height: 1.6;
+  font-size: 14.5px;
+}
+
+.note__badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.note__badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.note__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.note__label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.note b {
+  color: var(--ink);
+}
+
+/* FAQ */
+.faq {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 !important;
+}
+
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq details[open] {
+  border-color: rgba(47, 109, 240, 0.35);
+  box-shadow: 0 8px 24px var(--shadow-1);
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 22px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: var(--ink);
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--soft);
+  transition: transform 0.2s ease;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+
+.faq .a {
+  padding: 0 22px 20px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.faq .a b { color: var(--ink); }
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox__img {
+  max-width: min(92vw, 1200px);
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: default;
+}
+.lightbox__caption {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #f4f2ed;
+  font-size: 13px;
+  text-align: center;
+  max-width: 680px;
+  background: rgba(20, 20, 20, 0.7);
+  padding: 6px 16px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+}
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.lightbox__close:hover,
+.lightbox__nav:hover { background: rgba(255, 255, 255, 0.24); transform: scale(1.05); }
+.lightbox__close { top: 24px; right: 24px; }
+.lightbox__nav.prev { left: 24px; top: 50%; transform: translateY(-50%); }
+.lightbox__nav.next { right: 24px; top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 820px) {
+  .hero { padding: 120px 20px 48px; }
+  .stats { grid-template-columns: repeat(3, 1fr); margin: 24px auto 60px; }
+  section { padding: 60px 0; }
+  .intro { grid-template-columns: 1fr; gap: 28px; }
+  .cards, .metrics, .rules, .diff, .classify, .gallery { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 540px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
 </style>
 </head>
-<body><header class="site-header" id="siteHeader">
+<body>
+
+<header class="site-header" id="siteHeader">
   <div class="site-header__inner">
     <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
       <img alt="Muzeeb Urrahaman" src="assets/images/logo.png">
@@ -273,19 +1145,24 @@
   </div>
 </header>
 
+<!-- MINIMAP -->
+<nav class="minimap" id="minimap" aria-label="Table of contents">
+  <div class="rail" id="mmRail"></div>
+</nav>
+
 <!-- HERO -->
 <header class="hero">
   <div class="hero__in">
     <span class="hero__badge"><span class="dot"></span> Case Study · Privacy-First Chrome Extension</span>
     <h1>You forget the subscriptions.<br>They <span class="grad">never forget you</span>.</h1>
     <p class="hero__sub">Every rival subscription tracker starts by asking for your bank login. <b style="color:var(--ink)">Catchly</b> refuses to — it watches sign-ups, renewals and price hikes on 24 services you already use, keeps the whole list on your device, and warns you before the card gets charged. No bank connection. No account. Nothing leaves your browser.</p>
-    <a class="hero__cta" href="https://getcatchly.com" target="_blank" rel="noopener">See the live site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Solo designer + builder</span>
-      <span class="m">v0.1.0 · Web Store review</span>
-      <span class="m">MV3 · Chrome / Brave / Edge</span>
+      <span class="m">Chrome / Brave / Edge</span>
+      <span class="m">Manifest V3 · Local-first</span>
     </div>
+    <a class="hero__cta" href="https://chromewebstore.google.com/detail/catchly/ogfdtheefhnmgkafchpelmcofmgcobk" target="_blank" rel="noopener">Chrome Web Store listing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
   </div>
 </header>
 
@@ -299,22 +1176,9 @@
   <div class="stat"><div class="n">MIT</div><div class="l">Source-available, verifiable</div></div>
 </div>
 
-<!-- CHAPTER NAV -->
-<nav class="chapters" id="chapters" style="margin-top:52px">
-  <a href="#overview" class="active">Overview</a>
-  <a href="#insight">The bet</a>
-  <a href="#catches">What it catches</a>
-  <a href="#how">How it works</a>
-  <a href="#diff">Old way vs Catchly</a>
-  <a href="#judgment">Judgment calls</a>
-  <a href="#stack">The stack</a>
-  <a href="#results">Results</a>
-  <a href="#next">What's next</a>
-  <a href="#qa">Q&amp;A</a>
-</nav>
-
-<!-- OVERVIEW -->
+<!-- 01 OVERVIEW -->
 <section id="overview">
+  <div class="sec-num">01 / OVERVIEW</div>
   <div class="intro reveal">
     <div>
       <div class="eyebrow">In one line</div>
@@ -326,13 +1190,13 @@
       <div class="g"><div class="k">Role</div><div class="v">Solo — problem, design, architecture &amp; all code</div></div>
       <div class="g"><div class="k">Type</div><div class="v">Chrome Extension (Manifest V3)</div></div>
       <div class="g"><div class="k">Surfaces</div><div class="v">In-page toast · Popup dashboard · Notifications</div></div>
-      <div class="g"><div class="k">Status</div><div class="v">v0.1.0 · in Chrome Web Store review</div></div>
+      <div class="g"><div class="k">Platform</div><div class="v">Chrome Web Store / Chromium</div></div>
     </aside>
   </div>
 
   <div class="cards reveal">
     <div class="card">
-      <div class="card__ic" style="background:var(--red-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+      <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
       <h3>Problem</h3>
       <ul>
         <li>People lose money to <b>subscriptions they forgot they have</b> — trials that convert, quiet price hikes, apps they stopped opening.</li>
@@ -341,7 +1205,7 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card__ic" style="background:var(--accent-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
       <h3>Solution</h3>
       <ul>
         <li>Detects sign-ups <b>on the sites you already use</b> — no bank, no account.</li>
@@ -350,62 +1214,72 @@
       </ul>
     </div>
     <div class="card">
-      <div class="card__ic" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Results</h3>
       <ul>
         <li><b>18 features</b> shipping as real code, exercised by a 22-test smoke suite.</li>
         <li><b>Zero telemetry</b> — no analytics, crash reporter, or usage ping anywhere.</li>
-        <li>v0.1.0 <b>submitted to the Chrome Web Store</b>, live preview at getcatchly.com.</li>
+        <li>Published live on the <b>Chrome Web Store</b> with zero backend dependencies.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<div class="divider"><span>The bet</span></div>
-
-<!-- INSIGHT -->
+<!-- 02 THE BET -->
 <section id="insight">
+  <div class="sec-num">02 / THE BET</div>
   <div class="prose reveal">
     <div class="eyebrow">Why this exists</div>
     <h2 class="h">The bank login is the industry default. Refusing it is the whole product.</h2>
     <p>Every popular subscription tracker works the same way: connect it to your bank through a data aggregator, let it read every transaction, and let it charge you — often <b>30–60% of the money it "saves" you</b>. That model is powerful, but it asks you to trust a third party with the keys to your entire financial life, and it quietly reads every purchase you make, not just the subscriptions.</p>
     <p><b>That teardown is the research.</b> I went through the popular trackers, and the pattern was unanimous: every one starts by asking for a bank connection and takes a cut. There was no privacy-first option on the shelf. That gap, not a feature wish, is the decision the whole product is built on: <b>refuse the bank entirely</b> and see how much value survives. Most of it does.</p>
     <p>Catchly's bet is that most of the value comes without any of that risk. It never sees your bank. Instead it watches only a <em>narrow, fixed list of 24 subscription sites</em> — the streaming, AI, productivity, news, design and storage services people actually pay for — and detects the subscription right where it happens: at the sign-up or renewal page. The tracking, the reminders and the spend math all run <b>on your device</b>. This isn't a privacy footnote; it <em>is</em> the product.</p>
-    <div class="note"><b>Privacy is a design constraint, not a marketing line.</b> The extension is limited by Chrome itself to a 24-domain allowlist — it is technically incapable of running on your bank, brokerage, healthcare portal, or any login page. And it makes <b>zero outbound network calls during normal use</b>: no analytics SDK, no telemetry, no error logger. Every claim is checkable in the open-source code.</div>
+
+    <div class="note reveal">
+      <div class="note__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="10" fill="#0066FF"/>
+          <path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="note__body">
+        <span class="note__label">Design Constraint</span>
+        <b>Privacy as architecture, not marketing.</b> The extension is limited by Chrome itself to a 24-domain allowlist — it is technically incapable of running on your bank, brokerage, healthcare portal, or any login page. And it makes <b>zero outbound network calls during normal use</b>: no analytics SDK, no telemetry, no error logger. Every claim is checkable in the open-source code.
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="divider"><span>What it catches</span></div>
-
-<!-- CATCHES -->
-<section id="catches">
+<!-- 03 WHAT IT CATCHES -->
+<section id="shows">
+  <div class="sec-num">03 / WHAT IT CATCHES</div>
   <div class="prose reveal">
     <div class="eyebrow">The job, plainly</div>
-    <h2 class="h">Nine things Catchly catches for you.</h2>
+    <h2 class="h">Nine moments where money slips away — surfaced before the charge.</h2>
     <p>Each one is a specific moment where money slips away silently. Catchly's job is to make that moment visible before the charge lands — in plain language, with a way to act on it.</p>
   </div>
+
   <div class="rules reveal">
-    <div class="rule"><span class="rk">Auto-detect</span><div><h4>Catches sign-ups as they happen</h4><p>Land on a checkout or sign-up page for a supported service and an in-page toast slides in offering to track it. No copying, no manual entry.</p></div></div>
-    <div class="rule"><span class="rk">Reminders</span><div><h4>Warns you before every renewal</h4><p>Chrome notifications 1, 3, or 7 days ahead (your choice). The one before the charge, not the statement after it.</p></div></div>
+    <div class="rule signal"><span class="rk">Auto-detect</span><div><h4>Catches sign-ups as they happen</h4><p>Land on a checkout or sign-up page for a supported service and an in-page toast slides in offering to track it. No copying, no manual entry.</p></div></div>
+    <div class="rule signal"><span class="rk">Reminders</span><div><h4>Warns you before every renewal</h4><p>Chrome notifications 1, 3, or 7 days ahead (your choice). The one before the charge, not the statement after it.</p></div></div>
     <div class="rule warn"><span class="rk">Free trial</span><div><h4>24-hour warning before a trial converts</h4><p>The most expensive kind of forgetting — a "free" trial quietly turning into a paid plan — gets its own countdown alert.</p></div></div>
     <div class="rule warn"><span class="rk">Price hike</span><div><h4>Flags increases the day they appear</h4><p>When a renewal page shows a higher price than last time, Catchly surfaces the change (e.g. Netflix $22.99 → $24.99) instead of letting it slide by.</p></div></div>
     <div class="rule risk"><span class="rk">Shadow charge</span><div><h4>Finds subscriptions you've stopped using</h4><p>Haven't opened a service in 30+ days but it's still billing you? A local usage sweep flags it — the classic "still paying for Audible" case.</p></div></div>
     <div class="rule"><span class="rk">Cancel guide</span><div><h4>Points you to the real cancel page</h4><p>"Cancel this" deep-links straight to the service's cancellation page and lists the dark-pattern steps in plain English — honest guidance, not fake automation.</p></div></div>
     <div class="rule"><span class="rk">Calendar</span><div><h4>A 30-day view of what's coming</h4><p>A renewal calendar with day-by-day dots so the next month is never a surprise, plus a rolling "next 30 days" list.</p></div></div>
     <div class="rule"><span class="rk">Insights</span><div><h4>Monthly, yearly &amp; annual run-rate</h4><p>A spend summary that stays honest with mixed currencies — USD, EUR, GBP, CAD, AUD, JPY and INR totals are kept separate, never mashed together.</p></div></div>
-    <div class="rule"><span class="rk">Badge</span><div><h4>Days-to-renewal at a glance</h4><p>Pin the toolbar icon and its badge counts down to your most urgent renewal, colour-coded safe → soon → urgent → overdue.</p></div></div>
   </div>
 </section>
 
-<div class="divider"><span>How it works</span></div>
-
-<!-- HOW -->
+<!-- 04 HOW IT WORKS -->
 <section id="how">
+  <div class="sec-num">04 / HOW IT WORKS</div>
   <div class="prose reveal">
     <div class="eyebrow">The flow</div>
     <h2 class="h">Detect locally, remember locally, remind locally.</h2>
     <p>There's no server in the loop. A small script runs only on the 24 allowlisted sites, spots a subscription, and hands it to a background worker that stores it on your device and schedules the reminders. Here's the whole path, start to finish:</p>
   </div>
+
   <div class="steps reveal">
     <div class="step"><div class="num">1</div><div><h4>You visit a supported service</h4><p>Say <code>netflix.com/signup</code> or <code>spotify.com/premium</code>. A content script — allowed to run <em>only</em> on the 24 listed domains — reads the page.</p></div></div>
     <div class="step"><div class="num">2</div><div><h4>Catchly recognises the charge</h4><p>It matches the site against a local service catalogue (<code>lib/merchants.js</code>) that knows the brand, typical price, billing cycle and real cancel URL — then slides in an in-page toast offering to track it.</p></div></div>
@@ -416,7 +1290,7 @@
 
   <div class="prose reveal" style="margin-top:44px">
     <div class="eyebrow">The permission model</div>
-    <h2 class="h">Four permissions, each with one honest reason.</h2>
+    <h2 class="h h-sub">Four permissions, each with one honest reason.</h2>
     <p>Catchly asks for the minimum it needs and nothing more. There is no <code>&lt;all_urls&gt;</code> — the browser itself blocks it from running anywhere outside the allowlist. Here's exactly what each permission is for:</p>
   </div>
   <div class="classify reveal">
@@ -426,13 +1300,17 @@
     <div class="cl g4"><div class="lab">● tabs</div><p>Opens the cancel page, and notices when you visit a known service (for shadow charges).</p><span class="out">matched locally</span></div>
   </div>
 
-  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img loading="lazy" src="assets/media/catchly/01-subscriptions.jpg" alt="Catchly subscriptions dashboard showing tracked services organised by next renewal"/></div><figcaption>The main dashboard — every recurring charge in one place, organised by next renewal, with a monthly / yearly / active-count summary strip that stays currency-aware.</figcaption></figure>
+  <figure class="figure reveal" style="margin-top:48px">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/catchly-cover.webp" alt="Catchly subscriptions dashboard showing tracked services organised by next renewal"/>
+    </div>
+    <figcaption>The main dashboard — every recurring charge in one place, organised by next renewal, with a monthly / yearly / active-count summary strip that stays currency-aware.</figcaption>
+  </figure>
 </section>
 
-<div class="divider"><span>Old way vs Catchly</span></div>
-
-<!-- DIFF -->
+<!-- 05 BEFORE VS CATCHLY -->
 <section id="diff">
+  <div class="sec-num">05 / DATA PATH</div>
   <div class="prose reveal">
     <div class="eyebrow">The difference that matters</div>
     <h2 class="h">Same goal, opposite data path.</h2>
@@ -473,27 +1351,40 @@ subscription.<span class="t">charge</span>(<span class="r">0.4 * saved</span>);<
 notifications.<span class="g">local</span>(renewalSoon);</pre>
     </div>
   </div>
-  <div class="prose reveal" style="margin-top:6px">
-    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">The trade-off, stated honestly:</b> because Catchly never reads your bank, it only knows about services it can see you use in the browser — that's why the supported list is explicit and grows over time. In exchange, you never share a banking credential, your subscription list never leaves your device, and there's no percentage-of-savings fee. That's the deal, and it's the point.</p>
+
+  <div class="prose reveal" style="margin-top:24px">
+    <p style="font-size:15px;color:var(--soft)"><b style="color:var(--ink)">The trade-off, stated honestly:</b> because Catchly never reads your bank, it only knows about services it can see you use in the browser — that's why the supported list is explicit and grows over time. In exchange, you never share a banking credential, your subscription list never leaves your device, and there's no percentage-of-savings fee. That's the deal, and it's the point.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:40px">
-    <p>The same on-device approach powers every screen in the popup. These are the real listing shots:</p>
+    <div class="eyebrow">Real extension captures</div>
+    <h2 class="h h-sub">Production interface across key workflow surfaces.</h2>
   </div>
   <div class="gallery reveal">
-    <div class="shot"><img loading="lazy" src="assets/media/catchly/02-alerts.jpg" alt="Alerts pane showing price hikes, trial endings and shadow charges"/><div class="sc"><b>Alerts</b> — price hikes, trials about to convert, and shadow charges you've stopped using, in one place.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/catchly/03-calendar.jpg" alt="Renewal calendar drawer showing the next 30 days"/><div class="sc"><b>Calendar</b> — a 30-day renewal view with day-by-day dots, so the coming month is never a surprise.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/catchly/04-insights.jpg" alt="Insights pane showing spend by category and yearly recap"/><div class="sc"><b>Insights</b> — spend by category and an annual run-rate, kept honest across mixed currencies.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/catchly/05-settings.jpg" alt="Settings pane with theme, notifications, currency and privacy controls"/><div class="sc"><b>Settings</b> — four themes, reminder timing, currency, and full JSON import/export of your own data.</div></div>
+    <div class="shot">
+      <img loading="lazy" src="assets/media/catchly/02-alerts.jpg" alt="Alerts pane showing price hikes, trial endings and shadow charges"/>
+      <div class="sc"><b>Alerts</b> — price hikes, trials about to convert, and shadow charges you've stopped using, in one place.</div>
+    </div>
+    <div class="shot">
+      <img loading="lazy" src="assets/media/catchly/03-calendar.jpg" alt="Renewal calendar drawer showing the next 30 days"/>
+      <div class="sc"><b>Calendar</b> — a 30-day renewal view with day-by-day dots, so the coming month is never a surprise.</div>
+    </div>
+    <div class="shot">
+      <img loading="lazy" src="assets/media/catchly/04-insights.jpg" alt="Insights pane showing spend by category and yearly recap"/>
+      <div class="sc"><b>Insights</b> — spend by category and an annual run-rate, kept honest across mixed currencies.</div>
+    </div>
+    <div class="shot">
+      <img loading="lazy" src="assets/media/catchly/05-settings.jpg" alt="Settings pane with theme, notifications, currency and privacy controls"/>
+      <div class="sc"><b>Settings &amp; Install</b> — streamlined Chrome Web Store distribution, currency selector, and full local JSON data export.</div>
+    </div>
   </div>
 </section>
 
-<div class="divider"><span>The hard parts</span></div>
-
-<!-- JUDGMENT -->
+<!-- 06 JUDGMENT CALLS -->
 <section id="judgment">
+  <div class="sec-num">06 / JUDGMENT CALLS</div>
   <div class="prose reveal">
-    <div class="eyebrow">The judgment calls</div>
+    <div class="eyebrow">The hard decisions</div>
     <h2 class="h">The interesting decisions were about restraint.</h2>
     <p>Anyone can build a subscription list. The decisions that make Catchly trustworthy were mostly about what to <em>not</em> do — and being honest about the limits. Four real ones:</p>
     <ul>
@@ -502,20 +1393,32 @@ notifications.<span class="g">local</span>(renewalSoon);</pre>
       <li><b>The Gmail scan is a waitlist, not a bait-and-switch.</b> Reading receipt emails would catch far more, but it needs Gmail OAuth and a restricted-scope Google review — a v1.0 milestone. Rather than ship it half-done, the current build offers an <em>opt-in</em> waitlist. Clicking "Notify me" is the single outbound call the extension ever makes, it sends only your email, and it's disclosed in the privacy policy.</li>
       <li><b>Bundle the brand logos; don't phone a CDN.</b> Icons used to load from a third-party CDN. They're now committed SVGs in <span class="mono">logos/</span>, so even rendering a Netflix logo doesn't reach the network. When the claim is "zero outbound calls," it has to be literally true.</li>
     </ul>
-    <div class="note"><b>The content catalogue is the moat.</b> <span class="mono">lib/merchants.js</span> maps messy statement descriptors ("GOOGLE *YOUTUBE PREMIUM") to a clean service, with the real cancel URL, default price, billing cycle and brand colour for each. Every new entry takes about five minutes — and that hand-curated knowledge, not the code, is what would be slow for a competitor to copy.</div>
+
+    <div class="note reveal">
+      <div class="note__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="10" fill="#0066FF"/>
+          <path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="note__body">
+        <span class="note__label">Content Moat</span>
+        <b>Curated merchant intelligence.</b> <span class="mono">lib/merchants.js</span> maps messy statement descriptors ("GOOGLE *YOUTUBE PREMIUM") to a clean service, with the real cancel URL, default price, billing cycle and brand colour for each. Every new entry takes about five minutes — and that hand-curated knowledge, not the code, is what would be slow for a competitor to copy.
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="divider"><span>The stack</span></div>
-
-<!-- STACK -->
+<!-- 07 THE STACK -->
 <section id="stack">
+  <div class="sec-num">07 / THE STACK</div>
   <div class="prose reveal">
     <div class="eyebrow">Under the hood</div>
     <h2 class="h">A Manifest V3 extension, built to be audited.</h2>
     <p>No framework, no build-time magic to hide behind — plain modules that a reviewer can read top to bottom. Every file has one job:</p>
   </div>
-  <div class="tbl stack hidecol reveal">
+
+  <div class="tbl stack reveal">
     <table>
       <tr><th>File / folder</th><th>What it does</th></tr>
       <tr><td>manifest.json</td><td>MV3 config. Permissions: <code>storage</code>, <code>alarms</code>, <code>notifications</code>, <code>tabs</code>. <code>host_permissions</code> is a narrow 24-domain allowlist — never <code>&lt;all_urls&gt;</code>.</td></tr>
@@ -528,13 +1431,14 @@ notifications.<span class="g">local</span>(renewalSoon);</pre>
       <tr><td>tests/smoke.spec.js</td><td>A Playwright smoke suite — 22 tests across boot, storage, brand-logo loading, worker CORS, onboarding and integration, run against the real unpacked extension.</td></tr>
     </table>
   </div>
+
   <div class="prose reveal" style="margin-top:36px">
-    <div class="eyebrow">Try it in two minutes</div>
-    <h2 class="h">Load it unpacked, load the sample data, done.</h2>
+    <div class="eyebrow">Try it locally in two minutes</div>
+    <h2 class="h h-sub">Load unpacked, populate sample data, and test live detection.</h2>
     <p>No login, no account, no setup. The fastest way to see everything working:</p>
   </div>
   <div class="code reveal"><pre><span class="c"># 1. Open chrome://extensions, enable Developer mode,</span>
-<span class="c">#    click "Load unpacked" and pick this folder.</span>
+<span class="c">#    click "Load unpacked" and pick the repo folder.</span>
 
 <span class="c"># 2. Click the Catchly icon → 3-screen onboarding plays.</span>
 <span class="c"># 3. Settings → "Load sample data" for a 2-second tour</span>
@@ -544,15 +1448,26 @@ notifications.<span class="g">local</span>(renewalSoon);</pre>
 <span class="g">netflix.com/signup</span>   <span class="c"># the in-page toast slides in</span></pre></div>
 </section>
 
-<div class="divider"><span>Results</span></div>
-
-<!-- RESULTS -->
+<!-- 08 RESULTS -->
 <section id="results">
+  <div class="sec-num">08 / RESULTS</div>
   <div class="prose reveal">
     <div class="eyebrow">Where it stands</div>
     <h2 class="h">Shipping, verifiable, and honest about scope.</h2>
-    <p>Catchly v0.1.0 is submitted to the Chrome Web Store with a live preview on getcatchly.com. Everything in the feature list is working code, not placeholder — the smoke suite exercises the critical paths on every run, and because the whole thing is source-available under MIT, every privacy claim can be checked line by line.</p>
-    <div class="note"><b>The unglamorous states, designed on purpose.</b> First-run popup is a real <b>empty state</b> — an icon, "No subscriptions tracked yet," and a one-line nudge to visit a supported site — not a blank panel. Detection that fails <b>never blocks the page</b>: the in-page toast just doesn't appear. And the insights view stays correct at the edges — mixed currencies (USD, EUR, GBP, INR…) are kept in <b>separate totals</b>, never mashed into one wrong number.</div>
+    <p>Catchly is live on the Chrome Web Store with full source available under MIT. Everything in the feature list is working code, not placeholder — the Playwright smoke suite exercises the critical paths on every run, and every privacy claim can be checked line by line.</p>
+
+    <div class="note reveal">
+      <div class="note__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="10" fill="#0066FF"/>
+          <path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="note__body">
+        <span class="note__label">UX Resilience</span>
+        <b>The unglamorous states, designed on purpose.</b> First-run popup is a real <b>empty state</b> — an icon, "No subscriptions tracked yet," and a one-line nudge to visit a supported site — not a blank panel. Detection that fails <b>never blocks the page</b>: the in-page toast just doesn't appear. And the insights view stays correct at the edges — mixed currencies (USD, EUR, GBP, INR…) are kept in <b>separate totals</b>, never mashed into one wrong number.
+      </div>
+    </div>
   </div>
 
   <div class="metrics reveal">
@@ -562,10 +1477,9 @@ notifications.<span class="g">local</span>(renewalSoon);</pre>
   </div>
 </section>
 
-<div class="divider"><span>Reflection</span></div>
-
-<!-- REFLECTION -->
+<!-- 09 REFLECTION -->
 <section id="reflection">
+  <div class="sec-num">09 / REFLECTION</div>
   <div class="prose reveal">
     <div class="eyebrow">Reflection</div>
     <h2 class="h">The version I didn't build — and what I'd change.</h2>
@@ -574,28 +1488,37 @@ notifications.<span class="g">local</span>(renewalSoon);</pre>
   </div>
 </section>
 
-<div class="divider"><span>What's next</span></div>
-
-<!-- NEXT -->
+<!-- 10 WHAT'S NEXT -->
 <section id="next">
+  <div class="sec-num">10 / WHAT'S NEXT</div>
   <div class="prose reveal">
     <div class="eyebrow">What I'd do next</div>
     <h2 class="h">Ordered by value, not novelty.</h2>
     <ul>
-      <li><b>Web Store approval</b> — in review now; the listing link goes live once it clears.</li>
       <li><b>Grow the merchant catalogue</b> — the content moat. Each new service is about five minutes of work and directly widens what Catchly can catch.</li>
       <li><b>Gmail auto-scan (v1.0)</b> — opt-in, on-device parsing of receipt emails to catch subscriptions outside the allowlist. Gated on Gmail OAuth and a restricted-scope Google review, which is why it's a waitlist today.</li>
       <li><b>Cancellation copilot</b> — guided, one-click cancellation for the top services, still without ever charging a cut of "savings."</li>
       <li><b>Family-plan splitting</b> — track which subscriptions are shared and whose card they hit.</li>
     </ul>
-    <div class="note"><b>The through-line.</b> Every future feature follows one rule: local-first, no data sold, no bank login required. The privacy stance isn't a phase of the product — it's the reason the product exists.</div>
+
+    <div class="note reveal">
+      <div class="note__badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="10" fill="#0066FF"/>
+          <path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/>
+        </svg>
+      </div>
+      <div class="note__body">
+        <span class="note__label">Philosophy</span>
+        <b>The through-line.</b> Every future feature follows one rule: local-first, no data sold, no bank login required. The privacy stance isn't a phase of the product — it's the reason the product exists.
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="divider"><span>Interview brief</span></div>
-
-<!-- Q&A -->
+<!-- 11 INTERVIEW BRIEF / Q&A -->
 <section id="qa">
+  <div class="sec-num">11 / INTERVIEW BRIEF</div>
   <div class="prose reveal" style="margin-bottom:34px">
     <div class="eyebrow">Anticipated questions</div>
     <h2 class="h">The things people probe for.</h2>
@@ -611,68 +1534,212 @@ notifications.<span class="g">local</span>(renewalSoon);</pre>
   </div>
 </section>
 
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close preview">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <button class="lightbox__nav prev" id="lightboxPrev" aria-label="Previous image">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="lightbox__nav next" id="lightboxNext" aria-label="Next image">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+  <img loading="lazy" class="lightbox__img" id="lightboxImg" src="" alt="" />
+  <div class="lightbox__caption" id="lightboxCaption"></div>
+</div>
+
 <!-- FOOTER -->
 <footer class="mz-footer">
-                <div class="mz-footer__row">
-                    <div class="mz-footer__id">
-                        <img loading="lazy" class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
-                        <span class="mz-footer__name">Muzeeb Urrahaman</span>
-                    </div>
-                    <div class="mz-footer__socials">
-                        <a href="https://linktr.ee/muzeeb1998" target="_blank" aria-label="Linktree">
-                            <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
-                                <path d="M128,115.31,77.66,165.66a8,8,0,0,1-11.32-11.32L108.69,112H48a8,8,0,0,1,0-16h60.69L66.34,53.66A8,8,0,0,1,77.66,42.34L120,84.69V24a8,8,0,0,1,16,0V84.69l42.34-42.35a8,8,0,0,1,11.32,11.32L147.31,96H208a8,8,0,0,1,0,16H147.31l42.35,42.34a8,8,0,0,1-11.32,11.32L128,115.31Z" opacity="0.2"/>
-                                <path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
-                            <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
-                                <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
-                                <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" aria-label="LinkedIn">
-                            <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
-                                <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H80V112H96Zm88,0H168V140a12,12,0,0,0-24,0v36H128V112h16v10.45A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z" opacity="0.2"/>
-                                <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a12,12,0,0,0-24,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.behance.net/muzeeb0786" target="_blank" aria-label="Behance">
-                            <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
-                                <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158Z" opacity="0.2"/>
-                                <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" aria-label="Dribbble">
-                            <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
-                                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Z" opacity="0.2"/>
-                                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/muzeebuiux" target="_blank" aria-label="Instagram">
-                            <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
-                                <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z" opacity="0.2"/>
-                                <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="mz-footer__band">
-                    <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
-                    <div class="mz-footer__copy">© 2026 Muzeeb Urrahaman · All rights reserved</div>
-                </div>
-            </footer>
+  <div class="mz-footer__row">
+    <div class="mz-footer__id">
+      <img loading="lazy" class="mz-footer__pic" src="assets/images/logo.png" alt="Muzeeb Urrahaman">
+      <span class="mz-footer__name">Muzeeb Urrahaman</span>
+    </div>
+    <div class="mz-footer__socials">
+      <a href="https://linktr.ee/muzeeb1998" target="_blank" aria-label="Linktree">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M128,115.31,77.66,165.66a8,8,0,0,1-11.32-11.32L108.69,112H48a8,8,0,0,1,0-16h60.69L66.34,53.66A8,8,0,0,1,77.66,42.34L120,84.69V24a8,8,0,0,1,16,0V84.69l42.34-42.35a8,8,0,0,1,11.32,11.32L147.31,96H208a8,8,0,0,1,0,16H147.31l42.35,42.34a8,8,0,0,1-11.32,11.32L128,115.31Z" opacity="0.2"/>
+          <path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"/>
+        </svg>
+      </a>
+      <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
+          <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" aria-label="LinkedIn">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H80V112H96Zm88,0H168V140a12,12,0,0,0-24,0v36H128V112h16v10.45A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z" opacity="0.2"/>
+          <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a12,12,0,0,0-24,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z"/>
+        </svg>
+      </a>
+      <a href="https://www.behance.net/muzeeb0786" target="_blank" aria-label="Behance">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158Z" opacity="0.2"/>
+          <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"/>
+        </svg>
+      </a>
+      <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" aria-label="Dribbble">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Z" opacity="0.2"/>
+          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/muzeebuiux" target="_blank" aria-label="Instagram">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z" opacity="0.2"/>
+          <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="mz-footer__band">
+    <div class="mz-footer__loc"><span class="mz-footer__flag">&#x1F1EE;&#x1F1F3;</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+    <div class="mz-footer__copy">&copy; 2026 Muzeeb Urrahaman · All rights reserved</div>
+  </div>
+</footer>
 
 <script>
-  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // MINIMAP ENGINE
+  (function() {
+    var mmSections = [
+      ["overview", "Overview"],
+      ["insight", "The bet"],
+      ["shows", "What it catches"],
+      ["how", "How it works"],
+      ["diff", "Data path"],
+      ["judgment", "Judgment calls"],
+      ["stack", "The stack"],
+      ["results", "Results"],
+      ["reflection", "Reflection"],
+      ["next", "What's next"],
+      ["qa", "Interview brief"]
+    ];
+    var rail = document.getElementById("mmRail");
+    if (!rail) return;
+    var mmActive = null;
+    mmSections.forEach(function(s, i) {
+      var item = document.createElement("div");
+      item.className = "mm-item";
+      var btn = document.createElement("button");
+      btn.className = "mm-bar" + (i === 0 ? " active" : "");
+      btn.setAttribute("type", "button");
+      btn.setAttribute("aria-label", "Go to " + s[1]);
+      btn.addEventListener("click", function() {
+        document.getElementById(s[0]).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      item.addEventListener("mouseenter", function() {
+        var tip = document.createElement("div");
+        tip.className = "mm-tip";
+        tip.innerHTML = '<span class="mm-idx">' + String(i + 1).padStart(2, "0") + '</span><span class="mm-lbl">' + s[1] + '</span>';
+        item.appendChild(tip);
+      });
+      item.addEventListener("mouseleave", function() {
+        var tip = item.querySelector(".mm-tip");
+        if (tip) tip.remove();
+      });
+      item.appendChild(btn);
+      rail.appendChild(item);
+    });
+    var mmBars = [].slice.call(document.querySelectorAll(".mm-bar"));
+    function mmUpdate() {
+      var marker = window.innerHeight * 0.32;
+      var closest = null, dist = Infinity;
+      mmSections.forEach(function(s) {
+        var el = document.getElementById(s[0]);
+        if (!el) return;
+        var r = el.getBoundingClientRect();
+        var d = Math.abs(r.top - marker);
+        if (r.bottom > 80 && d < dist) { closest = s[0]; dist = d; }
+      });
+      if (closest && closest !== mmActive) {
+        mmActive = closest;
+        mmBars.forEach(function(b, i) { b.classList.toggle("active", mmSections[i][0] === mmActive); });
+      }
+    }
+    window.addEventListener("scroll", mmUpdate, { passive: true });
+    window.addEventListener("resize", mmUpdate);
+    mmUpdate();
+  })();
 
-  const links=[...document.querySelectorAll('.chapters a')];
-  const map={}; links.forEach(a=>map[a.getAttribute('href').slice(1)]=a);
-  const spy=new IntersectionObserver((es)=>{
-    es.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.remove('active')); const a=map[e.target.id]; if(a){a.classList.add('active'); a.scrollIntoView({inline:'center',block:'nearest'});} } });
-  },{rootMargin:'-45% 0px -50% 0px'});
-  document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+  // LIGHTBOX
+  (function() {
+    var lightbox = document.getElementById("lightbox");
+    var lbImg = document.getElementById("lightboxImg");
+    var lbCaption = document.getElementById("lightboxCaption");
+    var lbClose = document.getElementById("lightboxClose");
+    var lbPrev = document.getElementById("lightboxPrev");
+    var lbNext = document.getElementById("lightboxNext");
+    var allImages = Array.from(document.querySelectorAll(".figure img, .shot img"));
+    var currentIndex = 0;
+    var lastFocused = null;
+
+    function renderImage(idx) {
+      if (idx < 0) idx = allImages.length - 1;
+      if (idx >= allImages.length) idx = 0;
+      currentIndex = idx;
+      var img = allImages[currentIndex];
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || "";
+      var caption = img.closest("figure, .shot");
+      var captionEl = caption ? caption.querySelector("figcaption, .sc") : null;
+      lbCaption.textContent = captionEl ? captionEl.textContent : "";
+    }
+
+    function openLightbox(img) {
+      lastFocused = document.activeElement;
+      currentIndex = allImages.indexOf(img);
+      if (currentIndex === -1) currentIndex = 0;
+      renderImage(currentIndex);
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+      lbClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+      if (lastFocused) lastFocused.focus();
+    }
+
+    allImages.forEach(function(img) {
+      img.addEventListener("click", function() { openLightbox(img); });
+    });
+
+    if (lbPrev) {
+      lbPrev.addEventListener("click", function(e) {
+        e.stopPropagation();
+        renderImage(currentIndex - 1);
+      });
+    }
+
+    if (lbNext) {
+      lbNext.addEventListener("click", function(e) {
+        e.stopPropagation();
+        renderImage(currentIndex + 1);
+      });
+    }
+
+    lightbox.addEventListener("click", function(e) {
+      if (e.target === lightbox || e.target === lbImg) closeLightbox();
+    });
+    lbClose.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function(e) {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") renderImage(currentIndex - 1);
+      else if (e.key === "ArrowRight") renderImage(currentIndex + 1);
+    });
+  })();
 </script>
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
