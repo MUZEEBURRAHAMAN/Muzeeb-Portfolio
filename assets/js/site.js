@@ -674,6 +674,50 @@
     document.head.appendChild(s1);
   }
 
+  /* ---------- 5. Problem Solving Side Sheet ---------- */
+  function initProblemSheet() {
+    var openBtn = document.getElementById("openProblemSheet") || document.querySelector(".js-open-problem-sheet");
+    var sheet = document.getElementById("problemSheet");
+    var overlay = document.getElementById("problemSheetOverlay");
+    var closeBtn = document.getElementById("problemSheetClose");
+
+    if (!sheet || !overlay) return;
+
+    function open() {
+      sheet.classList.add("opened");
+      overlay.classList.add("opened");
+      sheet.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      if (closeBtn) closeBtn.focus();
+      mzPlay("press");
+    }
+
+    function close() {
+      sheet.classList.remove("opened");
+      overlay.classList.remove("opened");
+      sheet.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (openBtn) openBtn.focus();
+      mzPlay("press");
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        open();
+      });
+    }
+
+    if (closeBtn) closeBtn.addEventListener("click", close);
+    if (overlay) overlay.addEventListener("click", close);
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && sheet.classList.contains("opened")) {
+        close();
+      }
+    });
+  }
+
   ready(function () {
     ensureSFXLoaded();
     initTheme();
@@ -686,5 +730,6 @@
     initHoverSFX();
     initGlobalSFX();
     initTypingText();
+    initProblemSheet();
   });
 })();

@@ -25,7 +25,7 @@
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=90">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=320">
+    <link rel="stylesheet" href="assets/css/style.css?v=330">
 </head>
 
 <body class="bg-[#0f0f0f] text-[#f4f2ed]">
@@ -255,12 +255,12 @@
             </div>
 
             <div class="site-editions__cta">
-                <a class="site-editions__link" href="best-work.html">
+                <button type="button" class="site-editions__link js-open-problem-sheet" id="openProblemSheet" aria-label="Open Problem Solving side sheet">
                     <span>View all editions &amp; case studies</span>
                     <svg class="site-editions__link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                </a>
+                </button>
             </div>
         </section>
     </div><!-- end #main -->
@@ -644,6 +644,156 @@
         });
     })();
     </script>
+
+    <!-- PROBLEM SOLVING SIDE SHEET -->
+    <div class="mz-sheet-overlay" id="problemSheetOverlay" aria-hidden="true"></div>
+    <aside class="mz-sheet" id="problemSheet" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Problem-solving timeline">
+        <header class="mz-sheet__header">
+            <div class="mz-sheet__headrow">
+                <div>
+                    <div class="mz-sheet__eyebrow">Problem-Solving Timeline</div>
+                    <h2 class="mz-sheet__title">What I've been solving</h2>
+                    <p class="mz-sheet__subtitle">My work has evolved from designing interfaces to solving workflow, system, and AI problems — and increasingly building the solution in production code.</p>
+                </div>
+                <button type="button" class="mz-sheet__close" id="problemSheetClose" aria-label="Close sheet">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="mz-sheet__tags">
+                <span class="mz-sheet__tag">2024 → 2026</span>
+                <span class="mz-sheet__tag">Product Design</span>
+                <span class="mz-sheet__tag">AI × Code × Design</span>
+                <span class="mz-sheet__tag">Build + Ship</span>
+            </div>
+        </header>
+
+        <div class="mz-sheet__body">
+            <div class="mz-sheet__timeline">
+
+                <article class="mz-sheet__item">
+                    <div class="mz-sheet__dot">01</div>
+                    <div class="mz-sheet__period">2024</div>
+                    <h3>Reducing friction in complex commerce workflows</h3>
+                    <p class="mz-sheet__lead">I focused on making multi-step e-commerce journeys easier to understand, complete, and scale.</p>
+                    <div class="mz-sheet__card">
+                        <div class="mz-sheet__part">
+                            <div class="mz-sheet__label">Problem</div>
+                            <p class="mz-sheet__text">Users were navigating fragmented onboarding, dashboards, and checkout experiences with unnecessary friction between steps.</p>
+                        </div>
+                        <div class="mz-sheet__part">
+                            <div class="mz-sheet__label">How I approached it</div>
+                            <div class="mz-sheet__chips">
+                                <span class="mz-sheet__chip">Workflow mapping</span>
+                                <span class="mz-sheet__chip">Research</span>
+                                <span class="mz-sheet__chip">Information architecture</span>
+                                <span class="mz-sheet__chip">UI systems</span>
+                            </div>
+                            <div class="mz-sheet__result">18% conversion improvement · 22% drop-off reduction</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="mz-sheet__item">
+                    <div class="mz-sheet__dot">02</div>
+                    <div class="mz-sheet__period">2025</div>
+                    <h3>Making complex legal workflows understandable</h3>
+                    <p class="mz-sheet__lead">At Omnis AI, I worked across AI-powered legal products where the challenge was not removing complexity, but making it navigable.</p>
+                    <div class="mz-sheet__card">
+                        <div class="mz-sheet__part">
+                            <div class="mz-sheet__label">Problem</div>
+                            <p class="mz-sheet__text">Legal teams work across interconnected cases, clients, documents, medical records, litigation, and discovery workflows.</p>
+                        </div>
+                        <div class="mz-sheet__part">
+                            <div class="mz-sheet__label">How I approached it</div>
+                            <div class="mz-sheet__chips">
+                                <span class="mz-sheet__chip">0 → 1 product design</span>
+                                <span class="mz-sheet__chip">Workflow architecture</span>
+                                <span class="mz-sheet__chip">AI UX</span>
+                                <span class="mz-sheet__chip">Design systems</span>
+                            </div>
+                            <div class="mz-sheet__result">25% improvement in internal operational efficiency</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="mz-sheet__item">
+                    <div class="mz-sheet__dot">03</div>
+                    <div class="mz-sheet__period">2025 → 2026</div>
+                    <h3>Turning UX review into an automated feedback loop</h3>
+                    <p class="mz-sheet__lead">I explored how AI could identify product-quality issues earlier instead of relying only on manual UX review.</p>
+                    <div class="mz-sheet__card">
+                        <div class="mz-sheet__part">
+                            <div class="mz-sheet__label">Problem</div>
+                            <p class="mz-sheet__text">Designers and developers repeatedly spend time checking staging builds for usability, accessibility, visual, and interaction issues.</p>
+                        </div>
+                        <div class="mz-sheet__part">
+                            <div class="mz-sheet__label">What I built</div>
+                            <div class="mz-sheet__chips">
+                                <span class="mz-sheet__chip">AI UX Audit Assistant</span>
+                                <span class="mz-sheet__chip">PR-triggered audits</span>
+                                <span class="mz-sheet__chip">Annotated reports</span>
+                                <span class="mz-sheet__chip">Slack feedback</span>
+                            </div>
+                            <div class="mz-sheet__result">UX review → automated feedback loop</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="mz-sheet__item current">
+                    <div class="mz-sheet__dot">04</div>
+                    <div class="mz-sheet__period">2026 → Now</div>
+                    <h3>Building the tools that solve the problems</h3>
+                    <p class="mz-sheet__lead">I'm now moving beyond designing a solution. When I see a repetitive or underserved problem, I prototype and build the tool myself.</p>
+                    <div class="mz-sheet__currentbox">
+                        <span class="mz-sheet__now">Currently building</span>
+                        <h4>Design × Code × AI × Automation</h4>
+                        <p>I work on focused problems and take them from idea to working product using Figma, code, and AI-assisted development.</p>
+                        <div class="mz-sheet__builds">
+                            <div class="mz-sheet__build">
+                                <div class="mz-sheet__icon">↗</div>
+                                <div>
+                                    <b>Browser extensions &amp; productivity tools</b>
+                                    <span>Catchly subscription monitor, text expansion, capture utilities, and web text search.</span>
+                                </div>
+                            </div>
+                            <div class="mz-sheet__build">
+                                <div class="mz-sheet__icon">◈</div>
+                                <div>
+                                    <b>Figma &amp; IDE plugins</b>
+                                    <span>Forge component library engine, Blobby, and CSS Inspector utilities that streamline design engineering.</span>
+                                </div>
+                            </div>
+                            <div class="mz-sheet__build">
+                                <div class="mz-sheet__icon">⌘</div>
+                                <div>
+                                    <b>End-to-end applications</b>
+                                    <span>Problem definition → UX architecture → UI craft → production code → automated test verification.</span>
+                                </div>
+                            </div>
+                            <div class="mz-sheet__build">
+                                <div class="mz-sheet__icon">✦</div>
+                                <div>
+                                    <b>AI skills &amp; critical-thinking tools</b>
+                                    <span>Autonomous skills like UX Audit Engine and Edge-State Fixer that rigorously challenge design assumptions.</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mz-sheet__principle">
+                            <b>The pattern behind all of it:</b> I don't want to only design the interface around a problem. I want to understand it deeply enough to build the system, tool, or workflow that solves it.
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+        <footer class="mz-sheet__footer">
+            <span>Selected work may be NDA-protected.</span>
+            <span>Press Esc to close</span>
+        </footer>
+    </aside>
 </body>
 
 </html>
