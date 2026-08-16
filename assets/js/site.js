@@ -684,27 +684,42 @@
     if (!sheet || !overlay) return;
 
     var sheetBody = sheet.querySelector(".mz-sheet__body");
+    var scrollPos = 0;
 
     function onWheel(e) {
       if (!sheet.classList.contains("opened")) return;
-      if (sheet.contains(e.target) || overlay.contains(e.target)) {
-        if (sheetBody) {
-          sheetBody.scrollTop += e.deltaY;
-        }
+      
+      // Always prevent background scroll when sheet is open
+      e.preventDefault();
+      
+      // If cursor is over sheet or overlay, scroll the sheet body directly
+      if (sheetBody) {
+        sheetBody.scrollTop += e.deltaY;
+      }
+    }
+
+    function onTouchMove(e) {
+      if (!sheet.classList.contains("opened")) return;
+      if (!sheet.contains(e.target)) {
         e.preventDefault();
-        e.stopPropagation();
       }
     }
 
     function open() {
+      scrollPos = window.pageYOffset || document.documentElement.scrollTop || 0;
+
       document.documentElement.classList.add("mz-sheet-open");
       document.body.classList.add("mz-sheet-open");
+      document.body.style.top = "-" + scrollPos + "px";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
 
       sheet.classList.add("opened");
       overlay.classList.add("opened");
       sheet.setAttribute("aria-hidden", "false");
       
       window.addEventListener("wheel", onWheel, { passive: false });
+      window.addEventListener("touchmove", onTouchMove, { passive: false });
       
       if (closeBtn) closeBtn.focus();
       mzPlay("press");
@@ -717,8 +732,13 @@
 
       document.documentElement.classList.remove("mz-sheet-open");
       document.body.classList.remove("mz-sheet-open");
+      document.body.style.top = "";
+      document.body.style.position = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollPos);
 
       window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchmove", onTouchMove);
 
       if (openBtn) openBtn.focus();
       mzPlay("press");
