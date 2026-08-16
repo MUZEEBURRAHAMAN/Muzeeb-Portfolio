@@ -683,6 +683,19 @@
 
     if (!sheet || !overlay) return;
 
+    var sheetBody = sheet.querySelector(".mz-sheet__body");
+
+    function onWheel(e) {
+      if (!sheet.classList.contains("opened")) return;
+      if (sheet.contains(e.target) || overlay.contains(e.target)) {
+        if (sheetBody) {
+          sheetBody.scrollTop += e.deltaY;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }
+
     function open() {
       document.documentElement.classList.add("mz-sheet-open");
       document.body.classList.add("mz-sheet-open");
@@ -690,6 +703,8 @@
       sheet.classList.add("opened");
       overlay.classList.add("opened");
       sheet.setAttribute("aria-hidden", "false");
+      
+      window.addEventListener("wheel", onWheel, { passive: false });
       
       if (closeBtn) closeBtn.focus();
       mzPlay("press");
@@ -702,6 +717,8 @@
 
       document.documentElement.classList.remove("mz-sheet-open");
       document.body.classList.remove("mz-sheet-open");
+
+      window.removeEventListener("wheel", onWheel);
 
       if (openBtn) openBtn.focus();
       mzPlay("press");
