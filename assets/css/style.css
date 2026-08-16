@@ -2506,21 +2506,20 @@ body.mz-cursor-on button { cursor: none; }
     width: auto;
     max-width: 140px;
     object-fit: contain;
-    display: block;
     border: none !important;
     border-radius: 0 !important;
 }
 .site-header__logo-img--dark {
-    display: block;
+    display: block !important;
 }
 .site-header__logo-img--light {
-    display: none;
+    display: none !important;
 }
 [data-theme="light"] .site-header__logo-img--dark {
-    display: none;
+    display: none !important;
 }
 [data-theme="light"] .site-header__logo-img--light {
-    display: block;
+    display: block !important;
 }
 .site-header__nav {
     display: flex;
