@@ -922,9 +922,9 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
     letter-spacing: -0.01em;
     text-transform: lowercase;
-    background: rgba(110, 168, 255, 0.14);
-    color: #8cb8ff;
-    border: 1px solid rgba(110, 168, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
     flex-shrink: 0;
     white-space: nowrap;
     line-height: 1.25;
@@ -976,9 +976,9 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     color: #63635e;
 }
 [data-theme="light"] .mz-work-card__badge {
-    background: #EAF1FE;
-    color: #2F6DF0;
-    border-color: rgba(47, 109, 240, 0.18);
+    background: #f1f0ec;
+    color: #17170f;
+    border-color: #e6e4df;
 }
 
 /* ===== Project cards (full-width + marquee) ===== */
