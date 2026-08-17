@@ -1613,9 +1613,9 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     transform: translateY(-1px);
 }
 .mz-footer__logo-img {
-    height: 24px;
+    height: 20px;
     width: auto;
-    max-width: 130px;
+    max-width: 115px;
     object-fit: contain;
     border: none !important;
     border-radius: 0 !important;
@@ -2530,12 +2530,18 @@ body.mz-cursor-on button,
 }
 .site-header__logo img,
 .site-header__logo-img {
-    height: 26px;
+    height: 22px;
     width: auto;
-    max-width: 140px;
+    max-width: 125px;
     object-fit: contain;
     border: none !important;
     border-radius: 0 !important;
+}
+@media (max-width: 640px) {
+    .site-header__logo img,
+    .site-header__logo-img {
+        height: 19px;
+    }
 }
 .site-header__logo-img--dark {
     display: block !important;
