@@ -1661,30 +1661,21 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- SECTION 12: REFLECTION -->
+<!-- SECTION 12: REFLECTION & LEARNINGS -->
 <section id="reflection">
   <div class="prose reveal">
     <div class="sec-num">12</div>
-    <div class="eyebrow">Reflection</div>
-    <h2 class="h">The real lesson wasn't about coverage.</h2>
-    <p>I started the project thinking the hard problem was finding more issues. It wasn't. The hard problem was <b>trust</b>.</p>
+    <div class="eyebrow">Learnings</div>
+    <h2 class="h">The real lesson wasn't about coverage — it was about trust.</h2>
+    <p>When this project started, I thought the hard problem was finding more issues faster. It wasn't. The hard problem was <b>trust</b>.</p>
     <p>A finding that's mostly correct isn't automatically better than no finding. A beautifully annotated screenshot is useless if the annotation points to the wrong element. And an impressive acceptance rate can still hide a weak system.</p>
-    <p>The biggest shift was learning to design around <b>uncertainty</b> — not just around the happy path.</p>
-  </div>
-
-  <div class="prose reveal prose--sub">
-    <div class="eyebrow">Next time</div>
-    <h2 class="h h-sub">I would build the measuring stick first.</h2>
-    <p>Early on, adding rules felt like progress. Then I realized the more important question was: <em>how do I know whether a finding is actually useful?</em></p>
-    <p>If I continued the project, I would establish a baseline first and measure:</p>
+    
+    <p>A few critical principles became clear:</p>
     <ul>
-      <li>Useful findings per screen</li>
-      <li>False-positive rate</li>
-      <li>Reviewer correction rate</li>
-      <li>Repeatability across audits</li>
-      <li>Time saved versus manual review</li>
+      <li><b>Volume is easy, trust is hard:</b> A tool that flags 50 issues but invents 15 isn't faster than a manual audit — it's slower because every finding needs manual verification. Grounding findings directly in DOM elements was essential.</li>
+      <li><b>The biggest bugs hide behind the screen:</b> A dashboard looks fine until you trigger an error, open a modal, or hit an empty state. Quality assurance requires exploring interactive states, not just taking screenshots.</li>
+      <li><b>Fixes must be engineering-ready:</b> Giving an engineer vague heuristic advice gets ignored. Giving them the exact CSS selector, DOM node, and copy-paste fix gets it merged.</li>
     </ul>
-    <p><b>Don't optimize the number of things an AI can say. Optimize the number of things a human can trust.</b></p>
   </div>
 
   <div class="prose reveal prose--sub">
@@ -1712,12 +1703,13 @@ h2.h-sub {
 <section id="future">
   <div class="prose reveal">
     <div class="sec-num">13</div>
-    <div class="eyebrow">What's next</div>
-    <h2 class="h">The next version closes the loop.</h2>
+    <div class="eyebrow">If I had more time</div>
+    <h2 class="h">What I would build next to close the loop.</h2>
     <ul>
-      <li><b>Phase 1 — Trusted baseline.</b> A deep initial audit for every product. Every future audit compares against this baseline: what improved, what regressed, what's new.</li>
-      <li><b>Phase 2 — Continuous re-auditing.</b> Connected to releases and pull requests. Instead of asking "what did the last audit find?" the system answers "what changed — and did the UX get better or worse?"</li>
-      <li><b>Phase 3 — Fix verification.</b> Move from Find &rarr; Report to Find &rarr; Fix &rarr; Re-audit &rarr; Verify. The system confirms whether the original problem actually disappeared.</li>
+      <li><b>Phase 1 — Trusted baseline:</b> A deep initial audit for every product. Every future audit compares against this baseline: what improved, what regressed, what's new.</li>
+      <li><b>Phase 2 — Continuous re-auditing:</b> Connected to releases and pull requests. Instead of asking "what did the last audit find?" the system answers "what changed — and did the UX get better or worse?"</li>
+      <li><b>Phase 3 — Fix verification:</b> Move from Find &rarr; Report to Find &rarr; Fix &rarr; Re-audit &rarr; Verify. The system confirms whether the original problem actually disappeared.</li>
+      <li><b>Phase 4 — Direct Figma annotation sync:</b> Automatically push confirmed UX audit issues directly as pinned annotation cards onto the designer's Figma canvas.</li>
     </ul>
     <p class="mt-tight">Long-term: reviewer corrections become product knowledge, teams define their own UX standards, and the engine becomes the system that keeps products from quietly accumulating problems.</p>
   </div>

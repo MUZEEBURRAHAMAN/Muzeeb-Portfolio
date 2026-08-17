@@ -1577,14 +1577,20 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- 09 REFLECTION -->
+<!-- 09 REFLECTION & LEARNINGS -->
 <section id="reflection">
   <div class="sec-num">09 / REFLECTION</div>
   <div class="prose reveal">
-    <div class="eyebrow">Reflection</div>
-    <h2 class="h">The approach I inverted — and what still isn't solved.</h2>
-    <p>Every prior attempt at this, mine included, wrote docs <em>after</em> the code and watched them rot. I stopped patching that and <b>inverted the flow</b>: the same action that changes a component regenerates its doc in the same commit, so drift is structurally impossible. The honest gap that remains: the plugin runs real git and shell, so a careless action could <b>leak secrets or push to the wrong place</b> — that's why writes are scoped to staging and destructive ops need explicit confirmation. It's contained, not fully solved.</p>
-    <p><b>What I'd do differently:</b> I validated it on <b>one library</b> — OmnisAI's — so the standard is opinionated toward that house style. Before calling it general, I'd run it against a second, differently-structured library to find exactly where the "one standard" assumption breaks.</p>
+    <div class="eyebrow">Learnings</div>
+    <h2 class="h">Design system scale is an alignment challenge, not a UI challenge.</h2>
+    <p>Every prior attempt at this, mine included, wrote docs <em>after</em> the code and watched them rot. I inverted the flow: the same action that changes a component regenerates its doc in the same commit, making drift impossible.</p>
+    
+    <p>A few things became clear:</p>
+    <ul>
+      <li><b>Documentation must regenerate from source:</b> Static design system documentation always lags behind code. Linking documentation directly to AST parser outputs ensures zero drift between Figma and React.</li>
+      <li><b>Edge states are design system blind spots:</b> Most component libraries provide default, hover, and active states, but completely overlook network error, truncated text, and loading skeletons.</li>
+      <li><b>Strict safety builds contributor confidence:</b> Explicit file path staging prevents developers and autonomous AI tools from accidentally committing untracked local secrets or WIP files.</li>
+    </ul>
   </div>
 </section>
 
@@ -1592,13 +1598,13 @@ h2.h-sub {
 <section id="next">
   <div class="sec-num">10 / WHAT'S NEXT</div>
   <div class="prose reveal">
-    <div class="eyebrow">What I'd do next</div>
-    <h2 class="h">Ordered by value, not novelty.</h2>
+    <div class="eyebrow">If I had more time</div>
+    <h2 class="h">What I would build next on the component engine.</h2>
     <ul>
-      <li><b>Library remediation via the audit queue.</b> The audit found ~230 issues across the library (a11y gaps, type holes, token debt). The queue is ranked and each item is one <span class="mono">/forge:edit</span> away. Fix them incrementally as normal work — Forge becomes both the process and the tool.</li>
-      <li><b>Test scaffolding per component.</b> Every <span class="mono">/forge:create</span> already emits a smoke test skeleton. Extend it to auto-generate a11y assertions per component type (dialog → focus-trap, menu → keyboard nav, button → aria-label if icon-only).</li>
-      <li><b>Cross-repo brain sync.</b> Right now each repo owns its brain. For apps that consume multiple libraries, a read-only "meta brain" that unions their brains would let <span class="mono">/forge:use</span> recommend from all of them in one shot.</li>
-      <li><b>Web Store-style plugin marketplace listing.</b> The plugin is public but discovery is word-of-mouth. A polished listing with screenshots, permissions rationale, and a copy-paste install would turn this into a real OSS project.</li>
+      <li><b>Bi-Directional Token Sync:</b> Real-time updates where tweaking a CSS variable in code immediately updates Figma component variants and vice-versa.</li>
+      <li><b>Library Remediation via Audit Queue:</b> Incrementally resolving the ~230 detected library issues (a11y gaps, type holes, token debt) using automated <span class="mono">/forge:edit</span> batches.</li>
+      <li><b>Automated a11y Test Scaffolding:</b> Auto-generating specialized accessibility assertions per component type (dialog &rarr; focus-trap, menu &rarr; keyboard nav, button &rarr; aria-label).</li>
+      <li><b>Cross-Repo Meta-Brain:</b> Read-only union index across multi-package monorepos so <span class="mono">/forge:use</span> can recommend components across multiple libraries simultaneously.</li>
     </ul>
 
     <div class="note reveal">

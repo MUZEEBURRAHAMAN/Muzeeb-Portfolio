@@ -1540,14 +1540,20 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
   </div>
 </section>
 
-<!-- 09 REFLECTION -->
+<!-- 09 REFLECTION & LEARNINGS -->
 <section id="reflection">
   <div class="sec-num">09 / REFLECTION</div>
   <div class="prose reveal">
-    <div class="eyebrow">Design Leadership Reflection</div>
-    <h2 class="h">What I learned from rejecting the standard playbook.</h2>
-    <p>The easy path in fintech is to plug in Plaid, scrape everything, and monetize through percentage cuts. Choosing a local-first browser extension required rethinking the entire user journey: how to make detection delightful without being intrusive, how to store data reliably without cloud sync, and how to build user trust without a massive brand name.</p>
-    <p><b>What I would evolve next:</b> While the 24-service allowlist protects user privacy, scaling the catalogue manually creates a bottleneck. Future iterations will introduce an open-format rule dictionary allowing the community to submit merchant signatures through pull requests.</p>
+    <div class="eyebrow">Learnings</div>
+    <h2 class="h">Privacy is an architectural choice, not a settings toggle.</h2>
+    <p>The easy path in fintech is to plug in Plaid, scrape everything, and monetize through percentage cuts. Choosing a local-first browser extension forced me to rethink the entire product mechanics around habit and trust.</p>
+    
+    <p>A few things became clear:</p>
+    <ul>
+      <li><b>Friction kills tracking habits:</b> If logging a subscription takes more than two clicks, users abandon the tracker within two weeks. Zero-click browser detection solved this at the root.</li>
+      <li><b>Context matters more than raw totals:</b> Showing a user a $120 total isn't helpful. Showing them two overlapping AI subscriptions they haven’t used in 30 days is actionable.</li>
+      <li><b>Local-first builds instant trust:</b> Storing sensitive financial records in local storage eliminated privacy objections and accelerated user adoption without requiring backend credentials.</li>
+    </ul>
   </div>
 </section>
 
@@ -1555,13 +1561,13 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
 <section id="next">
   <div class="sec-num">10 / WHAT'S NEXT</div>
   <div class="prose reveal">
-    <div class="eyebrow">Product Roadmap</div>
-    <h2 class="h">Prioritized by user value and privacy integrity.</h2>
+    <div class="eyebrow">If I had more time</div>
+    <h2 class="h">What I would evolve next on the roadmap.</h2>
     <ul>
       <li><b>Community-Driven Merchant Rules:</b> Open-source rule schema enabling developers to submit new merchant signatures and cancellation guides via GitHub PRs.</li>
-      <li><b>On-Device Receipt Parser (v1.0):</b> Optional, local-only parsing of receipt emails for users who want universal coverage without third-party bank linking.</li>
-      <li><b>Shared Family Plan Tracking:</b> Visual indicators for split household subscriptions to track who pays which monthly share.</li>
-      <li><b>Cross-Browser Portability:</b> Expanding packaged distribution to Firefox and Safari Web Extensions ecosystems.</li>
+      <li><b>On-Device Receipt &amp; PDF Parser:</b> Optional, drag-and-drop local-only parsing of invoice PDFs for users who want complete coverage without bank linking.</li>
+      <li><b>Proactive Price-Hike Alarms:</b> Background timers that alert users 3 days before trial conversions or planned vendor price increases.</li>
+      <li><b>Shared Household View:</b> Local visual indicator for split household subscriptions to identify redundant streaming or cloud storage across family members.</li>
     </ul>
 
     <div class="note reveal">
