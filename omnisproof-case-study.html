@@ -615,6 +615,21 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <p>The key insight that shaped everything downstream: <b>users don't struggle with getting a document into the system — they struggle with making it correct once it's there.</b> Connecting a document, adding recipients, hitting send — that part is solved everywhere, including our own MVP. The unsolved part, in our product and every competitor's, was the space between "document is uploaded" and "document is actually ready to send": field placement, recipient assignment, and catching mistakes before they go out.</p>
     <p>That reframed the direction of the whole project: <b>let the system handle more of the setup, and let users review and correct only what needs their attention</b> — rather than trying to make manual configuration marginally faster.</p>
   </div>
+
+  <div class="prose reveal" style="margin-top:36px;">
+    <div class="eyebrow">User Journey Mapping</div>
+    <h3 class="h3">Mapping the fragmented baseline against the streamlined workflow</h3>
+  </div>
+
+  <figure class="figure reveal">
+    <div class="frame"><img loading="lazy" src="assets/images/omnisproof-user-flow.jpg" alt="Fragmented 11-step legal document workflow across multiple disconnected tools (CRM, Word, Email, DocuSign, Local Folders, Practice Management)"/></div>
+    <figcaption><span class="cap-label">The Baseline Reality (11 Disconnected Steps)</span> — Prior to OmnisProof, legal teams bounced between Word, Email, local desktop folders, external e-signature platforms, and practice management tools just to execute a single contract.</figcaption>
+  </figure>
+
+  <figure class="figure reveal" style="margin-top:24px;">
+    <div class="frame"><img loading="lazy" src="assets/images/omnisproof-ideal-flow.jpg" alt="Streamlined 8-step integrated agreement lifecycle within OmnisProof with AI field suggestions and end-to-end audit tracking"/></div>
+    <figcaption><span class="cap-label">The Target Experience (Unified 8 Steps)</span> — OmnisProof consolidates the entire document lifecycle inside one continuous system: Create Agreement &rarr; Prepare with AI &rarr; Configure Signers &rarr; Review &rarr; Send &rarr; Track &rarr; Complete &rarr; Matter Record Storage.</figcaption>
+  </figure>
 </section>
 
 <!-- CONSTRAINTS & DECISIONS -->
@@ -702,8 +717,8 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   </div>
 
   <figure class="figure reveal">
-    <div class="frame"><img loading="lazy" src="assets/images/omnisproof-after-onepage.webp" alt="OmnisProof signing setup screen with Detect with AI button and field library" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/></div>
-    <figcaption><span class="cap-label">Where "Detect with AI" lives</span> — inside the field panel, one click away, next to the manual field library rather than replacing it. Suggested fields land on the document using the exact same interaction as manual placement.</figcaption>
+    <div class="frame"><img loading="lazy" src="assets/images/omnisproof-ai-field-annotation.png" alt="OmnisProof signing setup screen with Detect with AI button, visual field identification, and AI feedback callouts" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/></div>
+    <figcaption><span class="cap-label">AI-Assisted Field Placement in Action</span> — "Detect with AI" scans the document in context, identifies 38 form fields automatically, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
   </figure>
 
   <div class="prose reveal" style="margin-top:36px;">
@@ -755,12 +770,12 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="gallery-2 reveal">
     <div class="shot tag-before">
       <span class="pill pill-before">Before</span>
-      <img loading="lazy" src="assets/images/omnisproof-before-wizard.webp" alt="Original four-step modal wizard for document setup, showing General Info form with the document barely visible behind it" onerror="this.src='assets/images/bw_image 40(upload design).webp'"/>
+      <img loading="lazy" src="assets/images/omnisproof-before-wizard.png" alt="Original four-step modal wizard for document setup, showing General Info form with the document barely visible behind it" onerror="this.src='assets/images/bw_image 40(upload design).webp'"/>
       <div class="sc"><b>4-step modal wizard</b> — General Info, Add Signers, Add Fields, Distribute Document. The document is a thumbnail on the left, not the focus of the screen.</div>
     </div>
     <div class="shot tag-after">
       <span class="pill pill-after">After</span>
-      <img loading="lazy" src="assets/images/omnisproof-after-onepage.webp" alt="Redesigned single-page signing setup with document as the central focus, recipient panel, and field library" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/>
+      <img loading="lazy" src="assets/images/omnisproof-after-onepage.png" alt="Redesigned single-page signing setup with document as the central focus, recipient panel, and field library" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/>
       <div class="sc"><b>1 guided page</b> — the document is the center of the screen the entire time. Recipients, fields, and progress live in persistent side panels.</div>
     </div>
   </div>
