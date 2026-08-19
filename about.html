@@ -49,7 +49,7 @@
         </div>
     </header>
 
-    <div class="px-6 md:px-10 pt-6 flex flex-col items-center justify-center w-full h-min">
+    <div class="px-4 sm:px-6 md:px-10 pt-4 sm:pt-6 flex flex-col items-center justify-center w-full h-min box-border">
         <div class="max-w-[1200px] w-full">
             <header class="mz-ab-hero">
                 <h1>It's Muzeeb —<br>you say it <em>"muh-zeeb"</em>.</h1>
@@ -424,12 +424,21 @@
         io.observe(stage);
       } else { loadRingImages(); }
 
+      // ----- responsive radius calculation for perfect 3D ring positioning -----
+      function getRingRadius() {
+        var w = window.innerWidth;
+        if (w < 480) return 920;
+        if (w < 768) return 1180;
+        return 1550;
+      }
+      var radius = getRingRadius();
+
       gsap.timeline()
         .set(".mzr-ring", { rotationY: 180 })
         .set(".mzr-img", {
           rotateY: function (i) { return i * -18; },
-          transformOrigin: "50% 50% 1550px",
-          z: -1550,
+          transformOrigin: function () { return "50% 50% " + radius + "px"; },
+          z: function () { return -radius; },
           backfaceVisibility: "hidden"
         })
         .from(".mzr-img", { duration: 1.5, y: 200, opacity: 0, stagger: 0.07, ease: "expo" })
@@ -443,11 +452,42 @@
           });
         }, "-=0.5");
 
+      // Handle window resize dynamically for ring perspective & transform radius
+      var rzTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(rzTimer);
+        rzTimer = setTimeout(function () {
+          radius = getRingRadius();
+          gsap.set(".mzr-img", {
+            transformOrigin: "50% 50% " + radius + "px",
+            z: -radius
+          });
+        }, 150);
+      });
+
       // drag to spin (pauses the ticker's auto increment while dragging)
       var xPos = 0, rotTarget = 0, SENS = 0.7;
-      function dragStart(e){ if (e.touches) e.clientX = e.touches[0].clientX; dragging = true; rotTarget = gsap.getProperty(ringEl, "rotationY"); xPos = Math.round(e.clientX); ringEl.style.cursor = "grabbing"; $r(window).on("mousemove touchmove", drag); }
-      function drag(e){ if (e.touches) e.clientX = e.touches[0].clientX; var dx = Math.round(e.clientX) - xPos; rotTarget -= dx * SENS; rotTo(rotTarget); xPos = Math.round(e.clientX); }
-      function dragEnd(){ $r(window).off("mousemove touchmove", drag); ringEl.style.cursor = "grab"; rot = gsap.getProperty(ringEl, "rotationY"); dragging = false; }
+      function dragStart(e){
+        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        dragging = true;
+        rotTarget = gsap.getProperty(ringEl, "rotationY");
+        xPos = Math.round(clientX);
+        ringEl.style.cursor = "grabbing";
+        $r(window).on("mousemove touchmove", drag);
+      }
+      function drag(e){
+        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        var dx = Math.round(clientX) - xPos;
+        rotTarget -= dx * SENS;
+        rotTo(rotTarget);
+        xPos = Math.round(clientX);
+      }
+      function dragEnd(){
+        $r(window).off("mousemove touchmove", drag);
+        ringEl.style.cursor = "grab";
+        rot = gsap.getProperty(ringEl, "rotationY");
+        dragging = false;
+      }
       $r(stage).on("mousedown touchstart", dragStart);
       $r(window).on("mouseup touchend", dragEnd);
     })();

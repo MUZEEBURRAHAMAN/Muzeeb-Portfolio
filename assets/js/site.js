@@ -171,8 +171,8 @@
 
   /* ---------- 2. Custom cursor (arrow + trailing label, spring + tilt) ---------- */
   function initCursor() {
-    // Desktop pointer devices only — skip touch/coarse.
-    if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    // Desktop pointer devices only (screen >= 1024px) — skip mobile/tablet/touch
+    if (window.innerWidth < 1024 || !window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
     var SIZE = 30;
     var NAME = "Designer";
@@ -464,49 +464,127 @@
     });
   }
 
-  /* ---------- Mobile nav: logo left, hamburger right -> slide-in drawer ---------- */
+  /* ---------- Mobile nav: 3-line hamburger menu -> slide-in drawer ---------- */
   function initMobileNav() {
-    var nav = document.querySelector(".mz-nav");
-    if (!nav || nav.querySelector(".mz-nav__burger")) return;
-    var pill = nav.querySelector(".mz-nav__pill");
-    var resume = nav.querySelector(".mz-nav__resume");
-    var mail = nav.querySelector(".mz-nav__mail");
+    var siteHeader = document.querySelector(".site-header");
+    var legacyNav = document.querySelector(".mz-nav");
 
-    var burger = document.createElement("button");
-    burger.className = "mz-nav__burger";
-    burger.type = "button";
-    burger.setAttribute("aria-label", "Open menu");
-    burger.setAttribute("aria-expanded", "false");
-    burger.innerHTML = "<span></span><span></span><span></span>";
-    nav.appendChild(burger);
+    if (!siteHeader && !legacyNav) return;
 
-    var links = "";
-    if (pill) [].forEach.call(pill.querySelectorAll("a"), function (a) {
-      var label = a.querySelector("span") ? a.querySelector("span").textContent : a.textContent.trim();
-      links += '<a href="' + a.getAttribute("href") + '">' + label + "</a>";
+    var headerNav = siteHeader ? siteHeader.querySelector(".site-header__nav") : null;
+    var inner = siteHeader ? siteHeader.querySelector(".site-header__inner") : null;
+
+    var linksHtml = "";
+    var currentPath = (location.pathname.split("/").pop() || "index.html") || "index.html";
+    if (/(case-study|zebralearn|30-days|product-vision|ux-review|uxd-for)/i.test(currentPath)) currentPath = "best-work.html";
+    else if (/-blog\.html$/i.test(currentPath)) currentPath = "blog.html";
+
+    // Build navigation links list
+    var navItems = [
+      { href: "about.html", label: "About" },
+      { href: "best-work.html", label: "Best work" },
+      { href: "playground.html", label: "Playground" }
+    ];
+
+    navItems.forEach(function (item) {
+      var isActive = item.href === currentPath;
+      linksHtml += '<a href="' + item.href + '" class="' + (isActive ? 'active' : '') + '">' +
+        '<span>' + item.label + '</span>' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>' +
+      '</a>';
     });
-    if (resume) links += '<a href="' + resume.getAttribute("href") + '" target="_blank" rel="noopener">Résumé</a>';
-    if (mail) links += '<a href="' + mail.getAttribute("href") + '">Email me</a>';
 
+    // Create Drawer Overlay & Drawer DOM
     var overlay = document.createElement("div");
     overlay.className = "mz-drawer__ov";
+    overlay.setAttribute("aria-hidden", "true");
+
     var drawer = document.createElement("div");
     drawer.className = "mz-drawer";
-    drawer.innerHTML = '<div class="mz-drawer__panel"><button class="mz-drawer__close" type="button" aria-label="Close menu">&times;</button><nav class="mz-drawer__links">' + links + "</nav></div>";
+    drawer.setAttribute("aria-hidden", "true");
+    drawer.innerHTML =
+      '<div class="mz-drawer__panel">' +
+        '<div class="mz-drawer__head">' +
+          '<span class="mz-drawer__title">Menu</span>' +
+          '<button class="mz-drawer__close" type="button" aria-label="Close menu">&times;</button>' +
+        '</div>' +
+        '<nav class="mz-drawer__links">' + linksHtml + '</nav>' +
+        '<div class="mz-drawer__foot">' +
+          '<a class="mz-drawer__cta" href="https://calendly.com/rahamanmuzeeb1108/new-meeting" target="_blank" rel="noopener">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>' +
+            '<span>Book a 1:1 call</span>' +
+          '</a>' +
+        '</div>' +
+      '</div>';
+
     document.body.appendChild(overlay);
     document.body.appendChild(drawer);
 
-    function open(o) {
-      drawer.classList.toggle("open", o);
-      overlay.classList.toggle("open", o);
-      document.body.style.overflow = o ? "hidden" : "";
-      burger.setAttribute("aria-expanded", o ? "true" : "false");
+    // Create 3-line burger button
+    var burger = document.createElement("button");
+    burger.className = "site-header__burger";
+    burger.type = "button";
+    burger.setAttribute("aria-label", "Toggle navigation menu");
+    burger.setAttribute("aria-expanded", "false");
+    burger.innerHTML = "<span></span><span></span><span></span>";
+
+    if (headerNav) {
+      headerNav.appendChild(burger);
+    } else if (inner) {
+      inner.appendChild(burger);
+    } else if (legacyNav) {
+      burger.className = "mz-nav__burger site-header__burger";
+      legacyNav.appendChild(burger);
     }
-    burger.addEventListener("click", function () { open(true); mzPlay("open"); });
-    overlay.addEventListener("click", function () { open(false); mzPlay("close"); });
-    drawer.querySelector(".mz-drawer__close").addEventListener("click", function () { open(false); mzPlay("close"); });
+
+    var scrollPosition = 0;
+
+    function open(isOpen) {
+      drawer.classList.toggle("open", isOpen);
+      overlay.classList.toggle("open", isOpen);
+      burger.classList.toggle("active", isOpen);
+      burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      drawer.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      overlay.setAttribute("aria-hidden", isOpen ? "false" : "true");
+
+      if (isOpen) {
+        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    }
+
+    burger.addEventListener("click", function () {
+      var willOpen = !drawer.classList.contains("open");
+      open(willOpen);
+      mzPlay(willOpen ? "open" : "close");
+    });
+
+    overlay.addEventListener("click", function () {
+      open(false);
+      mzPlay("close");
+    });
+
+    var closeBtn = drawer.querySelector(".mz-drawer__close");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function () {
+        open(false);
+        mzPlay("close");
+      });
+    }
+
     [].forEach.call(drawer.querySelectorAll(".mz-drawer__links a"), function (a) {
-      a.addEventListener("click", function () { open(false); mzPlay("forward"); });
+      a.addEventListener("click", function () {
+        open(false);
+        mzPlay("forward");
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && drawer.classList.contains("open")) {
+        open(false);
+      }
     });
   }
 
