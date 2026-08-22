@@ -426,13 +426,13 @@
         io.observe(stage);
       } else { loadRingImages(); }
 
-      // ----- responsive radius calculation for perfect 3D ring positioning with clean gaps -----
+      // ----- responsive radius calculation for tighter, cohesive 3D ring positioning -----
       function getRingRadius() {
         var w = window.innerWidth;
-        if (w < 480) return 960;
-        if (w < 768) return 1220;
-        if (w < 1200) return 1480;
-        return 1620;
+        if (w < 480) return 880;
+        if (w < 768) return 1010;
+        if (w < 1200) return 1260;
+        return 1450;
       }
       var radius = getRingRadius();
 
