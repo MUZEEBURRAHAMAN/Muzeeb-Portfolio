@@ -476,11 +476,13 @@
 
     var linksHtml = "";
     var currentPath = (location.pathname.split("/").pop() || "index.html") || "index.html";
+    if (currentPath === "" || currentPath === "/") currentPath = "index.html";
     if (/(case-study|zebralearn|30-days|product-vision|ux-review|uxd-for)/i.test(currentPath)) currentPath = "best-work.html";
     else if (/-blog\.html$/i.test(currentPath)) currentPath = "blog.html";
 
     // Build navigation links list
     var navItems = [
+      { href: "index.html", label: "Home" },
       { href: "about.html", label: "About" },
       { href: "best-work.html", label: "Best work" },
       { href: "playground.html", label: "Playground" }

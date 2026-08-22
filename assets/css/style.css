@@ -19,6 +19,7 @@
 
 html {
     background-color: #0f0f0f;
+    overflow-y: scroll;
 }
 html[data-theme="light"],
 [data-theme="light"] {
