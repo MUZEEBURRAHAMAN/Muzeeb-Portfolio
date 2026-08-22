@@ -55,9 +55,10 @@
                 <h1>It's Muzeeb —<br>you say it <em>"muh-zeeb"</em>.</h1>
                 <p>Product designer &amp; builder for <b>AI &amp; SaaS</b> — I design the system, then ship it in code.</p>
             </header>
-            <div class="mzr-stage" id="mzrStage">
-                <div class="mzr-container">
-                    <div class="mzr-ring">
+        </div>
+        <div class="mzr-stage" id="mzrStage">
+            <div class="mzr-container">
+                <div class="mzr-ring">
                         <div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div>
                         <div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div>
                         <div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div>
@@ -66,7 +67,8 @@
                     </div>
                 </div>
                 <img loading="lazy" class="mzr-person" src="assets/images/about-images/muzeeb_about.webp" alt="Muzeeb Urrahaman" decoding="async" onerror="this.style.display='none'">
-            </div>
+        </div>
+        <div class="max-w-[1200px] w-full">
             <section class="mz-bio mz-reveal">
                 <p>I'm a <b>Product Designer &amp; Builder</b> with 4.5 years of experience across AI and SaaS products. My edge: <b>I don't stop at mockups — I build.</b></p>
                 <p>I sit somewhere between <b>UX logic and UI craft</b>. Figuring out how things should work, what's making them confusing, and how to turn that into something clear and usable.</p>
@@ -424,12 +426,13 @@
         io.observe(stage);
       } else { loadRingImages(); }
 
-      // ----- responsive radius calculation for perfect 3D ring positioning -----
+      // ----- responsive radius calculation for perfect 3D ring positioning with clean gaps -----
       function getRingRadius() {
         var w = window.innerWidth;
-        if (w < 480) return 920;
-        if (w < 768) return 1180;
-        return 1550;
+        if (w < 480) return 960;
+        if (w < 768) return 1220;
+        if (w < 1200) return 1480;
+        return 1620;
       }
       var radius = getRingRadius();
 
