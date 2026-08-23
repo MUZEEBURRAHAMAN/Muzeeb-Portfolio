@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* self-hosted variable fonts (one file = all weights) */
 @font-face { font-family: 'Inter Display'; src: url('../fonts/InterDisplay.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Inter Tight';   src: url('../fonts/InterTight.woff2')   format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
@@ -144,11 +146,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, input:focus-vis
     .js .mz-reveal { opacity: 1 !important; transform: none !important; }
 }
 
-/* ===== Global theme: white/black/gray + Inter ===== */
+/* ===== Global theme: white/black/gray + Archivo ===== */
 :root {
     --primary: 0 0% 100%;                                  /* was gold; now white — flips every accent */
-    --font-sans: 'Inter Tight', system-ui, -apple-system, sans-serif;  /* primary — body/UI */
-    --font-display: 'Archivo', 'Acorn', 'Poppins', 'Inter Tight', system-ui, sans-serif;  /* primary — display/headings */
+    --font-sans: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;  /* primary — body/UI/supporting */
+    --font-display: 'Archivo', 'Acorn', 'Poppins', system-ui, -apple-system, sans-serif;  /* primary — display/headings */
 }
 body, p, a, div, li, button, input, textarea {
     font-family: var(--font-sans);
@@ -156,7 +158,17 @@ body, p, a, div, li, button, input, textarea {
 body span:not(.mz-hero__title span):not(.mz-ab-hero span):not(.ttl span) {
     font-family: var(--font-sans);
 }
-/* Geist = secondary display face: every heading, big numerals, brand mark */
+.mz-hero__sub,
+.mz-section__sub,
+.site-editions__desc,
+.site-editions__card-desc,
+.site-tcard__quote,
+.site-tcard__role,
+.mz-work-card__tagline,
+.mz-work-card__desc {
+    font-family: 'Archivo', var(--font-sans);
+}
+/* Headings and display text */
 h1, h2, h3, h4, h5, h6,
 .mz-hero__title,
 .csd .h2, .csd-hero h1, .csd-card h3, .csd-rcard h4,
@@ -1646,7 +1658,7 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     justify-content: center;
     gap: 12px;
     color: #fff;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Archivo', var(--font-sans);
     transition: opacity 0.1s linear;
 }
 .mz-preloader__name { font-size: clamp(2rem, 7vw, 4rem); font-weight: 800; letter-spacing: -0.03em; }
@@ -1658,7 +1670,7 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
 .mz-footer div,
 .mz-footer a,
 .mz-footer nav {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Archivo', var(--font-sans);
 }
 .mz-footer {
     width: 100vw;
@@ -1969,7 +1981,7 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
 @keyframes cwrot { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 @keyframes cwround { 0% { filter: contrast(15); } 20% { filter: contrast(3); } 40% { filter: contrast(3); } 60% { filter: contrast(15); } 100% { filter: contrast(15); } }
 @keyframes cwcolorize { 0% { filter: hue-rotate(0deg); } 20% { filter: hue-rotate(-30deg); } 40% { filter: hue-rotate(-60deg); } 60% { filter: hue-rotate(-90deg); } 80% { filter: hue-rotate(-45deg); } 100% { filter: hue-rotate(0deg); } }
-#cw-panel { position: fixed; right: 24px; bottom: 24px; z-index: 9998; width: min(390px, calc(100vw - 32px)); height: min(600px, calc(100vh - 52px)); background: #fff; border-radius: 24px; overflow: hidden; display: none; flex-direction: column; border: 1px solid rgba(0,0,0,.05); box-shadow: 0 30px 90px rgba(24,24,40,.24); font-family: 'Inter', system-ui, sans-serif; opacity: 0; transform: translateY(18px) scale(.97); transition: opacity .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1); }
+#cw-panel { position: fixed; right: 24px; bottom: 24px; z-index: 9998; width: min(390px, calc(100vw - 32px)); height: min(600px, calc(100vh - 52px)); background: #fff; border-radius: 24px; overflow: hidden; display: none; flex-direction: column; border: 1px solid rgba(0,0,0,.05); box-shadow: 0 30px 90px rgba(24,24,40,.24); font-family: 'Archivo', var(--font-sans); opacity: 0; transform: translateY(18px) scale(.97); transition: opacity .3s cubic-bezier(.16,1,.3,1), transform .3s cubic-bezier(.16,1,.3,1); }
 #cw-panel.open { display: flex; opacity: 1; transform: none; }
 .cw-head { display: flex; align-items: center; gap: 12px; padding: 18px 18px 10px; }
 .cw-havatar { width: 40px; height: 40px; flex: none; position: relative; overflow: hidden; border-radius: 50%; }
@@ -3171,8 +3183,8 @@ body.mz-cursor-on button,
 [data-theme="light"] .mzr-img { background-color: #ffffff; border-color: #ececE6; box-shadow: 0 12px 26px rgba(0,0,0,.10); }
 .mzr-tip { position: fixed; z-index: 100; pointer-events: none; white-space: nowrap; text-align: left; background: #fff; border-radius: 14px; padding: 11px 16px; box-shadow: 0 14px 34px rgba(0,0,0,.28); opacity: 0; transform: translate(-50%, -135%) scale(.92); transition: opacity .18s ease, transform .18s ease; }
 .mzr-tip.show { opacity: 1; transform: translate(-50%, -135%) scale(1); }
-.mzr-tip b { display: block; font: 600 14px/1.2 'Inter', system-ui, sans-serif; color: #111; }
-.mzr-tip span { display: block; font: 400 12.5px/1.3 'Inter', system-ui, sans-serif; color: #7c7c78; margin-top: 3px; }
+.mzr-tip b { display: block; font: 600 14px/1.2 'Archivo', var(--font-sans); color: #111; }
+.mzr-tip span { display: block; font: 400 12.5px/1.3 'Archivo', var(--font-sans); color: #7c7c78; margin-top: 3px; }
 [data-theme="dark"] .mzr-tip { background: #1a1a1a; box-shadow: 0 14px 34px rgba(0,0,0,.55); }
 [data-theme="dark"] .mzr-tip b { color: #f4f2ed; }
 [data-theme="dark"] .mzr-tip span { color: #9a9a98; }

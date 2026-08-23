@@ -22,12 +22,15 @@
     content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work — pan the grid, click any tile to open its case study.">
   <!-- anti-FOUC: set theme before paint -->
   <script>try { var t = localStorage.getItem('mz-theme'); document.documentElement.setAttribute('data-theme', t || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=430">
   <style>
-    /* ===== theme tokens (portfolio colours + Geist/Inter) ===== */
+    /* ===== theme tokens (portfolio colours + Archivo) ===== */
     :root {
-      --bwg-disp: 'Poppins', 'Inter Tight', system-ui, sans-serif;
-      --bwg-sans: 'Inter', system-ui, sans-serif;
+      --bwg-disp: 'Archivo', 'Poppins', system-ui, sans-serif;
+      --bwg-sans: 'Archivo', system-ui, sans-serif;
       --ease: cubic-bezier(.87, 0, .13, 1);
       /* dark (default) */
       --bwg-bg: #0f0f0f;
