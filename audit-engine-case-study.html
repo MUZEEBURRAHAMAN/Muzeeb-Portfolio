@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <title>Omnis UX Audit Engine — Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen." />
+<meta property="og:title" content="Omnis UX Audit Engine — Case Study · Muzeeb Urrahaman">
+<meta property="og:description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen.">
+<meta property="og:image" content="assets/images/ux-audit-assistant.webp">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/style.css?v=430">
@@ -1156,6 +1160,232 @@ h2.h-sub {
 [data-theme="dark"] .faq details { background: var(--surface); }
 [data-theme="dark"] .faq summary::before { background: rgba(110,168,255,.15); }
 
+/* SKILL DOWNLOAD / EMAIL SECTION */
+.skill-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 32px var(--shadow-1);
+  margin-top: var(--space-md);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.skill-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6, var(--green));
+}
+.skill-box__head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skill-box__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 5px 12px;
+  border-radius: 999px;
+  align-self: flex-start;
+  border: 1px solid rgba(47, 109, 240, 0.2);
+}
+.skill-box__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.25;
+}
+.skill-box__desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.skill-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.skill-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.4;
+}
+.skill-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.skill-form-wrap {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.skill-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skill-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.skill-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--mono);
+}
+.skill-actions-wrap {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.skill-actions-wrap .skill-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--mono);
+}
+.skill-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.skill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--shadow-1);
+  transition: transform .2s var(--ease), background .2s, box-shadow .2s;
+}
+.skill-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px var(--shadow-2);
+  color: var(--bg);
+}
+.skill-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  flex-shrink: 0;
+  stroke: currentColor;
+  transition: transform .2s var(--ease);
+}
+.skill-btn:hover svg {
+  transform: translateY(2px);
+}
+.skill-btn--secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .2s var(--ease), background .2s, border-color .2s;
+}
+.skill-btn--secondary:hover {
+  background: var(--line-2);
+  border-color: var(--soft);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+.skill-btn--secondary svg {
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+.skill-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;
+  margin-top: 4px;
+}
+.skill-meta-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--soft);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 4px 9px;
+  border-radius: 6px;
+}
+.skill-note {
+  font-size: 11.5px;
+  color: var(--soft);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .skill-box {
+    grid-template-columns: 1fr;
+    padding: 24px 20px;
+    gap: 24px;
+  }
+  .skill-items {
+    grid-template-columns: 1fr;
+  }
+}
+
 .reveal {
   opacity: 1;
   transform: none;
@@ -1670,10 +1900,79 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- SECTION 12: REFLECTION & LEARNINGS -->
-<section id="reflection">
+<!-- SECTION 12: SKILL & AGENT WORKFLOW -->
+<section id="skill-access">
   <div class="prose reveal">
     <div class="sec-num">12</div>
+    <div class="eyebrow">Agent Skill &amp; Bundle</div>
+    <h2 class="h">Download the UX Audit Assistant Skill.</h2>
+    <p>I packaged the heuristics engine, WCAG 2.2 accessibility rules, DOM state exploration prompts, and report markdown templates into a drop-in Claude &amp; AI agent skill bundle. Download the complete package directly to run automated design reviews in your own workflow.</p>
+  </div>
+
+  <div class="skill-box reveal">
+    <div class="skill-box__head">
+      <div class="skill-box__badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Agent Skill Bundle · v1.2</span>
+      </div>
+      <h3 class="skill-box__title">UX Audit Assistant Agent Skill</h3>
+      <p class="skill-box__desc">Drop-in skill for Claude Code, Cursor, and custom agent loops. Automates design QA and generates grounded finding cards from real DOM states.</p>
+      <div class="skill-items">
+        <div class="skill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>229+ Deterministic UX &amp; a11y heuristics</span>
+        </div>
+        <div class="skill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>DOM state explorer prompts &amp; rules</span>
+        </div>
+        <div class="skill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Self-contained HTML + Markdown report templates</span>
+        </div>
+        <div class="skill-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Developer-ready copy-paste fix generator</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-actions-wrap">
+      <div class="skill-label">Get the skill package</div>
+      <div class="skill-actions">
+        <a href="assets/downloads/ux-audit-assistant-skill.zip" class="skill-btn" download="ux-audit-assistant-skill.zip" id="downloadSkillZipBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download Skill Bundle (.ZIP)</span>
+        </a>
+        <a href="assets/downloads/ux-audit-assistant-skill/SKILL.md" class="skill-btn--secondary" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span>View SKILL.md Source</span>
+        </a>
+      </div>
+      <div class="skill-meta-tags">
+        <span class="skill-meta-tag">SKILL.md</span>
+        <span class="skill-meta-tag">README.md</span>
+        <span class="skill-meta-tag">REPORT-TEMPLATE.md</span>
+      </div>
+      <p class="skill-note">Instant 1-click download. Free to use with Claude Code, Cursor, Windsurf, or custom agent setups.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 13: REFLECTION & LEARNINGS -->
+<section id="reflection">
+  <div class="prose reveal">
+    <div class="sec-num">13</div>
     <div class="eyebrow">Learnings</div>
     <h2 class="h">The real lesson wasn't about coverage — it was about trust.</h2>
     <p>When this project started, I thought the hard problem was finding more issues faster. It wasn't. The hard problem was <b>trust</b>.</p>
@@ -1708,10 +2007,10 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- SECTION 13: WHAT'S NEXT -->
+<!-- SECTION 14: WHAT'S NEXT -->
 <section id="future">
   <div class="prose reveal">
-    <div class="sec-num">13</div>
+    <div class="sec-num">14</div>
     <div class="eyebrow">If I had more time</div>
     <h2 class="h">What I would build next to close the loop.</h2>
     <ul>
@@ -1724,10 +2023,10 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- SECTION 14: Q&A -->
+<!-- SECTION 15: Q&A -->
 <section id="qa">
   <div class="prose reveal" style="margin-bottom:34px">
-    <div class="sec-num">14</div>
+    <div class="sec-num">15</div>
     <div class="eyebrow">Anticipated questions</div>
     <h2 class="h">The things hiring managers probe for.</h2>
   </div>
@@ -1840,7 +2139,7 @@ h2.h-sub {
       ["context","Context"],["insight","Insight"],["challenge","Challenge"],
       ["workflow","Before → After"],["turning","Turning Point"],["principle","Principle"],
       ["product","Product"],["stack","Stack"],["scenarios","Scenarios"],
-      ["trust","Trust"],["results","Results"],["reflection","Reflection"],
+      ["trust","Trust"],["results","Results"],["skill-access","Skill Copy"],["reflection","Reflection"],
       ["future","What's Next"],["qa","Q&A"]
     ];
     var rail = document.getElementById("mm-rail");
