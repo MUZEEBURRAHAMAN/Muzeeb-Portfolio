@@ -214,10 +214,31 @@ body {
   background: var(--line-2);
 }
 
+/* HERO COVER (1000px) */
+.hero-cover {
+  width: min(1000px, calc(100% - 32px));
+  margin: 36px auto 32px;
+}
+
+.hero-cover .frame {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 14px;
+  background: var(--surface);
+  box-shadow: 0 16px 40px var(--shadow-1);
+}
+
+.hero-cover img {
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* STATS (1000px) */
 .stats {
   width: min(1000px, calc(100% - 32px));
-  margin: 32px auto 80px;
+  margin: 0 auto 80px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 12px;
@@ -1239,6 +1260,13 @@ h2.h-sub {
     </div>
   </div>
 </header>
+
+<!-- HERO COVER -->
+<div class="hero-cover reveal">
+  <div class="frame">
+    <img src="assets/images/catchly-cover.webp" alt="Catchly — Privacy-First Subscription Tracker Cover" loading="eager">
+  </div>
+</div>
 
 <!-- STATS -->
 <div class="stats reveal">
