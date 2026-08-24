@@ -59,10 +59,22 @@
 
         .pg-wrap {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 24px;
             box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .pg-wrap {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pg-wrap {
+                padding: 0 16px;
+            }
         }
 
         /* 01 — HERO */
