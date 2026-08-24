@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
@@ -30,8 +30,12 @@
 
     <style>
         /* ============================================================
-           PLAYGROUND TAB-DRIVEN WITH FEATURED SPLIT GRID
+           PLAYGROUND SINGLE-PAGE WITH REDIRECTING STICKY TABS
            ============================================================ */
+        html {
+            scroll-behavior: smooth;
+        }
+
         .pg-wrap {
             width: 100%;
             max-width: 1100px;
@@ -42,7 +46,7 @@
 
         /* 01 — HERO */
         .pg-hero {
-            padding: clamp(60px, 8vw, 96px) 0 clamp(30px, 4.5vw, 44px);
+            padding: clamp(60px, 8vw, 96px) 0 clamp(28px, 4vw, 40px);
             text-align: left;
             display: flex;
             flex-direction: column;
@@ -81,7 +85,7 @@
             max-width: 700px;
         }
 
-        /* STICKY TAB NAVIGATION */
+        /* STICKY TAB REDIRECTING BAR */
         .pg-tabs-bar {
             position: sticky;
             top: 72px;
@@ -92,7 +96,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding: 12px 0;
-            margin: 12px 0 clamp(36px, 5vw, 52px);
+            margin: 12px 0 clamp(48px, 6vw, 68px);
             transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
@@ -131,7 +135,7 @@
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            text-decoration: none;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -168,26 +172,18 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        /* TAB PANELS */
-        .pg-panel {
-            display: none;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.26s cubic-bezier(0.16, 1, 0.3, 1), transform 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+        /* SECTION CONTAINERS (ALL ON ONE PAGE) */
+        .pg-section {
+            scroll-margin-top: 140px;
+            margin-bottom: clamp(72px, 9vw, 110px);
         }
 
-        .pg-panel.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .pg-panel__head {
+        .pg-section__head {
             margin-bottom: clamp(24px, 3.5vw, 32px);
             text-align: left;
         }
 
-        .pg-panel__number {
+        .pg-section__eyebrow {
             font-family: var(--font-mono, monospace);
             font-size: 0.8125rem;
             font-weight: 700;
@@ -198,7 +194,7 @@
             margin-bottom: 6px;
         }
 
-        .pg-panel__title {
+        .pg-section__title {
             font-family: var(--font-display, 'Archivo', sans-serif);
             font-size: clamp(1.7rem, 3vw, 2.3rem);
             font-weight: 600;
@@ -207,7 +203,7 @@
             margin: 0 0 8px;
         }
 
-        .pg-panel__sub {
+        .pg-section__sub {
             font-family: var(--font-sans, 'Archivo', sans-serif);
             font-size: 0.98rem;
             line-height: 1.55;
@@ -216,15 +212,15 @@
             margin: 0;
         }
 
-        [data-theme="light"] .pg-panel__title {
+        [data-theme="light"] .pg-section__title {
             color: #111111;
         }
 
-        [data-theme="light"] .pg-panel__sub {
+        [data-theme="light"] .pg-section__sub {
             color: #5c5c56;
         }
 
-        [data-theme="light"] .pg-panel__number {
+        [data-theme="light"] .pg-section__eyebrow {
             color: #6a6a66;
         }
 
@@ -236,7 +232,6 @@
             grid-template-columns: 1.08fr 1fr;
             gap: 20px;
             align-items: stretch;
-            margin-bottom: clamp(64px, 8vw, 96px);
         }
 
         @media (max-width: 880px) {
@@ -332,12 +327,6 @@
             background: rgba(245, 158, 11, 0.15);
             color: #fcd34d;
             border-color: rgba(245, 158, 11, 0.3);
-        }
-
-        .pg-feat-card__badge--community {
-            background: rgba(244, 63, 94, 0.15);
-            color: #fda4af;
-            border-color: rgba(244, 63, 94, 0.3);
         }
 
         .pg-feat-card__title {
@@ -471,58 +460,11 @@
             transform: translateX(3px);
         }
 
-        /* Light Theme Overrides for Featured Split Grid */
-        [data-theme="light"] .pg-feat-card {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-        }
-
-        [data-theme="light"] .pg-feat-card:hover {
-            background: #fdfdfc;
-            border-color: rgba(0, 0, 0, 0.22);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        [data-theme="light"] .pg-feat-card__media {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.06);
-        }
-
-        [data-theme="light"] .pg-feat-card__title,
-        [data-theme="light"] .pg-side-card__title {
-            color: #111111;
-        }
-
-        [data-theme="light"] .pg-feat-card__sub {
-            color: #5c5c56;
-        }
-
-        [data-theme="light"] .pg-feat-card__kick,
-        [data-theme="light"] .pg-side-card__kick {
-            color: #6a6a66;
-        }
-
-        [data-theme="light"] .pg-feat-card__tags,
-        [data-theme="light"] .pg-side-card__tags {
-            color: #767672;
-        }
-
-        [data-theme="light"] .pg-feat-card__footer {
-            border-top-color: rgba(0, 0, 0, 0.06);
-        }
-
-        [data-theme="light"] .pg-feat-card__action,
-        [data-theme="light"] .pg-side-card__action {
-            color: #111111;
-        }
-
         /* FIGMA COMMUNITY LAYOUT (2 Top Cards + 1 Bottom Wide Card) */
         .pg-comm-layout {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            margin-bottom: clamp(64px, 8vw, 96px);
         }
 
         .pg-comm-card {
@@ -657,42 +599,70 @@
             }
         }
 
-        /* Light Theme Overrides for Figma Community */
+        /* Light Theme Overrides */
+        [data-theme="light"] .pg-feat-card,
         [data-theme="light"] .pg-comm-card {
             background: #ffffff;
             border-color: rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
         }
 
+        [data-theme="light"] .pg-feat-card:hover,
         [data-theme="light"] .pg-comm-card:hover {
             background: #fdfdfc;
             border-color: rgba(0, 0, 0, 0.22);
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
         }
 
+        [data-theme="light"] .pg-feat-card__media,
         [data-theme="light"] .pg-comm-card__media {
             background: rgba(0, 0, 0, 0.03);
             border-color: rgba(0, 0, 0, 0.06);
         }
 
+        [data-theme="light"] .pg-feat-card__title,
+        [data-theme="light"] .pg-side-card__title,
         [data-theme="light"] .pg-comm-card__title {
             color: #111111;
         }
 
+        [data-theme="light"] .pg-feat-card__sub {
+            color: #5c5c56;
+        }
+
+        [data-theme="light"] .pg-feat-card__kick,
+        [data-theme="light"] .pg-side-card__kick,
         [data-theme="light"] .pg-comm-card__kick {
             color: #6a6a66;
         }
 
+        [data-theme="light"] .pg-feat-card__tags,
+        [data-theme="light"] .pg-side-card__tags,
         [data-theme="light"] .pg-comm-card__tags {
-            color: #6a6a66;
+            color: #767672;
         }
 
+        [data-theme="light"] .pg-feat-card__footer,
         [data-theme="light"] .pg-comm-card__footer {
             border-top-color: rgba(0, 0, 0, 0.06);
         }
 
+        [data-theme="light"] .pg-feat-card__action,
+        [data-theme="light"] .pg-side-card__action,
         [data-theme="light"] .pg-comm-card__action {
             color: #111111;
+        }
+
+        [data-theme="light"] .pg-side-card {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        [data-theme="light"] .pg-side-card:hover {
+            background: #fdfdfc;
+            border-color: rgba(0, 0, 0, 0.18);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
         }
 
         /* 06 — CURRENTLY CURIOUS */
@@ -865,38 +835,38 @@
     <div id="main" class="w-full">
         <div class="pg-wrap">
 
-            <!-- ==================== 01 — HERO ==================== -->
+            <!-- ==================== HERO ==================== -->
             <header class="pg-hero">
                 <span class="pg-hero__eyebrow">PLAYGROUND</span>
                 <h1 class="pg-hero__title">What I build outside the day job.</h1>
                 <p class="pg-hero__desc">Experiments, tools, and ideas I explore when I'm curious about something—or when I want to learn by building.</p>
             </header>
 
-            <!-- ==================== STICKY TAB NAVIGATION ==================== -->
-            <nav class="pg-tabs-bar" aria-label="Playground sections">
-                <div class="pg-tabs" role="tablist">
-                    <button class="pg-tab-btn active" role="tab" id="tab-ai" aria-selected="true" aria-controls="panel-ai" data-tab="ai" type="button">
-                        <span>01 AI</span>
-                    </button>
-                    <button class="pg-tab-btn" role="tab" id="tab-build" aria-selected="false" aria-controls="panel-build" data-tab="build" type="button">
-                        <span>02 BUILD</span>
-                    </button>
-                    <button class="pg-tab-btn" role="tab" id="tab-systems" aria-selected="false" aria-controls="panel-systems" data-tab="systems" type="button">
-                        <span>03 SYSTEMS</span>
-                    </button>
-                    <button class="pg-tab-btn" role="tab" id="tab-community" aria-selected="false" aria-controls="panel-community" data-tab="community" type="button">
-                        <span>04 FIGMA COMMUNITY</span>
-                    </button>
+            <!-- ==================== STICKY REDIRECTING TABS ==================== -->
+            <nav class="pg-tabs-bar" aria-label="Jump to playground collection">
+                <div class="pg-tabs">
+                    <a class="pg-tab-btn active" href="#ai" data-target="ai">
+                        <span>AI</span>
+                    </a>
+                    <a class="pg-tab-btn" href="#build" data-target="build">
+                        <span>BUILD</span>
+                    </a>
+                    <a class="pg-tab-btn" href="#systems" data-target="systems">
+                        <span>SYSTEMS</span>
+                    </a>
+                    <a class="pg-tab-btn" href="#community" data-target="community">
+                        <span>FIGMA COMMUNITY</span>
+                    </a>
                 </div>
             </nav>
 
 
-            <!-- ==================== 02 — TAB 1: AI (ACTIVE DEFAULT) ==================== -->
-            <section class="pg-panel active" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai" tabindex="0">
-                <div class="pg-panel__head">
-                    <span class="pg-panel__number">01 — AI</span>
-                    <h2 class="pg-panel__title">AI workflows, tools &amp; experiments</h2>
-                    <p class="pg-panel__sub">Exploring how AI can augment the way I research, design, prototype, and build products.</p>
+            <!-- ==================== SECTION: AI ==================== -->
+            <section class="pg-section" id="ai" aria-labelledby="ai-heading">
+                <div class="pg-section__head">
+                    <span class="pg-section__eyebrow">AI</span>
+                    <h2 class="pg-section__title" id="ai-heading">AI workflows, tools &amp; experiments</h2>
+                    <p class="pg-section__sub">Exploring how AI can augment the way I research, design, prototype, and build products.</p>
                 </div>
 
                 <div class="pg-split-grid">
@@ -907,7 +877,7 @@
                                 <img src="assets/images/ux audit assistant.webp" alt="AI UX Audit workflow preview" loading="lazy" decoding="async">
                             </div>
                             <div class="pg-feat-card__header">
-                                <span class="pg-feat-card__kick">01 — AI WORKFLOWS</span>
+                                <span class="pg-feat-card__kick">AI WORKFLOWS</span>
                                 <span class="pg-feat-card__badge">FEATURED</span>
                             </div>
                             <h3 class="pg-feat-card__title">AI-assisted product design</h3>
@@ -921,40 +891,40 @@
 
                     <!-- RIGHT: STACK OF 4 CARDS -->
                     <div class="pg-side-stack">
-                        <!-- 02 — CLAUDE SKILLS -->
+                        <!-- CLAUDE SKILLS -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">02 — CLAUDE SKILLS</span>
+                                <span class="pg-side-card__kick">CLAUDE SKILLS</span>
                                 <h4 class="pg-side-card__title">Reusable AI workflows for design</h4>
                                 <p class="pg-side-card__tags">Research · Critique · Analysis · Ideation</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </div>
 
-                        <!-- 03 — MCP -->
+                        <!-- MCP -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">03 — MCP</span>
+                                <span class="pg-side-card__kick">MCP</span>
                                 <h4 class="pg-side-card__title">Connecting AI to real workflows</h4>
                                 <p class="pg-side-card__tags">Tools · Context · Actions · Experiments</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </div>
 
-                        <!-- 04 — PLUGINS -->
+                        <!-- PLUGINS -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">04 — PLUGINS</span>
+                                <span class="pg-side-card__kick">PLUGINS</span>
                                 <h4 class="pg-side-card__title">Small tools for repetitive problems</h4>
                                 <p class="pg-side-card__tags">Design utilities · Automation · Workflow experiments</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </div>
 
-                        <!-- 05 — AI UX -->
+                        <!-- AI UX -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">05 — AI UX</span>
+                                <span class="pg-side-card__kick">AI UX</span>
                                 <h4 class="pg-side-card__title">Designing better AI experiences</h4>
                                 <p class="pg-side-card__tags">AI interfaces · Feedback · Transparency · Human control</p>
                             </div>
@@ -965,12 +935,12 @@
             </section>
 
 
-            <!-- ==================== 03 — TAB 2: BUILD ==================== -->
-            <section class="pg-panel" id="panel-build" role="tabpanel" aria-labelledby="tab-build" tabindex="0">
-                <div class="pg-panel__head">
-                    <span class="pg-panel__number">02 — BUILD</span>
-                    <h2 class="pg-panel__title">Things I build to learn.</h2>
-                    <p class="pg-panel__sub">Prototypes, small tools, extensions, and design-to-code experiments I explore outside my day-to-day product work.</p>
+            <!-- ==================== SECTION: BUILD ==================== -->
+            <section class="pg-section" id="build" aria-labelledby="build-heading">
+                <div class="pg-section__head">
+                    <span class="pg-section__eyebrow">BUILD</span>
+                    <h2 class="pg-section__title" id="build-heading">Things I build to learn.</h2>
+                    <p class="pg-section__sub">Prototypes, small tools, extensions, and design-to-code experiments I explore outside my day-to-day product work.</p>
                 </div>
 
                 <div class="pg-split-grid">
@@ -981,7 +951,7 @@
                                 <img src="assets/images/Forge_Cover page.webp" alt="Forge prototype cover preview" loading="lazy" decoding="async">
                             </div>
                             <div class="pg-feat-card__header">
-                                <span class="pg-feat-card__kick">01 — FORGE</span>
+                                <span class="pg-feat-card__kick">FORGE</span>
                                 <span class="pg-feat-card__badge pg-feat-card__badge--prototype">PROTOTYPE</span>
                             </div>
                             <h3 class="pg-feat-card__title">From design ideas to working prototypes</h3>
@@ -995,30 +965,30 @@
 
                     <!-- RIGHT: STACK OF CARDS -->
                     <div class="pg-side-stack">
-                        <!-- 02 — DESIGN-TO-CODE -->
+                        <!-- DESIGN-TO-CODE -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">02 — DESIGN-TO-CODE</span>
+                                <span class="pg-side-card__kick">DESIGN-TO-CODE</span>
                                 <h4 class="pg-side-card__title">Turning design intent into working UI</h4>
                                 <p class="pg-side-card__tags">Figma · React · Components · AI-assisted coding</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </div>
 
-                        <!-- 03 — BROWSER TOOLS -->
+                        <!-- BROWSER TOOLS -->
                         <a class="pg-side-card" href="https://github.com/MUZEEBURRAHAMAN/fontlens" target="_blank" rel="noopener">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">03 — BROWSER TOOLS</span>
+                                <span class="pg-side-card__kick">BROWSER TOOLS</span>
                                 <h4 class="pg-side-card__title">Small tools for everyday problems</h4>
                                 <p class="pg-side-card__tags">Extensions · Utilities · Automation · Workflow experiments</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </a>
 
-                        <!-- 04 — PROTOTYPES -->
+                        <!-- PROTOTYPES -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">04 — PROTOTYPES</span>
+                                <span class="pg-side-card__kick">PROTOTYPES</span>
                                 <h4 class="pg-side-card__title">Ideas brought to life quickly</h4>
                                 <p class="pg-side-card__tags">Interaction · Motion · Product concepts · Experiments</p>
                             </div>
@@ -1029,12 +999,12 @@
             </section>
 
 
-            <!-- ==================== 04 — TAB 3: SYSTEMS ==================== -->
-            <section class="pg-panel" id="panel-systems" role="tabpanel" aria-labelledby="tab-systems" tabindex="0">
-                <div class="pg-panel__head">
-                    <span class="pg-panel__number">03 — SYSTEMS</span>
-                    <h2 class="pg-panel__title">Systems I explore beyond the interface.</h2>
-                    <p class="pg-panel__sub">Design systems, components, tokens, and workflows that help me understand how products scale.</p>
+            <!-- ==================== SECTION: SYSTEMS ==================== -->
+            <section class="pg-section" id="systems" aria-labelledby="systems-heading">
+                <div class="pg-section__head">
+                    <span class="pg-section__eyebrow">SYSTEMS</span>
+                    <h2 class="pg-section__title" id="systems-heading">Systems I explore beyond the interface.</h2>
+                    <p class="pg-section__sub">Design systems, components, tokens, and workflows that help me understand how products scale.</p>
                 </div>
 
                 <div class="pg-split-grid">
@@ -1045,7 +1015,7 @@
                                 <img src="assets/images/omnisproof.webp" alt="Omnis Design System preview" loading="lazy" decoding="async">
                             </div>
                             <div class="pg-feat-card__header">
-                                <span class="pg-feat-card__kick">01 — OMNIS DESIGN SYSTEM</span>
+                                <span class="pg-feat-card__kick">OMNIS DESIGN SYSTEM</span>
                                 <span class="pg-feat-card__badge pg-feat-card__badge--casestudy">CASE STUDY</span>
                             </div>
                             <h3 class="pg-feat-card__title">Building a foundation across products</h3>
@@ -1059,30 +1029,30 @@
 
                     <!-- RIGHT: STACK OF CARDS -->
                     <div class="pg-side-stack">
-                        <!-- 02 — DESIGN TOKENS -->
+                        <!-- DESIGN TOKENS -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">02 — DESIGN TOKENS</span>
+                                <span class="pg-side-card__kick">DESIGN TOKENS</span>
                                 <h4 class="pg-side-card__title">Making design decisions reusable</h4>
                                 <p class="pg-side-card__tags">Tokens · Variables · Foundations · Architecture</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </div>
 
-                        <!-- 03 — COMPONENT SYSTEMS -->
+                        <!-- COMPONENT SYSTEMS -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">03 — COMPONENT SYSTEMS</span>
+                                <span class="pg-side-card__kick">COMPONENT SYSTEMS</span>
                                 <h4 class="pg-side-card__title">Designing for consistency at scale</h4>
                                 <p class="pg-side-card__tags">Components · Patterns · States · Documentation</p>
                             </div>
                             <span class="pg-side-card__action">Explore →</span>
                         </div>
 
-                        <!-- 04 — DESIGN WORKFLOWS -->
+                        <!-- DESIGN WORKFLOWS -->
                         <div class="pg-side-card">
                             <div class="pg-side-card__content">
-                                <span class="pg-side-card__kick">04 — DESIGN WORKFLOWS</span>
+                                <span class="pg-side-card__kick">DESIGN WORKFLOWS</span>
                                 <h4 class="pg-side-card__title">Making repetitive design work better</h4>
                                 <p class="pg-side-card__tags">Processes · Automation · Collaboration · Tooling</p>
                             </div>
@@ -1093,23 +1063,23 @@
             </section>
 
 
-            <!-- ==================== 05 — TAB 4: FIGMA COMMUNITY ==================== -->
-            <section class="pg-panel" id="panel-community" role="tabpanel" aria-labelledby="tab-community" tabindex="0">
-                <div class="pg-panel__head">
-                    <span class="pg-panel__number">04 — FIGMA COMMUNITY</span>
-                    <h2 class="pg-panel__title">Things I make and share.</h2>
-                    <p class="pg-panel__sub">UI kits, plugins, templates, and resources I've created for the wider design community.</p>
+            <!-- ==================== SECTION: FIGMA COMMUNITY ==================== -->
+            <section class="pg-section" id="community" aria-labelledby="community-heading">
+                <div class="pg-section__head">
+                    <span class="pg-section__eyebrow">FIGMA COMMUNITY</span>
+                    <h2 class="pg-section__title" id="community-heading">Things I make and share.</h2>
+                    <p class="pg-section__sub">UI kits, plugins, templates, and resources I've created for the wider design community.</p>
                 </div>
 
                 <div class="pg-comm-layout">
-                    <!-- CARD 1: 01 — UI KITS -->
+                    <!-- CARD 1: UI KITS -->
                     <a class="pg-comm-card" href="https://www.figma.com/@muzeeb" target="_blank" rel="noopener">
                         <div>
                             <div class="pg-comm-card__media">
                                 <img src="assets/images/bw_image 46(E-sign Component Design).webp" alt="UI Kits preview" loading="lazy" decoding="async">
                             </div>
                             <div class="pg-comm-card__header">
-                                <span class="pg-comm-card__kick">01 — UI KITS</span>
+                                <span class="pg-comm-card__kick">UI KITS</span>
                             </div>
                             <h3 class="pg-comm-card__title">Reusable interfaces for faster design</h3>
                             <p class="pg-comm-card__tags">Components · Patterns · Templates · Assets</p>
@@ -1119,14 +1089,14 @@
                         </div>
                     </a>
 
-                    <!-- CARD 2: 02 — PLUGINS -->
+                    <!-- CARD 2: PLUGINS -->
                     <div class="pg-comm-card">
                         <div>
                             <div class="pg-comm-card__media">
                                 <img src="assets/images/bw_image 40(upload design).webp" alt="Plugins preview" loading="lazy" decoding="async">
                             </div>
                             <div class="pg-comm-card__header">
-                                <span class="pg-comm-card__kick">02 — PLUGINS</span>
+                                <span class="pg-comm-card__kick">PLUGINS</span>
                             </div>
                             <h3 class="pg-comm-card__title">Small tools that remove design friction</h3>
                             <p class="pg-comm-card__tags">Utilities · Automation · Workflow improvements</p>
@@ -1136,11 +1106,11 @@
                         </div>
                     </div>
 
-                    <!-- CARD 3: 03 — PRESENTATIONS (WIDE BOTTOM CARD) -->
+                    <!-- CARD 3: PRESENTATIONS (WIDE BOTTOM CARD) -->
                     <div class="pg-comm-card pg-comm-card--wide">
                         <div>
                             <div class="pg-comm-card__header">
-                                <span class="pg-comm-card__kick">03 — PRESENTATIONS</span>
+                                <span class="pg-comm-card__kick">PRESENTATIONS</span>
                             </div>
                             <h3 class="pg-comm-card__title">Decks designed to communicate ideas clearly</h3>
                             <p class="pg-comm-card__tags" style="margin-bottom:0">Pitch decks · Product storytelling · Visual frameworks</p>
@@ -1153,8 +1123,8 @@
             </section>
 
 
-            <!-- ==================== 06 — CURRENTLY CURIOUS ==================== -->
-            <section class="pg-curious" aria-labelledby="curious-heading">
+            <!-- ==================== SECTION: CURRENTLY CURIOUS ==================== -->
+            <section class="pg-curious" id="curious" aria-labelledby="curious-heading">
                 <div class="pg-curious__head">
                     <span class="pg-curious__eyebrow">CURRENTLY CURIOUS</span>
                     <h2 class="pg-curious__title" id="curious-heading">What I'm exploring right now.</h2>
@@ -1184,7 +1154,7 @@
             </section>
 
 
-            <!-- ==================== 07 — ENDING ==================== -->
+            <!-- ==================== SECTION: ENDING ==================== -->
             <footer class="pg-ending">
                 <h2 class="pg-ending__title">Still curious. Still building.</h2>
                 <p class="pg-ending__sub">Small experiments often lead to bigger ideas.</p>
@@ -1250,62 +1220,68 @@
     <script src="assets/js/site.js?v=110"></script>
     <script>
     (function () {
-        // Tab switching logic with URL hash synchronization
-        var tabBtns = Array.from(document.querySelectorAll('.pg-tab-btn'));
-        var panels = Array.from(document.querySelectorAll('.pg-panel'));
+        // Sticky Tab Scroll-Spy & Smooth Navigation
+        var tabLinks = Array.from(document.querySelectorAll('.pg-tab-btn'));
+        var sections = ['ai', 'build', 'systems', 'community'].map(function(id) {
+            return document.getElementById(id);
+        }).filter(Boolean);
 
-        function switchTab(tabId, updateHash) {
-            tabBtns.forEach(function (btn) {
-                var isTarget = btn.getAttribute('data-tab') === tabId;
+        function setActiveTab(targetId) {
+            tabLinks.forEach(function(btn) {
+                var isTarget = btn.getAttribute('data-target') === targetId;
                 btn.classList.toggle('active', isTarget);
-                btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
             });
-
-            panels.forEach(function (panel) {
-                var isTarget = panel.id === ('panel-' + tabId);
-                panel.classList.toggle('active', isTarget);
-            });
-
-            if (updateHash && history.replaceState) {
-                history.replaceState(null, '', '#' + tabId);
-            }
         }
 
-        tabBtns.forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var targetTab = btn.getAttribute('data-tab');
-                switchTab(targetTab, true);
+        // ScrollSpy with IntersectionObserver
+        var observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
+        };
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var id = entry.target.id;
+                    setActiveTab(id);
+                    if (history.replaceState) {
+                        history.replaceState(null, '', '#' + id);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(function(sec) {
+            observer.observe(sec);
+        });
+
+        // Click handler for tab buttons
+        tabLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var targetId = link.getAttribute('data-target');
+                var targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    setActiveTab(targetId);
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                    if (history.replaceState) {
+                        history.replaceState(null, '', '#' + targetId);
+                    }
+                }
             });
         });
 
-        // Keyboard navigation for tabs (Left / Right arrow keys)
-        var tablist = document.querySelector('.pg-tabs');
-        if (tablist) {
-            tablist.addEventListener('keydown', function (e) {
-                var currentIndex = tabBtns.indexOf(document.activeElement);
-                if (currentIndex === -1) return;
-
-                var nextIndex = -1;
-                if (e.key === 'ArrowRight') {
-                    nextIndex = (currentIndex + 1) % tabBtns.length;
-                } else if (e.key === 'ArrowLeft') {
-                    nextIndex = (currentIndex - 1 + tabBtns.length) % tabBtns.length;
-                }
-
-                if (nextIndex !== -1) {
-                    e.preventDefault();
-                    tabBtns[nextIndex].focus();
-                    var targetTab = tabBtns[nextIndex].getAttribute('data-tab');
-                    switchTab(targetTab, true);
-                }
-            });
-        }
-
-        // Initialize from URL hash if provided
+        // Handle direct landing on hash
         var hash = window.location.hash.replace('#', '').toLowerCase();
-        var validTabs = ['ai', 'build', 'systems', 'community'];
-        if (validTabs.indexOf(hash) !== -1) {
-            switchTab(hash, false);
+        if (['ai', 'build', 'systems', 'community'].indexOf(hash) !== -1) {
+            setActiveTab(hash);
+            var el = document.getElementById(hash);
+            if (el) {
+                setTimeout(function() {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
         }
     })();
     </script>
