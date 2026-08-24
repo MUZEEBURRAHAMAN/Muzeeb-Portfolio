@@ -291,10 +291,9 @@
             background: #161616;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            padding: clamp(22px, 3vw, 28px);
+            padding: clamp(20px, 2.5vw, 24px);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             text-decoration: none;
             color: inherit;
             box-sizing: border-box;
@@ -312,24 +311,26 @@
 
         .pg-feat-card__media {
             width: 100%;
-            height: clamp(280px, 28vw, 360px);
+            flex: 1 1 auto;
+            min-height: 320px;
             border-radius: 8px;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .pg-feat-card--single .pg-feat-card__media {
             height: clamp(340px, 38vw, 540px);
             aspect-ratio: 16 / 10;
+            flex: none;
         }
 
         .pg-feat-card__media img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top center;
+            object-position: center;
             display: block;
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -341,9 +342,9 @@
         .pg-feat-card__header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            margin-bottom: 12px;
+            justify-content: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
         .pg-feat-card__kick {
