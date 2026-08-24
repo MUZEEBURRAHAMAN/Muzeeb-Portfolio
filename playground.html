@@ -312,12 +312,12 @@
 
         .pg-feat-card__media {
             width: 100%;
-            height: 240px;
-            border-radius: 6px;
+            height: clamp(280px, 28vw, 360px);
+            border-radius: 8px;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 18px;
         }
 
         .pg-feat-card--single .pg-feat-card__media {
@@ -1967,20 +1967,20 @@
                 <div class="pg-split-grid">
                     <!-- LEFT: BIG FEATURED CARD (01: AI UX) -->
                     <div class="pg-feat-card" role="button" tabindex="0" data-modal-target="modal-ai-ux" aria-label="View AI UX Trust design principles">
-                        <div>
-                            <div class="pg-feat-card__media">
-                                <img src="assets/images/ux audit assistant.webp" alt="AI UX Trust and UX Audit Assistant preview" loading="lazy" decoding="async">
-                            </div>
-                            <div class="pg-feat-card__header">
-                                <span class="pg-feat-card__kick">AI UX &amp; TRUST ARCHITECTURE</span>
-                                <span class="pg-feat-card__badge">FEATURED</span>
-                            </div>
-                            <h3 class="pg-feat-card__title">Designing AI systems users can actually trust</h3>
-                            <p class="pg-feat-card__sub">Moving beyond generic chat: inline citation anchors, dual-tier reading modes, and verify-before-sync controls for high-stakes enterprise workflows.</p>
-                            <div class="pg-feat-card__tags">Explainable AI · Traceability · Human-in-the-Loop · Enterprise UX</div>
+                        <div class="pg-feat-card__media">
+                            <img src="assets/images/ux audit assistant.webp" alt="AI UX Trust and UX Audit Assistant preview" loading="lazy" decoding="async">
                         </div>
-                        <div class="pg-feat-card__footer">
-                            <span class="pg-arrow-btn" aria-hidden="true">→</span>
+                        <div class="pg-comm-card__body">
+                            <div class="pg-comm-card__text">
+                                <div class="pg-feat-card__header">
+                                    <span class="pg-feat-card__kick">AI UX &amp; TRUST ARCHITECTURE</span>
+                                    <span class="pg-feat-card__badge">FEATURED</span>
+                                </div>
+                                <h3 class="pg-feat-card__title" style="margin: 0;">Designing AI systems users can actually trust</h3>
+                            </div>
+                            <div class="pg-comm-card__action">
+                                <span class="pg-arrow-btn" aria-hidden="true">→</span>
+                            </div>
                         </div>
                     </div>
 
