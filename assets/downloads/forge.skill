@@ -1,0 +1,15 @@
+---
+name: forge
+description: Deconstruct interface screenshots into clean, structured React and Tailwind code with extracted tokens, component hierarchies, and interactive states.
+---
+
+# Forge — UI Component Rebuilding Skill
+
+## Purpose
+A Claude Skill designed to analyze interface screenshots or mockups and systematically reverse-engineer them into production-ready React components with semantic design tokens and accessibility compliance.
+
+## Core Directives
+1. **Visual Hierarchy Analysis**: Break down components into containers, atomic elements, typography scales, and spacing units.
+2. **Design Token Extraction**: Identify color palettes, border radii, shadows, and font styles.
+3. **Responsive & Accessible Code**: Generate semantic HTML with ARIA labels and clean CSS/Tailwind utility classes.
+4. **State Coverage**: Provide code for hover, active, focus, disabled, and loading states.

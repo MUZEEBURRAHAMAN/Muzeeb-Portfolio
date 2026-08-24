@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* self-hosted variable fonts (one file = all weights) */
 @font-face { font-family: 'Inter Display'; src: url('../fonts/InterDisplay.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
@@ -146,10 +146,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, input:focus-vis
     .js .mz-reveal { opacity: 1 !important; transform: none !important; }
 }
 
-/* ===== Global theme: white/black/gray + Archivo ===== */
+/* ===== Global theme: white/black/gray + Archivo + Inter ===== */
 :root {
     --primary: 0 0% 100%;                                  /* was gold; now white — flips every accent */
-    --font-sans: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;  /* primary — body/UI/supporting */
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;  /* secondary — body/UI/supporting */
     --font-display: 'Archivo', 'Acorn', 'Poppins', system-ui, -apple-system, sans-serif;  /* primary — display/headings */
 }
 body, p, a, div, li, button, input, textarea {
@@ -166,7 +166,7 @@ body span:not(.mz-hero__title span):not(.mz-ab-hero span):not(.ttl span) {
 .site-tcard__role,
 .mz-work-card__tagline,
 .mz-work-card__desc {
-    font-family: 'Archivo', var(--font-sans);
+    font-family: var(--font-sans);
 }
 /* Headings and display text */
 h1, h2, h3, h4, h5, h6,

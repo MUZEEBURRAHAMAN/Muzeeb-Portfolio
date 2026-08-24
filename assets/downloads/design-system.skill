@@ -1,0 +1,15 @@
+---
+name: design-system
+description: Standardize UI components, extract design tokens, audit WCAG 2.2 accessibility, and generate scalable component architectures with zero drift between Figma and production code.
+---
+
+# Design System Architect — Claude Skill
+
+## Purpose
+A Claude Skill for automating design system workflows: extracting W3C design tokens, auditing component consistency, validating state matrices, and translating Figma design specs into production-grade React/CSS component architectures.
+
+## Core Capabilities
+1. **Token Extraction & Normalization**: Maps raw hex/pixel values into semantic W3C Design Tokens (colors, spacing, typography, elevation).
+2. **Component State Matrix**: Validates coverage for all interactive states (Default, Hover, Active, Focus-Visible, Disabled, Loading, Error, Empty).
+3. **Accessibility Auditing**: Verifies WCAG 2.2 AA color contrast ratios, 44x44px minimum tap target compliance, and semantic ARIA attributes.
+4. **Code Architecture Alignment**: Translates component patterns into clean compound React components with CSS variables and zero token drift.

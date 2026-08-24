@@ -1,0 +1,14 @@
+---
+name: honestly-review
+description: Provides a structured second perspective for reviewing designs, products, ideas, documents, and other work like an expert design lead and principal engineer.
+---
+
+# Honestly Review — Expert Multi-Dimensional Critique Skill
+
+## Purpose
+A Claude Skill providing rigorous, peer-level design & technical critique across usability, information architecture, visual hierarchy, error recovery, and engineering feasibility.
+
+## Review Protocol
+1. **First-Pass Triage**: Core value proposition, mental model alignment, cognitive load.
+2. **Detailed Breakdown**: Usability friction, visual weight, edge states, microcopy clarity.
+3. **Actionable Recommendations**: Prioritized matrix of critical fixes, enhancements, and strategic trade-offs.
