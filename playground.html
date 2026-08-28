@@ -11,18 +11,26 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Muzeeb Urrahaman">
     <meta property="og:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
+    <meta property="og:url" content="https://muzeeb.design/playground.html">
+    <meta property="og:title" content="Playground · Muzeeb Urrahaman">
+    <meta property="og:description" content="What I build outside the day job. Experiments, tools, and ideas I explore when I want to learn by building.">
+    <meta property="og:image" content="https://muzeeb.design/assets/images/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
-    <meta name="twitter:title" content="Playground — Muzeeb Urrahaman">
-    <meta name="twitter:description" content="What I build outside the day job. Experiments, tools, and ideas I explore when I'm curious about something.">
-    <title>Playground — Muzeeb Urrahaman</title>
-    <meta name="description" content="What I build outside the day job. Experiments, tools, and ideas I explore when I'm curious about something—or when I want to learn by building.">
-    <!-- Google Fonts: Archivo & Inter -->
+    <meta name="twitter:url" content="https://muzeeb.design/playground.html">
+    <meta name="twitter:title" content="Playground · Muzeeb Urrahaman">
+    <meta name="twitter:description" content="What I build outside the day job. Experiments, tools, and ideas I explore when I want to learn by building.">
+    <meta name="twitter:image" content="https://muzeeb.design/assets/images/og-image.png">
+
+    <title>Playground · Muzeeb Urrahaman</title>
+    <meta name="description" content="What I build outside the day job. Experiments, tools, and ideas I explore when I want to learn by building.">
+    <!-- Google Fonts: Archivo, Inter & Caveat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
@@ -159,6 +167,7 @@
             overflow-x: auto;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
+            padding: 4px 0;
         }
 
         .pg-tabs::-webkit-scrollbar {
@@ -181,14 +190,21 @@
             display: inline-flex;
             align-items: center;
             text-decoration: none;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: color 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                        background-color 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.12s ease;
         }
 
         .pg-tab-btn:hover {
             color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.24);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.06);
+            transform: none;
+        }
+
+        .pg-tab-btn:active {
+            transform: scale(0.97);
         }
 
         .pg-tab-btn.active {
@@ -196,7 +212,7 @@
             color: #0f0f0f;
             border-color: #f4f2ed;
             font-weight: 700;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         [data-theme="light"] .pg-tab-btn {
@@ -206,15 +222,20 @@
 
         [data-theme="light"] .pg-tab-btn:hover {
             color: #111111;
-            border-color: rgba(0, 0, 0, 0.24);
-            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.28);
+            background: rgba(0, 0, 0, 0.05);
+            transform: none;
+        }
+
+        [data-theme="light"] .pg-tab-btn:active {
+            transform: scale(0.97);
         }
 
         [data-theme="light"] .pg-tab-btn.active {
             background: #111111;
             color: #ffffff;
             border-color: #111111;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         /* SECTION CONTAINERS (ALL ON ONE PAGE) */
@@ -361,37 +382,45 @@
             font-family: var(--font-mono, monospace);
             font-size: 0.65rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: rgba(99, 102, 241, 0.12);
-            color: #a5b4fc;
-            border: 1px solid rgba(99, 102, 241, 0.28);
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
 
         .pg-feat-card__badge--casestudy {
-            background: rgba(16, 185, 129, 0.12);
-            color: #34d399;
-            border-color: rgba(16, 185, 129, 0.28);
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35);
         }
 
         .pg-feat-card__badge--prototype {
-            background: rgba(245, 158, 11, 0.12);
-            color: #fcd34d;
-            border-color: rgba(245, 158, 11, 0.28);
+            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
         }
 
         .pg-feat-card__badge--soon {
-            background: rgba(255, 255, 255, 0.08);
-            color: #d4d4d8;
-            border-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(180deg, #71717a 0%, #52525b 100%);
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 6px rgba(82, 82, 91, 0.25);
         }
 
         [data-theme="light"] .pg-feat-card__badge--soon {
-            background: rgba(0, 0, 0, 0.06);
-            color: #4b5563;
-            border-color: rgba(0, 0, 0, 0.12);
+            background: linear-gradient(180deg, #64748b 0%, #475569 100%);
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 6px rgba(71, 85, 105, 0.25);
         }
 
         .pg-feat-card__title {
@@ -984,12 +1013,12 @@
         .pg-modal-dialog {
             background: #151515;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
+            border-radius: 14px;
             width: 100%;
             max-width: 680px;
-            max-height: 86vh;
+            max-height: 88vh;
             overflow-y: auto;
-            padding: clamp(24px, 4vw, 36px);
+            padding: clamp(28px, 4.5vw, 40px);
             box-sizing: border-box;
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
             transform: scale(0.96) translateY(10px);
@@ -1009,10 +1038,10 @@
 
         .pg-modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 34px;
-            height: 34px;
+            top: 24px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1020,14 +1049,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
         }
 
         .pg-modal-close:hover {
             background: rgba(255, 255, 255, 0.15);
-            transform: scale(1.05);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: scale(1.06);
+        }
+
+        .pg-modal-close:active {
+            transform: scale(0.94);
         }
 
         [data-theme="light"] .pg-modal-close {
@@ -1038,28 +1073,30 @@
 
         [data-theme="light"] .pg-modal-close:hover {
             background: rgba(0, 0, 0, 0.12);
+            border-color: rgba(0, 0, 0, 0.2);
         }
 
         .pg-modal-eyebrow {
             font-family: var(--font-mono, monospace);
             font-size: 0.74rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: #8c8c88;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: block;
+            line-height: 1;
         }
 
         .pg-modal-title {
             font-family: var(--font-display, 'Archivo', sans-serif);
-            font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-size: clamp(1.45rem, 2.6vw, 1.85rem);
+            font-weight: 650;
+            letter-spacing: -0.025em;
             color: #ffffff;
-            margin: 0 0 10px;
+            margin: 0 0 16px;
             line-height: 1.25;
-            padding-right: 40px;
+            padding-right: 48px;
         }
 
         [data-theme="light"] .pg-modal-title {
@@ -1068,10 +1105,10 @@
 
         .pg-modal-lead {
             font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 0.98rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.62;
             color: #a5a5a0;
-            margin: 0 0 24px;
+            margin: 0 0 28px;
         }
 
         [data-theme="light"] .pg-modal-lead {
@@ -1081,26 +1118,223 @@
         .pg-modal-divider {
             height: 1px;
             background: rgba(255, 255, 255, 0.08);
-            margin: 24px 0;
+            margin: 28px 0;
         }
 
         [data-theme="light"] .pg-modal-divider {
             background: rgba(0, 0, 0, 0.08);
         }
 
-        .pg-modal-section-title {
+        /* ============================================================
+           EXCALIDRAW-STYLE ARCHITECTURE DIAGRAMS
+           ============================================================ */
+        .pg-excalidraw-diagram {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1.5px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            padding: 20px 20px 24px;
+            margin: 18px 0 24px;
+            position: relative;
+        }
+
+        [data-theme="light"] .pg-excalidraw-diagram {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .pg-excalidraw-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .pg-excalidraw-note {
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: 1.15rem;
+            color: #fcd34d;
+            letter-spacing: 0.02em;
+        }
+
+        [data-theme="light"] .pg-excalidraw-note {
+            color: #b45309;
+        }
+
+        .pg-excali-grid {
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        @media (max-width: 700px) {
+            .pg-excali-grid {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .pg-excali-arrow {
+                transform: rotate(90deg);
+                margin: 4px auto;
+            }
+        }
+
+        .pg-excali-node {
+            flex: 1;
+            background: #141414;
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 255px 25px 225px 25px/25px 225px 25px 255px !important;
+            padding: 16px 14px 14px;
+            position: relative;
+            box-shadow: 2px 3px 0px rgba(255, 255, 255, 0.06);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pg-excali-node:hover {
+            transform: translateY(-2px) rotate(-0.5deg);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 3px 5px 0px rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .pg-excali-node {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.16);
+            box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="light"] .pg-excali-node:hover {
+            border-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 3px 5px 0px rgba(0, 0, 0, 0.14);
+        }
+
+        .pg-excali-node__badge {
             font-family: var(--font-mono, monospace);
-            font-size: 0.78rem;
+            font-size: 0.66rem;
             font-weight: 700;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
             color: #8c8c88;
-            margin: 0 0 14px;
+            margin-bottom: 6px;
+        }
+
+        .pg-excali-node__title {
+            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            line-height: 1.25;
+        }
+
+        [data-theme="light"] .pg-excali-node__title {
+            color: #111111;
+        }
+
+        .pg-excali-node__desc {
+            font-size: 0.8rem;
+            line-height: 1.45;
+            color: #9a9a98;
+            margin: 0 0 12px;
+        }
+
+        [data-theme="light"] .pg-excali-node__desc {
+            color: #52524e;
+        }
+
+        .pg-excali-pill {
+            font-family: 'Caveat', cursive, monospace;
+            font-size: 0.96rem;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            padding: 2px 8px;
+            border-radius: 6px !important;
+            color: #cbd5e1;
+            display: inline-block;
+            margin-top: auto;
+        }
+
+        [data-theme="light"] .pg-excali-pill {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.14);
+            color: #334155;
+        }
+
+        .pg-excali-pill--success {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: rgba(16, 185, 129, 0.35);
+            color: #34d399;
+        }
+
+        [data-theme="light"] .pg-excali-pill--success {
+            color: #047857;
+        }
+
+        .pg-excali-arrow {
+            width: 28px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #818cf8;
+            flex-shrink: 0;
+        }
+
+        .pg-excali-arrow svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .pg-excali-callout {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        }
+
+        [data-theme="light"] .pg-excali-callout {
+            border-top-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .pg-excali-curly-arrow {
+            width: 24px;
+            height: 24px;
+            color: #34d399;
+            flex-shrink: 0;
+        }
+
+        [data-theme="light"] .pg-excali-curly-arrow {
+            color: #047857 !important;
+        }
+
+        .pg-excali-handwritten {
+            font-family: 'Caveat', cursive, sans-serif;
+            font-size: 1.2rem;
+            color: #34d399;
+            line-height: 1.2;
+        }
+
+        [data-theme="light"] .pg-excali-handwritten {
+            color: #047857 !important;
+        }
+
+        .pg-modal-section-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #a1a1aa;
+            margin: 0 0 16px;
             display: block;
         }
 
         [data-theme="light"] .pg-modal-section-title {
-            color: #6a6a66;
+            color: #71717a;
         }
 
         .pg-flow-list {
@@ -1177,6 +1411,416 @@
         [data-theme="light"] .pg-quote-box p,
         [data-theme="light"] .pg-quote-box span {
             color: #334155 !important;
+        }
+
+        /* ============================================================
+           AI UX & TRUST ARCHITECTURE REDESIGN COMPONENTS
+           ============================================================ */
+        .pg-trust-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 0 0 24px;
+        }
+
+        @media (max-width: 600px) {
+            .pg-trust-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pg-trust-stat {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+
+        [data-theme="light"] .pg-trust-stat {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .pg-trust-stat__val {
+            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        [data-theme="light"] .pg-trust-stat__val {
+            color: #111111;
+        }
+
+        .pg-trust-stat__lbl {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #8c8c88;
+        }
+
+        /* VS Matrix Comparison */
+        .pg-trust-vs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 680px) {
+            .pg-trust-vs {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pg-trust-vs__col {
+            border-radius: 8px;
+            padding: 16px 18px;
+            border: 1px solid transparent;
+        }
+
+        .pg-trust-vs__col--bad {
+            background: rgba(239, 68, 68, 0.06);
+            border-color: rgba(239, 68, 68, 0.22);
+        }
+
+        .pg-trust-vs__col--good {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.22);
+        }
+
+        [data-theme="light"] .pg-trust-vs__col--bad {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        [data-theme="light"] .pg-trust-vs__col--good {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+
+        .pg-trust-vs__head {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        [data-theme="light"] .pg-trust-vs__col--bad .pg-trust-vs__head {
+            color: #b91c1c !important;
+        }
+
+        [data-theme="light"] .pg-trust-vs__col--good .pg-trust-vs__head {
+            color: #047857 !important;
+        }
+
+        .pg-trust-vs__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .pg-trust-vs__item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: #d4d4d8;
+        }
+
+        [data-theme="light"] .pg-trust-vs__item {
+            color: #1f2937 !important;
+        }
+
+        .pg-trust-vs__desc {
+            font-size: 0.84rem;
+            color: #d4d4d8;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        [data-theme="light"] .pg-trust-vs__desc,
+        [data-theme="light"] .pg-trust-vs__col p {
+            color: #1f2937 !important;
+        }
+
+        /* Interactive UI Demo Cards */
+        .pg-mock-frame {
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 16px;
+        }
+
+        [data-theme="light"] .pg-mock-frame {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+
+        .pg-mock-frame__top {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        [data-theme="light"] .pg-mock-frame__top {
+            background: #fafaf9;
+            border-bottom-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .pg-mock-frame__title {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #8c8c88;
+        }
+
+        [data-theme="light"] .pg-mock-frame__title {
+            color: #52525b;
+        }
+
+        .pg-mock-frame__content {
+            padding: 16px 18px;
+        }
+
+        /* Mock Frame Elements */
+        .pg-mock-inner {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+        [data-theme="light"] .pg-mock-inner {
+            background: #f8fafc;
+            border-color: #e2e8f0;
+        }
+
+        .pg-mock-text-main {
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: #f1f5f9;
+            margin: 0 0 10px;
+        }
+        [data-theme="light"] .pg-mock-text-main {
+            color: #0f172a !important;
+        }
+
+        .pg-mock-text-sub {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            margin: 0;
+            line-height: 1.45;
+        }
+        [data-theme="light"] .pg-mock-text-sub {
+            color: #475569 !important;
+        }
+
+        /* Semantic Badge Tokens - Sparkle UI Style (Column 3) */
+        .pg-badge-blocker {
+            background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            letter-spacing: 0.02em;
+            box-shadow: 0 2px 5px rgba(220, 38, 38, 0.28);
+            line-height: 1.2;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        [data-theme="light"] .pg-badge-blocker {
+            background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff !important;
+            box-shadow: 0 2px 5px rgba(220, 38, 38, 0.22);
+        }
+
+        .pg-badge-ref {
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 3px 9px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            letter-spacing: 0.02em;
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.28);
+            line-height: 1.2;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        [data-theme="light"] .pg-badge-ref {
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff !important;
+            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.22);
+        }
+
+        .pg-badge-fix {
+            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-size: 0.68rem;
+            font-weight: 600;
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            padding: 3px 9px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(5, 150, 105, 0.28);
+            line-height: 1.2;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        [data-theme="light"] .pg-badge-fix {
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff !important;
+            box-shadow: 0 2px 5px rgba(5, 150, 105, 0.22);
+        }
+
+        .pg-badge-code {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: #a1a1aa;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2px 8px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1.2;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        [data-theme="light"] .pg-badge-code {
+            color: #475569 !important;
+            background: #f1f5f9;
+            border-color: #e2e8f0;
+        }
+
+        /* Dual mode blocks */
+        .pg-mode-block {
+            border-radius: 8px;
+            padding: 14px;
+            border: 1px solid transparent;
+        }
+        .pg-mode-block--exec {
+            background: rgba(99, 102, 241, 0.06);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+        [data-theme="light"] .pg-mode-block--exec {
+            background: #eef2ff;
+            border-color: #c7d2fe;
+        }
+        .pg-mode-block--exec .pg-mode-title {
+            color: #a5b4fc;
+        }
+        [data-theme="light"] .pg-mode-block--exec .pg-mode-title {
+            color: #3730a3 !important;
+        }
+
+        .pg-mode-block--audit {
+            background: rgba(16, 185, 129, 0.06);
+            border-color: rgba(16, 185, 129, 0.2);
+        }
+        [data-theme="light"] .pg-mode-block--audit {
+            background: #f0fdf4;
+            border-color: #a7f3d0;
+        }
+        .pg-mode-block--audit .pg-mode-title {
+            color: #34d399;
+        }
+        [data-theme="light"] .pg-mode-block--audit .pg-mode-title {
+            color: #166534 !important;
+        }
+
+        .pg-mode-title {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            margin-bottom: 6px;
+        }
+
+        .pg-mode-desc {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            margin: 0;
+            line-height: 1.45;
+        }
+        [data-theme="light"] .pg-mode-desc {
+            color: #334155 !important;
+        }
+
+        /* Micro action badges - Sparkle UI Style */
+        .pg-action-badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        .pg-action-badge--success {
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+        }
+        [data-theme="light"] .pg-action-badge--success {
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            color: #ffffff !important;
+        }
+
+        .pg-action-badge--warn {
+            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3);
+        }
+        [data-theme="light"] .pg-action-badge--warn {
+            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            color: #ffffff !important;
+        }
+
+        .pg-action-badge--danger {
+            background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+            box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+        }
+        [data-theme="light"] .pg-action-badge--danger {
+            background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+            color: #ffffff !important;
         }
 
         /* RED PROBLEM ALERT BOXES */
@@ -1783,6 +2427,73 @@
             font-size: 0.85rem;
         }
 
+        /* MCP CONNECTED GRID */
+        .pg-mcp-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .pg-mcp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pg-mcp-node {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 14px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .pg-mcp-node:hover {
+            border-color: rgba(99, 102, 241, 0.35);
+            background: rgba(99, 102, 241, 0.04);
+        }
+
+        [data-theme="light"] .pg-mcp-node {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        [data-theme="light"] .pg-mcp-node:hover {
+            border-color: #6366f1;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.08);
+        }
+
+        .pg-mcp-node__icon {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .pg-mcp-node__title {
+            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        [data-theme="light"] .pg-mcp-node__title {
+            color: #111111;
+        }
+
+        .pg-mcp-node__desc {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: #a1a1aa;
+            margin: 0;
+        }
+
+        [data-theme="light"] .pg-mcp-node__desc {
+            color: #4b5563;
+        }
+
         /* MODAL PROJECT CARDS FOR BUILD SECTION */
         .pg-project-list {
             display: flex;
@@ -1840,23 +2551,24 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.25);
-            color: #818cf8;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(79, 70, 229, 0.3);
         }
 
         .pg-project-status--live {
-            background: rgba(16, 185, 129, 0.1);
-            border-color: rgba(16, 185, 129, 0.25);
-            color: #34d399;
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
         }
 
         [data-theme="light"] .pg-project-status--live {
-            background: #ecfdf5;
-            border-color: #a7f3d0;
-            color: #059669;
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            color: #ffffff !important;
         }
 
         .pg-project-tags {
@@ -1936,7 +2648,7 @@
             <header class="pg-hero">
                 <span class="pg-hero__eyebrow">PLAYGROUND</span>
                 <h1 class="pg-hero__title">What I build outside the day job.</h1>
-                <p class="pg-hero__desc">Experiments, tools, and ideas I explore when I'm curious about something—or when I want to learn by building.</p>
+                <p class="pg-hero__desc">Experiments, tools, and ideas I explore when I want to learn by building.</p>
             </header>
 
             <!-- ==================== STICKY REDIRECTING TABS ==================== -->
@@ -1963,14 +2675,14 @@
                 <div class="pg-section__head">
                     <span class="pg-section__eyebrow">AI</span>
                     <h2 class="pg-section__title" id="ai-heading">AI workflows, tools &amp; experiments</h2>
-                    <p class="pg-section__sub">How I use AI to research, design, critique, prototype, and build — from everyday workflows to production AI experiences.</p>
+                    <p class="pg-section__sub">How I use AI to research, design, critique, prototype, and build, covering everyday tools and production systems.</p>
                 </div>
 
                 <div class="pg-split-grid">
                     <!-- LEFT: BIG FEATURED CARD (01: AI UX) -->
                     <div class="pg-feat-card" role="button" tabindex="0" data-modal-target="modal-ai-ux" aria-label="View AI UX Trust design principles">
                         <div class="pg-feat-card__media">
-                            <img src="assets/images/ux audit assistant.webp" alt="AI UX Trust and UX Audit Assistant preview" loading="lazy" decoding="async">
+                            <img src="assets/images/ux audit assistant_cover.webp" alt="AI UX Trust and UX Audit Assistant preview" loading="lazy" decoding="async">
                         </div>
                         <div class="pg-feat-card__header">
                             <span class="pg-feat-card__kick">AI UX &amp; TRUST ARCHITECTURE</span>
@@ -2188,158 +2900,95 @@
     <div class="pg-modal-overlay" id="modal-ai-workflows" role="dialog" aria-modal="true" aria-labelledby="m-ai-workflows-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">AI WORKFLOWS</span>
+            <span class="pg-modal-eyebrow">AI WORKFLOWS &amp; DESIGN CRAFT</span>
             <h3 class="pg-modal-title" id="m-ai-workflows-title">How AI fits into my product-design process</h3>
-            <p class="pg-modal-lead">I use AI throughout the design process to reduce repetitive work, work through more context, explore more directions, and make ideas testable earlier. The tools change depending on the problem, but the design judgment stays mine.</p>
+            <p class="pg-modal-lead">I use AI across the product lifecycle to compress research synthesis, uncover non-obvious edge cases, and build working prototypes earlier. AI is my velocity multiplier; design taste, user empathy, and strategic trade-offs stay 100% human.</p>
+
+            <!-- IMPACT STATS -->
+            <div class="pg-trust-stats">
+                <div class="pg-trust-stat">
+                    <div class="pg-trust-stat__val">10×</div>
+                    <div class="pg-trust-stat__lbl">Context Ingestion</div>
+                </div>
+                <div class="pg-trust-stat">
+                    <div class="pg-trust-stat__val">100%</div>
+                    <div class="pg-trust-stat__lbl">Human Strategic Agency</div>
+                </div>
+                <div class="pg-trust-stat">
+                    <div class="pg-trust-stat__val">3×</div>
+                    <div class="pg-trust-stat__lbl">Faster Prototype Validation</div>
+                </div>
+            </div>
 
             <div class="pg-modal-divider"></div>
 
-            <!-- WHERE AI FITS (STAGES 01-05) -->
-            <span class="pg-modal-section-title">Where AI Fits in My Workflow</span>
-            <div class="pg-stage-track">
-                <!-- 01 UNDERSTAND THE PROBLEM -->
-                <div class="pg-stage-card">
-                    <div class="pg-stage-num">01</div>
-                    <div class="pg-stage-body">
-                        <div class="pg-stage-header">
-                            <span class="pg-stage-name">UNDERSTAND THE PROBLEM</span>
+            <!-- 01 THE DOUBLE DIAMOND MATRIX -->
+            <span class="pg-modal-section-title">01 · The Double-Diamond AI Matrix</span>
+            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:10px; margin-bottom:20px;">
+                <!-- PHASE 01 -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">01 · DISCOVER &amp; SYNTHESIZE</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <div class="pg-role-box" style="margin-bottom:6px;">
+                            <span class="pg-role-label pg-role-label--ai">AI Synthesizes:</span>
+                            <p class="pg-role-text">Clusters customer interview transcripts, Mobbin benchmark patterns &amp; Jira user stories.</p>
                         </div>
-                        <div class="pg-stage-subtitle" style="font-size:0.82rem; color:#8c8c88; margin-bottom:8px;">Research · Requirements · Product context · Competitive references</div>
-                        
-                        <div class="pg-stage-roles">
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--ai">AI helps me</span>
-                                <p class="pg-role-text">Synthesize information, organize findings, compare patterns, and surface questions worth investigating.</p>
-                            </div>
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--human">I decide</span>
-                                <p class="pg-role-text">What matters, what is signal versus noise, and what problem is actually worth solving.</p>
-                            </div>
-                        </div>
-
-                        <div class="pg-tools-row">
-                            <span class="pg-tools-label">Tools:</span>
-                            <span class="pg-tag-pill">Jira</span>
-                            <span class="pg-tag-pill">Mobbin</span>
-                            <span class="pg-tag-pill">Research</span>
-                            <span class="pg-tag-pill">AI</span>
+                        <div class="pg-role-box">
+                            <span class="pg-role-label pg-role-label--human">Designer Decides:</span>
+                            <p class="pg-role-text">Identifies root problem vs surface noise; defines problem statement.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 02 FRAME THE PROBLEM -->
-                <div class="pg-stage-card">
-                    <div class="pg-stage-num">02</div>
-                    <div class="pg-stage-body">
-                        <div class="pg-stage-header">
-                            <span class="pg-stage-name">FRAME THE PROBLEM</span>
+                <!-- PHASE 02 -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">02 · FRAME &amp; SPEC</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <div class="pg-role-box" style="margin-bottom:6px;">
+                            <span class="pg-role-label pg-role-label--ai">AI Scaffolds:</span>
+                            <p class="pg-role-text">Drafts 7-state component matrices, validation constraints &amp; WCAG checklists.</p>
                         </div>
-                        <div class="pg-stage-subtitle" style="font-size:0.82rem; color:#8c8c88; margin-bottom:8px;">Problem framing · Opportunities · Constraints · Strategy</div>
-                        
-                        <div class="pg-stage-roles">
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--ai">AI helps me</span>
-                                <p class="pg-role-text">Structure the problem, challenge assumptions, identify gaps, and explore different ways to frame the opportunity.</p>
-                            </div>
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--human">I decide</span>
-                                <p class="pg-role-text">Which problem to prioritize and what direction makes sense for the product.</p>
-                            </div>
-                        </div>
-
-                        <div class="pg-tools-row">
-                            <span class="pg-tools-label">Tools:</span>
-                            <span class="pg-tag-pill">AI</span>
-                            <span class="pg-tag-pill">Research</span>
-                            <span class="pg-tag-pill">Product context</span>
+                        <div class="pg-role-box">
+                            <span class="pg-role-label pg-role-label--human">Designer Decides:</span>
+                            <p class="pg-role-text">Sets product scope boundaries, trade-offs &amp; architectural direction.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 03 EXPLORE THE EXPERIENCE -->
-                <div class="pg-stage-card">
-                    <div class="pg-stage-num">03</div>
-                    <div class="pg-stage-body">
-                        <div class="pg-stage-header">
-                            <span class="pg-stage-name">EXPLORE THE EXPERIENCE</span>
+                <!-- PHASE 03 -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">03 · PRESSURE-TEST</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <div class="pg-role-box" style="margin-bottom:6px;">
+                            <span class="pg-role-label pg-role-label--ai">AI Audits:</span>
+                            <p class="pg-role-text">Scans typography hierarchy, cognitive load &amp; accessibility contrast ratios.</p>
                         </div>
-                        <div class="pg-stage-subtitle" style="font-size:0.82rem; color:#8c8c88; margin-bottom:8px;">Flows · Information architecture · Interactions · Edge cases</div>
-                        
-                        <div class="pg-stage-roles">
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--ai">AI helps me</span>
-                                <p class="pg-role-text">Explore alternatives, critique flows, surface edge cases, and challenge my first solution.</p>
-                            </div>
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--human">I decide</span>
-                                <p class="pg-role-text">Which direction is worth taking into design.</p>
-                            </div>
-                        </div>
-
-                        <div class="pg-tools-row">
-                            <span class="pg-tools-label">Tools:</span>
-                            <span class="pg-tag-pill">AI</span>
-                            <span class="pg-tag-pill">Figma</span>
-                            <span class="pg-tag-pill">Mobbin</span>
-                            <span class="pg-tag-pill">Claude Skills</span>
+                        <div class="pg-role-box">
+                            <span class="pg-role-label pg-role-label--human">Designer Decides:</span>
+                            <p class="pg-role-text">Elevates brand aesthetic craft, emotional tone &amp; micro-interactions.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 04 DESIGN & PRESSURE-TEST -->
-                <div class="pg-stage-card">
-                    <div class="pg-stage-num">04</div>
-                    <div class="pg-stage-body">
-                        <div class="pg-stage-header">
-                            <span class="pg-stage-name">DESIGN &amp; PRESSURE-TEST</span>
-                        </div>
-                        <div class="pg-stage-subtitle" style="font-size:0.82rem; color:#8c8c88; margin-bottom:8px;">Interface · States · UX · Design system</div>
-                        
-                        <div class="pg-stage-roles">
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--ai">AI helps me</span>
-                                <p class="pg-role-text">Review designs, identify usability issues, check missing states, and provide a second perspective.</p>
-                            </div>
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--human">I decide</span>
-                                <p class="pg-role-text">What feedback matters and what should change.</p>
-                            </div>
-                        </div>
-
-                        <div class="pg-tools-row">
-                            <span class="pg-tools-label">Tools:</span>
-                            <span class="pg-tag-pill">Figma</span>
-                            <span class="pg-tag-pill">AI UX Audit</span>
-                            <span class="pg-tag-pill">Honestly Review</span>
-                        </div>
+                <!-- PHASE 04 -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">04 · PROTOTYPE &amp; CODE</span>
                     </div>
-                </div>
-
-                <!-- 05 MAKE IT REAL -->
-                <div class="pg-stage-card">
-                    <div class="pg-stage-num">05</div>
-                    <div class="pg-stage-body">
-                        <div class="pg-stage-header">
-                            <span class="pg-stage-name">MAKE IT REAL</span>
+                    <div class="pg-mock-frame__content">
+                        <div class="pg-role-box" style="margin-bottom:6px;">
+                            <span class="pg-role-label pg-role-label--ai">AI Scaffolds:</span>
+                            <p class="pg-role-text">Converts Figma token collections into working React/HTML sandbox code.</p>
                         </div>
-                        <div class="pg-stage-subtitle" style="font-size:0.82rem; color:#8c8c88; margin-bottom:8px;">Prototype · Code · Feasibility</div>
-                        
-                        <div class="pg-stage-roles">
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--ai">AI helps me</span>
-                                <p class="pg-role-text">Turn selected ideas into working prototypes and explore implementation earlier.</p>
-                            </div>
-                            <div class="pg-role-box">
-                                <span class="pg-role-label pg-role-label--human">I decide</span>
-                                <p class="pg-role-text">What is worth building, what needs to change, and where technical constraints affect the design.</p>
-                            </div>
-                        </div>
-
-                        <div class="pg-tools-row">
-                            <span class="pg-tools-label">Tools:</span>
-                            <span class="pg-tag-pill">Figma</span>
-                            <span class="pg-tag-pill">Claude</span>
-                            <span class="pg-tag-pill">AI-assisted prototyping</span>
+                        <div class="pg-role-box">
+                            <span class="pg-role-label pg-role-label--human">Designer Decides:</span>
+                            <p class="pg-role-text">Tests tactile gesture physics, perceived speed &amp; engineering handoff.</p>
                         </div>
                     </div>
                 </div>
@@ -2347,91 +2996,141 @@
 
             <div class="pg-modal-divider"></div>
 
-            <!-- 06 SYSTEMIZE WHAT REPEATS -->
-            <div class="pg-systemize-box">
-                <div class="pg-systemize-head">06 — SYSTEMIZE WHAT REPEATS</div>
-                <p class="pg-systemize-lead">When I notice a design task repeating, I turn the workflow into something reusable instead of solving it from scratch every time.</p>
-                
-                <div class="pg-systemize-grid">
-                    <div class="pg-systemize-item">
-                        <span class="pg-sys-name">FORGE</span>
-                        <span class="pg-sys-desc">Component rebuilding with Claude</span>
+            <!-- 02 THE EXCALIDRAW LOOP -->
+            <span class="pg-modal-section-title">02 · The Human-in-the-Loop Engine</span>
+            <div class="pg-excalidraw-diagram">
+                <div class="pg-excalidraw-header">
+                    <span class="pg-excalidraw-note">~ human judgment at the center ~</span>
+                </div>
+                <div class="pg-excali-grid">
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">STAGE 01</div>
+                        <div class="pg-excali-node__title">Problem Context</div>
+                        <p class="pg-excali-node__desc">Raw user feedback &amp; specs.</p>
+                        <div class="pg-excali-pill">Discovery</div>
                     </div>
-                    <div class="pg-systemize-item">
-                        <span class="pg-sys-name">AI UX AUDIT</span>
-                        <span class="pg-sys-desc">Screenshot and live-product auditing</span>
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 8, 24 16, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                    <div class="pg-systemize-item">
-                        <span class="pg-sys-name">HONESTLY</span>
-                        <span class="pg-sys-desc">Direct, evidence-focused answers</span>
+                    <div class="pg-excali-node" style="border-color:#10b981;">
+                        <div class="pg-excali-node__badge" style="color:#10b981;">CORE GATE</div>
+                        <div class="pg-excali-node__title" style="color:#10b981;">Design Judgment</div>
+                        <p class="pg-excali-node__desc">Taste, critique &amp; trade-offs.</p>
+                        <div class="pg-excali-pill pg-excali-pill--success">Human Owned</div>
                     </div>
-                    <div class="pg-systemize-item">
-                        <span class="pg-sys-name">HONESTLY REVIEW</span>
-                        <span class="pg-sys-desc">Structured expert-style reviews</span>
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 16, 24 8, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                    <div class="pg-systemize-item" style="grid-column: 1 / -1;">
-                        <span class="pg-sys-name">MCP</span>
-                        <span class="pg-sys-desc">Connecting Figma, Jira, Mobbin, and other context</span>
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">STAGE 03</div>
+                        <div class="pg-excali-node__title">Live Code Proof</div>
+                        <p class="pg-excali-node__desc">Tactile prototype in browser.</p>
+                        <div class="pg-excali-pill">Validation</div>
                     </div>
+                </div>
+                <div class="pg-excali-callout">
+                    <svg class="pg-excali-curly-arrow" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                        <path d="M22 6 C 12 10, 8 20, 16 26 M 10 22 L 16 26 L 19 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="pg-excali-handwritten">AI assists the process. The designer owns the outcome!</span>
                 </div>
             </div>
 
-            <div class="pg-modal-divider"></div>
-
-            <!-- THE LOOP -->
-            <div class="pg-loop-card">
-                <span class="pg-modal-section-title" style="margin-bottom:8px; display:block;">THE LOOP</span>
-                <div class="pg-loop-track">
-                    <span class="pg-loop-node">PROBLEM</span>
-                    <span class="pg-loop-arrow">→</span>
-                    <span class="pg-loop-node">CONTEXT</span>
-                    <span class="pg-loop-arrow">→</span>
-                    <span class="pg-loop-node">AI ASSIST</span>
-                    <span class="pg-loop-arrow">→</span>
-                    <span class="pg-loop-node pg-loop-node--accent">DESIGN JUDGMENT</span>
-                    <span class="pg-loop-arrow">→</span>
-                    <span class="pg-loop-node">PROTOTYPE</span>
-                    <span class="pg-loop-arrow">→</span>
-                    <span class="pg-loop-node">LEARN ↺</span>
-                </div>
-                <div class="pg-quote-box" style="margin-top:14px; margin-bottom:0;">
-                    <strong style="display:block; margin-bottom:6px; font-size:0.96rem;">AI assists the process. I own the decision.</strong>
-                    <p class="pg-quote-box__sub" style="margin:0; font-size:0.86rem; line-height:1.55;">
-                        I decide what problem is worth solving, which signals matter, what trade-offs to make, and what ultimately gets built.
-                    </p>
-                </div>
+            <!-- QUOTE PRINCIPLE -->
+            <div class="pg-quote-box">
+                <strong>Core Takeaway:</strong> Modern design engineering requires defining clear evaluation criteria and validating AI output against real production tokens.
             </div>
         </div>
     </div>
 
-    <!-- MODAL 02: CLAUDE SKILLS -->
+    <!-- MODAL 01: CLAUDE SKILLS -->
     <div class="pg-modal-overlay" id="modal-claude-skills" role="dialog" aria-modal="true" aria-labelledby="m-skills-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">CLAUDE SKILLS</span>
+            <span class="pg-modal-eyebrow">CLAUDE SKILLS &amp; AUTOMATION</span>
             <h3 class="pg-modal-title" id="m-skills-title">Turning repeatable design thinking into reusable workflows</h3>
-            <p class="pg-modal-lead">I started building Claude Skills when I noticed I was repeatedly giving AI the same context, frameworks, and instructions. Instead of recreating the workflow every time, I turned the processes I trusted into reusable tools.</p>
+            <p class="pg-modal-lead">I started building Claude Skills when I noticed I was repeatedly giving AI the same context, frameworks, and instructions. Instead of recreating the workflow every time, I turned the processes I trusted into reusable tools that run directly inside Claude Code.</p>
 
             <div class="pg-modal-divider"></div>
 
-            <span class="pg-modal-section-title">The Problem</span>
+            <!-- 01 THE PROBLEM -->
+            <span class="pg-modal-section-title">01 · The Problem</span>
             <div class="pg-problem-card" style="margin-bottom: 24px;">
                 <div class="pg-problem-card__head">Good AI output depends heavily on the workflow around it.</div>
-                <p class="pg-problem-card__desc">Without a defined process, I found myself repeatedly trapped in:</p>
+                <p class="pg-problem-card__desc">Without a structured rule system, designers get trapped in continuous prompting friction:</p>
                 <div class="pg-flow-badge" style="background:rgba(239,68,68,0.08); border-color:rgba(239,68,68,0.25); color:#ef4444; margin:10px 0 8px;">
-                    <span>Explain</span> <span>→</span> <span>Prompt</span> <span>→</span> <span>Correct</span> <span>→</span> <span>Re-prompt</span> <span>→</span> <span>Structure</span> <span>→</span> <span>Review</span>
+                    <span>Explain Context</span> <span>→</span> <span>Prompt</span> <span>→</span> <span>Token Drift</span> <span>→</span> <span>Manual Fix</span> <span>→</span> <span>Re-prompt</span> <span>→</span> <span>Review</span>
                 </div>
-                <p class="pg-problem-card__desc" style="font-size:0.84rem; color:#8c8c88;">I wanted a more consistent, predictable starting point.</p>
+                <p class="pg-problem-card__desc" style="font-size:0.84rem; color:#8c8c88;">I wanted a consistent, predictable, and automated starting point for any session.</p>
+            </div>
+
+            <!-- 02 HOW I BUILD A SKILL (EXCALIDRAW FLOW) -->
+            <span class="pg-modal-section-title">02 · The Architecture</span>
+            <div class="pg-excalidraw-diagram">
+                <div class="pg-excalidraw-header">
+                    <span class="pg-excalidraw-note">~ from repeated friction to packaged agent tool ~</span>
+                </div>
+                
+                <div class="pg-excali-grid">
+                    <!-- NODE 1 -->
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">01 · PATTERN</div>
+                        <div class="pg-excali-node__title">Identify Friction</div>
+                        <p class="pg-excali-node__desc">Notice prompting loops repeated &gt;3 times across reviews and design handoffs.</p>
+                        <div class="pg-excali-pill">Trigger: Prompt Fatigue</div>
+                    </div>
+
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 8, 24 16, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- NODE 2 -->
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">02 · ENCODE</div>
+                        <div class="pg-excali-node__title">Formalize Rules</div>
+                        <p class="pg-excali-node__desc">Define structured W3C tokens, WCAG 2.2 rules, checklists &amp; edge matrices.</p>
+                        <div class="pg-excali-pill">Ruleset: Markdown &amp; XML</div>
+                    </div>
+
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 16, 24 8, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- NODE 3 -->
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">03 · PACKAGE</div>
+                        <div class="pg-excali-node__title">Package as .skill</div>
+                        <p class="pg-excali-node__desc">Bundle heuristics into a distributable Claude Code asset ready to execute.</p>
+                        <div class="pg-excali-pill pg-excali-pill--success">Output: Reusable .skill</div>
+                    </div>
+                </div>
+
+                <!-- EXCALIDRAW CALLOUT -->
+                <div class="pg-excali-callout">
+                    <svg class="pg-excali-curly-arrow" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                        <path d="M22 6 C 12 10, 8 20, 16 26 M 10 22 L 16 26 L 19 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="pg-excali-handwritten">Zero prompt re-explaining required on any new session!</span>
+                </div>
             </div>
 
             <div class="pg-modal-divider"></div>
 
-            <span class="pg-modal-section-title">What I Built</span>
+            <!-- 03 WHAT I BUILT -->
+            <span class="pg-modal-section-title">03 · Packaged Skill Artifacts</span>
             <div class="pg-flow-list">
                 <!-- SKILL 01: DESIGN SYSTEM -->
                 <div class="pg-solution-card pg-solution-card--action">
                     <div class="pg-solution-card__body">
-                        <div class="pg-solution-card__head">DESIGN SYSTEM</div>
+                        <div class="pg-solution-card__head">DESIGN SYSTEM ARCHITECT</div>
                         <div class="pg-solution-card__title">Standardize tokens &amp; component architectures</div>
                         <p class="pg-solution-card__desc">Deconstructs interface screenshots into working components, maps semantic W3C tokens, validates state matrices, and ensures WCAG 2.2 accessibility compliance.</p>
                     </div>
@@ -2447,9 +3146,9 @@
                 <!-- SKILL 02: AI UX AUDIT -->
                 <div class="pg-solution-card pg-solution-card--action">
                     <div class="pg-solution-card__body">
-                        <div class="pg-solution-card__head">AI UX AUDIT</div>
+                        <div class="pg-solution-card__head">AI UX AUDIT ASSISTANT</div>
                         <div class="pg-solution-card__title">Audit screenshots and live products</div>
-                        <p class="pg-solution-card__desc">Reviews interfaces for usability, hierarchy, interaction, accessibility, and potential UX issues.</p>
+                        <p class="pg-solution-card__desc">Reviews interfaces for usability, visual hierarchy, interaction fidelity, contrast compliance, and edge-case state gaps.</p>
                     </div>
                     <a href="assets/downloads/ai-ux-audit.skill" download="ai-ux-audit.skill" class="pg-download-btn" data-tooltip="Download skill" aria-label="Download AI UX Audit Skill">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -2464,8 +3163,8 @@
                 <div class="pg-solution-card pg-solution-card--action">
                     <div class="pg-solution-card__body">
                         <div class="pg-solution-card__head">HONESTLY</div>
-                        <div class="pg-solution-card__title">No vague answers. Just the real answer.</div>
-                        <p class="pg-solution-card__desc">Pushes AI to be direct, distinguish facts from assumptions, acknowledge uncertainty, and avoid confident but unsupported answers.</p>
+                        <div class="pg-solution-card__title">Direct, unvarnished factual answers</div>
+                        <p class="pg-solution-card__desc">Forces the model to distinguish proven facts from assumptions, acknowledge epistemic uncertainty, and avoid sycophantic praise.</p>
                     </div>
                     <a href="assets/downloads/honestly.skill" download="honestly.skill" class="pg-download-btn" data-tooltip="Download skill" aria-label="Download Honestly Skill">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -2480,8 +3179,8 @@
                 <div class="pg-solution-card pg-solution-card--action">
                     <div class="pg-solution-card__body">
                         <div class="pg-solution-card__head">HONESTLY REVIEW</div>
-                        <div class="pg-solution-card__title">Review anything like an expert</div>
-                        <p class="pg-solution-card__desc">Provides a structured second perspective for reviewing designs, products, ideas, documents, and other work.</p>
+                        <div class="pg-solution-card__title">Structured design manager critique</div>
+                        <p class="pg-solution-card__desc">Provides a second-pair-of-eyes critique matrix evaluating typography hierarchy, information density, and engineering feasibility.</p>
                     </div>
                     <a href="assets/downloads/honestly-review.skill" download="honestly-review.skill" class="pg-download-btn" data-tooltip="Download skill" aria-label="Download Honestly Review Skill">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -2495,155 +3194,164 @@
 
             <div class="pg-modal-divider"></div>
 
-            <span class="pg-modal-section-title">How the Workflow Changed</span>
+            <!-- 04 THE WORKFLOW SHIFT -->
+            <span class="pg-modal-section-title">04 · How the Workflow Changed</span>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
                 <div class="pg-flow-item" style="border-left:3px solid #ef4444;">
-                    <div class="pg-flow-item__head" style="color:#ef4444">BEFORE</div>
-                    <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Repeat the process from scratch.</p>
+                    <div class="pg-flow-item__head" style="color:#ef4444">BEFORE (RAW CHAT)</div>
+                    <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Repeat context and formatting rules from scratch every time.</p>
                     <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:#8c8c88; line-height:1.4;">
                         CONTEXT → PROMPT → CORRECT → REVIEW
                     </div>
                 </div>
                 <div class="pg-flow-item" style="border-left:3px solid #10b981;">
-                    <div class="pg-flow-item__head" style="color:#10b981">AFTER</div>
-                    <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Reuse workflow and focus on decision.</p>
+                    <div class="pg-flow-item__head" style="color:#10b981">AFTER (SKILL RUNTIME)</div>
+                    <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Reuse codified heuristic workflows &amp; focus on design decisions.</p>
                     <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:#10b981; line-height:1.4; font-weight:600;">
-                        SKILL → CONTEXT → OUTPUT → DESIGN JUDGMENT
+                        .SKILL → CONTEXT → OUTPUT → DESIGN JUDGMENT
                     </div>
                 </div>
             </div>
 
-            <div class="pg-modal-divider"></div>
-
-            <span class="pg-modal-section-title">How I Build a Skill</span>
-            <p class="pg-modal-lead" style="font-size:0.92rem; margin-bottom:14px;">I turn a repeatable design task into a workflow I can reuse, evaluate, and improve.</p>
-
-            <div class="pg-flow-list" style="margin-bottom:24px;">
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">01 — CONTEXT</div>
-                    <p class="pg-flow-item__desc">Give the Skill the information it needs to understand the task.</p>
-                </div>
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">02 — PROCESS</div>
-                    <p class="pg-flow-item__desc">Define how it should analyze, reason, and approach the problem.</p>
-                </div>
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">03 — OUTPUT</div>
-                    <p class="pg-flow-item__desc">Structure the result so it's useful in my actual design workflow.</p>
-                </div>
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">04 — REVIEW</div>
-                    <p class="pg-flow-item__desc">Check the output against a quality bar and identify where the Skill falls short.</p>
-                </div>
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">05 — ITERATE</div>
-                    <p class="pg-flow-item__desc">Refine the workflow based on what works, what doesn't, and what I learn.</p>
-                </div>
-            </div>
-
             <div class="pg-quote-box">
-                <strong style="display:block; margin-bottom:6px; font-size:0.96rem;">The Principle: Don't just prompt AI. Build a better workflow around it.</strong>
-                <p class="pg-quote-box__sub" style="margin:0; font-size:0.88rem; line-height:1.5;">The goal isn't to automate design judgment. It's to make repetitive design work more consistent, reusable, and easier to improve.</p>
-            </div>
-
-            <span class="pg-modal-section-title">What I'm Exploring</span>
-            <div class="pg-tags-pills">
-                <span class="pg-tag-pill">AI workflows</span>
-                <span class="pg-tag-pill">Reusable Skills</span>
-                <span class="pg-tag-pill">Design critique</span>
-                <span class="pg-tag-pill">UX auditing</span>
-                <span class="pg-tag-pill">Product thinking</span>
+                <strong>Tool Builder Insight:</strong> When you encode your design taste into structured rules, AI stops being a generic chat assistant and becomes a reliable extension of your craft.
             </div>
         </div>
     </div>
 
-    <!-- MODAL 03: MCP -->
+    <!-- MODAL 02: MCP -->
     <div class="pg-modal-overlay" id="modal-mcp" role="dialog" aria-modal="true" aria-labelledby="m-mcp-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">MCP (MODEL CONTEXT PROTOCOL)</span>
-            <h3 class="pg-modal-title" id="m-mcp-title">Connecting the tools around a design problem</h3>
-            <p class="pg-modal-lead">Instead of copy-pasting between tool silos, MCP connects research, product specs, and design files into one continuous AI-assisted workflow.</p>
+            <span class="pg-modal-eyebrow">MODEL CONTEXT PROTOCOL (MCP)</span>
+            <h3 class="pg-modal-title" id="m-mcp-title">Connecting design tools, documentation, and code into one workflow</h3>
+            <p class="pg-modal-lead">MCP connects Claude Code directly to relevant data sources: Jira tickets, Figma variables, local codebases, and live web endpoints, allowing AI models to evaluate grounded project context.</p>
 
             <div class="pg-modal-divider"></div>
 
-            <!-- THE PROBLEM -->
-            <div class="pg-problem-card" style="margin-bottom: 20px;">
-                <div class="pg-problem-card__head">The Problem: Context Fragmentation</div>
-                <div class="pg-flow-badge" style="background:rgba(239,68,68,0.08); border-color:rgba(239,68,68,0.25); color:#ef4444; margin:6px 0 8px;">
-                    <span>Jira (Specs)</span> <span>⇄</span> <span>Mobbin (Benchmarks)</span> <span>⇄</span> <span>Figma (UI)</span> <span>⇄</span> <span>Claude (Chat)</span>
+            <!-- 01 THE PROBLEM: CONTEXT ISOLATION -->
+            <span class="pg-modal-section-title">01 · The Problem: Context Fragmentation</span>
+            <div class="pg-trust-vs" style="margin-bottom:20px;">
+                <div class="pg-trust-vs__col pg-trust-vs__col--bad">
+                    <div class="pg-trust-vs__head" style="color:#ef4444;">
+                        <span>✕</span>
+                        <span>Isolated AI Chat</span>
+                    </div>
+                    <p class="pg-trust-vs__desc">Designer must manually copy-paste PR specs, CSS code, and token values back and forth. Stale context leads to hallucinated UI components.</p>
                 </div>
-                <p class="pg-problem-card__desc">Without connected context, designers spend valuable time repeatedly copying information and re-explaining the same problem to AI from scratch.</p>
-            </div>
-
-            <div class="pg-modal-divider"></div>
-
-            <!-- THE 3 INPUT SOURCES -->
-            <span class="pg-modal-section-title">The Connected Context Pipeline</span>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:10px; margin-bottom:14px;">
-                <!-- JIRA -->
-                <div class="pg-solution-card" style="padding:14px 16px; margin:0;">
-                    <div class="pg-solution-card__head" style="font-size:0.72rem;">01 · JIRA MCP</div>
-                    <div class="pg-solution-card__title" style="font-size:0.92rem; margin-bottom:4px;">Product Specs</div>
-                    <p class="pg-solution-card__desc" style="font-size:0.82rem; line-height:1.45;">Requirements, tickets, acceptance criteria &amp; user priorities.</p>
+                <div class="pg-trust-vs__col pg-trust-vs__col--good">
+                    <div class="pg-trust-vs__head" style="color:#10b981;">
+                        <span>✓</span>
+                        <span>MCP Connected Runtime</span>
+                    </div>
+                    <p class="pg-trust-vs__desc">Claude Code queries Figma variables, reads local code repositories, and checks live PR previews autonomously through standardized tool calling.</p>
                 </div>
-                <!-- MOBBIN -->
-                <div class="pg-solution-card" style="padding:14px 16px; margin:0;">
-                    <div class="pg-solution-card__head" style="font-size:0.72rem;">02 · MOBBIN MCP</div>
-                    <div class="pg-solution-card__title" style="font-size:0.92rem; margin-bottom:4px;">Market Benchmarks</div>
-                    <p class="pg-solution-card__desc" style="font-size:0.82rem; line-height:1.45;">Flows, interaction patterns &amp; competitive references.</p>
-                </div>
-                <!-- FIGMA -->
-                <div class="pg-solution-card" style="padding:14px 16px; margin:0;">
-                    <div class="pg-solution-card__head" style="font-size:0.72rem;">03 · FIGMA MCP</div>
-                    <div class="pg-solution-card__title" style="font-size:0.92rem; margin-bottom:4px;">Design System</div>
-                    <p class="pg-solution-card__desc" style="font-size:0.82rem; line-height:1.45;">Components, screen tokens, existing flows &amp; edge states.</p>
-                </div>
-            </div>
-
-            <!-- MULTI-TOOL SYNTHESIS & DECISION -->
-            <div class="pg-solution-card" style="border-left-color:#6366f1; margin-bottom:20px;">
-                <div class="pg-solution-card__head" style="color:#6366f1;">04 · MULTI-TOOL SYNTHESIS &amp; DECISION</div>
-                <div class="pg-flow-badge" style="background:rgba(99,102,241,0.08); border-color:rgba(99,102,241,0.25); color:#818cf8; margin-bottom:8px;">
-                    <span>Specs</span> <span>+</span> <span>Market Benchmarks</span> <span>+</span> <span>UI Context</span> <span>→</span> <span>AI Synthesis</span> <span>→</span> <span>Design Decision</span>
-                </div>
-                <p class="pg-solution-card__desc">AI surfaces risks, edge cases, and alternatives across all 3 tools. <strong>I decide</strong> what trade-offs to make and what experience to build.</p>
             </div>
 
             <div class="pg-modal-divider"></div>
 
-            <!-- WHAT MCP CHANGES -->
-            <span class="pg-modal-section-title">The Workflow Shift</span>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px;">
-                <div class="pg-flow-item" style="border-left:3px solid #ef4444; padding:12px 14px;">
-                    <div class="pg-flow-item__head" style="color:#ef4444; font-size:0.75rem;">BEFORE · FRAGMENTED</div>
-                    <p class="pg-flow-item__desc" style="font-family:var(--font-mono, monospace); font-size:0.74rem; line-height:1.45; color:#8c8c88;">
-                        Tool → Copy → Prompt → Tool → Copy → Prompt
-                    </p>
+            <!-- 02 THE CONNECTED ENVIRONMENT -->
+            <span class="pg-modal-section-title">02 · The Connected Environment</span>
+            <div class="pg-mcp-grid">
+                <div class="pg-mcp-node">
+                    <div class="pg-mcp-node__icon" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3l-9-9a2 2 0 0 0-2.8 0l-5.2 5.2a2 2 0 0 0 0 2.8l9 9a2 2 0 0 0 2.8 0l5.2-5.2a2 2 0 0 0 0-2.8z"/><line x1="8.5" y1="8.5" x2="11" y2="11"/><line x1="12" y1="12" x2="14.5" y2="14.5"/><line x1="15.5" y1="15.5" x2="18" y2="18"/></svg>
+                    </div>
+                    <div class="pg-mcp-node__title">Figma Context</div>
+                    <p class="pg-mcp-node__desc">Read tokens, variables, component structures, and layer hierarchies directly from design files.</p>
                 </div>
-                <div class="pg-flow-item" style="border-left:3px solid #10b981; padding:12px 14px;">
-                    <div class="pg-flow-item__head" style="color:#10b981; font-size:0.75rem;">AFTER · CONNECTED</div>
-                    <p class="pg-flow-item__desc" style="font-family:var(--font-mono, monospace); font-size:0.74rem; line-height:1.45; color:#10b981; font-weight:600;">
-                        Connected Context → AI Synthesis → Action
-                    </p>
+                <div class="pg-mcp-node">
+                    <div class="pg-mcp-node__icon" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+                    </div>
+                    <div class="pg-mcp-node__title">Issue Tracking</div>
+                    <p class="pg-mcp-node__desc">Pull acceptance criteria, user stories, and bug reports from Jira without manual copy-pasting.</p>
+                </div>
+                <div class="pg-mcp-node">
+                    <div class="pg-mcp-node__icon" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+                    </div>
+                    <div class="pg-mcp-node__title">Codebase Access</div>
+                    <p class="pg-mcp-node__desc">Inspect existing components, styles, and patterns to ensure new work aligns with the codebase.</p>
+                </div>
+                <div class="pg-mcp-node">
+                    <div class="pg-mcp-node__icon" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    </div>
+                    <div class="pg-mcp-node__title">Live Web Inspection</div>
+                    <p class="pg-mcp-node__desc">Fetch live page content, audit deployed interfaces, and capture visual references in real time.</p>
                 </div>
             </div>
 
-            <!-- PRINCIPLE -->
-            <div class="pg-quote-box" style="margin:0 0 20px;">
-                <strong style="display:block; margin-bottom:6px; font-size:0.94rem;">The Principle: The value isn't connecting more tools. It's connecting the right context at the right moment.</strong>
-                <p class="pg-quote-box__sub" style="margin:0; font-size:0.86rem; line-height:1.55;">
-                    Jira tells me what we're solving. Mobbin shows market patterns. Figma shows what we've built. AI reasons across them—<strong>I make the design decision.</strong>
-                </p>
+            <div class="pg-modal-divider"></div>
+
+            <!-- 03 EXCALIDRAW MCP HUB -->
+            <span class="pg-modal-section-title">03 · Unified Orchestration Pipeline</span>
+            <div class="pg-excalidraw-diagram">
+                <div class="pg-excalidraw-header">
+                    <span class="pg-excalidraw-note">~ live context synchronization ~</span>
+                </div>
+                
+                <div class="pg-excali-grid">
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">SOURCES</div>
+                        <div class="pg-excali-node__title">Figma + Jira</div>
+                        <p class="pg-excali-node__desc">Raw design variables, UX specs, and story acceptance criteria.</p>
+                        <div class="pg-excali-pill">Protocol: Tool Calling</div>
+                    </div>
+
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 8, 24 16, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">MCP RUNTIME</div>
+                        <div class="pg-excali-node__title">Claude Engine</div>
+                        <p class="pg-excali-node__desc">Synthesizes spec discrepancies and drafts component code patches.</p>
+                        <div class="pg-excali-pill">Processing: Real-time</div>
+                    </div>
+
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 16, 24 8, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">OUTPUT</div>
+                        <div class="pg-excali-node__title">Repo Artifact</div>
+                        <p class="pg-excali-node__desc">Direct commit to repo with 100% token fidelity and zero manual drift.</p>
+                        <div class="pg-excali-pill pg-excali-pill--success">Result: Zero Drift</div>
+                    </div>
+                </div>
+
+                <div class="pg-excali-callout">
+                    <svg class="pg-excali-curly-arrow" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                        <path d="M22 6 C 12 10, 8 20, 16 26 M 10 22 L 16 26 L 19 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="pg-excali-handwritten">Design tokens &amp; code specs stay permanently in sync!</span>
+                </div>
             </div>
 
-            <span class="pg-modal-section-title">What I'm Exploring</span>
-            <div class="pg-tags-pills">
-                <span class="pg-tag-pill">MCP</span>
-                <span class="pg-tag-pill">Context-aware AI</span>
-                <span class="pg-tag-pill">Connected workflows</span>
-                <span class="pg-tag-pill">Tool orchestration</span>
-                <span class="pg-tag-pill">AI-assisted product design</span>
+            <div class="pg-modal-divider"></div>
+
+            <!-- 04 WHAT THIS ENABLES -->
+            <span class="pg-modal-section-title">04 · What This Enables</span>
+            <div class="pg-flow-list">
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">Grounded Critique</div>
+                    <p class="pg-solution-card__desc">AI models verify designs directly against active project tokens and local design system libraries.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">Spec-Driven Design</div>
+                    <p class="pg-solution-card__desc">Feed Jira requirements into Claude and get structured UI specs, edge-case matrices, and component breakdowns before opening Figma.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">Design-to-Code Parity</div>
+                    <p class="pg-solution-card__desc">Audit the gap between Figma designs and deployed code by comparing design tokens against CSS output automatically.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -2652,91 +3360,231 @@
     <div class="pg-modal-overlay" id="modal-ai-ux" role="dialog" aria-modal="true" aria-labelledby="m-aiux-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">AI UX &amp; TRUST ARCHITECTURE</span>
-            <h3 class="pg-modal-title" id="m-aiux-title">Designing AI people can actually trust</h3>
-            <p class="pg-modal-lead">Most teams treat AI like a conversational novelty. In mission-critical enterprise workflows (legal, medical, and fintech), raw LLM output is a liability unless users can verify, inspect, and audit every single claim with confidence.</p>
+            <span class="pg-modal-eyebrow">DESIGN QA &amp; EVIDENCE SYSTEMS</span>
+            <h3 class="pg-modal-title" id="m-aiux-title">Designing verifiable, code-anchored review interfaces</h3>
+            <p class="pg-modal-lead">Automated design feedback fails when suggestions are disconnected from source code. I design review systems where every flagged issue links directly to DOM nodes, CSS variables, and design tokens so engineers and designers can act on them immediately.</p>
 
-            <div class="pg-modal-divider"></div>
-
-            <span class="pg-modal-section-title">The Enterprise Problem: Why Generic AI Chat Fails</span>
-            <div style="margin-bottom: 24px;">
-                <div class="pg-problem-card">
-                    <div class="pg-problem-card__head">01. The Black Box Trap</div>
-                    <p class="pg-problem-card__desc">LLMs state hallucinations with the exact same confident tone as verified facts. Without clear provenance, users waste time second-guessing every sentence.</p>
+            <!-- IMPACT METRICS RIBBON -->
+            <div class="pg-trust-stats">
+                <div class="pg-trust-stat">
+                    <div class="pg-trust-stat__val">100%</div>
+                    <div class="pg-trust-stat__lbl">Direct Source Anchors</div>
                 </div>
-                <div class="pg-problem-card">
-                    <div class="pg-problem-card__head">02. The Cognitive Density Trap</div>
-                    <p class="pg-problem-card__desc">Walls of chat text force professionals into linear reading instead of fast visual scanning, creating decision fatigue.</p>
+                <div class="pg-trust-stat">
+                    <div class="pg-trust-stat__val">40+</div>
+                    <div class="pg-trust-stat__lbl">Heuristic Rules</div>
                 </div>
-                <div class="pg-problem-card">
-                    <div class="pg-problem-card__head">03. The Workflow Disconnection Trap</div>
-                    <p class="pg-problem-card__desc">AI outputs trapped in sidebar widgets require manual copy-pasting, breaking data integrity and slowing down core workflows.</p>
+                <div class="pg-trust-stat">
+                    <div class="pg-trust-stat__val">3.4×</div>
+                    <div class="pg-trust-stat__lbl">Faster Spec Verification</div>
                 </div>
             </div>
 
             <div class="pg-modal-divider"></div>
 
-            <span class="pg-modal-section-title">The 4 Strategic Design Pillars for AI Trust</span>
-            <div>
-                <!-- PILLAR 01 -->
-                <div class="pg-solution-card">
-                    <div class="pg-solution-card__head">01 — CONTINUOUS PROVENANCE &amp; TRACEABILITY</div>
-                    <p class="pg-solution-card__desc">Every AI assertion is paired with an interactive inline citation anchor. Clicking jumps immediately to the original source document at the exact line, creating a zero-friction verification loop.</p>
-                    <div class="pg-flow-badge">
-                        <span>Claim</span> <span>→</span> <span>Evidence Anchor</span> <span>→</span> <span>1-Click Verification</span>
+            <!-- THE PARADIGM SHIFT: VS MATRIX -->
+            <span class="pg-modal-section-title">The Workflow Shift</span>
+            <div class="pg-trust-vs">
+                <!-- BAD / MANUAL -->
+                <div class="pg-trust-vs__col pg-trust-vs__col--bad">
+                    <div class="pg-trust-vs__head" style="color:#ef4444;">
+                        <span>✕</span>
+                        <span>Manual &amp; Unanchored Reviews</span>
                     </div>
+                    <ul class="pg-trust-vs__list">
+                        <li class="pg-trust-vs__item">
+                            <span style="color:#ef4444;">•</span>
+                            <span><strong>Subjective Feedback:</strong> Unverified visual critiques with vague steps to reproduce.</span>
+                        </li>
+                        <li class="pg-trust-vs__item">
+                            <span style="color:#ef4444;">•</span>
+                            <span><strong>Scattered Context:</strong> Feedback trapped in Slack threads, screenshots, and comments.</span>
+                        </li>
+                        <li class="pg-trust-vs__item">
+                            <span style="color:#ef4444;">•</span>
+                            <span><strong>Token Drift:</strong> Visual designs diverge silently from production CSS styles.</span>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- PILLAR 02 -->
-                <div class="pg-solution-card">
-                    <div class="pg-solution-card__head">02 — ADAPTIVE COGNITIVE MODES (DUAL-TIER VIEWPORT)</div>
-                    <p class="pg-solution-card__desc">One size never fits all reading tasks. Users can toggle seamlessly between narrative briefings and granular forensic tables.</p>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
-                        <div class="pg-flow-item" style="padding:10px 12px;">
-                            <div class="pg-flow-item__head" style="font-size:0.72rem;">Executive Narrative</div>
-                            <p class="pg-flow-item__desc" style="font-size:0.8rem;">Fast synthesis for quick high-level briefings.</p>
+                <!-- GOOD / SYSTEM -->
+                <div class="pg-trust-vs__col pg-trust-vs__col--good">
+                    <div class="pg-trust-vs__head" style="color:#10b981;">
+                        <span>✓</span>
+                        <span>Evidence-Anchored System</span>
+                    </div>
+                    <ul class="pg-trust-vs__list">
+                        <li class="pg-trust-vs__item">
+                            <span style="color:#10b981;">•</span>
+                            <span><strong>Direct Traceability:</strong> 1-click line anchors linking findings directly to code.</span>
+                        </li>
+                        <li class="pg-trust-vs__item">
+                            <span style="color:#10b981;">•</span>
+                            <span><strong>Executive &amp; Dev Views:</strong> High-level blocker scores ↔ Deep tabular rule audits.</span>
+                        </li>
+                        <li class="pg-trust-vs__item">
+                            <span style="color:#10b981;">•</span>
+                            <span><strong>Automated PR Patches:</strong> Generate verified token fixes directly for staging PRs.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pg-modal-divider"></div>
+
+            <!-- CORE SYSTEM PILLARS: INFORMATION CARDS -->
+            <span class="pg-modal-section-title">Engineered Inspection Patterns</span>
+            <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
+
+                <!-- PATTERN 01: CODE-ANCHORED EVIDENCE -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">PATTERN 01 · CODE-ANCHORED FINDINGS</span>
+                        <span class="pg-badge-code">INSPECT VIEW</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <div class="pg-mock-inner">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <span class="pg-badge-blocker">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>CRITICAL
+                                    </span>
+                                    <span class="pg-badge-code">AXE-CONTRAST-01</span>
+                                </div>
+                                <span class="pg-badge-ref">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>style.css:42
+                                </span>
+                            </div>
+                            <p class="pg-mock-text-main">Primary CTA contrast ratio <strong>2.8:1</strong> fails WCAG 2.2 AA (minimum 4.5:1 required on dark surface).</p>
+                            <div style="display:inline-flex; align-items:center; gap:6px;">
+                                <span class="pg-badge-fix">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>Suggested Fix
+                                </span>
+                                <span class="pg-badge-code">token(--color-primary-400)</span>
+                            </div>
                         </div>
-                        <div class="pg-flow-item" style="padding:10px 12px;">
-                            <div class="pg-flow-item__head" style="font-size:0.72rem;">Deep Audit Mode</div>
-                            <p class="pg-flow-item__desc" style="font-size:0.8rem;">Tabular timeline with confidence ratings.</p>
+                        <p class="pg-mock-text-sub">Every finding contains a direct DOM anchor linking straight to the source CSS line for zero-friction verification.</p>
+                    </div>
+                </div>
+
+                <!-- PATTERN 02: DUAL-TIER VIEWPORTS -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">PATTERN 02 · EXECUTIVE &amp; TECHNICAL VIEW MODES</span>
+                        <span class="pg-badge-code">VIEWPORT TOGGLE</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:10px;">
+                            <div class="pg-mode-block pg-mode-block--exec">
+                                <div class="pg-mode-title" style="display:flex; align-items:center; gap:6px;">
+                                    <span class="pg-badge-ref" style="font-size:0.62rem; padding:2px 8px;">MODE A</span>
+                                    <span>EXECUTIVE SUMMARY</span>
+                                </div>
+                                <p class="pg-mode-desc">High-level risk heatmap and launch-readiness score for PMs and design leads.</p>
+                            </div>
+                            <div class="pg-mode-block pg-mode-block--audit">
+                                <div class="pg-mode-title" style="display:flex; align-items:center; gap:6px;">
+                                    <span class="pg-badge-fix" style="font-size:0.62rem; padding:2px 8px;">MODE B</span>
+                                    <span>TECHNICAL FORENSIC</span>
+                                </div>
+                                <p class="pg-mode-desc">Tabular rule breakdown with diff-ready CSS token patches for engineers.</p>
+                            </div>
                         </div>
+                        <p class="pg-mock-text-sub">Adapts information density between strategic release management and fine-grained rule inspection.</p>
                     </div>
                 </div>
 
-                <!-- PILLAR 03 -->
-                <div class="pg-solution-card">
-                    <div class="pg-solution-card__head">03 — HUMAN-IN-THE-LOOP (VERIFY-BEFORE-SYNC)</div>
-                    <p class="pg-solution-card__desc">AI drafts and proposes data structures; humans maintain complete operational ownership. Batch review actions before committing intelligence to enterprise databases.</p>
-                    <div class="pg-action-pills">
-                        <span class="pg-action-pill" style="color:#10b981; border-color:rgba(16,185,129,0.3);">✓ Approve</span>
-                        <span class="pg-action-pill" style="color:#f59e0b; border-color:rgba(245,158,11,0.3);">⚑ Flag</span>
-                        <span class="pg-action-pill" style="color:#6366f1; border-color:rgba(99,102,241,0.3);">✎ Edit</span>
-                        <span class="pg-action-pill" style="color:#ef4444; border-color:rgba(239,68,68,0.3);">✕ Discard</span>
+                <!-- PATTERN 03: VERIFIED SIGN-OFF GATES -->
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">PATTERN 03 · VERIFICATION &amp; PR GATES</span>
+                        <span class="pg-badge-code">REVIEW GATE</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <div class="pg-mock-inner">
+                            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <span class="pg-badge-fix">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><polyline points="20 6 9 17 4 12"></polyline></svg>VERIFIED FIX
+                                    </span>
+                                    <span class="pg-badge-code">AXE-CONTRAST-01</span>
+                                </div>
+                                <span class="pg-badge-code">PR #108 · READY TO SYNC</span>
+                            </div>
+                            <p class="pg-mock-text-main" style="margin:0;">WCAG 2.2 contrast rule auto-remediated and ready for pull request merge.</p>
+                        </div>
+                        <p class="pg-mock-text-sub">Proposed token fixes require intentional designer approval before syncing into production staging branches.</p>
                     </div>
                 </div>
 
-                <!-- PILLAR 04 -->
-                <div class="pg-solution-card">
-                    <div class="pg-solution-card__head">04 — INTEGRATED OPERATIONAL PIPELINE</div>
-                    <p class="pg-solution-card__desc">Replaced generic chat boxes with embedded pipeline actions that move intelligence directly into the business workflow.</p>
-                    <div class="pg-flow-badge">
-                        <span>Ingest Raw Data</span> <span>→</span> <span>Cross-Reference</span> <span>→</span> <span>Verify Evidence</span> <span>→</span> <span>Sync to Core System</span>
+            </div>
+
+            <div class="pg-modal-divider"></div>
+
+            <!-- EXCALIDRAW-STYLE VERIFICATION LOOP -->
+            <div class="pg-excalidraw-diagram">
+                <div class="pg-excalidraw-header">
+                    <span class="pg-excalidraw-note">~ the end-to-end review pipeline ~</span>
+                </div>
+                
+                <div class="pg-excali-grid">
+                    <!-- NODE 1 -->
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">01 · INGEST</div>
+                        <div class="pg-excali-node__title">Live DOM &amp; Tokens</div>
+                        <p class="pg-excali-node__desc">Extract DOM elements, computed styles, and accessibility tree.</p>
+                        <div class="pg-excali-pill">Input: PR Preview URL</div>
                     </div>
+
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 8, 24 16, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- NODE 2 -->
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">02 · AUDIT</div>
+                        <div class="pg-excali-node__title">Rule Engine</div>
+                        <p class="pg-excali-node__desc">Match against 40+ UX heuristics, WCAG 2.2, and token hierarchies.</p>
+                        <div class="pg-excali-pill">Engine: Heuristics Scan</div>
+                    </div>
+
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 16, 24 8, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- NODE 3 -->
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">03 · COMMIT</div>
+                        <div class="pg-excali-node__title">1-Click Codemod</div>
+                        <p class="pg-excali-node__desc">Generate production-ready CSS/React fix with verified evidence trail.</p>
+                        <div class="pg-excali-pill pg-excali-pill--success">Output: Auto-Fix PR</div>
+                    </div>
+                </div>
+
+                <div class="pg-excali-callout">
+                    <svg class="pg-excali-curly-arrow" viewBox="0 0 32 32" fill="none" stroke="currentColor">
+                        <path d="M22 6 C 12 10, 8 20, 16 26 M 10 22 L 16 26 L 19 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="pg-excali-handwritten">Every design suggestion links directly to the underlying CSS or component file.</span>
                 </div>
             </div>
 
             <div class="pg-quote-box">
-                <strong>Design Leadership Principle:</strong> The measure of high-caliber AI UX isn't how clever the model speaks—it's how confidently a user can stake their professional reputation on its output.
+                <strong>Design Systems Principle:</strong> A design critique tool is only valuable if its findings can be immediately reproduced, verified, and fixed in code.
             </div>
 
             <span class="pg-modal-section-title">Core Competencies</span>
             <div class="pg-tags-pills">
-                <span class="pg-tag-pill">Human-in-the-Loop</span>
-                <span class="pg-tag-pill">Explainable AI (XAI)</span>
-                <span class="pg-tag-pill">Traceability Systems</span>
-                <span class="pg-tag-pill">Error Prevention</span>
-                <span class="pg-tag-pill">Enterprise Trust</span>
-                <span class="pg-tag-pill">Cognitive Load Reduction</span>
+                <span class="pg-tag-pill">Design QA</span>
+                <span class="pg-tag-pill">WCAG 2.2 Compliance</span>
+                <span class="pg-tag-pill">Design System Governance</span>
+                <span class="pg-tag-pill">DOM Inspection</span>
+                <span class="pg-tag-pill">Component Resilience</span>
+                <span class="pg-tag-pill">Design-to-Code Parity</span>
             </div>
         </div>
     </div>
@@ -2746,17 +3594,19 @@
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">PLUGINS &amp; SCRIPTS</span>
-            <h3 class="pg-modal-title" id="m-plugins-title">Small tools for repetitive problems</h3>
-            <p class="pg-modal-lead">Custom design utilities, CLI helpers, and automation scripts built to eliminate friction across design systems and asset production.</p>
+            <h3 class="pg-modal-title" id="m-plugins-title">Automation tools built for repetitive problems</h3>
+            <p class="pg-modal-lead">Custom design utilities, CLI helpers, and build scripts engineered to eliminate manual friction across design systems, token extraction, and production asset optimization.</p>
+
             <div class="pg-modal-divider"></div>
+
             <div class="pg-flow-list">
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">Token Exporter</div>
-                    <p class="pg-flow-item__desc">Converts Figma Variables directly into JSON tokens and CSS custom properties.</p>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">TOKEN EXPORTER &amp; DTCG PARSER</div>
+                    <p class="pg-solution-card__desc">Converts Figma Variables directly into W3C-compliant JSON token files and semantic CSS custom properties with dark-mode mapping.</p>
                 </div>
-                <div class="pg-flow-item">
-                    <div class="pg-flow-item__head">Asset Optimizer</div>
-                    <p class="pg-flow-item__desc">Automates WebP conversion and SVG cleanup before assets enter development builds.</p>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">WEBP &amp; VECTOR ASSET OPTIMIZER</div>
+                    <p class="pg-solution-card__desc">Automates WebP lossy/lossless compression and SVG path sanitization before production release, shrinking portfolio and app bundles by &gt;60%.</p>
                 </div>
             </div>
         </div>
@@ -2924,9 +3774,79 @@
     <div class="pg-modal-overlay" id="modal-tokens" role="dialog" aria-modal="true" aria-labelledby="m-tokens-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">DESIGN TOKENS</span>
-            <h3 class="pg-modal-title" id="m-tokens-title">Making design decisions reusable</h3>
-            <p class="pg-modal-lead">Structured 3-tier token architecture (Global → Semantic → Component) supporting effortless dark/light theme switching and multi-brand scaling.</p>
+            <span class="pg-modal-eyebrow">DESIGN TOKENS &amp; ARCHITECTURE</span>
+            <h3 class="pg-modal-title" id="m-tokens-title">Making design decisions reusable across platforms</h3>
+            <p class="pg-modal-lead">Hardcoded hex values and arbitrary pixel margins create systemic brand drift. I engineer multi-tier token architectures following W3C Design Token Community Group (DTCG) standards to ensure design decisions compile flawlessly into CSS, iOS, and Android.</p>
+
+            <div class="pg-modal-divider"></div>
+
+            <!-- 3-TIER TOKEN HIERARCHY -->
+            <span class="pg-modal-section-title">The 3-Tier Token Architecture</span>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:20px;">
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">TIER 01 · GLOBAL PRIMITIVES</span>
+                        <span class="pg-badge-code">blue.600 = #0284c7</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <p class="pg-mock-text-sub">Raw, context-agnostic values. Color ramps, modular scale type sizes, and baseline grid multiples.</p>
+                    </div>
+                </div>
+
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">TIER 02 · SEMANTIC &amp; CONTEXTUAL</span>
+                        <span class="pg-badge-code">color.action.primary = token(blue.600)</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <p class="pg-mock-text-sub">Intent-driven tokens that change dynamically depending on active theme (Dark Mode / High Contrast).</p>
+                    </div>
+                </div>
+
+                <div class="pg-mock-frame" style="margin:0;">
+                    <div class="pg-mock-frame__top">
+                        <span class="pg-mock-frame__title">TIER 03 · COMPONENT SCOPED</span>
+                        <span class="pg-badge-code">button.primary.bg = token(color.action.primary)</span>
+                    </div>
+                    <div class="pg-mock-frame__content">
+                        <p class="pg-mock-text-sub">Strictly isolated bindings protecting components from unintentional global side-effects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXCALIDRAW TOKEN PIPELINE -->
+            <div class="pg-excalidraw-diagram">
+                <div class="pg-excalidraw-header">
+                    <span class="pg-excalidraw-note">~ automated single-source-of-truth ~</span>
+                </div>
+                <div class="pg-excali-grid">
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">SOURCE</div>
+                        <div class="pg-excali-node__title">Figma Variables</div>
+                        <p class="pg-excali-node__desc">Design tokens managed directly in Figma Collections.</p>
+                    </div>
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 8, 24 16, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">TRANSFORM</div>
+                        <div class="pg-excali-node__title">Style Dictionary</div>
+                        <p class="pg-excali-node__desc">Automated build pipeline converts JSON tokens to CSS variables.</p>
+                    </div>
+                    <div class="pg-excali-arrow">
+                        <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
+                            <path d="M4 12 C 14 16, 24 8, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="pg-excali-node">
+                        <div class="pg-excali-node__badge">OUTPUT</div>
+                        <div class="pg-excali-node__title">Web &amp; Mobile</div>
+                        <p class="pg-excali-node__desc">Production CSS, Swift, and Kotlin packages published.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2934,9 +3854,34 @@
     <div class="pg-modal-overlay" id="modal-components" role="dialog" aria-modal="true" aria-labelledby="m-comp-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">COMPONENT SYSTEMS</span>
-            <h3 class="pg-modal-title" id="m-comp-title">Designing for consistency at scale</h3>
-            <p class="pg-modal-lead">Comprehensive component libraries engineered with complete state coverage (Default, Hover, Active, Focus, Disabled, Error, Loading) and ARIA accessibility compliance.</p>
+            <span class="pg-modal-eyebrow">COMPONENT ARCHITECTURES</span>
+            <h3 class="pg-modal-title" id="m-comp-title">Designing for consistency and resilience at scale</h3>
+            <p class="pg-modal-lead">A design system is only as robust as its edge cases. I design components with mandatory 7-state coverage, keyboard accessibility traps prevention, and ARIA compliant semantics before developer handoff.</p>
+
+            <div class="pg-modal-divider"></div>
+
+            <span class="pg-modal-section-title">The 7-State Resilience Matrix</span>
+            <div class="pg-trust-vs" style="margin-bottom:16px;">
+                <div class="pg-trust-vs__col pg-trust-vs__col--good" style="grid-column: 1 / -1;">
+                    <div class="pg-trust-vs__head" style="color:#10b981;">
+                        <span>✓</span>
+                        <span>Complete State Coverage Standard</span>
+                    </div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
+                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">01 · Default</span>
+                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">02 · Hover</span>
+                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">03 · Active / Pressed</span>
+                        <span class="pg-action-badge" style="background:rgba(99,102,241,0.15); color:#818cf8;">04 · Focus-Visible (Keyboard)</span>
+                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">05 · Disabled</span>
+                        <span class="pg-action-badge" style="background:rgba(239,68,68,0.15); color:#f87171;">06 · Error / Invalid</span>
+                        <span class="pg-action-badge" style="background:rgba(245,158,11,0.15); color:#fcd34d;">07 · Loading / Pending</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pg-quote-box" style="margin-top:14px;">
+                <strong>Enterprise Principle:</strong> If a component doesn't define its loading, error, and keyboard focus states, it is only 40% designed.
+            </div>
         </div>
     </div>
 
@@ -2944,9 +3889,27 @@
     <div class="pg-modal-overlay" id="modal-workflows" role="dialog" aria-modal="true" aria-labelledby="m-wf-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">DESIGN WORKFLOWS</span>
-            <h3 class="pg-modal-title" id="m-wf-title">Making repetitive design work better</h3>
-            <p class="pg-modal-lead">Streamlining handoff protocols, version governance, and design review pipelines between product managers, designers, and engineers.</p>
+            <span class="pg-modal-eyebrow">DESIGN WORKFLOWS &amp; GOVERNANCE</span>
+            <h3 class="pg-modal-title" id="m-wf-title">Eliminating friction in product design handoffs</h3>
+            <p class="pg-modal-lead">Bridging the communication gap between Product Managers, Designers, and Frontend Engineers with structured review gates, automated PR previews, and spec-driven documentation.</p>
+
+            <div class="pg-modal-divider"></div>
+
+            <span class="pg-modal-section-title">The 3 Review Gates</span>
+            <div class="pg-flow-list">
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">GATE 01 · SPEC-FIRST CRITIQUE</div>
+                    <p class="pg-solution-card__desc">Reviewing acceptance criteria and edge-case matrices with PMs before high-fidelity visual design begins.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">GATE 02 · INTERACTION &amp; STATE REVIEW</div>
+                    <p class="pg-solution-card__desc">Validating keyboard navigation, responsive breakpoints, and error states directly in interactive prototypes.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">GATE 03 · DESIGN QA &amp; CODEMOD PR AUDIT</div>
+                    <p class="pg-solution-card__desc">Auditing deployed staging PRs against design tokens to catch visual regressions before production release.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2954,9 +3917,22 @@
     <div class="pg-modal-overlay" id="modal-figma-plugins" role="dialog" aria-modal="true" aria-labelledby="m-fplugins-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">FIGMA PLUGINS</span>
-            <h3 class="pg-modal-title" id="m-fplugins-title">Small tools that remove design friction</h3>
-            <p class="pg-modal-lead">Lightweight Figma plugins built to automate naming conventions, state generation, and token validations directly in canvas.</p>
+            <span class="pg-modal-eyebrow">FIGMA PLUGINS &amp; TOOLING</span>
+            <h3 class="pg-modal-title" id="m-fplugins-title">Tools that remove repetitive design friction</h3>
+            <p class="pg-modal-lead">Custom plugins built for the Figma Plugin API that automate vector calculations, naming sanitization, and token validation directly in canvas.</p>
+
+            <div class="pg-modal-divider"></div>
+
+            <div class="pg-flow-list">
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">BLOBBY — ORGANIC SVG GENERATOR</div>
+                    <p class="pg-solution-card__desc">Generates customizable organic bezier curves and editable SVG blobs for landing page heroes and brand visuals in one click.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">TOKEN AUDIT HELPER</div>
+                    <p class="pg-solution-card__desc">Scans selected Figma frames for unattached colors or raw font sizes and maps them automatically to official design tokens.</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -2964,9 +3940,31 @@
     <div class="pg-modal-overlay" id="modal-presentations" role="dialog" aria-modal="true" aria-labelledby="m-pres-title">
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
-            <span class="pg-modal-eyebrow">PRESENTATIONS</span>
-            <h3 class="pg-modal-title" id="m-pres-title">Decks designed to communicate ideas clearly</h3>
-            <p class="pg-modal-lead">Strategic narrative frameworks, pitch decks, and UX review decks crafted to align stakeholders, demystify complex systems, and communicate ROI.</p>
+            <span class="pg-modal-eyebrow">PRESENTATIONS &amp; STORYTELLING</span>
+            <h3 class="pg-modal-title" id="m-pres-title">Decks designed to align teams and drive decisions</h3>
+            <p class="pg-modal-lead">Design presentations translate system architecture, user workflows, and engineering tradeoffs into clear decision documents for product teams.</p>
+
+            <div class="pg-modal-divider"></div>
+
+            <span class="pg-modal-section-title">The 4-Part Alignment Narrative</span>
+            <div class="pg-flow-list">
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">01 · CONTEXT &amp; STAKES</div>
+                    <p class="pg-solution-card__desc">Why does this problem matter to the business right now, and what happens if we do nothing?</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">02 · USER EVIDENCE &amp; DATA</div>
+                    <p class="pg-solution-card__desc">Grounding the narrative with concrete usability friction, analytics drop-offs, and customer verbatim.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">03 · STRATEGIC OPTIONS &amp; TRADEOFFS</div>
+                    <p class="pg-solution-card__desc">Presenting thoughtful architectural options with honest evaluations of engineering effort vs. user value.</p>
+                </div>
+                <div class="pg-solution-card">
+                    <div class="pg-solution-card__head">04 · CLEAR NEXT ACTIONS</div>
+                    <p class="pg-solution-card__desc">Providing unambiguous roadmap phasing and immediate release milestones for engineering and leadership.</p>
+                </div>
+            </div>
         </div>
     </div>
 

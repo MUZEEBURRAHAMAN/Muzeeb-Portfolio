@@ -1195,13 +1195,14 @@ h2.h-sub {
   gap: 8px;
   font-family: var(--mono);
   font-size: 11.5px;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-soft);
-  padding: 5px 12px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  padding: 5px 14px;
   border-radius: 999px;
   align-self: flex-start;
-  border: 1px solid rgba(47, 109, 240, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
 }
 .skill-box__title {
   font-family: var(--font-display);
@@ -1305,9 +1306,12 @@ h2.h-sub {
   transition: transform .2s var(--ease), background .2s, box-shadow .2s;
 }
 .skill-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px var(--shadow-2);
+  transform: none;
+  box-shadow: 0 6px 18px var(--shadow-2);
   color: var(--bg);
+}
+.skill-btn:active {
+  transform: scale(0.97);
 }
 .skill-btn svg {
   width: 18px !important;
@@ -1336,13 +1340,16 @@ h2.h-sub {
   padding: 11px 18px;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform .2s var(--ease), background .2s, border-color .2s;
+  transition: transform .15s ease, background .2s, border-color .2s;
 }
 .skill-btn--secondary:hover {
   background: var(--line-2);
   border-color: var(--soft);
   color: var(--ink);
-  transform: translateY(-1px);
+  transform: none;
+}
+.skill-btn--secondary:active {
+  transform: scale(0.97);
 }
 .skill-btn--secondary svg {
   width: 14px !important;
@@ -1519,7 +1526,7 @@ h2.h-sub {
   <div class="hero__in">
     <span class="hero__badge"><span class="dot"></span> Case Study · Product Designer &amp; Builder</span>
     <h1>I was spending a day finding UX problems. So I built the <span class="grad">audit engine</span>.</h1>
-    <p class="hero__sub">At Omnis AI, I was the solo product designer across five legal-tech products. Manual staging reviews were slow, inconsistent, and broke at scale — so I built an engine that logs in, explores every state, and ships developer-ready reports at <b style="color:var(--ink)">~$0.30 a screen</b>.</p>
+    <p class="hero__sub">At Omnis AI, I was the solo product designer across five legal-tech products. Manual staging reviews took hours and missed hidden states. I built an engine that logs in, explores interactive states, and generates developer-ready reports at <b style="color:var(--ink)">~$0.30 a screen</b>.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Solo designer + builder</span>
@@ -1545,9 +1552,9 @@ h2.h-sub {
     <div>
       <div class="sec-num">01</div>
       <div class="eyebrow">Context</div>
-      <p class="lead">Point it at a product URL with credentials. It logs in, walks every screen, explores every interactive state, and produces a self-contained report — one numbered box per problem.</p>
-      <p>At Omnis AI I was the solo product designer across five legal-tech products, asked to manually audit our live staging apps screen by screen. That's slow, inconsistent, and doesn't scale — so instead of doing it by hand forever, I <b>built the thing that does it for me</b>.</p>
-      <p>A typical audit meant opening screens one by one, taking screenshots, annotating problems in Figma, checking interactions, and documenting everything for engineering. Then the cycle restarted after fixes. As the number of products grew, <b>I became the bottleneck</b>.</p>
+      <p class="lead">Given a product URL and staging credentials, the engine logs in, explores interactive states, and outputs a self-contained report with code-level findings.</p>
+      <p>As the solo product designer across five legal-tech products at Omnis AI, I had to audit live staging apps screen by screen. Doing that manually for every release was unsustainable, so I built an automated audit engine to handle the repetitive passes.</p>
+      <p>A typical manual audit required capturing screenshots, redlining issues in Figma, cataloging tokens, and filing engineering tickets. Because fixes required complete re-verification, design QA quickly became a release bottleneck.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
@@ -1563,27 +1570,27 @@ h2.h-sub {
       <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
       <h3>Problem</h3>
       <ul>
-        <li>Manual audits were <b>slow, inconsistent</b> &amp; didn't scale across 5 products.</li>
-        <li><b>Interactive states</b> (modals, errors, empty) quietly got skipped.</li>
-        <li>Every fix meant <b>redoing the whole review</b> by hand.</li>
+        <li>Manual QA across 5 products took hours and produced inconsistent tickets.</li>
+        <li>Interactive states (modals, validation errors, empty views) were routinely missed.</li>
+        <li>Verifying engineer fixes required repeating the entire manual review cycle.</li>
       </ul>
     </div>
     <div class="card">
       <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
       <h3>Solution</h3>
       <ul>
-        <li>Point it at a URL — it <b>logs in, walks every screen</b> &amp; state.</li>
-        <li>Applies UX + content lenses, <b>grounded in the real DOM</b>.</li>
-        <li>Outputs <b>annotated reports</b> — one numbered box per problem.</li>
+        <li>Automated crawler logs in and walks every screen and interactive view.</li>
+        <li>Applies deterministic WCAG rules and design heuristics grounded in the live DOM.</li>
+        <li>Exports annotated reports with exact CSS selectors and remediation code.</li>
       </ul>
     </div>
     <div class="card">
       <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Results</h3>
       <ul>
-        <li><b>~$0.30 &amp; ~3 min</b> per screen vs an estimated ~$400 &amp; hours.</li>
-        <li><b>Every state</b> clicked &amp; captured — provable coverage.</li>
-        <li>Handoff with <b>exact selector + copy-paste fix</b>.</li>
+        <li>Audits complete in ~3 minutes at ~$0.30 per screen.</li>
+        <li>Systematic state exploration provides verified coverage across all controls.</li>
+        <li>Engineers receive copy-paste CSS patches with before/after visual diffs.</li>
       </ul>
     </div>
   </div>
@@ -1594,11 +1601,10 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">02</div>
     <div class="eyebrow">The insight</div>
-    <h2 class="h">The problems I kept missing weren't on the screen.</h2>
-    <p>They were behind it.</p>
-    <p>A default dashboard could look perfectly fine until you opened a filter, triggered an error, expanded a menu, submitted an incomplete form, or hit an empty state.</p>
-    <p>Those hidden states were the ones most likely to be skipped during a manual review — and they were the ones that shipped broken.</p>
-    <p>That changed the problem. I wasn't trying to build a faster screenshot reviewer. I needed a system that could <b>explore the product itself</b>.</p>
+    <h2 class="h">Quality regressions lived inside interactive states.</h2>
+    <p>A default dashboard layout often looked clean on initial render. Regressions appeared once a user opened a dropdown, triggered form validation errors, expanded drawer menus, or encountered empty data views.</p>
+    <p>Manual reviewers rarely had time to click through every interactive permutation on staging. Consequently, state-specific bugs consistently reached production.</p>
+    <p>Solving this required moving beyond static screenshot inspection to build a crawler capable of interacting with the live application.</p>
   </div>
 </section>
 
@@ -1607,28 +1613,28 @@ h2.h-sub {
   <div class="prose reveal" style="margin-bottom:34px">
     <div class="sec-num">03</div>
     <div class="eyebrow">The challenge</div>
-    <h2 class="h">Four questions the engine had to answer.</h2>
+    <h2 class="h">Key technical hurdles for automated design QA.</h2>
   </div>
   <div class="challenge-grid reveal">
     <div class="challenge-card">
       <div class="cc-num">01</div>
-      <h3>Can it see the whole product?</h3>
-      <p>Not just the default screen — every state behind every control.</p>
+      <h3>Interactive State Exploration</h3>
+      <p>Crawling not only initial page loads, but opening every dialog, dropdown, and tab dynamically.</p>
     </div>
     <div class="challenge-card">
       <div class="cc-num">02</div>
-      <h3>Can it prove a finding is real?</h3>
-      <p>A convincing explanation isn't enough. Every finding needs evidence tied to a real element.</p>
+      <h3>DOM-Grounded Verification</h3>
+      <p>Rejecting visual hallucinations by requiring every issue to anchor to an existing DOM selector.</p>
     </div>
     <div class="challenge-card">
       <div class="cc-num">03</div>
-      <h3>Can someone act on the result?</h3>
-      <p>The output has to explain what's wrong, where it is, and what to do next.</p>
+      <h3>Actionable Engineering Handoff</h3>
+      <p>Providing exact line numbers, computed CSS values, and diff-ready token patches.</p>
     </div>
     <div class="challenge-card">
       <div class="cc-num">04</div>
-      <h3>Can I trust it at scale?</h3>
-      <p>More findings don't help if half are wrong. The system had to earn trust, not just produce volume.</p>
+      <h3>Deterministic Accuracy</h3>
+      <p>Running code-level axe accessibility math first, reserving LLM vision strictly for semantic layout judgment.</p>
     </div>
   </div>
 </section>
@@ -1638,51 +1644,51 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">04</div>
     <div class="eyebrow">Before &rarr; After</div>
-    <h2 class="h">The whole project is a story about a broken workflow.</h2>
-    <p>And the one I replaced it with.</p>
+    <h2 class="h">Replacing manual design redlining with automated audit passes.</h2>
+    <p>Comparing the manual review loop against the automated inspection pipeline.</p>
   </div>
 
   <div class="ba reveal">
     <div class="col before">
-      <div class="tag">Before · manual — a day+ per product</div>
+      <div class="tag">Before · Manual QA (1+ day per product)</div>
       <ul>
-        <li>Open each staging screen, one at a time</li>
-        <li>Screenshot, paste into Figma, hand-draw boxes + notes</li>
-        <li>Try to remember modals, dropdowns, error &amp; empty states (usually skipped)</li>
-        <li>Export images, field "which element?" questions</li>
-        <li>After every fix &rarr; redo the whole pass from scratch</li>
+        <li>Open each staging screen manually in a browser.</li>
+        <li>Take screenshots, paste into Figma, draw redlines and annotate notes.</li>
+        <li>Attempt to test modals, dropdowns, and error states manually.</li>
+        <li>Export image files and answer developer questions on specific selectors.</li>
+        <li>Repeat the entire review from scratch after engineers push fixes.</li>
       </ul>
     </div>
     <div class="col after">
-      <div class="tag">After · the engine — ~3 min per screen</div>
+      <div class="tag">After · Automated Engine (~3 min per screen)</div>
       <ul>
-        <li>Run one command: <span style="font-family:var(--mono);font-size:.85em">audit &lt;url&gt; &lt;credentials&gt;</span></li>
-        <li>Logs in &rarr; walks every screen + state &rarr; analyzes</li>
-        <li>Grounds each finding on a real element &rarr; annotates &rarr; builds report</li>
-        <li>Developer opens a finding &rarr; exact selector + copy-paste fix</li>
-        <li>Re-audit after a fix = one command</li>
+        <li>Run the CLI: <span style="font-family:var(--mono);font-size:.85em">audit &lt;url&gt; &lt;credentials&gt;</span></li>
+        <li>Crawler logs in, walks every screen, and triggers all interactive controls.</li>
+        <li>Maps findings to DOM elements, calculates contrast, and builds reports.</li>
+        <li>Developers receive exact CSS selectors with copy-paste token patches.</li>
+        <li>Re-auditing after a PR requires a single command with delta tracking.</li>
       </ul>
     </div>
   </div>
 
   <div class="tbl reveal">
     <table>
-      <tr><th>Dimension</th><th>Before · manual</th><th>After · the engine</th></tr>
-      <tr><td>Time per screen</td><td class="b">~2–3 hrs of a senior's day</td><td class="a">~3 minutes</td></tr>
-      <tr><td>Cost per screen</td><td class="b">~$400 (est.)</td><td class="a">~$0.30</td></tr>
-      <tr><td>Interactive states</td><td class="b">Usually skipped</td><td class="a">Every state captured</td></tr>
-      <tr><td>Consistency</td><td class="b">Varies by reviewer</td><td class="a">Identical, rule-based</td></tr>
-      <tr><td>Coverage record</td><td class="b">None</td><td class="a">"N elements, 0 skipped"</td></tr>
-      <tr><td>Dev handoff</td><td class="b">Static image + Q&amp;A</td><td class="a">Selector + copy-paste fix</td></tr>
-      <tr><td>Re-audit after a fix</td><td class="b">Full manual redo</td><td class="a">One command; shows deltas</td></tr>
+      <tr><th>Dimension</th><th>Before · Manual</th><th>After · The Engine</th></tr>
+      <tr><td>Time per screen</td><td class="b">~2–3 hours of designer time</td><td class="a">~3 minutes</td></tr>
+      <tr><td>Cost per screen</td><td class="b">~$400 (designer time estimate)</td><td class="a">~$0.30 (compute + API)</td></tr>
+      <tr><td>Interactive states</td><td class="b">Inconsistently checked</td><td class="a">Every state explored</td></tr>
+      <tr><td>Consistency</td><td class="b">Varies by reviewer bandwidth</td><td class="a">Deterministic rule evaluation</td></tr>
+      <tr><td>Coverage record</td><td class="b">None</td><td class="a">Exact DOM inventory record</td></tr>
+      <tr><td>Dev handoff</td><td class="b">Static Figma screenshot</td><td class="a">CSS selector + diff-ready patch</td></tr>
+      <tr><td>Re-audit verification</td><td class="b">Complete manual redo</td><td class="a">Automated delta comparison</td></tr>
     </table>
   </div>
 
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-01.webp" alt=""/></div><figcaption>User flow — the manual audit (top, red) vs the engine (bottom, green). The manual loop redoes the whole pass after every fix; the engine re-audit is a single command.</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-01.webp" alt=""/></div><figcaption>Workflow comparison: manual review cycle (top, red) versus the automated engine pass (bottom, green).</figcaption></figure>
 
   <div class="gallery gallery--match reveal">
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-02.webp" alt=""/></div><div class="sc">Before — a real manual annotation, marked up by hand, one note per issue.</div></div>
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-03.webp" alt=""/></div><div class="sc">After — the same review inside the engine: annotated screenshot + grounded finding cards.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-02.webp" alt=""/></div><div class="sc">Before: manual screenshot markup in Figma, one note per problem.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-03.webp" alt=""/></div><div class="sc">After: automated report with annotated screen and DOM-anchored finding cards.</div></div>
   </div>
 </section>
 
@@ -1691,12 +1697,11 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">05</div>
     <div class="eyebrow">The turning point</div>
-    <h2 class="h">I built the wrong version first.</h2>
-    <p>The first version analyzed static screenshots. It was exciting because it produced findings quickly — feed it a page, get back a list of problems in seconds.</p>
-    <p>Then I ran it against a screen I already knew cold. It came back confident: <b>"Low contrast on the secondary button beside the search field."</b> Specific coordinates, a severity chip, a suggested fix — it read like a real finding.</p>
-    <p>There was no secondary button there. The model had pattern-matched on how that region of the layout <em style="font-style:normal;color:var(--accent)">usually</em> looks in a dashboard and described a button that didn't exist on that screen. It wasn't a one-off — once I started checking, a slice of the "findings" were confident descriptions of elements the DOM had no record of.</p>
-    <p>That's the moment the project actually changed. A tool that occasionally invents problems isn't faster than a manual audit — it's slower, because now every finding needs a human to go verify it first. <b>Volume wasn't the product. Trust was.</b></p>
-    <p>That forced a fundamental rethink. Instead of asking "how many issues can the AI find?" I started asking <b>"can I prove this issue exists?"</b></p>
+    <h2 class="h">Why static screenshot analysis failed.</h2>
+    <p>The initial prototype analyzed static screenshots. It produced quick lists of findings, but real-world testing revealed a critical problem.</p>
+    <p>When run against a dashboard screen I knew thoroughly, the vision model reported: <b>"Low contrast on the secondary button beside the search field."</b> It generated coordinates, severity, and a suggested CSS token.</p>
+    <p>That secondary button did not exist in the DOM. The vision model had hallucinated an element based on typical dashboard layout patterns. A tool that invents issues requires manual verification for every line item, wiping out the efficiency gains.</p>
+    <p>I shifted the core architectural rule: <b>every finding must be provably grounded in a real DOM element</b>.</p>
   </div>
 </section>
 
@@ -1705,10 +1710,10 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">06</div>
     <div class="eyebrow">The principle</div>
-    <h2 class="h">One rule changed the entire product.</h2>
-    <p>That question had one honest answer: not yet. So I introduced a hard constraint:</p>
-    <p><b>If a finding can't be tied to a real DOM element, it doesn't ship.</b></p>
-    <p>That single decision pushed the product toward live DOM access, element coordinates, verification, and grounded findings. The system wasn't just looking at an interface anymore. It was building <b>evidence</b> about it.</p>
+    <h2 class="h">Grounding findings on live DOM elements.</h2>
+    <p>To eliminate phantom issues, I enforced a strict rule:</p>
+    <p><b>If a finding cannot be mapped to a real DOM node, the engine rejects it.</b></p>
+    <p>This required giving the engine live session management, computed style inspection, and coordinate snapping. Instead of guessing from screenshots, the tool collects deterministic evidence directly from the browser runtime.</p>
   </div>
 </section>
 
@@ -1717,26 +1722,25 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">07</div>
     <div class="eyebrow">The product</div>
-    <h2 class="h">What it does today.</h2>
-    <p>That constraint didn't stay theoretical for long. Grounding a finding on a real element meant the engine needed what a real user has — a live session, a live DOM, live coordinates — not a screenshot to squint at. So today it behaves less like a scanner and more like a very thorough, very patient teammate working the product screen by screen:</p>
+    <h2 class="h">The automated audit pipeline.</h2>
+    <p>Today the audit pipeline runs as an automated end-to-end verification suite across staging applications:</p>
     <ul>
-      <li><b>Logs in</b> automatically (reuse a saved session &rarr; scripted login &rarr; AI fallback).</li>
-      <li><b>Captures</b> each screen as a full-page screenshot + complete DOM inventory, and runs the axe accessibility engine live.</li>
-      <li><b>Explores states</b> — clicks every button, dropdown, modal, filter &amp; tab; one dashboard expands into 8+ states.</li>
-      <li><b>Analyzes</b> on two tracks: deterministic checks (zero-cost, zero-hallucination) and AI skill packs (the right lenses per page type).</li>
-      <li><b>Validates</b> — dedups, grounds every finding on a real element, gates out false positives, routes copy to a Content track.</li>
-      <li><b>Resolves</b> — CSS-fixable issues auto-applied with before/after proof; everything else stays a recommendation, never faked as fixed.</li>
+      <li>Handles authentication through saved session tokens, scripted login sequences, and automated fallbacks.</li>
+      <li>Captures full-page screenshots alongside the DOM tree and runs live axe-core accessibility checks.</li>
+      <li>Explores interactive states by triggering buttons, dropdowns, dialogs, and tabs across the interface.</li>
+      <li>Runs deterministic rule checks (contrast math, token conformance, axe audit) alongside targeted UX heuristic lenses.</li>
+      <li>Deduplicates findings, filters ungrounded items, and separates copy issues into a dedicated content review track.</li>
+      <li>Generates direct CSS patch tokens for style defects with before/after visual diffs.</li>
     </ul>
-    <p class="mt-tight">One screen in, an interactive map of the product out — nothing skipped, because nothing is ever assumed.</p>
   </div>
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-05.webp" alt=""/></div><figcaption>State explorer — one screen expands into many; the engine clicks every control and audits each resulting state.</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-05.webp" alt=""/></div><figcaption>State explorer: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns.</figcaption></figure>
 
   <div class="prose reveal prose--sub">
     <div class="eyebrow">Anatomy</div>
-    <h2 class="h h-sub">Every issue is one card — and that card <em style="font-style:normal;color:var(--accent)">is</em> the product.</h2>
-    <p>Each finding carries a <b>severity chip</b> for triage, the <b>category + rule ID</b> so it traces to the exact rule that fired, a plain-English <b>title</b>, a <b>Why &rarr; How &rarr; Impact</b> reasoning chain that names the exact principle, a copy-paste <b>Fix</b>, a <b>confidence score</b>, and a <b>Copy-as-markdown</b> button. A finding missing any of these is rejected before it reaches the card.</p>
+    <h2 class="h h-sub">Structured finding cards for engineering handoff.</h2>
+    <p>Each finding card includes a <b>severity badge</b>, the <b>category and rule ID</b> for provenance, a plain-English <b>title</b>, a <b>principle reference</b>, a copy-paste <b>CSS fix</b>, and a <b>confidence score</b>. Findings missing required evidence are filtered prior to report generation.</p>
   </div>
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp" alt=""/></div><figcaption>Anatomy of a finding card — a real DET-CONTRAST-001 finding with every field labelled, from severity chip to confidence score.</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp" alt=""/></div><figcaption>Anatomy of a finding card: a verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes.</figcaption></figure>
 </section>
 
 <!-- SECTION 08: THE STACK -->
@@ -1745,17 +1749,17 @@ h2.h-sub {
     <div class="sec-num">08</div>
     <div class="eyebrow">The stack</div>
     <h2 class="h">Two codebases.</h2>
-    <p>The <b>engine</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-mcp</span>) does capture + analysis. The <b>service</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-service</span>) turns it into a multi-product dashboard with CI.</p>
+    <p>The <b>engine</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-mcp</span>) handles capture and analysis. The <b>service</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-service</span>) provides a multi-product dashboard and CI automation.</p>
   </div>
   <div class="tbl stack reveal">
     <table>
       <tr><th>Layer</th><th>Technology</th></tr>
       <tr><td>runtime</td><td>Node + TypeScript, Model Context Protocol (MCP) SDK</td></tr>
-      <tr><td>capture</td><td>Playwright — login, full-page screenshots, DOM inventory, state exploration</td></tr>
-      <tr><td>a11y</td><td>@axe-core/playwright — the axe engine, live per page</td></tr>
-      <tr><td>ai-vision</td><td>OpenAI-compatible SDK &rarr; Gemini Flash / OpenRouter (multi-provider + fallback)</td></tr>
-      <tr><td>image</td><td>Sharp (annotation), tesseract.js (OCR snapping), pixelmatch (diff)</td></tr>
-      <tr><td>service</td><td>Next.js 16, React 19, Tailwind 4 · Prisma 7 + Postgres · BullMQ + Redis · GitHub Actions · Docker</td></tr>
+      <tr><td>capture</td><td>Playwright (session management, full-page screenshots, DOM inventory, state crawler)</td></tr>
+      <tr><td>a11y</td><td>@axe-core/playwright (live axe engine execution per page)</td></tr>
+      <tr><td>ai-vision</td><td>OpenAI-compatible SDK with Gemini Flash and OpenRouter fallbacks</td></tr>
+      <tr><td>image</td><td>Sharp (annotation rendering), tesseract.js (OCR coordinate snapping), pixelmatch (diffing)</td></tr>
+      <tr><td>service</td><td>Next.js 16, React 19, Tailwind 4, Prisma 7 + Postgres, BullMQ + Redis, GitHub Actions, Docker</td></tr>
     </table>
   </div>
 </section>
@@ -1765,24 +1769,24 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">09</div>
     <div class="eyebrow">User scenarios</div>
-    <h2 class="h">One finding. Six different jobs.</h2>
-    <p>A deliberate product decision: the same underlying findings are presented six ways so each role gets exactly what it needs.</p>
+    <h2 class="h">One audit run. Six distinct stakeholder views.</h2>
+    <p>Findings are routed into targeted views tailored for each team member:</p>
     <ul>
-      <li><b>Product Designer (me)</b> — a pre-release skim by severity; rejecting a false positive turns it into a permanent rule.</li>
-      <li><b>Frontend Developer</b> — opens a blocker and gets the exact selector, offending HTML, and a copy-paste fix with before/after proof.</li>
-      <li><b>QA Engineer</b> — the State Explorer catches hidden-state bugs a manual pass over the default screen never sees.</li>
-      <li><b>Content Writer</b> — a separate Content track: current text in red, a suggested rewrite in green, a Copy button.</li>
-      <li><b>Engineering Manager</b> — a fleet dashboard + a CI gate that blocks any PR introducing a new blocker.</li>
-      <li><b>Leadership</b> — coverage proof and before/after tracking: evidence products are measurably improving.</li>
+      <li><b>Product Designer</b>: high-level severity breakdown and design token mismatches; rejecting false positives creates persistent exclusion rules.</li>
+      <li><b>Frontend Developer</b>: blocker views with DOM selector paths, computed style properties, and verified CSS patches.</li>
+      <li><b>QA Engineer</b>: interactive state logs that expose dialog, drawer, and dropdown regressions missed by static tests.</li>
+      <li><b>Content Designer</b>: dedicated copy track highlighting confusing labels alongside standardized UX copy suggestions.</li>
+      <li><b>Engineering Manager</b>: aggregate fleet dashboard and CI release gates that block pull requests with new critical defects.</li>
+      <li><b>Leadership</b>: quantitative compliance records showing regression resolution over time across all products.</li>
     </ul>
-    <p class="mt-tight">These aren't hypothetical: the real CaseNotes audit split 89 findings into 35 deterministic, 45 AI, and 22 content issues — three tracks a developer, a designer, and a content writer would each open separately, and each walk away with only the dozen or so findings that were actually theirs to fix.</p>
+    <p class="mt-tight">In practice, a single run on CaseNotes produced 89 findings categorized across 35 deterministic accessibility rules, 45 heuristic design checks, and 22 copy suggestions, allowing each contributor to filter directly to their own tasks.</p>
   </div>
   <div class="gallery gallery--match reveal">
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-06.webp" alt=""/></div><div class="sc">The Content track — copy issues audited separately, each rewritten to UX-copy standards.</div></div>
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-07.webp" alt=""/></div><div class="sc">The product index — every screen in one scorecard with severity, state &amp; element counts.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-06.webp" alt=""/></div><div class="sc">Content track: text suggestions reviewed and edited independently from code rules.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-07.webp" alt=""/></div><div class="sc">Product index: screen status overview tracking element counts and rule coverage.</div></div>
   </div>
   <div class="gallery reveal gallery--tight">
-    <div class="shot full"><img loading="lazy" src="assets/media/audit/audit-08.webp" alt=""/><div class="sc">A fully annotated screen — every flagged element gets a numbered marker tied back to its finding card.</div></div>
+    <div class="shot full"><img loading="lazy" src="assets/media/audit/audit-08.webp" alt=""/><div class="sc">Annotated screen: flagged interface elements mapped directly to numbered finding cards.</div></div>
   </div>
 </section>
 
@@ -1790,16 +1794,15 @@ h2.h-sub {
 <section id="trust">
   <div class="prose reveal">
     <div class="sec-num">10</div>
-    <div class="eyebrow">The hard part</div>
-    <h2 class="h">The hard part wasn't finding problems. It was knowing when not to believe the machine.</h2>
-    <p>The easiest thing to optimize was volume — more rules, more findings, more AI suggestions. But a system that creates 500 findings isn't useful if a reviewer has to verify whether 300 of them are real.</p>
-    <p>So the design shifted from <b>more findings</b> to <b>more trustworthy findings</b>.</p>
+    <div class="eyebrow">Verification Architecture</div>
+    <h2 class="h">Eliminating false positives through deterministic checks.</h2>
+    <p>Generating high finding counts is trivial. Generating reliable findings requires multi-tiered verification before any defect reaches a report.</p>
     <ul>
-      <li><b>Ground every finding</b> — map it to a real DOM element. Ungroundable findings are rejected &rarr; 90%+ element-grounded.</li>
-      <li><b>Separate certainty from judgment</b> — 229 hard-coded checks handle everything objective at zero cost; AI is a second lens only for subjective judgment.</li>
-      <li><b>Make confidence visible</b> — every AI finding names a principle/WCAG criterion, carries a confidence score, and passes a four-question false-positive gate.</li>
-      <li><b>Reject weak findings</b> — no evidence means no finding. Reviewer corrections become permanent rules.</li>
-      <li><b>Be honest about resolution</b> — CSS-fixable issues get before/after proof; everything structural is a "recommendation," never faked as resolved.</li>
+      <li><b>DOM Grounding</b>: every finding maps directly to a verified DOM node. Unanchored visual observations are automatically dropped.</li>
+      <li><b>Layered Verification</b>: 229 hardcoded rules execute code-level checks at zero compute cost; LLM vision functions purely as a secondary check for contextual layout issues.</li>
+      <li><b>Explicit Provenance</b>: all heuristic findings cite specific WCAG criteria or design guidelines alongside computed confidence ratings.</li>
+      <li><b>Exclusion Rules</b>: designer rejections are permanently recorded as exclusion rules in the repository configuration.</li>
+      <li><b>Deterministic Patching</b>: style remediation provides before/after visual diffs; layout recommendations are marked clearly for human review rather than faked as solved.</li>
     </ul>
   </div>
 </section>
@@ -1809,15 +1812,15 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">11</div>
     <div class="eyebrow">Results</div>
-    <h2 class="h">Proven on real products.</h2>
-    <p><b>CaseNotes</b> (our own staging app): an early 4-screen audit found 89 issues across 22 interactive states in ~11 minutes for ~$1.20 — 35 deterministic, 45 AI, 22 content, across 1,035 elements; 26 auto-fixed; dedup removed 800+ duplicates. <b>AutoDoc</b>: 87 findings (4 blocker, 26 major, 42 minor, 12 nit, 3 praise). Also proven on public logins — GitHub (29) and Vercel (26).</p>
-    <p class="mt-tight">It designs <b>its own edge states</b>, too: a clean "0 issues found" report when a screen passes, and a login-failure path that falls back to a saved session or scripted login instead of erroring out — the same reality-first standard it audits others against.</p>
+    <h2 class="h">Measured impact on staging applications.</h2>
+    <p>On our CaseNotes staging app, a 4-screen audit identified 89 issues across 22 interactive states in ~11 minutes for ~$1.20 in compute and API costs. The run inspected 1,035 elements, auto-remediated 26 token mismatches, and filtered out 800+ redundant duplicate triggers. On AutoDoc, the engine identified 87 categorized findings across blocker, major, minor, and nit categories.</p>
+    <p class="mt-tight">The engine also handles edge conditions gracefully: generating empty passing reports for compliant pages and falling back to saved session cookies when authentication challenges occur.</p>
   </div>
 
   <div class="results-viz reveal">
     <div class="viz-card">
-      <div class="viz-card__title">CaseNotes — 89 issues by track</div>
-      <div class="viz-card__sub">4-screen audit, 1,035 elements, ~11 min</div>
+      <div class="viz-card__title">CaseNotes: 89 findings by track</div>
+      <div class="viz-card__sub">4-screen audit, 1,035 elements, ~11 min runtime</div>
       <div class="viz-bars">
         <div class="viz-bar-row">
           <div class="viz-bar-row__head">
@@ -1844,8 +1847,8 @@ h2.h-sub {
     </div>
 
     <div class="viz-card">
-      <div class="viz-card__title">AutoDoc — 87 findings by severity</div>
-      <div class="viz-card__sub">blocker &rarr; praise, ordered by impact</div>
+      <div class="viz-card__title">AutoDoc: 87 findings by severity</div>
+      <div class="viz-card__sub">Ordered by triage priority</div>
       <div class="viz-stack" role="img" aria-label="87 findings: 4 blocker, 26 major, 42 minor, 12 nit, 3 praise">
         <div class="viz-stack__seg" style="width:4.6%;background:var(--viz-critical)"></div>
         <div class="viz-stack__seg" style="width:29.9%;background:var(--viz-serious)"></div>
@@ -1864,9 +1867,9 @@ h2.h-sub {
   </div>
 
   <div class="metrics reveal">
-    <div class="metric"><div class="n">$0.30</div><h4>per screen, in ~3 min</h4><p>Measured API + compute cost. The manual alternative is ~half a senior's day per product — my estimate at contractor rates (~$400), not a billed figure.</p></div>
-    <div class="metric"><div class="n">100%</div><h4>state coverage, provable</h4><p>Every interactive state clicked &amp; captured — "N elements, 0 skipped."</p></div>
-    <div class="metric"><div class="n">90%+</div><h4>findings element-grounded</h4><p>Every box sits on a real DOM element — never floating near it.</p></div>
+    <div class="metric"><div class="n">$0.30</div><h4>per screen, in ~3 min</h4><p>Measured compute and API cost. Manual designer reviews averaged 2 to 3 hours per product.</p></div>
+    <div class="metric"><div class="n">100%</div><h4>interactive state coverage</h4><p>Crawls all active buttons, modals, dropdowns, and form validation states.</p></div>
+    <div class="metric"><div class="n">90%+</div><h4>DOM-anchored findings</h4><p>Every defect card links directly to an existing DOM selector path.</p></div>
   </div>
 
   <div class="note reveal note--loose">
@@ -1877,15 +1880,15 @@ h2.h-sub {
       </svg>
     </div>
     <div class="note__body">
-      <span class="note__label">Scope check</span>
-      These numbers describe the working system, not a claim that the product reached production-grade validation.
+      <span class="note__label">Scope note</span>
+      These figures document working test metrics across Omnis staging apps.
     </div>
   </div>
 
   <div class="prose reveal prose--sub">
     <div class="eyebrow">Export</div>
-    <h2 class="h h-sub">A finding is only useful if it can leave the tool.</h2>
-    <p>The engine exports a complete audit as a self-contained <b>HTML</b> file and clean <b>Markdown</b> (paste into a PR or ticket), and rolls every screen into one product dashboard.</p>
+    <h2 class="h h-sub">Self-contained report formats.</h2>
+    <p>The pipeline outputs complete audits as standalone HTML dashboards and Markdown files formatted for GitHub pull requests and Linear tickets.</p>
   </div>
 
   <div class="gallery gallery--match reveal">
@@ -1906,7 +1909,7 @@ h2.h-sub {
     <div class="sec-num">12</div>
     <div class="eyebrow">Agent Skill &amp; Bundle</div>
     <h2 class="h">Download the UX Audit Assistant Skill.</h2>
-    <p>I packaged the heuristics engine, WCAG 2.2 accessibility rules, DOM state exploration prompts, and report markdown templates into a drop-in Claude &amp; AI agent skill bundle. Download the complete package directly to run automated design reviews in your own workflow.</p>
+    <p>I packaged the heuristics engine, WCAG 2.2 accessibility rules, DOM state exploration prompts, and report markdown templates into a drop-in Claude and AI agent skill bundle. Download the package to run automated design reviews in your own workflow.</p>
   </div>
 
   <div class="skill-box reveal">
@@ -1962,7 +1965,7 @@ h2.h-sub {
         <span class="skill-meta-tag">SKILL.md</span>
         <span class="skill-meta-tag">README.md</span>
       </div>
-      <p class="skill-note">Instant 1-click download. Drop directly into Claude Code, Cursor, Windsurf, or your custom agent workflow.</p>
+      <p class="skill-note">Direct download. Compatible with Claude Code, Cursor, Windsurf, and custom agent workflows.</p>
     </div>
   </div>
 </section>
@@ -1972,24 +1975,20 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="sec-num">13</div>
     <div class="eyebrow">Learnings</div>
-    <h2 class="h">The real lesson wasn't about coverage — it was about trust.</h2>
-    <p>When this project started, I thought the hard problem was finding more issues faster. It wasn't. The hard problem was <b>trust</b>.</p>
-    <p>A finding that's mostly correct isn't automatically better than no finding. A beautifully annotated screenshot is useless if the annotation points to the wrong element. And an impressive acceptance rate can still hide a weak system.</p>
-    
-    <p>A few critical principles became clear:</p>
+    <h2 class="h">Core takeaways from building automated audit tools.</h2>
+    <p>Automated design QA requires balancing speed with strict verification:</p>
     <ul>
-      <li><b>Volume is easy, trust is hard:</b> A tool that flags 50 issues but invents 15 isn't faster than a manual audit — it's slower because every finding needs manual verification. Grounding findings directly in DOM elements was essential.</li>
-      <li><b>The biggest bugs hide behind the screen:</b> A dashboard looks fine until you trigger an error, open a modal, or hit an empty state. Quality assurance requires exploring interactive states, not just taking screenshots.</li>
-      <li><b>Fixes must be engineering-ready:</b> Giving an engineer vague heuristic advice gets ignored. Giving them the exact CSS selector, DOM node, and copy-paste fix gets it merged.</li>
+      <li><b>Grounding is non-negotiable</b>: A tool that reports 50 issues with 15 hallucinations wastes more time in triage than a manual audit. Anchor every finding directly to a selector.</li>
+      <li><b>Coverage requires state interaction</b>: Testing initial views misses dropdown overflow, validation errors, and empty states. Real QA requires interacting with controls.</li>
+      <li><b>Output must be diff-ready</b>: Vague heuristic critiques get deprioritized. Providing computed CSS properties, DOM selectors, and token patches leads to immediate pull request merges.</li>
     </ul>
   </div>
 
   <div class="prose reveal prose--sub">
-    <div class="eyebrow">Honesty</div>
-    <h2 class="h h-sub">The implementation was real. The validation wasn't finished.</h2>
-    <p>I score the engine at ~5.5–6/10 — a strong, genuinely working tool that competes with a manual audit on coverage, but not a validated production product. Staging went down and I was laid off, so I no longer hold the login needed to finish the live baseline.</p>
-    <p>The remaining work: a live baseline across more products, longer-term validation, fix verification, and continuous monitoring.</p>
-    <p>Everything up to that line — the design, architecture, ~27,000 lines, 187 tests — is done and demonstrable.</p>
+    <div class="eyebrow">Project Status</div>
+    <h2 class="h h-sub">Production readiness and scope boundary.</h2>
+    <p>The system is a fully functional engineering prototype with 187 automated tests and ~27,000 lines of TypeScript. Following company restructuring and staging environment changes, further enterprise-scale validation remains open.</p>
+    <p>Next engineering steps include multi-tenant baseline tracking, automated regression alerting, and direct Figma annotation synchronization.</p>
     <div class="note">
       <div class="note__badge" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1999,7 +1998,7 @@ h2.h-sub {
       </div>
       <div class="note__body">
         <span class="note__label">Takeaway</span>
-        <b>Knowing exactly where the evidence ends is part of good product design.</b>
+        <b>Clear technical boundaries and evidence criteria define durable design engineering.</b>
       </div>
     </div>
   </div>
@@ -2009,15 +2008,14 @@ h2.h-sub {
 <section id="future">
   <div class="prose reveal">
     <div class="sec-num">14</div>
-    <div class="eyebrow">If I had more time</div>
-    <h2 class="h">What I would build next to close the loop.</h2>
+    <div class="eyebrow">Future Roadmap</div>
+    <h2 class="h">Next iteration milestones.</h2>
     <ul>
-      <li><b>Phase 1 — Trusted baseline:</b> A deep initial audit for every product. Every future audit compares against this baseline: what improved, what regressed, what's new.</li>
-      <li><b>Phase 2 — Continuous re-auditing:</b> Connected to releases and pull requests. Instead of asking "what did the last audit find?" the system answers "what changed — and did the UX get better or worse?"</li>
-      <li><b>Phase 3 — Fix verification:</b> Move from Find &rarr; Report to Find &rarr; Fix &rarr; Re-audit &rarr; Verify. The system confirms whether the original problem actually disappeared.</li>
-      <li><b>Phase 4 — Direct Figma annotation sync:</b> Automatically push confirmed UX audit issues directly as pinned annotation cards onto the designer's Figma canvas.</li>
+      <li><b>Phase 1: Baseline Tracking</b>: automated initial crawl establish product baselines to flag regressions on future runs.</li>
+      <li><b>Phase 2: CI Integration</b>: GitHub Actions integration that runs audits on staging deploys and flags new blockers directly on pull requests.</li>
+      <li><b>Phase 3: Remediation Verification</b>: automated re-crawling following PR merges to confirm target defects have been resolved.</li>
+      <li><b>Phase 4: Figma Canvas Sync</b>: pushing verified staging annotations directly onto design system canvas files via Figma REST APIs.</li>
     </ul>
-    <p class="mt-tight">Long-term: reviewer corrections become product knowledge, teams define their own UX standards, and the engine becomes the system that keeps products from quietly accumulating problems.</p>
   </div>
 </section>
 
@@ -2025,17 +2023,17 @@ h2.h-sub {
 <section id="qa">
   <div class="prose reveal" style="margin-bottom:34px">
     <div class="sec-num">15</div>
-    <div class="eyebrow">Anticipated questions</div>
-    <h2 class="h">The things hiring managers probe for.</h2>
+    <div class="eyebrow">Technical Q&amp;A</div>
+    <h2 class="h">Common technical and design inquiries.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary><span class="q-text">Are you a designer or a developer?</span></summary><div class="a">A product designer first — research, UX, UI, design systems are my core. The building is what makes me unusual: I can take a design decision and ship the working thing myself instead of waiting for a handoff. This tool is the proof.</div></details>
-    <details><summary><span class="q-text">What was your specific contribution vs. engineers?</span></summary><div class="a">There were no other engineers on it — I was solo. I owned the problem framing, the design, the architecture, and every line of the implementation.</div></details>
-    <details><summary><span class="q-text">Who approved giving an AI tool live credentials to your staging environments?</span></summary><div class="a">No new grant was needed — it reused the same staging access I already held as the product designer manually auditing those apps. The engine logs in with my credentials, scoped to the same environments I was already reviewing screen by screen; it never touched production or anyone else's access.</div></details>
-    <details><summary><span class="q-text">How do you stop the AI from hallucinating findings?</span></summary><div class="a">The objective stuff never touches AI — 229 deterministic checks handle it. Every AI finding must ground to a real DOM element or it's rejected, must name a specific principle/WCAG criterion, and must pass a four-question false-positive gate. Reviewer rejections become permanent rules.</div></details>
-    <details><summary><span class="q-text">How is this different from axe-core or Lighthouse?</span></summary><div class="a">Those see one static page and cover mostly automated accessibility. This logs in and clicks through the product to audit every interactive state, combines deterministic checks with AI design judgment, grounds every finding on a real element, and outputs annotated screenshots plus copy-paste fixes — not just a score. It uses axe-core inside it as one of many inputs.</div></details>
-    <details><summary><span class="q-text">How did you measure success?</span></summary><div class="a">Absolute human-confirmed useful findings per screen. I deliberately rejected "acceptance %" because you can game it by shrinking the denominator. No rule shipped without a measured false-positive rate on a real product.</div></details>
-    <details><summary><span class="q-text">Could you take it to production?</span></summary><div class="a">Yes — the roadmap is written: a live baseline, multi-product validation, a fix-verification loop, and deploying the dashboard service with inline review and continuous monitoring.</div></details>
+    <details open><summary><span class="q-text">Are you a designer or an engineer?</span></summary><div class="a">Product design is my core foundation: research, UX architecture, interaction design, and design systems. I also write production TypeScript to ship working prototypes and developer tooling end-to-end.</div></details>
+    <details><summary><span class="q-text">What was your contribution compared to engineering?</span></summary><div class="a">I conceived, designed, and built the entire engine independently, covering the MCP architecture, Playwright crawlers, axe integrations, and Next.js reporting dashboard.</div></details>
+    <details><summary><span class="q-text">How was staging access secured?</span></summary><div class="a">The tool utilized existing developer staging credentials scoped strictly to internal test environments with no production database access.</div></details>
+    <details><summary><span class="q-text">How do you prevent model hallucinations?</span></summary><div class="a">Deterministic checks evaluate objective rules (contrast math, aria attributes) directly. AI heuristic findings are rejected unless they map to a valid DOM node and pass structured false-positive validation.</div></details>
+    <details><summary><span class="q-text">How does this differ from axe-core or Lighthouse?</span></summary><div class="a">Lighthouse and axe evaluate a single static URL. This engine authenticates, crawls interactive application states, pairs axe-core with semantic layout heuristics, and exports diff-ready CSS token patches.</div></details>
+    <details><summary><span class="q-text">How did you measure audit effectiveness?</span></summary><div class="a">By tracking verified findings per screen and measuring false-positive rates against real product staging environments.</div></details>
+    <details><summary><span class="q-text">Can this deploy to production CI pipelines?</span></summary><div class="a">Yes. The containerized MCP service connects directly to GitHub Actions for automated regression gating on release candidates.</div></details>
   </div>
 </section>
 

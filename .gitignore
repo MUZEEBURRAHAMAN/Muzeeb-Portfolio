@@ -9,5 +9,8 @@ node_modules/
 .vercel
 .env*
 
-# Local Claude Code tooling (not site content)
+# Local Claude / Agent tooling (not site content)
 .claude/
+.agents/
+skills-lock.json
+

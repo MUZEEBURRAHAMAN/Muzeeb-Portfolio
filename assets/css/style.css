@@ -564,7 +564,10 @@ h1, h2, h3, h4, h5, h6,
 }
 .mz-popover-li__btn:hover {
     background: #004182;
-    transform: translateY(-1px);
+    transform: none;
+}
+.mz-popover-li__btn:active {
+    transform: scale(0.97);
 }
 .mz-popover-li__name {
     font-size: 0.94rem;
@@ -642,7 +645,10 @@ h1, h2, h3, h4, h5, h6,
 }
 .mz-popover-tw__btn:hover {
     opacity: 0.88;
-    transform: translateY(-1px);
+    transform: none;
+}
+.mz-popover-tw__btn:active {
+    transform: scale(0.97);
 }
 .mz-popover-tw__handle {
     font-size: 0.92rem;
@@ -715,7 +721,10 @@ h1, h2, h3, h4, h5, h6,
 }
 .mz-popover-bh__btn:hover {
     background: #0044d4;
-    transform: translateY(-1px);
+    transform: none;
+}
+.mz-popover-bh__btn:active {
+    transform: scale(0.97);
 }
 .mz-popover-bh__name {
     font-size: 0.92rem;
@@ -1130,7 +1139,8 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     white-space: nowrap;
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.mz-proj__cta:hover { transform: translateY(-2px); }
+.mz-proj__cta:hover { transform: none; background: #ffffff; }
+.mz-proj__cta:active { transform: scale(0.97); }
 .mz-proj__cta.soon { background: transparent; color: #8a8a8a; border: 1px solid #2a2a2a; cursor: default; }
 .mz-proj__cta.soon:hover { transform: none; }
 .mz-marquee { width: 100%; overflow: hidden; position: relative; }
@@ -5005,8 +5015,155 @@ body.mz-sheet-open {
     .mz-sheet__footer {
         padding: 12px 20px;
     }
-    .mz-sheet__title {
-        font-size: 22px;
-    }
+/* ============================================================
+   GLOBAL MICRO-INTERACTIONS & CRAFT SYSTEM (Site-Wide)
+   ============================================================ */
+
+/* 1. SPOTLIGHT BORDER EFFECT */
+.mz-spotlight-card,
+.pg-feat-card,
+.pg-side-card,
+.pg-solution-card,
+.pg-comm-card,
+.pg-kit-card,
+.pg-media-card,
+.pg-exp-card,
+.mz-work-card,
+.mz-bento__cell {
+    position: relative;
+    --mouse-x: -999px;
+    --mouse-y: -999px;
+    --spotlight-opacity: 0;
 }
+
+.mz-spotlight-card::before,
+.pg-feat-card::before,
+.pg-side-card::before,
+.pg-solution-card::before,
+.pg-comm-card::before,
+.pg-kit-card::before,
+.pg-media-card::before,
+.pg-exp-card::before,
+.mz-work-card::before,
+.mz-bento__cell::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.18), transparent 80%);
+    opacity: var(--spotlight-opacity);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 1;
+}
+
+[data-theme="light"] .mz-spotlight-card::before,
+[data-theme="light"] .pg-feat-card::before,
+[data-theme="light"] .pg-side-card::before,
+[data-theme="light"] .pg-solution-card::before,
+[data-theme="light"] .pg-comm-card::before,
+[data-theme="light"] .pg-kit-card::before,
+[data-theme="light"] .pg-media-card::before,
+[data-theme="light"] .pg-exp-card::before,
+[data-theme="light"] .mz-work-card::before,
+[data-theme="light"] .mz-bento__cell::before {
+    background: radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.08), transparent 80%);
+}
+
+.pg-feat-card > *,
+.pg-side-card > *,
+.pg-solution-card > *,
+.pg-comm-card > *,
+.pg-kit-card > *,
+.pg-media-card > *,
+.pg-exp-card > *,
+.mz-work-card > *,
+.mz-bento__cell > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* 2. MEDIA FRAMING & HAIRLINE VIGNETTE */
+.pg-feat-card__media,
+.pg-comm-card__media,
+.mz-work-card__img-container {
+    position: relative;
+}
+
+.pg-feat-card__media::after,
+.pg-comm-card__media::after,
+.mz-work-card__img-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18), inset 0 2px 8px rgba(0, 0, 0, 0.22);
+    pointer-events: none;
+    border-radius: inherit;
+    transition: opacity 0.25s ease;
+}
+
+[data-theme="light"] .pg-feat-card__media::after,
+[data-theme="light"] .pg-comm-card__media::after,
+[data-theme="light"] .mz-work-card__img-container::after {
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+/* 3. MINIMALIST TOAST NOTIFICATIONS */
+.mz-toast-container {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.mz-toast {
+    background: rgba(22, 22, 22, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #f4f2ed;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 8px 16px;
+    border-radius: 999px !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+}
+
+.mz-toast.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.mz-toast__icon {
+    width: 14px;
+    height: 14px;
+    color: #10b981;
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+[data-theme="light"] .mz-toast {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #17170f;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
 

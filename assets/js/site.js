@@ -841,6 +841,96 @@
     });
   }
 
+  /* ---------- Card Spotlight Cursor Glow ---------- */
+  function initCardSpotlight() {
+    if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    var CARD_SEL = ".pg-feat-card, .pg-side-card, .pg-solution-card, .pg-comm-card, .pg-kit-card, .pg-media-card, .pg-exp-card, .mz-work-card, .mz-bento__cell, .mz-spotlight-card, .site-editions__card";
+    
+    document.addEventListener("pointermove", function (e) {
+      var card = e.target.closest(CARD_SEL);
+      if (!card) return;
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", x + "px");
+      card.style.setProperty("--mouse-y", y + "px");
+      card.style.setProperty("--spotlight-opacity", "1");
+    }, { passive: true });
+
+    document.addEventListener("pointerout", function (e) {
+      var card = e.target.closest(CARD_SEL);
+      if (card && (!e.relatedTarget || !card.contains(e.relatedTarget))) {
+        card.style.setProperty("--spotlight-opacity", "0");
+      }
+    }, { passive: true });
+  }
+
+  /* ---------- Minimalist Toast Notification System ---------- */
+  function initToastSystem() {
+    var container = document.querySelector(".mz-toast-container");
+    if (!container) {
+      container = document.createElement("div");
+      container.className = "mz-toast-container";
+      container.setAttribute("aria-live", "polite");
+      document.body.appendChild(container);
+    }
+
+    var CHECK_ICON = '<svg class="mz-toast__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+    window.mzToast = function (msg, duration) {
+      duration = duration || 2000;
+      var toast = document.createElement("div");
+      toast.className = "mz-toast";
+      toast.innerHTML = CHECK_ICON + '<span>' + msg + '</span>';
+      container.appendChild(toast);
+      
+      requestAnimationFrame(function () {
+        toast.classList.add("show");
+      });
+
+      setTimeout(function () {
+        toast.classList.remove("show");
+        setTimeout(function () {
+          if (toast.parentNode) toast.parentNode.removeChild(toast);
+        }, 300);
+      }, duration);
+    };
+
+    // Download click handler
+    document.addEventListener("click", function (e) {
+      var dl = e.target.closest("a[download], .pg-download-btn, .skill-box__download");
+      if (!dl) return;
+      var filename = dl.getAttribute("download") || dl.getAttribute("href") || "file";
+      filename = filename.split("/").pop();
+      window.mzToast("Downloaded " + filename, 2200);
+    });
+
+    // Copy trigger handler
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-copy], .copy-btn");
+      if (!btn) return;
+      var text = btn.getAttribute("data-copy") || btn.innerText;
+      if (navigator.clipboard && text) {
+        navigator.clipboard.writeText(text).then(function () {
+          window.mzToast("Copied to clipboard", 2000);
+        });
+      }
+    });
+  }
+
+  /* ---------- Global Modal & Sheet Esc Accessibility ---------- */
+  function initGlobalModalA11y() {
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" || e.key === "Esc") {
+        var activeModal = document.querySelector(".pg-modal-overlay.active, .mz-modal.open, .csd-modal.active");
+        if (activeModal) {
+          activeModal.classList.remove("active", "open");
+          document.body.style.overflow = "";
+        }
+      }
+    });
+  }
+
   ready(function () {
     ensureSFXLoaded();
     initTheme();
@@ -854,5 +944,8 @@
     initGlobalSFX();
     initTypingText();
     initProblemSheet();
+    initCardSpotlight();
+    initToastSystem();
+    initGlobalModalA11y();
   });
 })();
