@@ -9,6 +9,101 @@
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/style.css?v=430">
 <style>
+/* Vertical side rails & 1134px layout */
+#main {
+  max-width: 1134px !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+}
+
+@media (min-width: 640px) {
+  #main {
+    padding: 0 24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #main {
+    padding: 0 32px !important;
+  }
+}
+
+[data-theme="light"] #main,
+html[data-theme="light"] #main {
+  border-left-color: rgba(0, 0, 0, 0.08) !important;
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header__inner {
+  max-width: 1134px !important;
+  padding: 0 16px !important;
+}
+@media (min-width: 640px) {
+  .site-header__inner {
+    padding: 0 24px !important;
+  }
+}
+@media (min-width: 768px) {
+  .site-header__inner {
+    padding: 0 32px !important;
+  }
+}
+
+/* Hatched Section Divider (Attached edge-to-edge to #main vertical side rails) */
+.hatched-divider {
+  display: block !important;
+  width: calc(100% + 32px) !important;
+  margin: 3.5rem -16px !important;
+  height: 32px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+  z-index: 2 !important;
+}
+
+@media (min-width: 640px) {
+  .hatched-divider {
+    width: calc(100% + 48px) !important;
+    margin: 4.5rem -24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hatched-divider {
+    width: calc(100% + 64px) !important;
+    margin: 5rem -32px !important;
+  }
+}
+
+.hatched-divider__pattern {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0.25 !important;
+  background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
+  background-size: 10px 10px !important;
+  pointer-events: none !important;
+}
+
+[data-theme="light"] .hatched-divider,
+html[data-theme="light"] .hatched-divider {
+  border-top-color: rgba(0, 0, 0, 0.12) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .hatched-divider__pattern,
+html[data-theme="light"] .hatched-divider__pattern {
+  opacity: 0.15 !important;
+}
+
   :root{
     --bg:#FBFBFA; --surface:#fff; --ink:#0B0B0C; --muted:#57574f; --soft:#8b8b84;
     --line:rgba(11,11,12,.09); --line-2:rgba(11,11,12,.06);
@@ -16,13 +111,14 @@
     --red:#E5484D; --red-soft:#FDECEC; --green:#2FA96A; --green-soft:#E9F6EF;
     --amber:#F5A623; --violet:#6E56CF;
     --ease:cubic-bezier(.16,1,.3,1);
-    --display:'Poppins',system-ui,sans-serif; --sans:'Inter',system-ui,sans-serif; --mono:'Geist Mono',monospace;
+    --display:'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; --sans:'Archivo', system-ui, sans-serif; --mono:'Geist Mono',monospace;
     --maxw:1320px; --pad:32px; --read:940px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
   body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
   a{color:inherit} img{max-width:100%;display:block}
+  .hero__sub, .intro .lead, .lead, h2, h3, h4 { font-family: var(--display) !important; letter-spacing: -0.012em; }
   section{scroll-margin-top:150px}
   .hero__in,.stats,.chapters,.intro,.cards,.chips,.ba,.tbl,.metrics,.gallery,.divider,.steps,.footer,.diff,.classify{margin-left:auto;margin-right:auto}
   .stats,.cards,.metrics,.gallery,.divider{max-width:var(--maxw)}
@@ -77,8 +173,13 @@
     background-image:radial-gradient(rgba(11,11,12,.07) 1px,transparent 1px);background-size:24px 24px;
     -webkit-mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent)}
   .hero__in{position:relative;z-index:1;max-width:900px;text-align:center}
-  .hero__badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.8rem;color:var(--muted);margin-bottom:26px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
-  .hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+  .mz-hero__eyebrow-wrapper { margin: 0 auto 24px; display: flex; width: fit-content; }
+  .mz-hero__badge-pill { display: inline-flex; align-items: center; gap: 10px; padding: 4px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--ink); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; }
+  .mz-hero__badge-pill:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); }
+  .mz-hero__badge-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--bg); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; line-height: 1.4; }
+  .mz-hero__badge-tag .mz-hero__dot { width: 6px; height: 6px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25); flex: none; }
+  .mz-hero__badge-text { padding: 0 8px 0 2px; color: var(--muted); font-size: 0.82rem; letter-spacing: 0.01em; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s ease; }
+  .mz-hero__badge-pill:hover .mz-hero__badge-text { color: var(--ink); }
   .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.3rem,5.4vw,3.9rem);line-height:1.04;letter-spacing:-.035em}
   .hero h1 .grad{background:linear-gradient(100deg,var(--accent),#7aa5f5);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero__sub{color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.22rem);line-height:1.6;margin:24px auto 0;max-width:660px}
@@ -292,10 +393,22 @@
   </div>
 </header>
 
+<div id="main" class="w-full">
+
 <!-- HERO -->
 <header class="hero">
   <div class="hero__in">
-    <span class="hero__badge"><span class="dot"></span> Case Study · Product Designer &amp; Builder</span>
+    <div class="mz-hero__eyebrow-wrapper">
+      <div class="mz-hero__badge-pill">
+        <span class="mz-hero__badge-tag">
+          <span class="mz-hero__dot"></span>
+          CASE STUDY
+        </span>
+        <span class="mz-hero__badge-text">
+          Product Designer &amp; AI Engineer · Edge-State Fixer
+        </span>
+      </div>
+    </div>
     <h1>AI writes the happy path.<br>It skips the <span class="grad">other 40%</span>.</h1>
     <p class="hero__sub">v0, Lovable, Bolt and Cursor build the screen where everything works — and quietly skip the ones where it doesn't. <b style="color:var(--ink)">Edge-State Fixer</b> takes an AI-generated React component, detects which of ten edge states it's missing, and writes designed, drop-in code for each — with the reasoning, a live preview, and a real before/after.</p>
     <a class="hero__cta" href="https://edge-state-fixer.vercel.app" target="_blank" rel="noopener">Try the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
@@ -318,19 +431,10 @@
   <div class="stat"><div class="n">WCAG AA</div><div class="l">axe-verified app</div></div>
 </div>
 
-<!-- CHAPTER NAV -->
-<nav class="chapters" id="chapters" style="margin-top:52px">
-  <a href="#overview" class="active">Overview</a>
-  <a href="#insight">The bet</a>
-  <a href="#states">The 10 states</a>
-  <a href="#how">How it works</a>
-  <a href="#diff">Before → After</a>
-  <a href="#judgment">Judgment calls</a>
-  <a href="#stack">Stack</a>
-  <a href="#results">Results</a>
-  <a href="#next">What's next</a>
-  <a href="#qa">Q&amp;A</a>
-</nav>
+<!-- Section Divider: Hero to Overview -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- OVERVIEW -->
 <section id="overview">
@@ -381,9 +485,12 @@
   </div>
 </section>
 
-<div class="divider"><span>The bet</span></div>
+<!-- Section Divider: Overview to Insight -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
-<!-- INSIGHT -->
+<!-- THE BET -->
 <section id="insight">
   <div class="prose reveal">
     <div class="eyebrow">Why this exists</div>
@@ -394,9 +501,12 @@
   </div>
 </section>
 
-<div class="divider"><span>The ten states</span></div>
+<!-- Section Divider: Insight to States -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
-<!-- STATES -->
+<!-- THE 10 STATES -->
 <section id="states">
   <div class="prose reveal">
     <div class="eyebrow">The taste, written down</div>
@@ -417,9 +527,12 @@
   </div>
 </section>
 
-<div class="divider"><span>How it works</span></div>
+<!-- Section Divider: States to How -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
-<!-- HOW -->
+<!-- HOW IT WORKS -->
 <section id="how">
   <div class="prose reveal">
     <div class="eyebrow">The pipeline</div>
@@ -449,9 +562,12 @@
   <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img loading="lazy" src="assets/media/edge-state/01-home.webp" alt="Edge-State Fixer landing page"/></div><figcaption>The single paste-and-fix flow. The app dogfoods its own empty, loading, error, toast and validation states — including the waitlist form.</figcaption></figure>
 </section>
 
-<div class="divider"><span>Before → After</span></div>
+<!-- Section Divider: How to Diff -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
-<!-- DIFF -->
+<!-- BEFORE / AFTER -->
 <section id="diff">
   <div class="prose reveal">
     <div class="eyebrow">A worked example</div>
@@ -513,9 +629,12 @@
   </div>
 </section>
 
-<div class="divider"><span>The hard parts</span></div>
+<!-- Section Divider: Diff to Judgment -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
-<!-- JUDGMENT -->
+<!-- JUDGMENT CALLS -->
 <section id="judgment">
   <div class="prose reveal">
     <div class="eyebrow">The judgment calls</div>
@@ -545,7 +664,10 @@ result.states.empty  <span class="c">// → { status: "not-applicable" }   ← e
 <span class="c">// validation carries the assumptions it surfaced (never invented rules)</span></pre></div>
 </section>
 
-<div class="divider"><span>The stack</span></div>
+<!-- Section Divider: Judgment to Stack -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- STACK -->
 <section id="stack">
@@ -578,7 +700,10 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
 <span class="g">"add the empty and error states"</span>              <span class="c"># generates code</span></pre></div>
 </section>
 
-<div class="divider"><span>Results</span></div>
+<!-- Section Divider: Stack to Results -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- RESULTS -->
 <section id="results">
@@ -595,7 +720,10 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
   </div>
 </section>
 
-<div class="divider"><span>Reflection</span></div>
+<!-- Section Divider: Results to Reflection -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- REFLECTION -->
 <section id="reflection">
@@ -608,9 +736,12 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
   </div>
 </section>
 
-<div class="divider"><span>What's next</span></div>
+<!-- Section Divider: Reflection to Next -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
-<!-- NEXT -->
+<!-- WHAT'S NEXT -->
 <section id="next">
   <div class="prose reveal">
     <div class="eyebrow">What I'd do next</div>
@@ -625,7 +756,10 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
   </div>
 </section>
 
-<div class="divider"><span>Interview brief</span></div>
+<!-- Section Divider: Next to QA -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- Q&A -->
 <section id="qa">
@@ -643,6 +777,11 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
     <details><summary>Are you a designer or a developer?</summary><div class="a">A product designer first — this is a designer-shaped problem, roughly 90% design judgment, 10% model. The building is what makes it unusual: I owned the problem framing, the design, the architecture and every line, and shipped it across web, an MCP server and a CLI myself instead of waiting for a handoff.</div></details>
   </div>
 </section>
+
+<!-- Section Divider: QA to Footer -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- FOOTER -->
 <footer class="mz-footer">
@@ -697,6 +836,8 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
                     <div class="mz-footer__copy">© 2026 Muzeeb Urrahaman · All rights reserved</div>
                 </div>
             </footer>
+
+</div><!-- /#main -->
 
 <script>
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});

@@ -16,6 +16,101 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Vertical side rails & 1134px layout */
+#main {
+  max-width: 1134px !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+}
+
+@media (min-width: 640px) {
+  #main {
+    padding: 0 24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #main {
+    padding: 0 32px !important;
+  }
+}
+
+[data-theme="light"] #main,
+html[data-theme="light"] #main {
+  border-left-color: rgba(0, 0, 0, 0.08) !important;
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header__inner {
+  max-width: 1134px !important;
+  padding: 0 16px !important;
+}
+@media (min-width: 640px) {
+  .site-header__inner {
+    padding: 0 24px !important;
+  }
+}
+@media (min-width: 768px) {
+  .site-header__inner {
+    padding: 0 32px !important;
+  }
+}
+
+/* Hatched Section Divider (Attached edge-to-edge to #main vertical side rails) */
+.hatched-divider {
+  display: block !important;
+  width: calc(100% + 32px) !important;
+  margin: 3.5rem -16px !important;
+  height: 32px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+  z-index: 2 !important;
+}
+
+@media (min-width: 640px) {
+  .hatched-divider {
+    width: calc(100% + 48px) !important;
+    margin: 4.5rem -24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hatched-divider {
+    width: calc(100% + 64px) !important;
+    margin: 5rem -32px !important;
+  }
+}
+
+.hatched-divider__pattern {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0.25 !important;
+  background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
+  background-size: 10px 10px !important;
+  pointer-events: none !important;
+}
+
+[data-theme="light"] .hatched-divider,
+html[data-theme="light"] .hatched-divider {
+  border-top-color: rgba(0, 0, 0, 0.12) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .hatched-divider__pattern,
+html[data-theme="light"] .hatched-divider__pattern {
+  opacity: 0.15 !important;
+}
+
 :root {
   --bg: #FBFBFA;
   --surface: #ffffff;
@@ -39,8 +134,8 @@
   --space-md: 24px;
   --space-lg: 40px;
   --space-xl: 60px;
-  --font-display: "Archivo", "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --shadow-1: rgba(0, 0, 0, 0.04);
   --shadow-2: rgba(0, 0, 0, 0.06);
@@ -90,42 +185,80 @@ body {
   overflow-x: hidden;
 }
 
-/* HERO (LEFT ALIGNED · 1000px) */
+/* HERO (LEFT ALIGNED · 1134px CONTAINER) */
 .hero {
   position: relative;
-  padding: 140px 24px 60px;
-  background: radial-gradient(120% 90% at 50% -10%, var(--accent-soft) 0%, transparent 55%);
+  padding: clamp(50px, 7vw, 90px) 0 clamp(24px, 4vw, 40px);
+  background: transparent;
   text-align: left;
+  width: 100%;
 }
 
 .hero__in {
-  width: min(100%, 1000px);
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   text-align: left;
 }
 
-.hero__badge {
+.mz-hero__eyebrow-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  width: fit-content;
+}
+.mz-hero__badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
+  gap: 10px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 7px 15px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 14px var(--shadow-1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
-
-.hero__badge .dot {
-  width: 7px;
-  height: 7px;
+.mz-hero__badge-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.mz-hero__badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  line-height: 1.4;
+}
+.mz-hero__badge-tag .mz-hero__dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--green);
+  background: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25);
+  flex: none;
+}
+.mz-hero__badge-text {
+  padding: 0 8px 0 2px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+.mz-hero__badge-pill:hover .mz-hero__badge-text {
+  color: var(--ink);
 }
 
 .hero h1 {
@@ -146,7 +279,9 @@ body {
 }
 
 .hero__sub {
-  max-width: 1000px;
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+  max-width: 100%;
   color: var(--muted);
   font-size: 18px;
   line-height: 1.7;
@@ -182,8 +317,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  align-items: center;
-  margin-top: 22px;
+  margin-top: 28px;
 }
 
 .hero__cta {
@@ -214,10 +348,11 @@ body {
   background: var(--line-2);
 }
 
-/* HERO COVER (1000px) */
+/* HERO COVER (1134px CONTAINER) */
 .hero-cover {
-  width: min(1000px, calc(100% - 32px));
-  margin: 36px auto 32px;
+  width: 100%;
+  max-width: 100%;
+  margin: 20px 0 28px;
 }
 
 .hero-cover .frame {
@@ -235,10 +370,11 @@ body {
   display: block;
 }
 
-/* STATS (1000px) */
+/* STATS (1134px CONTAINER) */
 .stats {
-  width: min(1000px, calc(100% - 32px));
-  margin: 0 auto 80px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 20px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 12px;
@@ -273,13 +409,14 @@ body {
   margin-top: 5px;
 }
 
-/* SECTIONS (LEFT ALIGNED · 1000px) */
+/* SECTIONS (LEFT ALIGNED · 1134px CONTAINER) */
 section {
-  width: min(1000px, calc(100% - 32px));
-  margin: 0 auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
   min-height: auto;
-  padding: 90px 0;
-  border-top: 1px solid var(--line-2);
+  padding: 20px 0 40px !important;
+  border-top: none !important;
   scroll-margin-top: 80px;
   text-align: left;
 }
@@ -1235,15 +1372,22 @@ h2.h-sub {
   </div>
 </header>
 
-<!-- MINIMAP -->
-<nav class="minimap" id="minimap" aria-label="Table of contents">
-  <div class="rail" id="mmRail"></div>
-</nav>
+<div id="main" class="w-full">
 
 <!-- HERO -->
 <header class="hero">
   <div class="hero__in">
-    <span class="hero__badge"><span class="dot"></span> Case Study · Privacy-First Chrome Extension</span>
+    <div class="mz-hero__eyebrow-wrapper">
+      <div class="mz-hero__badge-pill">
+        <span class="mz-hero__badge-tag">
+          <span class="mz-hero__dot"></span>
+          CASE STUDY
+        </span>
+        <span class="mz-hero__badge-text">
+          Solo Product Designer &amp; Builder · Catchly
+        </span>
+      </div>
+    </div>
     <h1>You forget the subscriptions.<br>They <span class="grad">never forget you</span>.</h1>
     <p class="hero__sub">Every rival subscription tracker starts by asking for your bank login. <b style="color:var(--ink)">Catchly</b> refuses to — it watches sign-ups, renewals, and price hikes on 24+ services you already use, keeps the entire database on your device, and warns you before your card gets billed. Zero bank connections. No account required. Nothing leaves your browser.</p>
     <div class="hero__meta">
@@ -1276,6 +1420,11 @@ h2.h-sub {
   <div class="stat"><div class="n">18</div><div class="l">Working features, not stubs</div></div>
   <div class="stat"><div class="n">22</div><div class="l">Playwright smoke tests</div></div>
   <div class="stat"><div class="n">MIT</div><div class="l">Source-available on GitHub</div></div>
+</div>
+
+<!-- Section Divider: Hero to Overview -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
 </div>
 
 <!-- 01 OVERVIEW -->
@@ -1327,6 +1476,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Overview to Insight -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- 02 THE BET -->
 <section id="insight">
   <div class="sec-num">02 / THE BET</div>
@@ -1352,6 +1506,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Insight to Shows -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- 03 WHAT IT CATCHES -->
 <section id="shows">
   <div class="sec-num">03 / WHAT IT CATCHES</div>
@@ -1373,6 +1532,11 @@ h2.h-sub {
     <div class="rule"><span class="rk">Data Portability</span><div><h4>Full JSON backup and manual restore</h4><p>Complete data sovereignty with one-click offline JSON export and instant backup restores — no proprietary lock-in.</p></div></div>
   </div>
 </section>
+
+<!-- Section Divider: Shows to How -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- 04 HOW IT WORKS -->
 <section id="how">
@@ -1410,6 +1574,11 @@ h2.h-sub {
     <figcaption>The production Catchly dashboard and Chrome Web Store showcase — clean subscription hierarchy, price-hike flags, and spend summaries.</figcaption>
   </figure>
 </section>
+
+<!-- Section Divider: How to Diff -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- 05 BEFORE VS CATCHLY -->
 <section id="diff">
@@ -1482,6 +1651,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
   </div>
 </section>
 
+<!-- Section Divider: Diff to Judgment -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- 06 JUDGMENT CALLS -->
 <section id="judgment">
   <div class="sec-num">06 / JUDGMENT CALLS</div>
@@ -1510,6 +1684,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
     </div>
   </div>
 </section>
+
+<!-- Section Divider: Judgment to Stack -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- 07 THE STACK -->
 <section id="stack">
@@ -1552,6 +1731,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
 <span class="g">npx playwright test</span></pre></div>
 </section>
 
+<!-- Section Divider: Stack to Results -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- 08 RESULTS -->
 <section id="results">
   <div class="sec-num">08 / RESULTS</div>
@@ -1581,6 +1765,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
   </div>
 </section>
 
+<!-- Section Divider: Results to Reflection -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- 09 REFLECTION & LEARNINGS -->
 <section id="reflection">
   <div class="sec-num">09 / REFLECTION</div>
@@ -1597,6 +1786,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
     </ul>
   </div>
 </section>
+
+<!-- Section Divider: Reflection to Next -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- 10 WHAT'S NEXT -->
 <section id="next">
@@ -1626,6 +1820,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
   </div>
 </section>
 
+<!-- Section Divider: Next to QA -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- 11 INTERVIEW BRIEF / Q&A -->
 <section id="qa">
   <div class="sec-num">11 / INTERVIEW BRIEF</div>
@@ -1642,6 +1841,11 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
     <details><summary><span class="q-text">How does Catchly maintain currency honesty?</span></summary><div class="a">Instead of applying estimated exchange rates that produce incorrect monthly figures, Catchly separates totals into dedicated currency ledgers (e.g. $45 USD + €12 EUR), ensuring financial fidelity.</div></details>
   </div>
 </section>
+
+<!-- Section Divider: QA to Footer -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- LIGHTBOX MODAL -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
@@ -1718,6 +1922,8 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
     <div class="mz-footer__copy">&copy; 2026 Muzeeb Urrahaman · All rights reserved</div>
   </div>
 </footer>
+
+</div><!-- /#main -->
 
 <script>
   // MINIMAP ENGINE

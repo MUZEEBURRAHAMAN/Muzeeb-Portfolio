@@ -16,6 +16,101 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Vertical side rails & 1134px layout */
+#main {
+  max-width: 1134px !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+}
+
+@media (min-width: 640px) {
+  #main {
+    padding: 0 24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #main {
+    padding: 0 32px !important;
+  }
+}
+
+[data-theme="light"] #main,
+html[data-theme="light"] #main {
+  border-left-color: rgba(0, 0, 0, 0.08) !important;
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header__inner {
+  max-width: 1134px !important;
+  padding: 0 16px !important;
+}
+@media (min-width: 640px) {
+  .site-header__inner {
+    padding: 0 24px !important;
+  }
+}
+@media (min-width: 768px) {
+  .site-header__inner {
+    padding: 0 32px !important;
+  }
+}
+
+/* Hatched Section Divider (Attached edge-to-edge to #main vertical side rails) */
+.hatched-divider {
+  display: block !important;
+  width: calc(100% + 32px) !important;
+  margin: 3.5rem -16px !important;
+  height: 32px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+  z-index: 2 !important;
+}
+
+@media (min-width: 640px) {
+  .hatched-divider {
+    width: calc(100% + 48px) !important;
+    margin: 4.5rem -24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hatched-divider {
+    width: calc(100% + 64px) !important;
+    margin: 5rem -32px !important;
+  }
+}
+
+.hatched-divider__pattern {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0.25 !important;
+  background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
+  background-size: 10px 10px !important;
+  pointer-events: none !important;
+}
+
+[data-theme="light"] .hatched-divider,
+html[data-theme="light"] .hatched-divider {
+  border-top-color: rgba(0, 0, 0, 0.12) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .hatched-divider__pattern,
+html[data-theme="light"] .hatched-divider__pattern {
+  opacity: 0.15 !important;
+}
+
 :root {
   --bg: #FBFBFA;
   --surface: #ffffff;
@@ -42,8 +137,8 @@
   --space-md: 24px;
   --space-lg: 40px;
   --space-xl: 60px;
-  --font-display: "Archivo", "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --shadow-1: rgba(0, 0, 0, 0.04);
   --shadow-2: rgba(0, 0, 0, 0.06);
@@ -104,42 +199,80 @@ body {
   overflow-x: hidden;
 }
 
-/* HERO (LEFT ALIGNED · 1000px) */
+/* HERO (LEFT ALIGNED · 1134px CONTAINER) */
 .hero {
   position: relative;
-  padding: 140px 24px 60px;
-  background: radial-gradient(120% 90% at 50% -10%, var(--accent-soft) 0%, transparent 55%);
+  padding: clamp(50px, 7vw, 90px) 0 clamp(24px, 4vw, 40px);
+  background: transparent;
   text-align: left;
+  width: 100%;
 }
 
 .hero__in {
-  width: min(100%, 1000px);
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   text-align: left;
 }
 
-.hero__badge {
+.mz-hero__eyebrow-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  width: fit-content;
+}
+.mz-hero__badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
+  gap: 10px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--line);
-  background: var(--surface);
-  border-radius: 999px;
-  padding: 7px 15px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 14px var(--shadow-1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
-
-.hero__badge .dot {
-  width: 7px;
-  height: 7px;
+.mz-hero__badge-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.mz-hero__badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  line-height: 1.4;
+}
+.mz-hero__badge-tag .mz-hero__dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--green);
+  background: #16a34a;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25);
+  flex: none;
+}
+.mz-hero__badge-text {
+  padding: 0 8px 0 2px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+.mz-hero__badge-pill:hover .mz-hero__badge-text {
+  color: var(--ink);
 }
 
 .hero h1 {
@@ -160,6 +293,8 @@ body {
 }
 
 .hero__sub {
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
   max-width: 820px;
   color: var(--muted);
   font-size: 18px;
@@ -192,10 +327,11 @@ body {
   font-weight: 600;
 }
 
-/* STATS (1000px) */
+/* STATS (1134px CONTAINER) */
 .stats {
-  width: min(1000px, calc(100% - 40px));
-  margin: 32px auto 80px;
+  width: 100%;
+  max-width: 100%;
+  margin: 20px 0 20px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 12px;
@@ -230,13 +366,14 @@ body {
   margin-top: 5px;
 }
 
-/* SECTIONS (LEFT ALIGNED · 1000px) */
+/* SECTIONS (LEFT ALIGNED · 1134px CONTAINER) */
 section {
-  width: min(1000px, calc(100% - 40px));
-  margin: 0 auto;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
   min-height: auto;
-  padding: 90px 0;
-  border-top: 1px solid var(--line-2);
+  padding: 20px 0 40px !important;
+  border-top: none !important;
   scroll-margin-top: 80px;
   text-align: left;
 }
@@ -1521,10 +1658,22 @@ h2.h-sub {
   </div>
 </header>
 
-<!-- HERO (LEFT ALIGNED · 1000px) -->
+<div id="main" class="w-full">
+
+<!-- HERO (LEFT ALIGNED · 1134px CONTAINER) -->
 <header class="hero">
   <div class="hero__in">
-    <span class="hero__badge"><span class="dot"></span> Case Study · Product Designer &amp; Builder</span>
+    <div class="mz-hero__eyebrow-wrapper">
+      <div class="mz-hero__badge-pill">
+        <span class="mz-hero__badge-tag">
+          <span class="mz-hero__dot"></span>
+          CASE STUDY
+        </span>
+        <span class="mz-hero__badge-text">
+          Product Designer &amp; Builder · Omnis AI
+        </span>
+      </div>
+    </div>
     <h1>I was spending a day finding UX problems. So I built the <span class="grad">audit engine</span>.</h1>
     <p class="hero__sub">At Omnis AI, I was the solo product designer across five legal-tech products. Manual staging reviews took hours and missed hidden states. I built an engine that logs in, explores interactive states, and generates developer-ready reports at <b style="color:var(--ink)">~$0.30 a screen</b>.</p>
     <div class="hero__meta">
@@ -1536,7 +1685,7 @@ h2.h-sub {
   </div>
 </header>
 
-<!-- STATS BAR (1000px) -->
+<!-- STATS BAR (1134px CONTAINER) -->
 <div class="stats reveal">
   <div class="stat"><div class="n">229</div><div class="l">Deterministic checks</div></div>
   <div class="stat"><div class="n">342</div><div class="l">Total audit rules</div></div>
@@ -1544,6 +1693,11 @@ h2.h-sub {
   <div class="stat"><div class="n">187</div><div class="l">Passing tests</div></div>
   <div class="stat"><div class="n">~27k</div><div class="l">Lines of TypeScript</div></div>
   <div class="stat"><div class="n">90%+</div><div class="l">Findings tied to real elements</div></div>
+</div>
+
+<!-- Section Divider: Hero to Context -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
 </div>
 
 <!-- SECTION 01: CONTEXT -->
@@ -1596,6 +1750,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Context to Insight -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 02: THE INSIGHT -->
 <section id="insight">
   <div class="prose reveal">
@@ -1607,6 +1766,11 @@ h2.h-sub {
     <p>Solving this required moving beyond static screenshot inspection to build a crawler capable of interacting with the live application.</p>
   </div>
 </section>
+
+<!-- Section Divider: Insight to Challenge -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- SECTION 03: THE CHALLENGE -->
 <section id="challenge">
@@ -1638,6 +1802,11 @@ h2.h-sub {
     </div>
   </div>
 </section>
+
+<!-- Section Divider: Challenge to Workflow -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- SECTION 04: THE WORKFLOW -->
 <section id="workflow">
@@ -1692,6 +1861,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Workflow to Turning Point -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 05: THE TURNING POINT -->
 <section id="turning">
   <div class="prose reveal">
@@ -1705,6 +1879,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Turning Point to Principle -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 06: THE PRINCIPLE -->
 <section id="principle">
   <div class="prose reveal">
@@ -1716,6 +1895,11 @@ h2.h-sub {
     <p>This required giving the engine live session management, computed style inspection, and coordinate snapping. Instead of guessing from screenshots, the tool collects deterministic evidence directly from the browser runtime.</p>
   </div>
 </section>
+
+<!-- Section Divider: Principle to Product -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- SECTION 07: THE PRODUCT -->
 <section id="product">
@@ -1743,6 +1927,11 @@ h2.h-sub {
   <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp" alt=""/></div><figcaption>Anatomy of a finding card: a verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes.</figcaption></figure>
 </section>
 
+<!-- Section Divider: Product to Stack -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 08: THE STACK -->
 <section id="stack">
   <div class="prose reveal">
@@ -1763,6 +1952,11 @@ h2.h-sub {
     </table>
   </div>
 </section>
+
+<!-- Section Divider: Stack to Scenarios -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- SECTION 09: SCENARIOS -->
 <section id="scenarios">
@@ -1790,6 +1984,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Scenarios to Trust -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 10: TRUST -->
 <section id="trust">
   <div class="prose reveal">
@@ -1806,6 +2005,11 @@ h2.h-sub {
     </ul>
   </div>
 </section>
+
+<!-- Section Divider: Trust to Results -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- SECTION 11: RESULTS -->
 <section id="results">
@@ -1881,7 +2085,7 @@ h2.h-sub {
     </div>
     <div class="note__body">
       <span class="note__label">Scope note</span>
-      These figures document working test metrics across Omnis staging apps.
+      These numbers are from my own staging test runs on Omnis apps — not a peer-reviewed benchmark, not third-party audited, and not measured against production traffic.
     </div>
   </div>
 
@@ -1902,6 +2106,11 @@ h2.h-sub {
     </div>
   </div>
 </section>
+
+<!-- Section Divider: Results to Skill Access -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
 
 <!-- SECTION 12: SKILL & AGENT WORKFLOW -->
 <section id="skill-access">
@@ -1970,6 +2179,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Skill to Reflection -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 13: REFLECTION & LEARNINGS -->
 <section id="reflection">
   <div class="prose reveal">
@@ -2004,12 +2218,18 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Reflection to Future -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 14: WHAT'S NEXT -->
 <section id="future">
   <div class="prose reveal">
     <div class="sec-num">14</div>
     <div class="eyebrow">Future Roadmap</div>
-    <h2 class="h">Next iteration milestones.</h2>
+    <h2 class="h">If I picked this back up.</h2>
+    <p>The project is currently parked, not active — see §13. This isn't a committed roadmap, it's what I'd build next if I resumed it.</p>
     <ul>
       <li><b>Phase 1: Baseline Tracking</b>: automated initial crawl establish product baselines to flag regressions on future runs.</li>
       <li><b>Phase 2: CI Integration</b>: GitHub Actions integration that runs audits on staging deploys and flags new blockers directly on pull requests.</li>
@@ -2019,6 +2239,11 @@ h2.h-sub {
   </div>
 </section>
 
+<!-- Section Divider: Future to QA -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
 <!-- SECTION 15: Q&A -->
 <section id="qa">
   <div class="prose reveal" style="margin-bottom:34px">
@@ -2027,9 +2252,9 @@ h2.h-sub {
     <h2 class="h">Common technical and design inquiries.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary><span class="q-text">Are you a designer or an engineer?</span></summary><div class="a">Product design is my core foundation: research, UX architecture, interaction design, and design systems. I also write production TypeScript to ship working prototypes and developer tooling end-to-end.</div></details>
+    <details open><summary><span class="q-text">Who approved giving a product designer live credentials to staging environments?</span></summary><div class="a">No new grant was needed — it reused the same staging access I already held as the product designer manually auditing those apps screen by screen. The engine logs in with my credentials, scoped to the same environments I was already reviewing; it never touched production or anyone else's access.</div></details>
+    <details><summary><span class="q-text">Are you a designer or an engineer?</span></summary><div class="a">Product design is my core foundation: research, UX architecture, interaction design, and design systems. I also write production TypeScript to ship working prototypes and developer tooling end-to-end.</div></details>
     <details><summary><span class="q-text">What was your contribution compared to engineering?</span></summary><div class="a">I conceived, designed, and built the entire engine independently, covering the MCP architecture, Playwright crawlers, axe integrations, and Next.js reporting dashboard.</div></details>
-    <details><summary><span class="q-text">How was staging access secured?</span></summary><div class="a">The tool utilized existing developer staging credentials scoped strictly to internal test environments with no production database access.</div></details>
     <details><summary><span class="q-text">How do you prevent model hallucinations?</span></summary><div class="a">Deterministic checks evaluate objective rules (contrast math, aria attributes) directly. AI heuristic findings are rejected unless they map to a valid DOM node and pass structured false-positive validation.</div></details>
     <details><summary><span class="q-text">How does this differ from axe-core or Lighthouse?</span></summary><div class="a">Lighthouse and axe evaluate a single static URL. This engine authenticates, crawls interactive application states, pairs axe-core with semantic layout heuristics, and exports diff-ready CSS token patches.</div></details>
     <details><summary><span class="q-text">How did you measure audit effectiveness?</span></summary><div class="a">By tracking verified findings per screen and measuring false-positive rates against real product staging environments.</div></details>
@@ -2037,34 +2262,12 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- MINIMAP -->
-<nav class="minimap" aria-label="Case study minimap">
-  <div class="rail" id="mm-rail"></div>
-</nav>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Close preview">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-  </button>
-  <button class="lightbox__nav prev" id="lightboxPrev" aria-label="Previous image">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  </button>
-  <button class="lightbox__nav next" id="lightboxNext" aria-label="Next image">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </button>
-  <img loading="lazy" class="lightbox__img" id="lightboxImg" src="" alt="" />
-  <div class="lightbox__caption" id="lightboxCaption"></div>
+<!-- Section Divider: QA to Footer -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
 </div>
 
-<!-- FOOTER -->
+<!-- FOOTER (Connected inside #main rails) -->
 <footer class="mz-footer">
   <div class="mz-footer__row">
     <div class="mz-footer__id">
@@ -2117,6 +2320,35 @@ h2.h-sub {
     <div class="mz-footer__copy">&copy; 2026 Muzeeb Urrahaman · All rights reserved</div>
   </div>
 </footer>
+
+</div><!-- /#main -->
+
+<!-- MINIMAP -->
+<nav class="minimap" aria-label="Case study minimap">
+  <div class="rail" id="mm-rail"></div>
+</nav>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close preview">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <button class="lightbox__nav prev" id="lightboxPrev" aria-label="Previous image">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="lightbox__nav next" id="lightboxNext" aria-label="Next image">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+  <img loading="lazy" class="lightbox__img" id="lightboxImg" src="" alt="" />
+  <div class="lightbox__caption" id="lightboxCaption"></div>
+</div>
 
 <script>
   const io = new IntersectionObserver((entries) => {
