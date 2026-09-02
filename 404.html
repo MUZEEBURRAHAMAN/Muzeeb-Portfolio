@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+    <script>try{var p=new URLSearchParams(location.search).get("theme");var t=p||localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/favicon.png">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="assets/css/style.css?v=560">
     <style>
         .mz-404-hero {
-            padding: 80px 0 60px;
+            padding: 48px 0 24px;
             text-align: center;
             position: relative;
         }
@@ -102,7 +102,7 @@
             flex-wrap: wrap;
             gap: 14px;
             justify-content: center;
-            margin-bottom: 60px;
+            margin-bottom: 36px;
         }
         .mz-btn-pill {
             display: inline-flex;
@@ -148,11 +148,11 @@
         /* Recommended Quick Links */
         .mz-404-rec {
             text-align: left;
-            padding: 32px;
+            padding: 24px 28px;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 16px;
-            margin-bottom: 60px;
+            margin-bottom: 24px;
         }
         [data-theme="light"] .mz-404-rec {
             background: rgba(0, 0, 0, 0.02);
@@ -205,6 +205,50 @@
         .mz-404-rec__arrow {
             color: #e8602a;
             font-size: 16px;
+        }
+
+        /* Clean Hatched Section Divider */
+        .hatched-divider {
+            display: block !important;
+            width: calc(100% + 32px) !important;
+            margin: 2.5rem -16px 2rem !important;
+            height: 32px !important;
+            position: relative !important;
+            overflow: hidden !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            box-sizing: border-box !important;
+            z-index: 2 !important;
+        }
+        @media (min-width: 640px) {
+            .hatched-divider {
+                width: calc(100% + 48px) !important;
+                margin: 3rem -24px 2.5rem !important;
+            }
+        }
+        @media (min-width: 768px) {
+            .hatched-divider {
+                width: calc(100% + 64px) !important;
+                margin: 3.5rem -32px 3rem !important;
+            }
+        }
+        .hatched-divider__pattern {
+            position: absolute !important;
+            inset: 0 !important;
+            opacity: 0.35 !important;
+            background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1.5px, transparent 0, transparent 8px) !important;
+            pointer-events: none !important;
+        }
+        [data-theme="light"] .hatched-divider,
+        html[data-theme="light"] .hatched-divider {
+            border-top-color: rgba(0, 0, 0, 0.15) !important;
+            border-bottom-color: rgba(0, 0, 0, 0.15) !important;
+            color: #000000 !important;
+        }
+        [data-theme="light"] .hatched-divider__pattern,
+        html[data-theme="light"] .hatched-divider__pattern {
+            opacity: 0.25 !important;
         }
     </style>
 </head>

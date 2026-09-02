@@ -5413,12 +5413,12 @@ body.mz-sheet-open {
 .hatched-divider {
     display: block !important;
     width: calc(100% + 32px) !important;
-    margin: 3.5rem -16px !important;
+    margin: 2.5rem -16px !important;
     height: 32px !important;
     position: relative !important;
     overflow: hidden !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
     color: #ffffff !important;
     box-sizing: border-box !important;
     z-index: 2 !important;
@@ -5427,23 +5427,22 @@ body.mz-sheet-open {
 @media (min-width: 640px) {
     .hatched-divider {
         width: calc(100% + 48px) !important;
-        margin: 4.5rem -24px !important;
+        margin: 3rem -24px !important;
     }
 }
 
 @media (min-width: 768px) {
     .hatched-divider {
         width: calc(100% + 64px) !important;
-        margin: 5rem -32px !important;
+        margin: 3.5rem -32px !important;
     }
 }
 
 .hatched-divider__pattern {
     position: absolute !important;
     inset: 0 !important;
-    opacity: 0.25 !important;
-    background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
-    background-size: 10px 10px !important;
+    opacity: 0.45 !important;
+    background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1.5px, transparent 0, transparent 8px) !important;
     pointer-events: none !important;
 }
 
@@ -5906,14 +5905,14 @@ body.mz-sheet-open {
 
 [data-theme="light"] .hatched-divider,
 html[data-theme="light"] .hatched-divider {
-    border-top-color: rgba(0, 0, 0, 0.12) !important;
-    border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+    border-top-color: rgba(0, 0, 0, 0.18) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.18) !important;
     color: #000000 !important;
 }
 
 [data-theme="light"] .hatched-divider__pattern,
 html[data-theme="light"] .hatched-divider__pattern {
-    opacity: 0.15 !important;
+    opacity: 0.35 !important;
 }
 
 /* ===== Motion HighlightText (Dark on Light Theme / Light on Dark Theme) ===== */
