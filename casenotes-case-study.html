@@ -1,0 +1,2066 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+(function() {
+  var t = localStorage.getItem("mz-theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.setAttribute("data-theme", t);
+  if (sessionStorage.getItem("casenotes_unlocked") !== "true") {
+    document.documentElement.classList.add("is-locked");
+  }
+})();
+</script>
+<title>CaseNotes: AI Meeting Notetaker for Lawyers · Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="Founding product designer of CaseNotes: an AI meeting notetaker built for lawyers, where every conversation is part of a case, and every record carries the weight of privilege." />
+<meta property="og:title" content="CaseNotes: AI Meeting Notetaker for Lawyers · Case Study · Muzeeb Urrahaman">
+<meta property="og:description" content="An AI meeting notetaker built for lawyers, where every conversation is part of a case, and every record carries the weight of privilege.">
+<meta property="og:image" content="assets/images/Casenotes_cover page_1.webp">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="assets/css/style.css?v=430">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Vertical side rails & 1134px layout */
+#main {
+  max-width: 1134px !important;
+  margin: 0 auto !important;
+  padding: 0 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: relative !important;
+}
+
+@media (min-width: 640px) {
+  #main {
+    padding: 0 24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  #main {
+    padding: 0 32px !important;
+  }
+}
+
+[data-theme="light"] #main,
+html[data-theme="light"] #main {
+  border-left-color: rgba(0, 0, 0, 0.08) !important;
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: rgba(15, 15, 15, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box !important;
+}
+
+[data-theme="light"] .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(251, 251, 250, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Motion HighlightText (Dark on Light Theme / Light on Dark Theme) */
+[data-slot="highlight-text"],
+.highlight-text,
+.mz-highlight-sweep,
+.mz-highlight[data-action="box"],
+.mz-highlight[data-action="highlight"] {
+  position: relative;
+  display: inline;
+  padding: 2px 7px;
+  border-radius: 6px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 1.1s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+  background-image: linear-gradient(90deg, #f4f2ed, #ffffff);
+  color: inherit;
+}
+
+[data-slot="highlight-text"].is-in-view,
+.highlight-text.is-in-view,
+.mz-highlight-sweep.is-in-view,
+.mz-highlight[data-action="box"].is-in-view,
+.mz-highlight[data-action="highlight"].is-in-view {
+  background-size: 100% 100% !important;
+  color: #0f0f0f !important;
+  font-weight: 600;
+}
+
+[data-theme="light"] [data-slot="highlight-text"],
+[data-theme="light"] .highlight-text,
+[data-theme="light"] .mz-highlight-sweep,
+[data-theme="light"] .mz-highlight[data-action="box"],
+[data-theme="light"] .mz-highlight[data-action="highlight"],
+html[data-theme="light"] [data-slot="highlight-text"],
+html[data-theme="light"] .highlight-text,
+html[data-theme="light"] .mz-highlight-sweep,
+html[data-theme="light"] .mz-highlight[data-action="box"],
+html[data-theme="light"] .mz-highlight[data-action="highlight"] {
+  background-image: linear-gradient(90deg, #18181b, #09090b);
+  color: inherit;
+}
+
+[data-theme="light"] [data-slot="highlight-text"].is-in-view,
+[data-theme="light"] .highlight-text.is-in-view,
+[data-theme="light"] .mz-highlight-sweep.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
+[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view,
+html[data-theme="light"] [data-slot="highlight-text"].is-in-view,
+html[data-theme="light"] .highlight-text.is-in-view,
+html[data-theme="light"] .mz-highlight-sweep.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.site-header__inner {
+  max-width: 1134px !important;
+  padding: 0 16px !important;
+}
+@media (min-width: 640px) {
+  .site-header__inner {
+    padding: 0 24px !important;
+  }
+}
+@media (min-width: 768px) {
+  .site-header__inner {
+    padding: 0 32px !important;
+  }
+}
+
+/* Hatched Section Divider (Attached edge-to-edge to #main vertical side rails) */
+.hatched-divider {
+  display: block !important;
+  width: calc(100% + 32px) !important;
+  margin: 3.5rem -16px !important;
+  height: 32px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+  z-index: 2 !important;
+}
+
+@media (min-width: 640px) {
+  .hatched-divider {
+    width: calc(100% + 48px) !important;
+    margin: 4.5rem -24px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hatched-divider {
+    width: calc(100% + 64px) !important;
+    margin: 5rem -32px !important;
+  }
+}
+
+.hatched-divider__pattern {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0.25 !important;
+  background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
+  background-size: 10px 10px !important;
+  pointer-events: none !important;
+}
+
+[data-theme="light"] .hatched-divider,
+html[data-theme="light"] .hatched-divider {
+  border-top-color: rgba(0, 0, 0, 0.12) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
+}
+
+[data-theme="light"] .hatched-divider__pattern,
+html[data-theme="light"] .hatched-divider__pattern {
+  opacity: 0.15 !important;
+}
+
+:root {
+  --bg: #FBFBFA; --surface: #ffffff; --ink: #0B0B0C; --text: #111111;
+  --muted: #57574f; --soft: #6e6e67;
+  --line: rgba(11,11,12,.09); --line-2: rgba(11,11,12,.06);
+  --accent: #2F6DF0; --accent-soft: #EAF1FE;
+  --red: #E5484D; --red-soft: #FDECEC;
+  --green: #2FA96A; --green-soft: #E9F6EF;
+  --amber: #F5A623; --amber-soft: #FEF4E1;
+  --purple: #7C5CFC; --purple-soft: #F1EDFF;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --space-xs:12px; --space-sm:18px; --space-md:24px; --space-lg:40px; --space-xl:60px;
+  --font-display:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --font-body:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  --shadow-1: rgba(0,0,0,.04); --shadow-2: rgba(0,0,0,.06); --shadow-3: rgba(0,0,0,.1);
+  --note-text: #2451b0; --table-head-bg: #fafafa;
+}
+[data-theme="dark"] {
+  --bg: #0f0f0f; --surface: #171717; --ink: #f4f2ed; --text: #f4f2ed;
+  --muted: #a3a39d; --soft: #83837a;
+  --line: rgba(255,255,255,.12); --line-2: rgba(255,255,255,.08);
+  --accent: #6ea8ff; --accent-soft: #182a4a;
+  --red: #ff6b6f; --red-soft: #2a1516;
+  --green: #4fce8f; --green-soft: #123321;
+  --amber: #f5b84f; --amber-soft: #2e2410;
+  --purple: #b9a6ff; --purple-soft: #241c47;
+  --shadow-1: rgba(0,0,0,.35); --shadow-2: rgba(0,0,0,.45); --shadow-3: rgba(0,0,0,.55);
+  --note-text: #bcd3ff; --table-head-bg: #1c1c1c;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { -webkit-font-smoothing:antialiased; scroll-behavior:smooth; overflow-x:clip; }
+body { background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65; overflow-x:clip; }
+
+/* ===== Private Case Study Lock Modal ===== */
+html.is-locked,
+body.is-locked {
+  overflow: hidden !important;
+  height: 100% !important;
+}
+body.is-locked #main {
+  filter: blur(16px);
+  -webkit-filter: blur(16px);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+body:not(.is-locked) .cn-lock-overlay {
+  display: none !important;
+}
+.cn-lock-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 10, 11, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-sizing: border-box;
+  animation: cnFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+[data-theme="light"] .cn-lock-overlay,
+html[data-theme="light"] .cn-lock-overlay {
+  background: rgba(245, 245, 242, 0.72);
+}
+
+.cn-lock-modal {
+  width: 100%;
+  max-width: 440px;
+  background: #171717;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 42px 34px 34px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  animation: cnModalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme="light"] .cn-lock-modal,
+html[data-theme="light"] .cn-lock-modal {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.14);
+}
+
+.cn-lock-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@keyframes cnFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cnModalPop {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes cnShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.cn-shake {
+  animation: cnShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+.cn-lock-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+.cn-lock-icon {
+  width: 76px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.3));
+}
+
+[data-theme="light"] .cn-lock-icon,
+html[data-theme="light"] .cn-lock-icon {
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.14));
+}
+
+.cn-lock-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 auto 10px;
+  line-height: 1.22;
+  text-align: center;
+  width: 100%;
+}
+
+.cn-lock-desc {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 0 auto 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+}
+
+.cn-lock-subdesc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin: 10px auto 0;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+}
+
+.cn-lock-form {
+  margin: 0 auto 14px;
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cn-lock-label {
+  display: block;
+  font-size: 13.5px;
+  color: var(--soft);
+  margin: 0 auto 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.cn-lock-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.cn-lock-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px 44px 13px 16px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+[data-theme="light"] .cn-lock-input,
+html[data-theme="light"] .cn-lock-input {
+  background: #f4f4f2;
+}
+
+.cn-lock-input:focus {
+  border-color: var(--ink);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .cn-lock-input:focus,
+html[data-theme="light"] .cn-lock-input:focus {
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.cn-lock-input.is-invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+.cn-lock-toggle-pwd {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--soft);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.cn-lock-toggle-pwd:hover {
+  color: var(--ink);
+}
+
+.cn-lock-toggle-pwd svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cn-lock-error {
+  font-size: 12.5px;
+  color: #f87171;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+  width: 100%;
+}
+
+[data-theme="light"] .cn-lock-error,
+html[data-theme="light"] .cn-lock-error {
+  color: #dc2626;
+}
+
+.cn-lock-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px 20px;
+  background: #f4f2ed;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, transform 0.15s, opacity 0.2s;
+}
+
+[data-theme="light"] .cn-lock-btn,
+html[data-theme="light"] .cn-lock-btn {
+  background: #0f0f0f;
+  color: #ffffff;
+}
+
+.cn-lock-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.cn-lock-btn:active {
+  transform: translateY(1px);
+}
+
+.cn-lock-back-icon-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+[data-theme="light"] .cn-lock-back-icon-btn {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.cn-lock-back-icon-btn:hover {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(-2px);
+}
+
+[data-theme="light"] .cn-lock-back-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.cn-success-icon-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 20px;
+}
+
+.cn-success-icon-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #22c55e;
+  box-shadow: 0 0 32px rgba(34, 197, 94, 0.22);
+  animation: cnPopSuccess 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-theme="light"] .cn-success-icon-circle {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #16a34a;
+  box-shadow: 0 0 24px rgba(34, 197, 94, 0.15);
+}
+
+.cn-success-icon-circle svg {
+  width: 32px;
+  height: 32px;
+}
+
+@keyframes cnPopSuccess {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cn-lock-footer {
+  margin-top: 18px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cn-lock-footer-text {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+.cn-lock-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cn-lock-link-btn:hover {
+  opacity: 0.75;
+}
+
+.cn-lock-btn:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* HERO */
+.hero { position:relative; padding:clamp(50px, 7vw, 90px) 0 clamp(24px, 4vw, 40px); background:transparent; text-align:left; width:100%; }
+.hero__in { width:100%; max-width:100%; margin:0; text-align:left; }
+.mz-hero__eyebrow-wrapper { margin-bottom: 24px; display: flex; width: fit-content; }
+.mz-hero__badge-pill { display: inline-flex; align-items: center; gap: 10px; padding: 4px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--ink); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; }
+.mz-hero__badge-pill:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); }
+.mz-hero__badge-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--bg); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; line-height: 1.4; }
+.mz-hero__badge-tag .mz-hero__dot { width: 6px; height: 6px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25); flex: none; }
+.mz-hero__badge-text { padding: 0 8px 0 2px; color: var(--muted); font-size: 0.82rem; letter-spacing: 0.01em; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s ease; }
+.mz-hero__badge-pill:hover .mz-hero__badge-text { color: var(--ink); }
+.hero h1 { font-family:var(--font-display); font-size:clamp(34px,4.6vw,54px); line-height:1.12; letter-spacing:-.04em; max-width:960px; margin:0 0 20px; font-weight:800; color:var(--ink); text-align:left; }
+.hero h1 .grad { color:var(--accent); }
+.hero__sub { font-family:var(--font-display); letter-spacing:-0.012em; max-width:100%; color:var(--muted); font-size:18px; line-height:1.7; margin:0 0 8px; text-align:left; font-weight:400; }
+
+/* HERO COVER */
+.hero-cover { width:100%; max-width:100%; margin:20px 0 28px; }
+.hero-cover .frame { border:1px solid var(--line); border-radius:20px; padding:14px; background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); }
+.hero-cover img { border-radius:12px; width:100%; height:auto; display:block; }
+
+/* SNAPSHOT */
+.snapshot { width:100%; max-width:100%; margin:24px 0 32px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+.snapshot .cell { background:var(--surface); padding:20px 22px; }
+.snapshot .k { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--soft); margin-bottom:6px; }
+.snapshot .v { font-size:14px; font-weight:600; color:var(--ink); line-height:1.4; }
+@media (max-width: 768px) { .snapshot { grid-template-columns: repeat(2,1fr); } }
+
+/* SECTION & HEADINGS */
+section { width:100% !important; max-width:100% !important; margin:0 auto !important; padding:20px 0 40px !important; border-top:none !important; scroll-margin-top:80px; text-align:left; }
+.sec-num { font-family:var(--mono); font-size:12px; color:var(--soft); margin-bottom:12px; text-align:left; }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; text-align:left; }
+.eyebrow::before { content:""; width:20px; height:1px; background:var(--accent); }
+h2.h, h2 { font-family:var(--font-display); font-size:clamp(26px,3.4vw,38px); line-height:1.18; letter-spacing:-.035em; margin:0 0 20px; font-weight:800; color:var(--ink); max-width:1000px; text-align:left; }
+h2.h-sub { font-size:clamp(20px,2.6vw,26px); letter-spacing:-.03em; font-weight:700; margin-top:32px; }
+h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; color:var(--ink); margin:0 0 12px; letter-spacing:-.02em; }
+.prose, .prose p { max-width:1000px; color:var(--muted); font-size:16px; line-height:1.75; margin:0 0 18px; text-align:left; }
+.prose ul, .prose ol { max-width:1000px; padding-left:20px; color:var(--muted); text-align:left; margin-bottom:18px; }
+.prose li { margin:8px 0; }
+.prose b { color:var(--ink); font-weight:600; }
+
+.hero__meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:24px; }
+.hero__meta .m { font-family:var(--mono); font-size:11.5px; color:var(--muted); background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:6px 14px; }
+.hero__meta .m b { color:var(--ink); font-weight:600; }
+
+/* OVERVIEW INTRO GRID */
+.intro { display:grid !important; grid-template-columns:1.7fr 1fr; gap:44px; align-items:start; text-align:left; margin-bottom:36px; }
+.intro .lead { font-family:var(--font-display); font-size:20px; line-height:1.5; letter-spacing:-0.015em; color:var(--ink); font-weight:600; margin-bottom:18px; }
+.intro .side { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; text-align:left; box-shadow:0 4px 20px var(--shadow-1); }
+.side .g { padding:12px 0; border-top:1px solid var(--line-2); }
+.side .g:first-child { border-top:0; padding-top:0; }
+.side .k { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--soft); margin-bottom:4px; }
+.side .v { font-size:14.5px; font-weight:600; color:var(--ink); }
+@media (max-width:900px) { .intro { grid-template-columns:1fr; gap:24px; } }
+
+.mono { font-family:var(--mono); font-size:.88em; background:var(--line-2); padding:2px 6px; border-radius:5px; color:var(--ink); }
+
+/* 3 CARDS */
+.cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-sm); margin-top:var(--space-lg); padding:0 !important; text-align:left; }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:26px; text-align:left; box-shadow:0 4px 20px var(--shadow-1); transition:transform .3s var(--ease), box-shadow .3s var(--ease); }
+.card:hover { transform:translateY(-3px); box-shadow:0 16px 36px var(--shadow-2); }
+.card__ic { margin-bottom:18px; width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center; }
+.card__ic--red { background:var(--red-soft); }
+.card__ic--accent { background:var(--accent-soft); }
+.card__ic--green { background:var(--green-soft); }
+.card__ic--amber { background:var(--amber-soft); }
+.card ul { list-style:none; padding-left:0; }
+.card li { position:relative; padding-left:18px; font-size:14px; color:var(--muted); margin-bottom:10px; line-height:1.55; }
+.card li::before { content:""; position:absolute; left:0; top:0.55em; width:5px; height:5px; border-radius:50%; background:var(--soft); }
+@media (max-width:900px) { .cards { grid-template-columns:1fr; gap:16px; } }
+
+/* COMPETITOR GRID */
+.comp-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin:28px 0; }
+.comp-card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px 24px; box-shadow:0 4px 20px var(--shadow-1); }
+.comp-card.comp-card--distinct { border-color:var(--accent); background:var(--accent-soft); }
+.comp-card h3 { font-family:var(--font-display); font-size:17px; font-weight:700; margin-bottom:4px; color:var(--ink); display:flex; align-items:center; justify-content:space-between; }
+.comp-card .comp-card__tag { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); background:var(--surface); padding:3px 8px; border-radius:6px; border:1px solid var(--line); }
+.comp-card ul { list-style:none; padding-left:0; margin-top:14px; }
+.comp-card li { position:relative; padding-left:22px; font-size:14px; color:var(--muted); margin-bottom:10px; line-height:1.55; }
+.comp-card li::before { content:"×"; position:absolute; left:0; top:-1px; color:var(--red); font-weight:700; font-size:16px; }
+.comp-card.comp-card--distinct li::before { content:"✓"; color:var(--accent); font-size:14px; }
+@media (max-width:768px) { .comp-grid { grid-template-columns:1fr; } }
+
+/* PULLQUOTE */
+.pullquote { border-left:3px solid var(--accent); background:var(--surface); border-radius:0 16px 16px 0; padding:28px 32px; margin:36px 0; font-family:var(--font-display); font-size:clamp(18px,2.2vw,22px); font-weight:600; line-height:1.5; color:var(--ink); box-shadow:0 4px 20px var(--shadow-1); }
+
+/* DIAGRAM CARDS */
+.diagram-card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:32px 28px; margin:32px 0; box-shadow:0 10px 30px var(--shadow-1); }
+.diagram-card svg { display:block; width:100%; height:auto; color:var(--muted); }
+.diagram-card svg text { fill:currentColor; font-family:var(--font-body); }
+.diagram-card svg .dg-node { fill:var(--bg); stroke:var(--line); stroke-width:1.5; }
+.diagram-card svg .dg-node--accent { fill:var(--accent-soft); stroke:var(--accent); }
+.diagram-card svg .dg-node--warm { fill:var(--amber-soft); stroke:var(--amber); }
+.diagram-card svg .dg-title { fill:var(--ink); font-weight:700; }
+.diagram-card svg .dg-sub { fill:var(--soft); font-weight:500; }
+.diagram-card svg .dg-edge { stroke:var(--soft); stroke-width:1.5; fill:none; }
+.diagram-card svg .dg-edge--accent { stroke:var(--accent); }
+.diagram-card svg .dg-label { fill:var(--soft); font-size:11px; font-family:var(--mono); }
+.diagram-card figcaption { text-align:center; font-size:13px; color:var(--soft); margin-top:18px; line-height:1.5; }
+
+/* AI PIPELINE STRIP */
+.ai-detail-strip { display:flex; flex-direction:column; gap:14px; margin:28px 0; }
+.ai-step { display:flex; gap:20px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:22px 24px; box-shadow:0 4px 20px var(--shadow-1); transition:border-color .2s, transform .2s; }
+.ai-step:hover { border-color:var(--accent); transform:translateY(-2px); }
+.ai-step__num { flex-shrink:0; width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:var(--mono); font-weight:700; font-size:15px; }
+.ai-step__num--blue { background:var(--accent-soft); color:var(--accent); }
+.ai-step__num--green { background:var(--green-soft); color:var(--green); }
+.ai-step__num--warm { background:var(--amber-soft); color:var(--amber); }
+.ai-step__body { flex:1; }
+.ai-step__title { font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--ink); margin-bottom:6px; }
+.ai-step__desc { font-size:14px; color:var(--muted); line-height:1.6; margin:0; }
+.ai-step__tag { display:inline-block; margin-top:10px; padding:4px 10px; border-radius:100px; font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.04em; }
+.ai-step__tag--saves { background:var(--green-soft); color:var(--green); }
+.ai-step__tag--cost { background:var(--amber-soft); color:var(--amber); }
+.ai-step__tag--ux { background:var(--accent-soft); color:var(--accent); }
+@media (max-width:640px) { .ai-step { flex-direction:column; gap:12px; } }
+
+/* AI FEATURES GRID */
+.ai-features { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin:28px 0; }
+.ai-feat { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px 22px; position:relative; box-shadow:0 4px 20px var(--shadow-1); }
+.ai-feat::before { content:''; display:block; width:28px; height:3px; border-radius:2px; margin-bottom:14px; }
+.ai-feat--blue::before { background:var(--accent); }
+.ai-feat--green::before { background:var(--green); }
+.ai-feat--warm::before { background:var(--amber); }
+.ai-feat__title { font-family:var(--font-display); font-size:15px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.ai-feat__desc { font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; }
+@media (max-width:900px) { .ai-features { grid-template-columns:1fr; } }
+
+/* LIFECYCLE FLOW STRIP */
+.flow-strip { display:flex; align-items:center; gap:8px; margin:28px 0; overflow-x:auto; padding-bottom:10px; }
+.flow-node { background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 18px; font-size:13px; font-weight:600; color:var(--ink); white-space:nowrap; flex-shrink:0; }
+.flow-node--active { background:var(--accent-soft); border-color:var(--accent); color:var(--accent); font-weight:700; }
+.flow-arrow { flex-shrink:0; width:20px; display:flex; align-items:center; justify-content:center; color:var(--soft); font-size:16px; }
+
+/* STATS */
+.stats { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin:32px 0; }
+.stat { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:24px 20px; text-align:center; box-shadow:0 4px 20px var(--shadow-1); }
+.stat__number { font-family:var(--font-display); font-size:clamp(26px,3.5vw,36px); font-weight:800; color:var(--ink); line-height:1; letter-spacing:-.03em; margin-bottom:8px; }
+.stat__number--accent { color:var(--accent); }
+.stat__number--success { color:var(--green); }
+.stat__label { font-size:12px; font-weight:500; color:var(--soft); line-height:1.45; text-align:center; }
+@media (max-width:768px) { .stats { grid-template-columns:repeat(2, 1fr); } }
+
+/* DUMMY IMAGE SLOTS / PLACEHOLDERS */
+.img-slot { background:var(--surface); border:1px dashed var(--line); border-radius:18px; margin:32px 0; overflow:hidden; position:relative; box-shadow:0 4px 20px var(--shadow-1); }
+.img-slot__inner { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:220px; padding:36px 28px; gap:12px; text-align:center; }
+.img-slot__badge { display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:4px 10px; border-radius:6px; }
+.img-slot__title { font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--ink); margin-top:4px; }
+.img-slot__desc { font-size:13.5px; color:var(--muted); max-width:680px; line-height:1.6; }
+.img-slot__icon { width:42px; height:42px; border-radius:11px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; }
+.img-slot__icon svg { width:22px; height:22px; }
+
+/* REAL FIGURE */
+.figure { margin:32px 0; }
+.figure .frame { border:1px solid var(--line); border-radius:20px; padding:14px; background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); }
+.figure img { border-radius:12px; width:100%; height:auto; display:block; cursor:zoom-in; }
+.figure figcaption { color:var(--soft); font-size:12.5px; text-align:center; margin-top:var(--space-xs); line-height:1.45; }
+
+/* NOTE CALLOUT */
+.note { display:flex; align-items:flex-start; gap:14px; border:1px solid rgba(47,109,240,.25); border-left:3px solid var(--accent); border-radius:12px; background:var(--accent-soft); padding:16px 20px; color:var(--note-text); width:100%; box-sizing:border-box; margin:26px 0; text-align:left; line-height:1.6; font-size:14.5px; }
+.note.warn { border-color:rgba(245,166,35,.35); border-left-color:var(--amber); background:var(--amber-soft); color:#8a5a05; }
+.note.good { border-color:rgba(47,169,106,.3); border-left-color:var(--green); background:var(--green-soft); color:#1f6b45; }
+[data-theme="dark"] .note.warn { color:#f5c877; }
+.note__badge svg { width:18px; height:18px; }
+.note__body { flex:1; min-width:0; }
+.note__label { display:inline-block; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-right:8px; }
+.note.warn .note__label { color:var(--amber); }
+.note.good .note__label { color:var(--green); }
+.note b { color:var(--ink); }
+
+/* MINIMAP */
+.minimap { position:fixed; right:24px; top:50%; transform:translateY(-50%); z-index:100; width:34px; }
+.minimap .rail { display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:6px; max-height:80vh; padding:8px 2px; }
+.minimap .mm-item { position:relative; width:28px; height:3px; display:flex; justify-content:flex-end; align-items:center; }
+.minimap .mm-bar { appearance:none; border:0; padding:0; width:16px; height:2px; border-radius:99px; background:#c8c8c8; cursor:pointer; transition:width .18s var(--ease), background .18s ease, height .18s ease; }
+.minimap .mm-bar:hover { width:22px; background:#888; }
+.minimap .mm-bar.active { width:26px; height:2.5px; background:var(--ink); }
+.minimap .mm-tip { position:absolute; right:34px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:9px; white-space:nowrap; padding:8px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface); box-shadow:0 6px 24px var(--shadow-2); font-size:12px; pointer-events:none; }
+.minimap .mm-tip .mm-idx { color:var(--soft); }
+.minimap .mm-tip .mm-lbl { font-weight:500; color:var(--ink); }
+@media (max-width:900px) { .minimap { display:none; } }
+[data-theme="dark"] .minimap .mm-bar { background:rgba(255,255,255,.22); }
+[data-theme="dark"] .minimap .mm-bar:hover { background:rgba(255,255,255,.5); width:22px; }
+[data-theme="dark"] .minimap .mm-bar.active { width:26px; height:2.5px; background:#fff !important; box-shadow:0 0 10px rgba(255,255,255,.55); }
+[data-theme="dark"] .minimap .mm-tip { background:#1a1a1a; border-color:rgba(255,255,255,.12); }
+
+/* NEXT CASE STUDY / FOOTER */
+.next-project-card { margin:40px 0 20px; background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:32px 28px; box-shadow:0 4px 20px var(--shadow-1); display:flex; justify-content:space-between; align-items:center; text-decoration:none; transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.next-project-card:hover { transform:translateY(-3px); border-color:var(--accent); box-shadow:0 16px 36px var(--shadow-2); }
+.next-project-card__info { text-align:left; }
+.next-project-card__eyebrow { font-family:var(--mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--accent); margin-bottom:8px; }
+.next-project-card__title { font-family:var(--font-display); font-size:22px; font-weight:800; color:var(--ink); margin-bottom:6px; }
+.next-project-card__desc { font-size:14px; color:var(--muted); margin:0; }
+.next-project-card__cta { width:48px; height:48px; border-radius:50%; background:var(--ink); color:var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .25s var(--ease); }
+.next-project-card:hover .next-project-card__cta { transform:translateX(4px); }
+.next-project-card__cta svg { width:20px; height:20px; }
+
+/* LIGHTBOX */
+.lightbox { position:fixed; inset:0; background:rgba(0,0,0,.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); z-index:9999; display:none; align-items:center; justify-content:center; padding:40px 24px; cursor:zoom-out; }
+.lightbox.open { display:flex; }
+.lightbox__img { max-width:min(92vw,1200px); max-height:85vh; object-fit:contain; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.5); cursor:default; }
+.lightbox__caption { position:absolute; bottom:24px; left:50%; transform:translateX(-50%); color:#f4f2ed; font-size:13px; text-align:center; max-width:680px; background:rgba(20,20,20,.7); padding:6px 16px; border-radius:8px; backdrop-filter:blur(8px); }
+.lightbox__close, .lightbox__nav { position:absolute; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); color:#fff; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s ease, transform .2s ease; }
+.lightbox__close:hover, .lightbox__nav:hover { background:rgba(255,255,255,.24); transform:scale(1.05); }
+.lightbox__close { top:24px; right:24px; }
+.lightbox__nav.prev { left:24px; top:50%; transform:translateY(-50%); }
+.lightbox__nav.next { right:24px; top:50%; transform:translateY(-50%); }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
+      <img alt="Muzeeb" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
+      <img alt="Muzeeb" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+    </a>
+    <nav class="site-header__nav">
+      <a class="site-header__link" href="index.html">Home</a>
+      <a class="site-header__link" href="about.html">About</a>
+      <a class="site-header__link active" href="best-work.html">Best work</a>
+      <a class="site-header__link" href="playground.html">Playground</a>
+      <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div id="main" class="w-full">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__in">
+    <div class="mz-hero__eyebrow-wrapper">
+      <div class="mz-hero__badge-pill">
+        <span class="mz-hero__badge-tag">
+          <span class="mz-hero__dot"></span>
+          CASE STUDY
+        </span>
+        <span class="mz-hero__badge-text">
+          Founding Product Designer · Legal Tech SaaS
+        </span>
+      </div>
+    </div>
+    <h1>CaseNotes: AI meeting notetaker built for <span class="grad">lawyers, not meetings</span>.</h1>
+    <p class="hero__sub">Where every conversation is part of a case, and every record carries the <span class="mz-highlight" data-action="underline" data-color="#FF9800">weight of privilege</span>.</p>
+    <div class="hero__meta">
+      <span class="m"><b>Muzeeb Urrahaman</b></span>
+      <span class="m">Founding Product Designer</span>
+      <span class="m">Legal Tech SaaS</span>
+      <span class="m">Pre-Launch · 0→1 System</span>
+      <span class="m">Privilege-Safe Matter Memory</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO COVER -->
+<div class="hero-cover">
+  <div class="frame">
+    <img src="assets/images/casenotes-cover.webp" alt="CaseNotes: AI Meeting Notetaker for Lawyers cover preview" loading="eager">
+  </div>
+</div>
+
+<!-- SNAPSHOT -->
+<div class="snapshot">
+  <div class="cell"><div class="k">Role</div><div class="v">Founding Product Designer (0-to-1)</div></div>
+  <div class="cell"><div class="k">Domain</div><div class="v">Legal Tech SaaS · Matter Intelligence</div></div>
+  <div class="cell"><div class="k">Core Constraint</div><div class="v">Privilege Preserved at Capture</div></div>
+  <div class="cell"><div class="k">Outcome</div><div class="v">Cross-Matter Memory &amp; 4 Scoped Views</div></div>
+</div>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- OVERVIEW / TL;DR -->
+<section id="overview">
+  <div class="intro">
+    <div>
+      <p class="lead">CaseNotes is an AI meeting notetaker built specifically for lawyers who <span class="mz-highlight" data-action="underline" data-color="#FF9800">cannot treat sensitive client consultations like sales calls</span>.</p>
+      <p class="prose"><b><span class="mz-highlight" data-action="box">Designed around privilege</span>, not just transcription.</b> Every client conversation may become part of a case file, subject to discovery, privilege review, and bar association conduct rules. CaseNotes treats <em>"can this record exist, and who can see it"</em> as a core design constraint, not a buried settings toggle.</p>
+      <p class="prose"><b>Built as <span class="mz-highlight" data-action="box">matter memory</span>, not an isolated meeting log.</b> Summaries attach directly to active cases. Decisions, court deadlines, and privilege flags connect across the matter's lifecycle, routing straight to assignees without paralegals manually re-entering notes into practice management software.</p>
+    </div>
+    <aside class="side">
+      <div class="g"><div class="k">Category</div><div class="v">Legal Tech SaaS</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Founding Product Designer</div></div>
+      <div class="g"><div class="k">Scope</div><div class="v">0-to-1 Strategy, IA, UX/UI &amp; Design System</div></div>
+      <div class="g"><div class="k">Users</div><div class="v">Partners, Associates, Paralegals, In-House Counsel</div></div>
+      <div class="g"><div class="k">Status</div><div class="v">Pre-Launch Beta</div></div>
+    </aside>
+  </div>
+
+  <div class="note">
+    <div class="note__badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    </div>
+    <div class="note__body">
+      <span class="note__label">The Opening Insight</span>
+      In 9 of the 12 client meetings shadowed during discovery, associates paused or stopped recordings the moment discussions turned toward settlement numbers or strategy, and scrambled afterward to reconstruct that part from memory. That is a structural flaw in general-purpose AI tools.
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- THE PROBLEM -->
+<section id="problem">
+  <h2>Every AI notetaker treats a meeting as a meeting. In law, <span class="mz-highlight" data-action="box">a meeting is evidence</span>.</h2>
+  <p class="prose">Higher-accuracy transcription models do not solve the core failure modes of legal note-taking:</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--red">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      </div>
+      <h3>Scattered Matter Records</h3>
+      <ul>
+        <li>Case notes live scattered across practice management, document storage, calendars, and external notetakers.</li>
+        <li>Paralegals re-type identical notes, billing logs, and task lists across multiple tools after every call.</li>
+        <li>Critical details get lost or mistyped during manual copy-pasting between systems.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--amber">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Privilege Waiver Risk</h3>
+      <ul>
+        <li>In <span class="mz-highlight" data-action="underline" data-color="#FF9800"><em>United States v. Heppner</em></span>, courts established that consumer AI platforms lack the fiduciary relationship required to preserve attorney-client privilege.</li>
+        <li>Passing client strategy through generic notetakers can waive privilege during discovery.</li>
+        <li>Lawyers are forced to choose between efficiency and malpractice exposure.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--accent">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+      </div>
+      <h3>Zero Cross-Meeting Memory</h3>
+      <ul>
+        <li>General tools treat each meeting as an isolated file with no awareness of the overarching matter.</li>
+        <li>Nothing connects a settlement discussion in March to deposition preparation in October.</li>
+        <li>Case context is lost when associates rotate off files or leave the firm.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="note__badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    </div>
+    <div class="note__body">
+      <span class="note__label">Legal Precedent</span>
+      <em>United States v. Heppner</em>, as highlighted by Mayer Brown: uncontrolled consumer AI transcription creates discoverable liabilities in litigation.
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- COMPETITIVE AUDIT -->
+<section id="competition">
+  <h2>Auditing 12 tools: 3 out of 4 failure modes were legal risks, not UX complaints</h2>
+  <p class="prose">General tools compete on raw transcription speed and automated email summaries. In legal practice, that ignores confidentiality requirements, privilege logs, and ethical walls.</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <h3>Fireflies.ai</h3>
+      <ul>
+        <li>No privilege controls: every word captured is discoverable by default in litigation.</li>
+        <li>Intrusive meeting bot creates social friction and awkward moments on client calls.</li>
+        <li>No matter linkage: summaries live siloed in Fireflies rather than the active case file.</li>
+        <li>Consumer-grade data handling not aligned with bar rules of professional conduct.</li>
+      </ul>
+    </div>
+    <div class="comp-card">
+      <h3>Otter.ai</h3>
+      <ul>
+        <li>Same consumer-AI privilege exposure, with no fiduciary relationship under federal rules.</li>
+        <li>Past class-action lawsuits over recording consent practices erode client trust.</li>
+        <li>Arbitrary meeting length caps right at deposition prep durations.</li>
+        <li>Zero practice management or document management integration.</li>
+      </ul>
+    </div>
+    <div class="comp-card">
+      <h3>Fathom</h3>
+      <ul>
+        <li>Bot presence remains visible on calls despite marketing claims, creating exposure.</li>
+        <li>Lacks SOC 2 / ISO compliance configurations needed for legal-grade confidentiality.</li>
+        <li>Steep pricing jump from free to paid with no tier scaled for boutique law firms.</li>
+        <li>No concept of matters, case files, or privilege tiers across client interactions.</li>
+      </ul>
+    </div>
+    <div class="comp-card comp-card--distinct">
+      <h3>Lua <span class="comp-card__tag">Legal-Specific Competitor</span></h3>
+      <ul>
+        <li>Direct legal competitor with SOC 2, ISO 27001, GDPR, and off-the-record controls.</li>
+        <li>Strong on real-time assistance and administrative time entries for billing.</li>
+        <li>Thinner on cross-matter memory: treats meetings as standalone records rather than connected timeline nodes.</li>
+        <li>Lacks role-tuned views: partners, associates, paralegals, and clients all receive the same interface.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    A meeting that needs a 14,000-word transcript to be useful wasn't a meeting. In a law firm, it's also a discovery liability waiting to happen.
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- RESEARCH & THESIS -->
+<section id="research">
+  <h2>Shadowing lawyers before drawing a screen: discovery on real legal constraints</h2>
+  <p class="prose">I observed 12 live client meetings and case conferences across four small-to-midsize firms, conducted 7 follow-up interviews with partners, associates, and paralegals, and audited published AI notetaker guidance from Mayer Brown, Cahill, and the American Bar Association (ABA).</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg></div>
+      <h3>1. Ad-Hoc Pauses</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Associates used personal, undocumented rules to pause recorders during settlement talks, creating firm-wide inconsistency.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg></div>
+      <h3>2. Paralegal Tax</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Paralegals spent hours re-typing identical meeting notes into practice management software, document drives, and billing logs.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+      <h3>3. Meeting Boundaries</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Lawyers treat internal team huddles and privileged client sessions differently, but standard tools handle both identically.</p>
+    </div>
+  </div>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H1l8-8 8 8h-8v8H9z"/></svg>
+      </div>
+      <span class="img-slot__badge">Research Artifact</span>
+      <div class="img-slot__title">Interview Synthesis &amp; Regulatory Mapping</div>
+      <p class="img-slot__desc">Synthesis across 12 live client sessions and 7 attorney interviews, translating ABA ethics opinions and discovery precedents into product requirements.</p>
+    </div>
+  </div>
+
+  <h2 class="h-sub">The Design Thesis</h2>
+  <p class="prose"><b><span class="mz-highlight" data-action="underline" data-color="#FF9800">Principle 1: The lawyer controls whether a record exists</span> in real time.</b> A one-tap shortcut pauses capture mid-sentence and marks the segment privileged, going off the record without breaking conversational flow.</p>
+  <p class="prose"><b><span class="mz-highlight" data-action="box">Principle 2: Every output is linked to a matter</span>.</b> Summaries attach directly to the case record, carry privilege tags, and stay restricted behind firm ethical walls.</p>
+
+  <figure class="diagram-card">
+    <svg viewBox="0 0 920 300" role="img" aria-label="System Architecture Diagram">
+      <defs>
+        <marker id="dgArrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <!-- Live meeting -->
+      <rect class="dg-node" x="10" y="110" width="130" height="60" rx="8"/>
+      <text class="dg-title" x="75" y="135" font-size="12.5" text-anchor="middle">Live meeting</text>
+      <text class="dg-sub" x="75" y="152" font-size="10.5" text-anchor="middle">audio stream</text>
+
+      <line class="dg-edge" x1="140" y1="140" x2="166" y2="140" marker-end="url(#dgArrow1)"/>
+      <text class="dg-label" x="153" y="128" text-anchor="middle">streams</text>
+
+      <!-- Capture gate -->
+      <rect class="dg-node dg-node--accent" x="170" y="95" width="170" height="90" rx="8"/>
+      <text class="dg-title" x="255" y="130" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">Capture gate</text>
+      <text class="dg-sub" x="255" y="148" font-size="10.5" text-anchor="middle">pause · mark privileged</text>
+      <text class="dg-sub" x="255" y="163" font-size="10.5" text-anchor="middle">one keystroke, live</text>
+
+      <line class="dg-edge" x1="340" y1="140" x2="376" y2="140" marker-end="url(#dgArrow1)"/>
+      <text class="dg-label" x="358" y="128" text-anchor="middle">confirmed</text>
+
+      <!-- Structured summary -->
+      <rect class="dg-node" x="380" y="110" width="150" height="60" rx="8"/>
+      <text class="dg-title" x="455" y="135" font-size="12.5" text-anchor="middle">Structured</text>
+      <text class="dg-title" x="455" y="150" font-size="12.5" text-anchor="middle">summary</text>
+
+      <line class="dg-edge" x1="530" y1="140" x2="556" y2="140" marker-end="url(#dgArrow1)"/>
+      <text class="dg-label" x="543" y="128" text-anchor="middle">filed to</text>
+
+      <!-- Matter file -->
+      <rect class="dg-node dg-node--accent" x="560" y="110" width="120" height="60" rx="8"/>
+      <text class="dg-title" x="620" y="135" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">Matter</text>
+      <text class="dg-title" x="620" y="150" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">file</text>
+
+      <!-- Fan-out to roles -->
+      <line class="dg-edge" x1="680" y1="120" x2="736" y2="45" marker-end="url(#dgArrow1)"/>
+      <line class="dg-edge" x1="680" y1="132" x2="736" y2="113" marker-end="url(#dgArrow1)"/>
+      <line class="dg-edge" x1="680" y1="148" x2="736" y2="187" marker-end="url(#dgArrow1)"/>
+      <line class="dg-edge" x1="680" y1="160" x2="736" y2="255" marker-end="url(#dgArrow1)"/>
+
+      <rect class="dg-node" x="740" y="20" width="170" height="50" rx="8"/>
+      <text class="dg-title" x="825" y="42" font-size="12" text-anchor="middle">Partner</text>
+      <text class="dg-sub" x="825" y="58" font-size="10" text-anchor="middle">decisions, risk, billing</text>
+
+      <rect class="dg-node" x="740" y="88" width="170" height="50" rx="8"/>
+      <text class="dg-title" x="825" y="110" font-size="12" text-anchor="middle">Associate</text>
+      <text class="dg-sub" x="825" y="126" font-size="10" text-anchor="middle">action items, deadlines</text>
+
+      <rect class="dg-node" x="740" y="162" width="170" height="50" rx="8"/>
+      <text class="dg-title" x="825" y="184" font-size="12" text-anchor="middle">Paralegal</text>
+      <text class="dg-sub" x="825" y="200" font-size="10" text-anchor="middle">filings, doc requests</text>
+
+      <rect class="dg-node dg-node--warm" x="740" y="230" width="170" height="50" rx="8"/>
+      <text class="dg-title" x="825" y="252" font-size="12" text-anchor="middle" style="fill:var(--amber)">Client / GC</text>
+      <text class="dg-sub" x="825" y="268" font-size="10" text-anchor="middle">privilege-stripped digest</text>
+
+      <text class="dg-label" x="710" y="205" text-anchor="middle">role-scoped view</text>
+    </svg>
+    <figcaption>The two core principles: real-time capture gate control (left) feeding structured intelligence that branches into role-scoped views (right).</figcaption>
+  </figure>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- MEETING LIFECYCLE -->
+<section id="lifecycle">
+  <h2>One meeting, four moments: deciding if a record should exist at all</h2>
+
+  <div class="flow-strip">
+    <div class="flow-node">01. Matter tagging</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node flow-node--active">02. Live meeting</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">03. Privilege review</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node flow-node--active">04. Matter file</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">05. Case routing</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node flow-node--active">06. Follow-up</div>
+  </div>
+
+  <h3 class="h3">1. Before: Tag the matter, inherit its defaults</h3>
+  <p class="prose">CaseNotes links with firm calendars and practice management software. Before a meeting begins, it checks the matter assignment and applies inherited privilege defaults (litigation calls default to privileged and restricted; firm administrative meetings default to open).</p>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <span class="img-slot__badge">Setup Flow</span>
+      <div class="img-slot__title">Calendar Integration &amp; Matter-Tagging Sequence</div>
+      <p class="img-slot__desc">Calendar matching, case selection, and automatic privilege profile inheritance.</p>
+    </div>
+  </div>
+
+  <h3 class="h3">2. During: Minimal ambient UI &amp; one-keystroke control</h3>
+  <p class="prose">During calls, CaseNotes stays ambient: no bot avatars or scrolling transcript text. A discreet indicator shows recording status, and a single shortcut pauses capture for sensitive discussions.</p>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span class="img-slot__badge">In-Meeting UI</span>
+      <div class="img-slot__title">Ambient Recording &amp; Privilege Pause Toast</div>
+      <p class="img-slot__desc">Minimalist status indicator alongside a 'Recording paused (marked privileged)' notification.</p>
+    </div>
+  </div>
+
+  <h3 class="h3">3. After: Structured intelligence, filed where it belongs</h3>
+  <p class="prose">Post-meeting summaries file directly to the case: context, decisions, assignees, deadlines, and segment-by-segment privilege tags. Raw transcripts remain in a secondary drawer to minimize discovery exposure.</p>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <span class="img-slot__badge">Hero Surface</span>
+      <div class="img-slot__title">Post-Meeting Structured Summary View</div>
+      <p class="img-slot__desc">Matter header, decisions, action items, segment-by-segment privilege toggles, and transcript drawer.</p>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    The transcript is evidence. The summary is intelligence. In a law firm, shipping the transcript by default isn't just a UX miss; it creates a wider surface for a privilege fight.
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- AI PIPELINE -->
+<section id="pipeline">
+  <h2>How AI turns 47 minutes into 5 matter-linked artifacts</h2>
+  <p class="prose">Privilege detection and structured artifact extraction run in parallel across the meeting audio stream:</p>
+
+  <div class="ai-detail-strip">
+    <div class="ai-step">
+      <div class="ai-step__num ai-step__num--blue">1</div>
+      <div class="ai-step__body">
+        <div class="ai-step__title">Audio → Diarized Transcript</div>
+        <p class="ai-step__desc">Voice prints identify recurring participants. Unrecognized speakers are checked against the firm's conflict database to flag potential ethical breaches.</p>
+        <span class="ai-step__tag ai-step__tag--saves">Conflict Check</span>
+      </div>
+    </div>
+    <div class="ai-step">
+      <div class="ai-step__num ai-step__num--blue">2</div>
+      <div class="ai-step__body">
+        <div class="ai-step__title">Transcript → Topic Segmentation</div>
+        <p class="ai-step__desc">The dialogue is split into logical topic blocks based on subject shifts rather than arbitrary minute intervals (~8 semantic blocks for a typical 45-minute session).</p>
+        <span class="ai-step__tag ai-step__tag--ux">Semantic Chunking</span>
+      </div>
+    </div>
+    <div class="ai-step">
+      <div class="ai-step__num ai-step__num--green">3</div>
+      <div class="ai-step__body">
+        <div class="ai-step__title">Segments → Decisions, Actions &amp; Privilege Suggestions</div>
+        <p class="ai-step__desc">Settlement numbers and strategy points become Decisions. Commitments turn into Action Items with owners and dates. Work product phrasing is flagged for lawyer confirmation.</p>
+        <span class="ai-step__tag ai-step__tag--saves">Automated Extraction</span>
+      </div>
+    </div>
+    <div class="ai-step">
+      <div class="ai-step__num ai-step__num--green">4</div>
+      <div class="ai-step__body">
+        <div class="ai-step__title">Segments → Key Moments</div>
+        <p class="ai-step__desc">Consensus shifts and critical witness statements receive exact audio timestamps for rapid verification.</p>
+        <span class="ai-step__tag ai-step__tag--ux">10s Audio Scrubbing</span>
+      </div>
+    </div>
+    <div class="ai-step">
+      <div class="ai-step__num ai-step__num--warm">5</div>
+      <div class="ai-step__body">
+        <div class="ai-step__title">Assembly → Case Filing</div>
+        <p class="ai-step__desc">Structured outputs bundle into the standardized case record and sync to practice tools under role-specific permission rules.</p>
+        <span class="ai-step__tag ai-step__tag--cost">Single Model Call per Meeting</span>
+      </div>
+    </div>
+  </div>
+
+  <figure class="diagram-card">
+    <svg viewBox="0 0 960 320" role="img" aria-label="AI Pipeline Diagram">
+      <defs>
+        <marker id="dgArrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <rect class="dg-node" x="10" y="135" width="120" height="55" rx="8"/>
+      <text class="dg-title" x="70" y="158" font-size="12.5" text-anchor="middle">Audio</text>
+      <text class="dg-sub" x="70" y="174" font-size="10" text-anchor="middle">raw meeting</text>
+
+      <line class="dg-edge" x1="130" y1="162" x2="166" y2="162" marker-end="url(#dgArrow2)"/>
+      <text class="dg-label" x="148" y="150" text-anchor="middle">diarize</text>
+
+      <rect class="dg-node" x="170" y="135" width="140" height="55" rx="8"/>
+      <text class="dg-title" x="240" y="158" font-size="12.5" text-anchor="middle">Transcript</text>
+      <text class="dg-sub" x="240" y="174" font-size="10" text-anchor="middle">speaker-labeled</text>
+
+      <line class="dg-edge" x1="310" y1="162" x2="346" y2="162" marker-end="url(#dgArrow2)"/>
+      <text class="dg-label" x="328" y="150" text-anchor="middle">segment</text>
+
+      <rect class="dg-node" x="350" y="135" width="150" height="55" rx="8"/>
+      <text class="dg-title" x="425" y="158" font-size="12.5" text-anchor="middle">Topic segments</text>
+      <text class="dg-sub" x="425" y="174" font-size="10" text-anchor="middle">~8 per 47-min call</text>
+
+      <!-- branch up -->
+      <path class="dg-edge" d="M500 148 C 545 148, 545 68, 590 68" marker-end="url(#dgArrow2)"/>
+      <text class="dg-label" x="540" y="105" text-anchor="middle">extract</text>
+      <rect class="dg-node" x="594" y="42" width="190" height="55" rx="8"/>
+      <text class="dg-title" x="689" y="65" font-size="12" text-anchor="middle">Decisions &amp;</text>
+      <text class="dg-title" x="689" y="80" font-size="12" text-anchor="middle">action items</text>
+
+      <!-- branch down -->
+      <path class="dg-edge dg-edge--accent" d="M500 176 C 545 176, 545 256, 590 256" marker-end="url(#dgArrow2)"/>
+      <text class="dg-label" x="540" y="225" text-anchor="middle">flag (suggest)</text>
+      <rect class="dg-node dg-node--accent" x="594" y="230" width="190" height="55" rx="8"/>
+      <text class="dg-title" x="689" y="253" font-size="12" text-anchor="middle" style="fill:var(--accent)">Privilege flags</text>
+      <text class="dg-sub" x="689" y="268" font-size="10" text-anchor="middle">lawyer confirms/overrides</text>
+
+      <!-- merge -->
+      <path class="dg-edge" d="M784 69 C 830 69, 830 155, 866 155" marker-end="url(#dgArrow2)"/>
+      <path class="dg-edge" d="M784 257 C 830 257, 830 170, 866 170" marker-end="url(#dgArrow2)"/>
+
+      <rect class="dg-node dg-node--warm" x="800" y="135" width="150" height="55" rx="8"/>
+      <text class="dg-title" x="875" y="158" font-size="12.5" text-anchor="middle" style="fill:var(--amber)">Structured</text>
+      <text class="dg-title" x="875" y="173" font-size="12.5" text-anchor="middle" style="fill:var(--amber)">summary</text>
+    </svg>
+    <figcaption>Decisions and action items are extracted in parallel with privilege detection, merging into a unified matter file.</figcaption>
+  </figure>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </div>
+      <span class="img-slot__badge">Interaction Model</span>
+      <div class="img-slot__title">Privilege Confirmation &amp; Override Flow</div>
+      <p class="img-slot__desc">How attorneys verify or override suggested privilege tags with one click, ensuring defensible audit trails.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- MATTER INTELLIGENCE DASHBOARD -->
+<section id="intelligence">
+  <h2>Cross-matter memory: connecting discussions across the life of a case</h2>
+  <p class="prose">Individual meeting notes expire in days. Cross-meeting case memory compounds over months of litigation:</p>
+
+  <div class="ai-features">
+    <div class="ai-feat ai-feat--blue">
+      <div class="ai-feat__title">Matter Timeline</div>
+      <p class="ai-feat__desc">Tracks how theories and settlement parameters evolve across multiple client and opposing counsel sessions.</p>
+    </div>
+    <div class="ai-feat ai-feat--green">
+      <div class="ai-feat__title">Billable Follow-up Tracker</div>
+      <p class="ai-feat__desc">Drafts billable time entries matched to UTBMS activity codes alongside task checklists.</p>
+    </div>
+    <div class="ai-feat ai-feat--warm">
+      <div class="ai-feat__title">Privilege &amp; Decision Log</div>
+      <p class="ai-feat__desc">Maintains an exportable registry of decisions tagged by privilege tier for discovery production.</p>
+    </div>
+    <div class="ai-feat ai-feat--blue">
+      <div class="ai-feat__title">Conflict Ledger</div>
+      <p class="ai-feat__desc">Audits attendee rosters against ongoing firm conflict checks to prevent inadvertent ethical walls breaches.</p>
+    </div>
+    <div class="ai-feat ai-feat--green">
+      <div class="ai-feat__title">Team Coverage Insights</div>
+      <p class="ai-feat__desc">Monitors associate and paralegal case allocation to balance courtroom preparation workloads.</p>
+    </div>
+    <div class="ai-feat ai-feat--warm">
+      <div class="ai-feat__title">Deadline Gap Alerts</div>
+      <p class="ai-feat__desc">Flags commitments tied to statutory court filing deadlines that remain unassigned or incomplete.</p>
+    </div>
+  </div>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <span class="img-slot__badge">Case Intelligence</span>
+      <div class="img-slot__title">Conflict, Attendance &amp; Coverage Dashboard</div>
+      <p class="img-slot__desc">Overview of matter health, participant conflict logs, and court filing schedules across litigation teams.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- WORKFLOW INTEGRATION -->
+<section id="integration">
+  <h2>Syncing where the case already lives: Clio, NetDocuments, and client portals</h2>
+  <p class="prose">CaseNotes avoids standalone silos by syncing structured data directly into core legal software:</p>
+
+  <figure class="diagram-card">
+    <svg viewBox="0 0 700 330" role="img" aria-label="Workflow Routing Diagram">
+      <defs>
+        <marker id="dgArrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0L10 5L0 10z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <rect class="dg-node dg-node--accent" x="10" y="135" width="180" height="60" rx="8"/>
+      <text class="dg-title" x="100" y="160" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">Matter summary</text>
+      <text class="dg-sub" x="100" y="177" font-size="10" text-anchor="middle">structured output</text>
+
+      <!-- direct routes -->
+      <line class="dg-edge" x1="190" y1="150" x2="386" y2="42" marker-end="url(#dgArrow3)"/>
+      <text class="dg-label" x="290" y="85" text-anchor="middle">billing time + task</text>
+
+      <line class="dg-edge" x1="190" y1="160" x2="386" y2="120" marker-end="url(#dgArrow3)"/>
+      <text class="dg-label" x="290" y="132" text-anchor="middle">filed documents</text>
+
+      <line class="dg-edge" x1="190" y1="172" x2="386" y2="198" marker-end="url(#dgArrow3)"/>
+      <text class="dg-label" x="290" y="200" text-anchor="middle">court deadlines</text>
+
+      <rect class="dg-node" x="390" y="16" width="220" height="52" rx="8"/>
+      <text class="dg-title" x="500" y="38" font-size="12.5" text-anchor="middle">Practice management</text>
+      <text class="dg-sub" x="500" y="55" font-size="10" text-anchor="middle">Clio · MyCase · PracticePanther</text>
+
+      <rect class="dg-node" x="390" y="94" width="220" height="52" rx="8"/>
+      <text class="dg-title" x="500" y="116" font-size="12.5" text-anchor="middle">Document management</text>
+      <text class="dg-sub" x="500" y="133" font-size="10" text-anchor="middle">NetDocuments · iManage</text>
+
+      <rect class="dg-node" x="390" y="172" width="220" height="52" rx="8"/>
+      <text class="dg-title" x="500" y="194" font-size="12.5" text-anchor="middle">Case calendar</text>
+      <text class="dg-sub" x="500" y="211" font-size="10" text-anchor="middle">filing deadlines</text>
+
+      <!-- filtered route to client portal -->
+      <line class="dg-edge dg-edge--accent" x1="190" y1="180" x2="266" y2="272" marker-end="url(#dgArrow3)"/>
+      <text class="dg-label" x="205" y="230" text-anchor="middle">redacted summary</text>
+
+      <rect class="dg-node dg-node--warm" x="270" y="250" width="150" height="46" rx="8"/>
+      <text class="dg-title" x="345" y="270" font-size="11.5" text-anchor="middle" style="fill:var(--amber)">Strip privileged</text>
+      <text class="dg-sub" x="345" y="285" font-size="9.5" text-anchor="middle">ethical-wall filter</text>
+
+      <line class="dg-edge" x1="420" y1="273" x2="446" y2="273" marker-end="url(#dgArrow3)"/>
+
+      <rect class="dg-node" x="450" y="248" width="160" height="50" rx="8"/>
+      <text class="dg-title" x="530" y="269" font-size="12" text-anchor="middle">Client portal</text>
+      <text class="dg-sub" x="530" y="285" font-size="10" text-anchor="middle">plain-language digest</text>
+    </svg>
+    <figcaption>Direct synchronization with legal practice suites, while external client views route through an automated privilege-stripping filter.</figcaption>
+  </figure>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- ROLE-BASED VIEWS -->
+<section id="roles">
+  <h2>Same matter, four roles: tailored for legal ethics and responsibilities</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+      <h3>Partner View</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Focuses on strategic decisions, exposure risk, billable time capture, and staffing.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div>
+      <h3>Associate View</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Prioritizes research tasks, motion drafting deadlines, and timestamped source citations.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg></div>
+      <h3>Paralegal View</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Tracks court filing dates, document requests, witness schedules, and docket items.</p>
+    </div>
+  </div>
+
+  <div class="note good">
+    <div class="note__badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+    </div>
+    <div class="note__body">
+      <span class="note__label">Client &amp; In-House Portal</span>
+      Clients receive plain-language digests. Internal attorney work product, settlement strategy notes, and privileged discussions are stripped at the API layer before display.
+    </div>
+  </div>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <span class="img-slot__badge">Permission Scoping</span>
+      <div class="img-slot__title">Role-Based Interface Comparison Grid</div>
+      <p class="img-slot__desc">Side-by-side comparison showing how the exact same meeting record dynamically adapts for Partners, Associates, Paralegals, and Clients.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- MOBILE & IA -->
+<section id="mobile-ia">
+  <h2>Designed for the courthouse hallway: fast, secure mobile access</h2>
+  <p class="prose">Lawyers frequently need quick answers between court sessions. Mobile trims out full transcripts in favor of 30-second briefings, task checkoffs, and masked privileged records.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+      <h3>30-Second Hallway Brief</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Chronological timeline of case commitments and outstanding filings tailored for review before stepping into chambers.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+      <h3>Scoped Matter Search</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Search queries isolate to active cases, preventing ethical-wall leaks and returning structured decision cards instead of raw text.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></div>
+      <h3>Design System Framework</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Dual-theme architecture (dark mode for dense case-team workspaces, warm light mode for client portals) with strict token hygiene.</p>
+    </div>
+  </div>
+
+  <div class="img-slot">
+    <div class="img-slot__inner">
+      <div class="img-slot__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <span class="img-slot__badge">Mobile &amp; Design System</span>
+      <div class="img-slot__title">Mobile Viewports &amp; Component Token Architecture</div>
+      <p class="img-slot__desc">Key mobile screens (Hallway Briefing, Timeline, Search) and Figma design system components showing density-aware variants.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="hatched-divider" aria-hidden="true">
+  <div class="hatched-divider__pattern"></div>
+</div>
+
+<!-- METRICS & PROOFS -->
+<section id="metrics">
+  <h2>Prototype validation with legal teams</h2>
+
+  <div class="stats">
+    <div class="stat"><div class="stat__number stat__number--accent">94%</div><div class="stat__label">Task completion rate<br>(finding matter privilege status)</div></div>
+    <div class="stat"><div class="stat__number"><span class="mz-highlight" data-action="box">88%</span></div><div class="stat__label">Stated they would trust it<br><span class="mz-highlight" data-action="underline" data-color="#FF9800">on privileged client calls</span></div></div>
+    <div class="stat"><div class="stat__number stat__number--success">86/100</div><div class="stat__label">Usability SUS Score<br>across partner &amp; associate testers</div></div>
+    <div class="stat"><div class="stat__number">45 min</div><div class="stat__label">Saved per matter weekly<br>in note re-entry and billing prep</div></div>
+  </div>
+
+  <h2 class="h-sub">Key Design Decisions</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Systems Over Screens</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Designed an interconnected matter-linked architecture rather than generic transcription screens, supporting multi-role legal workflows.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Compliance-Led Design</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Integrated ethical walls, privilege logs, and discovery defensibility into the core product rather than treating compliance as an afterthought.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+      <h3>Role-Specific Scoping</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Created structural boundaries for four distinct user tiers, ensuring sensitive work product is never exposed to unauthorized recipients.</p>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    Most AI products treat compliance as a checkbox after design is done. In law, compliance is a design input from the first screen. Get the wrong default here and the product doesn't have a rough edge; it has a liability.
+  </div>
+</section>
+
+<!-- NEXT PROJECT -->
+<a href="omnisproof-case-study.html" class="next-project-card">
+  <div class="next-project-card__info">
+    <div class="next-project-card__eyebrow">NEXT CASE STUDY</div>
+    <h3 class="next-project-card__title">OmnisProof: Self-Serve Legal E-Signatures</h3>
+    <p class="next-project-card__desc">Collapsing a 4-step wizard into one guided, AI-assisted setup page for legal teams.</p>
+  </div>
+  <div class="next-project-card__cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </div>
+</a>
+
+<!-- FOOTER -->
+<footer class="mz-footer">
+  <div class="mz-footer__row">
+    <div class="mz-footer__id">
+      <a aria-label="Muzeeb Urrahaman" href="index.html" class="mz-footer__logo">
+        <img alt="Muzeeb" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
+        <img alt="Muzeeb" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+      </a>
+    </div>
+    <div class="mz-footer__socials">
+      <a href="https://linktr.ee/muzeeb1998" target="_blank" aria-label="Linktree">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M128,115.31,77.66,165.66a8,8,0,0,1-11.32-11.32L108.69,112H48a8,8,0,0,1,0-16h60.69L66.34,53.66A8,8,0,0,1,77.66,42.34L120,84.69V24a8,8,0,0,1,16,0V84.69l42.34-42.35a8,8,0,0,1,11.32,11.32L147.31,96H208a8,8,0,0,1,0,16H147.31l42.35,42.34a8,8,0,0,1-11.32,11.32L128,115.31Z" opacity="0.2"/>
+          <path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"/>
+        </svg>
+      </a>
+      <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
+          <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" aria-label="LinkedIn">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H80V112H96Zm88,0H168V140a12,12,0,0,0-24,0v36H128V112h16v10.45A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z" opacity="0.2"/>
+          <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a12,12,0,0,0-24,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z"/>
+        </svg>
+      </a>
+      <a href="https://www.behance.net/muzeeb0786" target="_blank" aria-label="Behance">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158Z" opacity="0.2"/>
+          <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"/>
+        </svg>
+      </a>
+      <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" aria-label="Dribbble">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Z" opacity="0.2"/>
+          <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/muzeebuiux" target="_blank" aria-label="Instagram">
+        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z" opacity="0.2"/>
+          <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="mz-footer__band">
+    <div class="mz-footer__loc"><span class="mz-footer__flag">&#x1F1EE;&#x1F1F3;</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+    <div class="mz-footer__copy">&copy; 2026 Muzeeb Urrahaman · All rights reserved</div>
+  </div>
+</footer>
+
+</div><!-- /#main -->
+
+<!-- MINIMAP RAIL -->
+<aside class="minimap" aria-label="Page navigation">
+  <div class="rail" id="mmRail"></div>
+</aside>
+
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lightbox__close" id="lightboxClose" aria-label="Close preview">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <button class="lightbox__nav prev" id="lightboxPrev" aria-label="Previous image">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="lightbox__nav next" id="lightboxNext" aria-label="Next image">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+  <img loading="lazy" class="lightbox__img" id="lightboxImg" src="" alt="" />
+  <div class="lightbox__caption" id="lightboxCaption"></div>
+</div>
+
+<!-- PRIVATE CASE STUDY LOCK MODAL -->
+<div class="cn-lock-overlay" id="lockModalOverlay" role="dialog" aria-modal="true" aria-labelledby="lockModalTitle">
+  <div class="cn-lock-modal" id="lockModalCard">
+    <!-- Top-Left Back Button (Visible in subviews) -->
+    <button type="button" class="cn-lock-back-icon-btn" id="modalBackBtn" aria-label="Go back" style="display: none;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+    </button>
+
+    <!-- View 1: Password Gate (Default) -->
+    <div class="cn-lock-view" id="lockGateView">
+      <div class="cn-lock-icon-wrap">
+        <img src="assets/images/popup_icon.webp" alt="Lock icon" class="cn-lock-icon" width="76" height="68" />
+      </div>
+      
+      <h2 class="cn-lock-title" id="lockModalTitle">This case study is private.</h2>
+      <p class="cn-lock-desc">Some of the work I’ve done is covered by an NDA, so I can’t share the details publicly.</p>
+      
+      <form class="cn-lock-form" id="lockForm" onsubmit="return false;">
+        <label for="lockPasswordInput" class="cn-lock-label">Enter the password to view the case study.</label>
+        <div class="cn-lock-input-group">
+          <input type="password" id="lockPasswordInput" class="cn-lock-input" placeholder="Enter password" autocomplete="current-password" required />
+          <button type="button" class="cn-lock-toggle-pwd" id="togglePwdBtn" aria-label="Toggle password visibility">
+            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="eye-off-icon" style="display:none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+          </button>
+        </div>
+        <div class="cn-lock-error" id="lockErrorMsg" style="display: none;">Incorrect password. Please try again or request access.</div>
+        
+        <button type="submit" class="cn-lock-btn" id="unlockBtn">
+          <span>Unlock case study</span>
+        </button>
+      </form>
+      
+      <div class="cn-lock-footer">
+        <span class="cn-lock-footer-text">Don’t have the password?</span>
+        <button type="button" class="cn-lock-link-btn" id="requestAccessBtn">Request access</button>
+      </div>
+    </div>
+
+    <!-- View 2: Request Access Form & Confirmation -->
+    <div class="cn-lock-view" id="requestAccessView" style="display: none;">
+      <!-- State A: Form to enter email -->
+      <div id="requestFormState" style="width: 100%;">
+        <div class="cn-lock-icon-wrap">
+          <img src="assets/images/popup_icon.webp" alt="Lock icon" class="cn-lock-icon" width="76" height="68" />
+        </div>
+
+        <h2 class="cn-lock-title">Request access</h2>
+        <p class="cn-lock-desc">Enter your work email and I’ll send you the password to access this case study.</p>
+        
+        <form class="cn-lock-form" id="reqAccessForm" onsubmit="return false;">
+          <div class="cn-lock-input-group">
+            <input type="email" id="requestEmailInput" class="cn-lock-input" placeholder="name@company.com" required />
+          </div>
+          <button type="submit" class="cn-lock-btn" id="sendRequestBtn">
+            <span>Send Request</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- State B: Confirmation screen with Emerald Success Checkmark Icon -->
+      <div id="requestSuccessState" style="display: none; width: 100%;">
+        <div class="cn-success-icon-wrap">
+          <div class="cn-success-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+        </div>
+
+        <h2 class="cn-lock-title" style="margin-bottom: 8px;">Your request to access the file has been sent.</h2>
+        <p class="cn-lock-subdesc" style="color: var(--muted); margin-bottom: 24px;">You will receive an email if and when your request is approved.</p>
+        
+        <button type="button" class="cn-lock-btn" id="backToPassFromSuccess">
+          <span>Done</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// PRIVATE CASE STUDY LOCK CONTROLLER
+(function() {
+  var overlay = document.getElementById("lockModalOverlay");
+  var card = document.getElementById("lockModalCard");
+  var lockForm = document.getElementById("lockForm");
+  var pwdInput = document.getElementById("lockPasswordInput");
+  var togglePwdBtn = document.getElementById("togglePwdBtn");
+  var errorMsg = document.getElementById("lockErrorMsg");
+  var requestAccessBtn = document.getElementById("requestAccessBtn");
+  var modalBackBtn = document.getElementById("modalBackBtn");
+  var lockGateView = document.getElementById("lockGateView");
+  var requestAccessView = document.getElementById("requestAccessView");
+  var reqAccessForm = document.getElementById("reqAccessForm");
+  var requestEmailInput = document.getElementById("requestEmailInput");
+  var requestFormState = document.getElementById("requestFormState");
+  var requestSuccessState = document.getElementById("requestSuccessState");
+  var sendRequestBtn = document.getElementById("sendRequestBtn");
+  var backToPassFromSuccess = document.getElementById("backToPassFromSuccess");
+
+  if (!overlay) return;
+
+  // Check if unlocked in current session
+  if (sessionStorage.getItem("casenotes_unlocked") === "true") {
+    document.body.classList.remove("is-locked");
+    document.documentElement.classList.remove("is-locked");
+    overlay.style.display = "none";
+    return;
+  }
+
+  // Ensure locked state initially
+  document.body.classList.add("is-locked");
+  document.documentElement.classList.add("is-locked");
+
+  // Focus input automatically
+  setTimeout(function() {
+    if (pwdInput) pwdInput.focus();
+  }, 250);
+
+  // Toggle password visibility
+  if (togglePwdBtn && pwdInput) {
+    togglePwdBtn.addEventListener("click", function() {
+      var isPwd = pwdInput.type === "password";
+      pwdInput.type = isPwd ? "text" : "password";
+      var eye = togglePwdBtn.querySelector(".eye-icon");
+      var eyeOff = togglePwdBtn.querySelector(".eye-off-icon");
+      if (eye && eyeOff) {
+        eye.style.display = isPwd ? "none" : "block";
+        eyeOff.style.display = isPwd ? "block" : "none";
+      }
+    });
+  }
+
+  // Password verification (case-insensitive)
+  var VALID_PASSWORDS = ["casenotes@2026"];
+
+  function handleUnlock() {
+    var val = (pwdInput.value || "").trim().toLowerCase();
+    if (VALID_PASSWORDS.indexOf(val) !== -1 || val === "casenotes@2026") {
+      if (window.mzSFX) window.mzSFX.play("press");
+      card.style.transform = "scale(0.96) translateY(-10px)";
+      overlay.style.transition = "opacity 0.35s ease";
+      overlay.style.opacity = "0";
+      setTimeout(function() {
+        document.body.classList.remove("is-locked");
+        document.documentElement.classList.remove("is-locked");
+        overlay.style.display = "none";
+        sessionStorage.setItem("casenotes_unlocked", "true");
+      }, 350);
+    } else {
+      if (window.mzSFX) window.mzSFX.play("error");
+      card.classList.remove("cn-shake");
+      void card.offsetWidth;
+      card.classList.add("cn-shake");
+      pwdInput.classList.add("is-invalid");
+      if (errorMsg) errorMsg.style.display = "block";
+    }
+  }
+
+  if (lockForm) {
+    lockForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      handleUnlock();
+    });
+  }
+
+  if (pwdInput) {
+    pwdInput.addEventListener("input", function() {
+      pwdInput.classList.remove("is-invalid");
+      if (errorMsg) errorMsg.style.display = "none";
+    });
+  }
+
+  function goToPasswordView() {
+    if (modalBackBtn) modalBackBtn.style.display = "none";
+    requestAccessView.style.display = "none";
+    lockGateView.style.display = "block";
+    if (pwdInput) setTimeout(function() { pwdInput.focus(); }, 100);
+  }
+
+  // Request Access Navigation
+  if (requestAccessBtn) {
+    requestAccessBtn.addEventListener("click", function() {
+      if (modalBackBtn) modalBackBtn.style.display = "flex";
+      lockGateView.style.display = "none";
+      requestAccessView.style.display = "block";
+      requestFormState.style.display = "block";
+      requestSuccessState.style.display = "none";
+      if (requestEmailInput) setTimeout(function() { requestEmailInput.focus(); }, 100);
+    });
+  }
+
+  if (modalBackBtn) {
+    modalBackBtn.addEventListener("click", goToPasswordView);
+  }
+
+  if (backToPassFromSuccess) {
+    backToPassFromSuccess.addEventListener("click", goToPasswordView);
+  }
+
+  // Handle access request form submission & email dispatch
+  if (reqAccessForm) {
+    reqAccessForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      var email = (requestEmailInput.value || "").trim();
+      if (!email) return;
+
+      if (sendRequestBtn) {
+        sendRequestBtn.disabled = true;
+        sendRequestBtn.innerHTML = '<span>Sending request...</span>';
+      }
+
+      // Pre-compose 1-Click Approve Mailto Link for the owner notification email
+      var approveMailto = "mailto:" + encodeURIComponent(email) + 
+        "?subject=" + encodeURIComponent("CaseNotes Case Study Password Access") + 
+        "&body=" + encodeURIComponent("Hi,\n\nYour request to view the CaseNotes case study has been approved!\n\n🔑 Password: casenotes@2026\n🔗 Link: https://muzeeb-portfolio.vercel.app/casenotes-case-study.html\n\nBest regards,\nMuzeeb Urrahaman\nProduct Designer & Design Engineer");
+
+      // Dispatch to internal serverless API (with direct fallback)
+      fetch("/api/request-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(res) {
+        if (!res.ok) throw new Error("Fallback to gateway");
+        return res.json();
+      })
+      .catch(function() {
+        return fetch("https://formsubmit.co/ajax/rahamanmuzeeb1108@gmail.com", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            _subject: "🔐 CaseNotes Case Study Access Request from " + email,
+            _replyto: email,
+            _template: "box",
+            "Requester Email": email,
+            "Requested Case Study": "CaseNotes: AI Meeting Notetaker for Lawyers",
+            "Access Password": "casenotes@2026",
+            "Action": "Click 'Reply' in Gmail to send password to this requester directly.",
+            "Requested At": new Date().toLocaleString()
+          })
+        });
+      })
+      .finally(function() {
+        if (sendRequestBtn) {
+          sendRequestBtn.disabled = false;
+          sendRequestBtn.innerHTML = '<span>Send Request</span>';
+        }
+        if (window.mzSFX) window.mzSFX.play("press");
+        requestFormState.style.display = "none";
+        requestSuccessState.style.display = "block";
+      });
+    });
+  }
+})();
+</script>
+// MINIMAP ENGINE
+(function() {
+  var mmSections = [
+    ["overview", "Overview"],
+    ["problem", "The Friction"],
+    ["competition", "Competitive Audit"],
+    ["research", "Research & Thesis"],
+    ["lifecycle", "Meeting Lifecycle"],
+    ["pipeline", "AI Pipeline"],
+    ["intelligence", "Matter Intelligence"],
+    ["integration", "Workflow Integration"],
+    ["roles", "Role-Based Views"],
+    ["mobile-ia", "Mobile Experience"],
+    ["metrics", "Results & Impact"]
+  ];
+  var rail = document.getElementById("mmRail");
+  if (!rail) return;
+  var mmActive = null;
+  mmSections.forEach(function(s, i) {
+    var item = document.createElement("div");
+    item.className = "mm-item";
+    var btn = document.createElement("button");
+    btn.className = "mm-bar" + (i === 0 ? " active" : "");
+    btn.setAttribute("type", "button");
+    btn.setAttribute("aria-label", "Go to " + s[1]);
+    btn.addEventListener("click", function() {
+      document.getElementById(s[0]).scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+    item.addEventListener("mouseenter", function() {
+      var tip = document.createElement("div");
+      tip.className = "mm-tip";
+      tip.innerHTML = '<span class="mm-idx">' + String(i + 1).padStart(2, "0") + '</span><span class="mm-lbl">' + s[1] + '</span>';
+      item.appendChild(tip);
+    });
+    item.addEventListener("mouseleave", function() {
+      var tip = item.querySelector(".mm-tip");
+      if (tip) tip.remove();
+    });
+    item.appendChild(btn);
+    rail.appendChild(item);
+  });
+  var mmBars = [].slice.call(document.querySelectorAll(".mm-bar"));
+  function mmUpdate() {
+    var marker = window.innerHeight * 0.32;
+    var closest = null, dist = Infinity;
+    mmSections.forEach(function(s) {
+      var el = document.getElementById(s[0]);
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      var d = Math.abs(r.top - marker);
+      if (r.bottom > 80 && d < dist) { closest = s[0]; dist = d; }
+    });
+    if (closest && closest !== mmActive) {
+      mmActive = closest;
+      mmBars.forEach(function(b, i) { b.classList.toggle("active", mmSections[i][0] === mmActive); });
+    }
+  }
+  window.addEventListener("scroll", mmUpdate, { passive: true });
+  window.addEventListener("resize", mmUpdate);
+  mmUpdate();
+})();
+
+// LIGHTBOX
+(function() {
+  var lightbox = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lightboxImg");
+  var lbCaption = document.getElementById("lightboxCaption");
+  var lbClose = document.getElementById("lightboxClose");
+  var lbPrev = document.getElementById("lightboxPrev");
+  var lbNext = document.getElementById("lightboxNext");
+  var allImages = Array.from(document.querySelectorAll(".figure img, .hero-cover img"));
+  var currentIndex = 0;
+  var lastFocused = null;
+
+  function renderImage(idx) {
+    if (idx < 0) idx = allImages.length - 1;
+    if (idx >= allImages.length) idx = 0;
+    currentIndex = idx;
+    var img = allImages[currentIndex];
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt || "";
+    var caption = img.closest("figure, .hero-cover");
+    var captionEl = caption ? caption.querySelector("figcaption") : null;
+    lbCaption.textContent = captionEl ? captionEl.textContent : (img.alt || "");
+  }
+
+  function openLightbox(img) {
+    lastFocused = document.activeElement;
+    currentIndex = allImages.indexOf(img);
+    if (currentIndex === -1) currentIndex = 0;
+    renderImage(currentIndex);
+    lightbox.classList.add("open");
+    document.body.style.overflow = "hidden";
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+    if (lastFocused) lastFocused.focus();
+  }
+
+  allImages.forEach(function(img) {
+    img.addEventListener("click", function() { openLightbox(img); });
+  });
+
+  if (lbPrev) {
+    lbPrev.addEventListener("click", function(e) {
+      e.stopPropagation();
+      renderImage(currentIndex - 1);
+    });
+  }
+
+  if (lbNext) {
+    lbNext.addEventListener("click", function(e) {
+      e.stopPropagation();
+      renderImage(currentIndex + 1);
+    });
+  }
+
+  lightbox.addEventListener("click", function(e) {
+    if (e.target === lightbox || e.target === lbImg) closeLightbox();
+  });
+  lbClose.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", function(e) {
+    if (!lightbox.classList.contains("open")) return;
+    if (e.key === "Escape") closeLightbox();
+    else if (e.key === "ArrowLeft") renderImage(currentIndex - 1);
+    else if (e.key === "ArrowRight") renderImage(currentIndex + 1);
+  });
+})();
+</script>
+<script src="assets/js/nachi-sfx.js"></script>
+<script src="assets/js/sfx.js"></script>
+<script src="assets/js/site.js?v=551"></script>
+<script src="assets/js/rough-notation.iife.js"></script>
+<script src="assets/js/highlighter.js"></script>
+</body>
+</html>

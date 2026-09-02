@@ -1,4 +1,4 @@
-/* Muzeeb Portfolio — UI SFX Module
+/* Muzeeb Portfolio: UI SFX Module
    Engine: nachi-sfx (ported Web Audio synth from nachi.design, see nachi-sfx.js)
 */
 (function (root, factory) {

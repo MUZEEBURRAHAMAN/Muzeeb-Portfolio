@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<title>Forge — Component Library Engine · Case Study · Muzeeb Urrahaman</title>
-<meta name="description" content="A Claude Code plugin that lets any engineer drive an entire React+TypeScript component library by talking to Claude — recommend a component, add a prop, scaffold a new one, retire an old one, or score the whole thing. Every change ships as a PR with docs that regenerate from source." />
-<meta property="og:title" content="Forge — Component Library Engine · Case Study · Muzeeb Urrahaman">
+<title>Forge: Component Library Engine · Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="A Claude Code plugin that lets any engineer drive an entire React+TypeScript component library by talking to Claude: recommend a component, add a prop, scaffold a new one, retire an old one, or score the whole thing. Every change ships as a PR with docs that regenerate from source." />
+<meta property="og:title" content="Forge: Component Library Engine · Case Study · Muzeeb Urrahaman">
 <meta property="og:description" content="A Claude Code plugin that lets any engineer drive an entire React+TypeScript component library by talking to Claude.">
 <meta property="og:image" content="assets/images/forge-cover.webp">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -44,6 +44,25 @@
 html[data-theme="light"] #main {
   border-left-color: rgba(0, 0, 0, 0.08) !important;
   border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: rgba(15, 15, 15, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box !important;
+}
+
+[data-theme="light"] .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(251, 251, 250, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .site-header__inner {
@@ -173,7 +192,7 @@ html[data-theme="light"] .hatched-divider__pattern {
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   background: var(--bg);
@@ -182,7 +201,7 @@ body {
   font-optical-sizing: auto;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* HERO (LEFT ALIGNED · 1000px) */
@@ -1368,7 +1387,6 @@ h2.h-sub {
     </nav>
   </div>
 </header>
-
 <div id="main" class="w-full">
 
 <!-- HERO (LEFT ALIGNED · 1134px CONTAINER) -->
@@ -1381,15 +1399,15 @@ h2.h-sub {
           CASE STUDY
         </span>
         <span class="mz-hero__badge-text">
-          Design Systems &amp; UI Engineering · Forge
+          Design Systems: UI Engineering · Forge
         </span>
       </div>
     </div>
     <h1>Every component change costs half a day. What if it took <span class="grad">thirty seconds</span>?</h1>
-    <p class="hero__sub"><b style="color:var(--ink)">Forge</b> is a Claude Code plugin that lets any engineer drive an entire React+TypeScript component library by talking to Claude — recommend the right component, add a prop, scaffold a new one, retire an old one, or score the whole thing. Every change ships as a real GitHub PR with <b style="color:var(--ink)">docs that regenerate from source</b>, so the design system can't drift.</p>
+    <p class="hero__sub"><b style="color:var(--ink)">Forge</b> is a Claude Code plugin that lets any engineer drive an entire React+TypeScript component library by talking to Claude: recommend the right component, add a prop, scaffold a new one, retire an old one, or score the whole thing. Every change ships as a real GitHub PR with <b style="color:var(--ink)">docs that regenerate from source</b>, so the design system can't drift.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
-      <span class="m">Solo — spec, plugin, all scripts</span>
+      <span class="m">Solo: spec, plugin, all scripts</span>
       <span class="m">v1.0.0 · Installable</span>
       <span class="m">Claude Code · MV3-style plugin</span>
     </div>
@@ -1402,13 +1420,13 @@ h2.h-sub {
 <!-- HERO COVER -->
 <div class="hero-cover reveal">
   <div class="frame">
-    <img src="assets/images/forge-cover.webp" alt="Forge — Component Library Engine Cover" loading="eager">
+    <img src="assets/images/forge-cover.webp" alt="Forge: Component Library Engine Cover" loading="eager">
   </div>
 </div>
 
 <!-- STATS BAR (1134px CONTAINER) -->
 <div class="stats reveal">
-  <div class="stat"><div class="n">5</div><div class="l">Skills · use / edit / create / delete / audit</div></div>
+  <div class="stat"><div class="n">5</div><div class="l">Skills · use · edit · create · delete · audit</div></div>
   <div class="stat"><div class="n">59</div><div class="l">Components in verified brain</div></div>
   <div class="stat"><div class="n">456</div><div class="l">Design tokens auto-documented</div></div>
   <div class="stat"><div class="n">4</div><div class="l">Real PRs shipped in pilot</div></div>
@@ -1427,13 +1445,13 @@ h2.h-sub {
   <div class="intro reveal">
     <div>
       <div class="eyebrow">In one line</div>
-      <p class="lead">A Claude Code plugin to drive an entire component library by talking to Claude — recommend, edit, scaffold, or audit — shipping real PRs with docs regenerated from source.</p>
-      <p>Six months in, every design system has docs that drift from reality. Storybook lags merges, tokens get duplicated, and engineers rebuild primitives that already exist. Forge inverts this: <b>you never write docs after code</b> — every edit regenerates the spec from source in the same commit.</p>
+      <p class="lead">A Claude Code plugin to drive an entire component library by talking to Claude (recommend, edit, scaffold, or audit) shipping real PRs with docs regenerated from source.</p>
+      <p>Six months in, every design system has docs that drift from reality. Storybook lags merges, tokens get duplicated, and engineers rebuild primitives that already exist. Forge inverts this: <b>you never write docs after code</b>: every edit regenerates the spec from source in the same commit.</p>
       <p>By making drift <b>structurally impossible</b>, any engineer can safely maintain and evolve the library without manual bottlenecks or breaking consumers.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
-      <div class="g"><div class="k">Role</div><div class="v">Solo — standard, skills, scripts &amp; plugin manifest</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Solo: standard, skills, scripts &amp; plugin manifest</div></div>
       <div class="g"><div class="k">Type</div><div class="v">Claude Code Plugin (marketplace-installable)</div></div>
       <div class="g"><div class="k">Surfaces</div><div class="v">5 skills · 5 slash commands · natural language</div></div>
       <div class="g"><div class="k">Status</div><div class="v">v1.0.0 · Installed at OmnisAI</div></div>
@@ -1443,38 +1461,38 @@ h2.h-sub {
   <div class="cards reveal">
     <div class="card">
       <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
-      <h3>Problem</h3>
+      <h3>The Problem</h3>
       <ul>
-        <li>Design-system docs <b>drift silently</b> from code. Storybook lags every real PR by weeks.</li>
-        <li>New engineers <b>reinvent primitives</b> because they can't find the ones that already exist.</li>
-        <li>Adding a prop or fixing a token is a <b>half-day round-trip</b>: code, then docs, then a PR, then a review, then updating tokens.</li>
+        <li><b>Docs drift:</b> Storybook and MDX lag code changes within weeks.</li>
+        <li><b>PR friction:</b> Small prop updates take half a day of back-and-forth review.</li>
+        <li><b>Breaking changes:</b> Renaming props in place breaks downstream consumer apps.</li>
       </ul>
     </div>
     <div class="card">
-      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
-      <h3>Solution</h3>
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
+      <h3>The Solution</h3>
       <ul>
-        <li>Five skills over a single markdown brain: <b>use / edit / create / delete / audit</b>.</li>
-        <li>Every write regenerates the brain from source, then opens a PR. <b>Docs and code ship together</b>, or not at all.</li>
-        <li>A written <b>standard</b> (naming, tokens, a11y, deprecation) is enforced on every action.</li>
+        <li><b>Self-documenting:</b> Docs regenerate from source on every single write action.</li>
+        <li><b>Strict non-breaking:</b> Renames auto-alias with <span class="mono">@deprecated</span>: migrations stay safe.</li>
+        <li><b>Plain-language CLI:</b> Talk to Claude, mutate source, regenerate brain, open PR.</li>
       </ul>
     </div>
     <div class="card">
       <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Results</h3>
       <ul>
-        <li><b>4 real PRs</b> shipped in the pilot — Button standardization, Divider, Drawer, OTPInput — every one non-breaking.</li>
-        <li><b>Foundation tokens</b> (spacing, radius, type) added; 461 off-vocabulary references catalogued for migration.</li>
-        <li>Whole library audited: <b>59 components scored</b>, ranked fix queue, tokens documented — health finally measurable.</li>
+        <li><b>4 real PRs</b> shipped in the pilot (Button standardization, Divider, Drawer, OTPInput) every one non-breaking.</li>
+        <li><b>Foundation tokens</b> (spacing, radius, type) added: 461 off-vocabulary references catalogued for migration.</li>
+        <li>Whole library audited: <b>59 components scored</b>, ranked fix queue, tokens documented (health finally measurable).</li>
       </ul>
     </div>
   </div>
 
   <figure class="figure reveal" style="margin-top:48px">
     <div class="frame">
-      <img loading="lazy" src="assets/images/forge-cover.webp" alt="Forge — Component Library Engine for Claude Code"/>
+      <img loading="lazy" src="assets/images/forge-cover.webp" alt="Forge: Component Library Engine for Claude Code"/>
     </div>
-    <figcaption>Forge — Claude Code plugin that lets engineers scaffold, edit, and audit React+TypeScript design systems with self-regenerating documentation.</figcaption>
+    <figcaption>Forge: Claude Code plugin that lets engineers scaffold, edit, and audit React+TypeScript design systems with self-regenerating documentation.</figcaption>
   </figure>
 </section>
 
@@ -1489,8 +1507,8 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="eyebrow">Why this exists</div>
     <h2 class="h">Everyone writes docs after the code. Regenerating docs <em>from</em> the code is the whole product.</h2>
-    <p>Design-system docs — Storybook, MDX, whatever — are written after the fact. An engineer ships a component or a new prop, and later someone (maybe them, usually nobody) updates the doc. The two are always slightly out of sync, and the gap widens with every merge. Six months in, the spec and the code disagree on names, defaults, and even which components exist, and every new engineer hits it on day one.</p>
-    <p>Forge's bet is that the answer isn't better docs — it's <em>not writing them separately at all</em>. There's one markdown brain, <span class="mono">DESIGN-SYSTEM.md</span>, and every write skill ends by regenerating the touched component's section from real source. Skills read it before they answer, so <em>they cannot recommend a prop that doesn't exist</em> or a component that isn't in the library. When a new Toast lands, <span class="mono">/forge:use</span> knows about it the next second. The docs and the code are one artifact, updated by the same action.</p>
+    <p>Design-system docs (Storybook, MDX, whatever) are written after the fact. An engineer ships a component or a new prop, and later someone (maybe them, usually nobody) updates the doc. The two are always slightly out of sync, and the gap widens with every merge. Six months in, the spec and the code disagree on names, defaults, and even which components exist, and every new engineer hits it on day one.</p>
+    <p>Forge's bet is that the answer isn't better docs: it's <em>not writing them separately at all</em>. There's one markdown brain, <span class="mono">DESIGN-SYSTEM.md</span>, and every write skill ends by regenerating the touched component's section from real source. Skills read it before they answer, so <em>they cannot recommend a prop that doesn't exist</em> or a component that isn't in the library. When a new Toast lands, <span class="mono">/forge:use</span> knows about it the next second. The docs and the code are one artifact, updated by the same action.</p>
 
     <div class="note reveal">
       <div class="note__badge" aria-hidden="true">
@@ -1501,7 +1519,7 @@ h2.h-sub {
       </div>
       <div class="note__body">
         <span class="note__label">Architecture Note</span>
-        <b>The brain is source-derived, not source-of-truth.</b> Real code stays the truth. The brain is generated by a Python script (<span class="mono">rebuild_brain.py</span>) that parses every component's props interface, JSDoc, and CSS tokens — so it lags source by at most one commit. Skills never invent props; they can only quote the brain, and the brain can only quote source. That chain is the whole product.
+        <b>The brain is source-derived, not source-of-truth.</b> Real code stays the truth. The brain is generated by a Python script (<span class="mono">rebuild_brain.py</span>) that parses every component's props interface, JSDoc, and CSS tokens, so it lags source by at most one commit. Skills never invent props: they can only quote the brain, and the brain can only quote source. That chain is the whole product.
       </div>
     </div>
   </div>
@@ -1521,14 +1539,14 @@ h2.h-sub {
     <p>One skill per real design-system task, plus a matching slash command. They all read the same brain and the same written standard, so the answers are consistent whether an engineer types <span class="mono">/forge:audit</span> or says "score the library."</p>
   </div>
   <div class="rules reveal">
-    <div class="rule signal"><span class="rk">Use</span><div><h4>Recommend the right component + props</h4><p>Answers "which component for a confirm dialog?" or "what props does Button take?" — <b>only from the brain</b>. Cannot invent props. Returns a wiring snippet lifted from real stories.</p></div></div>
+    <div class="rule signal"><span class="rk">Use</span><div><h4>Recommend the right component + props</h4><p>Answers "which component for a confirm dialog?" or "what props does Button take?" (quoting <b>only from the brain</b>). Cannot invent props. Returns a wiring snippet lifted from real stories.</p></div></div>
     <div class="rule"><span class="rk">Edit</span><div><h4>Add a prop, non-breaking, then PR</h4><p>Adds a typed prop with a safe default, keeps old props as <span class="mono">@deprecated</span> aliases, updates JSDoc + tests + brain section, opens a real PR. Never renames in place.</p></div></div>
     <div class="rule"><span class="rk">Create</span><div><h4>Scaffold house-style, brain-first</h4><p>Reads 2–3 sibling components for style, scaffolds tsx + css + tests, references only tokens (no raw hex/px), adds the brain section, opens a PR. New components are born standard-compliant.</p></div></div>
     <div class="rule"><span class="rk">Delete</span><div><h4>Retire safely, deprecate-first</h4><p>Greps every call site, defaults to marking <span class="mono">@deprecated</span> and keeping it exported, hard-deletes only after explicit "yes break it" confirmation. Consumers can't be surprised.</p></div></div>
     <div class="rule signal"><span class="rk">Audit</span><div><h4>Score the library, ranked fix queue</h4><p>Scores every component against the standard: naming, token vocabulary, size scale, prop completeness. Emits a ranked fix list ready to hand back to <span class="mono">edit-component</span>.</p></div></div>
-    <div class="rule"><span class="rk">Self-updating</span><div><h4>The docs regenerate themselves</h4><p>Every edit/create/delete ends by running <span class="mono">sync_design_system.py</span> — the component's brain section is rewritten from source in the same commit as the code. There is no "update the docs" step to forget.</p></div></div>
+    <div class="rule"><span class="rk">Self-updating</span><div><h4>The docs regenerate themselves</h4><p>Every edit/create/delete ends by running <span class="mono">sync_design_system.py</span>: the component's brain section is rewritten from source in the same commit as the code. There is no "update the docs" step to forget.</p></div></div>
     <div class="rule"><span class="rk">Config</span><div><h4>One plugin, any library</h4><p>A per-repo <span class="mono">forge.config.json</span> declares package name, components directory, tokens CSS, PR base branch, naming rule. Point Forge at any React+TS library and it adapts.</p></div></div>
-    <div class="rule"><span class="rk">Standard</span><div><h4>Rules the whole team reads</h4><p><span class="mono">component-standard.md</span> encodes naming, tokens, a11y gates, deprecation policy, prop completeness by type. Skills load it every run; audits score against it.</p></div></div>
+    <div class="rule"><span class="rk">Standard</span><div><h4>Rules the whole team reads</h4><p><span class="mono">component-standard.md</span> encodes naming, tokens, a11y gates, deprecation policy, prop completeness by type. Skills load it every run: audits score against it.</p></div></div>
   </div>
 </section>
 
@@ -1543,20 +1561,20 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="eyebrow">The flow</div>
     <h2 class="h">Talk to Claude. Real files change. A PR opens.</h2>
-    <p>Nothing hides behind a service. The plugin installs at the user level; each write is deterministic — the skills read the standard, mutate real files, run a Python script to regenerate the brain, and shell out to <span class="mono">gh</span> to open the PR. Here's the whole path for a typical <span class="mono">/forge:edit</span>:</p>
+    <p>Nothing hides behind a service. The plugin installs at the user level: each write is deterministic: the skills read the standard, mutate real files, run a Python script to regenerate the brain, and shell out to <span class="mono">gh</span> to open the PR. Here's the whole path for a typical <span class="mono">/forge:edit</span>:</p>
   </div>
   <div class="steps reveal">
     <div class="step"><div class="num">1</div><div><h4>Load the rules</h4><p>The skill reads <span class="mono">forge.config.json</span>, the written <span class="mono">component-standard.md</span>, and <span class="mono">standing-guidance.md</span> (durable corrections). It refuses to work on a component that isn't in the brain.</p></div></div>
     <div class="step"><div class="num">2</div><div><h4>Read the source + siblings</h4><p>Opens the target component's tsx, css, stories and tests. Opens 2–3 stylistically-nearest siblings so the change matches house style, not generic React defaults.</p></div></div>
     <div class="step"><div class="num">3</div><div><h4>Make the change non-breaking</h4><p>Adds new props with safe defaults; keeps old names as <span class="mono">@deprecated</span> aliases. Never renames in place. Migrates raw hex/px to tokens opportunistically. Fixes dead props if it sees any.</p></div></div>
-    <div class="step"><div class="num">4</div><div><h4>Regenerate the brain section</h4><p>Runs <span class="mono">sync_design_system.py</span>. The component's <span class="mono">## Name</span> block in <span class="mono">DESIGN-SYSTEM.md</span> is rewritten from the just-changed source — props, defaults, JSDoc, tokens referenced, usage snippet from stories.</p></div></div>
+    <div class="step"><div class="num">4</div><div><h4>Regenerate the brain section</h4><p>Runs <span class="mono">sync_design_system.py</span>. The component's <span class="mono">## Name</span> block in <span class="mono">DESIGN-SYSTEM.md</span> is rewritten from the just-changed source: props, defaults, JSDoc, tokens referenced, usage snippet from stories.</p></div></div>
     <div class="step"><div class="num">5</div><div><h4>Open the PR into <span class="mono">main</span></h4><p><span class="mono">open_pr.sh</span> branches (<span class="mono">forge/edit/&lt;name&gt;-&lt;slug&gt;</span>), stages <b>only</b> the files Forge touched via <span class="mono">--paths</span> (never <span class="mono">git add -A</span>), commits, pushes, runs <span class="mono">gh pr create</span>. If <span class="mono">gh</span> is missing, it prints exact commands rather than fail silently.</p></div></div>
   </div>
 
   <div class="prose reveal" style="margin-top:44px">
     <div class="eyebrow">The self-improvement loop</div>
     <h2 class="h h-sub">Two distinct loops. Neither one drifts.</h2>
-    <p>Docs update mechanically; corrections stick as durable rules. Forge separates the two on purpose so neither depends on the other holding.</p>
+    <p>Docs update mechanically: corrections stick as durable rules. Forge separates the two on purpose so neither depends on the other holding.</p>
   </div>
   <div class="classify reveal">
     <div class="cl"><div class="lab">● Mechanical sync</div><p>After every edit/create/delete, <span class="mono">sync_design_system.py</span> rewrites the touched component's brain section from real source. Zero prose. No LLM involved.</p><span class="out">docs = source, always</span></div>
@@ -1577,7 +1595,7 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="eyebrow">The difference that matters</div>
     <h2 class="h">"Add a loading prop to Button." Two ways.</h2>
-    <p>The task itself takes ten seconds either way. What varies is everything around it — the doc drift, the review latency, the token debt, the sibling inconsistency. Left is the usual roundtrip; right is one command:</p>
+    <p>The task itself takes ten seconds either way. What varies is everything around it: the doc drift, the review latency, the token debt, the sibling inconsistency. Left is the usual roundtrip; right is one command:</p>
   </div>
 
   <div class="diff reveal">
@@ -1588,11 +1606,11 @@ h2.h-sub {
   loading?: boolean;
 }
 
-<span class="c">// 2. Update the CSS — hope you match</span>
-<span class="c">//    the sibling's spinner class conv.</span>
+<span class="c">// 2. Update the CSS (hope you match</span>
+<span class="c">//    the sibling's spinner class conv.)</span>
 
 <span class="c">// 3. Update the Storybook MDX doc</span>
-<span class="c">//    (usually skipped — "later")</span>
+<span class="c">//    (usually skipped, marked "later")</span>
 
 <span class="c">// 4. Update the design-token file</span>
 <span class="c">//    if you used a new color</span>
@@ -1619,11 +1637,11 @@ h2.h-sub {
     </div>
   </div>
   <div class="prose reveal" style="margin-top:16px">
-    <p style="font-size:15px;color:var(--soft)"><b style="color:var(--ink)">The honest trade-off:</b> Forge cannot judge taste. It won't tell you a Toast is the wrong pattern or that a prop should be a variant instead. It <b>can</b> enforce naming, tokens, a11y baselines and non-breaking rules — the mechanical stuff that eats a review. Taste stays with the reviewer; drift stops.</p>
+    <p style="font-size:15px;color:var(--soft)"><b style="color:var(--ink)">The honest trade-off:</b> Forge cannot judge taste. It won't tell you a Toast is the wrong pattern or that a prop should be a variant instead. It <b>can</b> enforce naming, tokens, a11y baselines and non-breaking rules: the mechanical stuff that eats a review. Taste stays with the reviewer; drift stops.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:40px">
-    <p>These are real runs from the pilot — same engine, four different verbs:</p>
+    <p>These are real runs from the pilot (same engine, four different verbs):</p>
   </div>
   <div class="gallery reveal">
     <div class="shot">
@@ -1642,7 +1660,7 @@ h2.h-sub {
     <div class="shot">
       <span class="pill">/forge:audit</span>
       <h4>"score the library"</h4>
-      <p>Scores every component against the standard. Ranked fix queue with actionable items — hand them back to <span class="mono">edit-component</span> one at a time.</p>
+      <p>Scores every component against the standard. Ranked fix queue with actionable items: hand them back to <span class="mono">edit-component</span> one at a time.</p>
 <div class="terminal"><span class="c">$ </span>/forge:audit
 
 <span class="a">59 components</span> · <span class="a">40 clean</span> · <span class="a">26 fix items</span>
@@ -1688,11 +1706,11 @@ h2.h-sub {
     <h2 class="h">The interesting parts were about restraint and refusing shortcuts.</h2>
     <p>Anyone can auto-generate React components. The decisions that make Forge trustworthy in a real repo were about what it <em>refuses</em> to do:</p>
     <ul>
-      <li><b>Non-breaking is law.</b> Rename a prop? Add the new one, alias the old with <span class="mono">@deprecated</span>. Rename a component? Same. Never rename in place. Consumers of the library — apps, tests, other repos — can never wake up to a broken import from a Forge PR. Full migrations happen deliberately, not accidentally.</li>
+      <li><b>Non-breaking is law.</b> Rename a prop? Add the new one, alias the old with <span class="mono">@deprecated</span>. Rename a component? Same. Never rename in place. Consumers of the library (apps, tests, other repos) can never wake up to a broken import from a Forge PR. Full migrations happen deliberately, not accidentally.</li>
       <li><b>No <span class="mono">git add -A</span>, ever.</b> Every write skill passes <span class="mono">--paths</span> with the exact files it touched. If an engineer has a local <span class="mono">.env</span>, a stashed WIP, or a private key sitting in the working tree, none of it can leak into a Forge PR. That's checked with a real test on a repo containing a fake <span class="mono">.env</span>.</li>
-      <li><b>The brain lives in the consumer repo, not the plugin.</b> Every library's <span class="mono">DESIGN-SYSTEM.md</span> is committed alongside its code, regenerated by every write. The plugin ships a seed brain, but it never writes to itself. This means the docs travel with the repo — clone the library, get the design system for free.</li>
-      <li><b>Skills first, slash commands second.</b> The primary interface is natural language ("add a loading prop to Button") — that's what makes Forge feel less like a CLI and more like a teammate. Slash commands (<span class="mono">/forge:edit</span>) are wrappers for explicit invocations. Same code path either way.</li>
-      <li><b>Config is per-repo, not per-plugin.</b> <span class="mono">forge.config.json</span> lives in the library. One installed plugin can drive any number of React+TS libraries — each with its own naming rule, token prefixes, PR base branch. Nothing hardcoded to OmnisAI.</li>
+      <li><b>The brain lives in the consumer repo, not the plugin.</b> Every library's <span class="mono">DESIGN-SYSTEM.md</span> is committed alongside its code, regenerated by every write. The plugin ships a seed brain, but it never writes to itself. This means the docs travel with the repo: clone the library, get the design system for free.</li>
+      <li><b>Skills first, slash commands second.</b> The primary interface is natural language ("add a loading prop to Button"): that's what makes Forge feel less like a CLI and more like a teammate. Slash commands (<span class="mono">/forge:edit</span>) are wrappers for explicit invocations. Same code path either way.</li>
+      <li><b>Config is per-repo, not per-plugin.</b> <span class="mono">forge.config.json</span> lives in the library. One installed plugin can drive any number of React+TS libraries, each with its own naming rule, token prefixes, PR base branch. Nothing hardcoded to OmnisAI.</li>
     </ul>
 
     <div class="note reveal">
@@ -1704,7 +1722,7 @@ h2.h-sub {
       </div>
       <div class="note__body">
         <span class="note__label">Defensibility</span>
-        <b>The self-documenting brain is the moat.</b> Anyone can write a "generate component" GPT wrapper. Forge's edge is <span class="mono">rebuild_brain.py</span> + <span class="mono">sync_design_system.py</span> + the audit engine — Python that parses real TypeScript props interfaces, JSDoc, destructuring defaults, and CSS token usage into a source-verified markdown brain, on every write. That measurement layer is the slow part for anyone to copy.
+        <b>The self-documenting brain is the moat.</b> Anyone can write a "generate component" GPT wrapper. Forge's edge is <span class="mono">rebuild_brain.py</span> + <span class="mono">sync_design_system.py</span> + the audit engine (Python that parses real TypeScript props interfaces, JSDoc, destructuring defaults, and CSS token usage into a source-verified markdown brain, on every write). That measurement layer is the slow part for anyone to copy.
       </div>
     </div>
   </div>
@@ -1726,18 +1744,18 @@ h2.h-sub {
   <div class="tbl stack reveal">
     <table>
       <tr><th>File / folder</th><th>What it does</th></tr>
-      <tr><td>.claude-plugin/plugin.json</td><td>Plugin manifest — name, version, repository. Read by Claude Code on install.</td></tr>
-      <tr><td>.claude-plugin/marketplace.json</td><td>Marketplace entry — enables <code>/plugin marketplace add MUZEEBURRAHAMAN/forge</code>. Name matches the github clone dir for zero-friction install.</td></tr>
-      <tr><td>skills/{use,edit,create,delete}-component/SKILL.md</td><td>The four write/read skills, each with a frontmatter <code>description</code> that routes natural language to it. Full workflow in prose — Claude reads and executes.</td></tr>
+      <tr><td>.claude-plugin/plugin.json</td><td>Plugin manifest: name, version, repository. Read by Claude Code on install.</td></tr>
+      <tr><td>.claude-plugin/marketplace.json</td><td>Marketplace entry: enables <code>/plugin marketplace add MUZEEBURRAHAMAN/forge</code>. Name matches the github clone dir for zero-friction install.</td></tr>
+      <tr><td>skills/{use,edit,create,delete}-component/SKILL.md</td><td>The four write/read skills, each with a frontmatter <code>description</code> that routes natural language to it. Full workflow in prose: Claude reads and executes.</td></tr>
       <tr><td>skills/audit-library/SKILL.md</td><td>Read-only scorer. Wraps <code>audit_components.py</code> + <code>component_readiness.py</code>.</td></tr>
       <tr><td>skills/_shared/references/component-standard.md</td><td><b>The written standard.</b> Naming, prop API, canonical token vocabulary, ARIA gates, deprecation policy, prop completeness by type. Every skill reads this before acting.</td></tr>
-      <tr><td>skills/_shared/references/standing-guidance.md</td><td>Durable corrections — "we always X, never Y." Appended by <code>record_guidance.py</code>. Read on every run.</td></tr>
+      <tr><td>skills/_shared/references/standing-guidance.md</td><td>Durable corrections ("we always X, never Y"). Appended by <code>record_guidance.py</code>. Read on every run.</td></tr>
       <tr><td>skills/_shared/DESIGN-SYSTEM.md</td><td>Seed brain shipped with the plugin. The <b>canonical</b> brain lives in each consumer repo, regenerated on every write.</td></tr>
       <tr><td>skills/_shared/scripts/rebuild_brain.py</td><td><b>The core engine.</b> Walks components, parses props interfaces + destructuring defaults + JSDoc, extracts token vocabulary from the CSS, emits a fully-source-verified brain.</td></tr>
       <tr><td>skills/_shared/scripts/sync_design_system.py</td><td>Single-component brain refresh. Runs at the end of every edit/create/delete.</td></tr>
       <tr><td>skills/_shared/scripts/audit_components.py</td><td>Scores components vs the standard's §9 checklist. Emits ranked fix queue.</td></tr>
       <tr><td>skills/_shared/scripts/component_readiness.py</td><td>Measures token debt (raw hex, off-vocab, unparseable interfaces) across the whole library.</td></tr>
-      <tr><td>skills/_shared/scripts/forge_init.py</td><td>One-time setup — auto-detects package name, components dir, tokens CSS, writes <code>forge.config.json</code>.</td></tr>
+      <tr><td>skills/_shared/scripts/forge_init.py</td><td>One-time setup: auto-detects package name, components dir, tokens CSS, writes <code>forge.config.json</code>.</td></tr>
       <tr><td>skills/_shared/scripts/record_guidance.py</td><td>Appends a scoped correction to <code>standing-guidance.md</code>.</td></tr>
       <tr><td>skills/_shared/scripts/open_pr.sh</td><td>Branch → <b>scoped stage</b> (never <code>git add -A</code>) → commit → push → <code>gh pr create</code>. Injection-safe config read. <code>--no-push</code> option.</td></tr>
       <tr><td>commands/{use,edit,create,delete,audit}.md</td><td>Slash-command wrappers. Route <code>/forge:X</code> to the matching skill.</td></tr>
@@ -1748,7 +1766,7 @@ h2.h-sub {
     <h2 class="h h-sub">Install once. Init per repo. Then talk to Claude.</h2>
     <p>The whole install is public. Two <code>/plugin</code> commands from any Claude Code session, one <code>forge init</code> in the target repo, done:</p>
   </div>
-  <div class="code reveal"><pre><span class="c"># 1. In any Claude Code session — two separate submits:</span>
+  <div class="code reveal"><pre><span class="c"># 1. In any Claude Code session (two separate submits):</span>
 <span class="g">/plugin marketplace add MUZEEBURRAHAMAN/forge</span>
 <span class="g">/plugin install forge@MUZEEBURRAHAMAN-forge</span>
 
@@ -1775,8 +1793,8 @@ h2.h-sub {
   <div class="prose reveal">
     <div class="eyebrow">Where it stands</div>
     <h2 class="h">Shipping, installed, four real PRs in.</h2>
-    <p>Forge v1.0.0 is installed at OmnisAI, tested end-to-end with a real component library, and has shipped four real PRs during the pilot — every one non-breaking, every one with source-verified docs updated in the same commit. The plugin passes <span class="mono">claude plugin validate</span> and installs from github with a single command.</p>
-    <p><b>The leverage is the point:</b> this isn't a tool only I use. Any engineer on the team drives the whole 59-component library in plain language — no design-system gatekeeper in the loop — and every change ships as a reviewable PR. It turns a one-person standard into something the <b>whole team maintains without me</b>, which is the difference between output and leverage.</p>
+    <p>Forge v1.0.0 is installed at OmnisAI, tested end-to-end with a real component library, and has shipped four real PRs during the pilot: every one non-breaking, every one with source-verified docs updated in the same commit. The plugin passes <span class="mono">claude plugin validate</span> and installs from github with a single command.</p>
+    <p><b>The leverage is the point:</b> this isn't a tool only I use. Any engineer on the team drives the whole 59-component library in plain language (no design-system gatekeeper in the loop) and every change ships as a reviewable PR. It turns a one-person standard into something the <b>whole team maintains without me</b>, which is the difference between output and leverage.</p>
 
     <div class="note reveal">
       <div class="note__badge" aria-hidden="true">
@@ -1787,13 +1805,13 @@ h2.h-sub {
       </div>
       <div class="note__body">
         <span class="note__label">Reliability</span>
-        <b>Its own edge states, handled:</b> <span class="mono">audit</span> on an empty or unconfigured library returns a clear "nothing to score yet" rather than crashing; a change that <em>would</em> break consumers is <b>blocked</b> — it deprecates first and only hard-deletes after an explicit "yes, break it"; and a failed generation or PR step aborts cleanly without half-writing files.
+        <b>Its own edge states, handled:</b> <span class="mono">audit</span> on an empty or unconfigured library returns a clear "nothing to score yet" rather than crashing; a change that <em>would</em> break consumers is <b>blocked</b>: it deprecates first and only hard-deletes after an explicit "yes, break it"; and a failed generation or PR step aborts cleanly without half-writing files.
       </div>
     </div>
   </div>
 
   <div class="metrics reveal">
-    <div class="metric"><div class="n">4</div><h4>real PRs in the pilot</h4><p>CommonButton standardization, Divider, Drawer, and OTPInput — all non-breaking, all with brain sections regenerated in the same commit. Zero manual doc updates.</p></div>
+    <div class="metric"><div class="n">4</div><h4>real PRs in the pilot</h4><p>CommonButton standardization, Divider, Drawer, and OTPInput: all non-breaking, all with brain sections regenerated in the same commit. Zero manual doc updates.</p></div>
     <div class="metric accent"><div class="n">22/22</div><h4>Playwright e2e green</h4><p>End-to-end tests hit the demo pages for every Forge-generated component. Zero console errors on any surface. Also caught two pre-existing library bugs (InputField hydration, Calendar SVG attrs) which Forge fixed on the way.</p></div>
     <div class="metric"><div class="n">13</div><h4>bugs found + fixed in QA</h4><p>Seven parallel agents edge-tested each script (single-line interfaces, unicode, empty repos, path traversal). All confirmed bugs fixed. Security-reviewed: scoped staging, injection-safe config read, no secret handling anywhere.</p></div>
   </div>
@@ -1801,7 +1819,7 @@ h2.h-sub {
   <div class="prose reveal" style="margin-top:44px">
     <div class="eyebrow">The PRs Forge shipped</div>
     <h2 class="h h-sub">Real changes, on the real library.</h2>
-    <p>Each of these was one prompt, then Forge did the rest — code, tests where present, brain section, PR body:</p>
+    <p>Each of these was one prompt, then Forge did the rest (code, tests where present, brain section, PR body):</p>
   </div>
   <div class="prs reveal">
     <div class="pr">
@@ -1817,7 +1835,7 @@ h2.h-sub {
     <div class="pr">
       <span class="id">PR #44</span>
       <h5>Foundation tokens</h5>
-      <p>Filled a hole in the design system — added missing spacing, radius, and type-scale tokens. 461 off-vocabulary references catalogued for future migration.</p>
+      <p>Filled a hole in the design system: added missing spacing, radius, and type-scale tokens. 461 off-vocabulary references catalogued for future migration.</p>
     </div>
     <div class="pr">
       <span class="id">PR #45</span>
@@ -1895,11 +1913,11 @@ h2.h-sub {
     <h2 class="h">The things people probe for.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary><span class="q-text">Isn't this just Storybook autodocs with extra steps?</span></summary><div class="a">No — Storybook autodocs still assumes the doc is a separate artifact you generate and deploy. Forge's brain is <b>read by the skills on every action</b>. When <span class="mono">/forge:use</span> answers "which component for X," it's quoting the brain, which was regenerated on the last edit — so it cannot recommend a prop that doesn't exist yet or forget one that was just added. Storybook lags; Forge's brain does not.</div></details>
-    <details><summary><span class="q-text">What if Claude picks the wrong sibling and matches the wrong style?</span></summary><div class="a">It can happen — that's why the standard exists as a separate file. Even if the sibling pick is off, the change still has to pass the standard's checklist (naming, tokens, size scale, a11y). And every write ships as a PR — a human reviewer catches taste-level issues before merge. Forge is a good engineer, not the final reviewer.</div></details>
+    <details open><summary><span class="q-text">Isn't this just Storybook autodocs with extra steps?</span></summary><div class="a">No: Storybook autodocs still assumes the doc is a separate artifact you generate and deploy. Forge's brain is <b>read by the skills on every action</b>. When <span class="mono">/forge:use</span> answers "which component for X," it's quoting the brain, which was regenerated on the last edit, so it cannot recommend a prop that doesn't exist yet or forget one that was just added. Storybook lags; Forge's brain does not.</div></details>
+    <details><summary><span class="q-text">What if Claude picks the wrong sibling and matches the wrong style?</span></summary><div class="a">It can happen: that's why the standard exists as a separate file. Even if the sibling pick is off, the change still has to pass the standard's checklist (naming, tokens, size scale, a11y). And every write ships as a PR: a human reviewer catches taste-level issues before merge. Forge is a good engineer, not the final reviewer.</div></details>
     <details><summary><span class="q-text">Can it push directly to main and skip review?</span></summary><div class="a">No. Every write ends by opening a PR into whatever <span class="mono">git.prBase</span> is configured (usually <span class="mono">main</span>, but any branch). Forge never merges. The engineer (or CI) merges after review. The plugin's job stops at the PR.</div></details>
-    <details><summary><span class="q-text">Doesn't the <span class="mono">--paths</span> stage-list make it fragile?</span></summary><div class="a">It's the safest thing about it. Every write skill knows exactly which files it touched — the tsx, css, brain, barrel, sometimes tests — and passes them explicitly. If a developer has a local <span class="mono">.env</span>, WIP scratch file, or a secret in the working tree, none of it can leak into a Forge PR. This is verified by a security test that puts a fake <span class="mono">.env</span> in a repo and asserts it's never staged.</div></details>
-    <details><summary><span class="q-text">What happens when the library is huge — thousands of components?</span></summary><div class="a">The brain rebuild is per-component when triggered by a write (sync one section), and full-rebuild only when explicitly asked. Full rebuild on ~60 components takes about a second. At thousands, it'd take a few seconds — still fine. The bigger question is whether a single markdown file is the right shape at that scale; a segmented brain (per category) is a straightforward extension.</div></details>
+    <details><summary><span class="q-text">Doesn't the <span class="mono">--paths</span> stage-list make it fragile?</span></summary><div class="a">It's the safest thing about it. Every write skill knows exactly which files it touched (the tsx, css, brain, barrel, sometimes tests) and passes them explicitly. If a developer has a local <span class="mono">.env</span>, WIP scratch file, or a secret in the working tree, none of it can leak into a Forge PR. This is verified by a security test that puts a fake <span class="mono">.env</span> in a repo and asserts it's never staged.</div></details>
+    <details><summary><span class="q-text">What happens when the library is huge: thousands of components?</span></summary><div class="a">The brain rebuild is per-component when triggered by a write (sync one section), and full-rebuild only when explicitly asked. Full rebuild on ~60 components takes about a second. At thousands, it would take a few seconds, still fine. The bigger question is whether a single markdown file is the right shape at that scale; a segmented brain (per category) is a straightforward extension.</div></details>
     <details><summary><span class="q-text">Does it work on any React library or just OmnisAI's?</span></summary><div class="a">Any React+TS library that has components as directories under a configurable root. <span class="mono">forge.config.json</span> declares the package name, components directory, tokens CSS, PR base, naming rule, and token prefixes. Run <span class="mono">forge init</span> in a new repo, it auto-detects, and you're done. Nothing about the plugin is hardcoded to OmnisAI.</div></details>
     <details><summary><span class="q-text">What's the failure mode when things go wrong?</span></summary><div class="a">Visible, not silent. If <span class="mono">gh</span> is missing, <span class="mono">open_pr.sh</span> prints the exact push + PR commands rather than failing. If a component isn't in the brain, the write skill refuses instead of inventing one. If the standard and a component disagree, the audit says so and asks you to fix the migration map, not special-case the check. Every wrong-answer branch is designed to say "I don't know" rather than guess.</div></details>
   </div>

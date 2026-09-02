@@ -1,4 +1,4 @@
-/* Web Audio synthesis engine — ported from nachi.design's UI sound system
+/* Web Audio synthesis engine: ported from nachi.design's UI sound system
    (reverse-engineered from their production JS bundle: named presets of
    sine-tone + filtered-noise layers through a shimmer/delay send, no
    audio files, everything generated at play-time via AudioContext). */

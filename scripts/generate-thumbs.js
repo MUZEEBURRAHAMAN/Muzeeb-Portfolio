@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Regenerates best-work grid thumbnails from source PNGs.
-// Grid tiles render at 1024x768 CSS px — 1200px-wide webp covers retina without
+// Grid tiles render at 1024x768 CSS px: 1200px-wide webp covers retina without
 // shipping the full 4176x3072 original (previous _thumb.webp files were byte-identical
 // copies of the full-res image, ~800KB-1MB each instead of a real downscale).
 const fs = require("fs");

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<title>Omnis UX Audit Engine — Case Study · Muzeeb Urrahaman</title>
+<title>Omnis UX Audit Engine: Case Study · Muzeeb Urrahaman</title>
 <meta name="description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen." />
-<meta property="og:title" content="Omnis UX Audit Engine — Case Study · Muzeeb Urrahaman">
+<meta property="og:title" content="Omnis UX Audit Engine: Case Study · Muzeeb Urrahaman">
 <meta property="og:description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen.">
 <meta property="og:image" content="assets/images/ux-audit-assistant.webp">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -44,6 +44,25 @@
 html[data-theme="light"] #main {
   border-left-color: rgba(0, 0, 0, 0.08) !important;
   border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: rgba(15, 15, 15, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box !important;
+}
+
+[data-theme="light"] .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(251, 251, 250, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .site-header__inner {
@@ -129,7 +148,7 @@ html[data-theme="light"] .hatched-divider__pattern {
   --amber: #F5A623;
   --amber-soft: #FEF4E1;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  /* spacing scale — used for the gap before/after a content block (cards,
+  /* spacing scale: used for the gap before/after a content block (cards,
      metrics, galleries, tables, figures) so that rhythm stays consistent
      instead of each component picking its own nearby-but-different value */
   --space-xs: 12px;
@@ -147,11 +166,11 @@ html[data-theme="light"] .hatched-divider__pattern {
   --diff-good: #1f7a4c;
   --note-text: #2451b0;
   --table-head-bg: #fafafa;
-  /* results chart — categorical (track breakdown): validated all-pairs, light mode */
+  /* results chart: categorical (track breakdown): validated all-pairs, light mode */
   --viz-cat-1: #2a78d6;
   --viz-cat-2: #eb6834;
   --viz-cat-3: #1baf7a;
-  /* results chart — status (severity breakdown): fixed, never themed */
+  /* results chart: status (severity breakdown): fixed, never themed */
   --viz-critical: #d03b3b;
   --viz-serious: #ec835a;
   --viz-warning: #fab219;
@@ -189,6 +208,12 @@ html[data-theme="light"] .hatched-divider__pattern {
   --viz-neutral: #6f6f68;
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -196,7 +221,7 @@ body {
   font-optical-sizing: auto;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* HERO (LEFT ALIGNED · 1134px CONTAINER) */
@@ -501,7 +526,7 @@ h2 {
   text-align: left;
 }
 
-/* Sub-beat heading — for a second/third h2 sharing a numbered section's sec-num,
+/* Sub-beat heading: for a second/third h2 sharing a numbered section's sec-num,
    so it reads as "part of this section" rather than an equal sibling. */
 h2.h-sub {
   font-size: clamp(24px, 3vw, 32px);
@@ -884,7 +909,15 @@ h2.h-sub {
   grid-column: 1 / -1;
 }
 
-/* MATCHED-HEIGHT GALLERY PAIR (e.g. before/after with different aspect ratios) —
+/* Sub-beat heading: for a second/third h2 sharing a numbered section's sec-num,
+   so it reads as "part of this section" rather than an equal sibling. */
+h2.h-sub {
+  font-size: clamp(24px, 3vw, 32px);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+/* MATCHED-HEIGHT GALLERY PAIR (e.g. before/after with different aspect ratios):
    both frames crop to the same fixed aspect ratio so the pair lines up exactly,
    instead of one image dictating the other's height. */
 .gallery--match {
@@ -949,7 +982,7 @@ h2.h-sub {
   margin: 0;
 }
 
-/* RESULTS DATA VIZ — CaseNotes track breakdown + AutoDoc severity breakdown */
+/* RESULTS DATA VIZ: CaseNotes track breakdown + AutoDoc severity breakdown */
 .results-viz {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1070,7 +1103,7 @@ h2.h-sub {
 }
 .note--loose { margin-top: var(--space-lg); }
 
-/* Spacing utilities — replace one-off inline style="margin-top:Npx" so every
+/* Spacing utilities: replace one-off inline style="margin-top:Npx" so every
    instance of the same visual gap shares one class instead of a repeated
    magic number. */
 .mt-tight { margin-top: var(--space-xs); }     /* a paragraph trailing a list, same section */
@@ -2085,7 +2118,7 @@ h2.h-sub {
     </div>
     <div class="note__body">
       <span class="note__label">Scope note</span>
-      These numbers are from my own staging test runs on Omnis apps — not a peer-reviewed benchmark, not third-party audited, and not measured against production traffic.
+      These numbers are from my own staging test runs on Omnis apps (not a peer-reviewed benchmark, not third-party audited, and not measured against production traffic).
     </div>
   </div>
 
@@ -2229,7 +2262,7 @@ h2.h-sub {
     <div class="sec-num">14</div>
     <div class="eyebrow">Future Roadmap</div>
     <h2 class="h">If I picked this back up.</h2>
-    <p>The project is currently parked, not active — see §13. This isn't a committed roadmap, it's what I'd build next if I resumed it.</p>
+    <p>The project is currently parked, not active (see §13). This isn't a committed roadmap, it's what I'd build next if I resumed it.</p>
     <ul>
       <li><b>Phase 1: Baseline Tracking</b>: automated initial crawl establish product baselines to flag regressions on future runs.</li>
       <li><b>Phase 2: CI Integration</b>: GitHub Actions integration that runs audits on staging deploys and flags new blockers directly on pull requests.</li>
@@ -2252,7 +2285,7 @@ h2.h-sub {
     <h2 class="h">Common technical and design inquiries.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary><span class="q-text">Who approved giving a product designer live credentials to staging environments?</span></summary><div class="a">No new grant was needed — it reused the same staging access I already held as the product designer manually auditing those apps screen by screen. The engine logs in with my credentials, scoped to the same environments I was already reviewing; it never touched production or anyone else's access.</div></details>
+    <details open><summary><span class="q-text">Who approved giving a product designer live credentials to staging environments?</span></summary><div class="a">No new grant was needed: it reused the same staging access I already held as the product designer manually auditing those apps screen by screen. The engine logs in with my credentials, scoped to the same environments I was already reviewing; it never touched production or anyone else's access.</div></details>
     <details><summary><span class="q-text">Are you a designer or an engineer?</span></summary><div class="a">Product design is my core foundation: research, UX architecture, interaction design, and design systems. I also write production TypeScript to ship working prototypes and developer tooling end-to-end.</div></details>
     <details><summary><span class="q-text">What was your contribution compared to engineering?</span></summary><div class="a">I conceived, designed, and built the entire engine independently, covering the MCP architecture, Playwright crawlers, axe integrations, and Next.js reporting dashboard.</div></details>
     <details><summary><span class="q-text">How do you prevent model hallucinations?</span></summary><div class="a">Deterministic checks evaluate objective rules (contrast math, aria attributes) directly. AI heuristic findings are rejected unless they map to a valid DOM node and pass structured false-positive validation.</div></details>
@@ -2488,6 +2521,6 @@ h2.h-sub {
 </script>
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
-<script src="assets/js/site.js?v=98"></script>
+<script src="assets/js/site.js?v=551"></script>
 </body>
 </html>

@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<title>Catchly — Privacy-First Subscription Tracker · Case Study · Muzeeb Urrahaman</title>
+<title>Catchly: Privacy-First Subscription Tracker · Case Study · Muzeeb Urrahaman</title>
 <meta name="description" content="A privacy-first Chrome extension that tracks subscriptions across 24+ services without touching your bank. Zero telemetry, local storage, 100% on-device." />
-<meta property="og:title" content="Catchly — Privacy-First Subscription Tracker · Case Study · Muzeeb Urrahaman">
+<meta property="og:title" content="Catchly: Privacy-First Subscription Tracker · Case Study · Muzeeb Urrahaman">
 <meta property="og:description" content="A privacy-first Chrome extension that tracks subscriptions without touching your bank. Zero telemetry, 100% on-device.">
 <meta property="og:image" content="assets/images/catchly-cover.webp">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -44,6 +44,25 @@
 html[data-theme="light"] #main {
   border-left-color: rgba(0, 0, 0, 0.08) !important;
   border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: rgba(15, 15, 15, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box !important;
+}
+
+[data-theme="light"] .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(251, 251, 250, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .site-header__inner {
@@ -173,7 +192,7 @@ html[data-theme="light"] .hatched-divider__pattern {
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; overflow-x: clip; }
 
 body {
   background: var(--bg);
@@ -182,7 +201,7 @@ body {
   font-optical-sizing: auto;
   line-height: 1.65;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* HERO (LEFT ALIGNED · 1134px CONTAINER) */
@@ -1389,7 +1408,7 @@ h2.h-sub {
       </div>
     </div>
     <h1>You forget the subscriptions.<br>They <span class="grad">never forget you</span>.</h1>
-    <p class="hero__sub">Every rival subscription tracker starts by asking for your bank login. <b style="color:var(--ink)">Catchly</b> refuses to — it watches sign-ups, renewals, and price hikes on 24+ services you already use, keeps the entire database on your device, and warns you before your card gets billed. Zero bank connections. No account required. Nothing leaves your browser.</p>
+    <p class="hero__sub">Every rival subscription tracker starts by asking for your bank login. <b style="color:var(--ink)">Catchly</b> refuses to: it watches sign-ups, renewals, and price hikes on 24+ services you already use, keeps the entire database on your device, and warns you before your card gets billed. Zero bank connections. No account required. Nothing leaves your browser.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Solo product designer + engineer</span>
@@ -1408,7 +1427,7 @@ h2.h-sub {
 <!-- HERO COVER -->
 <div class="hero-cover reveal">
   <div class="frame">
-    <img src="assets/images/catchly-cover.webp" alt="Catchly — Privacy-First Subscription Tracker Cover" loading="eager">
+    <img src="assets/images/catchly-cover.webp" alt="Catchly: Privacy-First Subscription Tracker Cover" loading="eager">
   </div>
 </div>
 
@@ -1433,8 +1452,8 @@ h2.h-sub {
   <div class="intro reveal">
     <div>
       <div class="eyebrow">In one line</div>
-      <p class="lead">Catchly is a privacy-first browser extension and ecosystem that spots recurring charges the moment you sign up, keeps the entire registry on your own device, and warns you before every renewal, free-trial conversion, and quiet price hike — with zero bank logins or required accounts.</p>
-      <p>The subscriptions costing users the most are the ones they've forgotten: free trials that quietly auto-renewed, streaming services that added $2/mo with zero fanfare, and SaaS tools they haven't opened in 90 days. The incumbent "solution" — bank aggregators like Rocket Money — requires users to hand over their full financial credentials, store bank feeds on cloud servers, and pay a percentage-of-savings bounty. Catchly proves that <b>privacy by architecture beats data aggregation</b> by catching subscriptions right where they happen: in the browser.</p>
+      <p class="lead">Catchly is a privacy-first browser extension and ecosystem that spots recurring charges the moment you sign up, keeps the entire registry on your own device, and warns you before every renewal, free-trial conversion, and quiet price hike, with zero bank logins or required accounts.</p>
+      <p>The subscriptions costing users the most are the ones they've forgotten: free trials that quietly auto-renewed, streaming services that added $2/mo with zero fanfare, and SaaS tools they haven't opened in 90 days. The incumbent "solution" (bank aggregators like Rocket Money) requires users to hand over their full financial credentials, store bank feeds on cloud servers, and pay a percentage-of-savings bounty. Catchly proves that <b>privacy by architecture beats data aggregation</b> by catching subscriptions right where they happen: in the browser.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
@@ -1459,7 +1478,7 @@ h2.h-sub {
       <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
       <h3>The Solution</h3>
       <ul>
-        <li><b>In-Page Auto-Detect:</b> Detects checkout and sign-up pages at the point of intent — no manual entry or bank syncing required.</li>
+        <li><b>In-Page Auto-Detect:</b> Detects checkout and sign-up pages at the point of intent (no manual entry or bank syncing required).</li>
         <li><b>Local-First Privacy:</b> 100% stored in <span class="mono">chrome.storage.local</span> with zero cloud databases or user tracking.</li>
         <li><b>Proactive Intelligence:</b> Pre-renewal alerts, trial conversion countdowns, cumulative price-hike math, and deep-link cancel guides.</li>
       </ul>
@@ -1488,7 +1507,7 @@ h2.h-sub {
     <div class="eyebrow">Product Strategy &amp; Research</div>
     <h2 class="h">The bank login is the industry default. Refusing it is the whole product.</h2>
     <p>Every established subscription tracker works identically: connect to the user's financial institution through a fintech aggregator, ingest raw statements containing groceries, rent, and private purchases, and charge a cut of negotiated savings. That model treats user data as a mined asset and creates immense architectural attack surfaces.</p>
-    <p><b>The product teardown that sparked Catchly:</b> I analyzed popular subscription apps and discovered that over 85% of high-waste subscriptions happen on recurring digital services (streaming, AI platforms, productivity apps, design tools, and cloud storage). Users didn't actually need full bank surveillance to stop losing money — they needed a guardian present at the point of subscription.</p>
+    <p><b>The product teardown that sparked Catchly:</b> I analyzed popular subscription apps and discovered that over 85% of high-waste subscriptions happen on recurring digital services (streaming, AI platforms, productivity apps, design tools, and cloud storage). Users didn't actually need full bank surveillance to stop losing money: they needed a guardian present at the point of subscription.</p>
     <p>Catchly's core architectural bet is that <b>point-of-purchase detection + on-device intelligence delivers 90% of the utility with 0% of the privacy risk</b>. It restricts itself to a strict 24-domain allowlist, intercepts checkout events, and runs all alert scheduling and financial analytics locally.</p>
 
     <div class="note reveal">
@@ -1500,7 +1519,7 @@ h2.h-sub {
       </div>
       <div class="note__body">
         <span class="note__label">Architectural Guarantee</span>
-        <b>Privacy by platform enforcement, not good faith.</b> Catchly is constrained at the browser level via its manifest allowlist. It is technically incapable of running on your bank, healthcare portal, email, or password manager. During everyday operation, it executes <b>zero outbound HTTP requests</b> — no telemetry, no segment beacons, and no remote loggers.
+        <b>Privacy by platform enforcement, not good faith.</b> Catchly is constrained at the browser level via its manifest allowlist. It is technically incapable of running on your bank, healthcare portal, email, or password manager. During everyday operation, it executes <b>zero outbound HTTP requests</b> (no telemetry, no segment beacons, and no remote loggers).
       </div>
     </div>
   </div>
@@ -1516,20 +1535,20 @@ h2.h-sub {
   <div class="sec-num">03 / WHAT IT CATCHES</div>
   <div class="prose reveal">
     <div class="eyebrow">Core Capabilities</div>
-    <h2 class="h">Nine moments where money slips away — surfaced before the charge lands.</h2>
+    <h2 class="h">Nine moments where money slips away, surfaced before the charge lands.</h2>
     <p>Subscription waste occurs in predictable human patterns. Catchly isolates these nine leak vectors and surfaces them before the card gets charged:</p>
   </div>
 
   <div class="rules reveal">
     <div class="rule signal"><span class="rk">Auto-detect</span><div><h4>Sign-ups at the checkout point</h4><p>When you arrive on checkout or plan selection pages across supported services, Catchly slides an in-page toast offering single-click tracking.</p></div></div>
-    <div class="rule signal"><span class="rk">Reminders</span><div><h4>Pre-renewal notification dispatch</h4><p>Configurable desktop alerts (1, 3, or 7 days prior) scheduled on-device via Chrome Alarms — preventing accidental statement surprises.</p></div></div>
+    <div class="rule signal"><span class="rk">Reminders</span><div><h4>Pre-renewal notification dispatch</h4><p>Configurable desktop alerts (1, 3, or 7 days prior) scheduled on-device via Chrome Alarms, preventing accidental statement surprises.</p></div></div>
     <div class="rule warn"><span class="rk">Free trial</span><div><h4>24-Hour trial conversion countdown</h4><p>Monitors expiring free trial windows and fires high-priority alerts before trial tiers convert into recurring annual charges.</p></div></div>
     <div class="rule warn"><span class="rk">Price hike</span><div><h4>Immediate detection of quiet tier increases</h4><p>When service billing displays higher rates than previous records (e.g. Netflix $22.99 → $24.99), Catchly flags the delta and computes annual impact.</p></div></div>
     <div class="rule risk"><span class="rk">Shadow charge</span><div><h4>Audits abandoned &amp; dormant subscriptions</h4><p>Identifies services you haven't opened or interacted with in 30, 60, or 90 days but are still actively billing your card.</p></div></div>
     <div class="rule"><span class="rk">Cancel guide</span><div><h4>Direct dark-pattern cancellation routes</h4><p>Direct deep-links straight into obscure service cancellation panels with plain-English steps navigating retention hurdles.</p></div></div>
     <div class="rule"><span class="rk">Calendar</span><div><h4>30-Day renewal forecast horizon</h4><p>An interactive calendar drawer showing upcoming renewal density so monthly cashflow commitments are never unexpected.</p></div></div>
     <div class="rule"><span class="rk">Insights</span><div><h4>Currency-aware spend &amp; run-rates</h4><p>Calculates exact monthly and annual commitments across USD, EUR, GBP, CAD, AUD, JPY, and INR without corrupting cross-currency totals.</p></div></div>
-    <div class="rule"><span class="rk">Data Portability</span><div><h4>Full JSON backup and manual restore</h4><p>Complete data sovereignty with one-click offline JSON export and instant backup restores — no proprietary lock-in.</p></div></div>
+    <div class="rule"><span class="rk">Data Portability</span><div><h4>Full JSON backup and manual restore</h4><p>Complete data sovereignty with one-click offline JSON export and instant backup restores (no proprietary lock-in).</p></div></div>
   </div>
 </section>
 
@@ -1571,7 +1590,7 @@ h2.h-sub {
     <div class="frame">
       <img loading="lazy" src="assets/images/catchly-cover.webp" alt="Catchly subscriptions dashboard on Chrome Web Store"/>
     </div>
-    <figcaption>The production Catchly dashboard and Chrome Web Store showcase — clean subscription hierarchy, price-hike flags, and spend summaries.</figcaption>
+    <figcaption>The production Catchly dashboard and Chrome Web Store showcase: clean subscription hierarchy, price-hike flags, and spend summaries.</figcaption>
   </figure>
 </section>
 
@@ -1634,19 +1653,19 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
   <div class="gallery reveal">
     <div class="shot">
       <img loading="lazy" src="assets/media/catchly/02-alerts.webp" alt="Alerts panel displaying price increases and trial conversions"/>
-      <div class="sc"><b>Alerts Center</b> — aggregates price hikes, impending trial expirations, and dormant shadow subscriptions.</div>
+      <div class="sc"><b>Alerts Center</b>: aggregates price hikes, impending trial expirations, and dormant shadow subscriptions.</div>
     </div>
     <div class="shot">
       <img loading="lazy" src="assets/media/catchly/03-calendar.webp" alt="30-day subscription renewal calendar view"/>
-      <div class="sc"><b>30-Day Renewal Horizon</b> — visual day-by-day density matrix forecasting upcoming billing events.</div>
+      <div class="sc"><b>30-Day Renewal Horizon</b>: visual day-by-day density matrix forecasting upcoming billing events.</div>
     </div>
     <div class="shot">
       <img loading="lazy" src="assets/media/catchly/04-insights.webp" alt="Spend insights and category breakdown"/>
-      <div class="sc"><b>Insights &amp; Run-Rates</b> — categorization by tool type, annual commitments, and currency-isolated ledgers.</div>
+      <div class="sc"><b>Insights &amp; Run-Rates</b>: categorization by tool type, annual commitments, and currency-isolated ledgers.</div>
     </div>
     <div class="shot">
       <img loading="lazy" src="assets/media/catchly/05-settings.webp" alt="Settings, data export, and dark theme options"/>
-      <div class="sc"><b>Preferences &amp; Export</b> — dark/light theme engines, currency selectors, and full JSON data portability.</div>
+      <div class="sc"><b>Preferences &amp; Export</b>: dark/light theme engines, currency selectors, and full JSON data portability.</div>
     </div>
   </div>
 </section>
@@ -1696,7 +1715,7 @@ notifications.<span class="g">dispatchLocalAlarm</span>(renewalDate);</pre>
   <div class="prose reveal">
     <div class="eyebrow">Engineering Architecture</div>
     <h2 class="h">A modern Manifest V3 extension built for transparency.</h2>
-    <p>Zero heavy frameworks, zero runtime bloat — modular vanilla JavaScript engineered for maximum auditability and near-instant execution:</p>
+    <p>Zero heavy frameworks, zero runtime bloat: modular vanilla JavaScript engineered for maximum auditability and near-instant execution:</p>
   </div>
 
   <div class="tbl stack reveal">

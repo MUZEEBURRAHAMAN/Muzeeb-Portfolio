@@ -4,7 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<title>Edge-State Fixer — Case Study · Muzeeb Urrahaman</title>
+<title>Edge-State Fixer: Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="AI writes the happy path. It skips the other 40%. An engine that detects missing edge states in AI-generated React components and writes designed drop-in code for each." />
+<meta property="og:title" content="Edge-State Fixer: Case Study · Muzeeb Urrahaman">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/style.css?v=430">
@@ -37,6 +39,25 @@
 html[data-theme="light"] #main {
   border-left-color: rgba(0, 0, 0, 0.08) !important;
   border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: rgba(15, 15, 15, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box !important;
+}
+
+[data-theme="light"] .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(251, 251, 250, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .site-header__inner {
@@ -114,10 +135,9 @@ html[data-theme="light"] .hatched-divider__pattern {
     --display:'Archivo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; --sans:'Archivo', system-ui, sans-serif; --mono:'Geist Mono',monospace;
     --maxw:1320px; --pad:32px; --read:940px;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
-  a{color:inherit} img{max-width:100%;display:block}
+  * { box-sizing:border-box; margin:0; padding:0; }
+html { -webkit-font-smoothing:antialiased; scroll-behavior:smooth; overflow-x:clip; }
+body { background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65; overflow-x:clip; } img{max-width:100%;display:block}
   .hero__sub, .intro .lead, .lead, h2, h3, h4 { font-family: var(--display) !important; letter-spacing: -0.012em; }
   section{scroll-margin-top:150px}
   .hero__in,.stats,.chapters,.intro,.cards,.chips,.ba,.tbl,.metrics,.gallery,.divider,.steps,.footer,.diff,.classify{margin-left:auto;margin-right:auto}
@@ -331,7 +351,7 @@ html[data-theme="light"] .hatched-divider__pattern {
   .note{max-width:var(--maxw)!important;margin-left:auto;margin-right:auto}
   .figure{max-width:var(--maxw)!important}
   .figure img{width:100%}
-  /* text spans the same left AND right edges as every other block — even margins */
+  /* text spans the same left AND right edges as every other block: even margins */
   .prose{max-width:var(--maxw)!important}
   .prose .lead,.prose p,.prose ul,.prose li,.prose h2.h,.prose .eyebrow{max-width:100%;margin-left:0;margin-right:0}
   .prose[style*="center"] .lead,.prose[style*="center"] p{margin-left:auto;margin-right:auto}
@@ -405,16 +425,16 @@ html[data-theme="light"] .hatched-divider__pattern {
           CASE STUDY
         </span>
         <span class="mz-hero__badge-text">
-          Product Designer &amp; AI Engineer · Edge-State Fixer
+          Product Designer · AI Engineer (Edge-State Fixer)
         </span>
       </div>
     </div>
     <h1>AI writes the happy path.<br>It skips the <span class="grad">other 40%</span>.</h1>
-    <p class="hero__sub">v0, Lovable, Bolt and Cursor build the screen where everything works — and quietly skip the ones where it doesn't. <b style="color:var(--ink)">Edge-State Fixer</b> takes an AI-generated React component, detects which of ten edge states it's missing, and writes designed, drop-in code for each — with the reasoning, a live preview, and a real before/after.</p>
+    <p class="hero__sub">v0, Lovable, Bolt and Cursor build the screen where everything works (and quietly skip the ones where it doesn't). <b style="color:var(--ink)">Edge-State Fixer</b> takes an AI-generated React component, detects which of ten edge states it's missing, and writes designed, drop-in code for each: with the reasoning, a live preview, and a real before/after.</p>
     <a class="hero__cta" href="https://edge-state-fixer.vercel.app" target="_blank" rel="noopener">Try the live demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
-      <span class="m">Solo designer + builder</span>
+      <span class="m">Solo designer · builder</span>
       <span class="m">Spec-driven · Jul 2026</span>
       <span class="m">Engine · Web · MCP</span>
     </div>
@@ -423,11 +443,11 @@ html[data-theme="light"] .hatched-divider__pattern {
 
 <!-- STATS -->
 <div class="stats reveal">
-  <div class="stat"><div class="n">10</div><div class="l">Edge states, detect → generate</div></div>
+  <div class="stat"><div class="n">10</div><div class="l">Edge states: detect · generate</div></div>
   <div class="stat"><div class="n">~40%</div><div class="l">Of real UX AI skips (my estimate)</div></div>
   <div class="stat"><div class="n">3</div><div class="l">Surfaces off one engine</div></div>
-  <div class="stat"><div class="n">292</div><div class="l">Cross-browser tests, green</div></div>
-  <div class="stat"><div class="n">24/24</div><div class="l">Engine + MCP unit tests</div></div>
+  <div class="stat"><div class="n">292</div><div class="l">Cross-browser tests (green)</div></div>
+  <div class="stat"><div class="n">24/24</div><div class="l">Engine · MCP unit tests</div></div>
   <div class="stat"><div class="n">WCAG AA</div><div class="l">axe-verified app</div></div>
 </div>
 
@@ -441,13 +461,13 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="intro reveal">
     <div>
       <div class="eyebrow">In one line</div>
-      <p class="lead">Paste an AI-generated component. A free static pre-pass works out which edge states it's missing; the model then writes designed, copy-paste code for each — with a one-line reason, a live preview, and a before/after toggle.</p>
-      <p>Code generators are excellent at the screen where <b>everything works</b>. They skip the states where it doesn't: the blank screen before data exists, the wait while it loads, the failure when it breaks, the silent submit, the raw validation popup. Those states are roughly <b>40% of a real product's experience</b> — my estimate from tearing down AI-generated apps, not a measured figure — and they're skipped <em>by design</em>: nobody prompts for them, and a better model writes a better happy path, not a better failure state. That makes this a <b>designer-shaped problem</b> — I'd weight it ~90% design judgment, 10% model (how I think about it, not a metric).</p>
-      <p><b>What the teardowns changed:</b> pasting components out of v0, Lovable, Bolt and Cursor, the striking thing wasn't that they skipped states — it's that they skipped the <em>same</em> states, the same way, every time. Because the gap is <b>predictable</b>, detection didn't need a model at all: I made it a <b>free, deterministic pre-pass</b> that decides which states are missing before any AI is called. That one finding — the gap is regular, not random — is why the detector is rules, not a prompt.</p>
+      <p class="lead">Paste an AI-generated component. A free static pre-pass works out which edge states it's missing; the model then writes designed, copy-paste code for each: with a one-line reason, a live preview, and a before/after toggle.</p>
+      <p>Code generators are excellent at the screen where <b>everything works</b>. They skip the states where it doesn't: the blank screen before data exists, the wait while it loads, the failure when it breaks, the silent submit, the raw validation popup. Those states are roughly <b>40% of a real product's experience</b> (my estimate from tearing down AI-generated apps, not a measured figure) and they're skipped <em>by design</em>: nobody prompts for them, and a better model writes a better happy path, not a better failure state. That makes this a <b>designer-shaped problem</b> (I'd weight it ~90% design judgment, 10% model: how I think about it, not a metric).</p>
+      <p><b>What the teardowns changed:</b> pasting components out of v0, Lovable, Bolt and Cursor, the striking thing wasn't that they skipped states; it's that they skipped the <em>same</em> states, the same way, every time. Because the gap is <b>predictable</b>, detection didn't need a model at all: I made it a <b>free, deterministic pre-pass</b> that decides which states are missing before any AI is called. That one finding (the gap is regular, not random) is why the detector is rules, not a prompt.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
-      <div class="g"><div class="k">Role</div><div class="v">Solo — problem, design, architecture &amp; all code</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Solo: problem, design, architecture · all code</div></div>
       <div class="g"><div class="k">Method</div><div class="v">Spec-Driven Development (GitHub Spec Kit)</div></div>
       <div class="g"><div class="k">Surfaces</div><div class="v">Web app · MCP server · CLI</div></div>
       <div class="g"><div class="k">Started</div><div class="v">July 2026 · portfolio-first indie build</div></div>
@@ -459,8 +479,8 @@ html[data-theme="light"] .hatched-divider__pattern {
       <div class="card__ic" style="background:var(--red-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
       <h3>Problem</h3>
       <ul>
-        <li>AI generators ship the happy path &amp; leave the <b>failure states blank</b>.</li>
-        <li>Those states are <b>~40% of the real experience</b> — skipped by design.</li>
+        <li>AI generators ship the happy path · leave the <b>failure states blank</b>.</li>
+        <li>Those states are <b>~40% of the real experience</b> (skipped by design).</li>
         <li>Re-prompting gives <b>inconsistent, taste-free</b> output every run.</li>
       </ul>
     </div>
@@ -468,18 +488,18 @@ html[data-theme="light"] .hatched-divider__pattern {
       <div class="card__ic" style="background:var(--accent-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
       <h3>Solution</h3>
       <ul>
-        <li>A <b>written state-design ruleset</b> is the system prompt — the taste, encoded once.</li>
+        <li>A <b>written state-design ruleset</b> is the system prompt: the taste, encoded once.</li>
         <li><b>Deterministic detection</b> decides what applies; the model only fills in code.</li>
-        <li>Each fix drops in: <b>matches your Tailwind, names variables you used</b>.</li>
+        <li>Each fix drops in: <b>matches your Tailwind · names variables you used</b>.</li>
       </ul>
     </div>
     <div class="card">
       <div class="card__ic" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Results</h3>
       <ul>
-        <li>10 states detected &amp; generated <b>end to end</b> from a paste.</li>
-        <li>One engine ships to <b>web, an MCP server &amp; a CLI</b>.</li>
-        <li><b>292 cross-browser tests</b> green; the app passes an a11y gate.</li>
+        <li>10 states detected · generated <b>end to end</b> from a paste.</li>
+        <li>One engine ships to <b>web · an MCP server · a CLI</b>.</li>
+        <li><b>292 cross-browser tests</b> (green); the app passes an a11y gate.</li>
       </ul>
     </div>
   </div>
@@ -495,9 +515,9 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="prose reveal">
     <div class="eyebrow">Why this exists</div>
     <h2 class="h">The model is a commodity. The taste is the moat.</h2>
-    <p>The lazy version of this is a thin call to an LLM: "add edge states to this component." A better model erases that overnight, and it produces different, taste-free output every run. So the valuable asset here isn't generation — it's <b>encoded taste</b>: a written, opinionated definition of what a <em>good</em> empty, error or validation state actually is, applied identically every time.</p>
-    <p>That taste lives in one file — <span class="mono">packages/engine/src/prompt/system.ts</span> — and it <em>is</em> the system prompt. The few-shot examples come from hand-designed fixtures beside it. This document, not the model, is the defense against "just re-prompt the generator." "Did you handle the empty case?" is a forever question, not a generation trick — which is exactly why the product survives the models getting better.</p>
-    <div class="note"><b>Built spec-first.</b> The whole thing was built with Spec-Driven Development (GitHub Spec Kit): a written <span style="font-family:var(--mono);font-size:.85em">constitution.md</span> of guardrails, then spec → plan → tasks per feature. The top guardrail — <b>"design quality is the product; if a generated state doesn't clearly out-design a lazy re-prompt, the feature isn't done"</b> — is what kept scope honest.</div>
+    <p>The lazy version of this is a thin call to an LLM: "add edge states to this component." A better model erases that overnight, and it produces different, taste-free output every run. So the valuable asset here isn't generation: it's <b>encoded taste</b> (a written, opinionated definition of what a <em>good</em> empty, error or validation state actually is, applied identically every time).</p>
+    <p>That taste lives in one file (<span class="mono">packages/engine/src/prompt/system.ts</span>) and it <em>is</em> the system prompt. The few-shot examples come from hand-designed fixtures beside it. This document, not the model, is the defense against "just re-prompt the generator." "Did you handle the empty case?" is a forever question, not a generation trick, which is exactly why the product survives the models getting better.</p>
+    <div class="note"><b>Built spec-first.</b> The whole thing was built with Spec-Driven Development (GitHub Spec Kit): a written <span style="font-family:var(--mono);font-size:.85em">constitution.md</span> of guardrails, then spec · plan · tasks per feature. The top guardrail (<b>"design quality is the product; if a generated state doesn't clearly out-design a lazy re-prompt, the feature isn't done"</b>) is what kept scope honest.</div>
   </div>
 </section>
 
@@ -510,8 +530,8 @@ html[data-theme="light"] .hatched-divider__pattern {
 <section id="states">
   <div class="prose reveal">
     <div class="eyebrow">The taste, written down</div>
-    <h2 class="h">Ten states — each with one opinionated rule.</h2>
-    <p>These aren't generic categories; each carries a specific design stance from the ruleset. Five shipped in the MVP; five more (the states products hit <em>after</em> launch — auth, real networks, scale, limits) landed in V1.</p>
+    <h2 class="h">Ten states: each with one opinionated rule.</h2>
+    <p>These aren't generic categories; each carries a specific design stance from the ruleset. Five shipped in the MVP; five more (the states products hit <em>after</em> launch: auth, real networks, scale, limits) landed in V1.</p>
   </div>
   <div class="rules reveal">
     <div class="rule"><span class="rk">Empty</span><div><h4>Onboarding, not an error</h4><p>Icon → headline → why it's empty → a primary "first action" CTA. A blank div wastes the most common first impression.</p></div></div>
@@ -521,7 +541,7 @@ html[data-theme="light"] .hatched-divider__pattern {
     <div class="rule"><span class="rk">Validation</span><div><h4>Inline, per-field, human</h4><p>Message under each field, <span class="mono">aria-invalid</span> + <span class="mono">aria-describedby</span>, validate on blur. Assumed rules surfaced, never invented.</p></div></div>
     <div class="rule v1"><span class="rk">No-permission</span><div><h4>A boundary, not a bug</h4><p>Names the wall, shows current-vs-required role, offers a forward path. Amber, not alarm-red. A 403 rendered blank reads as broken.</p></div></div>
     <div class="rule v1"><span class="rk">Offline</span><div><h4>Preserve, communicate, recover</h4><p>Keep the last-loaded UI (dim, don't blank), non-blocking banner, auto-refetch on reconnect. Never an infinite spinner.</p></div></div>
-    <div class="rule v1"><span class="rk">No search results</span><div><h4>Echo the query, offer an exit</h4><p>"No matches for '&lt;query&gt;'" + clear-filters. Distinct from first-run empty — here data exists, the query excluded it.</p></div></div>
+    <div class="rule v1"><span class="rk">No search results</span><div><h4>Echo the query, offer an exit</h4><p>"No matches for '&lt;query&gt;'" + clear-filters. Distinct from first-run empty (here data exists, the query excluded it).</p></div></div>
     <div class="rule v1"><span class="rk">End of list</span><div><h4>A terminal marker, not a phantom spinner</h4><p>Gate the loader on <span class="mono">hasNextPage</span>; replace the endless spinner with "You're all caught up." "Loading more" and "no more" must look different.</p></div></div>
     <div class="rule v1"><span class="rk">Over-limit</span><div><h4>Name the limit, show the way forward</h4><p>"You've used all 50 of your monthly generations" + a usage meter + when it resets / how to upgrade. Blameless copy. Design the feedback, never the limiter.</p></div></div>
   </div>
@@ -537,29 +557,29 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="prose reveal">
     <div class="eyebrow">The pipeline</div>
     <h2 class="h">Deterministic detection, generative fixing.</h2>
-    <p>The split is deliberate: <b>a cheap, free static pass decides what applies</b> — reproducibly, with no model call — and the model only does the subjective part, writing the designed code. That's what makes the tool cheap to run and predictable to reason about.</p>
+    <p>The split is deliberate: <b>a cheap, free static pass decides what applies</b> (reproducibly, with no model call) and the model only does the subjective part, writing the designed code. That's what makes the tool cheap to run and predictable to reason about.</p>
   </div>
   <div class="steps reveal">
-    <div class="step"><div class="num">1</div><div><h4>Paste a component</h4><p>Any AI-generated React/JSX — a table, form, dashboard, feed, search view.</p></div></div>
-    <div class="step"><div class="num">2</div><div><h4>Detect signals — no model</h4><p>An AST/regex pre-pass reads the code for real cues: <code>fetch</code>/<code>useEffect</code>/<code>useQuery</code> → data-dependent; <code>onSubmit</code>/mutations → mutating; a form; auth cues like <code>403</code>/<code>useSession</code>/<code>isAdmin</code>/<code>ShieldAlert</code>; <code>429</code>/quota; infinite-scroll. It even <em>refuses</em> to treat a bare <code>role</code> as an auth signal — it's usually a data column, not permission.</p></div></div>
-    <div class="step"><div class="num">3</div><div><h4>Classify each state</h4><p>Every state is marked <code>present</code>, <code>lazy</code>, <code>missing</code> or <code>not-applicable</code> — so the tool fixes real gaps and pads nothing.</p></div></div>
+    <div class="step"><div class="num">1</div><div><h4>Paste a component</h4><p>Any AI-generated React/JSX (a table, form, dashboard, feed, search view).</p></div></div>
+    <div class="step"><div class="num">2</div><div><h4>Detect signals (no model)</h4><p>An AST/regex pre-pass reads the code for real cues: <code>fetch</code>/<code>useEffect</code>/<code>useQuery</code> → data-dependent; <code>onSubmit</code>/mutations → mutating; a form; auth cues like <code>403</code>/<code>useSession</code>/<code>isAdmin</code>/<code>ShieldAlert</code>; <code>429</code>/quota; infinite-scroll. It even <em>refuses</em> to treat a bare <code>role</code> as an auth signal: it's usually a data column, not permission.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h4>Classify each state</h4><p>Every state is marked <code>present</code>, <code>lazy</code>, <code>missing</code> or <code>not-applicable</code>, so the tool fixes real gaps and pads nothing.</p></div></div>
     <div class="step"><div class="num">4</div><div><h4>Generate to the ruleset</h4><p>For each <code>missing</code>/<code>lazy</code> state the model returns <b>zod-validated structured output</b> (retry-once on a bad shape): designed code + a one-line rationale, matching your existing Tailwind and variable names.</p></div></div>
-    <div class="step"><div class="num">5</div><div><h4>Review &amp; copy</h4><p>Each fix arrives with a live in-document preview, a before/after toggle, and copy-to-clipboard — paste it straight back into your project.</p></div></div>
+    <div class="step"><div class="num">5</div><div><h4>Review &amp; copy</h4><p>Each fix arrives with a live in-document preview, a before/after toggle, and copy-to-clipboard: paste it straight back into your project.</p></div></div>
   </div>
 
   <div class="prose reveal" style="margin-top:44px">
     <div class="eyebrow">The classification</div>
     <h2 class="h">Applicability is a first-class decision.</h2>
-    <p>Most tools pad their output to look thorough. This one does the opposite — a read-only table gets <em>no</em> validation; a pure form gets <em>no</em> first-run empty. Four verdicts, and two of them emit nothing:</p>
+    <p>Most tools pad their output to look thorough. This one does the opposite: a read-only table gets <em>no</em> validation; a pure form gets <em>no</em> first-run empty. Four verdicts, and two of them emit nothing:</p>
   </div>
   <div class="classify reveal">
     <div class="cl present"><div class="lab">● Present</div><p>Already handled well.</p><span class="out">emits nothing</span></div>
-    <div class="cl lazy"><div class="lab">● Lazy</div><p>Handled but under-designed — a bare spinner, a blank div, "Something went wrong."</p><span class="out">emits a redesign</span></div>
+    <div class="cl lazy"><div class="lab">● Lazy</div><p>Handled but under-designed: a bare spinner, a blank div, "Something went wrong."</p><span class="out">emits a redesign</span></div>
     <div class="cl missing"><div class="lab">● Missing</div><p>Not handled at all.</p><span class="out">emits designed code</span></div>
     <div class="cl na"><div class="lab">● Not-applicable</div><p>Doesn't fit this component.</p><span class="out">emits nothing</span></div>
   </div>
 
-  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img loading="lazy" src="assets/media/edge-state/01-home.webp" alt="Edge-State Fixer landing page"/></div><figcaption>The single paste-and-fix flow. The app dogfoods its own empty, loading, error, toast and validation states — including the waitlist form.</figcaption></figure>
+  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img loading="lazy" src="assets/media/edge-state/01-home.webp" alt="Edge-State Fixer landing page"/></div><figcaption>The single paste-and-fix flow. The app dogfoods its own empty, loading, error, toast and validation states, including the waitlist form.</figcaption></figure>
 </section>
 
 <!-- Section Divider: How to Diff -->
@@ -572,7 +592,7 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="prose reveal">
     <div class="eyebrow">A worked example</div>
     <h2 class="h">One real component, its real gaps, filled.</h2>
-    <p>Take <span class="mono">UserTable.tsx</span> — a data table the generator shipped happy-path only. It fetches, shows a bare spinner while loading, and has <b>no error path</b> and <b>no empty state</b>: a failed request renders nothing, and zero users renders an empty <span class="mono">&lt;tbody&gt;</span>. Detection flags it as data-dependent, so empty · loading · error all apply. Here is the error state — the actual before and after code from the repo:</p>
+    <p>Take <span class="mono">UserTable.tsx</span>: a data table the generator shipped happy-path only. It fetches, shows a bare spinner while loading, and has <b>no error path</b> and <b>no empty state</b>: a failed request renders nothing, and zero users renders an empty <span class="mono">&lt;tbody&gt;</span>. Detection flags it as data-dependent, so empty · loading · error all apply. Here is the error state, the actual before and after code from the repo:</p>
   </div>
 
   <div class="diff reveal">
@@ -593,7 +613,7 @@ html[data-theme="light"] .hatched-divider__pattern {
 }, []);
 
 <span class="k">if</span> (loading) <span class="k">return</span> (
-  <span class="c">// a bare spinner — no layout, no context</span>
+  <span class="c">// a bare spinner: no layout, no context</span>
   &lt;div className=<span class="s">"animate-spin ..."</span> /&gt;
 );</pre>
     </div>
@@ -615,17 +635,17 @@ html[data-theme="light"] .hatched-divider__pattern {
     </div>
   </div>
   <div class="prose reveal" style="margin-top:6px">
-    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">Rationale (verbatim from the fixture):</b> the error state is UX writing, not a stack trace — it names what happened, why in human terms, and what to do, with recovery one click away via a spinning "Try again." It never surfaces raw <span class="mono">error.message</span>, which would leak internals and mean nothing to the reader.</p>
+    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">Rationale (verbatim from the fixture):</b> the error state is UX writing, not a stack trace: it names what happened, why in human terms, and what to do, with recovery one click away via a spinning "Try again." It never surfaces raw <span class="mono">error.message</span>, which would leak internals and mean nothing to the reader.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:40px">
     <p>The same loop runs for every applicable state. These are real designed states from the tool:</p>
   </div>
   <div class="gallery reveal">
-    <div class="shot"><img loading="lazy" src="assets/media/edge-state/04-loading-after.webp" alt="Loading skeleton"/><div class="sc"><b>Loading</b> — a layout-matched skeleton that mirrors the real rows, so nothing reflows when data arrives.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/edge-state/05-empty-after.webp" alt="Empty state"/><div class="sc"><b>Empty</b> — treated as onboarding: what belongs here plus a primary action, not a blank container.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/edge-state/06-validation-after.webp" alt="Inline validation"/><div class="sc"><b>Validation</b> — inline, per-field, in plain language, wired with <span class="mono">aria-describedby</span> — never a raw popup.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/edge-state/07-toast-after.webp" alt="Success toast"/><div class="sc"><b>Success</b> — a confirming toast fired after the request resolves, so the submit is never silent.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/edge-state/04-loading-after.webp" alt="Loading skeleton"/><div class="sc"><b>Loading</b>: a layout-matched skeleton that mirrors the real rows, so nothing reflows when data arrives.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/edge-state/05-empty-after.webp" alt="Empty state"/><div class="sc"><b>Empty</b>: treated as onboarding: what belongs here plus a primary action, not a blank container.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/edge-state/06-validation-after.webp" alt="Inline validation"/><div class="sc"><b>Validation</b>: inline, per-field, in plain language, wired with <span class="mono">aria-describedby</span> (never a raw popup).</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/edge-state/07-toast-after.webp" alt="Success toast"/><div class="sc"><b>Success</b>: a confirming toast fired after the request resolves, so the submit is never silent.</div></div>
   </div>
 </section>
 
@@ -641,17 +661,17 @@ html[data-theme="light"] .hatched-divider__pattern {
     <h2 class="h">Anyone can ask a model for an error state.</h2>
     <p>The valuable decisions were about how a tool like this becomes something a developer trusts on their own code. Three examples, all real, from the ruleset and fixtures:</p>
     <ul>
-      <li><b>Optimistic vs confirm-on-success — chosen by risk, not by default.</b> A notifications feed's "mark as read" is low-risk, reversible and high-frequency, so the UI flips immediately and rolls back with a Retry toast on failure. A contact form is a one-shot, non-reversible action, so it <em>waits</em> for the server before claiming success. Showing a form as "sent" before the server agrees is a lie the user can't undo — so the engine encodes both patterns and picks per component.</li>
-      <li><b>Design the feedback, never invent the logic.</b> For no-permission the frontend can only guess the rule, so the assumed requirement (e.g. <span class="mono">admin</span> role) is written as an explicit <em>assumption</em> and surfaced to the user as the required role — the state announces the rule it believes applies rather than inventing and hiding business logic the backend owns. Validation surfaces required/email/min-length the same way.</li>
-      <li><b>Detection that refuses false positives.</b> A bare <span class="mono">role</span> in the code is <em>not</em> treated as an auth cue — it's almost always a data column (<span class="mono">user.role</span>). The detector keys on explicit permission signals only. Precision here is what makes an always-on (lint / PR / MCP) form trustworthy.</li>
+      <li><b>Optimistic vs confirm-on-success (chosen by risk, not by default).</b> A notifications feed's "mark as read" is low-risk, reversible and high-frequency, so the UI flips immediately and rolls back with a Retry toast on failure. A contact form is a one-shot, non-reversible action, so it <em>waits</em> for the server before claiming success. Showing a form as "sent" before the server agrees is a lie the user can't undo, so the engine encodes both patterns and picks per component.</li>
+      <li><b>Design the feedback, never invent the logic.</b> For no-permission the frontend can only guess the rule, so the assumed requirement (e.g. <span class="mono">admin</span> role) is written as an explicit <em>assumption</em> and surfaced to the user as the required role: the state announces the rule it believes applies rather than inventing and hiding business logic the backend owns. Validation surfaces required/email/min-length the same way.</li>
+      <li><b>Detection that refuses false positives.</b> A bare <span class="mono">role</span> in the code is <em>not</em> treated as an auth cue: it's almost always a data column (<span class="mono">user.role</span>). The detector keys on explicit permission signals only. Precision here is what makes an always-on (lint / PR / MCP) form trustworthy.</li>
     </ul>
-    <div class="note"><b>The engine is the asset; every surface is a thin wrapper.</b> Web, MCP and CLI all call one decoupled <span style="font-family:var(--mono);font-size:.85em">detectAndFix()</span> — a guardrail from day one — which is why the exact same taste ships everywhere and the app can dogfood its own states as living proof.</div>
+    <div class="note"><b>The engine is the asset; every surface is a thin wrapper.</b> Web, MCP and CLI all call one decoupled <span style="font-family:var(--mono);font-size:.85em">detectAndFix()</span> (a guardrail from day one) which is why the exact same taste ships everywhere and the app can dogfood its own states as living proof.</div>
   </div>
 
   <div class="prose reveal" style="margin-top:40px">
     <div class="eyebrow">The engine contract</div>
     <h2 class="h">One call, typed and honest.</h2>
-    <p>The public API is a single function returning a validated result — what the component does, and each state classified with its designed code and rationale.</p>
+    <p>The public API is a single function returning a validated result: what the component does, and each state classified with its designed code and rationale.</p>
   </div>
   <div class="code reveal"><pre><span class="k">import</span> { detectAndFix } <span class="k">from</span> <span class="s">"edge-state-fixer-engine"</span>;
 
@@ -679,18 +699,18 @@ result.states.empty  <span class="c">// → { status: "not-applicable" }   ← e
   <div class="tbl stack hidecol reveal">
     <table>
       <tr><th>Package</th><th>What it is</th></tr>
-      <tr><td>engine</td><td>Framework-agnostic TypeScript, no web deps — the asset. <code>detect()</code> static pre-pass + <code>detectAndFix()</code> LLM generation, zod-validated structured output, retry-once.</td></tr>
-      <tr><td>providers</td><td>An <code>LlmProvider</code> interface with three modes: subscription CLI (drives the local <code>claude</code> CLI — <b>no API key</b>), Anthropic API, and a deterministic mock for demos &amp; CI.</td></tr>
-      <tr><td>prompt</td><td><code>system.ts</code> — the encoded state-design ruleset. <code>examples.ts</code> — few-shot from the hand-designed fixtures.</td></tr>
+      <tr><td>engine</td><td>Framework-agnostic TypeScript, no web deps (the asset). <code>detect()</code> static pre-pass + <code>detectAndFix()</code> LLM generation, zod-validated structured output, retry-once.</td></tr>
+      <tr><td>providers</td><td>An <code>LlmProvider</code> interface with three modes: subscription CLI (drives the local <code>claude</code> CLI: <b>no API key</b>), Anthropic API, and a deterministic mock for demos &amp; CI.</td></tr>
+      <tr><td>prompt</td><td><code>system.ts</code>: the encoded state-design ruleset. <code>examples.ts</code>: few-shot from the hand-designed fixtures.</td></tr>
       <tr><td>apps/web</td><td>Next.js 15 App Router + Tailwind v4 · Sandpack live previews · Shiki code · sonner toasts. First load ~206 kB; key stays server-side.</td></tr>
-      <tr><td>packages/mcp</td><td>MCP server — <code>scan</code> / <code>fix</code> / <code>ruleset</code> tools for Claude Code, Cursor &amp; Windsurf. <b>Published on npm</b> as <span class="mono">edge-state-fixer-mcp</span>.</td></tr>
+      <tr><td>packages/mcp</td><td>MCP server: <code>scan</code> / <code>fix</code> / <code>ruleset</code> tools for Claude Code, Cursor &amp; Windsurf. <b>Published on npm</b> as <span class="mono">edge-state-fixer-mcp</span>.</td></tr>
       <tr><td>quality</td><td>TypeScript strict · Biome · Vitest · a Playwright suite of 292 tests across Chromium, Firefox, WebKit &amp; mobile · a written TEST-PLAN mapping every requirement to a test.</td></tr>
     </table>
   </div>
   <div class="prose reveal" style="margin-top:36px">
     <div class="eyebrow">In your IDE</div>
     <h2 class="h">It meets developers where they already are.</h2>
-    <p>The MCP server exposes the engine to any MCP client. Generate a screen, then ask the IDE to scan and fix — <span class="mono">scan</span> is free and local (no model); <span class="mono">fix</span> generates designed code; <span class="mono">ruleset</span> hands the IDE's own model the design standard.</p>
+    <p>The MCP server exposes the engine to any MCP client. Generate a screen, then ask the IDE to scan and fix: <span class="mono">scan</span> is free and local (no model); <span class="mono">fix</span> generates designed code; <span class="mono">ruleset</span> hands the IDE's own model the design standard.</p>
   </div>
   <div class="code reveal"><pre><span class="c"># one command to add it to Claude Code</span>
 claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
@@ -709,14 +729,14 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
 <section id="results">
   <div class="prose reveal">
     <div class="eyebrow">Results</div>
-    <h2 class="h">Working, end to end — and proven on real components.</h2>
-    <p>Ten edge states are detected and generated from a single pasted component. Output is real and component-specific on the Claude subscription — no API key needed. The taste is validated against <b>five hand-designed reference components</b> — an analytics dashboard, a contact form, a data table, a notifications feed, and a search view — each producing states that visibly out-design a re-prompt. The full test matrix is green.</p>
+    <h2 class="h">Working, end to end: and proven on real components.</h2>
+    <p>Ten edge states are detected and generated from a single pasted component. Output is real and component-specific on the Claude subscription (no API key needed). The taste is validated against <b>five hand-designed reference components</b> (an analytics dashboard, a contact form, a data table, a notifications feed, and a search view) each producing states that visibly out-design a re-prompt. The full test matrix is green.</p>
   </div>
 
   <div class="metrics reveal">
     <div class="metric"><div class="n">10</div><h4>states, detect → generate</h4><p>Five MVP + five V1 states, end to end from a paste, each emitted only where it applies.</p></div>
-    <div class="metric"><div class="n">292</div><h4>tests, all green</h4><p>Playwright across Chromium, Firefox, WebKit &amp; mobile — plus 24/24 engine + MCP unit tests, and a WCAG AA axe gate.</p></div>
-    <div class="metric"><div class="n">3</div><h4>surfaces, one engine</h4><p>Web app, MCP server (on npm) &amp; CLI — the same encoded taste everywhere, fully decoupled.</p></div>
+    <div class="metric"><div class="n">292</div><h4>tests, all green</h4><p>Playwright across Chromium, Firefox, WebKit &amp; mobile (plus 24/24 engine + MCP unit tests, and a WCAG AA axe gate).</p></div>
+    <div class="metric"><div class="n">3</div><h4>surfaces, one engine</h4><p>Web app, MCP server (on npm) &amp; CLI: the same encoded taste everywhere, fully decoupled.</p></div>
   </div>
 </section>
 
@@ -730,9 +750,9 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
   <div class="prose reveal">
     <div class="eyebrow">Reflection</div>
     <h2 class="h">What I got wrong before I got it right.</h2>
-    <p>The first version was the lazy one: a single prompt — <em>"add the missing edge states to this component."</em> It demoed fine and fell apart in use. Every run produced different, taste-free output, and a better model would erase the whole thing overnight. That failure is what forced the real insight — the value isn't generation, it's <b>encoded taste</b> — so I threw the thin wrapper out and moved the judgment into a written ruleset the model only fills in.</p>
-    <p><b>What I'd do differently:</b> I built breadth — web, MCP, CLI, ten states — before proving anyone wants it. Next time I'd ship the <b>free detector alone</b> first and watch fix-acceptance before building the generator: demand data, then surface area.</p>
-    <p><b>Built for leverage:</b> the taste lives in one engine, so it isn't a single app — it's an <b>MCP server</b> (on npm) and a CLI that other tools and coding agents call directly. The encoded judgment travels wherever a developer already works, instead of living behind one UI.</p>
+    <p>The first version was the lazy one: a single prompt (<em>"add the missing edge states to this component."</em>) It demoed fine and fell apart in use. Every run produced different, taste-free output, and a better model would erase the whole thing overnight. That failure is what forced the real insight: the value isn't generation, it's <b>encoded taste</b>, so I threw the thin wrapper out and moved the judgment into a written ruleset the model only fills in.</p>
+    <p><b>What I'd do differently:</b> I built breadth (web, MCP, CLI, ten states) before proving anyone wants it. Next time I'd ship the <b>free detector alone</b> first and watch fix-acceptance before building the generator: demand data, then surface area.</p>
+    <p><b>Built for leverage:</b> the taste lives in one engine, so it isn't a single app: it's an <b>MCP server</b> (on npm) and a CLI that other tools and coding agents call directly. The encoded judgment travels wherever a developer already works, instead of living behind one UI.</p>
   </div>
 </section>
 
@@ -747,12 +767,12 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
     <div class="eyebrow">What I'd do next</div>
     <h2 class="h">Ordered by leverage, not flash.</h2>
     <ul>
-      <li><b>Cross-file detection</b> — read a parent <span class="mono">ErrorBoundary</span> / <span class="mono">Suspense</span> / route loader so the scanner never flags an already-handled state. This is the precision that makes an always-on form trustworthy.</li>
-      <li><b>Reframe as "ESLint for UX completeness"</b> — a free local detector on every PR, paid autofix. "Did you handle the empty case?" is a forever check, so it survives the models improving.</li>
-      <li><b>Editor + CI surfaces</b> — a Claude Code skill and a GitHub PR bot on changed files, so it lands in the developer's flow instead of a paste-in detour.</li>
-      <li><b>Measure demand before breadth</b> — retention and fix-acceptance, not signups, decide whether this is a product or a very good portfolio piece.</li>
+      <li><b>Cross-file detection:</b> read a parent <span class="mono">ErrorBoundary</span> / <span class="mono">Suspense</span> / route loader so the scanner never flags an already-handled state. This is the precision that makes an always-on form trustworthy.</li>
+      <li><b>Reframe as "ESLint for UX completeness":</b> a free local detector on every PR, paid autofix. "Did you handle the empty case?" is a forever check, so it survives the models improving.</li>
+      <li><b>Editor + CI surfaces:</b> a Claude Code skill and a GitHub PR bot on changed files, so it lands in the developer's flow instead of a paste-in detour.</li>
+      <li><b>Measure demand before breadth:</b> retention and fix-acceptance, not signups, decide whether this is a product or a very good portfolio piece.</li>
     </ul>
-    <div class="note"><b>The through-line.</b> I didn't stop at <em>designing</em> good edge states — I built the system that detects the gap and produces them consistently, and made deliberate calls about how that system earns trust rather than merely impresses.</div>
+    <div class="note"><b>The through-line.</b> I didn't stop at <em>designing</em> good edge states: I built the system that detects the gap and produces them consistently, and made deliberate calls about how that system earns trust rather than merely impresses.</div>
   </div>
 </section>
 
@@ -768,13 +788,13 @@ claude mcp add edge-state-fixer -- npx -y edge-state-fixer-mcp
     <h2 class="h">The things people probe for.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary>Isn't this just a wrapper around an LLM?</summary><div class="a">No — two things sit around the model that are the actual product. First, a <b>written ruleset</b> that defines what "good" is for each state, applied identically every run. Second, a <b>free, deterministic detector</b> that decides what applies before any model call. Swap the model out and the product still knows what good looks like and where it's needed. The generation is the commodity part.</div></details>
-    <details><summary>Why not just re-prompt the code generator to "add edge states"?</summary><div class="a">Because you get inconsistent, taste-free output that changes every run, and no control over <b>which</b> states apply. This applies one explicit standard — skeleton-not-spinner, empty-as-onboarding, human error copy, inline validation — and only for the states that fit that specific component, classified as present / lazy / missing / not-applicable.</div></details>
-    <details><summary>How does it decide what applies without wasting a model call?</summary><div class="a">A static AST/regex pre-pass reads the code for real cues: <b>data</b> (fetch / useEffect / useQuery), <b>mutation</b> (onSubmit / save / delete), a form, auth cues (403, useSession, isAdmin, ShieldAlert), 429/quota, infinite-scroll. It's reproducible and free. It also avoids obvious false positives — a bare <span style="font-family:var(--mono);font-size:.85em">role</span> is treated as a data column, not an auth signal.</div></details>
-    <details><summary>How does it avoid inventing business logic it shouldn't?</summary><div class="a">Hard boundary: it designs the <b>feedback and UI</b>, never the logic. It doesn't write the mutation, the auth check, or the rate limiter. Where it has to assume a rule — a required field, an <span style="font-family:var(--mono);font-size:.85em">admin</span> requirement — it surfaces that as an explicit <b>assumption</b> the user can see and correct, rather than silently enforcing something the backend actually owns.</div></details>
-    <details><summary>Do I need an API key to try it?</summary><div class="a">No. Provider selection is automatic: a deterministic mock (used by the e2e suite and offline demos), an Anthropic API key if present, or — the default — the local <span style="font-family:var(--mono);font-size:.85em">claude</span> CLI on your logged-in Claude subscription. The live demo runs in mock mode; running locally gives real, component-specific output with no key.</div></details>
-    <details><summary>How is it tested, and how do you know the output is actually good?</summary><div class="a">Two different things, tested separately. <b>Mechanics</b>: a Playwright suite of 292 tests across Chromium, Firefox, WebKit and mobile, engine + MCP unit tests at 24/24, TS strict, Biome, and a written TEST-PLAN mapping every requirement to a test, plus a WCAG AA axe gate. <b>Taste</b>: the five hand-designed fixtures are the ground truth — generated output has to out-design a lazy re-prompt of the original, which is a human design-QA judgment, not something Playwright can assert.</div></details>
-    <details><summary>Are you a designer or a developer?</summary><div class="a">A product designer first — this is a designer-shaped problem, roughly 90% design judgment, 10% model. The building is what makes it unusual: I owned the problem framing, the design, the architecture and every line, and shipped it across web, an MCP server and a CLI myself instead of waiting for a handoff.</div></details>
+    <details open><summary>Isn't this just a wrapper around an LLM?</summary><div class="a">No: two things sit around the model that are the actual product. First, a <b>written ruleset</b> that defines what "good" is for each state, applied identically every run. Second, a <b>free, deterministic detector</b> that decides what applies before any model call. Swap the model out and the product still knows what good looks like and where it's needed. The generation is the commodity part.</div></details>
+    <details><summary>Why not just re-prompt the code generator to "add edge states"?</summary><div class="a">Because you get inconsistent, taste-free output that changes every run, and no control over <b>which</b> states apply. This applies one explicit standard: skeleton-not-spinner, empty-as-onboarding, human error copy, inline validation; and only for the states that fit that specific component, classified as present / lazy / missing / not-applicable.</div></details>
+    <details><summary>How does it decide what applies without wasting a model call?</summary><div class="a">A static AST/regex pre-pass reads the code for real cues: <b>data</b> (fetch / useEffect / useQuery), <b>mutation</b> (onSubmit / save / delete), a form, auth cues (403, useSession, isAdmin, ShieldAlert), 429/quota, infinite-scroll. It's reproducible and free. It also avoids obvious false positives: a bare <span style="font-family:var(--mono);font-size:.85em">role</span> is treated as a data column, not an auth signal.</div></details>
+    <details><summary>How does it avoid inventing business logic it shouldn't?</summary><div class="a">Hard boundary: it designs the <b>feedback and UI</b>, never the logic. It doesn't write the mutation, the auth check, or the rate limiter. Where it has to assume a rule (a required field, an <span style="font-family:var(--mono);font-size:.85em">admin</span> requirement) it surfaces that as an explicit <b>assumption</b> the user can see and correct, rather than silently enforcing something the backend actually owns.</div></details>
+    <details><summary>Do I need an API key to try it?</summary><div class="a">No. Provider selection is automatic: a deterministic mock (used by the e2e suite and offline demos), an Anthropic API key if present, or (the default) the local <span style="font-family:var(--mono);font-size:.85em">claude</span> CLI on your logged-in Claude subscription. The live demo runs in mock mode; running locally gives real, component-specific output with no key.</div></details>
+    <details><summary>How is it tested, and how do you know the output is actually good?</summary><div class="a">Two different things, tested separately. <b>Mechanics</b>: a Playwright suite of 292 tests across Chromium, Firefox, WebKit and mobile, engine + MCP unit tests at 24/24, TS strict, Biome, and a written TEST-PLAN mapping every requirement to a test, plus a WCAG AA axe gate. <b>Taste</b>: the five hand-designed fixtures are the ground truth: generated output has to out-design a lazy re-prompt of the original, which is a human design-QA judgment, not something Playwright can assert.</div></details>
+    <details><summary>Are you a designer or a developer?</summary><div class="a">A product designer first: this is a designer-shaped problem, roughly 90% design judgment, 10% model. The building is what makes it unusual: I owned the problem framing, the design, the architecture and every line, and shipped it across web, an MCP server and a CLI myself instead of waiting for a handoff.</div></details>
   </div>
 </section>
 

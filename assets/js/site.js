@@ -1,6 +1,6 @@
-/* Muzeeb portfolio — shared site JS
+/* Muzeeb portfolio: shared site JS
    1. Auto-highlight active pill-nav link by current page
-   2. Custom cursor (arrow + "Designer" label) — desktop pointer devices only
+   2. Custom cursor (arrow + "Designer" label): desktop pointer devices only
    Vanilla port of a motion/react cursor component. */
 (function () {
   "use strict";
@@ -132,7 +132,7 @@
     }
     var ease = function (t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
     build(); draw(0);
-    // Canvas now fully covers — drop the fallback bg so dissolving cells reveal the page.
+    // Canvas now fully covers: drop the fallback bg so dissolving cells reveal the page.
     wrap.style.background = "transparent";
     window.addEventListener("resize", function () { build(); }, { passive: true });
 
@@ -157,7 +157,7 @@
   /* ---------- 1. Active nav link ---------- */
   function setActiveNav() {
     var path = (location.pathname.split("/").pop() || "index.html") || "index.html";
-    // Detail pages aren't nav items — light up their parent tab so a tab is always active.
+    // Detail pages aren't nav items: light up their parent tab so a tab is always active.
     var parent = null;
     if (/(case-study|zebralearn|30-days|product-vision|ux-review|uxd-for)/i.test(path)) parent = "best-work.html";
     else if (/-blog\.html$/i.test(path)) parent = "blog.html";
@@ -169,111 +169,129 @@
     });
   }
 
-  /* ---------- 2. Custom cursor (arrow + trailing label, spring + tilt) ---------- */
+  /* ---------- 2. Magic UI Smooth Cursor (Zero-Lag Smooth Spring Tracking, Rock-Solid Upright) ---------- */
   function initCursor() {
-    // Desktop pointer devices only (screen >= 1024px) — skip mobile/tablet/touch
-    if (window.innerWidth < 1024 || !window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    // Touch / Mobile check: strictly disabled on touch devices
+    var isTouch = ("ontouchstart" in window) || (navigator.maxTouchPoints > 0) || !window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (isTouch || window.innerWidth < 900) return;
 
-    var SIZE = 30;
-    var NAME = "Designer";
-    var TILT_STRENGTH = 22;             // max label rock (deg)
-    var LABEL_OX = SIZE * 0.9;          // label trails to the right of tip
-    var LABEL_OY = SIZE * 0.2 + 6;
+    // Remove any leftover legacy cursor elements if present
+    var oldCursors = document.querySelectorAll(".mz-cursor, .mz-cursor-follow, .mz-smooth-cursor");
+    oldCursors.forEach(function(el) { el.remove(); });
 
-    var arrow = document.createElement("div");
-    arrow.className = "mz-cursor";
-    arrow.innerHTML =
-      '<svg width="' + SIZE + '" height="' + SIZE + '" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="display:block;overflow:visible">' +
-      '<path d="M5 3 L23 14 L14 16 L11 24 Z" fill="currentColor" stroke="rgba(0,0,0,0.18)" stroke-width="0.6" stroke-linejoin="round"/>' +
-      "</svg>";
+    var cursor = document.createElement("div");
+    cursor.className = "mz-smooth-cursor";
+    cursor.setAttribute("aria-hidden", "true");
+    cursor.innerHTML =
+      '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87c.45 0 .67-.54.35-.85L6.35 2.86a.5.5 0 0 0-.85.35Z" fill="currentColor" stroke="rgba(0,0,0,0.25)" stroke-width="0.75" stroke-linejoin="round"/>' +
+      '</svg>';
 
-    var follow = document.createElement("div");
-    follow.className = "mz-cursor-follow";
-    follow.innerHTML = "<span>" + NAME + "</span>";
-
-    document.body.appendChild(arrow);
-    document.body.appendChild(follow);
+    document.body.appendChild(cursor);
     document.body.classList.add("mz-cursor-on");
 
-    var tx = 0, ty = 0;          // pointer target
-    var ax = 0, ay = 0;          // arrow (snappy)
-    var lx = 0, ly = 0;          // label (laggier)
-    var rot = 0, rotTarget = 0;  // label tilt
+    var tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+    var x = tx, y = ty;
     var scale = 1, scaleTarget = 1;
-    var visible = false, primed = false;
-    var last = null;             // {x,y,t} for velocity
+    var visible = false;
+    var isPressed = false;
+    var isHovered = false;
 
-    function onMove(e) {
+    function onPointerMove(e) {
       tx = e.clientX;
       ty = e.clientY;
-      var now = performance.now();
-      if (last) {
-        var dt = Math.max(1, now - last.t);
-        var vx = ((tx - last.x) / dt) * 1000;
-        var vy = ((ty - last.y) / dt) * 1000;
-        var speed = Math.hypot(vx, vy);
-        var norm = Math.min(1, speed / 1500);
-        var sign = vx === 0 ? 0 : vx > 0 ? 1 : -1;
-        rotTarget = sign * norm * TILT_STRENGTH;
+
+      if (!visible) {
+        visible = true;
+        x = tx;
+        y = ty;
+        cursor.style.opacity = "1";
       }
-      last = { x: tx, y: ty, t: now };
-      if (!primed) { ax = lx = tx; ay = ly = ty; primed = true; }
-      if (!visible) { visible = true; arrow.style.opacity = "1"; follow.style.opacity = "1"; }
     }
-    function onLeave() {
-      visible = false; last = null; rotTarget = 0;
-      arrow.style.opacity = "0"; follow.style.opacity = "0";
+
+    function onPointerOver(e) {
+      var target = e.target && e.target.closest ? e.target.closest("a, button, [role='button'], input, select, textarea, .mz-work-card, [data-cursor]") : null;
+      if (target) {
+        isHovered = true;
+        scaleTarget = isPressed ? 0.9 : 1.12;
+      } else {
+        isHovered = false;
+        scaleTarget = isPressed ? 0.85 : 1.0;
+      }
     }
-    function onDown() { scaleTarget = 0.92; }
-    function onUp() { scaleTarget = 1; }
 
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-    document.addEventListener("mouseleave", onLeave);
+    function onPointerDown() {
+      isPressed = true;
+      scaleTarget = isHovered ? 0.92 : 0.85;
+    }
 
-    (function raf() {
-      ax += (tx - ax) * 0.35;   // arrow snappier
-      ay += (ty - ay) * 0.35;
-      lx += (tx - lx) * 0.16;   // label trails
-      ly += (ty - ly) * 0.16;
-      rot += (rotTarget - rot) * 0.2;
-      scale += (scaleTarget - scale) * 0.25;
-      arrow.style.transform = "translate(" + ax + "px," + ay + "px) scale(" + scale + ")";
-      follow.style.transform =
-        "translate(" + (lx + LABEL_OX) + "px," + (ly + LABEL_OY) + "px) rotate(" + rot + "deg) scale(" + scale + ")";
-      requestAnimationFrame(raf);
-    })();
+    function onPointerUp() {
+      isPressed = false;
+      scaleTarget = isHovered ? 1.12 : 1.0;
+    }
+
+    function onPointerLeave() {
+      visible = false;
+      cursor.style.opacity = "0";
+    }
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerdown", onPointerDown, { passive: true });
+    window.addEventListener("pointerup", onPointerUp, { passive: true });
+    document.addEventListener("pointerover", onPointerOver, { passive: true });
+    document.addEventListener("mouseleave", onPointerLeave);
+    window.addEventListener("blur", onPointerLeave);
+
+    var lastFrame = performance.now();
+    (function render(now) {
+      var dt = Math.min(0.05, Math.max(0.001, (now - lastFrame) / 1000));
+      lastFrame = now;
+
+      // Ultra-smooth spring lerp for coordinates (zero lag & jitter-free)
+      var posLerp = 1 - Math.exp(-48 * dt);
+      x += (tx - x) * posLerp;
+      y += (ty - y) * posLerp;
+
+      // Scale spring
+      var scaleLerp = 1 - Math.exp(-24 * dt);
+      scale += (scaleTarget - scale) * scaleLerp;
+
+      // Render transform with stable upright position (0 rotation)
+      cursor.style.transform =
+        "translate3d(" + (x - 5.5) + "px," + (y - 3.2) + "px,0) scale(" + scale.toFixed(3) + ")";
+
+      requestAnimationFrame(render);
+    })(performance.now());
   }
 
   /* ---------- 3. Chat widget (Muzeeb AI) ---------- */
   function initChat() {
     if (!document.body || document.getElementById("cw-launcher")) return;
-    // No chat on the playground canvas — keeps it clean.
+    // No chat on the playground canvas: keeps it clean.
     if ((location.pathname.split("/").pop() || "") === "playground.html") return;
     var LINKEDIN = "https://www.linkedin.com/in/muzeeburrahaman";
     var RESUME = "https://drive.google.com/file/d/13s3keaT9t40X_bJCd_FmL5hiAKgMgaNj/view?usp=sharing";
     var CALENDLY = "https://calendly.com/rahamanmuzeeb1108/new-meeting";
     var MAILTO = "mailto:rahamanmuzeeb1108@gmail.com";
     var KB = [
-      { k: ["who", "about", "yourself", "tell me about", "introduce", "muzeeb", "intro"], a: "Muzeeb is an end-to-end Product Designer & Builder with 4.5+ years across AI, SaaS, and e-commerce. His edge: he designs AND builds — taking ideas from 0 → 1. (It's pronounced “muh-zeeb”, by the way.)", l: [{ t: "About Muzeeb", u: "about.html" }, { t: "Selected work", u: "index.html#work" }] },
+      { k: ["who", "about", "yourself", "tell me about", "introduce", "muzeeb", "intro"], a: "Muzeeb is an end-to-end Product Designer & Builder with 4.5+ years across AI, SaaS, and e-commerce. His edge: he designs AND builds, taking ideas from 0 → 1. (It's pronounced “muh-zeeb”, by the way.)", l: [{ t: "About Muzeeb", u: "about.html" }, { t: "Selected work", u: "index.html#work" }] },
       { k: ["project", "projects", "work on", "worked", "worked on", "built", "build", "shipped", "portfolio", "selected work"], a: "On the Home page you'll find his Selected Work: Omnis AI (a unified design system + AI tools for 8+ legal products), a Zebralearn product-page redesign, and a 30-day Daily UI series. Playground has side experiments too.", l: [{ t: "Selected work", u: "index.html#work" }, { t: "Best work", u: "best-work.html" }, { t: "Playground", u: "playground.html" }] },
-      { k: ["omnis", "legal", "current", "current role", "recent"], a: "At Omnis AI (2025–now) Muzeeb leads product design across 8+ AI-powered legal products, built and scaled a 200+ component design system adopted across the suite, and shipped AI design-automation tools — a UX Audit Assistant and an AI Edge Fixer.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }] },
-      { k: ["design system", "system", "component", "tokens"], a: "He builds and scales design systems end-to-end — most notably a 200+ component system at Omnis AI adopted across 8+ products, and a unifying system at LetmeGrab. One source of truth, faster shipping, consistent UX.", l: [{ t: "Best work", u: "best-work.html" }] },
+      { k: ["omnis", "legal", "current", "current role", "recent"], a: "At Omnis AI (2025–now) Muzeeb leads product design across 8+ AI-powered legal products, built and scaled a 200+ component design system adopted across the suite, and shipped AI design-automation tools: a UX Audit Assistant and an AI Edge Fixer.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }] },
+      { k: ["design system", "system", "component", "tokens"], a: "He builds and scales design systems end-to-end (most notably a 200+ component system at Omnis AI adopted across 8+ products, and a unifying system at LetmeGrab). One source of truth, faster shipping, consistent UX.", l: [{ t: "Best work", u: "best-work.html" }] },
       { k: ["ai tool", "ai tools", "automation", "audit", "edge fixer", "plugin"], a: "He builds AI design-automation tools: a UX Audit Assistant (automated design reviews at scale) and an AI Edge Fixer (catches UI edge-cases). Experiments live on the Playground page.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }, { t: "Forge", u: "forge-case-study.html" }] },
       { k: ["case study", "case studies", "letmegrab", "zebralearn", "zebra", "30 day", "daily ui", "catchly", "fontlens", "forge"], a: "Case studies you can open: the Omnis UX Audit Assistant, Edge-State Fixer, Catchly, FontLens, Forge, a Zebralearn redesign, and a 30 Days Daily UI series.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }, { t: "Catchly", u: "catchly-case-study.html" }, { t: "FontLens", u: "fontlens-case-study.html" }, { t: "Forge", u: "forge-case-study.html" }, { t: "All work", u: "best-work.html" }] },
-      { k: ["playground", "side project", "experiment", "fun"], a: "The Playground page has his side projects and experiments — tools, AI ideas, and things built to test a concept or scratch an itch.", l: [{ t: "Open Playground", u: "playground.html" }] },
+      { k: ["playground", "side project", "experiment", "fun"], a: "The Playground page has his side projects and experiments: tools, AI ideas, and things built to test a concept or scratch an itch.", l: [{ t: "Open Playground", u: "playground.html" }] },
       { k: ["experience", "background", "career", "years", "history", "journey"], a: "4.5+ years as a Product Designer & Builder across AI, SaaS, and e-commerce. Timeline: Product Designer / UX Lead at Omnis AI (2025–now), UI/UX Designer at LetmeGrab (2023–24), UX Designer at Photoshooto (2022–23), plus earlier design internships.", l: [{ t: "About & experience", u: "about.html" }, { t: "Résumé", u: RESUME, x: true }] },
       { k: ["tool", "tools", "software", "stack", "figma", "framer", "cursor", "tech", "claude"], a: "His toolkit: Figma (design & prototyping), Cursor (AI-assisted coding), Claude (AI workflows & automation), Framer (no-code / coded web), and Adobe Illustrator & Photoshop." },
-      { k: ["available", "availability", "hire", "hiring", "freelance", "open", "job", "role", "opportunity", "why hire"], a: "Yes — Muzeeb is open to remote work and relocation, exploring Product Designer, Founding Designer, and Design Engineer roles to help build AI products from 0 → 1. Fastest way in: email him.", l: [{ t: "Email Muzeeb", u: MAILTO, x: true }, { t: "Book a call", u: CALENDLY, x: true }, { t: "Résumé", u: RESUME, x: true }] },
-      { k: ["contact", "email", "reach", "connect", "linkedin", "touch", "message", "hello"], a: "Easiest is email: rahamanmuzeeb1108@gmail.com. He's also on LinkedIn, Behance, Dribbble and Instagram — links are in the footer.", l: [{ t: "Email", u: MAILTO, x: true }, { t: "LinkedIn", u: LINKEDIN, x: true }, { t: "Book a call", u: CALENDLY, x: true }] },
+      { k: ["available", "availability", "hire", "hiring", "freelance", "open", "job", "role", "opportunity", "why hire"], a: "Yes: Muzeeb is open to remote work and relocation, exploring Product Designer, Founding Designer, and Design Engineer roles to help build AI products from 0 → 1. Fastest way in: email him.", l: [{ t: "Email Muzeeb", u: MAILTO, x: true }, { t: "Book a call", u: CALENDLY, x: true }, { t: "Résumé", u: RESUME, x: true }] },
+      { k: ["contact", "email", "reach", "connect", "linkedin", "touch", "message", "hello"], a: "Easiest is email: rahamanmuzeeb1108@gmail.com. He's also on LinkedIn, Behance, Dribbble and Instagram: links are in the footer.", l: [{ t: "Email", u: MAILTO, x: true }, { t: "LinkedIn", u: LINKEDIN, x: true }, { t: "Book a call", u: CALENDLY, x: true }] },
       { k: ["resume", "cv", "download"], a: "Grab his résumé from the Resume button in the nav, or right here:", l: [{ t: "Download résumé", u: RESUME, x: true }] },
-      { k: ["challenge", "challenges", "hard", "difficult", "tough", "problem", "complex"], a: "His favorite problems are dense B2B workflows — legal tools full of edge cases, regulations and trade-offs — where the job is turning real complexity into something clear and usable.", l: [{ t: "About Muzeeb", u: "about.html" }] },
+      { k: ["challenge", "challenges", "hard", "difficult", "tough", "problem", "complex"], a: "His favorite problems are dense B2B workflows: legal tools full of edge cases, regulations and trade-offs, where the job is turning real complexity into something clear and usable.", l: [{ t: "About Muzeeb", u: "about.html" }] },
       { k: ["process", "approach", "how do you", "how does he", "method", "workflow"], a: "He starts by asking a lot of questions to find what's actually causing a problem before touching screens, maps how flows connect, and stress-tests the weak spots before users hit them.", l: [{ t: "About Muzeeb", u: "about.html" }] },
-      { k: ["location", "based", "where", "country", "relocat", "india", "remote"], a: "Based in Uttar Pradesh, India — open to remote work and relocation." },
-      { k: ["skill", "skills", "strength", "good at", "specialize", "expertise", "do you do"], a: "End-to-end: discovery & research, design systems, prototyping, and launch — then building AI-assisted workflows and internal tools. He sits between UX logic and UI craft, and ships, not just mockups.", l: [{ t: "Best work", u: "best-work.html" }, { t: "About Muzeeb", u: "about.html" }] },
-      { k: ["blog", "writing", "notes", "article"], a: "He writes notes on AI, design systems, and building — check his prototyping & process notes.", l: [{ t: "Prototyping notes", u: "Prototyping-blog.html" }] },
-      { k: ["name", "pronounce", "pronunciation", "say your name"], a: "It's “muh-zeeb” — easier than it looks :)" }
+      { k: ["location", "based", "where", "country", "relocat", "india", "remote"], a: "Based in Uttar Pradesh, India: open to remote work and relocation." },
+      { k: ["skill", "skills", "strength", "good at", "specialize", "expertise", "do you do"], a: "End-to-end: discovery & research, design systems, prototyping, and launch, then building AI-assisted workflows and internal tools. He sits between UX logic and UI craft, and ships, not just mockups.", l: [{ t: "Best work", u: "best-work.html" }, { t: "About Muzeeb", u: "about.html" }] },
+      { k: ["blog", "writing", "notes", "article"], a: "He writes notes on AI, design systems, and building: check his prototyping & process notes.", l: [{ t: "Prototyping notes", u: "Prototyping-blog.html" }] },
+      { k: ["name", "pronounce", "pronunciation", "say your name"], a: "It's “muh-zeeb” (easier than it looks :))" }
     ];
     var FALLBACK = "Good question! I can cover Muzeeb's projects, experience, design systems, AI tools, process, availability, or how to reach him. Try a suggestion, or ask another way.";
     var SUGGEST = ["Projects", "Experience", "Tools", "Available?", "Design systems", "Contact"];
@@ -320,7 +338,7 @@
     function scroll() { body.scrollTop = body.scrollHeight; }
     function greet() {
       bubble("Hey there! 👋", "bot");
-      bubble("Ask me anything about Muzeeb's work, experience, or projects — or pick one below.", "bot");
+      bubble("Ask me anything about Muzeeb's work, experience, or projects, or pick one below.", "bot");
       var l = document.createElement("div"); l.className = "cw-suggest-label"; l.textContent = "Suggested questions"; body.appendChild(l);
       var c = document.createElement("div"); c.className = "cw-chips";
       SUGGEST.forEach(function (q) { var b = document.createElement("button"); b.className = "cw-chip"; b.textContent = q; b.onclick = function () { ask(q); mzPlay("select"); }; c.appendChild(b); });
@@ -741,7 +759,7 @@
   }
 
   // Loads the SFX engine (used by hover/click sound cues elsewhere on the
-  // page) without any visible sound toggle — there's no UI for muting.
+  // page) without any visible sound toggle: there's no UI for muting.
   function ensureSFXLoaded() {
     if (window.mzSFX || window.nachiSFX) return;
     var s1 = document.createElement("script");

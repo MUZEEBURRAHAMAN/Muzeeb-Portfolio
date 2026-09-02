@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-  <meta property="og:title" content="Best Work — Muzeeb Urrahaman">
+  <meta property="og:title" content="Best Work · Muzeeb Urrahaman">
   <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/best-work.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Muzeeb Urrahaman">
@@ -14,12 +14,12 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/og.jpg">
-  <meta name="twitter:title" content="Best Work — Muzeeb Urrahaman">
+  <meta name="twitter:title" content="Best Work · Muzeeb Urrahaman">
   <meta name="twitter:description"
-    content="A draggable, zoomable canvas of best work — click any tile to open the case study.">
-  <title>Best Work — Muzeeb Urrahaman</title>
+    content="A draggable, zoomable canvas of best work: click any tile to open the case study.">
+  <title>Best Work · Muzeeb Urrahaman</title>
   <meta name="description"
-    content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work — pan the grid, click any tile to open its case study.">
+    content="A draggable, zoomable canvas of Muzeeb Urrahaman's best work: pan the grid, click any tile to open its case study.">
   <!-- anti-FOUC: set theme before paint -->
   <script>try { var t = localStorage.getItem('mz-theme'); document.documentElement.setAttribute('data-theme', t || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')); } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }</script>
   <!-- Google Fonts: Archivo & Inter -->
@@ -149,7 +149,7 @@
       transition: opacity .25s ease;
     }
 
-    /* VIEWPORT / GRID — starts below the floating nav pill, flush with the bottom of the screen */
+    /* VIEWPORT / GRID: starts below the floating nav pill, flush with the bottom of the screen */
     .viewport {
       position: fixed;
       top: 128px;
@@ -191,7 +191,7 @@
       border-radius: 10px;
       opacity: 1;
       border: 1px solid var(--bwg-stroke);
-      /* minimal stroke — keeps white images from bleeding into a light bg */
+      /* minimal stroke: keeps white images from bleeding into a light bg */
       transition: opacity .5s ease
     }
 
@@ -702,7 +702,7 @@
         }
         this.cfg = { width: 1320, height: 990, rows: rows, cols: cols, zoom: zoom, gap: vw <= 768 ? 24 : 32 };
       }
-      // Mouse-wheel / trackpad panning of the grid — scrolls through the canvas like a normal
+      // Mouse-wheel / trackpad panning of the grid: scrolls through the canvas like a normal
       // page scroll, feeding the elastic stretch effect below via pan velocity.
       onGridWheel(e) {
         if (this.zoomOn || !this.drag || this.drag.isDragging || !this.bounds) return;

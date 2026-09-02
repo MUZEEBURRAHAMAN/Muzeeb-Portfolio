@@ -4,8 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<title>FontLens — Case Study · Muzeeb Urrahaman</title>
-<meta name="description" content="A privacy-first Chrome extension that inspects the fonts on any web page and catches the one thing other tools miss: when the font a site asked for silently falls back to another. Case study — the problem, the bet, how it works, the stack, and the results." />
+<title>FontLens: Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="A privacy-first Chrome extension that inspects the fonts on any web page and catches the one thing other tools miss: when the font a site asked for silently falls back to another. Case study: the problem, the bet, how it works, the stack, and the results." />
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/style.css?v=430">
@@ -392,7 +392,7 @@ html[data-theme="light"] .hatched-divider__pattern {
       </div>
     </div>
     <h1>The site asked for one font.<br>Visitors are seeing <span class="grad">another</span>.</h1>
-    <p class="hero__sub">Every font inspector reads the CSS and tells you what the page <b style="color:var(--ink)">asked for</b>. <b style="color:var(--ink)">FontLens</b> reads the CSS <em style="color:var(--amber-ink);font-style:normal">and checks what the browser actually painted</em> — so when "Söhne" fails to load and everyone's seeing Arial, an amber dot says so. It runs entirely on your device, makes zero network calls, and asks for no host permissions.</p>
+    <p class="hero__sub">Every font inspector reads the CSS and tells you what the page <b style="color:var(--ink)">asked for</b>. <b style="color:var(--ink)">FontLens</b> reads the CSS <em style="color:var(--amber-ink);font-style:normal">and checks what the browser actually painted</em>: so when "Söhne" fails to load and everyone's seeing Arial, an amber dot says so. It runs entirely on your device, makes zero network calls, and asks for no host permissions.</p>
     <a class="hero__cta" href="https://github.com/Muzeeb1998/fontlens" target="_blank" rel="noopener">See the source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
@@ -423,13 +423,13 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="intro reveal">
     <div>
       <div class="eyebrow">In one line</div>
-      <p class="lead">FontLens is a Chrome extension that hovers to reveal any element's real rendered font, click-stamps a card for every style on the page, and — the part no other tool gets right — flags when the font a site requested has silently fallen back to a substitute, all on your device with zero network calls.</p>
-      <p>Every designer and front-end developer has hit this: the mockup says Söhne, production looks slightly off, and the usual font tools happily report "Söhne" because that's what the CSS asked for. What visitors on a slow network or a blocked CDN actually see is Arial — and nobody tells you. FontLens reads the requested face <b>and</b> checks what the browser truly painted, then marks the gap with a single reserved amber signal. Everything else — the type-system extraction, the copy-as-code, the variable-font sliders — runs <b>locally in the browser</b>, with no account, no telemetry, and no server in the loop.</p>
-      <p><b>The signal was my own bug, then a teardown.</b> I lost an afternoon to a design that looked "slightly wrong" in production before realising the webfont had silently fallen back to Arial. So I checked every font inspector I could find — and <em>every one</em> reported the requested face, none the rendered one. That gap defined the scope: build the single check they all miss, and ruthlessly strip everything that isn't in service of trusting it.</p>
+      <p class="lead">FontLens is a Chrome extension that hovers to reveal any element's real rendered font, click-stamps a card for every style on the page, and (the part no other tool gets right) flags when the font a site requested has silently fallen back to a substitute, all on your device with zero network calls.</p>
+      <p>Every designer and front-end developer has hit this: the mockup says Söhne, production looks slightly off, and the usual font tools happily report "Söhne" because that's what the CSS asked for. What visitors on a slow network or a blocked CDN actually see is Arial, and nobody tells you. FontLens reads the requested face <b>and</b> checks what the browser truly painted, then marks the gap with a single reserved amber signal. Everything else (the type-system extraction, the copy-as-code, the variable-font sliders) runs <b>locally in the browser</b>, with no account, no telemetry, and no server in the loop.</p>
+      <p><b>The signal was my own bug, then a teardown.</b> I lost an afternoon to a design that looked "slightly wrong" in production before realising the webfont had silently fallen back to Arial. So I checked every font inspector I could find, and <em>every one</em> reported the requested face, none the rendered one. That gap defined the scope: build the single check they all miss, and ruthlessly strip everything that isn't in service of trusting it.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
-      <div class="g"><div class="k">Role</div><div class="v">Solo — problem, design system, architecture &amp; all code</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Solo: problem, design system, architecture &amp; all code</div></div>
       <div class="g"><div class="k">Type</div><div class="v">Chrome Extension (Manifest V3)</div></div>
       <div class="g"><div class="k">Surfaces</div><div class="v">Hover chip · Pinned cards · Side panel</div></div>
       <div class="g"><div class="k">Status</div><div class="v">v1.0.0 · Web Store ready</div></div>
@@ -442,7 +442,7 @@ html[data-theme="light"] .hatched-divider__pattern {
       <h3>Problem</h3>
       <ul>
         <li>Fonts <b>fail silently.</b> A blocked CDN or slow network swaps your typeface for a fallback and the page never says so.</li>
-        <li>Existing inspectors <b>only read the CSS</b> — they report the font that was requested, not the one on screen.</li>
+        <li>Existing inspectors <b>only read the CSS</b>: they report the font that was requested, not the one on screen.</li>
         <li>Handing type from design to code means <b>re-typing sizes, weights and line-heights</b> by hand.</li>
       </ul>
     </div>
@@ -460,7 +460,7 @@ html[data-theme="light"] .hatched-divider__pattern {
       <h3>Results</h3>
       <ul>
         <li><b>249 automated tests</b> (230 unit + 19 end-to-end); QA scored 97/100 with zero failures.</li>
-        <li><b>Zero network calls</b> — no analytics, no remote code, no host permissions. Enforced by a build-time bundle audit.</li>
+        <li><b>Zero network calls</b> (no analytics, no remote code, no host permissions). Enforced by a build-time bundle audit.</li>
         <li>v1.0.0 packaged at <b>~70KB</b>, with a complete Chrome Web Store publish kit.</li>
       </ul>
     </div>
@@ -477,9 +477,9 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="prose reveal">
     <div class="eyebrow">Why this exists</div>
     <h2 class="h">Everyone reads the CSS. Reading what actually rendered is the whole product.</h2>
-    <p>Point any popular font inspector at a page and it will confidently name the font — because it's reading the <b>declared</b> <span class="mono">font-family</span> off the stylesheet. But a declaration is a request, not a guarantee. On a slow connection, a blocked CDN, a corporate proxy, or a font that simply failed to load, the browser quietly reaches for the next name in the stack. The declared answer and the painted answer diverge, and the tool never notices.</p>
-    <p>FontLens's bet is that <em>this exact gap</em> is the most valuable thing a font tool can surface. It measures the requested family, then inspects what the browser truly rendered, and when they differ it raises one thing: a reserved amber signal that means only "the requested font isn't loading." Everything else about the product — the restrained grayscale UI, the copy-as-code, the type-system view — is in service of making that one honest signal trustworthy.</p>
-    <div class="note"><b>The amber accent has exactly one meaning.</b> In the entire design system, the amber token is reserved <em style="font-style:italic;font-weight:600">exclusively</em> for the fallback signal — never for hover, warnings, info, or decoration. So when you see amber, it always means the same thing. And FontLens follows the voice rule too: when detection is genuinely uncertain it says <span class="mono">"specimen approximate"</span> rather than inventing an answer.</div>
+    <p>Point any popular font inspector at a page and it will confidently name the font, because it's reading the <b>declared</b> <span class="mono">font-family</span> off the stylesheet. But a declaration is a request, not a guarantee. On a slow connection, a blocked CDN, a corporate proxy, or a font that simply failed to load, the browser quietly reaches for the next name in the stack. The declared answer and the painted answer diverge, and the tool never notices.</p>
+    <p>FontLens's bet is that <em>this exact gap</em> is the most valuable thing a font tool can surface. It measures the requested family, then inspects what the browser truly rendered, and when they differ it raises one thing: a reserved amber signal that means only "the requested font isn't loading." Everything else about the product (the restrained grayscale UI, the copy-as-code, the type-system view) is in service of making that one honest signal trustworthy.</p>
+    <div class="note"><b>The amber accent has exactly one meaning.</b> In the entire design system, the amber token is reserved <em style="font-style:italic;font-weight:600">exclusively</em> for the fallback signal, never for hover, warnings, info, or decoration. So when you see amber, it always means the same thing. And FontLens follows the voice rule too: when detection is genuinely uncertain it says <span class="mono">"specimen approximate"</span> rather than inventing an answer.</div>
   </div>
 </section>
 
@@ -493,17 +493,17 @@ html[data-theme="light"] .hatched-divider__pattern {
   <div class="prose reveal">
     <div class="eyebrow">The job, plainly</div>
     <h2 class="h">Eight things FontLens shows you.</h2>
-    <p>Each one answers a real typography question — with the fallback check woven through every surface. Hover for a glance, click for depth.</p>
+    <p>Each one answers a real typography question, with the fallback check woven through every surface. Hover for a glance, click for depth.</p>
   </div>
   <div class="rules reveal">
-    <div class="rule signal"><span class="rk">The wedge</span><div><h4>Requested vs actually-rendered</h4><p>When the page asks for one face and the browser painted another, an <b>amber dot</b> flags it — the one thing WhatFont and friends miss.</p></div></div>
+    <div class="rule signal"><span class="rk">The wedge</span><div><h4>Requested vs actually-rendered</h4><p>When the page asks for one face and the browser painted another, an <b>amber dot</b> flags it: the one thing WhatFont and friends miss.</p></div></div>
     <div class="rule"><span class="rk">Hover chip</span><div><h4>Read any element in a glance</h4><p>A small floating chip follows the cursor showing the rendered font, weight, size, line-height and colour. No clicking required.</p></div></div>
     <div class="rule"><span class="rk">Pin cards</span><div><h4>Click to stamp, compare side by side</h4><p>Click text to pin a persistent, expanded card at that spot. Pin as many as you like and compare a whole page's type at once; Esc clears them.</p></div></div>
-    <div class="rule"><span class="rk">Type system</span><div><h4>Every distinct style on the page</h4><p>Click to extract each type style, grouped by font family and sorted by usage — with fallbacks surfaced first so problems rise to the top.</p></div></div>
-    <div class="rule signal"><span class="rk">Page banner</span><div><h4>A page-level fallback warning</h4><p>If any font on the page is falling back, a full-width amber banner says so up top — e.g. <b>"1 of this page's fonts isn't loading — visitors see a fallback."</b></p></div></div>
-    <div class="rule"><span class="rk">Copy as code</span><div><h4>CSS · Tailwind · design token</h4><p>Hover a row to reveal copy buttons. One click puts the style on your clipboard in the format you picked — no re-typing sizes by hand.</p></div></div>
+    <div class="rule"><span class="rk">Type system</span><div><h4>Every distinct style on the page</h4><p>Click to extract each type style, grouped by font family and sorted by usage, with fallbacks surfaced first so problems rise to the top.</p></div></div>
+    <div class="rule signal"><span class="rk">Page banner</span><div><h4>A page-level fallback warning</h4><p>If any font on the page is falling back, a full-width amber banner says so up top: e.g. <b>"1 of this page's fonts isn't loading: visitors see a fallback."</b></p></div></div>
+    <div class="rule"><span class="rk">Copy as code</span><div><h4>CSS · Tailwind · design token</h4><p>Hover a row to reveal copy buttons. One click puts the style on your clipboard in the format you picked, no re-typing sizes by hand.</p></div></div>
     <div class="rule"><span class="rk">Variable fonts</span><div><h4>Audition axes live on the page</h4><p>For variable faces, sliders let you preview <span class="mono">wght</span>, <span class="mono">wdth</span>, optical size and more in real time, with a Reset link.</p></div></div>
-    <div class="rule"><span class="rk">Source badge</span><div><h4>Where the font comes from</h4><p>Each family is tagged <span class="mono">Google</span>, <span class="mono">Adobe</span>, <span class="mono">Self-hosted</span>, <span class="mono">System</span>, <span class="mono">Variable</span>, or <span class="mono">Fallback</span> — so you know the delivery path at a glance.</p></div></div>
+    <div class="rule"><span class="rk">Source badge</span><div><h4>Where the font comes from</h4><p>Each family is tagged <span class="mono">Google</span>, <span class="mono">Adobe</span>, <span class="mono">Self-hosted</span>, <span class="mono">System</span>, <span class="mono">Variable</span>, or <span class="mono">Fallback</span>, so you know the delivery path at a glance.</p></div></div>
   </div>
 </section>
 
@@ -520,26 +520,26 @@ html[data-theme="light"] .hatched-divider__pattern {
     <p>There's no server in the loop. You trigger it on the tab you're looking at; a content script reads the page, a detection engine compares requested against rendered, and the side panel renders the result. Here's the whole path:</p>
   </div>
   <div class="steps reveal">
-    <div class="step"><div class="num">1</div><div><h4>You open it on the current tab</h4><p>Click the FontLens icon or press <code>Alt+Shift+F</code>. Under <code>activeTab</code>, the extension injects only into the tab you asked for — never in the background, never on other sites.</p></div></div>
-    <div class="step"><div class="num">2</div><div><h4>It reads the real computed styles</h4><p>A content script and a Shadow-DOM overlay read each element's computed font, weight, size, line-height and colour — isolated from the host page's own CSS so nothing bleeds either way.</p></div></div>
-    <div class="step"><div class="num">3</div><div><h4>The engine compares requested vs rendered</h4><p><code>lib/detector.js</code> and <code>lib/render-detect.js</code> work out the declared family and the face the browser actually painted. If they diverge, the row is marked a fallback — the reserved amber signal.</p></div></div>
+    <div class="step"><div class="num">1</div><div><h4>You open it on the current tab</h4><p>Click the FontLens icon or press <code>Alt+Shift+F</code>. Under <code>activeTab</code>, the extension injects only into the tab you asked for: never in the background, never on other sites.</p></div></div>
+    <div class="step"><div class="num">2</div><div><h4>It reads the real computed styles</h4><p>A content script and a Shadow-DOM overlay read each element's computed font, weight, size, line-height and colour, isolated from the host page's own CSS so nothing bleeds either way.</p></div></div>
+    <div class="step"><div class="num">3</div><div><h4>The engine compares requested vs rendered</h4><p><code>lib/detector.js</code> and <code>lib/render-detect.js</code> work out the declared family and the face the browser actually painted. If they diverge, the row is marked a fallback: the reserved amber signal.</p></div></div>
     <div class="step"><div class="num">4</div><div><h4>The side panel builds the type system</h4><p>Extraction groups every distinct style by family, sorts by usage, tags each with a source badge, and floats fallbacks to the top. Variable faces get live axis sliders.</p></div></div>
-    <div class="step"><div class="num">5</div><div><h4>You copy exactly what you need</h4><p>Hover any row for copy buttons — <code>lib/snippets.js</code> emits CSS or Tailwind, <code>lib/tokens-export.js</code> emits a design token — or download the whole token set. Your theme and default format persist in <code>chrome.storage.local</code>.</p></div></div>
+    <div class="step"><div class="num">5</div><div><h4>You copy exactly what you need</h4><p>Hover any row for copy buttons (<code>lib/snippets.js</code> emits CSS or Tailwind, <code>lib/tokens-export.js</code> emits a design token) or download the whole token set. Your theme and default format persist in <code>chrome.storage.local</code>.</p></div></div>
   </div>
 
   <div class="prose reveal" style="margin-top:44px">
     <div class="eyebrow">The permission model</div>
     <h2 class="h">Four permissions, and deliberately no host access.</h2>
-    <p>FontLens asks for the minimum a tab-inspection tool needs — and pointedly omits <code>host_permissions</code>. It cannot run anywhere until you invoke it on a tab. Here's exactly what each one is for:</p>
+    <p>FontLens asks for the minimum a tab-inspection tool needs, and pointedly omits <code>host_permissions</code>. It cannot run anywhere until you invoke it on a tab. Here's exactly what each one is for:</p>
   </div>
   <div class="classify reveal">
     <div class="cl"><div class="lab">● activeTab</div><p>Inspects only the tab you focus when you click the icon or hit the shortcut. No background access.</p><span class="out">user-initiated only</span></div>
-    <div class="cl"><div class="lab">● scripting</div><p>Injects the content script and Shadow-DOM overlay on your action. No remote code — everything ships in the bundle.</p><span class="out">local scripts only</span></div>
+    <div class="cl"><div class="lab">● scripting</div><p>Injects the content script and Shadow-DOM overlay on your action. No remote code: everything ships in the bundle.</p><span class="out">local scripts only</span></div>
     <div class="cl"><div class="lab">● sidePanel</div><p>Opens the panel that shows the type system, so it can persist across page clicks while you inspect.</p><span class="out">on-device UI</span></div>
-    <div class="cl"><div class="lab">● storage</div><p>Remembers your theme and default copy format in <code>chrome.storage.local</code> — never transmitted.</p><span class="out">local only</span></div>
+    <div class="cl"><div class="lab">● storage</div><p>Remembers your theme and default copy format in <code>chrome.storage.local</code>, never transmitted.</p><span class="out">local only</span></div>
   </div>
 
-  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img loading="lazy" src="assets/media/fontlens/2-type-system.webp" alt="FontLens side panel showing the full type system for a page, with a fallback banner and a Söhne to Arial fallback card at the top"/></div><figcaption>The side panel — every distinct type style on the page, grouped by family and sorted by usage. The amber banner and the "Söhne → Arial · Fallback" card show the one thing other tools miss: the requested font isn't loading, so visitors see Arial.</figcaption></figure>
+  <figure class="figure reveal" style="margin-top:48px"><div class="frame"><img loading="lazy" src="assets/media/fontlens/2-type-system.webp" alt="FontLens side panel showing the full type system for a page, with a fallback banner and a Söhne to Arial fallback card at the top"/></div><figcaption>The side panel: every distinct type style on the page, grouped by family and sorted by usage. The amber banner and the "Söhne → Arial · Fallback" card show the one thing other tools miss: the requested font isn't loading, so visitors see Arial.</figcaption></figure>
 </section>
 
 <!-- Section Divider: How to Diff -->
@@ -568,7 +568,7 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
 
 <span class="c">// 3. …but never checks what painted.</span>
 <span class="c">//    If the CDN was blocked, the user</span>
-<span class="c">//    is actually seeing Arial — and</span>
+<span class="c">//    is actually seeing Arial, and</span>
 <span class="c">//    the tool has no idea.</span></pre>
     </div>
     <div class="pane after">
@@ -588,17 +588,17 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
     </div>
   </div>
   <div class="prose reveal" style="margin-top:6px">
-    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">The trade-off, stated honestly:</b> rendered-face detection is a heuristic, not magic — closed shadow roots and some cross-origin iframes can't always be measured. When FontLens can't confirm, it says so ("specimen approximate") instead of asserting a wrong answer. In exchange you get the one check no CSS-only tool performs, on a tool that never phones home.</p>
+    <p style="font-size:.95rem;color:var(--soft)"><b style="color:var(--ink)">The trade-off, stated honestly:</b> rendered-face detection is a heuristic, not magic: closed shadow roots and some cross-origin iframes can't always be measured. When FontLens can't confirm, it says so ("specimen approximate") instead of asserting a wrong answer. In exchange you get the one check no CSS-only tool performs, on a tool that never phones home.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:40px">
     <p>The same on-device engine powers every surface. These are the real store shots:</p>
   </div>
   <div class="gallery reveal">
-    <div class="shot"><img loading="lazy" src="assets/media/fontlens/4-hover-detail.webp" alt="Hover chip and expanded card showing Inter 700 with family, weight, size, colour, line-height and a live specimen"/><div class="sc"><b>Hover &amp; detail</b> — a compact chip for a quick read; click for the full breakdown, colour, and a live specimen rendered in the detected face.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/fontlens/1-pin-multiple.webp" alt="Multiple pinned cards stamped across a page, including an Arial fallback card that requested Söhne"/><div class="sc"><b>Pin multiple</b> — each click stamps a card, so you can inspect a whole page's type side by side. Note the amber "fallback — requested: Söhne" card.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/fontlens/2-type-system.webp" alt="Side panel type-system view grouped by family with a fallback banner"/><div class="sc"><b>Type system</b> — grouped by family, sorted by usage, fallbacks first, each with a source badge and one-click copy.</div></div>
-    <div class="shot"><img loading="lazy" src="assets/media/fontlens/3-one-click-install.webp" alt="Clean install and empty-state screen for FontLens"/><div class="sc"><b>Install &amp; onboarding</b> — a one-click install and a font-themed empty state that teaches the fallback signal on first run.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/fontlens/4-hover-detail.webp" alt="Hover chip and expanded card showing Inter 700 with family, weight, size, colour, line-height and a live specimen"/><div class="sc"><b>Hover &amp; detail</b>: a compact chip for a quick read; click for the full breakdown, colour, and a live specimen rendered in the detected face.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/fontlens/1-pin-multiple.webp" alt="Multiple pinned cards stamped across a page, including an Arial fallback card that requested Söhne"/><div class="sc"><b>Pin multiple</b>: each click stamps a card, so you can inspect a whole page's type side by side. Note the amber "fallback (requested: Söhne)" card.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/fontlens/2-type-system.webp" alt="Side panel type-system view grouped by family with a fallback banner"/><div class="sc"><b>Type system</b>: grouped by family, sorted by usage, fallbacks first, each with a source badge and one-click copy.</div></div>
+    <div class="shot"><img loading="lazy" src="assets/media/fontlens/3-one-click-install.webp" alt="Clean install and empty-state screen for FontLens"/><div class="sc"><b>Install &amp; onboarding</b>: a one-click install and a font-themed empty state that teaches the fallback signal on first run.</div></div>
   </div>
 </section>
 
@@ -612,14 +612,14 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
   <div class="prose reveal">
     <div class="eyebrow">The judgment calls</div>
     <h2 class="h">The interesting decisions were about restraint and honesty.</h2>
-    <p>Anyone can list the fonts on a page. The decisions that make FontLens trustworthy were mostly about what <em>not</em> to do — and about being honest where detection is hard. Four real ones:</p>
+    <p>Anyone can list the fonts on a page. The decisions that make FontLens trustworthy were mostly about what <em>not</em> to do: and about being honest where detection is hard. Four real ones:</p>
     <ul>
-      <li><b>No <span class="mono">host_permissions</span>, on purpose.</b> The easy path is to request access to every site so the tool "just works" everywhere. FontLens deliberately runs on <span class="mono">activeTab</span> only — it can't touch a page until you invoke it, and Chrome enforces that. It's a narrower tool that's far easier to trust, and the bundle audit fails the build if a host permission ever sneaks in.</li>
-      <li><b>Reserve amber for one meaning, forever.</b> It would be tempting to reuse the accent for hovers, warnings, or emphasis. Instead the amber token means <em>only</em> "the requested font isn't loading." That discipline is what makes the fallback signal instantly readable — colour carries meaning precisely because it's never diluted.</li>
-      <li><b>Label uncertainty instead of faking confidence.</b> Rendered-face detection can't see into every closed shadow root or cross-origin iframe. Rather than guess, FontLens renders the specimen in a matching generic and tags the row "specimen approximate." Honest failure beats a confident wrong answer — that's the product's voice, enforced in copy.</li>
-      <li><b>Render specimens in the real detected face.</b> A type tool that shows you a sample in the wrong font is worse than useless. Specimens are drawn in the actual face the page rendered — never a substitute — which is the entire reason the tool reads truthfully.</li>
+      <li><b>No <span class="mono">host_permissions</span>, on purpose.</b> The easy path is to request access to every site so the tool "just works" everywhere. FontLens deliberately runs on <span class="mono">activeTab</span> only: it can't touch a page until you invoke it, and Chrome enforces that. It's a narrower tool that's far easier to trust, and the bundle audit fails the build if a host permission ever sneaks in.</li>
+      <li><b>Reserve amber for one meaning, forever.</b> It would be tempting to reuse the accent for hovers, warnings, or emphasis. Instead the amber token means <em>only</em> "the requested font isn't loading." That discipline is what makes the fallback signal instantly readable: colour carries meaning precisely because it's never diluted.</li>
+      <li><b>Label uncertainty instead of faking confidence.</b> Rendered-face detection can't see into every closed shadow root or cross-origin iframe. Rather than guess, FontLens renders the specimen in a matching generic and tags the row "specimen approximate." Honest failure beats a confident wrong answer: that's the product's voice, enforced in copy.</li>
+      <li><b>Render specimens in the real detected face.</b> A type tool that shows you a sample in the wrong font is worse than useless. Specimens are drawn in the actual face the page rendered (never a substitute) which is the entire reason the tool reads truthfully.</li>
     </ul>
-    <div class="note"><b>The detection engine is the moat.</b> The value isn't the UI chrome — it's <span class="mono">lib/detector.js</span>, <span class="mono">render-detect.js</span>, <span class="mono">source-classify.js</span> and the variable-axis logic that reliably tell requested from rendered across messy real-world pages. That measurement layer, hardened by 249 tests, is the slow part for anyone to copy.</div>
+    <div class="note"><b>The detection engine is the moat.</b> The value isn't the UI chrome: it's <span class="mono">lib/detector.js</span>, <span class="mono">render-detect.js</span>, <span class="mono">source-classify.js</span> and the variable-axis logic that reliably tell requested from rendered across messy real-world pages. That measurement layer, hardened by 249 tests, is the slow part for anyone to copy.</div>
   </div>
 </section>
 
@@ -633,27 +633,27 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
   <div class="prose reveal">
     <div class="eyebrow">Under the hood</div>
     <h2 class="h">A Manifest V3 extension, built to be audited.</h2>
-    <p>No framework and no build-time magic to hide behind — plain ES modules a reviewer can read top to bottom, with pure logic separated from anything that touches the DOM. Every file has one job:</p>
+    <p>No framework and no build-time magic to hide behind: plain ES modules a reviewer can read top to bottom, with pure logic separated from anything that touches the DOM. Every file has one job:</p>
   </div>
   <div class="tbl stack hidecol reveal">
     <table>
       <tr><th>File / folder</th><th>What it does</th></tr>
-      <tr><td>manifest.json</td><td>MV3 config. Permissions: <code>activeTab</code>, <code>scripting</code>, <code>sidePanel</code>, <code>storage</code>. <b>No <code>host_permissions</code></b> — cannot run until you invoke it.</td></tr>
-      <tr><td>service-worker.js</td><td>The ephemeral background worker — opens the side panel, wires the toolbar action and the <code>Alt+Shift+F</code> command, and routes messages.</td></tr>
+      <tr><td>manifest.json</td><td>MV3 config. Permissions: <code>activeTab</code>, <code>scripting</code>, <code>sidePanel</code>, <code>storage</code>. <b>No <code>host_permissions</code></b>: cannot run until you invoke it.</td></tr>
+      <tr><td>service-worker.js</td><td>The ephemeral background worker: opens the side panel, wires the toolbar action and the <code>Alt+Shift+F</code> command, and routes messages.</td></tr>
       <tr><td>content/overlay.js · content.js</td><td>The only surface with page DOM access. Renders the Shadow-DOM hover chip and the click-to-pin multi-card overlay.</td></tr>
-      <tr><td>sidepanel/*</td><td>The Side Panel root — <code>panel.html/.css/.js/.render.js</code>: glass header, hover/inspect toggle, grouped family cards, fallback banner, theme toggle, token download.</td></tr>
+      <tr><td>sidepanel/*</td><td>The Side Panel root: <code>panel.html/.css/.js/.render.js</code> (glass header, hover/inspect toggle, grouped family cards, fallback banner, theme toggle, token download).</td></tr>
       <tr><td>lib/detector.js · render-detect.js</td><td><b>The wedge.</b> Works out the requested family and the face the browser actually painted, and decides when it's a fallback.</td></tr>
       <tr><td>lib/extractor*.js</td><td>Walks the page (plus shadow roots and same-origin iframes) to collect every distinct type style, grouped and usage-counted.</td></tr>
       <tr><td>lib/snippets.js · tokens-export.js</td><td>Emit a style as CSS, Tailwind classes, or a design token. <code>source-classify.js</code> tags each family's origin (Google / Adobe / self-hosted / system).</td></tr>
       <tr><td>lib/variable-axes.js</td><td>Parses variable-font axes and drives the live weight / width / optical-size sliders.</td></tr>
-      <tr><td>build/audit-bundle.js</td><td>Fails the build if the zip contains remote code, network calls, or a stray host permission — the zero-network promise, enforced.</td></tr>
-      <tr><td>test/ (vitest + Playwright)</td><td>230 unit tests beside their source plus 19 end-to-end specs against the real unpacked extension — including an AA colour-contrast assertion.</td></tr>
+      <tr><td>build/audit-bundle.js</td><td>Fails the build if the zip contains remote code, network calls, or a stray host permission: the zero-network promise, enforced.</td></tr>
+      <tr><td>test/ (vitest + Playwright)</td><td>230 unit tests beside their source plus 19 end-to-end specs against the real unpacked extension (including an AA colour-contrast assertion).</td></tr>
     </table>
   </div>
   <div class="prose reveal" style="margin-top:36px">
     <div class="eyebrow">Try it in two minutes</div>
     <h2 class="h">Load it unpacked, hover a page, done.</h2>
-    <p>No login, no account, no setup. The fastest way to see everything — including the fallback signal — working:</p>
+    <p>No login, no account, no setup. The fastest way to see everything (including the fallback signal) working:</p>
   </div>
   <div class="code reveal"><pre><span class="c"># 1. Open chrome://extensions, enable Developer mode,</span>
 <span class="c">#    click "Load unpacked" and pick the repo root.</span>
@@ -664,7 +664,7 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
 <span class="c"># 3. Hover any element for the chip; click text to pin a card.</span>
 
 <span class="c"># 4. Visit a site with a blocked/failed webfont to see the</span>
-<span class="c">#    amber fallback signal fire — the part nobody else shows.</span>
+<span class="c">#    amber fallback signal fire: the part nobody else shows.</span>
 <span class="g">stripe.com</span>   <span class="c"># Söhne → Arial when the face doesn't load</span></pre></div>
 </section>
 
@@ -678,8 +678,8 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
   <div class="prose reveal">
     <div class="eyebrow">Where it stands</div>
     <h2 class="h">Shipping, verifiable, and honest about scope.</h2>
-    <p>FontLens v1.0.0 is feature-complete and Web Store ready, with a full publish kit — listing copy, privacy answers, a hostable policy, and generated screenshots and promo tiles. Everything in the feature list is working code exercised on every run by a 249-test suite, and because the whole thing is source-available, every privacy claim can be checked line by line.</p>
-    <div class="note"><b>The unglamorous states are designed, not skipped.</b> The <b>uncertain</b> state is a first-class feature — <span class="mono">"specimen approximate"</span> whenever a shadow root or cross-origin iframe can't be measured. The side panel's <b>empty</b> state (nothing pinned yet) prompts you to hover or click instead of showing a blank box, and a page with <b>no detectable webfonts</b> says so plainly rather than rendering an empty list.</div>
+    <p>FontLens v1.0.0 is feature-complete and Web Store ready, with a full publish kit: listing copy, privacy answers, a hostable policy, and generated screenshots and promo tiles. Everything in the feature list is working code exercised on every run by a 249-test suite, and because the whole thing is source-available, every privacy claim can be checked line by line.</p>
+    <div class="note"><b>The unglamorous states are designed, not skipped.</b> The <b>uncertain</b> state is a first-class feature: <span class="mono">"specimen approximate"</span> whenever a shadow root or cross-origin iframe can't be measured. The side panel's <b>empty</b> state (nothing pinned yet) prompts you to hover or click instead of showing a blank box, and a page with <b>no detectable webfonts</b> says so plainly rather than rendering an empty list.</div>
   </div>
 
   <div class="metrics reveal">
@@ -698,9 +698,9 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
 <section id="reflection">
   <div class="prose reveal">
     <div class="eyebrow">Reflection</div>
-    <h2 class="h">Where it can't be certain — and what that cost.</h2>
-    <p>The tempting shortcut was to always return an answer: read the CSS, measure what I could, and quietly guess the rest. I rejected it — a <b>confident wrong font is worse than an honest "I can't tell."</b> Closed shadow roots and some cross-origin iframes genuinely can't be measured, so instead of guessing, FontLens renders the specimen in a matching generic and tags the row <em>"specimen approximate."</em> It's a weaker-looking demo, but a tool you can trust.</p>
-    <p><b>What I'd do differently:</b> I over-invested in the type-system extraction and copy-as-code before hardening the <b>fallback-detection edge cases</b> — which are the actual reason the tool exists. Next time I'd push the one differentiating signal to its limits first, then add the surrounding convenience features.</p>
+    <h2 class="h">Where it can't be certain, and what that cost.</h2>
+    <p>The tempting shortcut was to always return an answer: read the CSS, measure what I could, and quietly guess the rest. I rejected it: a <b>confident wrong font is worse than an honest "I can't tell."</b> Closed shadow roots and some cross-origin iframes genuinely can't be measured, so instead of guessing, FontLens renders the specimen in a matching generic and tags the row <em>"specimen approximate."</em> It's a weaker-looking demo, but a tool you can trust.</p>
+    <p><b>What I'd do differently:</b> I over-invested in the type-system extraction and copy-as-code before hardening the <b>fallback-detection edge cases</b>, which are the actual reason the tool exists. Next time I'd push the one differentiating signal to its limits first, then add the surrounding convenience features.</p>
   </div>
 </section>
 
@@ -715,12 +715,12 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
     <div class="eyebrow">What I'd do next</div>
     <h2 class="h">Ordered by value, not novelty.</h2>
     <ul>
-      <li><b>Chrome Web Store submission</b> — the publish kit is done; remaining steps are hosting the privacy policy, the real-Chrome manual QA pass, and the developer-account upload.</li>
-      <li><b>Free font alternatives</b> — when a paid or unavailable face is detected, suggest visually close, freely-licensed substitutes. There's already an opt-in "notify me" stub in the panel footer.</li>
-      <li><b>Figma export</b> — turn an extracted type system into Figma text styles for a clean design-to-file round trip.</li>
-      <li><b>Deeper detection reach</b> — push rendered-face detection further into edge cases (more iframe and shadow scenarios) while keeping the honest "approximate" label where certainty isn't possible.</li>
+      <li><b>Chrome Web Store submission</b>: the publish kit is done; remaining steps are hosting the privacy policy, the real-Chrome manual QA pass, and the developer-account upload.</li>
+      <li><b>Free font alternatives</b>: when a paid or unavailable face is detected, suggest visually close, freely-licensed substitutes. There's already an opt-in "notify me" stub in the panel footer.</li>
+      <li><b>Figma export</b>: turn an extracted type system into Figma text styles for a clean design-to-file round trip.</li>
+      <li><b>Deeper detection reach</b>: push rendered-face detection further into edge cases (more iframe and shadow scenarios) while keeping the honest "approximate" label where certainty isn't possible.</li>
     </ul>
-    <div class="note"><b>The through-line.</b> Every future feature follows one rule: local-first, zero network, minimum permissions, and never assert a font it can't confirm. The privacy-and-honesty stance isn't a phase — it's the reason the tool reads truthfully in the first place.</div>
+    <div class="note"><b>The through-line.</b> Every future feature follows one rule: local-first, zero network, minimum permissions, and never assert a font it can't confirm. The privacy-and-honesty stance isn't a phase: it's the reason the tool reads truthfully in the first place.</div>
   </div>
 </section>
 
@@ -736,13 +736,13 @@ show(declared.<span class="t">split</span>(<span class="s">","</span>)[0]);
     <h2 class="h">The things people probe for.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary>Isn't this just WhatFont with a fresh coat of paint?</summary><div class="a">No — it does the one thing WhatFont doesn't. WhatFont and most inspectors read the declared <span class="mono">font-family</span> and report the requested font. FontLens reads the request <b>and</b> measures what the browser actually rendered, so it catches silent fallbacks (Söhne asked for, Arial painted) that CSS-only tools report as fine. That fallback detection is the wedge; everything else is table stakes done cleanly.</div></details>
-    <details><summary>How does it detect the rendered font without any network access?</summary><div class="a">Entirely in the page. A content script reads each element's computed styles, and the detection engine (<span class="mono">lib/detector.js</span> + <span class="mono">render-detect.js</span>) compares the requested family against measurements of what actually painted. It's all local browser measurement — no font fingerprinting service, no server, no outbound request.</div></details>
-    <details><summary>What happens when it genuinely can't tell?</summary><div class="a">It says so. Closed shadow roots and some cross-origin iframes can't always be measured. Rather than guess, FontLens renders the specimen in a matching generic face and tags the row "specimen approximate." Honest uncertainty is a design rule here, not an afterthought — the voice guidelines forbid asserting a font it can't confirm.</div></details>
-    <details><summary>Why no host permissions? Wouldn't the tool be more useful with them?</summary><div class="a">It would run automatically on every site — and be far harder to trust. FontLens uses <span class="mono">activeTab</span>, so it only ever touches the tab you invoke it on, and only when you click the icon or press <span class="mono">Alt+Shift+F</span>. A build-time bundle audit fails the release if a host permission is ever added. The narrower scope is the point.</div></details>
+    <details open><summary>Isn't this just WhatFont with a fresh coat of paint?</summary><div class="a">No: it does the one thing WhatFont doesn't. WhatFont and most inspectors read the declared <span class="mono">font-family</span> and report the requested font. FontLens reads the request <b>and</b> measures what the browser actually rendered, so it catches silent fallbacks (Söhne asked for, Arial painted) that CSS-only tools report as fine. That fallback detection is the wedge; everything else is table stakes done cleanly.</div></details>
+    <details><summary>How does it detect the rendered font without any network access?</summary><div class="a">Entirely in the page. A content script reads each element's computed styles, and the detection engine (<span class="mono">lib/detector.js</span> + <span class="mono">render-detect.js</span>) compares the requested family against measurements of what actually painted. It's all local browser measurement: no font fingerprinting service, no server, no outbound request.</div></details>
+    <details><summary>What happens when it genuinely can't tell?</summary><div class="a">It says so. Closed shadow roots and some cross-origin iframes can't always be measured. Rather than guess, FontLens renders the specimen in a matching generic face and tags the row "specimen approximate." Honest uncertainty is a design rule here, not an afterthought: the voice guidelines forbid asserting a font it can't confirm.</div></details>
+    <details><summary>Why no host permissions? Wouldn't the tool be more useful with them?</summary><div class="a">It would run automatically on every site, and be far harder to trust. FontLens uses <span class="mono">activeTab</span>, so it only ever touches the tab you invoke it on, and only when you click the icon or press <span class="mono">Alt+Shift+F</span>. A build-time bundle audit fails the release if a host permission is ever added. The narrower scope is the point.</div></details>
     <details><summary>You say "zero network calls." Is that literally true?</summary><div class="a">Yes. There's no analytics SDK, no remote code, no telemetry beacon anywhere in the bundle, and <span class="mono">build/audit-bundle.js</span> fails the build if any appear. The optional "notify me" for future features is a stub only; nothing about your browsing or the pages you inspect leaves your machine.</div></details>
-    <details><summary>Can I get the styles into my codebase quickly?</summary><div class="a">That's the copy-as-code feature. Hover any row in the side panel and one click puts the style on your clipboard as CSS, Tailwind classes, or a design token — whichever you set as default in options. You can also download the full token set for the page. No re-typing sizes, weights and line-heights by hand.</div></details>
-    <details><summary>Can I trust the privacy claims?</summary><div class="a">You don't have to trust them — the source is available and the four-permission model is right there in <span class="mono">manifest.json</span>, each with a documented single-purpose justification. The zero-network promise isn't a slogan; it's asserted by an automated bundle audit on every build.</div></details>
+    <details><summary>Can I get the styles into my codebase quickly?</summary><div class="a">That's the copy-as-code feature. Hover any row in the side panel and one click puts the style on your clipboard as CSS, Tailwind classes, or a design token, whichever you set as default in options. You can also download the full token set for the page. No re-typing sizes, weights and line-heights by hand.</div></details>
+    <details><summary>Can I trust the privacy claims?</summary><div class="a">You don't have to trust them: the source is available and the four-permission model is right there in <span class="mono">manifest.json</span>, each with a documented single-purpose justification. The zero-network promise isn't a slogan; it's asserted by an automated bundle audit on every build.</div></details>
   </div>
 </section>
 

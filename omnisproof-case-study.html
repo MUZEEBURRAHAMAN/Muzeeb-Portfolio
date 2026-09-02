@@ -9,8 +9,8 @@
   document.documentElement.setAttribute("data-theme", t);
 })();
 </script>
-<title>Making document signing self-serve for legal teams — OmnisProof · Case Study · Muzeeb Urrahaman</title>
-<meta name="description" content="How I redesigned document setup in OmnisProof so the system handled field placement, and collapsed a 4-step wizard into one guided page — without losing control." />
+<title>Making document signing self-serve for legal teams: OmnisProof · Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="How I redesigned document setup in OmnisProof so the system handled field placement, and collapsed a 4-step wizard into one guided page without losing control." />
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/style.css?v=430">
@@ -46,6 +46,25 @@
 html[data-theme="light"] #main {
   border-left-color: rgba(0, 0, 0, 0.08) !important;
   border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.site-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  background: rgba(15, 15, 15, 0.86) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: background 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box !important;
+}
+
+[data-theme="light"] .site-header,
+html[data-theme="light"] .site-header {
+  background: rgba(251, 251, 250, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 .site-header__inner {
@@ -143,8 +162,8 @@ html[data-theme="light"] .hatched-divider__pattern {
   --note-text: #bcd3ff; --table-head-bg: #1c1c1c;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
-html { -webkit-font-smoothing:antialiased; scroll-behavior:smooth; }
-body { background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65; overflow-x:hidden; }
+html { -webkit-font-smoothing:antialiased; scroll-behavior:smooth; overflow-x:clip; }
+body { background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65; overflow-x:clip; }
 
 /* HERO */
 .hero { position:relative; padding:clamp(50px, 7vw, 90px) 0 clamp(24px, 4vw, 40px); background:transparent; text-align:left; width:100%; }
@@ -745,7 +764,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
-      <div class="g"><div class="k">Role</div><div class="v">Product Designer — UX, UI &amp; Interaction Design</div></div>
+      <div class="g"><div class="k">Role</div><div class="v">Product Designer: UX, UI &amp; Interaction Design</div></div>
       <div class="g"><div class="k">Team</div><div class="v">1 PM · 4 Engineers · 1 QA · AI/ML Support</div></div>
       <div class="g"><div class="k">Surfaces</div><div class="v">Document Workspace · AI Field Detection · E-Sign Setup</div></div>
       <div class="g"><div class="k">Status</div><div class="v">Shipped in production · Omnis AI Ecosystem</div></div>
@@ -770,8 +789,8 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
       </div>
       <h3>Solution</h3>
       <ul>
-        <li><b>1 guided page</b> — document stays permanently centered.</li>
-        <li><b>Inline "Detect with AI"</b> — visible, drag-and-edit placement.</li>
+        <li><b>1 guided page</b>: document stays permanently centered.</li>
+        <li><b>Inline "Detect with AI"</b>: visible, drag-and-edit placement.</li>
         <li><b>Step tracker + side panels</b> retain full 3-stage logic.</li>
       </ul>
     </div>
@@ -785,7 +804,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
         <li><b>1 &rarr; 0 testers distrusted</b> AI output after redesign.</li>
         <li><b>Zero hesitation or questions</b> in follow-up walkthroughs.</li>
       </ul>
-      <p style="font-size:11.5px;color:var(--soft);margin-top:10px;">Validated via 6 internal walkthroughs — see §09</p>
+      <p style="font-size:11.5px;color:var(--soft);margin-top:10px;">Validated via 6 internal walkthroughs (see §09)</p>
     </div>
   </div>
 </section>
@@ -814,8 +833,8 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="eyebrow reveal">What is OmnisProof</div>
   <h2 class="h reveal">The document execution layer inside a legal AI ecosystem.</h2>
   <div class="prose reveal">
-    <p>Omnis is building an AI-powered ecosystem for legal teams — case management, drafting assistance, client collaboration, and document intelligence, all connected to the same matter data. <b>OmnisProof is the piece that turns a drafted document into a signed, filed legal record.</b> A firm prepares an agreement, assigns who needs to sign it, places the required fields, sends it out, and tracks it through to completion — all without leaving the platform their casework already lives in.</p>
-    <p>It sounds like the easy part of the product. Every other module in the ecosystem — drafting, matter tracking, client portals — exists to produce documents that eventually need to go through this exact step. If document execution is slow, confusing, or error-prone, it doesn't just fail on its own; it undermines the value of everything upstream of it.</p>
+    <p>Omnis is building an AI-powered ecosystem for legal teams: case management, drafting assistance, client collaboration, and document intelligence, all connected to the same matter data. <b>OmnisProof is the piece that turns a drafted document into a signed, filed legal record.</b> A firm prepares an agreement, assigns who needs to sign it, places the required fields, sends it out, and tracks it through to completion, all without leaving the platform their casework already lives in.</p>
+    <p>It sounds like the easy part of the product. Every other module in the ecosystem (drafting, matter tracking, client portals) exists to produce documents that eventually need to go through this exact step. If document execution is slow, confusing, or error-prone, it doesn't just fail on its own; it undermines the value of everything upstream of it.</p>
   </div>
 
   <div class="flow-matrix reveal">
@@ -894,10 +913,10 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 
   <div class="prose reveal">
     <div class="eyebrow">Situation before this project</div>
-    <p>Before I joined, engineering had already shipped a functional MVP: a general-purpose, multi-step setup wizard — <span class="mono">General Info → Add Signers → Add Fields → Distribute Document</span> — modeled after typical e-signature admin panels. It technically worked. Every required setting had a place. But it was built the way an internal admin tool gets built: optimized for covering every configuration option, not for how a lawyer actually thinks about preparing a document. The document itself didn't appear on screen until step three.</p>
+    <p>Before I joined, engineering had already shipped a functional MVP: a general-purpose, multi-step setup wizard (<span class="mono">General Info → Add Signers → Add Fields → Distribute Document</span>) modeled after typical e-signature admin panels. It technically worked. Every required setting had a place. But it was built the way an internal admin tool gets built: optimized for covering every configuration option, not for how a lawyer actually thinks about preparing a document. The document itself didn't appear on screen until step three.</p>
 
     <div class="eyebrow" style="margin-top:8px;">Why this became urgent</div>
-    <p>As Omnis expanded from a case-management tool into a full legal ecosystem, document execution stopped being optional — every matter now had to pass through it. Product leadership's pitch to firms was that OmnisProof could replace a separate DocuSign subscription entirely. That pitch didn't hold up if setting up a document in OmnisProof took longer and felt clumsier than DocuSign's own flow. I inherited the project at the point where that gap had become the most-cited risk in product reviews.</p>
+    <p>As Omnis expanded from a case-management tool into a full legal ecosystem, document execution stopped being optional: every matter now had to pass through it. Product leadership's pitch to firms was that OmnisProof could replace a separate DocuSign subscription entirely. That pitch didn't hold up if setting up a document in OmnisProof took longer and felt clumsier than DocuSign's own flow. I inherited the project at the point where that gap had become the most-cited risk in product reviews.</p>
   </div>
 </section>
 
@@ -917,14 +936,14 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <ul>
       <li>Users could technically complete each step of the wizard, but consistently lost track of which document they were configuring</li>
       <li>Manual field placement was the single largest source of both time spent and errors made</li>
-      <li>Reviewers of competitor tools repeatedly described documents sent with a missing field or the wrong recipient — discovered only after the fact</li>
+      <li>Reviewers of competitor tools repeatedly described documents sent with a missing field or the wrong recipient, discovered only after the fact</li>
     </ul>
-    <p>This wasn't a decision based on one comment from one stakeholder. The internal walkthroughs surfaced the pattern, the PM's own testing confirmed it was reproducible, and the competitive review analysis showed it wasn't unique to our MVP — it was a category-wide failure mode nobody had solved well. That combination made it worth prioritizing over other roadmap items.</p>
+    <p>This wasn't a decision based on one comment from one stakeholder. The internal walkthroughs surfaced the pattern, the PM's own testing confirmed it was reproducible, and the competitive review analysis showed it wasn't unique to our MVP: it was a category-wide failure mode nobody had solved well. That combination made it worth prioritizing over other roadmap items.</p>
   </div>
 
   <div class="note reveal">
     <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#0066FF"/><path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/></svg></div>
-    <div class="note__body"><span class="note__label">Target users</span> <b>Lawyers and paralegals</b> who prepare agreements for signature, and <b>legal assistants</b> who often do that prep on an attorney's behalf. At Omnis, "user," "attorney," and "legal team" get used interchangeably in internal docs — they all mean the same person here: whoever is sitting in OmnisProof getting a document ready to send. My primary evidence came from internal team members standing in for that person, which is a real limitation I address later in this case study.</div>
+    <div class="note__body"><span class="note__label">Target users</span> <b>Lawyers and paralegals</b> who prepare agreements for signature, and <b>legal assistants</b> who often do that prep on an attorney's behalf. At Omnis, "user," "attorney," and "legal team" get used interchangeably in internal docs; they all mean the same person here: whoever is sitting in OmnisProof getting a document ready to send. My primary evidence came from internal team members standing in for that person, which is a real limitation I address later in this case study.</div>
   </div>
 
   <div class="prose reveal">
@@ -940,25 +959,25 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 
 <!-- 04 RESEARCH -->
 <section id="research">
-  <div class="sec-num">04 / RESEARCH — DIGGING DEEPER</div>
+  <div class="sec-num">04 / RESEARCH: DIGGING DEEPER</div>
   <div class="eyebrow reveal">What existing platforms get right and wrong</div>
   <h2 class="h reveal">Getting a document into the system wasn't the hard part. Configuring it correctly was.</h2>
   <div class="prose reveal">
-    <p>I ran a structured teardown of DocuSign, Adobe Sign, Dropbox Sign, PandaDoc, and Documenso — their public documentation, review-site screenshots, and (where available) free-tier trials.</p>
+    <p>I ran a structured teardown of DocuSign, Adobe Sign, Dropbox Sign, PandaDoc, and Documenso: their public documentation, review-site screenshots, and (where available) free-tier trials.</p>
   </div>
 
   <div class="tbl reveal">
     <table>
       <tr><th>What competitors do well</th><th>Where they fall short</th></tr>
-      <tr><td>Document upload and recipient invitation are fast and well-documented across all five platforms.</td><td>Field placement is almost entirely manual — click, drag, resize, repeat, for every signature block and date field on every page.</td></tr>
+      <tr><td>Document upload and recipient invitation are fast and well-documented across all five platforms.</td><td>Field placement is almost entirely manual: click, drag, resize, repeat, for every signature block and date field on every page.</td></tr>
       <tr><td>DocuSign offers limited auto-placement for a narrow set of pre-formatted templates.</td><td>Outside that narrow case, nothing in the category offers reviewable AI assistance for field detection.</td></tr>
-      <tr><td>Send flows are optimized to be fast — most competitors market "send in under a minute."</td><td>That speed comes at the cost of verification. G2 review analysis surfaced a recurring complaint: documents sent with a missing field or wrong recipient, caught only after the fact.</td></tr>
+      <tr><td>Send flows are optimized to be fast: most competitors market "send in under a minute."</td><td>That speed comes at the cost of verification. G2 review analysis surfaced a recurring complaint: documents sent with a missing field or wrong recipient, caught only after the fact.</td></tr>
     </table>
   </div>
 
   <div class="prose reveal">
-    <p>The key insight that shaped everything downstream: <b>users don't struggle with getting a document into the system — they struggle with making it correct once it's there.</b> Connecting a document, adding recipients, hitting send — that part is solved everywhere, including our own MVP. The unsolved part, in our product and every competitor's, was the space between "document is uploaded" and "document is actually ready to send": field placement, recipient assignment, and catching mistakes before they go out.</p>
-    <p>That reframed the direction of the whole project: <b>let the system handle more of the setup, and let users review and correct only what needs their attention</b> — rather than trying to make manual configuration marginally faster.</p>
+    <p>The key insight that shaped everything downstream: <b>users don't struggle with getting a document into the system; they struggle with making it correct once it's there.</b> Connecting a document, adding recipients, hitting send: that part is solved everywhere, including our own MVP. The unsolved part, in our product and every competitor's, was the space between "document is uploaded" and "document is actually ready to send": field placement, recipient assignment, and catching mistakes before they go out.</p>
+    <p>That reframed the direction of the whole project: <b>let the system handle more of the setup, and let users review and correct only what needs their attention</b>, rather than trying to make manual configuration marginally faster.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:36px;">
@@ -968,12 +987,12 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 
   <figure class="figure reveal">
     <div class="frame"><img loading="lazy" src="assets/images/omnisproof-user-flow.jpg" alt="Fragmented 11-step legal document workflow across multiple disconnected tools (CRM, Word, Email, DocuSign, Local Folders, Practice Management)"/></div>
-    <figcaption><span class="cap-label">The Baseline Reality (11 Disconnected Steps)</span> — Prior to OmnisProof, legal teams bounced between Word, Email, local desktop folders, external e-signature platforms, and practice management tools just to execute a single contract.</figcaption>
+    <figcaption><span class="cap-label">The Baseline Reality (11 Disconnected Steps)</span>: Prior to OmnisProof, legal teams bounced between Word, Email, local desktop folders, external e-signature platforms, and practice management tools just to execute a single contract.</figcaption>
   </figure>
 
   <figure class="figure reveal" style="margin-top:24px;">
     <div class="frame"><img loading="lazy" src="assets/images/omnisproof-ideal-flow.jpg" alt="Streamlined 8-step integrated agreement lifecycle within OmnisProof with AI field suggestions and end-to-end audit tracking"/></div>
-    <figcaption><span class="cap-label">The Target Experience (Unified 8 Steps)</span> — OmnisProof consolidates the entire document lifecycle inside one continuous system: Create Agreement &rarr; Prepare with AI &rarr; Configure Signers &rarr; Review &rarr; Send &rarr; Track &rarr; Complete &rarr; Matter Record Storage.</figcaption>
+    <figcaption><span class="cap-label">The Target Experience (Unified 8 Steps)</span>: OmnisProof consolidates the entire document lifecycle inside one continuous system: Create Agreement &rarr; Prepare with AI &rarr; Configure Signers &rarr; Review &rarr; Send &rarr; Track &rarr; Complete &rarr; Matter Record Storage.</figcaption>
   </figure>
 </section>
 
@@ -986,13 +1005,13 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 <section id="constraints">
   <div class="sec-num">05 / CONSTRAINTS &amp; DESIGN DECISIONS</div>
   <div class="eyebrow reveal">Framing the two problems</div>
-  <h2 class="h reveal">Not "redesign the interface" — decide which complexity stays with the user, and which the system should absorb.</h2>
+  <h2 class="h reveal">Not "redesign the interface": decide which complexity stays with the user, and which the system should absorb.</h2>
 
   <div class="constraint reveal">
     <span class="cnum">Constraint 1</span>
     <h4>Field placement was required, but too heavy to leave fully manual</h4>
     <div class="cgrid">
-      <div><div class="lbl">Why this mattered</div><p>Every document needs signature, date, name, and initials fields placed correctly before it can go out. This step couldn't be removed — but making users place every field on every page by hand was the largest time cost we'd identified.</p></div>
+      <div><div class="lbl">Why this mattered</div><p>Every document needs signature, date, name, and initials fields placed correctly before it can go out. This step couldn't be removed, but making users place every field on every page by hand was the largest time cost we'd identified.</p></div>
       <div><div class="lbl">Decision</div><p>Turn field placement from a fully manual task into a system-assisted one: AI detects and proposes placement, the user reviews and corrects only where needed. <b>→ Deep Dive 01</b></p></div>
     </div>
   </div>
@@ -1001,7 +1020,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <span class="cnum">Constraint 2</span>
     <h4>The 4-step structure mapped to something real, but hiding the document behind it didn't</h4>
     <div class="cgrid">
-      <div><div class="lbl">Why this mattered</div><p>"Who's involved → what goes where → is it ready to send" is genuinely how document prep works. The problem wasn't the three-stage logic — it was presenting each stage as a separate full screen that hid the document being configured.</p></div>
+      <div><div class="lbl">Why this mattered</div><p>"Who's involved → what goes where → is it ready to send" is genuinely how document prep works. The problem wasn't the three-stage logic; it was presenting each stage as a separate full screen that hid the document being configured.</p></div>
       <div><div class="lbl">Decision</div><p>Keep the underlying stages, rebuild the presentation as one page: the document stays visible at all times, with a persistent step tracker and a side panel that changes per stage. <b>→ Deep Dive 02</b></p></div>
     </div>
   </div>
@@ -1020,7 +1039,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <h4>The fix had to ship inside the existing timeline</h4>
     <div class="cgrid">
       <div><div class="lbl">Why this mattered</div><p>The competitive gap was already being cited as a risk in product reviews. A ground-up redesign of the entire setup experience wasn't realistic in the time available.</p></div>
-      <div><div class="lbl">Decision</div><p>Scope to the two moments with the clearest evidence of friction — field placement and the wizard structure — rather than trying to fix every part of document prep at once.</p></div>
+      <div><div class="lbl">Decision</div><p>Scope to the two moments with the clearest evidence of friction (field placement and the wizard structure) rather than trying to fix every part of document prep at once.</p></div>
     </div>
   </div>
 </section>
@@ -1042,7 +1061,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   </div>
 
   <div class="prose reveal" style="margin-top:20px;">
-    <p>Manual field placement meant scanning every page of a document and dropping a signature block, date field, name field, or initials block by hand — then repeating that for every recipient. In our internal walkthroughs, this step alone accounted for the largest share of total prep time, and every placement mistake we observed (missing field, field assigned to the wrong recipient) happened here. Automating it was the obvious fix. Making it trustworthy in a legal context was the actual problem: a wrong AI guess here isn't a minor bug, it's a contract sent to the wrong person.</p>
+    <p>Manual field placement meant scanning every page of a document and dropping a signature block, date field, name field, or initials block by hand, then repeating that for every recipient. In our internal walkthroughs, this step alone accounted for the largest share of total prep time, and every placement mistake we observed (missing field, field assigned to the wrong recipient) happened here. Automating it was the obvious fix. Making it trustworthy in a legal context was the actual problem: a wrong AI guess here isn't a minor bug, it's a contract sent to the wrong person.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:36px;">
@@ -1054,8 +1073,8 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <div class="iter rejected">
       <div class="it-num">Iteration 1</div>
       <h5>Fully automatic, silent placement</h5>
-      <p>AI detects and places every field automatically the moment a document is uploaded. No review step — the fields are just there, ready to send.</p>
-      <div class="why"><b>Why it failed:</b> in an early internal demo, one of the lawyers on our team moved every single AI-placed field — even the correct ones. Her reason: <i>"I didn't see it place them, so I don't trust them."</i> Silent automation didn't save time; it just moved the manual verification work to a place with no support for doing it.</div>
+      <p>AI detects and places every field automatically the moment a document is uploaded. No review step: the fields are just there, ready to send.</p>
+      <div class="why"><b>Why it failed:</b> in an early internal demo, one of the lawyers on our team moved every single AI-placed field, even the correct ones. Her reason: <i>"I didn't see it place them, so I don't trust them."</i> Silent automation didn't save time; it just moved the manual verification work to a place with no support for doing it.</div>
     </div>
     <div class="iter rejected">
       <div class="it-num">Iteration 2</div>
@@ -1067,13 +1086,13 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
       <div class="it-num">Final</div>
       <h5>Inline, reviewable "Detect with AI"</h5>
       <p>One button inside the existing field panel. Clicking it visibly places suggested fields directly on the document, using the same drag-and-edit interaction as a manually placed field.</p>
-      <div class="why"><b>Why it worked:</b> the placement is visible as it happens, every suggestion is editable or deletable with zero new interaction to learn, and there's no separate "accept" step required. The AI proposes; the user disposes — using tools they already know.</div>
+      <div class="why"><b>Why it worked:</b> the placement is visible as it happens, every suggestion is editable or deletable with zero new interaction to learn, and there's no separate "accept" step required. The AI proposes; the user disposes, using tools they already know.</p></div>
     </div>
   </div>
 
   <figure class="figure reveal">
     <div class="frame"><img loading="lazy" src="assets/images/omnisproof-ai-field-annotation.png" alt="OmnisProof signing setup screen with Detect with AI button, visual field identification, and AI feedback callouts" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/></div>
-    <figcaption><span class="cap-label">AI-Assisted Field Placement in Action</span> — "Detect with AI" scans the document in context, identifies 38 form fields automatically, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
+    <figcaption><span class="cap-label">AI-Assisted Field Placement in Action</span>: "Detect with AI" scans the document in context, identifies 38 form fields automatically, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
   </figure>
 
   <div class="prose reveal" style="margin-top:36px;">
@@ -1083,7 +1102,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 
   <div class="edge-case reveal">
     <span class="ec-tag">Edge case</span>
-    <p><b>Non-standard or custom field types</b> that fall outside the seven types the model recognizes (signature, date, name, initials, title, email, text) aren't guessed at — they're left for manual placement using the same field library, with no error state implying something went wrong.</p>
+    <p><b>Non-standard or custom field types</b> that fall outside the seven types the model recognizes (signature, date, name, initials, title, email, text) aren't guessed at: they're left for manual placement using the same field library, with no error state implying something went wrong.</p>
   </div>
   <div class="edge-case reveal">
     <span class="ec-tag">Edge case</span>
@@ -1091,7 +1110,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   </div>
   <div class="edge-case reveal">
     <span class="ec-tag">Edge case</span>
-    <p><b>A user rejects most of the AI's suggestions on one document.</b> Nothing throttles or hides the "Detect with AI" button on the next document — every doc gets a fresh, unbiased detection pass. The risk isn't the mechanic breaking, it's a user generalizing one bad document into "the AI doesn't work here" and turning it off for good. That's a trust-recovery problem I didn't get to test with real usage, and I flag it as open below rather than claiming it's solved.</p>
+    <p><b>A user rejects most of the AI's suggestions on one document.</b> Nothing throttles or hides the "Detect with AI" button on the next document; every doc gets a fresh, unbiased detection pass. The risk isn't the mechanic breaking, it's a user generalizing one bad document into "the AI doesn't work here" and turning it off for good. That's a trust-recovery problem I didn't get to test with real usage, and I flag it as open below rather than claiming it's solved.</p>
   </div>
 
   <div class="prose reveal" style="margin-top:36px;">
@@ -1107,7 +1126,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 
   <div class="note reveal">
     <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#0066FF"/><path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/></svg></div>
-    <div class="note__body"><span class="note__label">Honest confidence level</span> These numbers come from six internal walkthroughs with legal professionals inside our own organization — not a controlled study, not external users, not production telemetry. I treat them as directional evidence the detection is useful, not as a validated product metric, and I say exactly that when asked.</div>
+    <div class="note__body"><span class="note__label">Honest confidence level</span> These numbers come from six internal walkthroughs with legal professionals inside our own organization (not a controlled study, not external users, not production telemetry). I treat them as directional evidence the detection is useful, not as a validated product metric, and I say exactly that when asked.</div>
   </div>
 </section>
 
@@ -1128,19 +1147,19 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   </div>
 
   <div class="prose reveal" style="margin-top:20px;">
-    <p>The MVP flow for preparing a document was <span class="mono">General Info → Add Signers → Add Fields → Distribute Document</span> — four separate full-screen steps layered on top of the document list as a modal. Each step had its own settings. The document being configured wasn't even visible until step three. In walkthroughs, users lost track of what they were setting up constantly — the thing they were configuring was hidden behind the configuration itself.</p>
+    <p>The MVP flow for preparing a document was <span class="mono">General Info → Add Signers → Add Fields → Distribute Document</span>: four separate full-screen steps layered on top of the document list as a modal. Each step had its own settings. The document being configured wasn't even visible until step three. In walkthroughs, users lost track of what they were setting up constantly, because the thing they were configuring was hidden behind the configuration itself.</p>
   </div>
 
   <div class="gallery-2 reveal">
     <div class="shot tag-before">
       <span class="pill pill-before">Before</span>
       <img loading="lazy" src="assets/images/omnisproof-before-wizard.png" alt="Original four-step modal wizard for document setup, showing General Info form with the document barely visible behind it" onerror="this.src='assets/images/bw_image 40(upload design).webp'"/>
-      <div class="sc"><b>4-step modal wizard</b> — General Info, Add Signers, Add Fields, Distribute Document. The document is a thumbnail on the left, not the focus of the screen.</div>
+      <div class="sc"><b>4-step modal wizard</b>: General Info, Add Signers, Add Fields, Distribute Document. The document is a thumbnail on the left, not the focus of the screen.</div>
     </div>
     <div class="shot tag-after">
       <span class="pill pill-after">After</span>
       <img loading="lazy" src="assets/images/omnisproof-after-onepage.png" alt="Redesigned single-page signing setup with document as the central focus, recipient panel, and field library" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/>
-      <div class="sc"><b>1 guided page</b> — the document is the center of the screen the entire time. Recipients, fields, and progress live in persistent side panels.</div>
+      <div class="sc"><b>1 guided page</b>: the document is the center of the screen the entire time. Recipients, fields, and progress live in persistent side panels.</div>
     </div>
   </div>
 
@@ -1153,27 +1172,27 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <div class="iter rejected">
       <div class="it-num">Iteration 1</div>
       <h5>Delete the steps entirely</h5>
-      <p>Strip the wizard down to one dense screen — recipients, fields, document preview, and settings all visible simultaneously. Fewer screens, assumed to mean faster.</p>
-      <div class="why"><b>Why it failed:</b> in the walkthrough, a lawyer looked at it and said it felt like "a cockpit." Neither test participant could identify where to start without me narrating it. Removing screens isn't the same as removing complexity — it just compresses everything onto one screen at once.</div>
+      <p>Strip the wizard down to one dense screen: recipients, fields, document preview, and settings all visible simultaneously. Fewer screens, assumed to mean faster.</p>
+      <div class="why"><b>Why it failed:</b> in the walkthrough, a lawyer looked at it and said it felt like "a cockpit." Neither test participant could identify where to start without me narrating it. Removing screens isn't the same as removing complexity; it just compresses everything onto one screen at once.</div>
     </div>
     <div class="iter rejected">
       <div class="it-num">Iteration 2</div>
       <h5>Merge General Info into Add Signers</h5>
       <p>A smaller fix: combine the first two steps into one, going from four screens to three, keeping the rest of the wizard structure intact.</p>
-      <div class="why"><b>Why it was rejected:</b> it reduced the click count but didn't touch the actual complaint — the document was still hidden until step two of three. A marginal improvement to the wrong metric.</div>
+      <div class="why"><b>Why it was rejected:</b> it reduced the click count but didn't touch the actual complaint: the document was still hidden until step two of three. A marginal improvement to the wrong metric.</div>
     </div>
     <div class="iter winner">
       <div class="it-num">Final</div>
       <h5>Same 3-stage logic, one persistent page</h5>
       <p>Keep <span class="mono">Document &amp; Recipients → Add Fields → Review &amp; Send</span> as the underlying structure, but render it as three states of a single page: a persistent step tracker on the left, the document permanently centered, and a right-hand panel whose content changes per stage.</p>
-      <div class="why"><b>Why it worked:</b> the document never disappears behind its own configuration. Nothing about the underlying logic changed — only how much of it stayed visible at once.</div>
+      <div class="why"><b>Why it worked:</b> the document never disappears behind its own configuration. Nothing about the underlying logic changed: only how much of it stayed visible at once.</div>
     </div>
   </div>
 
   <div class="prose reveal" style="margin-top:36px;">
     <div class="eyebrow">Before &rarr; After Workflow</div>
     <h3 class="h3">Replacing 4 fragmented screens with 1 persistent workspace</h3>
-    <p>The entire redesign is a story of eliminating cognitive disconnect — keeping the document visible every second so users never configure blind.</p>
+    <p>The entire redesign is a story of eliminating cognitive disconnect: keeping the document visible every second so users never configure blind.</p>
   </div>
 
   <div class="ba reveal">
@@ -1223,16 +1242,16 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   </div>
   <div class="edge-case reveal">
     <span class="ec-tag">Edge case</span>
-    <p><b>A required field type is missing when the user reaches Review &amp; Send.</b> The step tracker marks Step 2 with an indicator, and Send stays disabled with an inline explanation of exactly what's missing — consistent with how errors surface in the field-mapping problem above, so the two problems don't teach the user two different error patterns.</p>
+    <p><b>A required field type is missing when the user reaches Review &amp; Send.</b> The step tracker marks Step 2 with an indicator, and Send stays disabled with an inline explanation of exactly what's missing, consistent with how errors surface in the field-mapping problem above, so the two problems don't teach the user two different error patterns.</p>
   </div>
 
   <div class="note good reveal">
     <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="#2FA96A"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    <div class="note__body"><span class="note__label">What survived from the original wizard, on purpose</span> The three-stage logic itself. Deleting steps to "reduce friction" is a common trap — the wizard's sequence (who's involved → what goes where → is it ready) was correct information architecture. The failure was in the presentation, not the sequence, so I kept the sequence and rebuilt the presentation.</div>
+    <div class="note__body"><span class="note__label">What survived from the original wizard, on purpose</span> The three-stage logic itself. Deleting steps to "reduce friction" is a common trap: the wizard's sequence (who's involved → what goes where → is it ready) was correct information architecture. The failure was in the presentation, not the sequence, so I kept the sequence and rebuilt the presentation.</div>
   </div>
 
   <div class="prose reveal">
-    <p>In the walkthrough that followed this redesign, the same two lawyers who'd been confused by both the original wizard and the failed single-screen attempt completed the flow without asking a single question. That's the result I trust most from this project — not because the sample is large, but because it's the same two people, the same task, before and after.</p>
+    <p>In the walkthrough that followed this redesign, the same two lawyers who'd been confused by both the original wizard and the failed single-screen attempt completed the flow without asking a single question. That's the result I trust most from this project, not because the sample is large, but because it's the same two people, the same task, before and after.</p>
   </div>
 </section>
 
@@ -1247,15 +1266,15 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="eyebrow reveal">Where this landed</div>
   <h2 class="h reveal">The complexity didn't disappear. It moved from the user to the system.</h2>
   <div class="prose reveal">
-    <p>Document setup now handles the two heaviest parts of the old flow automatically: field placement is proposed by AI and simply reviewed rather than built from scratch, and the wizard's three stages live on one page where the document never leaves view. Users are no longer configuring blind or placing every field by hand — they're reviewing what the system already did and correcting only what needs it.</p>
+    <p>Document setup now handles the two heaviest parts of the old flow automatically: field placement is proposed by AI and simply reviewed rather than built from scratch, and the wizard's three stages live on one page where the document never leaves view. Users are no longer configuring blind or placing every field by hand: they're reviewing what the system already did and correcting only what needs it.</p>
   </div>
 
   <div class="tbl reveal">
     <table>
       <tr><th>Category</th><th>What we have</th></tr>
       <tr><td>Validated</td><td>6 internal prototype walkthroughs with lawyers and legal assistants inside our organization. Both redesigns tested against the same two participants before and after. ~72% of AI field suggestions accepted without edits. The participant who distrusted silent AI placement left correct suggestions untouched after the redesign.</td></tr>
-      <tr><td>Qualitative</td><td><i>"I didn't see it place them, so I don't trust them"</i> — on the rejected silent-AI iteration. <i>"This looks like a cockpit"</i> — on the rejected single-screen iteration. Both quotes came from the same two-person internal test group and directly shaped the shipped design.</td></tr>
-      <tr><td>Not yet validated</td><td>Production usage data (setup completion rate, time-to-complete, support ticket volume) — the feature is live but hasn't been in market long enough to generate meaningful telemetry. External law firm feedback — still untested outside our own organization.</td></tr>
+      <tr><td>Qualitative</td><td><i>"I didn't see it place them, so I don't trust them"</i> (on the rejected silent-AI iteration). <i>"This looks like a cockpit"</i> (on the rejected single-screen iteration). Both quotes came from the same two-person internal test group and directly shaped the shipped design.</td></tr>
+      <tr><td>Not yet validated</td><td>Production usage data (setup completion rate, time-to-complete, support ticket volume): the feature is live but hasn't been in market long enough to generate meaningful telemetry. External law firm feedback: still untested outside our own organization.</td></tr>
     </table>
   </div>
 </section>
@@ -1271,9 +1290,9 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 
   <div class="eyebrow reveal">Validation limitations</div>
   <div class="prose reveal">
-    <p>I want to be direct about what this case study can and can't claim. This was not long-term or external validation — the product had recently shipped, and everything above is built on internal walkthroughs and competitive analysis, not production data or outside users. If I had stayed on this longer, or once real usage accumulates, I'd want to track:</p>
+    <p>I want to be direct about what this case study can and can't claim. This was not long-term or external validation: the product had recently shipped, and everything above is built on internal walkthroughs and competitive analysis, not production data or outside users. If I had stayed on this longer, or once real usage accumulates, I'd want to track:</p>
     <ul>
-      <li>Setup completion rate — how many started setups actually reach "sent"</li>
+      <li>Setup completion rate: how many started setups actually reach "sent"</li>
       <li>Time to complete document setup, split by AI-assisted vs. fully manual field placement</li>
       <li>Support requests per document setup, before and after this redesign</li>
       <li>AI suggestion acceptance rate at scale, not just across six sessions</li>
@@ -1284,9 +1303,9 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="eyebrow reveal">Learnings</div>
   <div class="prose reveal">
     <ul>
-      <li><b>You can't remove complexity, but you can decide who carries it.</b> Field placement and the wizard's logic were both necessary — the fix in both cases was moving effort from the user to the system, not deleting the step.</li>
-      <li><b>Errors aren't edge cases — they're expected.</b> Designing for the missing field, the invalid recipient, and the unreadable document from the start made both flows more reliable than trying to patch error states in afterward.</li>
-      <li><b>Visibility beats automation.</b> The AI trust problem and the wizard problem were solved by the same underlying fix: showing the user more of what's happening, organized better — not hiding more of it in the name of simplicity.</li>
+      <li><b>You can't remove complexity, but you can decide who carries it.</b> Field placement and the wizard's logic were both necessary: the fix in both cases was moving effort from the user to the system, not deleting the step.</li>
+      <li><b>Errors aren't edge cases: they're expected.</b> Designing for the missing field, the invalid recipient, and the unreadable document from the start made both flows more reliable than trying to patch error states in afterward.</li>
+      <li><b>Visibility beats automation.</b> The AI trust problem and the wizard problem were solved by the same underlying fix: showing the user more of what's happening, organized better, not hiding more of it in the name of simplicity.</li>
     </ul>
   </div>
 
@@ -1311,10 +1330,10 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="sec-num">10 / QUESTIONS I EXPECT</div>
   <div class="prose reveal" style="margin-bottom:30px"><div class="eyebrow">Interview Brief</div><h2 class="h">Anticipated questions on these two problems.</h2></div>
   <div class="faq reveal">
-    <details open><summary><span class="q-text">Why only two problems instead of the whole product?</span></summary><div class="a">I have a full walkthrough of OmnisProof elsewhere — repeating it here would be redundant, and a full product tour doesn't show how I think as clearly as going deep on two hard problems does. These two had the clearest arc: a rejected first attempt, evidence of why it failed, and a validated fix.</div></details>
-    <details><summary><span class="q-text">How confident are you in the 72% AI-acceptance number?</span></summary><div class="a">Moderately, not fully. It's from six internal walkthroughs with legal professionals in our own organization, not a controlled study or production telemetry. I treat it as directional evidence the detection is useful, not a validated product metric — and I say that without being asked twice.</div></details>
-    <details><summary><span class="q-text">Why didn't you just delete the wizard's steps to simplify it?</span></summary><div class="a">I tried that first — a single dense screen with everything visible at once — and it failed immediately. A tester called it "a cockpit." The three-stage structure was correct information architecture; the failure was hiding the document behind each step, not having steps in the first place.</div></details>
-    <details><summary><span class="q-text">What would you do differently with more time or budget?</span></summary><div class="a">Test with external law firm users instead of internal proxies, and instrument real production metrics instead of relying on six walkthrough sessions. That gap — between what I believe and what I can prove at scale — is the most honest answer I can give.</div></details>
+    <details open><summary><span class="q-text">Why only two problems instead of the whole product?</span></summary><div class="a">I have a full walkthrough of OmnisProof elsewhere: repeating it here would be redundant, and a full product tour doesn't show how I think as clearly as going deep on two hard problems does. These two had the clearest arc: a rejected first attempt, evidence of why it failed, and a validated fix.</div></details>
+    <details><summary><span class="q-text">How confident are you in the 72% AI-acceptance number?</span></summary><div class="a">Moderately, not fully. It's from six internal walkthroughs with legal professionals in our own organization, not a controlled study or production telemetry. I treat it as directional evidence the detection is useful, not a validated product metric, and I say that without being asked twice.</div></details>
+    <details><summary><span class="q-text">Why didn't you just delete the wizard's steps to simplify it?</span></summary><div class="a">I tried that first (a single dense screen with everything visible at once) and it failed immediately. A tester called it "a cockpit." The three-stage structure was correct information architecture; the failure was hiding the document behind each step, not having steps in the first place.</div></details>
+    <details><summary><span class="q-text">What would you do differently with more time or budget?</span></summary><div class="a">Test with external law firm users instead of internal proxies, and instrument real production metrics instead of relying on six walkthrough sessions. That gap, between what I believe and what I can prove at scale, is the most honest answer I can give.</div></details>
   </div>
 </section>
 
