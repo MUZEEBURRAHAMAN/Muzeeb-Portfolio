@@ -13,205 +13,105 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=560">
+    <link rel="stylesheet" href="assets/css/style.css?v=570">
     <style>
         .mz-404-hero {
-            padding: 48px 0 24px;
+            min-height: calc(100vh - 72px - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 80px 24px 60px;
+            box-sizing: border-box;
             position: relative;
-        }
-        .mz-404-glow {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 380px;
-            height: 240px;
-            background: radial-gradient(circle, rgba(232, 96, 42, 0.18) 0%, rgba(232, 96, 42, 0) 70%);
-            filter: blur(50px);
-            pointer-events: none;
-            z-index: 0;
         }
         .mz-404-content {
-            position: relative;
-            z-index: 1;
-            max-width: 680px;
+            max-width: 580px;
             margin: 0 auto;
         }
         .mz-404-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             padding: 6px 14px;
-            background: rgba(232, 96, 42, 0.1);
-            border: 1px solid rgba(232, 96, 42, 0.25);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 999px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
+            font-weight: 500;
+            letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: #e8602a;
+            color: var(--muted, #999999);
             margin-bottom: 24px;
         }
-        .mz-404-badge__dot {
-            width: 6px;
-            height: 6px;
-            background: #e8602a;
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite ease-in-out;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
+        [data-theme="light"] .mz-404-badge {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #555555;
         }
         .mz-404-code {
             font-family: 'Archivo', sans-serif;
-            font-size: clamp(5.5rem, 14vw, 9.5rem);
+            font-size: clamp(6rem, 16vw, 10rem);
             font-weight: 900;
-            line-height: 0.95;
+            line-height: 0.9;
             letter-spacing: -0.06em;
-            background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
             margin-bottom: 20px;
             user-select: none;
         }
         [data-theme="light"] .mz-404-code {
-            background: linear-gradient(180deg, #111111 30%, rgba(0, 0, 0, 0.25) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #111111;
         }
         .mz-404-title {
             font-family: 'Archivo', sans-serif;
             font-size: clamp(1.8rem, 3.5vw, 2.5rem);
             font-weight: 750;
             letter-spacing: -0.03em;
-            margin: 0 0 16px;
+            margin: 0 0 14px;
             color: var(--text, #f4f2ed);
+        }
+        [data-theme="light"] .mz-404-title {
+            color: #111111;
         }
         .mz-404-desc {
             font-size: 1.05rem;
-            line-height: 1.65;
-            color: var(--muted, #a0a098);
+            line-height: 1.6;
+            color: var(--muted, #8e8e86);
             margin: 0 auto 36px;
-            max-width: 520px;
+            max-width: 460px;
         }
-        .mz-404-actions {
+        [data-theme="light"] .mz-404-desc {
+            color: #5f5f59;
+        }
+        .mz-404-action {
             display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
             justify-content: center;
-            margin-bottom: 36px;
         }
-        .mz-btn-pill {
+        .mz-btn-home {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 12px 24px;
+            padding: 12px 26px;
             border-radius: 999px;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .mz-btn-pill--primary {
             background: #e8602a;
             color: #ffffff;
-            box-shadow: 0 4px 16px rgba(232, 96, 42, 0.35);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 14px rgba(232, 96, 42, 0.25);
         }
-        .mz-btn-pill--primary:hover {
+        .mz-btn-home:hover {
             background: #ff7438;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(232, 96, 42, 0.45);
-        }
-        .mz-btn-pill--secondary {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: var(--text, #f4f2ed);
-        }
-        .mz-btn-pill--secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.22);
-            transform: translateY(-2px);
-        }
-        [data-theme="light"] .mz-btn-pill--secondary {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-            color: #111111;
-        }
-        [data-theme="light"] .mz-btn-pill--secondary:hover {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-
-        /* Recommended Quick Links */
-        .mz-404-rec {
-            text-align: left;
-            padding: 24px 28px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 16px;
-            margin-bottom: 24px;
-        }
-        [data-theme="light"] .mz-404-rec {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.07);
-        }
-        .mz-404-rec__heading {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--muted, #888888);
-            margin: 0 0 18px;
-        }
-        .mz-404-rec__grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 14px;
-        }
-        .mz-404-rec__item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--text, #f4f2ed);
-            transition: all 0.2s ease;
-        }
-        [data-theme="light"] .mz-404-rec__item {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            color: #111111;
-        }
-        .mz-404-rec__item:hover {
-            border-color: #e8602a;
-            transform: translateX(4px);
-        }
-        .mz-404-rec__title {
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .mz-404-rec__tag {
-            font-size: 11px;
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--muted, #888);
-        }
-        .mz-404-rec__arrow {
-            color: #e8602a;
-            font-size: 16px;
+            box-shadow: 0 6px 20px rgba(232, 96, 42, 0.35);
         }
 
         /* Clean Hatched Section Divider */
         .hatched-divider {
             display: block !important;
             width: calc(100% + 32px) !important;
-            margin: 2.5rem -16px 2rem !important;
+            margin: 0 -16px 2rem !important;
             height: 32px !important;
             position: relative !important;
             overflow: hidden !important;
@@ -224,13 +124,13 @@
         @media (min-width: 640px) {
             .hatched-divider {
                 width: calc(100% + 48px) !important;
-                margin: 3rem -24px 2.5rem !important;
+                margin: 0 -24px 2.5rem !important;
             }
         }
         @media (min-width: 768px) {
             .hatched-divider {
                 width: calc(100% + 64px) !important;
-                margin: 3.5rem -32px 3rem !important;
+                margin: 0 -32px 3rem !important;
             }
         }
         .hatched-divider__pattern {
@@ -280,56 +180,16 @@
     <main id="main" class="w-full">
         <!-- 404 Hero Section -->
         <section class="mz-404-hero" aria-labelledby="errorHeading">
-            <div class="mz-404-glow"></div>
             <div class="mz-404-content">
-                <div class="mz-404-badge">
-                    <span class="mz-404-badge__dot"></span>
-                    <span>Error 404 · Canvas Boundary</span>
-                </div>
+                <div class="mz-404-badge">Error 404 · Page Not Found</div>
                 <div class="mz-404-code">404</div>
-                <h1 class="mz-404-title" id="errorHeading">Lost in the Design Canvas?</h1>
-                <p class="mz-404-desc">The link you followed may be outdated, or the case study has been moved or updated during our recent releases.</p>
+                <h1 class="mz-404-title" id="errorHeading">Lost in the Canvas?</h1>
+                <p class="mz-404-desc">The page you're looking for doesn't exist, was removed, or has a new URL.</p>
 
-                <div class="mz-404-actions">
-                    <a href="index.html" class="mz-btn-pill mz-btn-pill--primary">
+                <div class="mz-404-action">
+                    <a href="index.html" class="mz-btn-home">
                         <span>Back to Homepage</span>
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="best-work.html" class="mz-btn-pill mz-btn-pill--secondary">
-                        <span>Explore Best Work</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-                    </a>
-                    <a href="playground.html" class="mz-btn-pill mz-btn-pill--secondary">
-                        <span>Visit Playground</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Access Recommendations -->
-            <div class="mz-404-rec">
-                <div class="mz-404-rec__heading">Popular Shipped Case Studies</div>
-                <div class="mz-404-rec__grid">
-                    <a href="omnisproof-case-study.html" class="mz-404-rec__item">
-                        <div>
-                            <div class="mz-404-rec__title">OmnisProof</div>
-                            <div class="mz-404-rec__tag">E-Sign Document Setup</div>
-                        </div>
-                        <span class="mz-404-rec__arrow">→</span>
-                    </a>
-                    <a href="audit-engine-case-study.html" class="mz-404-rec__item">
-                        <div>
-                            <div class="mz-404-rec__title">AI UX Audit Engine</div>
-                            <div class="mz-404-rec__tag">Automated Verification</div>
-                        </div>
-                        <span class="mz-404-rec__arrow">→</span>
-                    </a>
-                    <a href="casenotes-case-study.html" class="mz-404-rec__item">
-                        <div>
-                            <div class="mz-404-rec__title">CaseNotes</div>
-                            <div class="mz-404-rec__tag">AI Legal Notetaker</div>
-                        </div>
-                        <span class="mz-404-rec__arrow">→</span>
                     </a>
                 </div>
             </div>
@@ -396,6 +256,6 @@
 
     <!-- jQuery & Core Scripts -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/site.js?v=561"></script>
+    <script src="assets/js/site.js?v=571"></script>
 </body>
 </html>
