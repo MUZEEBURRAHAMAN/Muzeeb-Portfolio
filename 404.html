@@ -7,94 +7,211 @@
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    <title>Page Not Found · Muzeeb Urrahaman</title>
+    <title>404 — Page Not Found · Muzeeb Urrahaman</title>
     <meta name="description" content="The requested page could not be found. Return to Muzeeb Urrahaman's portfolio.">
     <!-- Google Fonts: Archivo & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=550">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css?v=560">
     <style>
-        .mz-404-wrap {
-            min-height: calc(100vh - 160px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .mz-404-hero {
+            padding: 80px 0 60px;
             text-align: center;
-            padding: 80px 24px;
-            box-sizing: border-box;
+            position: relative;
         }
-        .mz-404-card {
-            max-width: 580px;
-            background: var(--surface, rgba(255, 255, 255, 0.02));
-            border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
-            border-radius: 20px;
-            padding: 48px 36px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        .mz-404-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 380px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(232, 96, 42, 0.18) 0%, rgba(232, 96, 42, 0) 70%);
+            filter: blur(50px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .mz-404-content {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .mz-404-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(232, 96, 42, 0.1);
+            border: 1px solid rgba(232, 96, 42, 0.25);
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #e8602a;
+            margin-bottom: 24px;
+        }
+        .mz-404-badge__dot {
+            width: 6px;
+            height: 6px;
+            background: #e8602a;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.85); }
         }
         .mz-404-code {
             font-family: 'Archivo', sans-serif;
-            font-size: 72px;
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.04em;
-            background: linear-gradient(135deg, #e8602a, #ff9066);
+            font-size: clamp(5.5rem, 14vw, 9.5rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.06em;
+            background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            user-select: none;
+        }
+        [data-theme="light"] .mz-404-code {
+            background: linear-gradient(180deg, #111111 30%, rgba(0, 0, 0, 0.25) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .mz-404-title {
             font-family: 'Archivo', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 12px;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 750;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px;
             color: var(--text, #f4f2ed);
         }
         .mz-404-desc {
-            font-size: 15px;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            line-height: 1.65;
             color: var(--muted, #a0a098);
-            margin: 0 0 32px;
+            margin: 0 auto 36px;
+            max-width: 520px;
         }
         .mz-404-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
             justify-content: center;
+            margin-bottom: 60px;
         }
-        .mz-404-btn {
+        .mz-btn-pill {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
+            gap: 10px;
+            padding: 12px 24px;
             border-radius: 999px;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .mz-404-btn--primary {
+        .mz-btn-pill--primary {
             background: #e8602a;
             color: #ffffff;
+            box-shadow: 0 4px 16px rgba(232, 96, 42, 0.35);
         }
-        .mz-404-btn--primary:hover {
+        .mz-btn-pill--primary:hover {
             background: #ff7438;
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 96, 42, 0.45);
         }
-        .mz-404-btn--secondary {
-            background: rgba(255, 255, 255, 0.06);
+        .mz-btn-pill--secondary {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.12);
             color: var(--text, #f4f2ed);
         }
-        .mz-404-btn--secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
+        .mz-btn-pill--secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.22);
             transform: translateY(-2px);
+        }
+        [data-theme="light"] .mz-btn-pill--secondary {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #111111;
+        }
+        [data-theme="light"] .mz-btn-pill--secondary:hover {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Recommended Quick Links */
+        .mz-404-rec {
+            text-align: left;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            margin-bottom: 60px;
+        }
+        [data-theme="light"] .mz-404-rec {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+        .mz-404-rec__heading {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted, #888888);
+            margin: 0 0 18px;
+        }
+        .mz-404-rec__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+        .mz-404-rec__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text, #f4f2ed);
+            transition: all 0.2s ease;
+        }
+        [data-theme="light"] .mz-404-rec__item {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            color: #111111;
+        }
+        .mz-404-rec__item:hover {
+            border-color: #e8602a;
+            transform: translateX(4px);
+        }
+        .mz-404-rec__title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .mz-404-rec__tag {
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--muted, #888);
+        }
+        .mz-404-rec__arrow {
+            color: #e8602a;
+            font-size: 16px;
         }
     </style>
 </head>
 <body class="bg-[#0f0f0f] text-[#f4f2ed]">
     <a href="#main" class="mz-skip">Skip to content</a>
 
+    <!-- Site Header -->
     <header class="site-header" id="siteHeader" role="banner">
         <div class="site-header__inner">
             <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
@@ -116,29 +233,125 @@
         </div>
     </header>
 
-    <main id="main" class="mz-404-wrap">
-        <div class="mz-404-card">
-            <div class="mz-404-code">404</div>
-            <h1 class="mz-404-title">Lost in the Design Canvas?</h1>
-            <p class="mz-404-desc">The page or case study you're looking for might have been updated, moved, or renamed during recent releases.</p>
-            <div class="mz-404-actions">
-                <a href="index.html" class="mz-404-btn mz-404-btn--primary">
-                    <span>Back to Homepage</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="best-work.html" class="mz-404-btn mz-404-btn--secondary">Explore Best Work</a>
-                <a href="playground.html" class="mz-404-btn mz-404-btn--secondary">Visit Playground</a>
+    <main id="main" class="w-full">
+        <!-- 404 Hero Section -->
+        <section class="mz-404-hero" aria-labelledby="errorHeading">
+            <div class="mz-404-glow"></div>
+            <div class="mz-404-content">
+                <div class="mz-404-badge">
+                    <span class="mz-404-badge__dot"></span>
+                    <span>Error 404 · Canvas Boundary</span>
+                </div>
+                <div class="mz-404-code">404</div>
+                <h1 class="mz-404-title" id="errorHeading">Lost in the Design Canvas?</h1>
+                <p class="mz-404-desc">The link you followed may be outdated, or the case study has been moved or updated during our recent releases.</p>
+
+                <div class="mz-404-actions">
+                    <a href="index.html" class="mz-btn-pill mz-btn-pill--primary">
+                        <span>Back to Homepage</span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="best-work.html" class="mz-btn-pill mz-btn-pill--secondary">
+                        <span>Explore Best Work</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                    </a>
+                    <a href="playground.html" class="mz-btn-pill mz-btn-pill--secondary">
+                        <span>Visit Playground</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                    </a>
+                </div>
             </div>
+
+            <!-- Quick Access Recommendations -->
+            <div class="mz-404-rec">
+                <div class="mz-404-rec__heading">Popular Shipped Case Studies</div>
+                <div class="mz-404-rec__grid">
+                    <a href="omnisproof-case-study.html" class="mz-404-rec__item">
+                        <div>
+                            <div class="mz-404-rec__title">OmnisProof</div>
+                            <div class="mz-404-rec__tag">E-Sign Document Setup</div>
+                        </div>
+                        <span class="mz-404-rec__arrow">→</span>
+                    </a>
+                    <a href="audit-engine-case-study.html" class="mz-404-rec__item">
+                        <div>
+                            <div class="mz-404-rec__title">AI UX Audit Engine</div>
+                            <div class="mz-404-rec__tag">Automated Verification</div>
+                        </div>
+                        <span class="mz-404-rec__arrow">→</span>
+                    </a>
+                    <a href="casenotes-case-study.html" class="mz-404-rec__item">
+                        <div>
+                            <div class="mz-404-rec__title">CaseNotes</div>
+                            <div class="mz-404-rec__tag">AI Legal Notetaker</div>
+                        </div>
+                        <span class="mz-404-rec__arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider: Before Footer -->
+        <div class="hatched-divider" aria-hidden="true">
+            <div class="hatched-divider__pattern"></div>
         </div>
+
+        <!-- Global Site Footer (Identical 1134px width & side rails) -->
+        <footer class="mz-footer" id="siteFooter" role="contentinfo">
+            <div class="mz-footer__row">
+                <div class="mz-footer__id">
+                    <a aria-label="Muzeeb Urrahaman" href="index.html" class="mz-footer__logo">
+                        <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
+                        <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+                    </a>
+                </div>
+                <div class="mz-footer__socials">
+                    <a href="https://github.com/MUZEEBURRAHAMAN" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                        <svg class="mz-footer__social" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H80V112H96Zm88,0H168V140a12,12,0,0,0-24,0v36H128V112h16v10.45A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z" opacity="0.2"/>
+                            <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a12,12,0,0,0-24,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Z" opacity="0.2"/>
+                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
+                            <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.behance.net/muzeeb0786" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158Z" opacity="0.2"/>
+                            <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linktr.ee/muzeeb1998" target="_blank" rel="noopener noreferrer" aria-label="Linktree">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M128,115.31,77.66,165.66a8,8,0,0,1-11.32-11.32L108.69,112H48a8,8,0,0,1,0-16h60.69L66.34,53.66A8,8,0,0,1,77.66,42.34L120,84.69V24a8,8,0,0,1,16,0V84.69l42.34-42.35a8,8,0,0,1,11.32,11.32L147.31,96H208a8,8,0,0,1,0,16H147.31l42.35,42.34a8,8,0,0,1-11.32,11.32L128,115.31Z" opacity="0.2"/>
+                            <path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mz-footer__band">
+                <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+                <div class="mz-footer__copy">© <span class="mz-footer__year">2026</span> Muzeeb Urrahaman · All rights reserved</div>
+            </div>
+        </footer>
     </main>
 
-    <footer class="mz-footer" id="siteFooter" role="contentinfo">
-        <div class="mz-footer__band">
-            <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
-            <div class="mz-footer__copy">© <span class="mz-footer__year">2026</span> Muzeeb Urrahaman · All rights reserved</div>
-        </div>
-    </footer>
-
-    <script src="assets/js/site.js?v=551"></script>
+    <!-- jQuery & Core Scripts -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/site.js?v=561"></script>
 </body>
 </html>
