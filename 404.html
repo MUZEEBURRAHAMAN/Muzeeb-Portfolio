@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+    <title>Page Not Found · Muzeeb Urrahaman</title>
+    <meta name="description" content="The requested page could not be found. Return to Muzeeb Urrahaman's portfolio.">
+    <!-- Google Fonts: Archivo & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css?v=550">
+    <style>
+        .mz-404-wrap {
+            min-height: calc(100vh - 160px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px;
+            box-sizing: border-box;
+        }
+        .mz-404-card {
+            max-width: 580px;
+            background: var(--surface, rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+            border-radius: 20px;
+            padding: 48px 36px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .mz-404-code {
+            font-family: 'Archivo', sans-serif;
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #e8602a, #ff9066);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+        .mz-404-title {
+            font-family: 'Archivo', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 12px;
+            color: var(--text, #f4f2ed);
+        }
+        .mz-404-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--muted, #a0a098);
+            margin: 0 0 32px;
+        }
+        .mz-404-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .mz-404-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .mz-404-btn--primary {
+            background: #e8602a;
+            color: #ffffff;
+        }
+        .mz-404-btn--primary:hover {
+            background: #ff7438;
+            transform: translateY(-2px);
+        }
+        .mz-404-btn--secondary {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text, #f4f2ed);
+        }
+        .mz-404-btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-[#0f0f0f] text-[#f4f2ed]">
+    <a href="#main" class="mz-skip">Skip to content</a>
+
+    <header class="site-header" id="siteHeader" role="banner">
+        <div class="site-header__inner">
+            <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
+                <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
+                <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+            </a>
+            <nav class="site-header__nav" aria-label="Main Navigation">
+                <a class="site-header__link" href="index.html">Home</a>
+                <a class="site-header__link" href="about.html">About</a>
+                <a class="site-header__link" href="best-work.html">Best work</a>
+                <a class="site-header__link" href="playground.html">Playground</a>
+                <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    </svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="mz-404-wrap">
+        <div class="mz-404-card">
+            <div class="mz-404-code">404</div>
+            <h1 class="mz-404-title">Lost in the Design Canvas?</h1>
+            <p class="mz-404-desc">The page or case study you're looking for might have been updated, moved, or renamed during recent releases.</p>
+            <div class="mz-404-actions">
+                <a href="index.html" class="mz-404-btn mz-404-btn--primary">
+                    <span>Back to Homepage</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="best-work.html" class="mz-404-btn mz-404-btn--secondary">Explore Best Work</a>
+                <a href="playground.html" class="mz-404-btn mz-404-btn--secondary">Visit Playground</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mz-footer" id="siteFooter" role="contentinfo">
+        <div class="mz-footer__band">
+            <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+            <div class="mz-footer__copy">© <span class="mz-footer__year">2026</span> Muzeeb Urrahaman · All rights reserved</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/site.js?v=551"></script>
+</body>
+</html>

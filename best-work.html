@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+  <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/best-work.html">
   <meta property="og:title" content="Best Work · Muzeeb Urrahaman">
   <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/best-work.html">
   <meta property="og:type" content="website">
@@ -326,13 +329,13 @@
     }
 
     .detail .n span,
-    .detail h1 span,
+    .detail h1 span, .detail h2 span,
     .detail .d span {
       display: block;
       will-change: transform
     }
 
-    .detail h1 {
+    .detail h1, .detail h2 {
       font-family: var(--bwg-disp);
       font-size: 44px;
       font-weight: 600;
@@ -483,10 +486,78 @@
       right: 26px
     }
 
+  
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    .bw-nojs {
+      max-width: 1240px;
+      margin: 120px auto 60px;
+      padding: 0 24px;
+    }
+    .bw-nojs__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .bw-nojs__card {
+      background: var(--bwg-cell, #181818);
+      border: 1px solid var(--bwg-stroke, rgba(255,255,255,0.08));
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .bw-nojs__card:hover {
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    .bw-nojs__card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .bw-nojs__info {
+      padding: 16px 18px;
+    }
+    .bw-nojs__num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--accent, #e8602a);
+      text-transform: uppercase;
+      font-family: var(--bwg-sans);
+    }
+    .bw-nojs__title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 4px 0 6px;
+      color: var(--bwg-ink, #f4f2ed);
+      font-family: var(--bwg-disp);
+    }
+    .bw-nojs__desc {
+      font-size: 13.5px;
+      color: var(--bwg-sub, #a0a098);
+      line-height: 1.5;
+      margin: 0;
+    }
+
   </style>
 </head>
 
 <body>
+  <a href="#main" class="mz-skip">Skip to content</a>
 
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
@@ -509,40 +580,437 @@
     </div>
   </header>
 
-  <!-- GALLERY -->
-  <div class="viewport" id="viewport">
-    <div class="canvas" id="canvas">
-      <div class="grid" id="grid"></div>
+  <main id="main">
+    <h1 class="sr-only">Best Work — Visual Design, UI Systems &amp; Experiments by Muzeeb Urrahaman</h1>
+    <!-- GALLERY -->
+    <div class="viewport" id="viewport">
+      <div class="canvas" id="canvas">
+        <div class="grid" id="grid"></div>
+      </div>
     </div>
-  </div>
 
-  <!-- SPLIT ZOOM -->
-  <div class="split" id="split">
-    <div class="split__l" id="splitL">
-      <div class="zoom-target" id="zoomTarget"></div>
+    <!-- SPLIT ZOOM -->
+    <div class="split" id="split">
+      <div class="split__l" id="splitL">
+        <div class="zoom-target" id="zoomTarget"></div>
+      </div>
+      <div class="split__r" id="splitR"></div>
     </div>
-    <div class="split__r" id="splitR"></div>
-  </div>
 
-  <!-- DETAIL -->
-  <div class="detail" id="detail">
-    <div class="n"><span id="dN">01</span></div>
-    <h1><span id="dT">Title</span></h1>
-    <div class="d"><span id="dD">Description</span></div>
-  </div>
+    <!-- DETAIL -->
+    <div class="detail" id="detail">
+      <div class="n"><span id="dN">01</span></div>
+      <h2><span id="dT">Title</span></h2>
+      <div class="d"><span id="dD">Description</span></div>
+    </div>
 
-  <button class="close" id="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 6 6 18M6 6l12 12" />
-    </svg></button>
-  <button class="navbtn left" id="prevBtn" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none"
-      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m15 18-6-6 6-6" />
-    </svg></button>
-  <button class="navbtn right" id="nextBtn" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m9 18 6-6-6-6" />
-    </svg></button>
+    <button class="close" id="close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg></button>
+    <button class="navbtn left" id="prevBtn" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6" />
+      </svg></button>
+    <button class="navbtn right" id="nextBtn" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 18 6-6-6-6" />
+      </svg></button>
+
+    <noscript>
+      <div class="bw-nojs">
+        <div class="sec-num" style="font-family: monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--bwg-sub, #888);">VISUAL ARCHIVE</div>
+        <h2 style="font-size: 32px; margin: 8px 0 16px; color: var(--bwg-ink, #fff);">Featured Design Works</h2>
+        <p style="color: var(--bwg-sub, #aaa); max-width: 620px;">A collection of 48+ projects spanning AI workflows, design systems, SaaS dashboards, and mobile applications.</p>
+        <div class="bw-nojs__grid">
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 01(Eve_company employee mental wellness).webp" alt="Eve Wellness: Company employee mental wellness app design and user flows." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">01</span>
+            <h2 class="bw-nojs__title">Eve Wellness</h2>
+            <p class="bw-nojs__desc">Company employee mental wellness app design and user flows.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 02 (Eve_company employee mental wellness).webp" alt="Eve Wellness App: Company employee mental wellness mobile screen design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">02</span>
+            <h2 class="bw-nojs__title">Eve Wellness App</h2>
+            <p class="bw-nojs__desc">Company employee mental wellness mobile screen design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 03(pharflow_medical ecommerce app).webp" alt="Pharmflow: Medical e-commerce application interface and purchase design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">03</span>
+            <h2 class="bw-nojs__title">Pharmflow</h2>
+            <p class="bw-nojs__desc">Medical e-commerce application interface and purchase design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 04(eve_landing page).webp" alt="Eve Landing Page: Landing page design and visual layout for the Eve platform." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">04</span>
+            <h2 class="bw-nojs__title">Eve Landing Page</h2>
+            <p class="bw-nojs__desc">Landing page design and visual layout for the Eve platform.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 05(q group logo branding).webp" alt="Q Group Branding: Logo, identity and corporate branding assets design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">05</span>
+            <h2 class="bw-nojs__title">Q Group Branding</h2>
+            <p class="bw-nojs__desc">Logo, identity and corporate branding assets design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 06(mental health section).webp" alt="Mental Health UI: Section design focusing on employee wellness tracking." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">06</span>
+            <h2 class="bw-nojs__title">Mental Health UI</h2>
+            <p class="bw-nojs__desc">Section design focusing on employee wellness tracking.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 6(pharmflow_branding).webp" alt="Pharmflow Branding: Branding guidelines, color systems, and visual design assets." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">07</span>
+            <h2 class="bw-nojs__title">Pharmflow Branding</h2>
+            <p class="bw-nojs__desc">Branding guidelines, color systems, and visual design assets.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 7(oodle_dating app screenshot).webp" alt="Oodle Dating App: Dating application screen design and matchmaking flows." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">08</span>
+            <h2 class="bw-nojs__title">Oodle Dating App</h2>
+            <p class="bw-nojs__desc">Dating application screen design and matchmaking flows.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 8(y combinator website redesign_we forest).webp" alt="We Forest Redesign: Y Combinator website redesign project for We Forest." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">09</span>
+            <h2 class="bw-nojs__title">We Forest Redesign</h2>
+            <p class="bw-nojs__desc">Y Combinator website redesign project for We Forest.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 9(y combinator website redesign_mail tester).webp" alt="Mail Tester Redesign: Y Combinator website redesign project for Mail Tester." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">10</span>
+            <h2 class="bw-nojs__title">Mail Tester Redesign</h2>
+            <p class="bw-nojs__desc">Y Combinator website redesign project for Mail Tester.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 10 (y combinator website redesign_healthtech -1).webp" alt="Healthtech Platform: Y Combinator healthtech website redesign concept." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">11</span>
+            <h2 class="bw-nojs__title">Healthtech Platform</h2>
+            <p class="bw-nojs__desc">Y Combinator healthtech website redesign concept.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 11 (affil.ai).webp" alt="Affil.ai Interface: Affiliated marketing platform UI design and metrics dashboard." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">12</span>
+            <h2 class="bw-nojs__title">Affil.ai Interface</h2>
+            <p class="bw-nojs__desc">Affiliated marketing platform UI design and metrics dashboard.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 12(y combinator website redesign_relaw).webp" alt="Relaw Platform Redesign: Y Combinator legaltech website redesign concept." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">13</span>
+            <h2 class="bw-nojs__title">Relaw Platform Redesign</h2>
+            <p class="bw-nojs__desc">Y Combinator legaltech website redesign concept.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 13(y combinator website redesign_rivet).webp" alt="Rivet Platform Redesign: Y Combinator devtools website redesign concept." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">14</span>
+            <h2 class="bw-nojs__title">Rivet Platform Redesign</h2>
+            <p class="bw-nojs__desc">Y Combinator devtools website redesign concept.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 14(click logo branding).webp" alt="Click Branding: Logo design, branding concepts and visual identity guidelines." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">15</span>
+            <h2 class="bw-nojs__title">Click Branding</h2>
+            <p class="bw-nojs__desc">Logo design, branding concepts and visual identity guidelines.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 15(removebg app screenshot).webp" alt="RemoveBG Application: Background removal mobile application design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">16</span>
+            <h2 class="bw-nojs__title">RemoveBG Application</h2>
+            <p class="bw-nojs__desc">Background removal mobile application design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 16(eve landing page footer).webp" alt="Eve Footer Design: Landing page footer structure and responsive layout." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">17</span>
+            <h2 class="bw-nojs__title">Eve Footer Design</h2>
+            <p class="bw-nojs__desc">Landing page footer structure and responsive layout.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 17(bundled design app screen).webp" alt="Bundled Design: App screen mockup and UI component layout." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">18</span>
+            <h2 class="bw-nojs__title">Bundled Design</h2>
+            <p class="bw-nojs__desc">App screen mockup and UI component layout.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 18(math ai app onboarding).webp" alt="Math AI Tutor: App onboarding experience for an AI-powered math tutor." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">19</span>
+            <h2 class="bw-nojs__title">Math AI Tutor</h2>
+            <p class="bw-nojs__desc">App onboarding experience for an AI-powered math tutor.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 19(rosify app onboarding).webp" alt="Rosify Onboarding: Dating application onboarding flow and setup screens." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">20</span>
+            <h2 class="bw-nojs__title">Rosify Onboarding</h2>
+            <p class="bw-nojs__desc">Dating application onboarding flow and setup screens.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 20(pricing modal).webp" alt="Pricing Modal UI: SaaS plan selection and subscription pricing popup dialog." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">21</span>
+            <h2 class="bw-nojs__title">Pricing Modal UI</h2>
+            <p class="bw-nojs__desc">SaaS plan selection and subscription pricing popup dialog.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 21(sales dashboard design).webp" alt="Sales Dashboard: Analytics dashboard showcasing metrics, graphs and sales." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">22</span>
+            <h2 class="bw-nojs__title">Sales Dashboard</h2>
+            <p class="bw-nojs__desc">Analytics dashboard showcasing metrics, graphs and sales.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 22(dashboard design).webp" alt="Dashboard Interface: Data-heavy dashboard layout with clean visualization panels." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">23</span>
+            <h2 class="bw-nojs__title">Dashboard Interface</h2>
+            <p class="bw-nojs__desc">Data-heavy dashboard layout with clean visualization panels.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 23(donation app light_dark theme).webp" alt="Donation App UI: Light and dark theme exploration for a donation interface." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">24</span>
+            <h2 class="bw-nojs__title">Donation App UI</h2>
+            <p class="bw-nojs__desc">Light and dark theme exploration for a donation interface.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 24(math ai app screenshot).webp" alt="Math AI Interface: Main workspace screens of the AI math helper application." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">25</span>
+            <h2 class="bw-nojs__title">Math AI Interface</h2>
+            <p class="bw-nojs__desc">Main workspace screens of the AI math helper application.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 25(linkedin feature cover design).webp" alt="LinkedIn Visuals: Custom LinkedIn cover banner and graphic design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">26</span>
+            <h2 class="bw-nojs__title">LinkedIn Visuals</h2>
+            <p class="bw-nojs__desc">Custom LinkedIn cover banner and graphic design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 26(insta post design).webp" alt="Instagram Template: Social media post templates and visual styling guidelines." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">27</span>
+            <h2 class="bw-nojs__title">Instagram Template</h2>
+            <p class="bw-nojs__desc">Social media post templates and visual styling guidelines.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 27(roomlocker branding).webp" alt="Roomlocker Identity: Corporate identity, logo design, and brand assets." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">28</span>
+            <h2 class="bw-nojs__title">Roomlocker Identity</h2>
+            <p class="bw-nojs__desc">Corporate identity, logo design, and brand assets.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 28(thumbnail design).webp" alt="Thumbnail Graphic: Video and blog thumbnail design layout." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">29</span>
+            <h2 class="bw-nojs__title">Thumbnail Graphic</h2>
+            <p class="bw-nojs__desc">Video and blog thumbnail design layout.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 29(instagram post design).webp" alt="Instagram Post Design: Creative visual layout for Instagram brand messaging." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">30</span>
+            <h2 class="bw-nojs__title">Instagram Post Design</h2>
+            <p class="bw-nojs__desc">Creative visual layout for Instagram brand messaging.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 30(thumbnail design).webp" alt="Thumbnail Concept: Video preview thumbnail layout mockup." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">31</span>
+            <h2 class="bw-nojs__title">Thumbnail Concept</h2>
+            <p class="bw-nojs__desc">Video preview thumbnail layout mockup.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 31(thumbnail design).webp" alt="Thumbnail Mockup: Alternative thumbnail layout options." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">32</span>
+            <h2 class="bw-nojs__title">Thumbnail Mockup</h2>
+            <p class="bw-nojs__desc">Alternative thumbnail layout options.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 32(splash screen design).webp" alt="Splash Screen UI: Application splash and intro screen presentation." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">33</span>
+            <h2 class="bw-nojs__title">Splash Screen UI</h2>
+            <p class="bw-nojs__desc">Application splash and intro screen presentation.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 33(onboarding design).webp" alt="Onboarding Flow: Detailed onboarding step screens and user interactions." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">34</span>
+            <h2 class="bw-nojs__title">Onboarding Flow</h2>
+            <p class="bw-nojs__desc">Detailed onboarding step screens and user interactions.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 34(unique post design).webp" alt="Unique Post Design: Creative social media post templates for branding." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">35</span>
+            <h2 class="bw-nojs__title">Unique Post Design</h2>
+            <p class="bw-nojs__desc">Creative social media post templates for branding.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 35(login screen mockup_letmegrab).webp" alt="LetmeGrab Login: E-commerce platform login screen mockup and brand tokens." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">36</span>
+            <h2 class="bw-nojs__title">LetmeGrab Login</h2>
+            <p class="bw-nojs__desc">E-commerce platform login screen mockup and brand tokens.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 36(oodle screen design).webp" alt="Oodle Interface: Match discovery and profile viewer interface." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">37</span>
+            <h2 class="bw-nojs__title">Oodle Interface</h2>
+            <p class="bw-nojs__desc">Match discovery and profile viewer interface.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 37(chat ui design).webp" alt="Chat User Interface: Interactive chat message history design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">38</span>
+            <h2 class="bw-nojs__title">Chat User Interface</h2>
+            <p class="bw-nojs__desc">Interactive chat message history design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 38(component design).webp" alt="Component Library: Figma-ready UI component library specifications." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">39</span>
+            <h2 class="bw-nojs__title">Component Library</h2>
+            <p class="bw-nojs__desc">Figma-ready UI component library specifications.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 39(landing page design).webp" alt="SaaS Landing Page: SaaS platform landing page sections and hero illustrations." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">40</span>
+            <h2 class="bw-nojs__title">SaaS Landing Page</h2>
+            <p class="bw-nojs__desc">SaaS platform landing page sections and hero illustrations.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 40(upload design).webp" alt="Upload UI State: File uploading state interface elements design." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">41</span>
+            <h2 class="bw-nojs__title">Upload UI State</h2>
+            <p class="bw-nojs__desc">File uploading state interface elements design.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 41(Screenshot Redesign).webp" alt="Screenshot Redesign: High-fidelity mobile screenshot redesign and visual layout." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">42</span>
+            <h2 class="bw-nojs__title">Screenshot Redesign</h2>
+            <p class="bw-nojs__desc">High-fidelity mobile screenshot redesign and visual layout.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 43(Screenshot Redesign).webp" alt="App Flow Redesign: User flow optimization and mobile app screen redesign." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">43</span>
+            <h2 class="bw-nojs__title">App Flow Redesign</h2>
+            <p class="bw-nojs__desc">User flow optimization and mobile app screen redesign.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 44(shopify home page design).webp" alt="Shopify Home Page: E-commerce homepage design layout for high-converting stores." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">44</span>
+            <h2 class="bw-nojs__title">Shopify Home Page</h2>
+            <p class="bw-nojs__desc">E-commerce homepage design layout for high-converting stores.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 46(E-sign Component Design).webp" alt="E-Sign Component: Digital signature UI component design and user interaction." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">45</span>
+            <h2 class="bw-nojs__title">E-Sign Component</h2>
+            <p class="bw-nojs__desc">Digital signature UI component design and user interaction.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 47(Mental Health wellness landing page).webp" alt="Mental Health Page: Wellness landing page design focused on health awareness." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">46</span>
+            <h2 class="bw-nojs__title">Mental Health Page</h2>
+            <p class="bw-nojs__desc">Wellness landing page design focused on health awareness.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 48(Ecommerce bussiness landing page).webp" alt="E-commerce Landing Page: High-performance e-commerce landing page architecture." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">47</span>
+            <h2 class="bw-nojs__title">E-commerce Landing Page</h2>
+            <p class="bw-nojs__desc">High-performance e-commerce landing page architecture.</p>
+          </div>
+        </article>
+        <article class="bw-nojs__card">
+          <img src="assets/images/best-work/bw_image 49(how it works(eve ai).webp" alt="Eve AI How It Works: Interactive AI process flow and user journey map for Eve platform." loading="lazy">
+          <div class="bw-nojs__info">
+            <span class="bw-nojs__num">48</span>
+            <h2 class="bw-nojs__title">Eve AI How It Works</h2>
+            <p class="bw-nojs__desc">Interactive AI process flow and user journey map for Eve platform.</p>
+          </div>
+        </article>
+        </div>
+      </div>
+    </noscript>
+  </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>

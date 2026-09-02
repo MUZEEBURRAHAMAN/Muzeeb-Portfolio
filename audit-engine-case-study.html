@@ -6,11 +6,21 @@
 <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <title>Omnis UX Audit Engine: Case Study · Muzeeb Urrahaman</title>
 <meta name="description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen." />
+<link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/audit-engine-case-study.html">
 <meta property="og:title" content="Omnis UX Audit Engine: Case Study · Muzeeb Urrahaman">
+<meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/audit-engine-case-study.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Muzeeb Urrahaman">
 <meta property="og:description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen.">
-<meta property="og:image" content="assets/images/ux-audit-assistant.webp">
+<meta property="og:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/ux-audit-assistant.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://muzeeb-urrahaman.vercel.app/audit-engine-case-study.html">
+<meta name="twitter:title" content="Omnis UX Audit Engine: Case Study · Muzeeb Urrahaman">
+<meta name="twitter:description" content="An AI engine that logs into web products, audits every screen & state, and ships developer-ready reports at ~$0.30 a screen.">
+<meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/ux-audit-assistant.webp">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+<link rel="apple-touch-icon" href="assets/images/favicon.png">
 <link rel="stylesheet" href="assets/css/style.css?v=430">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1886,11 +1896,11 @@ h2.h-sub {
     </table>
   </div>
 
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-01.webp" alt=""/></div><figcaption>Workflow comparison: manual review cycle (top, red) versus the automated engine pass (bottom, green).</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-01.webp" alt="Workflow comparison diagram: manual review cycle in red versus the automated engine pass in green"/></div><figcaption>Workflow comparison: manual review cycle (top, red) versus the automated engine pass (bottom, green).</figcaption></figure>
 
   <div class="gallery gallery--match reveal">
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-02.webp" alt=""/></div><div class="sc">Before: manual screenshot markup in Figma, one note per problem.</div></div>
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-03.webp" alt=""/></div><div class="sc">After: automated report with annotated screen and DOM-anchored finding cards.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-02.webp" alt="Before: manual screenshot markup in Figma, one note per problem"/></div><div class="sc">Before: manual screenshot markup in Figma, one note per problem.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-03.webp" alt="After: automated report with annotated screen and DOM-anchored finding cards"/></div><div class="sc">After: automated report with annotated screen and DOM-anchored finding cards.</div></div>
   </div>
 </section>
 
@@ -1950,14 +1960,14 @@ h2.h-sub {
       <li>Generates direct CSS patch tokens for style defects with before/after visual diffs.</li>
     </ul>
   </div>
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-05.webp" alt=""/></div><figcaption>State explorer: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns.</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-05.webp" alt="State explorer screenshot: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns"/></div><figcaption>State explorer: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns.</figcaption></figure>
 
   <div class="prose reveal prose--sub">
     <div class="eyebrow">Anatomy</div>
     <h2 class="h h-sub">Structured finding cards for engineering handoff.</h2>
     <p>Each finding card includes a <b>severity badge</b>, the <b>category and rule ID</b> for provenance, a plain-English <b>title</b>, a <b>principle reference</b>, a copy-paste <b>CSS fix</b>, and a <b>confidence score</b>. Findings missing required evidence are filtered prior to report generation.</p>
   </div>
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp" alt=""/></div><figcaption>Anatomy of a finding card: a verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes.</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp" alt="Anatomy of a finding card: verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes"/></div><figcaption>Anatomy of a finding card: a verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes.</figcaption></figure>
 </section>
 
 <!-- Section Divider: Product to Stack -->
@@ -2009,11 +2019,11 @@ h2.h-sub {
     <p class="mt-tight">In practice, a single run on CaseNotes produced 89 findings categorized across 35 deterministic accessibility rules, 45 heuristic design checks, and 22 copy suggestions, allowing each contributor to filter directly to their own tasks.</p>
   </div>
   <div class="gallery gallery--match reveal">
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-06.webp" alt=""/></div><div class="sc">Content track: text suggestions reviewed and edited independently from code rules.</div></div>
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-07.webp" alt=""/></div><div class="sc">Product index: screen status overview tracking element counts and rule coverage.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-06.webp" alt="Content review track: text suggestions reviewed and edited independently from code rules"/></div><div class="sc">Content track: text suggestions reviewed and edited independently from code rules.</div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-07.webp" alt="Product screen index: overview tracking element counts and rule coverage across staging screens"/></div><div class="sc">Product index: screen status overview tracking element counts and rule coverage.</div></div>
   </div>
   <div class="gallery reveal gallery--tight">
-    <div class="shot full"><img loading="lazy" src="assets/media/audit/audit-08.webp" alt=""/><div class="sc">Annotated screen: flagged interface elements mapped directly to numbered finding cards.</div></div>
+    <div class="shot full"><img loading="lazy" src="assets/media/audit/audit-08.webp" alt="Annotated screen: flagged interface elements mapped directly to numbered finding cards with CSS selectors and diffs"/><div class="sc">Annotated screen: flagged interface elements mapped directly to numbered finding cards.</div></div>
   </div>
 </section>
 

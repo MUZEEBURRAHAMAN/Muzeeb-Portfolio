@@ -130,13 +130,31 @@ img.avatar,
 
 /* One easing for every Tailwind transition (marquees/loaders use @keyframes, unaffected) */
 .transition-all, [class*="duration-"] { transition-timing-function: var(--ease) !important; }
-/* Visible keyboard focus (cursor is hidden by the custom cursor) */
+/* Visible keyboard focus (high contrast across dark & light modes) */
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible, input:focus-visible, .mz-nav__pill a:focus-visible {
-    outline: 2px solid #f4f2ed; outline-offset: 3px; border-radius: 0px !important;
+    outline: 2px solid #e8602a !important;
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 /* Skip link */
-.mz-skip { position: absolute; left: -999px; top: 8px; z-index: 100000; background: #f4f2ed; color: #0f0f0f; padding: 10px 16px; border-radius: 0px !important; font-weight: 600; font-size: .9rem; }
-.mz-skip:focus { left: 12px; }
+.mz-skip {
+    position: absolute;
+    left: -999px;
+    top: 12px;
+    z-index: 100000;
+    background: #e8602a;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .9rem;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    text-decoration: none;
+    transition: left 0.2s ease;
+}
+.mz-skip:focus {
+    left: 16px;
+}
 /* Scroll reveal: opt-in, safe (only hides when JS marks <html class="js">) */
 .js .mz-reveal { opacity: 0; transform: translateY(24px); transition: opacity var(--t-reveal) var(--ease), transform var(--t-reveal) var(--ease); }
 .js .mz-reveal.in { opacity: 1; transform: none; }
