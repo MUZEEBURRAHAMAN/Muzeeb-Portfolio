@@ -46,6 +46,25 @@
             max-width: 580px;
             margin: 0 auto;
         }
+        .mz-404-badge {
+            display: inline-flex !important;
+            align-items: center !important;
+            border-radius: 999px !important;
+            margin-bottom: 24px;
+            cursor: default;
+            user-select: none;
+        }
+        .mz-404-badge .mz-hero__badge-tag {
+            border-radius: 999px !important;
+        }
+        .mz-404-badge .mz-hero__badge-text {
+            color: #f4f2ed !important;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+        [data-theme="light"] .mz-404-badge .mz-hero__badge-text {
+            color: #111111 !important;
+        }
         .mz-404-code {
             font-family: var(--font-sans, 'Archivo', sans-serif);
             font-size: clamp(6.5rem, 16vw, 10rem);
@@ -161,7 +180,13 @@
         <section class="mz-404-hero" aria-labelledby="errorHeading">
             <div class="mz-404-glow"></div>
             <div class="mz-404-content">
-                <div class="mz-tool-pill" style="margin-bottom: 24px; font-family: var(--font-mono, monospace); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;">404 · Page Not Found</div>
+                <div class="mz-hero__badge-pill mz-404-badge">
+                    <span class="mz-hero__badge-tag">
+                        <span class="mz-hero__dot" aria-hidden="true"></span>
+                        Design Canvas
+                    </span>
+                    <span class="mz-hero__badge-text">Missing Coordinate</span>
+                </div>
                 <div class="mz-404-code">404</div>
                 <h1 class="mz-404-title" id="errorHeading">Lost in the Canvas?</h1>
                 <p class="mz-404-desc">The page you're looking for doesn't exist, was removed, or has a new URL.</p>
