@@ -13,49 +13,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=570">
+    <link rel="stylesheet" href="assets/css/style.css?v=580">
     <style>
         .mz-404-hero {
-            min-height: calc(100vh - 72px - 200px);
+            min-height: calc(100vh - 72px - 180px);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 80px 24px 60px;
+            padding: 90px 24px 70px;
             box-sizing: border-box;
             position: relative;
         }
+        .mz-404-glow {
+            position: absolute;
+            top: 36%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+            filter: blur(44px);
+            pointer-events: none;
+            z-index: 0;
+        }
+        [data-theme="light"] .mz-404-glow {
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
+        }
         .mz-404-content {
+            position: relative;
+            z-index: 1;
             max-width: 580px;
             margin: 0 auto;
         }
-        .mz-404-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 999px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--muted, #999999);
-            margin-bottom: 24px;
-        }
-        [data-theme="light"] .mz-404-badge {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.1);
-            color: #555555;
-        }
         .mz-404-code {
-            font-family: 'Archivo', sans-serif;
-            font-size: clamp(6rem, 16vw, 10rem);
+            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-size: clamp(6.5rem, 16vw, 10rem);
             font-weight: 900;
-            line-height: 0.9;
+            line-height: 0.95;
             letter-spacing: -0.06em;
-            color: #ffffff;
+            color: #f4f2ed;
             margin-bottom: 20px;
             user-select: none;
         }
@@ -63,12 +60,12 @@
             color: #111111;
         }
         .mz-404-title {
-            font-family: 'Archivo', sans-serif;
+            font-family: var(--font-sans, 'Archivo', sans-serif);
             font-size: clamp(1.8rem, 3.5vw, 2.5rem);
             font-weight: 750;
             letter-spacing: -0.03em;
             margin: 0 0 14px;
-            color: var(--text, #f4f2ed);
+            color: #f4f2ed;
         }
         [data-theme="light"] .mz-404-title {
             color: #111111;
@@ -76,35 +73,17 @@
         .mz-404-desc {
             font-size: 1.05rem;
             line-height: 1.6;
-            color: var(--muted, #8e8e86);
+            color: #a0a098;
             margin: 0 auto 36px;
             max-width: 460px;
         }
         [data-theme="light"] .mz-404-desc {
             color: #5f5f59;
         }
-        .mz-404-action {
+        .mz-404-actions {
             display: flex;
             justify-content: center;
-        }
-        .mz-btn-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 26px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            background: #e8602a;
-            color: #ffffff;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 14px rgba(232, 96, 42, 0.25);
-        }
-        .mz-btn-home:hover {
-            background: #ff7438;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(232, 96, 42, 0.35);
+            margin-top: 32px;
         }
 
         /* Clean Hatched Section Divider */
@@ -180,16 +159,18 @@
     <main id="main" class="w-full">
         <!-- 404 Hero Section -->
         <section class="mz-404-hero" aria-labelledby="errorHeading">
+            <div class="mz-404-glow"></div>
             <div class="mz-404-content">
-                <div class="mz-404-badge">Error 404 · Page Not Found</div>
+                <div class="mz-tool-pill" style="margin-bottom: 24px; font-family: var(--font-mono, monospace); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;">404 · Page Not Found</div>
                 <div class="mz-404-code">404</div>
                 <h1 class="mz-404-title" id="errorHeading">Lost in the Canvas?</h1>
                 <p class="mz-404-desc">The page you're looking for doesn't exist, was removed, or has a new URL.</p>
 
-                <div class="mz-404-action">
-                    <a href="index.html" class="mz-btn-home">
+                <!-- Design System Primary Button -->
+                <div class="mz-404-actions">
+                    <a class="mz-hero__cta mz-hero__cta--primary" href="index.html">
                         <span>Back to Homepage</span>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
             </div>
@@ -256,6 +237,6 @@
 
     <!-- jQuery & Core Scripts -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/site.js?v=571"></script>
+    <script src="assets/js/site.js?v=581"></script>
 </body>
 </html>
