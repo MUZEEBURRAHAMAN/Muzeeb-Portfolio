@@ -6043,18 +6043,19 @@ a.btn::after,
 button:not(.site-header__burger):not(#siteNavBurger)::after {
     content: '' !important;
     position: absolute !important;
-    inset: 0 !important;
+    top: 0 !important;
+    left: -120% !important;
+    width: 65% !important;
+    height: 100% !important;
     background: linear-gradient(
-        125deg,
-        rgba(255, 255, 255, 0) 30%,
-        rgba(255, 255, 255, 0.25) 44%,
-        rgba(255, 255, 255, 0.85) 50%,
-        rgba(255, 255, 255, 0.25) 56%,
-        rgba(255, 255, 255, 0) 70%
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.35) 35%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.35) 65%,
+        rgba(255, 255, 255, 0) 100%
     ) !important;
-    background-size: 260% 260%, 100% 100% !important;
-    background-repeat: no-repeat !important;
-    background-position: -130% -130%, 0 0 !important;
+    transform: skewX(-25deg) !important;
     pointer-events: none !important;
     z-index: 5 !important;
     transition: none !important;
@@ -6090,12 +6091,12 @@ button:not(.site-header__burger):not(#siteNavBurger)::after {
 [data-theme="light"] .btn-shine::after,
 [data-theme="light"] button:not(.site-header__burger):not(#siteNavBurger)::after {
     background: linear-gradient(
-        125deg,
-        rgba(255, 255, 255, 0) 30%,
-        rgba(255, 255, 255, 0.35) 44%,
-        rgba(255, 255, 255, 0.95) 50%,
-        rgba(255, 255, 255, 0.35) 56%,
-        rgba(255, 255, 255, 0) 70%
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.45) 35%,
+        rgba(255, 255, 255, 1) 50%,
+        rgba(255, 255, 255, 0.45) 65%,
+        rgba(255, 255, 255, 0) 100%
     ) !important;
 }
 
@@ -6128,6 +6129,6 @@ a.btn:hover::after,
 .glare-hover:hover::after,
 .btn-shine:hover::after,
 button:not(.site-header__burger):not(#siteNavBurger):hover::after {
-    background-position: 135% 135%, 0 0 !important;
-    transition: background-position 650ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+    left: 200% !important;
+    transition: left 0.75s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
