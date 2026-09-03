@@ -309,14 +309,25 @@
       transform: translateZ(0);
     }
 
+    /* Reset #main for fullscreen canvas */
+    #main {
+      max-width: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      position: static !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
     .detail {
-      position: absolute;
-      bottom: 48px;
-      left: 48px;
+      position: fixed !important;
+      bottom: 48px !important;
+      left: 48px !important;
       max-width: 420px;
       z-index: 100000;
       opacity: 0;
-      pointer-events: none
+      pointer-events: none;
     }
 
     .detail .n {
@@ -325,14 +336,14 @@
       letter-spacing: .14em;
       text-transform: uppercase;
       color: var(--bwg-sub);
-      overflow: hidden
+      overflow: hidden;
     }
 
     .detail .n span,
     .detail h1 span, .detail h2 span,
     .detail .d span {
       display: block;
-      will-change: transform
+      will-change: transform;
     }
 
     .detail h1, .detail h2 {
@@ -343,7 +354,7 @@
       line-height: 1.15;
       margin: 10px 0 14px;
       overflow: hidden;
-      color: var(--bwg-ink)
+      color: var(--bwg-ink);
     }
 
     .detail .d {
@@ -351,17 +362,17 @@
       font-size: 16px;
       font-weight: 400;
       line-height: 1.55;
-      overflow: hidden
+      overflow: hidden;
     }
 
     @media(max-width:900px) {
       .detail {
-        left: 20px;
-        bottom: 24px;
+        left: 20px !important;
+        bottom: 24px !important;
         max-width: calc(100vw - 40px);
       }
 
-      .detail h1 {
+      .detail h1, .detail h2 {
         font-size: 24px;
         margin: 6px 0 8px;
       }
@@ -383,11 +394,11 @@
     }
     @media(max-width:480px) {
       .detail {
-        left: 16px;
-        bottom: 20px;
+        left: 16px !important;
+        bottom: 20px !important;
         max-width: calc(100vw - 32px);
       }
-      .detail h1 {
+      .detail h1, .detail h2 {
         font-size: 20px;
         margin: 4px 0 6px;
       }
