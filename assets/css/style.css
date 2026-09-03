@@ -2626,10 +2626,10 @@ html[data-theme="light"] .mz-hero__badge-pill:hover .mz-hero__badge-text {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 .mz-hero__cta--primary:hover {
-    transform: translateY(-2px);
+    transform: none;
     background: #ffffff;
     border-color: #ffffff;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 .mz-hero__cta--secondary {
     background: rgba(255, 255, 255, 0.05);
@@ -2639,7 +2639,7 @@ html[data-theme="light"] .mz-hero__badge-pill:hover .mz-hero__badge-text {
     backdrop-filter: blur(8px);
 }
 .mz-hero__cta--secondary:hover {
-    transform: translateY(-2px);
+    transform: none;
     background: rgba(255, 255, 255, 0.11);
     border-color: rgba(255, 255, 255, 0.28);
     color: #ffffff !important;
@@ -5977,70 +5977,38 @@ html[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view {
 }
 
 /* ==========================================================================
-   REACTBITS / CODEPEN SHINY GLARE HOVER EFFECT ON ALL BUTTONS
+   REACTBITS / CODEPEN SHINY GLARE HOVER EFFECT (PRIMARY BUTTONS ONLY)
    ========================================================================== */
-.mz-hero__cta,
+.mz-hero__cta:hover,
+.mz-hero__cta--primary:hover,
+.mz-hero__cta--secondary:hover {
+    transform: none !important;
+}
+
 .mz-hero__cta--primary,
-.mz-hero__cta--secondary,
-.site-editions__btn,
 .site-editions__btn--primary,
-.site-editions__btn--secondary,
 .mz-proj__cta:not(.soon),
 .mz-resume-download,
 .soon__btn,
-.soon__back,
 .cn-lock-btn,
-.cn-lock-link-btn,
 .pg-download-btn,
-.pg-tab-btn,
-.skill-btn,
-.hero__cta,
-.cta-btn,
-.mz-ab-email,
-.site-header__theme,
-.mz-preview-pill,
-.mz-btn,
-.btn,
-button.btn,
-a.btn,
 .btn-primary,
-.btn-secondary,
 .glare-hover,
-.btn-shine,
-button:not(.site-header__burger):not(#siteNavBurger) {
+.btn-shine {
     position: relative !important;
     overflow: hidden !important;
 }
 
-.mz-hero__cta::after,
 .mz-hero__cta--primary::after,
-.mz-hero__cta--secondary::after,
-.site-editions__btn::after,
 .site-editions__btn--primary::after,
-.site-editions__btn--secondary::after,
 .mz-proj__cta:not(.soon)::after,
 .mz-resume-download::after,
 .soon__btn::after,
-.soon__back::after,
 .cn-lock-btn::after,
-.cn-lock-link-btn::after,
 .pg-download-btn::after,
-.pg-tab-btn::after,
-.skill-btn::after,
-.hero__cta::after,
-.cta-btn::after,
-.mz-ab-email::after,
-.site-header__theme::after,
-.mz-preview-pill::after,
-.mz-btn::after,
-.btn::after,
-button.btn::after,
-a.btn::after,
 .btn-primary::after,
-.btn-secondary::after,
 .glare-hover::after,
-.btn-shine::after,
-button:not(.site-header__burger):not(#siteNavBurger)::after {
+.btn-shine::after {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
@@ -6061,35 +6029,16 @@ button:not(.site-header__burger):not(#siteNavBurger)::after {
     transition: none !important;
 }
 
-[data-theme="light"] .mz-hero__cta::after,
 [data-theme="light"] .mz-hero__cta--primary::after,
-[data-theme="light"] .mz-hero__cta--secondary::after,
-[data-theme="light"] .site-editions__btn::after,
 [data-theme="light"] .site-editions__btn--primary::after,
-[data-theme="light"] .site-editions__btn--secondary::after,
 [data-theme="light"] .mz-proj__cta:not(.soon)::after,
 [data-theme="light"] .mz-resume-download::after,
 [data-theme="light"] .soon__btn::after,
-[data-theme="light"] .soon__back::after,
 [data-theme="light"] .cn-lock-btn::after,
-[data-theme="light"] .cn-lock-link-btn::after,
 [data-theme="light"] .pg-download-btn::after,
-[data-theme="light"] .pg-tab-btn::after,
-[data-theme="light"] .skill-btn::after,
-[data-theme="light"] .hero__cta::after,
-[data-theme="light"] .cta-btn::after,
-[data-theme="light"] .mz-ab-email::after,
-[data-theme="light"] .site-header__theme::after,
-[data-theme="light"] .mz-preview-pill::after,
-[data-theme="light"] .mz-btn::after,
-[data-theme="light"] .btn::after,
-[data-theme="light"] button.btn::after,
-[data-theme="light"] a.btn::after,
 [data-theme="light"] .btn-primary::after,
-[data-theme="light"] .btn-secondary::after,
 [data-theme="light"] .glare-hover::after,
-[data-theme="light"] .btn-shine::after,
-[data-theme="light"] button:not(.site-header__burger):not(#siteNavBurger)::after {
+[data-theme="light"] .btn-shine::after {
     background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 0%,
@@ -6100,35 +6049,16 @@ button:not(.site-header__burger):not(#siteNavBurger)::after {
     ) !important;
 }
 
-.mz-hero__cta:hover::after,
 .mz-hero__cta--primary:hover::after,
-.mz-hero__cta--secondary:hover::after,
-.site-editions__btn:hover::after,
 .site-editions__btn--primary:hover::after,
-.site-editions__btn--secondary:hover::after,
 .mz-proj__cta:not(.soon):hover::after,
 .mz-resume-download:hover::after,
 .soon__btn:hover::after,
-.soon__back:hover::after,
 .cn-lock-btn:hover::after,
-.cn-lock-link-btn:hover::after,
 .pg-download-btn:hover::after,
-.pg-tab-btn:hover::after,
-.skill-btn:hover::after,
-.hero__cta:hover::after,
-.cta-btn:hover::after,
-.mz-ab-email:hover::after,
-.site-header__theme:hover::after,
-.mz-preview-pill:hover::after,
-.mz-btn:hover::after,
-.btn:hover::after,
-button.btn:hover::after,
-a.btn:hover::after,
 .btn-primary:hover::after,
-.btn-secondary:hover::after,
 .glare-hover:hover::after,
-.btn-shine:hover::after,
-button:not(.site-header__burger):not(#siteNavBurger):hover::after {
+.btn-shine:hover::after {
     left: 200% !important;
     transition: left 0.75s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
