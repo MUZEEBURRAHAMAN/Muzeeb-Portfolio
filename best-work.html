@@ -322,21 +322,16 @@
 
     .detail {
       position: fixed !important;
-      bottom: 48px !important;
+      bottom: 32px !important;
       left: 48px !important;
-      max-width: 420px;
+      max-width: min(440px, calc(100vw - 96px));
       z-index: 100000;
       opacity: 0;
       pointer-events: none;
     }
 
     .detail .n {
-      font-family: var(--bwg-sans);
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--bwg-sub);
-      overflow: hidden;
+      display: none !important;
     }
 
     .detail .n span,
@@ -348,36 +343,36 @@
 
     .detail h1, .detail h2 {
       font-family: var(--bwg-disp);
-      font-size: 44px;
+      font-size: 22px;
       font-weight: 600;
-      letter-spacing: -.02em;
-      line-height: 1.15;
-      margin: 10px 0 14px;
+      letter-spacing: -.01em;
+      line-height: 1.25;
+      margin: 0 0 4px;
       overflow: hidden;
       color: var(--bwg-ink);
     }
 
     .detail .d {
       color: var(--bwg-sub);
-      font-size: 16px;
+      font-size: 13.5px;
       font-weight: 400;
-      line-height: 1.55;
+      line-height: 1.45;
       overflow: hidden;
     }
 
     @media(max-width:900px) {
       .detail {
-        left: 20px !important;
+        left: 24px !important;
         bottom: 24px !important;
-        max-width: calc(100vw - 40px);
+        max-width: calc(100vw - 48px);
       }
 
       .detail h1, .detail h2 {
-        font-size: 24px;
-        margin: 6px 0 8px;
+        font-size: 20px;
+        margin: 0 0 4px;
       }
       .detail .d {
-        font-size: 13.5px;
+        font-size: 13px;
       }
       .navbtn {
         width: 42px;
@@ -399,12 +394,12 @@
         max-width: calc(100vw - 32px);
       }
       .detail h1, .detail h2 {
-        font-size: 20px;
-        margin: 4px 0 6px;
+        font-size: 18px;
+        margin: 0 0 4px;
       }
       .detail .d {
-        font-size: 12.5px;
-        line-height: 1.45;
+        font-size: 12px;
+        line-height: 1.4;
       }
       .navbtn {
         width: 36px;
@@ -1368,8 +1363,8 @@
         
         const r = data.img.getBoundingClientRect();
         const isMobile = window.innerWidth < 768;
-        const maxW = isMobile ? window.innerWidth * 0.90 : window.innerWidth * 0.62;
-        const maxH = isMobile ? (window.innerHeight - 190) : window.innerHeight * 0.76;
+        const maxW = isMobile ? window.innerWidth * 0.90 : window.innerWidth * 0.58;
+        const maxH = isMobile ? (window.innerHeight - 200) : (window.innerHeight - 190);
         let W = maxW;
         let H = W * (this.cfg.height / this.cfg.width);
         if (H > maxH) {
@@ -1377,18 +1372,13 @@
           W = H * (this.cfg.width / this.cfg.height);
         }
         const targetLeft = (window.innerWidth - W) / 2;
-        const targetTop = isMobile ? Math.max(56, (window.innerHeight - H - 150) / 2) : (window.innerHeight - H) / 2;
+        const targetTop = isMobile ? Math.max(56, (window.innerHeight - H - 150) / 2) : Math.max(44, (window.innerHeight - H - 100) / 2);
         this._targetBounds = { W, H, targetLeft, targetTop };
 
         // Position nav buttons at the vertical center of the zoomed card
-        if (isMobile) {
-          const arrowCenterY = targetTop + H / 2;
-          this.prevBtn.style.top = arrowCenterY + 'px';
-          this.nextBtn.style.top = arrowCenterY + 'px';
-        } else {
-          this.prevBtn.style.top = '50%';
-          this.nextBtn.style.top = '50%';
-        }
+        const arrowCenterY = targetTop + H / 2;
+        this.prevBtn.style.top = arrowCenterY + 'px';
+        this.nextBtn.style.top = arrowCenterY + 'px';
 
         const ov = document.createElement('div');
         ov.className = 'scaler';
