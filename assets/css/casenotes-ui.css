@@ -378,89 +378,406 @@
   100% { height: 18px; }
 }
 
-/* In-Meeting Video Grid Simulation for Figure 3 */
-.stitch-videogrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  background: #0d0d0e;
-  padding: 16px;
-  border: 1px solid var(--line);
-  position: relative;
-  min-height: 180px;
-}
+/* ==========================================================================
+   IN-MEETING 1920x1080 FULL-SCALE VIDEO CONFERENCE CANVAS (FIGURE 3)
+   Authentic legal deposition conference stage with 16:9 proportion,
+   4 realistic participant feeds, ambient HUD bar, floating privilege toast,
+   and enterprise meeting control dock.
+   ========================================================================== */
 
-.stitch-videotile {
-  background: #17181a;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.stitch-meeting-16x9 {
+  width: 100%;
+  aspect-ratio: 16 / 9.2;
+  min-height: 580px;
+  background: #090a0c;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  min-height: 140px;
-  padding: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
 }
 
-.stitch-videotile--active {
-  border-color: var(--green);
-  box-shadow: 0 0 12px rgba(47, 169, 106, 0.25);
+@media (max-width: 900px) {
+  .stitch-meeting-16x9 {
+    aspect-ratio: auto;
+    min-height: 640px;
+  }
 }
 
-.stitch-avatar {
-  width: 44px;
-  height: 44px;
-  background: #25282d;
-  color: #ffffff;
+/* Meeting Top Window & Ambient Bar */
+.stitch-meeting-topbar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background: rgba(14, 16, 20, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: #a0a5b0;
+  z-index: 5;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stitch-meeting-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stitch-meeting-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stitch-meeting-title {
+  color: #ffffff;
   font-weight: 600;
-  font-size: 14px;
-  border-radius: 0;
-  margin-bottom: 8px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+}
+
+.stitch-meeting-case {
+  color: #787f8f;
+  font-size: 11px;
+}
+
+/* Center Ambient HUD Pill (CaseNotes In-Meeting Core Concept) */
+.stitch-ambient-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 26, 34, 0.9);
+  border: 1px solid rgba(47, 169, 106, 0.35);
+  padding: 4px 12px;
+  box-shadow: 0 0 16px rgba(47, 169, 106, 0.12);
+}
+
+.stitch-ambient-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: stitchPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes stitchPulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.stitch-ambient-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.stitch-ambient-shortcut {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: #d1d5db;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 6px;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.stitch-video-name {
+.stitch-meeting-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stitch-timer {
+  font-family: var(--mono);
   font-size: 12px;
-  color: #e6e6e6;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.stitch-toast-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(26, 20, 10, 0.94);
-  border: 1px solid var(--amber);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  z-index: 10;
-  max-width: 90%;
-  backdrop-filter: blur(8px);
-}
-
-.stitch-toast-text h4 {
   color: #ffffff;
-  font-size: 13.5px;
-  margin-bottom: 3px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Meeting Stage: 2x2 Conference Grid */
+.stitch-meeting-stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  padding: 10px 14px;
+  position: relative;
+  background: #0d0f12;
+}
+
+@media (max-width: 768px) {
+  .stitch-meeting-stage {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 200px);
+  }
+}
+
+.stitch-meeting-tile {
+  position: relative;
+  background: #15181e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stitch-meeting-tile--active {
+  border: 2px solid var(--green) !important;
+  box-shadow: 0 0 20px rgba(47, 169, 106, 0.3) !important;
+}
+
+/* Backdrop representation for video tiles */
+.stitch-tile-backdrop {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.85);
+  opacity: 0.9;
+}
+
+.stitch-tile-backdrop--partner {
+  background: radial-gradient(circle at 50% 30%, #2a313d 0%, #12151b 80%);
+}
+
+.stitch-tile-backdrop--client {
+  background: radial-gradient(circle at 50% 30%, #302626 0%, #151213 80%);
+}
+
+.stitch-tile-backdrop--assoc {
+  background: radial-gradient(circle at 50% 30%, #1f2a24 0%, #0e1411 80%);
+}
+
+.stitch-tile-backdrop--expert {
+  background: radial-gradient(circle at 50% 30%, #2b281f 0%, #14130e 80%);
+}
+
+/* Portrait figure simulation */
+.stitch-tile-figure {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.stitch-tile-avatar {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.stitch-tile-avatar--partner { background: #1e3a5f; color: #93c5fd; border-color: #60a5fa; }
+.stitch-tile-avatar--client { background: #4c1d24; color: #fca5a5; border-color: #f87171; }
+.stitch-tile-avatar--assoc { background: #143e2e; color: #86efac; border-color: #4ade80; }
+.stitch-tile-avatar--expert { background: #453714; color: #fde047; border-color: #facc15; }
+
+/* Status tags & nameplates inside tiles */
+.stitch-tile-top-status {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.stitch-tile-nameplate {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: linear-gradient(to top, rgba(8, 10, 14, 0.94) 0%, rgba(8, 10, 14, 0.7) 70%, transparent 100%);
+  color: #ffffff;
+  font-size: 12px;
+  gap: 8px;
+}
+
+.stitch-nameplate-user {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-weight: 600;
 }
 
-.stitch-toast-text p {
-  color: #d1cfc7;
-  font-size: 12px;
+.stitch-nameplate-role {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.stitch-nameplate-mic {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ==========================================================================
+   THE FLOATING PRIVILEGE PAUSE TOAST HUD (PROMINENT & HEROIC)
+   ========================================================================== */
+.stitch-toast-floating-hud {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 820px;
+  background: rgba(18, 14, 8, 0.94);
+  border: 1.5px solid var(--amber);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85), 0 0 36px rgba(245, 166, 35, 0.28);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  z-index: 20;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (max-width: 768px) {
+  .stitch-toast-floating-hud {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.stitch-toast-hud-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(245, 166, 35, 0.15);
+  border: 1px solid var(--amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stitch-toast-hud-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stitch-toast-hud-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.stitch-toast-hud-title {
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
+}
+
+.stitch-toast-hud-desc {
+  color: #e5e3dc;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.stitch-toast-hud-desc strong {
+  color: var(--amber);
+}
+
+.stitch-toast-hud-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* Meeting Bottom Control Dock */
+.stitch-meeting-bottombar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background: #0e1014;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 5;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stitch-bottombar-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stitch-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e5e7eb;
+  font-size: 11.5px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.stitch-ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.stitch-ctrl-btn--danger {
+  background: rgba(229, 72, 77, 0.2);
+  border-color: rgba(229, 72, 77, 0.4);
+  color: #ff8588;
+}
+
+.stitch-ctrl-btn--danger:hover {
+  background: var(--red);
+  color: #ffffff;
 }
 
 /* Post-Meeting Summary Figure 4 */
