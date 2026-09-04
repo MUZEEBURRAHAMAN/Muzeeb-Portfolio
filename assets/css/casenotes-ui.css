@@ -996,3 +996,316 @@
   border: 1px solid rgba(0,0,0,0.15);
   border-radius: 0;
 }
+
+/* ==========================================================================
+   GROUNDED ZERO-HALLUCINATION AI INTELLIGENCE COMPONENT
+   Deterministic, citation-linked legal AI architecture with verbatim proof.
+   ========================================================================== */
+
+.stitch-grounded-qa {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stitch-ai-query-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  border: 1.5px solid var(--line);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--ink);
+  flex-wrap: wrap;
+}
+
+.stitch-ai-query-bar:focus-within {
+  border-color: var(--accent);
+}
+
+.stitch-ai-query-input {
+  flex: 1;
+  min-width: 260px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stitch-ai-query-input strong {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 11.5px;
+}
+
+.stitch-grounded-answer-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.stitch-grounded-answer-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--green);
+}
+
+.stitch-grounded-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 10px;
+}
+
+.stitch-grounded-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.stitch-grounded-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+}
+
+.stitch-cite-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--green-soft);
+  color: var(--green);
+  border: 1px solid rgba(47, 169, 106, 0.35);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 6px;
+  margin: 0 3px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.stitch-cite-tag:hover {
+  background: var(--green);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.stitch-cite-tag--amber {
+  background: var(--amber-soft);
+  color: var(--amber);
+  border-color: rgba(245, 166, 35, 0.35);
+}
+
+.stitch-cite-tag--amber:hover {
+  background: var(--amber);
+  color: #ffffff;
+}
+
+/* Verbatim Source Inspector Drawer */
+.stitch-proof-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+}
+
+@media (max-width: 860px) {
+  .stitch-proof-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stitch-proof-panel {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stitch-proof-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 6px;
+}
+
+.stitch-proof-panel__quote {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface);
+  border-left: 3px solid var(--green);
+  padding: 10px 12px;
+  margin: 0;
+}
+
+.stitch-guardrail-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stitch-guardrail-banner strong {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   HIGH-FIDELITY MOBILE COMPANION SCREENS (FIGURE 8)
+   Realistic mobile viewport frames showing meeting attendance, meeting summary,
+   and grounded AI search.
+   ========================================================================== */
+
+.stitch-phone--active {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px var(--shadow-1);
+}
+
+.stitch-phone-top-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--muted);
+  border-bottom: 1px solid var(--line-2);
+}
+
+.stitch-phone-meeting-card {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stitch-phone-speaker-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  background: var(--green-soft);
+  border: 1px solid rgba(47, 169, 106, 0.3);
+  font-size: 11px;
+}
+
+.stitch-phone-record-tap {
+  background: var(--amber-soft);
+  border: 1.5px solid var(--amber);
+  color: var(--amber);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: var(--mono);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: all 0.2s ease;
+  margin-top: auto;
+}
+
+.stitch-phone-record-tap:hover {
+  background: var(--amber);
+  color: #ffffff;
+}
+
+.stitch-phone-summary-pill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  padding: 5px 8px;
+  background: var(--bg);
+  border-left: 2px solid var(--accent);
+}
+
+.stitch-phone-chat-bubble {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Light Theme High-Contrast Overrides */
+[data-theme="light"] .stitch-badge--green {
+  color: #186337;
+  background: #e6f6ee;
+  border-color: rgba(24, 99, 55, 0.3);
+}
+
+[data-theme="light"] .stitch-badge--amber {
+  color: #925400;
+  background: #fdf3e5;
+  border-color: rgba(146, 84, 0, 0.3);
+}
+
+[data-theme="light"] .stitch-badge--blue {
+  color: #184db8;
+  background: #ebf2fe;
+  border-color: rgba(24, 77, 184, 0.3);
+}
+
+[data-theme="light"] .stitch-cite-tag {
+  color: #186337;
+  background: #e6f6ee;
+  border-color: rgba(24, 99, 55, 0.4);
+}
+
+[data-theme="light"] .stitch-cite-tag:hover {
+  color: #ffffff;
+  background: #186337;
+}
+
+[data-theme="light"] .stitch-phone-record-tap {
+  color: #925400;
+  background: rgba(245, 166, 35, 0.12);
+  border-color: #d98200;
+}
+
+[data-theme="light"] .stitch-phone-record-tap:hover {
+  background: #d98200;
+  color: #ffffff;
+}
+
+
