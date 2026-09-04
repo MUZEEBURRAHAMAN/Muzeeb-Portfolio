@@ -58,6 +58,129 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Motion HighlightText (Rectangle Box & Yellow Marker Highlights) */
+[data-slot="highlight-text"],
+.highlight-text,
+.mz-highlight-sweep,
+.mz-highlight[data-action="box"],
+.mz-highlight--box,
+.mz-highlight-rect {
+  position: relative;
+  display: inline;
+  padding: 2px 7px;
+  border-radius: 0px !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  background-image: linear-gradient(90deg, #f4f2ed, #ffffff);
+  color: inherit;
+}
+
+[data-slot="highlight-text"].is-in-view,
+.highlight-text.is-in-view,
+.mz-highlight-sweep.is-in-view,
+.mz-highlight[data-action="box"].is-in-view,
+.mz-highlight--box.is-in-view,
+.mz-highlight-rect.is-in-view {
+  background-size: 100% 100% !important;
+  color: #09090b !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] [data-slot="highlight-text"],
+[data-theme="light"] .highlight-text,
+[data-theme="light"] .mz-highlight-sweep,
+[data-theme="light"] .mz-highlight[data-action="box"],
+[data-theme="light"] .mz-highlight--box,
+[data-theme="light"] .mz-highlight-rect,
+html[data-theme="light"] [data-slot="highlight-text"],
+html[data-theme="light"] .highlight-text,
+html[data-theme="light"] .mz-highlight-sweep,
+html[data-theme="light"] .mz-highlight[data-action="box"],
+html[data-theme="light"] .mz-highlight--box,
+html[data-theme="light"] .mz-highlight-rect {
+  background-image: linear-gradient(90deg, #18181b, #09090b);
+  color: inherit;
+}
+
+[data-theme="light"] [data-slot="highlight-text"].is-in-view,
+[data-theme="light"] .highlight-text.is-in-view,
+[data-theme="light"] .mz-highlight-sweep.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
+[data-theme="light"] .mz-highlight--box.is-in-view,
+[data-theme="light"] .mz-highlight-rect.is-in-view,
+html[data-theme="light"] [data-slot="highlight-text"].is-in-view,
+html[data-theme="light"] .highlight-text.is-in-view,
+html[data-theme="light"] .mz-highlight-sweep.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
+html[data-theme="light"] .mz-highlight--box.is-in-view,
+html[data-theme="light"] .mz-highlight-rect.is-in-view {
+  background-size: 100% 100% !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+/* Yellow Marker Highlight */
+.mz-highlight-yellow,
+.mz-highlight[data-action="yellow"],
+.mz-highlight--yellow {
+  position: relative;
+  display: inline;
+  padding: 2px 7px;
+  border-radius: 0px !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  background-image: linear-gradient(90deg, #ca8a04, #eab308);
+  color: inherit;
+}
+
+.mz-highlight-yellow.is-in-view,
+.mz-highlight[data-action="yellow"].is-in-view,
+.mz-highlight--yellow.is-in-view {
+  background-size: 100% 100% !important;
+  color: #0c0a09 !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] .mz-highlight-yellow,
+[data-theme="light"] .mz-highlight[data-action="yellow"],
+[data-theme="light"] .mz-highlight--yellow,
+html[data-theme="light"] .mz-highlight-yellow,
+html[data-theme="light"] .mz-highlight[data-action="yellow"],
+html[data-theme="light"] .mz-highlight--yellow {
+  background-image: linear-gradient(90deg, #fef08a, #fde047);
+  color: inherit;
+}
+
+[data-theme="light"] .mz-highlight-yellow.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+[data-theme="light"] .mz-highlight--yellow.is-in-view,
+html[data-theme="light"] .mz-highlight-yellow.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+html[data-theme="light"] .mz-highlight--yellow.is-in-view {
+  background-size: 100% 100% !important;
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+/* Safe Inline Underline */
+.mz-highlight[data-action="underline"] {
+  display: inline;
+  border-bottom: 2.5px solid #f59e0b;
+  padding-bottom: 1px;
+}
+[data-theme="light"] .mz-highlight[data-action="underline"],
+html[data-theme="light"] .mz-highlight[data-action="underline"] {
+  border-bottom-color: #d97706;
+}
+
 /* Vertical side rails & 1134px layout */
 #main {
   max-width: 1134px !important;
@@ -777,13 +900,13 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
         </span>
       </div>
     </div>
-    <h1>Making document signing <span class="grad">self-serve</span> for legal teams.</h1>
-    <p class="hero__sub">Preparing a document for signature should have been the easy part of a lawyer's day. Instead, it was a four-step modal wizard that hid the document, and a manual field-placement task that caused 100% of prep errors. Here is how I redesigned document setup in OmnisProof so the system absorbed the manual work.</p>
+    <h1>Making document signing <span class="mz-highlight" data-action="box">self-serve</span> for legal teams.</h1>
+    <p class="hero__sub">Preparing a document for signature should have been the easy part of a lawyer's day. Instead, it was a four-step modal wizard that hid the document, and a manual field-placement task that caused <span class="mz-highlight" data-action="yellow">100% of prep errors</span>. Here is how I redesigned document setup in OmnisProof so the <span class="mz-highlight" data-action="box">system absorbed the manual work</span>.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Product Designer</span>
       <span class="m">1 PM · 4 Engineers · 1 QA</span>
-      <span class="m">Shipped in production · ~6 weeks</span>
+      <span class="m"><span class="mz-highlight" data-action="yellow">Shipped in production · ~6 weeks</span></span>
     </div>
   </div>
 </header>
@@ -799,9 +922,9 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="intro reveal">
     <div>
       <div class="eyebrow">In one line</div>
-      <p class="lead">Collapsing a 4-step disconnected modal wizard into 1 persistent guided workspace with reviewable AI field placement.</p>
+      <p class="lead">Collapsing a 4-step disconnected modal wizard into <span class="mz-highlight" data-action="box">1 persistent guided workspace</span> with reviewable AI field placement.</p>
       <p>OmnisProof is the document execution layer inside the Omnis AI Legal Ecosystem. When lawyers prepare agreements, placing fields and assigning signers is a high-stakes, time-sensitive task where mistakes mean sending contracts to the wrong person.</p>
-      <p>By replacing manual drag-and-drop with <b>reviewable inline AI detection</b> and keeping the document <b>100% visible throughout all 3 prep stages</b>, legal teams can now prepare and send documents in seconds without losing orientation.</p>
+      <p>By replacing manual drag-and-drop with <b>reviewable inline AI detection</b> and keeping the document <span class="mz-highlight" data-action="yellow">100% visible throughout all 3 prep stages</span>, legal teams can now prepare and send documents in seconds without losing orientation.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
@@ -1071,7 +1194,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <h4>The 4-step structure mapped to something real, but hiding the document behind it didn't</h4>
     <div class="cgrid">
       <div><div class="lbl">Why this mattered</div><p>"Who's involved → what goes where → is it ready to send" is genuinely how document prep works. The problem wasn't the three-stage logic; it was presenting each stage as a separate full screen that hid the document being configured.</p></div>
-      <div><div class="lbl">Decision</div><p>Keep the underlying stages, rebuild the presentation as one page: the document stays visible at all times, with a persistent step tracker and a side panel that changes per stage. <b>→ Deep Dive 02</b></p></div>
+      <div><div class="lbl">Decision</div><p>Keep the underlying stages, rebuild the presentation as one page: <span class="mz-highlight" data-action="yellow">the document stays visible at all times</span>, with a persistent step tracker and a side panel that changes per stage. <b>→ Deep Dive 02</b></p></div>
     </div>
   </div>
 
@@ -1322,7 +1445,7 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
   <div class="tbl reveal">
     <table>
       <tr><th>Category</th><th>What we have</th></tr>
-      <tr><td>Validated</td><td>6 internal prototype walkthroughs with lawyers and legal assistants inside our organization. Both redesigns tested against the same two participants before and after. ~72% of AI field suggestions accepted without edits. The participant who distrusted silent AI placement left correct suggestions untouched after the redesign.</td></tr>
+      <tr><td>Validated</td><td>6 internal prototype walkthroughs with lawyers and legal assistants inside our organization. Both redesigns tested against the same two participants before and after. <span class="mz-highlight" data-action="box">~72% of AI field suggestions accepted without edits</span>. The participant who distrusted silent AI placement left correct suggestions untouched after the redesign.</td></tr>
       <tr><td>Qualitative</td><td><i>"I didn't see it place them, so I don't trust them"</i> (on the rejected silent-AI iteration). <i>"This looks like a cockpit"</i> (on the rejected single-screen iteration). Both quotes came from the same two-person internal test group and directly shaped the shipped design.</td></tr>
       <tr><td>Not yet validated</td><td>Production usage data (setup completion rate, time-to-complete, support ticket volume): the feature is live but hasn't been in market long enough to generate meaningful telemetry. External law firm feedback: still untested outside our own organization.</td></tr>
     </table>
@@ -1533,5 +1656,6 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
 <script src="assets/js/site.js?v=98"></script>
+<script src="assets/js/highlighter.js"></script>
 </body>
 </html>

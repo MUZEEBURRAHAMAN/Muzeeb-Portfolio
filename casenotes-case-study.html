@@ -115,22 +115,23 @@ html[data-theme="light"] .site-header {
   border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Motion HighlightText (Dark on Light Theme / Light on Dark Theme) */
+/* Motion HighlightText (Rectangle Box & Yellow Marker Highlights) */
 [data-slot="highlight-text"],
 .highlight-text,
 .mz-highlight-sweep,
 .mz-highlight[data-action="box"],
-.mz-highlight[data-action="highlight"] {
+.mz-highlight--box,
+.mz-highlight-rect {
   position: relative;
   display: inline;
   padding: 2px 7px;
-  border-radius: 6px;
+  border-radius: 0px !important;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   background-repeat: no-repeat;
   background-position: left center;
   background-size: 0% 100%;
-  transition: background-size 1.1s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
   background-image: linear-gradient(90deg, #f4f2ed, #ffffff);
   color: inherit;
 }
@@ -139,22 +140,25 @@ html[data-theme="light"] .site-header {
 .highlight-text.is-in-view,
 .mz-highlight-sweep.is-in-view,
 .mz-highlight[data-action="box"].is-in-view,
-.mz-highlight[data-action="highlight"].is-in-view {
+.mz-highlight--box.is-in-view,
+.mz-highlight-rect.is-in-view {
   background-size: 100% 100% !important;
-  color: #0f0f0f !important;
-  font-weight: 600;
+  color: #09090b !important;
+  font-weight: 700;
 }
 
 [data-theme="light"] [data-slot="highlight-text"],
 [data-theme="light"] .highlight-text,
 [data-theme="light"] .mz-highlight-sweep,
 [data-theme="light"] .mz-highlight[data-action="box"],
-[data-theme="light"] .mz-highlight[data-action="highlight"],
+[data-theme="light"] .mz-highlight--box,
+[data-theme="light"] .mz-highlight-rect,
 html[data-theme="light"] [data-slot="highlight-text"],
 html[data-theme="light"] .highlight-text,
 html[data-theme="light"] .mz-highlight-sweep,
 html[data-theme="light"] .mz-highlight[data-action="box"],
-html[data-theme="light"] .mz-highlight[data-action="highlight"] {
+html[data-theme="light"] .mz-highlight--box,
+html[data-theme="light"] .mz-highlight-rect {
   background-image: linear-gradient(90deg, #18181b, #09090b);
   color: inherit;
 }
@@ -163,14 +167,73 @@ html[data-theme="light"] .mz-highlight[data-action="highlight"] {
 [data-theme="light"] .highlight-text.is-in-view,
 [data-theme="light"] .mz-highlight-sweep.is-in-view,
 [data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
-[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view,
+[data-theme="light"] .mz-highlight--box.is-in-view,
+[data-theme="light"] .mz-highlight-rect.is-in-view,
 html[data-theme="light"] [data-slot="highlight-text"].is-in-view,
 html[data-theme="light"] .highlight-text.is-in-view,
 html[data-theme="light"] .mz-highlight-sweep.is-in-view,
 html[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
-html[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view {
+html[data-theme="light"] .mz-highlight--box.is-in-view,
+html[data-theme="light"] .mz-highlight-rect.is-in-view {
   color: #ffffff !important;
-  font-weight: 600;
+  font-weight: 700;
+}
+
+/* Yellow Marker Highlight */
+.mz-highlight-yellow,
+.mz-highlight[data-action="yellow"],
+.mz-highlight--yellow {
+  position: relative;
+  display: inline;
+  padding: 2px 7px;
+  border-radius: 0px !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  background-image: linear-gradient(90deg, #ca8a04, #eab308);
+  color: inherit;
+}
+
+.mz-highlight-yellow.is-in-view,
+.mz-highlight[data-action="yellow"].is-in-view,
+.mz-highlight--yellow.is-in-view {
+  background-size: 100% 100% !important;
+  color: #0c0a09 !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] .mz-highlight-yellow,
+[data-theme="light"] .mz-highlight[data-action="yellow"],
+[data-theme="light"] .mz-highlight--yellow,
+html[data-theme="light"] .mz-highlight-yellow,
+html[data-theme="light"] .mz-highlight[data-action="yellow"],
+html[data-theme="light"] .mz-highlight--yellow {
+  background-image: linear-gradient(90deg, #fef08a, #fde047);
+  color: inherit;
+}
+
+[data-theme="light"] .mz-highlight-yellow.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+[data-theme="light"] .mz-highlight--yellow.is-in-view,
+html[data-theme="light"] .mz-highlight-yellow.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+html[data-theme="light"] .mz-highlight--yellow.is-in-view {
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+/* Safe Inline Underline */
+.mz-highlight[data-action="underline"] {
+  display: inline;
+  border-bottom: 2.5px solid #f59e0b;
+  padding-bottom: 1px;
+}
+[data-theme="light"] .mz-highlight[data-action="underline"],
+html[data-theme="light"] .mz-highlight[data-action="underline"] {
+  border-bottom-color: #d97706;
 }
 
 .site-header__inner {
@@ -910,8 +973,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
         </span>
       </div>
     </div>
-    <h1>CaseNotes: AI meeting notetaker built for <span class="grad">lawyers, not meetings</span>.</h1>
-    <p class="hero__sub">Where every conversation is part of a case, and every record carries the <span class="mz-highlight" data-action="underline" data-color="#FF9800">weight of privilege</span>.</p>
+    <h1>CaseNotes: AI meeting notetaker built for <span class="mz-highlight" data-action="box">lawyers, not meetings</span>.</h1>
+    <p class="hero__sub">Where every conversation is part of a case, and every record carries the <span class="mz-highlight" data-action="yellow">weight of privilege</span>.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Founding Product Designer</span>
@@ -946,7 +1009,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <section id="overview">
   <div class="intro">
     <div>
-      <p class="lead">CaseNotes is an AI meeting notetaker built specifically for lawyers who <span class="mz-highlight" data-action="underline" data-color="#FF9800">cannot treat sensitive client consultations like sales calls</span>.</p>
+      <p class="lead">CaseNotes is an AI meeting notetaker built specifically for lawyers who <span class="mz-highlight" data-action="yellow">cannot treat sensitive client consultations like sales calls</span>.</p>
       <p class="prose"><b><span class="mz-highlight" data-action="box">Designed around privilege</span>, not just transcription.</b> Every client conversation may become part of a case file, subject to discovery, privilege review, and bar association conduct rules. CaseNotes treats <em>"can this record exist, and who can see it"</em> as a core design constraint, not a buried settings toggle.</p>
       <p class="prose"><b>Built as <span class="mz-highlight" data-action="box">matter memory</span>, not an isolated meeting log.</b> Summaries attach directly to active cases. Decisions, court deadlines, and privilege flags connect across the matter's lifecycle, routing straight to assignees without paralegals manually re-entering notes into practice management software.</p>
     </div>
@@ -998,7 +1061,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       </div>
       <h3>Privilege Waiver Risk</h3>
       <ul>
-        <li>In <span class="mz-highlight" data-action="underline" data-color="#FF9800"><em>United States v. Heppner</em></span>, courts established that consumer AI platforms lack the fiduciary relationship required to preserve attorney-client privilege.</li>
+        <li>In <span class="mz-highlight" data-action="yellow"><em>United States v. Heppner</em></span>, courts established that consumer AI platforms lack the fiduciary relationship required to preserve attorney-client privilege.</li>
         <li>Passing client strategy through generic notetakers can waive privilege during discovery.</li>
         <li>Lawyers are forced to choose between efficiency and malpractice exposure.</li>
       </ul>
@@ -1199,7 +1262,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   </figure>
 
   <h2 class="h-sub">The Design Thesis</h2>
-  <p class="prose"><b><span class="mz-highlight" data-action="underline" data-color="#FF9800">Principle 1: The lawyer controls whether a record exists</span> in real time.</b> A one-tap shortcut pauses capture mid-sentence and marks the segment privileged, going off the record without breaking conversational flow.</p>
+  <p class="prose"><b><span class="mz-highlight" data-action="yellow">Principle 1: The lawyer controls whether a record exists</span> in real time.</b> A one-tap shortcut pauses capture mid-sentence and marks the segment privileged, going off the record without breaking conversational flow.</p>
   <p class="prose"><b><span class="mz-highlight" data-action="box">Principle 2: Every output is linked to a matter</span>.</b> Summaries attach directly to the case record, carry privilege tags, and stay restricted behind firm ethical walls.</p>
 
   <figure class="diagram-card">
@@ -3110,9 +3173,9 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
   <div class="stats">
     <div class="stat"><div class="stat__number stat__number--accent">94%</div><div class="stat__label">Task completion rate<br>(finding matter privilege status)</div></div>
-    <div class="stat"><div class="stat__number"><span class="mz-highlight" data-action="box">88%</span></div><div class="stat__label">Stated they would trust it<br><span class="mz-highlight" data-action="underline" data-color="#FF9800">on privileged client calls</span></div></div>
+    <div class="stat"><div class="stat__number"><span class="mz-highlight" data-action="box">88%</span></div><div class="stat__label">Stated they would trust it<br><span class="mz-highlight" data-action="yellow">on privileged client calls</span></div></div>
     <div class="stat"><div class="stat__number stat__number--success">86/100</div><div class="stat__label">Usability SUS Score<br>across partner &amp; associate testers</div></div>
-    <div class="stat"><div class="stat__number">45 min</div><div class="stat__label">Saved per matter weekly<br>in note re-entry and billing prep</div></div>
+    <div class="stat"><div class="stat__number"><span class="mz-highlight" data-action="box">45 min</span></div><div class="stat__label">Saved per matter weekly<br>in note re-entry and billing prep</div></div>
   </div>
 
   <h2 class="h-sub">Key Design Decisions</h2>
@@ -3829,7 +3892,6 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
 <script src="assets/js/site.js?v=551"></script>
-<script src="assets/js/rough-notation.iife.js"></script>
 <script src="assets/js/highlighter.js"></script>
 </body>
 </html>

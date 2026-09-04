@@ -5915,24 +5915,25 @@ html[data-theme="light"] .hatched-divider__pattern {
     opacity: 0.35 !important;
 }
 
-/* ===== Motion HighlightText (Dark on Light Theme / Light on Dark Theme) ===== */
+/* ===== Motion HighlightText (Rectangle Box & Yellow Marker Highlights) ===== */
 [data-slot="highlight-text"],
 .highlight-text,
 .mz-highlight-sweep,
 .mz-highlight[data-action="box"],
-.mz-highlight[data-action="highlight"] {
+.mz-highlight--box,
+.mz-highlight-rect {
     position: relative;
     display: inline;
     padding: 2px 7px;
-    border-radius: 6px;
+    border-radius: 0px !important;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     background-repeat: no-repeat;
     background-position: left center;
     background-size: 0% 100%;
-    transition: background-size 1.1s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+    transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
     
-    /* Dark Theme Default: Light / White Sweep with Dark Text */
+    /* Dark Theme Default: Light/Bone Sweep with Dark Text */
     background-image: linear-gradient(90deg, #f4f2ed, #ffffff);
     color: inherit;
 }
@@ -5941,23 +5942,26 @@ html[data-theme="light"] .hatched-divider__pattern {
 .highlight-text.is-in-view,
 .mz-highlight-sweep.is-in-view,
 .mz-highlight[data-action="box"].is-in-view,
-.mz-highlight[data-action="highlight"].is-in-view {
+.mz-highlight--box.is-in-view,
+.mz-highlight-rect.is-in-view {
     background-size: 100% 100% !important;
-    color: #0f0f0f !important;
-    font-weight: 600;
+    color: #09090b !important;
+    font-weight: 700;
 }
 
-/* Light Theme: Dark / Black Sweep with White Text */
+/* Light Theme: Dark Slate / Black Sweep with Crisp White Text */
 [data-theme="light"] [data-slot="highlight-text"],
 [data-theme="light"] .highlight-text,
 [data-theme="light"] .mz-highlight-sweep,
 [data-theme="light"] .mz-highlight[data-action="box"],
-[data-theme="light"] .mz-highlight[data-action="highlight"],
+[data-theme="light"] .mz-highlight--box,
+[data-theme="light"] .mz-highlight-rect,
 html[data-theme="light"] [data-slot="highlight-text"],
 html[data-theme="light"] .highlight-text,
 html[data-theme="light"] .mz-highlight-sweep,
 html[data-theme="light"] .mz-highlight[data-action="box"],
-html[data-theme="light"] .mz-highlight[data-action="highlight"] {
+html[data-theme="light"] .mz-highlight--box,
+html[data-theme="light"] .mz-highlight-rect {
     background-image: linear-gradient(90deg, #18181b, #09090b);
     color: inherit;
 }
@@ -5966,14 +5970,76 @@ html[data-theme="light"] .mz-highlight[data-action="highlight"] {
 [data-theme="light"] .highlight-text.is-in-view,
 [data-theme="light"] .mz-highlight-sweep.is-in-view,
 [data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
-[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view,
+[data-theme="light"] .mz-highlight--box.is-in-view,
+[data-theme="light"] .mz-highlight-rect.is-in-view,
 html[data-theme="light"] [data-slot="highlight-text"].is-in-view,
 html[data-theme="light"] .highlight-text.is-in-view,
 html[data-theme="light"] .mz-highlight-sweep.is-in-view,
 html[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
-html[data-theme="light"] .mz-highlight[data-action="highlight"].is-in-view {
+html[data-theme="light"] .mz-highlight--box.is-in-view,
+html[data-theme="light"] .mz-highlight-rect.is-in-view {
     color: #ffffff !important;
-    font-weight: 600;
+    font-weight: 700;
+}
+
+/* ===== Yellow Marker Highlight (Authentic Legal Highlighter) ===== */
+.mz-highlight-yellow,
+.mz-highlight[data-action="yellow"],
+.mz-highlight--yellow {
+    position: relative;
+    display: inline;
+    padding: 2px 7px;
+    border-radius: 0px !important;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0% 100%;
+    transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+    
+    /* Dark Theme Default: Vibrant Amber/Gold Marker */
+    background-image: linear-gradient(90deg, #ca8a04, #eab308);
+    color: inherit;
+}
+
+.mz-highlight-yellow.is-in-view,
+.mz-highlight[data-action="yellow"].is-in-view,
+.mz-highlight--yellow.is-in-view {
+    background-size: 100% 100% !important;
+    color: #0c0a09 !important;
+    font-weight: 700;
+}
+
+/* Light Theme: Bright Sunny Legal Yellow */
+[data-theme="light"] .mz-highlight-yellow,
+[data-theme="light"] .mz-highlight[data-action="yellow"],
+[data-theme="light"] .mz-highlight--yellow,
+html[data-theme="light"] .mz-highlight-yellow,
+html[data-theme="light"] .mz-highlight[data-action="yellow"],
+html[data-theme="light"] .mz-highlight--yellow {
+    background-image: linear-gradient(90deg, #fef08a, #fde047);
+    color: inherit;
+}
+
+[data-theme="light"] .mz-highlight-yellow.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+[data-theme="light"] .mz-highlight--yellow.is-in-view,
+html[data-theme="light"] .mz-highlight-yellow.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+html[data-theme="light"] .mz-highlight--yellow.is-in-view {
+    color: #0f172a !important;
+    font-weight: 700;
+}
+
+/* Clean, Non-Drifting Inline Underline (Replaces Buggy Canvas/SVG Overlays) */
+.mz-highlight[data-action="underline"] {
+    display: inline;
+    border-bottom: 2.5px solid #f59e0b;
+    padding-bottom: 1px;
+}
+[data-theme="light"] .mz-highlight[data-action="underline"],
+html[data-theme="light"] .mz-highlight[data-action="underline"] {
+    border-bottom-color: #d97706;
 }
 
 /* ==========================================================================

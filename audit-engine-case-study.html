@@ -53,6 +53,129 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Motion HighlightText (Rectangle Box & Yellow Marker Highlights) */
+[data-slot="highlight-text"],
+.highlight-text,
+.mz-highlight-sweep,
+.mz-highlight[data-action="box"],
+.mz-highlight--box,
+.mz-highlight-rect {
+  position: relative;
+  display: inline;
+  padding: 2px 7px;
+  border-radius: 0px !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  background-image: linear-gradient(90deg, #f4f2ed, #ffffff);
+  color: inherit;
+}
+
+[data-slot="highlight-text"].is-in-view,
+.highlight-text.is-in-view,
+.mz-highlight-sweep.is-in-view,
+.mz-highlight[data-action="box"].is-in-view,
+.mz-highlight--box.is-in-view,
+.mz-highlight-rect.is-in-view {
+  background-size: 100% 100% !important;
+  color: #09090b !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] [data-slot="highlight-text"],
+[data-theme="light"] .highlight-text,
+[data-theme="light"] .mz-highlight-sweep,
+[data-theme="light"] .mz-highlight[data-action="box"],
+[data-theme="light"] .mz-highlight--box,
+[data-theme="light"] .mz-highlight-rect,
+html[data-theme="light"] [data-slot="highlight-text"],
+html[data-theme="light"] .highlight-text,
+html[data-theme="light"] .mz-highlight-sweep,
+html[data-theme="light"] .mz-highlight[data-action="box"],
+html[data-theme="light"] .mz-highlight--box,
+html[data-theme="light"] .mz-highlight-rect {
+  background-image: linear-gradient(90deg, #18181b, #09090b);
+  color: inherit;
+}
+
+[data-theme="light"] [data-slot="highlight-text"].is-in-view,
+[data-theme="light"] .highlight-text.is-in-view,
+[data-theme="light"] .mz-highlight-sweep.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
+[data-theme="light"] .mz-highlight--box.is-in-view,
+[data-theme="light"] .mz-highlight-rect.is-in-view,
+html[data-theme="light"] [data-slot="highlight-text"].is-in-view,
+html[data-theme="light"] .highlight-text.is-in-view,
+html[data-theme="light"] .mz-highlight-sweep.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
+html[data-theme="light"] .mz-highlight--box.is-in-view,
+html[data-theme="light"] .mz-highlight-rect.is-in-view {
+  background-size: 100% 100% !important;
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+/* Yellow Marker Highlight */
+.mz-highlight-yellow,
+.mz-highlight[data-action="yellow"],
+.mz-highlight--yellow {
+  position: relative;
+  display: inline;
+  padding: 2px 7px;
+  border-radius: 0px !important;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  background-image: linear-gradient(90deg, #ca8a04, #eab308);
+  color: inherit;
+}
+
+.mz-highlight-yellow.is-in-view,
+.mz-highlight[data-action="yellow"].is-in-view,
+.mz-highlight--yellow.is-in-view {
+  background-size: 100% 100% !important;
+  color: #0c0a09 !important;
+  font-weight: 700;
+}
+
+[data-theme="light"] .mz-highlight-yellow,
+[data-theme="light"] .mz-highlight[data-action="yellow"],
+[data-theme="light"] .mz-highlight--yellow,
+html[data-theme="light"] .mz-highlight-yellow,
+html[data-theme="light"] .mz-highlight[data-action="yellow"],
+html[data-theme="light"] .mz-highlight--yellow {
+  background-image: linear-gradient(90deg, #fef08a, #fde047);
+  color: inherit;
+}
+
+[data-theme="light"] .mz-highlight-yellow.is-in-view,
+[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+[data-theme="light"] .mz-highlight--yellow.is-in-view,
+html[data-theme="light"] .mz-highlight-yellow.is-in-view,
+html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+html[data-theme="light"] .mz-highlight--yellow.is-in-view {
+  background-size: 100% 100% !important;
+  color: #0f172a !important;
+  font-weight: 700;
+}
+
+/* Safe Inline Underline */
+.mz-highlight[data-action="underline"] {
+  display: inline;
+  border-bottom: 2.5px solid #f59e0b;
+  padding-bottom: 1px;
+}
+[data-theme="light"] .mz-highlight[data-action="underline"],
+html[data-theme="light"] .mz-highlight[data-action="underline"] {
+  border-bottom-color: #d97706;
+}
+
 /* Vertical side rails & 1134px layout */
 #main {
   max-width: 1134px !important;
@@ -1745,8 +1868,8 @@ h2.h-sub {
         </span>
       </div>
     </div>
-    <h1>I was spending a day finding UX problems. So I built the <span class="grad">audit engine</span>.</h1>
-    <p class="hero__sub">At Omnis AI, I was the solo product designer across five legal-tech products. Manual staging reviews took hours and missed hidden states. I built an engine that logs in, explores interactive states, and generates developer-ready reports at <b style="color:var(--ink)">~$0.30 a screen</b>.</p>
+    <h1>I was spending a day finding UX problems. So I built the <span class="mz-highlight" data-action="box">audit engine</span>.</h1>
+    <p class="hero__sub">At Omnis AI, I was the <span class="mz-highlight" data-action="yellow">solo product designer across five legal-tech products</span>. Manual staging reviews took hours and missed hidden states. I built an engine that logs in, explores interactive states, and generates developer-ready reports at <span class="mz-highlight" data-action="box">~$0.30 a screen</span>.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Solo designer + builder</span>
@@ -1758,12 +1881,12 @@ h2.h-sub {
 
 <!-- STATS BAR (1134px CONTAINER) -->
 <div class="stats reveal">
-  <div class="stat"><div class="n">229</div><div class="l">Deterministic checks</div></div>
+  <div class="stat"><div class="n"><span class="mz-highlight" data-action="yellow">229</span></div><div class="l">Deterministic checks</div></div>
   <div class="stat"><div class="n">342</div><div class="l">Total audit rules</div></div>
   <div class="stat"><div class="n">31</div><div class="l">AI analysis lenses</div></div>
   <div class="stat"><div class="n">187</div><div class="l">Passing tests</div></div>
   <div class="stat"><div class="n">~27k</div><div class="l">Lines of TypeScript</div></div>
-  <div class="stat"><div class="n">90%+</div><div class="l">Findings tied to real elements</div></div>
+  <div class="stat"><div class="n"><span class="mz-highlight" data-action="box">90%+</span></div><div class="l">Findings tied to real elements</div></div>
 </div>
 
 <!-- Section Divider: Hero to Context -->
@@ -1813,7 +1936,7 @@ h2.h-sub {
       <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
       <h3>Results</h3>
       <ul>
-        <li>Audits complete in ~3 minutes at ~$0.30 per screen.</li>
+        <li>Audits complete in <span class="mz-highlight" data-action="yellow">~3 minutes</span> at <span class="mz-highlight" data-action="box">~$0.30 per screen</span>.</li>
         <li>Systematic state exploration provides verified coverage across all controls.</li>
         <li>Engineers receive copy-paste CSS patches with before/after visual diffs.</li>
       </ul>
@@ -1962,7 +2085,7 @@ h2.h-sub {
     <div class="eyebrow">The principle</div>
     <h2 class="h">Grounding findings on live DOM elements.</h2>
     <p>To eliminate phantom issues, I enforced a strict rule:</p>
-    <p><b>If a finding cannot be mapped to a real DOM node, the engine rejects it.</b></p>
+    <p><b><span class="mz-highlight" data-action="box">If a finding cannot be mapped to a real DOM node, the engine rejects it.</span></b></p>
     <p>This required giving the engine live session management, computed style inspection, and coordinate snapping. Instead of guessing from screenshots, the tool collects deterministic evidence directly from the browser runtime.</p>
   </div>
 </section>
@@ -2088,7 +2211,7 @@ h2.h-sub {
     <div class="sec-num">11</div>
     <div class="eyebrow">Results</div>
     <h2 class="h">Measured impact on staging applications.</h2>
-    <p>On our CaseNotes staging app, a 4-screen audit identified 89 issues across 22 interactive states in ~11 minutes for ~$1.20 in compute and API costs. The run inspected 1,035 elements, auto-remediated 26 token mismatches, and filtered out 800+ redundant duplicate triggers. On AutoDoc, the engine identified 87 categorized findings across blocker, major, minor, and nit categories.</p>
+    <p>On our CaseNotes staging app, a 4-screen audit identified <span class="mz-highlight" data-action="yellow">89 issues across 22 interactive states</span> in ~11 minutes for <span class="mz-highlight" data-action="box">~$1.20 in compute and API costs</span>. The run inspected 1,035 elements, auto-remediated 26 token mismatches, and filtered out 800+ redundant duplicate triggers. On AutoDoc, the engine identified 87 categorized findings across blocker, major, minor, and nit categories.</p>
     <p class="mt-tight">The engine also handles edge conditions gracefully: generating empty passing reports for compliant pages and falling back to saved session cookies when authentication challenges occur.</p>
   </div>
 
@@ -2560,5 +2683,6 @@ h2.h-sub {
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
 <script src="assets/js/site.js?v=551"></script>
+<script src="assets/js/highlighter.js"></script>
 </body>
 </html>
