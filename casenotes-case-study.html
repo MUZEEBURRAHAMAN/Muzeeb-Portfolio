@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <script>
 (function() {
-  var t = localStorage.getItem("mz-theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  var params = new URLSearchParams(window.location.search);
+  var t = params.get("theme") || localStorage.getItem("mz-theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
   document.documentElement.setAttribute("data-theme", t);
+  if (params.get("unlocked") === "true") {
+    sessionStorage.setItem("casenotes_unlocked", "true");
+  }
   if (sessionStorage.getItem("casenotes_unlocked") !== "true") {
     document.documentElement.classList.add("is-locked");
   }
@@ -805,11 +809,14 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .img-slot__icon { width:42px; height:42px; border-radius:11px; background:var(--accent-soft); color:var(--accent); display:flex; align-items:center; justify-content:center; }
 .img-slot__icon svg { width:22px; height:22px; }
 
-/* REAL FIGURE */
-.figure { margin:32px 0; }
-.figure .frame { border:1px solid var(--line); border-radius:20px; padding:14px; background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); }
-.figure img { border-radius:12px; width:100%; height:auto; display:block; cursor:zoom-in; }
-.figure figcaption { color:var(--soft); font-size:12.5px; text-align:center; margin-top:var(--space-xs); line-height:1.45; }
+/* REAL FIGURE & ARTIFACTS */
+.figure { margin:36px 0; }
+.figure .frame { border:1px solid var(--line); border-radius:16px; padding:12px; background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); transition:border-color .25s ease, box-shadow .25s ease; position:relative; overflow:hidden; }
+.figure:hover .frame { border-color:rgba(47,109,240,.35); box-shadow:0 20px 48px var(--shadow-2); }
+.figure img { border-radius:10px; width:100%; height:auto; display:block; cursor:zoom-in; transition:opacity .2s ease; }
+.figure figcaption { color:var(--muted); font-size:13px; text-align:center; margin-top:14px; line-height:1.6; max-width:860px; margin-left:auto; margin-right:auto; }
+.figure figcaption strong { color:var(--ink); font-weight:600; }
+.figure-badge { display:inline-flex; align-items:center; font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:6px; margin-right:8px; vertical-align:middle; }
 
 /* NOTE CALLOUT */
 .note { display:flex; align-items:flex-start; gap:14px; border:1px solid rgba(47,109,240,.25); border-left:3px solid var(--accent); border-radius:12px; background:var(--accent-soft); padding:16px 20px; color:var(--note-text); width:100%; box-sizing:border-box; margin:26px 0; text-align:left; line-height:1.6; font-size:14.5px; }
@@ -1101,16 +1108,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H1l8-8 8 8h-8v8H9z"/></svg>
-      </div>
-      <span class="img-slot__badge">Research Artifact</span>
-      <div class="img-slot__title">Interview Synthesis &amp; Regulatory Mapping</div>
-      <p class="img-slot__desc">Synthesis across 12 live client sessions and 7 attorney interviews, translating ABA ethics opinions and discovery precedents into product requirements.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-research-mapping.webp" alt="Interview Synthesis and Regulatory Mapping dashboard translating ABA Model Rule 1.6 and FRE 502 into product requirements">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Research Artifact</span> <strong>Interview Synthesis &amp; Regulatory Mapping</strong> — Synthesis across 12 live client sessions and 7 attorney interviews, translating ABA ethics opinions and discovery precedents into product requirements.</figcaption>
+  </figure>
 
   <h2 class="h-sub">The Design Thesis</h2>
   <p class="prose"><b><span class="mz-highlight" data-action="underline" data-color="#FF9800">Principle 1: The lawyer controls whether a record exists</span> in real time.</b> A one-tap shortcut pauses capture mid-sentence and marks the segment privileged, going off the record without breaking conversational flow.</p>
@@ -1208,44 +1211,32 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <h3 class="h3">1. Before: Tag the matter, inherit its defaults</h3>
   <p class="prose">CaseNotes links with firm calendars and practice management software. Before a meeting begins, it checks the matter assignment and applies inherited privilege defaults (litigation calls default to privileged and restricted; firm administrative meetings default to open).</p>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      </div>
-      <span class="img-slot__badge">Setup Flow</span>
-      <div class="img-slot__title">Calendar Integration &amp; Matter-Tagging Sequence</div>
-      <p class="img-slot__desc">Calendar matching, case selection, and automatic privilege profile inheritance.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-calendar-tagging.webp" alt="Calendar Integration and Pre-Meeting Matter Tagging sequence interface">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Setup Flow</span> <strong>Calendar Integration &amp; Matter-Tagging Sequence</strong> — Automated calendar matching, case selection, and automatic privilege profile inheritance with ethical wall verification.</figcaption>
+  </figure>
 
   <h3 class="h3">2. During: Minimal ambient UI &amp; one-keystroke control</h3>
   <p class="prose">During calls, CaseNotes stays ambient: no bot avatars or scrolling transcript text. A discreet indicator shows recording status, and a single shortcut pauses capture for sensitive discussions.</p>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <span class="img-slot__badge">In-Meeting UI</span>
-      <div class="img-slot__title">Ambient Recording &amp; Privilege Pause Toast</div>
-      <p class="img-slot__desc">Minimalist status indicator alongside a 'Recording paused (marked privileged)' notification.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-ambient-recording.webp" alt="In-meeting ambient recording status indicator with privilege pause toast notification">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">In-Meeting UI</span> <strong>Ambient Recording &amp; Privilege Pause Toast</strong> — Minimalist status indicator alongside a 'Recording paused (marked privileged)' notification during confidential settlement discussions.</figcaption>
+  </figure>
 
   <h3 class="h3">3. After: Structured intelligence, filed where it belongs</h3>
   <p class="prose">Post-meeting summaries file directly to the case: context, decisions, assignees, deadlines, and segment-by-segment privilege tags. Raw transcripts remain in a secondary drawer to minimize discovery exposure.</p>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      </div>
-      <span class="img-slot__badge">Hero Surface</span>
-      <div class="img-slot__title">Post-Meeting Structured Summary View</div>
-      <p class="img-slot__desc">Matter header, decisions, action items, segment-by-segment privilege toggles, and transcript drawer.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-post-meeting-summary.webp" alt="Post-Meeting Structured Summary View with matter header, key decisions, action items, and privilege toggles">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Hero Surface</span> <strong>Post-Meeting Structured Summary View</strong> — Matter header, extracted decisions, action items, segment-by-segment privilege classification, and court citations drawer.</figcaption>
+  </figure>
 
   <div class="pullquote">
     The transcript is evidence. The summary is intelligence. In a law firm, shipping the transcript by default isn't just a UX miss; it creates a wider surface for a privilege fight.
@@ -1356,16 +1347,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <figcaption>Decisions and action items are extracted in parallel with privilege detection, merging into a unified matter file.</figcaption>
   </figure>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-      </div>
-      <span class="img-slot__badge">Interaction Model</span>
-      <div class="img-slot__title">Privilege Confirmation &amp; Override Flow</div>
-      <p class="img-slot__desc">How attorneys verify or override suggested privilege tags with one click, ensuring defensible audit trails.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-privilege-override.webp" alt="Privilege Confirmation and Override Flow with AI confidence score and immutable audit trail">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Interaction Model</span> <strong>Privilege Confirmation &amp; Override Flow</strong> — One-click verification and override mechanism with FRE 502 compliant immutable audit trail logging.</figcaption>
+  </figure>
 </section>
 
 <!-- Section Divider -->
@@ -1405,16 +1392,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      </div>
-      <span class="img-slot__badge">Case Intelligence</span>
-      <div class="img-slot__title">Conflict, Attendance &amp; Coverage Dashboard</div>
-      <p class="img-slot__desc">Overview of matter health, participant conflict logs, and court filing schedules across litigation teams.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-conflict-dashboard.webp" alt="Litigation Intelligence, Participant Conflict and Court Filing Schedule Dashboard">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Case Intelligence</span> <strong>Conflict, Attendance &amp; Coverage Dashboard</strong> — Centralized matter health KPIs, ethical wall monitoring log, and interactive court filing Gantt timeline.</figcaption>
+  </figure>
 </section>
 
 <!-- Section Divider -->
@@ -1516,16 +1499,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <span class="img-slot__badge">Permission Scoping</span>
-      <div class="img-slot__title">Role-Based Interface Comparison Grid</div>
-      <p class="img-slot__desc">Side-by-side comparison showing how the exact same meeting record dynamically adapts for Partners, Associates, Paralegals, and Clients.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-role-based-grid.webp" alt="Role-Based Interface Comparison Grid for Partners, Associates, Paralegals, and Clients">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Permission Scoping</span> <strong>Role-Based Interface Comparison Grid</strong> — Dynamic interface adaptation ensuring strict ethical separation across Partner, Associate, Paralegal, and Client views.</figcaption>
+  </figure>
 </section>
 
 <!-- Section Divider -->
@@ -1556,16 +1535,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <div class="img-slot">
-    <div class="img-slot__inner">
-      <div class="img-slot__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      </div>
-      <span class="img-slot__badge">Mobile &amp; Design System</span>
-      <div class="img-slot__title">Mobile Viewports &amp; Component Token Architecture</div>
-      <p class="img-slot__desc">Key mobile screens (Hallway Briefing, Timeline, Search) and Figma design system components showing density-aware variants.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenotes/casenotes-mobile-tokens.webp" alt="Mobile Viewports and Design System Component Token Architecture">
     </div>
-  </div>
+    <figcaption><span class="figure-badge">Mobile &amp; Design System</span> <strong>Mobile Viewports &amp; Component Token Architecture</strong> — Courthouse mobile screens (Hallway Brief, Matter Timeline, Scoped Search) and foundational atomic design tokens.</figcaption>
+  </figure>
 </section>
 
 <!-- Section Divider -->
@@ -1963,6 +1938,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   }
 })();
 </script>
+<script>
 // MINIMAP ENGINE
 (function() {
   var mmSections = [
