@@ -5,6 +5,49 @@
    All buttons, badges, and cards adhere to strict zero border-radius.
    ========================================================================== */
 
+:root,
+html[data-theme="dark"],
+html:not([data-theme="light"]) {
+  --bg: #0f0f0f;
+  --surface: #171717;
+  --ink: #f4f2ed;
+  --text: #f4f2ed;
+  --muted: #a3a39d;
+  --soft: #83837a;
+  --line: rgba(255,255,255,.12);
+  --line-2: rgba(255,255,255,.08);
+  --accent: #6ea8ff;
+  --accent-soft: #182a4a;
+  --green: #4fce8f;
+  --green-soft: #123321;
+  --amber: #f5b84f;
+  --amber-soft: #2e2410;
+  --shadow-1: rgba(0,0,0,.35);
+  --shadow-2: rgba(0,0,0,.45);
+  --shadow-3: rgba(0,0,0,.55);
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html[data-theme="light"] {
+  --bg: #FBFBFA;
+  --surface: #ffffff;
+  --ink: #0B0B0C;
+  --text: #111111;
+  --muted: #57574f;
+  --soft: #6e6e67;
+  --line: rgba(11,11,12,.09);
+  --line-2: rgba(11,11,12,.06);
+  --accent: #2F6DF0;
+  --accent-soft: #EAF1FE;
+  --green: #2FA96A;
+  --green-soft: #E9F6EF;
+  --amber: #F5A623;
+  --amber-soft: #FEF4E1;
+  --shadow-1: rgba(0,0,0,.04);
+  --shadow-2: rgba(0,0,0,.06);
+  --shadow-3: rgba(0,0,0,.1);
+}
+
 .stitch-ui {
   width: 100%;
   font-family: var(--font-body);
@@ -1308,4 +1351,305 @@
   color: #ffffff;
 }
 
+/* ==========================================================================
+   INTERACTIVE LEGAL AI ASSISTANT (LUA-LEGAL BENCHMARK ENGINE)
+   Multi-mode interactive workbench: Q&A, Client Follow-up, UTBMS, Spoliation.
+   ========================================================================== */
 
+.stitch-ai-tabs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  padding: 4px 12px 0 12px;
+  overflow-x: auto;
+  user-select: none;
+}
+
+.stitch-ai-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  border-radius: 0;
+}
+
+.stitch-ai-tab:hover {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.stitch-ai-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: var(--surface);
+  border-left-color: var(--line);
+  border-right-color: var(--line);
+  border-top-color: var(--line);
+}
+
+.stitch-prompt-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.stitch-prompt-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.stitch-prompt-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.stitch-prompt-chip.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Document Drafter View */
+.stitch-letter-doc {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.stitch-letter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.stitch-redaction-pill {
+  display: inline-block;
+  background: #1c1917;
+  color: #f59e0b;
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 1px 6px;
+  border: 1px solid #44403c;
+  border-radius: 0;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="light"] .stitch-redaction-pill {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+/* Spoliation & Record Decision Cards */
+.stitch-spoliation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .stitch-spoliation-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stitch-spoliation-card {
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.stitch-spoliation-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  background: var(--surface);
+}
+
+.stitch-spoliation-card--active {
+  border-color: var(--accent);
+  background: var(--surface);
+  box-shadow: 0 4px 16px var(--shadow-1);
+}
+
+.stitch-ai-pane {
+  display: none;
+}
+
+.stitch-ai-pane.active {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: stitchFadeIn 0.22s ease-out;
+}
+
+@keyframes stitchFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* UTBMS Billing Table */
+.stitch-utbms-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.stitch-utbms-table th {
+  background: var(--bg);
+  color: var(--muted);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stitch-utbms-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line-2);
+  color: var(--ink);
+  vertical-align: top;
+}
+
+.stitch-utbms-table tr:last-child td {
+  border-bottom: none;
+}
+
+.stitch-utbms-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="light"] .stitch-utbms-table tr:hover td {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Action button in stitch cards */
+.stitch-btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #0b0c0e;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.stitch-btn-action:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.stitch-btn-action--outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.stitch-btn-action--outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--surface);
+}
+
+/* Audio Player Mock */
+.stitch-audio-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.stitch-waveform-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 16px;
+  flex: 1;
+}
+
+.stitch-waveform-bar {
+  width: 3px;
+  background: var(--line);
+  height: 30%;
+  transition: height 0.2s ease, background-color 0.2s ease;
+}
+
+.stitch-audio-bar.playing .stitch-waveform-bar {
+  background: var(--accent);
+  animation: stitchWave 0.8s infinite ease-in-out alternate;
+}
+
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(2) { animation-delay: 0.1s; }
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(3) { animation-delay: 0.25s; }
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(4) { animation-delay: 0.4s; }
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(5) { animation-delay: 0.15s; }
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(6) { animation-delay: 0.3s; }
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(7) { animation-delay: 0.05s; }
+.stitch-audio-bar.playing .stitch-waveform-bar:nth-child(8) { animation-delay: 0.35s; }
+
+@keyframes stitchWave {
+  from { height: 20%; }
+  to { height: 100%; }
+}

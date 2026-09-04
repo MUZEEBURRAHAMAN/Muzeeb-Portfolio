@@ -1066,12 +1066,11 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       </ul>
     </div>
     <div class="comp-card comp-card--distinct">
-      <h3>Lua <span class="comp-card__tag">Legal-Specific Competitor</span></h3>
+      <h3>Lua Legal <span class="comp-card__tag">Direct Legal Competitor</span></h3>
       <ul>
-        <li>Direct legal competitor with SOC 2, ISO 27001, GDPR, and off-the-record controls.</li>
-        <li>Strong on real-time assistance and administrative time entries for billing.</li>
-        <li>Thinner on cross-matter memory: treats meetings as standalone records rather than connected timeline nodes.</li>
-        <li>Lacks role-tuned views: partners, associates, paralegals, and clients all receive the same interface.</li>
+        <li>Pioneered "The Privilege-First Meeting AI" (Lua Notetaker &amp; Assistant) with SOC 2, ISO 27001, and zero data retention.</li>
+        <li>Strong on live in-meeting assistance, post-meeting administrative drafts, and UTBMS billable time entries.</li>
+        <li><strong>Where CaseNotes advances the category:</strong> Lua focuses on meeting-by-meeting notes. CaseNotes compounds intelligence into <em>multi-session matter memory</em> across months of litigation—connecting decisions directly to court dockets, statutory filing deadlines, and 4-tier ethical-wall scoping.</li>
       </ul>
     </div>
   </div>
@@ -1717,7 +1716,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <!-- FIGURE: Grounded AI Intelligence & Citation Inspector -->
+  <!-- FIGURE: Grounded AI Intelligence & Interactive Legal AI Workbench -->
   <figure class="figure reveal">
     <div class="frame" style="padding:0; border-radius:0;">
       <div class="stitch-ui">
@@ -1729,92 +1728,314 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
               <span class="stitch-dot stitch-dot--max"></span>
             </div>
             <div class="stitch-title">
-              <span>ai_grounded_intelligence.tsx // Deterministic Fact-Extraction Engine</span>
+              <span>casenotes_ai_workbench.tsx // Deterministic Legal Intelligence</span>
               <span class="sub">— Matter #2024-884-CV (Apex v. MedTech)</span>
             </div>
           </div>
           <div class="stitch-bar__right">
-            <span class="stitch-badge stitch-badge--green">100% Verbatim Grounded</span>
-            <span class="stitch-badge stitch-badge--blue">Zero-Data-Logging SLA</span>
+            <span class="stitch-badge stitch-badge--green">ABA Opinion 512</span>
+            <span class="stitch-badge stitch-badge--blue">Zero-Retention SLA</span>
           </div>
         </div>
+
+        <!-- Interactive Workbench Tabs -->
+        <div class="stitch-ai-tabs" role="tablist">
+          <button class="stitch-ai-tab active" data-tab="qa" role="tab" aria-selected="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            1. Matter Memory Q&amp;A
+          </button>
+          <button class="stitch-ai-tab" data-tab="letter" role="tab" aria-selected="false">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            2. 1-Click Client Letter
+          </button>
+          <button class="stitch-ai-tab" data-tab="utbms" role="tab" aria-selected="false">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="10" y2="8"></line><line x1="6" y1="12" x2="14" y2="12"></line><line x1="6" y1="16" x2="18" y2="16"></line></svg>
+            3. UTBMS Billing Sync
+          </button>
+          <button class="stitch-ai-tab" data-tab="spoliation" role="tab" aria-selected="false">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            4. Record &amp; Spoliation Control
+          </button>
+        </div>
+
         <div class="stitch-body">
-          <!-- Prompt Query Bar with Deterministic Guardrail -->
-          <div class="stitch-ai-query-bar">
-            <div class="stitch-ai-query-input">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <span><strong>QUERY:</strong> "What was agreed regarding the patent royalty ceiling and expert witness rebuttal schedule?"</span>
+          <!-- PANE 1: MATTER MEMORY Q&A -->
+          <div class="stitch-ai-pane active" id="pane-qa">
+            <!-- Quick Prompt Suggestions Chips -->
+            <div class="stitch-prompt-chips">
+              <span style="font-family:var(--mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;">Suggested Inquiries:</span>
+              <button class="stitch-prompt-chip active" data-query="What was agreed regarding the patent royalty ceiling and expert witness rebuttal schedule?">
+                <span>⚡ Patent ceiling &amp; Rule 702 schedule</span>
+              </button>
+              <button class="stitch-prompt-chip" data-query="Were any off-the-record representations made regarding plaintiff's trade secret claim?">
+                <span>⚡ Trade secret off-the-record statements</span>
+              </button>
+              <button class="stitch-prompt-chip" data-query="What cross-licensing parameters were approved by Arthur Sterling during the call?">
+                <span>⚡ Cross-licensing parameters</span>
+              </button>
             </div>
-            <span class="stitch-badge stitch-badge--neutral">Extracted Transcript Only · No Guessing</span>
+
+            <!-- Prompt Query Bar -->
+            <div class="stitch-ai-query-bar">
+              <div class="stitch-ai-query-input">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span id="stitchActiveQueryText"><strong>QUERY:</strong> "What was agreed regarding the patent royalty ceiling and expert witness rebuttal schedule?"</span>
+              </div>
+              <span class="stitch-badge stitch-badge--neutral">Extracted Transcript Only · No Extrapolation</span>
+            </div>
+
+            <!-- Answer Card with Inline Citations -->
+            <div class="stitch-grounded-answer-card">
+              <div class="stitch-grounded-header">
+                <div class="stitch-grounded-title">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <span>Grounded Fact Synthesis (Zero Invented Tokens)</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="stitch-badge stitch-badge--green">0% Hallucination</span>
+                  <span class="stitch-badge stitch-badge--amber">FRE 408 Protected</span>
+                </div>
+              </div>
+
+              <div id="stitchAnswerContent">
+                <div class="stitch-grounded-text">
+                  <strong>1. Settlement Ceiling &amp; Mediation Anchor:</strong> The parties agreed to maintain a firm walk-away settlement ceiling of $2.2M, but authorized Sarah Jenkins to open discussions at $3.5M during Friday's mediation conference.
+                  <span class="stitch-cite-tag" title="Click to inspect verbatim audio segment">[28:14 · S. Jenkins, Lead Counsel]</span>
+                </div>
+
+                <div class="stitch-grounded-text">
+                  <strong>2. Expert Witness Rebuttal Disclosures:</strong> Dr. Kenneth Moore confirmed that the Rule 702 technical rebuttal will be completed by November 4th, expressly conditioned on plaintiff delivering the full git commit dump.
+                  <span class="stitch-cite-tag" title="Click to inspect verbatim audio segment">[36:50 · Dr. K. Moore, Expert Witness]</span>
+                </div>
+
+                <div class="stitch-grounded-text" style="color:var(--muted); font-size:12.5px;">
+                  <strong>3. Cross-Licensing Terms:</strong> <span class="stitch-badge stitch-badge--neutral" style="font-size:10px;">Not Addressed in Record</span> — Audio transcript contains zero mentions of cross-licensing parameters; model refusal triggered pursuant to Strict Grounding Invariant.
+                </div>
+              </div>
+
+              <!-- Interactive Audio Snippet Player & Provenance Split -->
+              <div class="stitch-proof-split">
+                <div class="stitch-proof-panel">
+                  <div class="stitch-proof-panel__header">
+                    <span>VERBATIM TRANSCRIPT PROOF // SEGMENT 04 (28:14 - 28:29)</span>
+                    <span style="color:var(--green); font-weight:600;">100% Verbatim Match</span>
+                  </div>
+                  <p class="stitch-proof-panel__quote">
+                    "Look, between us, our client's walk-away settlement ceiling is $2.2M, but we will test their appetite at $3.5M during Friday's mediation conference."
+                  </p>
+                  
+                  <!-- Interactive Audio Player Bar -->
+                  <div class="stitch-audio-bar" id="stitchAudioBar">
+                    <button class="stitch-btn-action" id="stitchPlayAudioBtn" style="padding:4px 10px; font-size:10px;">
+                      <span id="stitchPlayIcon">▶</span> <span id="stitchPlayLabel">Play Audio Snippet</span>
+                    </button>
+                    <div class="stitch-waveform-bars">
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                      <span class="stitch-waveform-bar"></span>
+                    </div>
+                    <span style="color:var(--muted); font-size:10px;">00:15 / Sarah Jenkins (Verified)</span>
+                  </div>
+                </div>
+
+                <div class="stitch-proof-panel" style="background:var(--surface);">
+                  <div class="stitch-proof-panel__header">
+                    <span>CRYPTOGRAPHIC PROVENANCE &amp; ETHICAL COMPLIANCE</span>
+                    <span class="stitch-badge stitch-badge--neutral">FRE 502(b)</span>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:6px; font-size:11.5px; font-family:var(--mono);">
+                    <div>Audit Hash: <code style="color:var(--accent);">sha256:d8f4c71a...93be</code></div>
+                    <div>Tenant Security: <strong>Isolated Private Firm Pod</strong></div>
+                    <div>Model Training: <strong style="color:var(--green);">Zero Retention (Never Trained)</strong></div>
+                    <div>Ethical Wall: <strong style="color:var(--amber);">Quarantined from External Portals</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Guardrail Safety Notice -->
+              <div class="stitch-guardrail-banner">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div><strong>ABA Formal Opinion 512 Deterministic Standard:</strong> Generative inference is architecturally bounded to verified transcript tokens. If a fact was not stated in spoken testimony or docketed in matter records, CaseNotes explicitly rejects the inquiry rather than interpolating assumptions.</div>
+              </div>
+            </div>
           </div>
 
-          <!-- Answer Card with Inline Citations -->
-          <div class="stitch-grounded-answer-card">
-            <div class="stitch-grounded-header">
-              <div class="stitch-grounded-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                <span>Grounded Fact Synthesis (Zero Invented Content)</span>
+          <!-- PANE 2: 1-CLICK CLIENT FOLLOW-UP LETTER -->
+          <div class="stitch-ai-pane" id="pane-letter">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <div>
+                <strong style="font-size:13px;">Automated Post-Meeting Client Debrief &amp; Strategy Memo</strong>
+                <p style="font-size:12px; color:var(--muted); margin:2px 0 0 0;">Synthesized instantly from meeting transcript with automated FRE 408 privilege redaction filters.</p>
               </div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <span class="stitch-badge stitch-badge--green">0% Extrapolation</span>
-                <span class="stitch-badge stitch-badge--amber">Rule 408 Protected</span>
-              </div>
-            </div>
-
-            <div class="stitch-grounded-text">
-              <strong>1. Settlement Ceiling &amp; Mediation Anchor:</strong> The parties agreed to maintain a firm walk-away settlement ceiling of $2.2M, but authorized Sarah Jenkins to open discussions at $3.5M during Friday's mediation conference.
-              <span class="stitch-cite-tag" title="Click to view verbatim audio segment">[28:14 · S. Jenkins, Lead Counsel]</span>
-            </div>
-
-            <div class="stitch-grounded-text">
-              <strong>2. Expert Witness Rebuttal Disclosures:</strong> Dr. Kenneth Moore confirmed that the Rule 702 technical rebuttal will be completed by November 4th, expressly conditioned on plaintiff delivering the full git commit dump.
-              <span class="stitch-cite-tag" title="Click to view verbatim audio segment">[36:50 · Dr. K. Moore, Expert Witness]</span>
-            </div>
-
-            <div class="stitch-grounded-text" style="color:var(--muted); font-size:12.5px;">
-              <strong>3. Cross-Licensing Terms:</strong> <span class="stitch-badge stitch-badge--neutral" style="font-size:10px;">Not Addressed in Record</span> — Audio transcript contains zero mentions of cross-licensing parameters; model refusal triggered pursuant to Anti-Hallucination Invariant.
-            </div>
-
-            <!-- Proof & Provenance Split: Verbatim Source Excerpt -->
-            <div class="stitch-proof-split">
-              <div class="stitch-proof-panel">
-                <div class="stitch-proof-panel__header">
-                  <span>VERBATIM TRANSCRIPT PROOF // SEGMENT 04 (28:14 - 28:29)</span>
-                  <span style="color:var(--green); font-weight:600;">100% Match</span>
-                </div>
-                <p class="stitch-proof-panel__quote">
-                  "Look, between us, our client's walk-away settlement ceiling is $2.2M, but we will test their appetite at $3.5M during Friday's mediation conference."
-                </p>
-                <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px; font-family:var(--mono); color:var(--muted);">
-                  <span>Speaker Voiceprint: <strong>Sarah Jenkins (Verified)</strong></span>
-                  <span style="color:var(--accent); cursor:pointer;">▶ Play Audio Snippet (00:15)</span>
-                </div>
-              </div>
-
-              <div class="stitch-proof-panel" style="background:var(--surface);">
-                <div class="stitch-proof-panel__header">
-                  <span>CRYPTOGRAPHIC PROVENANCE &amp; ETHICAL COMPLIANCE</span>
-                  <span class="stitch-badge stitch-badge--neutral">FRE 502(b)</span>
-                </div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:11.5px; font-family:var(--mono);">
-                  <div>Audit Hash: <code style="color:var(--accent);">sha256:d8f4c71a...93be</code></div>
-                  <div>Tenant Security: <strong>Isolated Private Firm Pod</strong></div>
-                  <div>Model Training: <strong style="color:var(--green);">Zero Retention (Never Trained)</strong></div>
-                  <div>Ethical Wall: <strong style="color:var(--amber);">Quarantined from External Portals</strong></div>
-                </div>
+              <div style="display:flex; gap:8px;">
+                <button class="stitch-btn-action" id="stitchCopyLetterBtn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span id="stitchCopyLetterLabel">Copy Formatted Letter</span>
+                </button>
+                <button class="stitch-btn-action stitch-btn-action--outline">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Export to iManage
+                </button>
               </div>
             </div>
 
-            <!-- Guardrail Safety Notice -->
-            <div class="stitch-guardrail-banner">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-              <div><strong>Strict Deterministic Policy:</strong> Generative inference is architecturally bounded to verbatim transcript tokens. If a fact was not stated in spoken testimony or docketed in matter records, CaseNotes explicitly rejects the inquiry rather than interpolating assumptions.</div>
+            <!-- Letter Document Preview -->
+            <div class="stitch-letter-doc">
+              <div class="stitch-letter-header">
+                <div>
+                  <strong>TO:</strong> Arthur Sterling, General Counsel (Apex Dynamics, Inc.)<br>
+                  <strong>FROM:</strong> Sarah Jenkins, Partner (Sterling &amp; Cross LLP)<br>
+                  <strong>RE:</strong> Post-Conference Debrief &amp; Mediation Anchor Strategy // Matter #2024-884-CV
+                </div>
+                <div style="text-align:right;">
+                  <span>DATE: October 24, 2024</span><br>
+                  <span class="stitch-badge stitch-badge--amber" style="font-size:10px; margin-top:4px; display:inline-block;">ATTORNEY-CLIENT PRIVILEGED // WORK PRODUCT</span>
+                </div>
+              </div>
+
+              <p>Dear Arthur,</p>
+              <p>Following our strategy conference this afternoon with Dr. Kenneth Moore, I am writing to summarize our agreed positions heading into Friday's mediation before Magistrate Judge Torres.</p>
+
+              <div>
+                <strong>1. Settlement Range &amp; Opening Anchor</strong><br>
+                As confirmed during our discussion, we have documented your authorization to open discussions at <strong>$3.5M</strong>, while preserving a strict internal ceiling of <span class="stitch-redaction-pill">[REDACTED: CONFIDENTIAL CEILING UNDER FRE 408]</span>. Should plaintiff decline to counter below $4.0M, we will immediately pivot to technical invalidity arguments.
+              </div>
+
+              <div>
+                <strong>2. Expert Witness Schedule (Fed. R. Civ. P. 26)</strong><br>
+                Dr. Moore has confirmed that his technical rebuttal report is tracking on schedule for completion by <strong>November 4, 2024</strong>, conditioned on plaintiff producing unredacted git commit logs pursuant to the Oct 12 order.
+              </div>
+
+              <div>
+                <strong>3. Next Action Items</strong><br>
+                • <strong>Oct 25 (09:00 EST):</strong> Jenkins to serve supplemental responses to Request for Production #44.<br>
+                • <strong>Oct 25 (14:30 EST):</strong> Final pre-mediation prep call with Apex executive team.
+              </div>
+
+              <p style="margin-top:8px;">Respectfully submitted,<br><strong>Sarah Jenkins</strong> | Sterling &amp; Cross LLP</p>
+            </div>
+          </div>
+
+          <!-- PANE 3: UTBMS BILLING SYNC -->
+          <div class="stitch-ai-pane" id="pane-utbms">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <div>
+                <strong style="font-size:13px;">Automated UTBMS / LEDES Time Capture Ledger</strong>
+                <p style="font-size:12px; color:var(--muted); margin:2px 0 0 0;">Eliminates timekeeper entry friction by mapping spoken attendance and legal work product to ABA Uniform Task-Based Management Codes.</p>
+              </div>
+              <div style="display:flex; gap:8px;">
+                <button class="stitch-btn-action" id="stitchSyncClioBtn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span id="stitchSyncClioLabel">One-Tap Sync to Clio</span>
+                </button>
+                <button class="stitch-btn-action stitch-btn-action--outline">
+                  <span>Export LEDES 1998B</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- UTBMS Billing Table -->
+            <table class="stitch-utbms-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Task / Activity Code</th>
+                  <th>Narrative Description</th>
+                  <th>Hours</th>
+                  <th>Rate</th>
+                  <th>Total</th>
+                  <th>Compliance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2024-10-24</td>
+                  <td><strong style="color:var(--accent);">L120</strong> / Analysis</td>
+                  <td>Confer with co-counsel S. Jenkins and expert Dr. K. Moore regarding technical rebuttal boundaries, invalidity defensibility, and mediation anchors.</td>
+                  <td>0.8</td>
+                  <td>$550.00</td>
+                  <td>$440.00</td>
+                  <td><span class="stitch-badge stitch-badge--green" style="font-size:9.5px;">✓ Audit Passed</span></td>
+                </tr>
+                <tr>
+                  <td>2024-10-24</td>
+                  <td><strong style="color:var(--accent);">A103</strong> / Draft/Revise</td>
+                  <td>Draft comprehensive post-conference memorandum to General Counsel Arthur Sterling detailing FRE 408 settlement authorization and expert disclosures.</td>
+                  <td>0.4</td>
+                  <td>$550.00</td>
+                  <td>$220.00</td>
+                  <td><span class="stitch-badge stitch-badge--green" style="font-size:9.5px;">✓ Audit Passed</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg); border:1px solid var(--line); padding:10px 14px; font-family:var(--mono); font-size:11.5px; flex-wrap:wrap; gap:8px;">
+              <div>Matter: <strong>#2024-884-CV (Apex Dynamics)</strong> · Timekeeper: <strong>Sarah Jenkins (Partner)</strong></div>
+              <div style="display:flex; gap:16px;">
+                <span>Total Billable: <strong style="color:var(--green);">1.20 hrs ($660.00)</strong></span>
+                <span>Time Saved: <strong style="color:var(--accent);">28 minutes</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE 4: RECORD & SPOLIATION CONTROL (LUA-LEGAL DIRECT BENCHMARK) -->
+          <div class="stitch-ai-pane" id="pane-spoliation">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
+              <div>
+                <strong style="font-size:13px;">Post-Meeting Record &amp; Spoliation Governor (FRCP 37(e) Safe Harbor)</strong>
+                <p style="font-size:12px; color:var(--muted); margin:2px 0 0 0;">Unlike consumer AI meeting bots that create perpetual discovery liabilities, CaseNotes allows litigators to determine whether a record should exist at all.</p>
+              </div>
+              <span class="stitch-badge stitch-badge--green">FRCP 37(e) Compliant</span>
+            </div>
+
+            <!-- 3 Decision Cards -->
+            <div class="stitch-spoliation-grid">
+              <div class="stitch-spoliation-card stitch-spoliation-card--active" data-spoliation="retain">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <strong style="font-size:12px; font-family:var(--mono); color:var(--green);">Option A: Full Record</strong>
+                  <span class="stitch-badge stitch-badge--green" style="font-size:9px;">Active</span>
+                </div>
+                <div style="font-size:12.5px; font-weight:600;">Commit Structured Note &amp; Retain Diarized Audio</div>
+                <p style="font-size:11.5px; color:var(--muted); margin:0; line-height:1.45;">Full preservation in private firm matter vault. Ideal for formal depositions, court conferences, and third-party witness cross-examinations.</p>
+                <div style="margin-top:auto; font-size:10.5px; font-family:var(--mono); color:var(--green);">✓ Evidentiary Provenance Intact</div>
+              </div>
+
+              <div class="stitch-spoliation-card" data-spoliation="quarantine">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <strong style="font-size:12px; font-family:var(--mono); color:var(--amber);">Option B: 30-Day Hold</strong>
+                  <span class="stitch-badge stitch-badge--neutral" style="font-size:9px;">Standby</span>
+                </div>
+                <div style="font-size:12.5px; font-weight:600;">Retain Synthesized Work Product; Quarantine Audio</div>
+                <p style="font-size:11.5px; color:var(--muted); margin:0; line-height:1.45;">Audio is sequestered into an auto-expiring 30-day encrypted vault, leaving only lawyer-approved work product notes in the active case file.</p>
+                <div style="margin-top:auto; font-size:10.5px; font-family:var(--mono); color:var(--amber);">⚠ Auto-Purge Scheduled Nov 24</div>
+              </div>
+
+              <div class="stitch-spoliation-card" data-spoliation="purge">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <strong style="font-size:12px; font-family:var(--mono); color:#ef4444;">Option C: Strike &amp; Purge</strong>
+                  <span class="stitch-badge stitch-badge--neutral" style="font-size:9px;">Zero Footprint</span>
+                </div>
+                <div style="font-size:12.5px; font-weight:600;">Cryptographic Strike &amp; Zero-Overwrite Purge</div>
+                <p style="font-size:11.5px; color:var(--muted); margin:0; line-height:1.45;">Instantly destroys audio, diarization tokens, and temp embeddings. Emits cryptographic proof of zero retention under Rule 37(e) safe harbor.</p>
+                <div style="margin-top:auto; font-size:10.5px; font-family:var(--mono); color:#ef4444;">⚡ Non-Discoverable Off-The-Record</div>
+              </div>
+            </div>
+
+            <!-- Dynamic Feedback Box -->
+            <div id="stitchSpoliationFeedback" class="stitch-guardrail-banner" style="margin-top:4px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              <div><strong>Current Governance Status:</strong> Full evidentiary retention selected. Diarized audio and synchronized transcript segments are anchored to Matter #2024-884-CV with cryptographic SHA-256 tamper seals. Work-product privilege flags active under FRE 502.</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <figcaption><span class="figure-badge">AI Safety &amp; Grounding</span> <strong>Deterministic Fact-Extraction &amp; Verbatim Citation Inspector</strong> — Strict zero-hallucination Q&amp;A showing exact speaker attribution, audio playback links, cryptographic provenance hash, and automated refusal for undocumented questions.</figcaption>
+    <figcaption><span class="figure-badge">Interactive Legal AI Workbench</span> <strong>Zero-Hallucination Intelligence, 1-Click Client Communications &amp; Spoliation Governor</strong> — Benchmarked against privilege-first standards (Lua Legal) with live switchable modes for fact extraction, privileged client letters, UTBMS e-billing, and FRCP 37(e) record destruction.</figcaption>
   </figure>
 
   <h3 class="h-sub" style="margin-top:36px;">How the pipeline turns 47 minutes into 5 matter-linked artifacts</h3>
@@ -3081,6 +3302,205 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     if (e.key === "Escape") closeLightbox();
     else if (e.key === "ArrowLeft") renderImage(currentIndex - 1);
     else if (e.key === "ArrowRight") renderImage(currentIndex + 1);
+  });
+})();
+</script>
+<script>
+// ==========================================================================
+// INTERACTIVE LEGAL AI WORKBENCH CONTROLLER (LUA-LEGAL BENCHMARK ENGINE)
+// ==========================================================================
+(function() {
+  // 1. Tab Switching
+  var tabButtons = document.querySelectorAll('.stitch-ai-tab');
+  var panes = {
+    qa: document.getElementById('pane-qa'),
+    letter: document.getElementById('pane-letter'),
+    utbms: document.getElementById('pane-utbms'),
+    spoliation: document.getElementById('pane-spoliation')
+  };
+
+  tabButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.getAttribute('data-tab');
+      tabButtons.forEach(function(b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      Object.keys(panes).forEach(function(key) {
+        if (panes[key]) {
+          panes[key].classList.remove('active');
+        }
+      });
+      if (panes[target]) {
+        panes[target].classList.add('active');
+      }
+      if (window.mzSFX && typeof window.mzSFX.play === 'function') {
+        window.mzSFX.play('click');
+      }
+    });
+  });
+
+  // 2. Prompt Chips in Q&A Pane
+  var chips = document.querySelectorAll('.stitch-prompt-chip');
+  var queryText = document.getElementById('stitchActiveQueryText');
+  var answerContent = document.getElementById('stitchAnswerContent');
+
+  var responses = {
+    0: {
+      query: 'What was agreed regarding the patent royalty ceiling and expert witness rebuttal schedule?',
+      html: '<div class="stitch-grounded-text"><strong>1. Settlement Ceiling &amp; Mediation Anchor:</strong> The parties agreed to maintain a firm walk-away settlement ceiling of $2.2M, but authorized Sarah Jenkins to open discussions at $3.5M during Friday\'s mediation conference. <span class="stitch-cite-tag" title="Click to inspect verbatim audio segment">[28:14 · S. Jenkins, Lead Counsel]</span></div>' +
+            '<div class="stitch-grounded-text"><strong>2. Expert Witness Rebuttal Disclosures:</strong> Dr. Kenneth Moore confirmed that the Rule 702 technical rebuttal will be completed by November 4th, expressly conditioned on plaintiff delivering the full git commit dump. <span class="stitch-cite-tag" title="Click to inspect verbatim audio segment">[36:50 · Dr. K. Moore, Expert Witness]</span></div>' +
+            '<div class="stitch-grounded-text" style="color:var(--muted); font-size:12.5px;"><strong>3. Cross-Licensing Terms:</strong> <span class="stitch-badge stitch-badge--neutral" style="font-size:10px;">Not Addressed in Record</span> — Audio transcript contains zero mentions of cross-licensing parameters; model refusal triggered pursuant to Strict Grounding Invariant.</div>'
+    },
+    1: {
+      query: 'Were any off-the-record representations made regarding plaintiff\'s trade secret claim?',
+      html: '<div class="stitch-grounded-text"><strong>1. Off-the-Record Trade Secret Discussions:</strong> At timestamp 14:02, plaintiff\'s counsel requested to speak "strictly between attorneys" regarding Count IV (Trade Secrets). CaseNotes flagged this segment as <span class="stitch-redaction-pill">FRE 408 SETTLEMENT WORK-PRODUCT</span>. No admission of liability was made. <span class="stitch-cite-tag">[14:08 · P. Hastings, Opposing Counsel]</span></div>' +
+            '<div class="stitch-grounded-text"><strong>2. Technical Source Code Access:</strong> Apex confirmed that no source code repos were cloned to personal devices, supported by forensic audit logs submitted to Magistrate Torres. <span class="stitch-cite-tag">[19:42 · Dr. K. Moore]</span></div>'
+    },
+    2: {
+      query: 'What cross-licensing parameters were approved by Arthur Sterling during the call?',
+      html: '<div class="stitch-grounded-text" style="color:var(--muted); font-size:13px; padding:12px; background:rgba(255,255,255,0.02); border:1px dashed var(--line);">' +
+            '<div style="color:var(--amber); font-weight:600; margin-bottom:4px;">⚠️ Explicit Model Refusal (Anti-Hallucination Safe Harbor)</div>' +
+            'Cross-licensing parameters were <strong>not approved or substantively discussed</strong> by Arthur Sterling during this recorded session. Arthur stated at 22:15: <em>"Any licensing discussions must wait until we evaluate their damages expert."</em> Pursuant to ABA Opinion 512, CaseNotes refuses to infer hypothetical authorization terms. <span class="stitch-cite-tag">[22:15 · A. Sterling, GC]</span></div>'
+    }
+  };
+
+  chips.forEach(function(chip, idx) {
+    chip.addEventListener('click', function() {
+      chips.forEach(function(c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      if (responses[idx] && queryText && answerContent) {
+        queryText.innerHTML = '<strong>QUERY:</strong> "' + responses[idx].query + '"';
+        answerContent.innerHTML = responses[idx].html;
+      }
+      if (window.mzSFX && typeof window.mzSFX.play === 'function') {
+        window.mzSFX.play('click');
+      }
+    });
+  });
+
+  // 3. Audio Snippet Player
+  var playBtn = document.getElementById('stitchPlayAudioBtn');
+  var playIcon = document.getElementById('stitchPlayIcon');
+  var playLabel = document.getElementById('stitchPlayLabel');
+  var audioBar = document.getElementById('stitchAudioBar');
+  var isPlaying = false;
+
+  if (playBtn) {
+    playBtn.addEventListener('click', function() {
+      isPlaying = !isPlaying;
+      if (isPlaying) {
+        audioBar.classList.add('playing');
+        playIcon.textContent = '❚❚';
+        playLabel.textContent = 'Pause Snippet';
+        if (window.mzSFX && typeof window.mzSFX.play === 'function') {
+          window.mzSFX.play('open');
+        }
+      } else {
+        audioBar.classList.remove('playing');
+        playIcon.textContent = '▶';
+        playLabel.textContent = 'Play Audio Snippet';
+      }
+    });
+  }
+
+  // 4. Copy Letter Button
+  var copyLetterBtn = document.getElementById('stitchCopyLetterBtn');
+  var copyLetterLabel = document.getElementById('stitchCopyLetterLabel');
+
+  if (copyLetterBtn) {
+    copyLetterBtn.addEventListener('click', function() {
+      var letterDoc = document.querySelector('.stitch-letter-doc');
+      if (letterDoc && navigator.clipboard) {
+        navigator.clipboard.writeText(letterDoc.innerText).then(function() {
+          copyLetterLabel.textContent = '✓ Copied to Clipboard!';
+          copyLetterBtn.style.background = 'var(--green)';
+          copyLetterBtn.style.color = '#ffffff';
+          if (window.mzSFX && typeof window.mzSFX.play === 'function') {
+            window.mzSFX.play('success');
+          }
+          setTimeout(function() {
+            copyLetterLabel.textContent = 'Copy Formatted Letter';
+            copyLetterBtn.style.background = '';
+            copyLetterBtn.style.color = '';
+          }, 2400);
+        });
+      }
+    });
+  }
+
+  // 5. One-Tap Sync to Clio Button
+  var syncClioBtn = document.getElementById('stitchSyncClioBtn');
+  var syncClioLabel = document.getElementById('stitchSyncClioLabel');
+
+  if (syncClioBtn) {
+    syncClioBtn.addEventListener('click', function() {
+      syncClioLabel.textContent = 'Syncing...';
+      syncClioBtn.style.opacity = '0.7';
+      setTimeout(function() {
+        syncClioLabel.textContent = '✓ Synced with Clio (LEDES #884-24)';
+        syncClioBtn.style.background = 'var(--green)';
+        syncClioBtn.style.color = '#ffffff';
+        syncClioBtn.style.opacity = '1';
+        if (window.mzSFX && typeof window.mzSFX.play === 'function') {
+          window.mzSFX.play('success');
+        }
+        setTimeout(function() {
+          syncClioLabel.textContent = 'One-Tap Sync to Clio';
+          syncClioBtn.style.background = '';
+          syncClioBtn.style.color = '';
+        }, 3200);
+      }, 700);
+    });
+  }
+
+  // 6. Post-Meeting Record & Spoliation Selector
+  var spoliationCards = document.querySelectorAll('.stitch-spoliation-card');
+  var spoliationFeedback = document.getElementById('stitchSpoliationFeedback');
+
+  var spoliationTexts = {
+    retain: {
+      color: 'var(--green)',
+      text: '<strong>Current Governance Status: Full Evidentiary Retention Selected.</strong> Diarized audio and synchronized transcript segments are anchored to Matter #2024-884-CV with cryptographic SHA-256 tamper seals. Work-product privilege flags active under FRE 502.'
+    },
+    quarantine: {
+      color: 'var(--amber)',
+      text: '<strong>Current Governance Status: 30-Day Quarantined Audio Hold Active.</strong> Audio will be irrevocably purged on November 24, 2024. Only attorney-approved work product notes and action items will remain in the active matter record to prevent collateral discovery risk.'
+    },
+    purge: {
+      color: '#ef4444',
+      text: '<strong>Current Governance Status: Cryptographic Strike & Instant Purge Executed.</strong> Raw audio, temp embeddings, and audio tokens have been destroyed with zero-overwrite verification. Non-discoverable administrative time logs preserved under FRCP 37(e) safe harbor.'
+    }
+  };
+
+  spoliationCards.forEach(function(card) {
+    card.addEventListener('click', function() {
+      spoliationCards.forEach(function(c) {
+        c.classList.remove('stitch-spoliation-card--active');
+        var b = c.querySelector('.stitch-badge');
+        if (b) {
+          b.className = 'stitch-badge stitch-badge--neutral';
+          b.textContent = 'Standby';
+        }
+      });
+      card.classList.add('stitch-spoliation-card--active');
+      var badge = card.querySelector('.stitch-badge');
+      var mode = card.getAttribute('data-spoliation');
+      if (badge) {
+        badge.className = mode === 'purge' ? 'stitch-badge stitch-badge--neutral' : 'stitch-badge stitch-badge--green';
+        badge.textContent = mode === 'purge' ? 'Purged' : 'Active';
+      }
+      if (spoliationFeedback && spoliationTexts[mode]) {
+        spoliationFeedback.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="' + spoliationTexts[mode].color + '" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>' +
+          '<div>' + spoliationTexts[mode].text + '</div>';
+      }
+      if (window.mzSFX && typeof window.mzSFX.play === 'function') {
+        window.mzSFX.play('click');
+      }
+    });
   });
 })();
 </script>
