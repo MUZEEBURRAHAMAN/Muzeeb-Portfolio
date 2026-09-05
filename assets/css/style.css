@@ -6149,3 +6149,285 @@ html[data-theme="light"] .mz-highlight[data-action="underline"] {
     left: 200% !important;
     transition: left 0.75s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
+
+
+/* ============================================================
+   PORTFOLIO CRAFT ARCHITECTURE (1280px Container & Clean Layout)
+   ============================================================ */
+:root {
+    --mz-container-max: 1280px;
+}
+
+#main,
+.site-header__inner {
+    max-width: var(--mz-container-max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-header__inner {
+    padding: 0 16px;
+}
+@media (min-width: 640px) {
+    .site-header__inner {
+        padding: 0 24px;
+    }
+}
+@media (min-width: 768px) {
+    .site-header__inner {
+        padding: 0 32px;
+    }
+}
+
+.mz-hero,
+.mz-projects,
+.mz-work-stack,
+.mz-work-card,
+.mz-work-card__link,
+.mz-work-card__inner,
+.mz-work-card__img-container,
+.site-editions,
+.site-testimonials {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.mz-hero,
+.mz-projects,
+.site-editions,
+.site-testimonials {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.mz-hero__sub,
+.mz-projects__count,
+.mz-work-card__desc,
+.site-editions__desc,
+.site-testimonials__sub {
+    font-family: "Archivo", sans-serif;
+    letter-spacing: -0.012em;
+}
+
+.mz-hero__sub {
+    font-size: clamp(1.04rem, 1.65vw, 1.28rem);
+    line-height: 1.65;
+    color: #a1a19a;
+    max-width: 62ch;
+}
+
+.mz-hero__sub b,
+.mz-hero__sub strong {
+    font-family: "Archivo", sans-serif;
+    color: #f4f2ed;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+[data-theme="light"] .mz-hero__sub {
+    color: #52524e;
+}
+
+[data-theme="light"] .mz-hero__sub b,
+[data-theme="light"] .mz-hero__sub strong {
+    color: #111111;
+}
+
+/* Eyebrow badge pill */
+.mz-hero__eyebrow-wrapper {
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: mz-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+    display: flex;
+    width: fit-content;
+}
+
+.mz-hero__badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #f4f2ed;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 9999px;
+}
+
+.mz-hero__badge-pill:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.mz-hero__badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    color: #0b0b0c;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    line-height: 1.4;
+    border-radius: 9999px;
+}
+
+.mz-hero__badge-tag .mz-hero__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16a34a;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25);
+    flex: none;
+}
+
+.mz-hero__badge-text {
+    padding: 0 10px 0 2px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.82rem;
+    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s ease;
+}
+
+.mz-hero__badge-pill:hover .mz-hero__badge-text {
+    color: #ffffff;
+}
+
+[data-theme="light"] .mz-hero__badge-pill {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #111111;
+}
+
+[data-theme="light"] .mz-hero__badge-pill:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .mz-hero__badge-tag {
+    background: #0b0b0c;
+    color: #ffffff;
+}
+
+[data-theme="light"] .mz-hero__badge-text {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] .mz-hero__badge-pill:hover .mz-hero__badge-text {
+    color: #000000;
+}
+
+/* Clean Hatched Section Divider - Crisp & Prominent */
+.hatched-divider {
+    display: block !important;
+    width: calc(100% + 32px) !important;
+    margin: 3.5rem -16px !important;
+    height: 32px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    box-sizing: border-box !important;
+    z-index: 2 !important;
+}
+
+@media (min-width: 640px) {
+    .hatched-divider {
+        width: calc(100% + 48px) !important;
+        margin: 4.5rem -24px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .hatched-divider {
+        width: calc(100% + 64px) !important;
+        margin: 5rem -32px !important;
+    }
+}
+
+.hatched-divider__pattern {
+    position: absolute !important;
+    inset: 0 !important;
+    opacity: 0.45 !important;
+    background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1.5px, transparent 0, transparent 8px) !important;
+    pointer-events: none !important;
+}
+
+[data-theme="light"] .hatched-divider,
+html[data-theme="light"] .hatched-divider {
+    border-top-color: rgba(0, 0, 0, 0.14) !important;
+    border-bottom-color: rgba(0, 0, 0, 0.14) !important;
+    color: #000000 !important;
+}
+
+[data-theme="light"] .hatched-divider__pattern,
+html[data-theme="light"] .hatched-divider__pattern {
+    opacity: 0.25 !important;
+}
+
+/* CSS Scroll-driven progress bar */
+@keyframes mz-scroll-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+.mz-scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #f4f2ed;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+    .mz-scroll-progress-bar {
+        animation: mz-scroll-progress linear;
+        animation-timeline: scroll();
+    }
+}
+
+[data-theme="light"] .mz-scroll-progress-bar {
+    background: #111111;
+}
+
+/* Refined tag pills on cards */
+.mz-work-card__meta-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.01em;
+}
+
+[data-theme="light"] .mz-work-card__meta-tag {
+    color: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}

@@ -45,174 +45,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <!-- Slick slider css -->
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/slick-theme.css">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=610">
+    <link rel="stylesheet" href="assets/css/style.css?v=612">
+    <!-- Legacy stylesheets (Commented out for performance & future reference):
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/slick-theme.css">
+    -->
     <style>
-        /* Body Content & Header 1134px width */
-        #main,
-        .site-header__inner {
-            max-width: 1134px !important;
-        }
-        .site-header__inner {
-            padding: 0 16px !important;
-        }
-        @media (min-width: 640px) {
-            .site-header__inner {
-                padding: 0 24px !important;
-            }
-        }
-        @media (min-width: 768px) {
-            .site-header__inner {
-                padding: 0 32px !important;
-            }
-        }
-        /* Make all body content fill the 1134px container and align with header logo */
-        .mz-hero,
-        .mz-projects,
-        .mz-work-stack,
-        .mz-work-card,
-        .mz-work-card__link,
-        .mz-work-card__inner,
-        .mz-work-card__img-container,
-        .site-editions,
-        .site-testimonials {
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-        }
-        .mz-hero,
-        .mz-projects,
-        .site-editions,
-        .site-testimonials {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-        }
-        /* Archivo font on subheadings */
-        .mz-hero__sub,
-        .mz-projects__count,
-        .mz-work-card__desc,
-        .site-editions__desc,
-        .site-testimonials__sub {
-            font-family: 'Archivo', sans-serif !important;
-            letter-spacing: -0.012em !important;
-        }
-        .mz-hero__sub {
-            font-size: clamp(1.02rem, 1.65vw, 1.26rem) !important;
-            line-height: 1.64 !important;
-            color: #a1a19a !important;
-            max-width: 58ch !important;
-        }
-        .mz-hero__sub b,
-        .mz-hero__sub strong {
-            font-family: 'Archivo', sans-serif !important;
-            color: #f4f2ed !important;
-            font-weight: 600 !important;
-            letter-spacing: -0.01em !important;
-        }
-        [data-theme="light"] .mz-hero__sub {
-            color: #52524e !important;
-        }
-        [data-theme="light"] .mz-hero__sub b,
-        [data-theme="light"] .mz-hero__sub strong {
-            color: #111111 !important;
-        }
-        /* SaaS Clean Eyebrow Badge */
-        .mz-hero__eyebrow-wrapper {
-            margin-bottom: 24px;
-            opacity: 0;
-            animation: mz-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-            display: flex;
-            width: fit-content;
-        }
-        .mz-hero__badge-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 4px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #f4f2ed;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-        .mz-hero__badge-pill:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-        }
-        .mz-hero__badge-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #ffffff;
-            color: #0b0b0c;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            padding: 3px 9px;
-            line-height: 1.4;
-        }
-        .mz-hero__badge-tag .mz-hero__dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #16a34a;
-            box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25);
-            flex: none;
-        }
-        .mz-hero__badge-text {
-            padding: 0 8px 0 2px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.82rem;
-            letter-spacing: 0.01em;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            transition: color 0.2s ease;
-        }
-        .mz-hero__badge-pill:hover .mz-hero__badge-text {
-            color: #ffffff;
-        }
-        [data-theme="light"] .mz-hero__badge-pill,
-        html[data-theme="light"] .mz-hero__badge-pill {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.1);
-            color: #111111;
-        }
-        [data-theme="light"] .mz-hero__badge-pill:hover,
-        html[data-theme="light"] .mz-hero__badge-pill:hover {
-            background: rgba(0, 0, 0, 0.06);
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-        [data-theme="light"] .mz-hero__badge-tag,
-        html[data-theme="light"] .mz-hero__badge-tag {
-            background: #0b0b0c;
-            color: #ffffff;
-        }
-        [data-theme="light"] .mz-hero__badge-text,
-        html[data-theme="light"] .mz-hero__badge-text {
-            color: rgba(0, 0, 0, 0.7);
-        }
-        [data-theme="light"] .mz-hero__badge-pill:hover .mz-hero__badge-text,
-        html[data-theme="light"] .mz-hero__badge-pill:hover .mz-hero__badge-text {
-            color: #000000;
-        }
-
-        /* Clean Hatched Section Divider */
+        /* Prominent Hatched Section Divider */
         .hatched-divider {
             display: block !important;
             width: calc(100% + 32px) !important;
@@ -220,8 +62,8 @@
             height: 32px !important;
             position: relative !important;
             overflow: hidden !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
             color: #ffffff !important;
             box-sizing: border-box !important;
             z-index: 2 !important;
@@ -241,25 +83,25 @@
         .hatched-divider__pattern {
             position: absolute !important;
             inset: 0 !important;
-            opacity: 0.25 !important;
-            background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
-            background-size: 10px 10px !important;
+            opacity: 0.45 !important;
+            background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1.5px, transparent 0, transparent 8px) !important;
             pointer-events: none !important;
         }
         [data-theme="light"] .hatched-divider,
         html[data-theme="light"] .hatched-divider {
-            border-top-color: rgba(0, 0, 0, 0.12) !important;
-            border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+            border-top-color: rgba(0, 0, 0, 0.14) !important;
+            border-bottom-color: rgba(0, 0, 0, 0.14) !important;
             color: #000000 !important;
         }
         [data-theme="light"] .hatched-divider__pattern,
         html[data-theme="light"] .hatched-divider__pattern {
-            opacity: 0.15 !important;
+            opacity: 0.25 !important;
         }
     </style>
 </head>
 
 <body class="bg-[#0f0f0f] text-[#f4f2ed]">
+    <div class="mz-scroll-progress-bar" aria-hidden="true"></div>
     <a href="#main" class="mz-skip">Skip to content</a>
 
     <header class="site-header" id="siteHeader">
@@ -340,11 +182,9 @@
                                 <h3 class="mz-work-card__title">Omnis Proof: Simplifying E-Signatures for Legal Workflows</h3>
                                 <p class="mz-work-card__desc">Designing a secure e-signature experience that makes preparing, sending, signing, and tracking legal documents simpler and more intuitive.</p>
                                 <div class="mz-work-card__tags">
-                                    <span>Legal</span>
-                                    <span>·</span>
-                                    <span>0→1</span>
-                                    <span>·</span>
-                                    <span>Workflow</span>
+                                    <span class="mz-work-card__meta-tag">Legal Tech</span>
+                                    <span class="mz-work-card__meta-tag">0 → 1 Product</span>
+                                    <span class="mz-work-card__meta-tag">E-Sign Workflows</span>
                                 </div>
                             </div>
                             <div class="mz-work-card__action">
@@ -357,35 +197,7 @@
                     </a>
                 </article>
 
-                <!-- Case Study 2: AI UX Audit -->
-                <article class="mz-work-card">
-                    <a href="audit-engine-case-study.html" class="mz-work-card__link" aria-label="AI UX Audit: Automating Product Quality Reviews">
-                        <div class="mz-work-card__img-container">
-                            <img loading="lazy" src="assets/images/ux-audit-assistant.webp" alt="AI UX Audit: Automating Product Quality Reviews">
-                        </div>
-                        <div class="mz-work-card__text">
-                            <div class="mz-work-card__content">
-                                <h3 class="mz-work-card__title">AI UX Audit: Automating Product Quality Reviews</h3>
-                                <p class="mz-work-card__desc">Turning manual staging reviews into an automated audit engine that catches UI bugs and delivers copy-paste fixes to engineering.</p>
-                                <div class="mz-work-card__tags">
-                                    <span>AI</span>
-                                    <span>·</span>
-                                    <span>Automation</span>
-                                    <span>·</span>
-                                    <span>Design Quality</span>
-                                </div>
-                            </div>
-                            <div class="mz-work-card__action">
-                                <span class="mz-work-card__cta">
-                                    <span>View case study</span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-
-                <!-- Case Study 3: CaseNotes -->
+                <!-- Case Study 2: CaseNotes -->
                 <article class="mz-work-card">
                     <a href="casenotes-case-study.html" class="mz-work-card__link" aria-label="CaseNotes: AI Meeting Notetaker for Legal Teams">
                         <div class="mz-work-card__img-container">
@@ -400,11 +212,9 @@
                                 <h3 class="mz-work-card__title">CaseNotes: AI Meeting Notetaker for Legal Teams</h3>
                                 <p class="mz-work-card__desc">An AI meeting notetaker built for lawyers, where every conversation is part of a case, and every record carries the weight of privilege.</p>
                                 <div class="mz-work-card__tags">
-                                    <span>AI</span>
-                                    <span>·</span>
-                                    <span>Legal Tech</span>
-                                    <span>·</span>
-                                    <span>0→1 System</span>
+                                    <span class="mz-work-card__meta-tag">AI &amp; Legal Tech</span>
+                                    <span class="mz-work-card__meta-tag">0 → 1 System</span>
+                                    <span class="mz-work-card__meta-tag">High-Trust UX</span>
                                 </div>
                             </div>
                             <div class="mz-work-card__action">
@@ -417,7 +227,33 @@
                     </a>
                 </article>
 
-                <!-- Case Study 4: MedChron (Coming Soon) -->
+                <!-- Case Study 3: AI UX Audit -->
+                <article class="mz-work-card">
+                    <a href="audit-engine-case-study.html" class="mz-work-card__link" aria-label="AI UX Audit: Automating Product Quality Reviews">
+                        <div class="mz-work-card__img-container">
+                            <img loading="lazy" src="assets/images/ux-audit-assistant.webp" alt="AI UX Audit: Automating Product Quality Reviews">
+                        </div>
+                        <div class="mz-work-card__text">
+                            <div class="mz-work-card__content">
+                                <h3 class="mz-work-card__title">AI UX Audit: Automating Product Quality Reviews</h3>
+                                <p class="mz-work-card__desc">Turning manual staging reviews into an automated audit engine that catches UI bugs and delivers copy-paste fixes to engineering.</p>
+                                <div class="mz-work-card__tags">
+                                    <span class="mz-work-card__meta-tag">AI &amp; Automation</span>
+                                    <span class="mz-work-card__meta-tag">Design Systems</span>
+                                    <span class="mz-work-card__meta-tag">Design Quality Engine</span>
+                                </div>
+                            </div>
+                            <div class="mz-work-card__action">
+                                <span class="mz-work-card__cta">
+                                    <span>View case study</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Case Study 4: MedChron & Case Study 5: Omnis AI (Coming Soon - paused to eliminate unfinished placeholders)
                 <article class="mz-work-card">
                     <div class="mz-work-card__inner">
                         <div class="mz-work-card__img-container">
@@ -428,19 +264,11 @@
                             <div class="mz-work-card__content">
                                 <h3 class="mz-work-card__title">MedChron: Turning Complex Medical Records into Structured Legal Timelines</h3>
                                 <p class="mz-work-card__desc">Designing a legal workflow that helps lawyers review, verify, and extract chronological facts from thousands of medical record pages.</p>
-                                <div class="mz-work-card__tags">
-                                    <span>AI</span>
-                                    <span>·</span>
-                                    <span>Legal</span>
-                                    <span>·</span>
-                                    <span>0→1</span>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Case Study 5: Omnis AI Unified Design System (Coming Soon) -->
                 <article class="mz-work-card">
                     <div class="mz-work-card__inner">
                         <div class="mz-work-card__img-container">
@@ -451,67 +279,12 @@
                             <div class="mz-work-card__content">
                                 <h3 class="mz-work-card__title">Omnis AI: Scaling Design Across 8+ Products</h3>
                                 <p class="mz-work-card__desc">Building a unified design system that gave a growing suite of AI-powered legal products a shared foundation for consistency, scalability, and faster delivery.</p>
-                                <div class="mz-work-card__tags">
-                                    <span>Design System</span>
-                                    <span>·</span>
-                                    <span>Scale</span>
-                                    <span>·</span>
-                                    <span>Multi-product</span>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Case Studies (Commented out to move to Playground later)
-                <article class="mz-work-card">
-                    <a href="forge-case-study.html" class="mz-work-card__link" aria-label="Forge: Component Library Engine">
-                        <div class="mz-work-card__img-container">
-                            <img loading="lazy" src="assets/images/forge-cover.webp" alt="Forge: Component Library Engine">
-                        </div>
-                        <div class="mz-work-card__text">
-                            <h3 class="mz-work-card__title">Forge: Component Library Engine</h3>
-                            <p class="mz-work-card__desc">A tool that scaffolds, edits, and audits a React + TypeScript component library to maintain strict token conformance and automated documentation standards.</p>
-                            <div class="mz-work-card__tags">
-                                <span>Developer Tool</span>
-                                <span>·</span>
-                                <span>TypeScript</span>
-                                <span>·</span>
-                                <span>Claude Code</span>
-                            </div>
-                            <span class="mz-work-card__cta">
-                                <span>View case study</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </span>
-                        </div>
-                    </a>
-                </article>
-
-                <article class="mz-work-card">
-                    <a href="catchly-case-study.html" class="mz-work-card__link" aria-label="Catchly: Smart Subscription Tracker">
-                        <div class="mz-work-card__img-container">
-                            <img loading="lazy" src="assets/images/catchly-cover.webp" alt="Catchly: Smart Subscription Tracker">
-                        </div>
-                        <div class="mz-work-card__text">
-                            <h3 class="mz-work-card__title">Catchly: Smart Subscription Tracker</h3>
-                            <p class="mz-work-card__desc">A privacy-first subscription intelligence Chrome extension focused on recurring expense detection, cashflow forecasts, and renewal alerts without bank connections.</p>
-                            <div class="mz-work-card__tags">
-                                <span>Chrome Extension</span>
-                                <span>·</span>
-                                <span>Privacy</span>
-                                <span>·</span>
-                                <span>Product Design</span>
-                            </div>
-                            <span class="mz-work-card__cta">
-                                <span>View case study</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </span>
-                        </div>
-                    </a>
-                </article>
-                -->
-
-                <!-- Additional Case Studies (Commented out for focus)
+                <!-- ADDITIONAL ARCHIVED CASE STUDY CARDS (PRESERVED FOR FUTURE USE):
                 <article class="mz-work-card">
                     <a href="edge-state-fixer-case-study.html" class="mz-work-card__link" aria-label="Edge-State Fixer: AI State Generator">
                         <div class="mz-work-card__img-container">
@@ -540,6 +313,7 @@
                     <a href="zebralearn-case-study.html" class="mz-work-card__link" aria-label="Zebralearn: Learning Platform Redesign">
                         <div class="mz-work-card__img-container">
                             <img loading="lazy" src="assets/images/case-studies/zebralearn-case study-img1.png" alt="Zebralearn: Learning Platform Redesign">
+                        </div>
                         <div class="mz-work-card__text">
                             <h3 class="mz-work-card__title">Zebralearn: Learning Platform Redesign</h3>
                             <p class="mz-work-card__desc">Comprehensive web and mobile product redesign simplifying complex finance and business learning for 100k+ active learners.</p>
@@ -752,148 +526,17 @@
     </footer>
 </main>
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
     <!-- Lenis smooth scroll js -->
     <script src="assets/js/lenis.min.js"></script>
-    <!-- Typed js -->
-    <!-- Slick slider js -->
-    <script src="assets/js/slick.min.js"></script>
-    <!-- Gsap animation js -->
-    <script src="assets/js/gsap-latest-beta.min.js"></script>
-    <script src="assets/js/ScrambleText.js"></script>
-
-    <!-- Lenis smooth scroll js start -->
     <script>
-        const lenis = new Lenis()
-        lenis.on('scroll', (e) => {
-            // console.log(e)
-        })
+        const lenis = new Lenis();
         function raf(time) {
-            lenis.raf(time)
-            requestAnimationFrame(raf)
+            lenis.raf(time);
+            requestAnimationFrame(raf);
         }
-        requestAnimationFrame(raf)
+        requestAnimationFrame(raf);
     </script>
-    <!-- Lenis smooth scroll js end -->
-
-    <!-- Typed js start -->
-    <script src="assets/js/typed.min.js"></script>
-    <script>
-        $("#typed").typed({
-            strings: ["Figma", "Cursor", "Claude", "Framer", "Illustrator"],
-            typeSpeed: 100,
-            startDelay: 0,
-            backSpeed: 60,
-            backDelay: 100,
-            loop: true,
-            cursorChar: "|",
-            contentType: 'html'
-        });
-    </script>
-    <!-- Typed js end -->
-
-    <!-- Slick slider js start -->
-    <script>
-        var windowWidth = $(window).width();
-        if (windowWidth < 1024) {
-            $('.rating-slider').slick({
-                slidesToShow: 2,
-                arrows: false,
-                infinite: true,
-                speed: 8000,
-                autoplay: true,
-                autoplaySpeed: 0,
-                cssEase: 'linear',
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1.5,
-                        }
-                    },
-                    {
-                        breakpoint: 550,
-                        settings: {
-                            slidesToShow: 1,
-                        }
-                    }
-                ]
-            });
-        } else {
-            $('.rating-slider').slick({
-                centerMode: true,
-                slidesToShow: 1,
-                vertical: true,
-                verticalSwiping: true,
-                arrows: false,
-                infinite: true,
-                speed: 8000,
-                autoplay: true,
-                autoplaySpeed: 0,
-                cssEase: 'linear',
-            });
-        }
-    </script>
-    <!-- Slick slider js end -->
-
-    <!-- Gsap scramble text js start -->
-    <script>
-        // var tl = gsap.timeline({ defaults: { duration: 2, ease: "none" } });
-        // tl.to("#text1", { scrambleText: { text: "Hello! I'm Muzeeb, a UI/UX", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text2", { scrambleText: { text: "Designer & No Code Developer,", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text3", { scrambleText: { text: "Crafting Digital", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text4", { scrambleText: { text: "Experiences Simple &", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text5", { scrambleText: { text: "Easy to Use.", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        // Hero now uses CSS mask-reveal animation (.mz-hero); scramble disabled.
-    </script>
-
-    <style>
-        .scramble {
-            transition: all 0.5s ease-in-out;
-        }
-    </style>
-    <!-- Gsap scramble text js end -->
-
-    <!-- Scroll to top js start -->
-    <script>
-        $(window).on('scroll', function () {
-            const bHeight = $('body').height();
-            const scrolled = $(window).innerHeight() + $(window).scrollTop();
-
-            let percentage = ((scrolled / bHeight) * 100);
-
-            if (percentage > 100) percentage = 100;
-
-            $('.scroll-top:not(.slider-scroll-top) .scroll-track').css('width', percentage + '%');
-
-            if ($(window).scrollTop() > 250) {
-                $('.scroll-top').addClass('opacity-100 visible');
-                $('.scroll-top').removeClass('opacity-0 invisible');
-            } else {
-                $('.scroll-top').addClass('opacity-0 invisible');
-                $('.scroll-top').removeClass('opacity-100 visible');
-            }
-        });
-        $('.scroll-top').on("click", function () {
-            $('html, body').animate({ scrollTop: 0 }, 800);
-            return false;
-        });
-    </script>
-    <!-- Scroll to top js end -->
-
-    <!-- Sidebar toggle click js start -->
-    <script>
-        $("#toggle-btn").click(function () {
-            $(".sidebar-overlay, .mobile-sidebar").attr("data-sidebar", "true");
-        });
-        $("#toggle-close-btn, .sidebar-overlay").click(function () {
-            $(".sidebar-overlay, .mobile-sidebar").attr("data-sidebar", "false");
-        });
-    </script>
-    <script src="assets/js/nachi-sfx.js"></script>
-    <script src="assets/js/sfx.js"></script>
-    <script src="assets/js/site.js?v=551"></script>
+    <script src="assets/js/site.js?v=552"></script>
     <!-- Testimonials marquee -->
     <script>
     (function () {
@@ -1020,6 +663,117 @@
       });
     })();
     </script>
+
+    <!-- ============================================================
+         LEGACY / ARCHIVED SCRIPTS & INITIALIZATIONS (PRESERVED FOR FUTURE USE)
+         ============================================================
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/typed.min.js"></script>
+    <script src="assets/js/gsap-latest-beta.min.js"></script>
+    <script src="assets/js/ScrambleText.js"></script>
+    <script src="assets/js/nachi-sfx.js"></script>
+    <script src="assets/js/sfx.js"></script>
+
+    <script>
+        // Typed js
+        $("#typed").typed({
+            strings: ["Figma", "Cursor", "Claude", "Framer", "Illustrator"],
+            typeSpeed: 100,
+            startDelay: 0,
+            backSpeed: 60,
+            backDelay: 100,
+            loop: true,
+            cursorChar: "|",
+            contentType: 'html'
+        });
+    </script>
+
+    <script>
+        // Slick slider js
+        var windowWidth = $(window).width();
+        if (windowWidth < 1024) {
+            $('.rating-slider').slick({
+                slidesToShow: 2,
+                arrows: false,
+                infinite: true,
+                speed: 8000,
+                autoplay: true,
+                autoplaySpeed: 0,
+                cssEase: 'linear',
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1.5,
+                        }
+                    },
+                    {
+                        breakpoint: 550,
+                        settings: {
+                            slidesToShow: 1,
+                        }
+                    }
+                ]
+            });
+        } else {
+            $('.rating-slider').slick({
+                centerMode: true,
+                slidesToShow: 1,
+                vertical: true,
+                verticalSwiping: true,
+                arrows: false,
+                infinite: true,
+                speed: 8000,
+                autoplay: true,
+                autoplaySpeed: 0,
+                cssEase: 'linear',
+            });
+        }
+    </script>
+
+    <script>
+        // Gsap scramble text js
+        // var tl = gsap.timeline({ defaults: { duration: 2, ease: "none" } });
+        // tl.to("#text1", { scrambleText: { text: "Hello! I'm Muzeeb, a UI/UX", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
+        //     .to("#text2", { scrambleText: { text: "Designer & No Code Developer,", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
+        //     .to("#text3", { scrambleText: { text: "Crafting Digital", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
+        //     .to("#text4", { scrambleText: { text: "Experiences Simple &", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
+        //     .to("#text5", { scrambleText: { text: "Easy to Use.", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
+    </script>
+
+    <script>
+        // Scroll to top js
+        $(window).on('scroll', function () {
+            const bHeight = $('body').height();
+            const scrolled = $(window).innerHeight() + $(window).scrollTop();
+            let percentage = ((scrolled / bHeight) * 100);
+            if (percentage > 100) percentage = 100;
+            $('.scroll-top:not(.slider-scroll-top) .scroll-track').css('width', percentage + '%');
+            if ($(window).scrollTop() > 250) {
+                $('.scroll-top').addClass('opacity-100 visible');
+                $('.scroll-top').removeClass('opacity-0 invisible');
+            } else {
+                $('.scroll-top').addClass('opacity-0 invisible');
+                $('.scroll-top').removeClass('opacity-100 visible');
+            }
+        });
+        $('.scroll-top').on("click", function () {
+            $('html, body').animate({ scrollTop: 0 }, 800);
+            return false;
+        });
+    </script>
+
+    <script>
+        // Sidebar toggle click js
+        $("#toggle-btn").click(function () {
+            $(".sidebar-overlay, .mobile-sidebar").attr("data-sidebar", "true");
+        });
+        $("#toggle-close-btn, .sidebar-overlay").click(function () {
+            $(".sidebar-overlay, .mobile-sidebar").attr("data-sidebar", "false");
+        });
+    </script>
+    -->
 
 
 
