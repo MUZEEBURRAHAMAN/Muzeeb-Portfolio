@@ -794,12 +794,19 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
 /* COMPETITOR GRID */
 .comp-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin:28px 0; }
-.comp-card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:28px 24px; box-shadow:0 4px 20px var(--shadow-1); }
+.comp-card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:26px 24px; box-shadow:0 4px 20px var(--shadow-1); display:flex; flex-direction:column; }
 .comp-card.comp-card--distinct { border-color:var(--accent); background:var(--accent-soft); }
-.comp-card h3 { font-family:var(--font-display); font-size:17px; font-weight:700; margin-bottom:4px; color:var(--ink); display:flex; align-items:center; justify-content:space-between; }
-.comp-card .comp-card__tag { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); background:var(--surface); padding:3px 8px; border-radius:6px; border:1px solid var(--line); }
-.comp-card ul { list-style:none; padding-left:0; margin-top:14px; }
+.comp-card__header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; min-height:36px; }
+.comp-card__logo-wrap { display:inline-flex; align-items:center; justify-content:flex-start; height:36px; }
+.comp-card__logo { height:32px; width:auto; max-width:96px; object-fit:contain; display:block; }
+.comp-card__logo--wide { height:24px; }
+.comp-card h3, .comp-card__title { font-family:var(--font-display); font-size:18px; font-weight:700; margin:0 0 14px 0; color:var(--ink); display:flex; align-items:center; justify-content:space-between; }
+.comp-card .comp-card__tag { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); background:var(--surface); padding:4px 9px; border-radius:6px; border:1px solid var(--line); }
+.comp-card.comp-card--distinct .comp-card__tag { border-color:rgba(37,99,235,0.25); }
+[data-theme="dark"] .comp-card.comp-card--distinct .comp-card__tag { background:rgba(59,130,246,0.15); border-color:rgba(59,130,246,0.35); color:#93c5fd; }
+.comp-card ul { list-style:none; padding-left:0; margin:0; }
 .comp-card li { position:relative; padding-left:22px; font-size:14px; color:var(--muted); margin-bottom:10px; line-height:1.55; }
+.comp-card li:last-child { margin-bottom:0; }
 .comp-card li::before { content:"×"; position:absolute; left:0; top:-1px; color:var(--red); font-weight:700; font-size:16px; }
 .comp-card.comp-card--distinct li::before { content:"✓"; color:var(--accent); font-size:14px; }
 @media (max-width:768px) { .comp-grid { grid-template-columns:1fr; } }
@@ -1102,7 +1109,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
   <div class="comp-grid">
     <div class="comp-card">
-      <h3>Fireflies.ai</h3>
+      <div class="comp-card__header">
+        <div class="comp-card__logo-wrap">
+          <img src="assets/images/competitors/fireflies.svg" alt="Fireflies.ai logo" class="comp-card__logo" width="32" height="32" loading="lazy">
+        </div>
+      </div>
+      <h3 class="comp-card__title">Fireflies.ai</h3>
       <ul>
         <li>No privilege controls: every word captured is discoverable by default in litigation.</li>
         <li>Intrusive meeting bot creates social friction and awkward moments on client calls.</li>
@@ -1111,7 +1123,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       </ul>
     </div>
     <div class="comp-card">
-      <h3>Otter.ai</h3>
+      <div class="comp-card__header">
+        <div class="comp-card__logo-wrap">
+          <img src="assets/images/competitors/otter.png" alt="Otter.ai logo" class="comp-card__logo comp-card__logo--wide" width="84" height="24" loading="lazy">
+        </div>
+      </div>
+      <h3 class="comp-card__title">Otter.ai</h3>
       <ul>
         <li>Same consumer-AI privilege exposure, with no fiduciary relationship under federal rules.</li>
         <li>Past class-action lawsuits over recording consent practices erode client trust.</li>
@@ -1120,7 +1137,12 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       </ul>
     </div>
     <div class="comp-card">
-      <h3>Fathom</h3>
+      <div class="comp-card__header">
+        <div class="comp-card__logo-wrap">
+          <img src="assets/images/competitors/fathom.svg" alt="Fathom logo" class="comp-card__logo" width="32" height="32" loading="lazy">
+        </div>
+      </div>
+      <h3 class="comp-card__title">Fathom</h3>
       <ul>
         <li>Bot presence remains visible on calls despite marketing claims, creating exposure.</li>
         <li>Lacks SOC 2 / ISO compliance configurations needed for legal-grade confidentiality.</li>
@@ -1129,7 +1151,13 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       </ul>
     </div>
     <div class="comp-card comp-card--distinct">
-      <h3>Lua Legal <span class="comp-card__tag">Direct Legal Competitor</span></h3>
+      <div class="comp-card__header">
+        <div class="comp-card__logo-wrap">
+          <img src="assets/images/competitors/lua.svg" alt="Lua Legal logo" class="comp-card__logo" width="38" height="32" loading="lazy">
+        </div>
+        <span class="comp-card__tag">Direct Legal Competitor</span>
+      </div>
+      <h3 class="comp-card__title">Lua Legal</h3>
       <ul>
         <li>Pioneered "The Privilege-First Meeting AI" (Lua Notetaker &amp; Assistant) with SOC 2, ISO 27001, and zero data retention.</li>
         <li>Strong on live in-meeting assistance, post-meeting administrative drafts, and UTBMS billable time entries.</li>
@@ -1358,269 +1386,10 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">CaseNotes links with firm calendars and practice management software. Before a meeting begins, it checks the matter assignment and applies inherited privilege defaults (litigation calls default to privileged and restricted; firm administrative meetings default to open).</p>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <!-- AUTHENTIC CASENOTES APPLICATION SHELL (EXTRACTED FROM COVER UI) -->
-      <div class="cn-app-shell">
-        <!-- Top Navigation Bar -->
-        <div class="cn-top-bar">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid" title="Omni Suite">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">OMNIDATA</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="cn-search-bar">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <input type="text" class="cn-search-input" placeholder="Search for meetings, summaries, decisions..." readonly value="Search for meetings, summaries, decisions...">
-            <span class="cn-search-shortcut">⌘ + F</span>
-          </div>
-
-          <div class="cn-top-actions">
-            <button type="button" class="cn-action-icon-btn" title="Create New Matter Meeting">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            </button>
-            <button type="button" class="cn-action-icon-btn" title="Notifications">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-            </button>
-            <div class="cn-ai-status-pill">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              <span>Omnis AI</span>
-            </div>
-            <div class="cn-user-profile">
-              <div class="cn-user-avatar">JD</div>
-              <span style="font-weight:600;">John Doe <span style="font-size:10px; color:var(--muted); font-weight:400;">/ Admin ⌵</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- App Body: Left Rail + Center Canvas + Right Aside -->
-        <div class="cn-workspace-layout">
-          <!-- Left Navigation Rail -->
-          <nav class="cn-nav-rail" aria-label="CaseNotes Workspace Rail">
-            <div class="cn-nav-item active">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-              <span>Dashboard</span>
-            </div>
-            <div class="cn-nav-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              <span>Meetings</span>
-            </div>
-            <div class="cn-nav-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-              <span>Templates</span>
-            </div>
-            <div class="cn-nav-item" style="margin-top:auto;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-              <span>Settings</span>
-            </div>
-          </nav>
-
-          <!-- Main Canvas: Greeting + 4 Metric Cards + Meetings Timeline -->
-          <main class="cn-canvas">
-            <!-- Greeting Banner -->
-            <div class="cn-greeting-block">
-              <h2>Good morning, John!</h2>
-              <p>Here's what's happening with your meetings today.</p>
-            </div>
-
-            <!-- 4 Metric Cards Grid -->
-            <div class="cn-metrics-grid">
-              <div class="cn-metric-card">
-                <div class="cn-metric-top">
-                  <div class="cn-metric-icon-box cn-metric-icon-box--blue">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                  </div>
-                  <div class="cn-metric-meta">
-                    <span class="cn-metric-title">Today's Meetings</span>
-                    <span class="cn-metric-sub">Scheduled across matters</span>
-                  </div>
-                </div>
-                <div class="cn-metric-val">09</div>
-              </div>
-
-              <div class="cn-metric-card">
-                <div class="cn-metric-top">
-                  <div class="cn-metric-icon-box cn-metric-icon-box--green">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
-                  </div>
-                  <div class="cn-metric-meta">
-                    <span class="cn-metric-title">Hours Recorded</span>
-                    <span class="cn-metric-sub">Billable matter audio</span>
-                  </div>
-                </div>
-                <div class="cn-metric-val">20.9</div>
-              </div>
-
-              <div class="cn-metric-card">
-                <div class="cn-metric-top">
-                  <div class="cn-metric-icon-box cn-metric-icon-box--orange">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                  </div>
-                  <div class="cn-metric-meta">
-                    <span class="cn-metric-title">Tasks Extracted</span>
-                    <span class="cn-metric-sub">Assigned to team</span>
-                  </div>
-                </div>
-                <div class="cn-metric-val">129</div>
-              </div>
-
-              <div class="cn-metric-card">
-                <div class="cn-metric-top">
-                  <div class="cn-metric-icon-box cn-metric-icon-box--amber">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-                  </div>
-                  <div class="cn-metric-meta">
-                    <span class="cn-metric-title">Decisions Identified</span>
-                    <span class="cn-metric-sub">Court &amp; settlement logged</span>
-                  </div>
-                </div>
-                <div class="cn-metric-val">42</div>
-              </div>
-            </div>
-
-            <!-- Today's Meetings Timeline -->
-            <div class="cn-meetings-section">
-              <div class="cn-section-header-row">
-                <div class="cn-section-title-group">
-                  <h3>Today's Meetings</h3>
-                  <span>Calendar synchronized with Clio &amp; MS Outlook</span>
-                </div>
-                <span class="stitch-badge stitch-badge--green" style="font-size:10px;">Clio Synced</span>
-              </div>
-
-              <div class="cn-date-header">TODAY · TUE 26 MAY</div>
-
-              <!-- Meeting Row 1: Live Now -->
-              <div class="cn-meeting-row">
-                <div class="cn-meeting-left">
-                  <div class="cn-meeting-icon cn-meeting-icon--blue" title="Zoom Video">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-                  </div>
-                  <div class="cn-meeting-info">
-                    <div class="cn-meeting-title-row">
-                      <span>Deposition Prep: Apex Technologies v. MedTech Corp</span>
-                      <span class="cn-pill cn-pill--live">• Live Meeting</span>
-                    </div>
-                    <div class="cn-meeting-tags">
-                      <span class="cn-meeting-time">10:00 AM - 11:00 AM</span>
-                      <span class="cn-pill cn-pill--participants">6 Participants</span>
-                      <span class="cn-pill cn-pill--zoom">Matter #2024-884-CV</span>
-                      <span class="stitch-badge stitch-badge--neutral" style="font-size:10px;">Clio: CL-884-LIT</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="cn-meeting-actions">
-                  <button type="button" class="cn-btn-live-transcript">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                    Live Transcript
-                  </button>
-                  <button type="button" class="cn-btn-join">
-                    Join Meeting
-                  </button>
-                </div>
-              </div>
-
-              <!-- Meeting Row 2: Completed -->
-              <div class="cn-meeting-row">
-                <div class="cn-meeting-left">
-                  <div class="cn-meeting-icon cn-meeting-icon--green" title="Google Meet">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-                  </div>
-                  <div class="cn-meeting-info">
-                    <div class="cn-meeting-title-row">
-                      <span>Partner Strategy &amp; Fee Allocation Review</span>
-                      <span class="cn-pill cn-pill--completed">• Completed</span>
-                    </div>
-                    <div class="cn-meeting-tags">
-                      <span class="cn-meeting-time">08:30 AM - 09:15 AM</span>
-                      <span class="cn-pill cn-pill--participants">4 Participants</span>
-                      <span class="stitch-badge stitch-badge--amber" style="font-size:10px;">Confidential / Internal</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="cn-meeting-actions">
-                  <button type="button" class="stitch-btn stitch-btn--secondary" style="font-size:11.5px; padding:6px 12px;">
-                    View Summary (3 Decisions)
-                  </button>
-                </div>
-              </div>
-            </div>
-          </main>
-
-          <!-- Right Aside Panel: CaseNotes Bot & Upcoming Meetings -->
-          <aside class="cn-aside-panel">
-            <div class="cn-aside-tabs">
-              <div class="cn-aside-tab active">Upcoming (4)</div>
-              <div class="cn-aside-tab">Activity Feed</div>
-            </div>
-
-            <!-- CaseNotes Bot Invite Box -->
-            <div class="cn-bot-box">
-              <div class="cn-bot-title">CaseNotes Bot</div>
-              <div class="cn-bot-sub">Invite CaseNotes to record and transcribe any live meeting</div>
-              <input type="text" class="cn-bot-input" placeholder="Paste the meeting link (Zoom, Teams, Meet)..." readonly value="https://zoom.us/j/9482710492">
-              <button type="button" class="cn-btn-invite">Invite CaseNotes</button>
-            </div>
-
-            <!-- Upcoming Meetings list -->
-            <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); font-family:var(--mono); margin-top:4px;">
-              Auto-Join Queue
-            </div>
-
-            <div class="cn-upcoming-item">
-              <div class="cn-upcoming-header">
-                <div>
-                  <div style="font-weight:700;">Client Status Call: Johnson Matter</div>
-                  <div style="font-size:11px; color:var(--muted); margin-top:2px;">11:30 AM · Matter #2024-712-CV</div>
-                </div>
-                <span class="stitch-badge stitch-badge--neutral" style="font-size:9.5px;">MS Teams</span>
-              </div>
-              <div class="cn-upcoming-actions">
-                <button type="button" class="cn-btn-tag-action cn-btn-tag-action--green">
-                  🤖 Bot Joining ⌵
-                </button>
-                <button type="button" class="cn-btn-tag-action">
-                  🔗 Copy Link
-                </button>
-              </div>
-            </div>
-
-            <div class="cn-upcoming-item">
-              <div class="cn-upcoming-header">
-                <div>
-                  <div style="font-weight:700;">Cross-Examination Strategy Rehearsal</div>
-                  <div style="font-size:11px; color:var(--muted); margin-top:2px;">04:00 PM · Lead Counsel &amp; Retained Expert</div>
-                </div>
-                <span class="stitch-badge stitch-badge--neutral" style="font-size:9.5px;">Zoom</span>
-              </div>
-              <div class="cn-upcoming-actions">
-                <button type="button" class="cn-btn-tag-action cn-btn-tag-action--green">
-                  🤖 Bot Joining ⌵
-                </button>
-                <button type="button" class="cn-btn-tag-action">
-                  🔗 Copy Link
-                </button>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </div>
+    <div class="frame">
+      <img loading="lazy" src="assets/images/casenote_01.webp" alt="Authentic CaseNotes Application Dashboard" class="img-zoomable" width="1440" height="972">
     </div>
-    <figcaption><span class="figure-badge">Core Product Interface</span> <strong>Authentic CaseNotes Application Dashboard</strong> — Original interface extracted directly from the system cover: left navigation rail, global search, 4 legal metrics (Today's Meetings, Hours Recorded, Tasks Extracted, Decisions Identified), live meeting actions, and automated CaseNotes Bot meeting joiner.</figcaption>
+    <figcaption><span class="figure-badge">Core Product Interface</span> <strong>Authentic CaseNotes Application Dashboard</strong> — Original high-fidelity interface: left navigation rail, global search, 4 legal metrics (Today's Meetings, Hours Recorded, Tasks Extracted, Decisions Identified), live meeting actions, and automated CaseNotes Bot meeting joiner.</figcaption>
   </figure>
 
   <h3 class="h3">2. During: Minimal ambient UI &amp; one-keystroke control</h3>
@@ -3403,8 +3172,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
   if (!overlay) return;
 
-  // Check if unlocked in current session
-  if (sessionStorage.getItem("casenotes_unlocked") === "true") {
+  // Check if unlocked in current session or preview URL
+  if (sessionStorage.getItem("casenotes_unlocked") === "true" || window.location.search.indexOf("unlocked=true") !== -1) {
     document.body.classList.remove("is-locked");
     document.documentElement.classList.remove("is-locked");
     overlay.style.display = "none";
@@ -3887,6 +3656,15 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       }
     });
   });
+  if (window.location.search.indexOf("scroll=") !== -1) {
+    var match = window.location.search.match(/scroll=([^&]+)/);
+    if (match && match[1]) {
+      var target = document.getElementById(match[1]);
+      if (target) {
+        target.scrollIntoView();
+      }
+    }
+  }
 })();
 </script>
 <script src="assets/js/nachi-sfx.js"></script>
