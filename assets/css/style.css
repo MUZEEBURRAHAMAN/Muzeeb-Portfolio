@@ -836,7 +836,7 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
     min-height: 230px;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s;
 }
-.mz-pg-card:hover { transform: translateY(-4px); border-color: #3d3d3d; }
+.mz-pg-card:hover { transform: none !important; border-color: #3d3d3d; }
 .mz-pg-card .cat { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #8a8a8a; margin-bottom: 8px; }
 .mz-pg-card .t { font-weight: 600; font-size: 1.4rem; line-height: 1.15; }
 .mz-pg-card .s { font-size: 0.9rem; color: #9a9a98; margin-top: 6px; max-width: 24ch; }
