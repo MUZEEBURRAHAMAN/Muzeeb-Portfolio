@@ -41,10 +41,10 @@
       }
     }
     </script>
-    <!-- Google Fonts: Archivo & Inter -->
+    <!-- Google Fonts: Barlow Condensed & Barlow -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
@@ -59,9 +59,6 @@
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
-            min-height: calc(100vh - 120px);
-            display: flex;
-            flex-direction: column;
         }
         @media (min-width: 640px) {
             #main { padding: 0 24px; }
@@ -72,6 +69,50 @@
         [data-theme="light"] #main {
             border-left-color: rgba(0, 0, 0, 0.08);
             border-right-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Prominent Hatched Section Divider */
+        .hatched-divider {
+            display: block !important;
+            width: calc(100% + 32px) !important;
+            margin: 3.5rem -16px 2.5rem -16px !important;
+            height: 32px !important;
+            position: relative !important;
+            overflow: hidden !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+            color: #ffffff !important;
+            box-sizing: border-box !important;
+            z-index: 2 !important;
+        }
+        @media (min-width: 640px) {
+            .hatched-divider {
+                width: calc(100% + 48px) !important;
+                margin: 4rem -24px 3rem -24px !important;
+            }
+        }
+        @media (min-width: 768px) {
+            .hatched-divider {
+                width: calc(100% + 64px) !important;
+                margin: 4.5rem -32px 3rem -32px !important;
+            }
+        }
+        .hatched-divider__pattern {
+            position: absolute !important;
+            inset: 0 !important;
+            opacity: 0.45 !important;
+            background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1.5px, transparent 0, transparent 8px) !important;
+            pointer-events: none !important;
+        }
+        [data-theme="light"] .hatched-divider,
+        html[data-theme="light"] .hatched-divider {
+            border-top-color: rgba(0, 0, 0, 0.14) !important;
+            border-bottom-color: rgba(0, 0, 0, 0.14) !important;
+            color: #000000 !important;
+        }
+        [data-theme="light"] .hatched-divider__pattern,
+        html[data-theme="light"] .hatched-divider__pattern {
+            opacity: 0.25 !important;
         }
         
         .mz-resume-header {
@@ -128,42 +169,403 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            align-items: center;
+            gap: 36px;
             margin-bottom: 64px;
         }
-        
-        .mz-resume-frame {
+
+        /* Printable Document Sheet */
+        .mz-doc-page {
+            max-width: 794px;
             width: 100%;
-            height: 80vh;
-            min-height: 800px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 0px !important;
+            margin: 0 auto 36px auto;
+            background: #ffffff;
+            color: #0f172a;
+            box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+            box-sizing: border-box;
+            padding: 44px 48px;
+            position: relative;
+            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        [data-theme="light"] .mz-resume-frame {
-            border-color: rgba(0, 0, 0, 0.12);
-            background: rgba(0, 0, 0, 0.02);
+        [data-theme="light"] .mz-doc-page {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
         }
-        
-        .mz-resume-fallback {
-            padding: 24px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #a1a19d;
-            border-radius: 0px !important;
-            margin-top: 16px;
+
+        .mz-page-tag {
+            position: absolute;
+            top: -24px;
+            right: 0;
+            font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            color: #71717a;
+            user-select: none;
         }
-        [data-theme="light"] .mz-resume-fallback {
-            background: rgba(0,0,0,0.02);
-            border-color: rgba(0,0,0,0.1);
-            color: #555550;
+        [data-theme="light"] .mz-page-tag {
+            color: #a1a1aa;
         }
-        
-        @media (max-width: 768px) {
-            .mz-resume-frame {
-                height: 70vh;
-                min-height: 600px;
+
+        /* Technical Framing Box with Crosshairs */
+        .mz-resume-header-box {
+            position: relative;
+            border: 1px solid #d4d4d8;
+            background: #ffffff;
+            margin-bottom: 24px;
+            box-sizing: border-box;
+        }
+        .mz-crosshair {
+            position: absolute;
+            font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 13px;
+            font-weight: 300;
+            color: #52525b;
+            line-height: 1;
+            width: 14px;
+            height: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            pointer-events: none;
+            background: #ffffff;
+        }
+        .mz-crosshair--tl { top: -7px; left: -7px; }
+        .mz-crosshair--tr { top: -7px; right: -7px; }
+        .mz-crosshair--bl { bottom: -7px; left: -7px; }
+        .mz-crosshair--br { bottom: -7px; right: -7px; }
+
+        .mz-header-top {
+            padding: 20px 24px 14px 24px;
+        }
+        .mz-header-name {
+            font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #111827;
+            margin: 0 0 5px 0;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+        .mz-header-subtitle {
+            font-family: 'Barlow', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: #1f2937;
+            margin: 0;
+            line-height: 1.3;
+        }
+        .mz-header-subtitle .mz-sep {
+            color: #94a3b8;
+            margin: 0 4px;
+            font-weight: 300;
+        }
+
+        .mz-header-contacts {
+            display: flex;
+            border-top: 1px solid #d4d4d8;
+            background: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .mz-contact-item {
+            flex: 1;
+            padding: 6px 10px;
+            font-size: 12px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid #d4d4d8;
+            white-space: nowrap;
+            text-decoration: none;
+            font-family: 'Barlow', sans-serif;
+            font-weight: 400;
+        }
+        .mz-contact-item:first-child {
+            flex: 0 0 auto;
+            padding: 6px 14px;
+        }
+        .mz-contact-item:last-child {
+            border-right: none;
+        }
+        .mz-contact-item a {
+            color: #374151;
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+        .mz-contact-item a:hover {
+            color: #111827;
+            text-decoration: underline;
+        }
+
+        /* Section Typography */
+        .mz-sec-block {
+            margin-bottom: 16px;
+        }
+        .mz-sec-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #4b5563;
+            margin: 16px 0 6px 0;
+            line-height: 1;
+        }
+        .mz-summary-p {
+            font-family: 'Barlow', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.36;
+            color: #1f2937;
+            margin: 0;
+            text-align: justify;
+        }
+
+        /* Experience Entries */
+        .mz-exp-item {
+            margin-bottom: 14px;
+        }
+        .mz-exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 2px;
+        }
+        .mz-exp-company {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #111827;
+            letter-spacing: 0.025em;
+            margin: 0;
+        }
+        .mz-exp-date {
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            font-weight: 400;
+            color: #6b7280;
+            white-space: nowrap;
+            text-align: right;
+        }
+        .mz-exp-role {
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            font-style: italic;
+            font-weight: 400;
+            color: #4b5563;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+        .mz-bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mz-bullet-list li {
+            position: relative;
+            padding-left: 14px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            font-weight: 400;
+            line-height: 1.36;
+            color: #1f2937;
+            margin-bottom: 3.5px;
+        }
+        .mz-bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #111827;
+            font-size: 12px;
+        }
+
+        /* Earlier Roles */
+        .mz-earlier-block {
+            margin-top: 14px;
+        }
+        .mz-earlier-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 15.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #111827;
+            letter-spacing: 0.025em;
+            margin: 0 0 3px 0;
+        }
+        .mz-earlier-meta {
+            font-family: 'Barlow', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            color: #4b5563;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        /* Page 2 Work Items, Divider, Skills & Education */
+        .mz-work-item {
+            margin-bottom: 12px;
+        }
+        .mz-doc-divider {
+            border: none;
+            border-top: 1px solid #e4e4e7;
+            margin: 16px 0 12px 0;
+        }
+        .mz-doc-link {
+            color: #4b5563;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.15s ease;
+        }
+        .mz-doc-link:hover {
+            color: #111827;
+        }
+        .mz-skills-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .mz-skill-line {
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            font-weight: 400;
+            line-height: 1.38;
+            color: #1f2937;
+            margin: 0;
+        }
+        .mz-skill-line strong {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            color: #111827;
+        }
+        .mz-edu-item {
+            margin-bottom: 8px;
+        }
+        .mz-edu-school {
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            font-style: italic;
+            font-weight: 400;
+            color: #4b5563;
+            margin-top: 2px;
+            line-height: 1.3;
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            .mz-doc-page {
+                padding: 24px 18px;
             }
+            .mz-header-top {
+                padding: 16px 14px 12px 14px;
+            }
+            .mz-header-name {
+                font-size: 20px;
+            }
+            .mz-header-subtitle {
+                font-size: 11.5px;
+            }
+            .mz-header-contacts {
+                flex-direction: column;
+            }
+            .mz-contact-item {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                justify-content: flex-start;
+                padding: 6px 14px;
+            }
+            .mz-contact-item:last-child {
+                border-bottom: none;
+            }
+            .mz-exp-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+            .mz-exp-date {
+                text-align: left;
+            }
+            .mz-summary-p {
+                text-align: left;
+            }
+        }
+
+        /* Clean Print / Save PDF */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 12mm 14mm;
+            }
+            *, *::before, *::after {
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            html, body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .site-header,
+            .mz-resume-header,
+            .mz-footer,
+            .hatched-divider,
+            .mz-skip,
+            .mz-page-tag {
+                display: none !important;
+            }
+            #main {
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border: none !important;
+                min-height: auto !important;
+            }
+            .mz-resume-container {
+                margin: 0 !important;
+                padding: 0 !important;
+                gap: 0 !important;
+                display: block !important;
+            }
+            .mz-doc-page {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 0 20px 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+            }
+            .mz-doc-page:last-child {
+                page-break-after: avoid !important;
+                break-after: avoid !important;
+                padding-bottom: 0 !important;
+            }
+        }
+
+        .mz-resume-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+
+
+        /* ATS Strong Keywords */
+        .mz-doc-page strong {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 700;
+            color: #09090b;
         }
     </style>
 </head>
@@ -182,6 +584,7 @@
                 <a class="site-header__link" href="about.html">About</a>
                 <a class="site-header__link" href="best-work.html">Best work</a>
                 <a class="site-header__link" href="playground.html">Playground</a>
+                <a class="site-header__link active" href="resume.html">Resume</a>
                 <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="4"></circle>
@@ -194,62 +597,265 @@
 
     <main id="main">
         <div class="mz-resume-header">
-            <h1 class="mz-resume-title">Résumé</h1>
-            <a href="assets/images/MUZEEBURRAHAMAN%20Resume%20(2).pdf" download class="mz-resume-download" aria-label="Download Resume PDF">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Download PDF
-            </a>
+            <h1 class="mz-resume-title">Resume</h1>
+            <div class="mz-resume-actions">
+                <a href="assets/images/Muzeeb-Urrahaman-Resume.pdf" download="Muzeeb-Urrahaman-Resume.pdf" class="mz-resume-download" aria-label="Download Resume PDF">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download PDF
+                </a>
+            </div>
         </div>
         
         <div class="mz-resume-container">
-            <!-- PDF Viewer -->
-            <iframe src="assets/images/MUZEEBURRAHAMAN%20Resume%20(2).pdf" class="mz-resume-frame" title="Muzeeb Urrahaman Resume"></iframe>
-            
-            <!-- Semantic Fallback text for Screen Readers / Indexing -->
-            <div class="mz-resume-fallback sr-only">
-                <h2>Muzeeb Urrahaman - Product Designer & Design Engineer</h2>
-                <p>4.8+ years of experience designing AI, SaaS, and enterprise products.</p>
-                <p>Email: muzeeburrahaman@gmail.com | LinkedIn: /in/muzeeburrahaman</p>
-                <h3>Experience</h3>
-                <p><strong>Omnis AI</strong> - Product Designer & Design Engineer</p>
-                <p><strong>LetmeGrab</strong> - Product Designer (Core UX)</p>
-                <h3>Skills</h3>
-                <p>Product Design, UI/UX, Design Systems, Prototyping, Front-end Development (HTML/CSS/JS), AI Workflows.</p>
-            </div>
-        </div>
-    </main>
+            <!-- PAGE 1 -->
+            <article class="mz-doc-page" id="page-1" aria-label="Resume Page 1">
+                <div class="mz-page-tag" aria-hidden="true">01 / 02</div>
 
-    <footer class="site-footer">
-        <div class="site-footer__inner">
-            <div class="site-footer__left">
-                <div class="site-footer__status">
-                    <span class="site-footer__status-dot"></span>
-                    <span class="site-footer__status-txt">Available for new opportunities</span>
-                </div>
-                <div class="site-footer__copy">
-                    &copy; <span id="currentYear">2026</span> Muzeeb Urrahaman. Handcrafted with precision.
-                </div>
-            </div>
-            <div class="site-footer__links">
-                <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" rel="noopener">LinkedIn</a>
-                <a href="https://github.com/MUZEEBURRAHAMAN" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">GitHub</a>
-                <a href="mailto:muzeeburrahaman5@gmail.com">Email</a>
-            </div>
+                <!-- Technical Framing Box with Crosshairs -->
+                <header class="mz-resume-header-box">
+                    <span class="mz-crosshair mz-crosshair--tl" aria-hidden="true">+</span>
+                    <span class="mz-crosshair mz-crosshair--tr" aria-hidden="true">+</span>
+                    <span class="mz-crosshair mz-crosshair--bl" aria-hidden="true">+</span>
+                    <span class="mz-crosshair mz-crosshair--br" aria-hidden="true">+</span>
+
+                    <div class="mz-header-top">
+                        <h1 class="mz-header-name">MUZEEBURRAHAMAN</h1>
+                        <p class="mz-header-subtitle">
+                            <strong>Product Designer</strong> &amp; <strong>Design Engineer</strong> <span class="mz-sep">|</span> <strong>AI Product Design</strong> <span class="mz-sep">|</span> <strong>SaaS</strong> <span class="mz-sep">|</span> <strong>Design Systems</strong> <span class="mz-sep">|</span> <strong>0 &rarr; 1</strong>
+                        </p>
+                    </div>
+
+                    <div class="mz-header-contacts">
+                        <span class="mz-contact-item">India</span>
+                        <span class="mz-contact-item">
+                            <a href="mailto:Rahamanmuzeeb1108@gmail.com">Rahamanmuzeeb1108@gmail.com</a>
+                        </span>
+                        <span class="mz-contact-item">
+                            <a href="tel:+917078461092">+91 7078461092</a>
+                        </span>
+                        <span class="mz-contact-item">
+                            <a href="https://muzeeb-portfolio.vercel.app" target="_blank" rel="noopener">muzeeb-portfolio.vercel.app</a>
+                        </span>
+                        <span class="mz-contact-item">
+                            <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" rel="noopener">LinkedIn</a>
+                        </span>
+                        <span class="mz-contact-item">
+                            <a href="https://github.com/MUZEEBURRAHAMAN" target="_blank" rel="noopener">GitHub</a>
+                        </span>
+                    </div>
+                </header>
+
+                <!-- 01 SUMMARY -->
+                <section class="mz-sec-block" aria-labelledby="sec-summary">
+                    <h2 class="mz-sec-heading" id="sec-summary">01 &middot; SUMMARY</h2>
+                    <p class="mz-summary-p">
+                        <strong>Product Designer and Design Engineer</strong> with <strong>4.8+ years of experience</strong> shipping <strong>AI-powered SaaS products</strong> from <strong>0 to 1</strong> across <strong>legal tech</strong>, <strong>e-commerce</strong>, and <strong>enterprise platforms</strong>. Strong in <strong>UX strategy</strong>, <strong>interaction design</strong>, <strong>design systems</strong>, <strong>prototyping</strong>, and <strong>product delivery</strong>, with <strong>front-end engineering</strong> skills that help turn product decisions into scalable, production-ready experiences. Track record of <strong>reducing user friction</strong>, <strong>improving conversion</strong>, and <strong>accelerating delivery</strong> through <strong>reusable systems</strong> and <strong>AI-assisted workflows</strong>.
+                    </p>
+                </section>
+
+                <!-- 02 EXPERIENCE -->
+                <section class="mz-sec-block" aria-labelledby="sec-experience">
+                    <h2 class="mz-sec-heading" id="sec-experience">02 &middot; EXPERIENCE</h2>
+
+                    <!-- Role 1: OMNIS AI LLC -->
+                    <div class="mz-exp-item">
+                        <div class="mz-exp-header">
+                            <h3 class="mz-exp-company">OMNIS AI LLC</h3>
+                            <span class="mz-exp-date">Dec 2024 &ndash; Jul 2026 &middot; Texas, USA (Remote)</span>
+                        </div>
+                        <div class="mz-exp-role">Product Designer / Design Engineer</div>
+                        <ul class="mz-bullet-list">
+                            <li>Led <strong>end-to-end product design</strong> across <strong>7 AI-powered legal tech products</strong>. Owned <strong>UX research</strong>, <strong>interaction design</strong>, <strong>prototyping</strong>, and close collaboration with founders and engineering.</li>
+                            <li>Built and scaled the <strong>Omnis Design System</strong> across the product ecosystem. Established a <strong>unified component library</strong>, <strong>token structure</strong>, and <strong>interaction patterns</strong>, reducing UI inconsistencies by <strong>40%</strong> and cutting new-feature design time from <strong>days to hours</strong>.</li>
+                            <li>Streamlined complex <strong>legal case-management workflows</strong> from <strong>8 steps to 3</strong>. Improved internal operational efficiency by <strong>25%</strong>.</li>
+                            <li>Created <strong>AI-powered design automation tools for UX QA</strong>. Replaced <strong>4+ hours of manual design QA</strong> per sprint with automated staging reviews and Slack-delivered annotated reports.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 2: LETMEGRAB -->
+                    <div class="mz-exp-item">
+                        <div class="mz-exp-header">
+                            <h3 class="mz-exp-company">LETMEGRAB</h3>
+                            <span class="mz-exp-date">Jan 2023 &ndash; Dec 2024 &middot; Surat, India (On-Site)</span>
+                        </div>
+                        <div class="mz-exp-role">UI/UX Designer &amp; Researcher</div>
+                        <ul class="mz-bullet-list">
+                            <li>Owned <strong>end-to-end UX</strong> across <strong>seller, customer, and admin platforms</strong>. Partnered with product managers and engineers from <strong>onboarding through checkout</strong>.</li>
+                            <li>Redesigned seller onboarding and checkout flows. <strong>Increased conversion by 18%</strong> and <strong>reduced drop-off by 22%</strong> through simplified form sequencing and contextual defaults.</li>
+                            <li>Established <strong>reusable component libraries</strong> and design patterns. Accelerated new feature development across <strong>3 platform verticals</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <!-- EARLIER ROLES -->
+                    <div class="mz-earlier-block">
+                        <h3 class="mz-earlier-title">EARLIER ROLES</h3>
+                        <div class="mz-earlier-meta">
+                            Photoshooto (UI/UX Designer, 2022&ndash;2023) &middot; EngineerHUB (Jr. UI/UX Designer, 2022) &middot; Kartexa Pvt. Ltd. (UI/UX Design Intern, 2022)
+                        </div>
+                        <ul class="mz-bullet-list">
+                            <li>Designed <strong>user-centered web and mobile experiences</strong>. Worked across <strong>SaaS</strong>, <strong>e-commerce</strong>, and consumer products with product managers and engineers.</li>
+                            <li>Built <strong>interactive prototypes</strong> and <strong>scalable UI components</strong>. Improved usability through research, testing, and iterative design.</li>
+                        </ul>
+                    </div>
+                </section>
+            </article>
+
+            <!-- PAGE 2 -->
+            <article class="mz-doc-page" id="page-2" aria-label="Resume Page 2">
+                <div class="mz-page-tag" aria-hidden="true">02 / 02</div>
+
+                <!-- 03 SELECTED PRODUCT WORK -->
+                <section class="mz-sec-block" aria-labelledby="sec-work">
+                    <h2 class="mz-sec-heading" id="sec-work">03 &middot; SELECTED PRODUCT WORK</h2>
+
+                    <!-- Item 1: OMNIS AI PRODUCT ECOSYSTEM -->
+                    <div class="mz-work-item">
+                        <div class="mz-exp-header">
+                            <h3 class="mz-exp-company">OMNIS AI PRODUCT ECOSYSTEM</h3>
+                            <span class="mz-exp-date">Mar 2025 &ndash; Present</span>
+                        </div>
+                        <ul class="mz-bullet-list">
+                            <li>Designed the full suite of <strong>AI-powered products for law firms</strong>: CasePro CRM, MedChron AI, CaseNotes, LitBox, NotaryNow, OmnisProof, and AI Agent.</li>
+                            <li><strong>CasePro CRM</strong> &mdash; <strong>AI-powered case and client management</strong>. Smart intake, timeline views, and automated task assignment for litigation teams.</li>
+                            <li><strong>MedChron AI</strong> &mdash; <strong>Medical intelligence tool</strong>. Extracts, organizes, and summarizes medical records into chronological timelines.</li>
+                            <li><strong>CaseNotes</strong> &mdash; <strong>AI-assisted note-taking system</strong>. Captures, tags, and links case-related notes to documents and clients.</li>
+                            <li><strong>LitBox</strong> &mdash; <strong>Centralized litigation workspace</strong>. Brings documents, deadlines, and team collaboration into one interface.</li>
+                            <li><strong>NotaryNow</strong> &mdash; <strong>Remote online notarization platform</strong>. Identity verification, live video sessions, and e-signature workflows.</li>
+                            <li><strong>OmnisProof</strong> &mdash; <strong>AI-powered document review and proofing</strong>. Flags inconsistencies across legal filings before submission.</li>
+                            <li><strong>AI Agent</strong> &mdash; <strong>Conversational AI assistant</strong>. Supports document search, task automation, and workflow guidance across Omnis products.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Item 2: OMNIS DESIGN SYSTEM -->
+                    <div class="mz-work-item">
+                        <div class="mz-exp-header">
+                            <h3 class="mz-exp-company">OMNIS DESIGN SYSTEM</h3>
+                            <span class="mz-exp-date">Dec 2024 &ndash; Present</span>
+                        </div>
+                        <ul class="mz-bullet-list">
+                            <li>Architected a <strong>cross-product design system</strong> used across <strong>7+ products</strong>. Created <strong>scalable component architecture</strong>, <strong>design tokens</strong>, interaction patterns, and documentation.</li>
+                            <li>Established <strong>contribution and versioning workflows</strong>. Enabled designers and engineers to ship consistent UI without bottlenecks.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Item 3: AI UX AUDIT ASSISTANT -->
+                    <div class="mz-work-item">
+                        <div class="mz-exp-header">
+                            <h3 class="mz-exp-company">AI UX AUDIT ASSISTANT</h3>
+                            <span class="mz-exp-date">Jan 2026 &ndash; Present &middot; <a href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener" class="mz-doc-link">View Repository</a></span>
+                        </div>
+                        <ul class="mz-bullet-list">
+                            <li>Designed and prototyped an <strong>AI agent for staging audits</strong>. Identifies <strong>usability, accessibility, and visual consistency</strong> issues before release.</li>
+                            <li>Built an <strong>automated reporting pipeline</strong>. Delivers annotated HTML reports with actionable developer tasks via Slack, replacing <strong>4+ hours of manual QA per sprint</strong>.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <hr class="mz-doc-divider">
+
+                <!-- 04 CORE SKILLS -->
+                <section class="mz-sec-block" aria-labelledby="sec-skills">
+                    <h2 class="mz-sec-heading" id="sec-skills">04 &middot; CORE SKILLS</h2>
+                    <div class="mz-skills-group">
+                        <p class="mz-skill-line">
+                            <strong>Product &amp; UX</strong> &mdash; <strong>Product Design</strong>, <strong>UX Strategy</strong>, <strong>User Research</strong>, <strong>Interaction Design</strong>, <strong>Design Systems</strong>, <strong>Prototyping</strong>, <strong>Information Architecture</strong>, <strong>Accessibility</strong>, <strong>UX Writing</strong>
+                        </p>
+                        <p class="mz-skill-line">
+                            <strong>Research &amp; Validation</strong> &mdash; <strong>User Interviews</strong>, <strong>Usability Testing</strong>, <strong>Heuristic Evaluation</strong>, <strong>Journey Mapping</strong>, <strong>A/B Testing</strong>, <strong>Behavioral Data Analysis</strong>
+                        </p>
+                        <p class="mz-skill-line">
+                            <strong>Engineering</strong> &mdash; <strong>HTML</strong>, <strong>CSS</strong>, <strong>GitHub</strong>, <strong>Workflow Automation</strong>, <strong>AI Prompt Engineering</strong>, <strong>Data Visualization</strong>
+                        </p>
+                        <p class="mz-skill-line">
+                            <strong>AI &amp; Tools</strong> &mdash; <strong>AI-Assisted Design Workflows</strong>, <strong>Generative AI Prototyping</strong>, <strong>Figma</strong>, <strong>Framer</strong>, <strong>Photoshop</strong>, <strong>Illustrator</strong>, <strong>Jira</strong>, <strong>Notion</strong>
+                        </p>
+                    </div>
+                </section>
+
+                <hr class="mz-doc-divider">
+
+                <!-- 05 EDUCATION -->
+                <section class="mz-sec-block" aria-labelledby="sec-education">
+                    <h2 class="mz-sec-heading" id="sec-education">05 &middot; EDUCATION</h2>
+                    <div class="mz-edu-item">
+                        <div class="mz-exp-header">
+                            <h3 class="mz-exp-company">B.TECH &mdash; COMPUTER SCIENCE &amp; ENGINEERING</h3>
+                            <span class="mz-exp-date">2023</span>
+                        </div>
+                        <div class="mz-edu-school">Ajay Kumar Garg Engineering College</div>
+                    </div>
+                </section>
+            </article>
         </div>
-    </footer>
+
+        <!-- Section Divider: Before Footer -->
+        <div class="hatched-divider" aria-hidden="true">
+            <div class="hatched-divider__pattern"></div>
+        </div>
+
+        <footer class="mz-footer" id="siteFooter" role="contentinfo">
+            <div class="mz-footer__row">
+                <div class="mz-footer__id">
+                    <a aria-label="Muzeeb Urrahaman" href="index.html" class="mz-footer__logo">
+                        <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
+                        <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+                    </a>
+                </div>
+                <div class="mz-footer__socials">
+                    <a href="https://github.com/MUZEEBURRAHAMAN" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                        <svg class="mz-footer__social" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H80V112H96Zm88,0H168V140a12,12,0,0,0-24,0v36H128V112h16v10.45A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z" opacity="0.2"/>
+                            <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a12,12,0,0,0-24,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://dribbble.com/Muzeeburrahaman" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Z" opacity="0.2"/>
+                            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
+                            <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.behance.net/muzeeb0786" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158Z" opacity="0.2"/>
+                            <path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linktr.ee/muzeeb1998" target="_blank" rel="noopener noreferrer" aria-label="Linktree">
+                        <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
+                            <path d="M128,115.31,77.66,165.66a8,8,0,0,1-11.32-11.32L108.69,112H48a8,8,0,0,1,0-16h60.69L66.34,53.66A8,8,0,0,1,77.66,42.34L120,84.69V24a8,8,0,0,1,16,0V84.69l42.34-42.35a8,8,0,0,1,11.32,11.32L147.31,96H208a8,8,0,0,1,0,16H147.31l42.35,42.34a8,8,0,0,1-11.32,11.32L128,115.31Z" opacity="0.2"/>
+                            <path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mz-footer__band">
+                <div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+                <div class="mz-footer__copy">&copy; <span class="mz-footer__year">2026</span> Muzeeb Urrahaman · All rights reserved</div>
+            </div>
+        </footer>
+    </main>
 
     <!-- Core Scripts -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/gsap.min.js"></script>
-    <script src="assets/js/ScrollTrigger.min.js"></script>
-    <script src="assets/js/main.js?v=25"></script>
+    <script src="assets/js/site.js?v=552"></script>
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        const year = new Date().getFullYear();
+        document.querySelectorAll('.mz-footer__year, #currentYear').forEach(el => el.textContent = year);
     </script>
 </body>
 </html>
