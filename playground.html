@@ -2663,6 +2663,31 @@
             color: #ffffff !important;
         }
 
+        .pg-project-version,
+        .pg-project-status--version {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #a1a1aa !important;
+            box-shadow: none !important;
+            line-height: 1.4;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        [data-theme="light"] .pg-project-version,
+        [data-theme="light"] .pg-project-status--version {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            color: #374151 !important;
+            box-shadow: none !important;
+        }
+
         .pg-project-tags {
             font-family: var(--font-mono, monospace);
             font-size: 0.75rem;
@@ -3895,7 +3920,7 @@
                     <div class="pg-project-card__head">
                         <div style="display:flex; align-items:center; gap:8px;">
                             <span class="pg-project-name">Catchly</span>
-                            <span class="pg-project-status" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.12); color:#a1a1aa;">v1.0</span>
+                            <span class="pg-project-version">v1.0</span>
                         </div>
                         <a href="https://chromewebstore.google.com/detail/catchly/ogfdfheefhnmgkafcahpelmcofmgcobk" target="_blank" rel="noopener" class="pg-project-status pg-project-status--live" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:700;">
                             <span>Chrome Web Store</span>
@@ -3914,7 +3939,7 @@
                     <div class="pg-project-card__head">
                         <div style="display:flex; align-items:center; gap:8px;">
                             <span class="pg-project-name">GoFully</span>
-                            <span class="pg-project-status" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.12); color:#a1a1aa;">v1.0</span>
+                            <span class="pg-project-version">v1.0</span>
                         </div>
                         <a href="https://chromewebstore.google.com/detail/gofully/akfbmhmdlbmljklgajkgoekobofhhofc" target="_blank" rel="noopener" class="pg-project-status pg-project-status--live" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:700;">
                             <span>Chrome Web Store</span>
