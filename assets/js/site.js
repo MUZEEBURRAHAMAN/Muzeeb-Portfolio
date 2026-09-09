@@ -267,20 +267,18 @@
   /* ---------- 3. Chat widget (Muzeeb AI) ---------- */
   function initChat() {
     if (!document.body || document.getElementById("cw-launcher")) return;
-    // No chat on the playground canvas: keeps it clean.
-    if ((location.pathname.split("/").pop() || "") === "playground.html") return;
     var LINKEDIN = "https://www.linkedin.com/in/muzeeburrahaman";
     var RESUME = "https://drive.google.com/file/d/13s3keaT9t40X_bJCd_FmL5hiAKgMgaNj/view?usp=sharing";
     var CALENDLY = "https://calendly.com/rahamanmuzeeb1108/new-meeting";
     var MAILTO = "mailto:rahamanmuzeeb1108@gmail.com";
     var KB = [
       { k: ["who", "about", "yourself", "tell me about", "introduce", "muzeeb", "intro"], a: "Muzeeb is an end-to-end Product Designer & Builder with 4.8+ years across AI, SaaS, and e-commerce. His edge: he designs AND builds, taking ideas from 0 → 1. (It's pronounced “muh-zeeb”, by the way.)", l: [{ t: "About Muzeeb", u: "about.html" }, { t: "Selected work", u: "index.html#work" }] },
-      { k: ["project", "projects", "work on", "worked", "worked on", "built", "build", "shipped", "portfolio", "selected work"], a: "On the Home page you'll find his Selected Work: Omnis AI (a unified design system + AI tools for 8+ legal products), a Zebralearn product-page redesign, and a 30-day Daily UI series. Playground has side experiments too.", l: [{ t: "Selected work", u: "index.html#work" }, { t: "Best work", u: "best-work.html" }, { t: "Playground", u: "playground.html" }] },
+      { k: ["project", "projects", "work on", "worked", "worked on", "built", "build", "shipped", "portfolio", "selected work"], a: "On the Home page you'll find his Selected Work: Omnis AI (a unified design system + AI tools for 8+ legal products), a Zebralearn product-page redesign, and a 30-day Daily UI series.", l: [{ t: "Selected work", u: "index.html#work" }, { t: "Best work", u: "best-work.html" }] },
       { k: ["omnis", "legal", "current", "current role", "recent"], a: "At Omnis AI (2025–now) Muzeeb leads product design across 8+ AI-powered legal products, built and scaled a 200+ component design system adopted across the suite, and shipped AI design-automation tools: a UX Audit Assistant and an AI Edge Fixer.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }] },
       { k: ["design system", "system", "component", "tokens"], a: "He builds and scales design systems end-to-end (most notably a 200+ component system at Omnis AI adopted across 8+ products, and a unifying system at LetmeGrab). One source of truth, faster shipping, consistent UX.", l: [{ t: "Best work", u: "best-work.html" }] },
-      { k: ["ai tool", "ai tools", "automation", "audit", "edge fixer", "plugin"], a: "He builds AI design-automation tools: a UX Audit Assistant (automated design reviews at scale) and an AI Edge Fixer (catches UI edge-cases). Experiments live on the Playground page.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }, { t: "Forge", u: "forge-case-study.html" }] },
+      { k: ["ai tool", "ai tools", "automation", "audit", "edge fixer", "plugin"], a: "He builds AI design-automation tools: a UX Audit Assistant (automated design reviews at scale) and an AI Edge Fixer (catches UI edge-cases).", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }, { t: "Forge", u: "forge-case-study.html" }] },
       { k: ["case study", "case studies", "letmegrab", "zebralearn", "zebra", "30 day", "daily ui", "catchly", "fontlens", "forge"], a: "Case studies you can open: the Omnis UX Audit Assistant, Edge-State Fixer, Catchly, FontLens, Forge, a Zebralearn redesign, and a 30 Days Daily UI series.", l: [{ t: "UX Audit Assistant", u: "audit-engine-case-study.html" }, { t: "Edge-State Fixer", u: "edge-state-fixer-case-study.html" }, { t: "Catchly", u: "catchly-case-study.html" }, { t: "FontLens", u: "fontlens-case-study.html" }, { t: "Forge", u: "forge-case-study.html" }, { t: "All work", u: "best-work.html" }] },
-      { k: ["playground", "side project", "experiment", "fun"], a: "The Playground page has his side projects and experiments: tools, AI ideas, and things built to test a concept or scratch an itch.", l: [{ t: "Open Playground", u: "playground.html" }] },
+      { k: ["playground", "side project", "experiment", "fun"], a: "Check his Best Work page for visual design, systems, and deep-dive case studies.", l: [{ t: "Best Work", u: "best-work.html" }] },
       { k: ["experience", "background", "career", "years", "history", "journey"], a: "4.8+ years as a Product Designer & Builder across AI, SaaS, and e-commerce. Timeline: Product Designer / UX Lead at Omnis AI (2025–now), UI/UX Designer at LetmeGrab (2023–24), UX Designer at Photoshooto (2022–23), plus earlier design internships.", l: [{ t: "About & experience", u: "about.html" }, { t: "Résumé", u: RESUME, x: true }] },
       { k: ["tool", "tools", "software", "stack", "figma", "framer", "cursor", "tech", "claude"], a: "His toolkit: Figma (design & prototyping), Cursor (AI-assisted coding), Claude (AI workflows & automation), Framer (no-code / coded web), and Adobe Illustrator & Photoshop." },
       { k: ["available", "availability", "hire", "hiring", "freelance", "open", "job", "role", "opportunity", "why hire"], a: "Yes: Muzeeb is open to remote work and relocation, exploring Product Designer, Founding Designer, and Design Engineer roles to help build AI products from 0 → 1. Fastest way in: email him.", l: [{ t: "Email Muzeeb", u: MAILTO, x: true }, { t: "Book a call", u: CALENDLY, x: true }, { t: "Résumé", u: RESUME, x: true }] },
@@ -503,7 +501,8 @@
       { href: "index.html", label: "Home" },
       { href: "about.html", label: "About" },
       { href: "best-work.html", label: "Best work" },
-      { href: "playground.html", label: "Playground" }
+      // { href: "playground.html", label: "Playground" },
+      { href: "resume.html", label: "Resume" }
     ];
 
     navItems.forEach(function (item) {
