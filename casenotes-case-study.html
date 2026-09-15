@@ -814,162 +814,29 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   </div>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <div class="stitch-ui">
-        <div class="cn-top-bar" style="padding:10px 16px;">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">RESEARCH</span>
-              </div>
-            </div>
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Regulatory &amp; Ethics Matrix (ABA Model Rule 1.6 &amp; FRE 502)</span>
-            </div>
-          </div>
-          <div class="cn-top-actions">
-            <span class="stitch-badge stitch-badge--neutral">12 Client Interviews</span>
-            <span class="stitch-badge stitch-badge--blue">7 Partner Audits</span>
-          </div>
-        </div>
-        <div class="stitch-body">
-          <div class="stitch-grid-2">
-            <div class="stitch-card stitch-card--amber">
-              <div class="stitch-card__header">
-                <span class="stitch-card__title">Partner Interview // Litigation Partner (18 yrs exp)</span>
-                <span class="stitch-badge stitch-badge--amber">Critical Risk</span>
-              </div>
-              <p class="stitch-quote">"If an associate accidentally pastes unredacted settlement ranges into an unmanaged transcript repository, that's an immediate subject-matter waiver under FRE 502. We'd rather take zero notes than use standard AI recording tools."</p>
-              <div class="stitch-card__desc" style="font-family:var(--mono); font-size:11px;">Identified Vector: Subject-matter privilege forfeiture during discovery production.</div>
-            </div>
-            <div class="stitch-card stitch-card--green">
-              <div class="stitch-card__header">
-                <span class="stitch-card__title">Paralegal Workflow // IP Practice (8 yrs exp)</span>
-                <span class="stitch-badge stitch-badge--green">High Leverage</span>
-              </div>
-              <p class="stitch-quote">"I spend 6 to 8 hours every single Friday copying Zoom chat notes, cross-referencing Clio matter IDs, and verifying ethical wall lists across three separate systems."</p>
-              <div class="stitch-card__desc" style="font-family:var(--mono); font-size:11px;">Opportunity: Automated matter linking eliminates 6.4 billable triage hours/wk.</div>
-            </div>
-          </div>
-
-          <div class="stitch-table-wrapper">
-            <table class="stitch-table">
-              <thead>
-                <tr>
-                  <th>Statutory Mandate</th>
-                  <th>Legal Precedent / Standard</th>
-                  <th>CaseNotes Product Architecture</th>
-                  <th>Compliance Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>ABA Model Rule 1.6(c)</strong></td>
-                  <td>Duty to take reasonable efforts to prevent inadvertent disclosure</td>
-                  <td>Local-first ephemeral audio buffer with zero persistent cloud transcripts</td>
-                  <td><span class="stitch-badge stitch-badge--green">Compliant (100%)</span></td>
-                </tr>
-                <tr>
-                  <td><strong>FRE 502(b) Protections</strong></td>
-                  <td>Inadvertent disclosure test: reasonable steps taken + prompt rectification</td>
-                  <td>1-Keystroke (⌘+P) off-the-record shortcut with immutable cryptographic audit trail</td>
-                  <td><span class="stitch-badge stitch-badge--green">Compliant (100%)</span></td>
-                </tr>
-                <tr>
-                  <td><strong>ABA Formal Op. 498</strong></td>
-                  <td>Virtual practice confidentiality &amp; digital videoconferencing hygiene</td>
-                  <td>Automatic attendee conflict cross-check against firm ethical walls prior to call</td>
-                  <td><span class="stitch-badge stitch-badge--blue">Active Standard</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">Research Artifact</span> <strong>Interview Synthesis &amp; Regulatory Mapping</strong> — Synthesis across 12 live client sessions and 7 attorney interviews, translating ABA ethics opinions and discovery precedents into product requirements.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential Design: Regulatory &amp; Ethics Matrix</strong> — Translates findings from 12 client sessions and 7 attorney audits into product safeguards under ABA Model Rule 1.6(c) and FRE 502 privilege standards.</figcaption>
   </figure>
 
   <h2 class="h-sub">The Design Thesis</h2>
   <p class="prose"><b><span class="mz-highlight" data-action="yellow">Principle 1: The lawyer controls whether a record exists</span> in real time.</b> A one-tap shortcut pauses capture mid-sentence and marks the segment privileged, going off the record without breaking conversational flow.</p>
   <p class="prose"><b><span class="mz-highlight" data-action="box">Principle 2: Every output is linked to a matter</span>.</b> Summaries attach directly to the case record, carry privilege tags, and stay restricted behind firm ethical walls.</p>
 
-  <figure class="diagram-card">
-    <svg viewBox="0 0 920 300" role="img" aria-label="System Architecture Diagram">
-      <defs>
-        <marker id="dgArrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0 0L10 5L0 10z" fill="currentColor"/>
-        </marker>
-      </defs>
-
-      <!-- Live meeting -->
-      <rect class="dg-node" x="10" y="110" width="130" height="60" rx="8"/>
-      <text class="dg-title" x="75" y="135" font-size="12.5" text-anchor="middle">Live meeting</text>
-      <text class="dg-sub" x="75" y="152" font-size="10.5" text-anchor="middle">audio stream</text>
-
-      <line class="dg-edge" x1="140" y1="140" x2="166" y2="140" marker-end="url(#dgArrow1)"/>
-      <text class="dg-label" x="153" y="128" text-anchor="middle">streams</text>
-
-      <!-- Capture gate -->
-      <rect class="dg-node dg-node--accent" x="170" y="95" width="170" height="90" rx="8"/>
-      <text class="dg-title" x="255" y="130" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">Capture gate</text>
-      <text class="dg-sub" x="255" y="148" font-size="10.5" text-anchor="middle">pause · mark privileged</text>
-      <text class="dg-sub" x="255" y="163" font-size="10.5" text-anchor="middle">one keystroke, live</text>
-
-      <line class="dg-edge" x1="340" y1="140" x2="376" y2="140" marker-end="url(#dgArrow1)"/>
-      <text class="dg-label" x="358" y="128" text-anchor="middle">confirmed</text>
-
-      <!-- Structured summary -->
-      <rect class="dg-node" x="380" y="110" width="150" height="60" rx="8"/>
-      <text class="dg-title" x="455" y="135" font-size="12.5" text-anchor="middle">Structured</text>
-      <text class="dg-title" x="455" y="150" font-size="12.5" text-anchor="middle">summary</text>
-
-      <line class="dg-edge" x1="530" y1="140" x2="556" y2="140" marker-end="url(#dgArrow1)"/>
-      <text class="dg-label" x="543" y="128" text-anchor="middle">filed to</text>
-
-      <!-- Matter file -->
-      <rect class="dg-node dg-node--accent" x="560" y="110" width="120" height="60" rx="8"/>
-      <text class="dg-title" x="620" y="135" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">Matter</text>
-      <text class="dg-title" x="620" y="150" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">file</text>
-
-      <!-- Fan-out to roles -->
-      <line class="dg-edge" x1="680" y1="120" x2="736" y2="45" marker-end="url(#dgArrow1)"/>
-      <line class="dg-edge" x1="680" y1="132" x2="736" y2="113" marker-end="url(#dgArrow1)"/>
-      <line class="dg-edge" x1="680" y1="148" x2="736" y2="187" marker-end="url(#dgArrow1)"/>
-      <line class="dg-edge" x1="680" y1="160" x2="736" y2="255" marker-end="url(#dgArrow1)"/>
-
-      <rect class="dg-node" x="740" y="20" width="170" height="50" rx="8"/>
-      <text class="dg-title" x="825" y="42" font-size="12" text-anchor="middle">Partner</text>
-      <text class="dg-sub" x="825" y="58" font-size="10" text-anchor="middle">decisions, risk, billing</text>
-
-      <rect class="dg-node" x="740" y="88" width="170" height="50" rx="8"/>
-      <text class="dg-title" x="825" y="110" font-size="12" text-anchor="middle">Associate</text>
-      <text class="dg-sub" x="825" y="126" font-size="10" text-anchor="middle">action items, deadlines</text>
-
-      <rect class="dg-node" x="740" y="162" width="170" height="50" rx="8"/>
-      <text class="dg-title" x="825" y="184" font-size="12" text-anchor="middle">Paralegal</text>
-      <text class="dg-sub" x="825" y="200" font-size="10" text-anchor="middle">filings, doc requests</text>
-
-      <rect class="dg-node dg-node--warm" x="740" y="230" width="170" height="50" rx="8"/>
-      <text class="dg-title" x="825" y="252" font-size="12" text-anchor="middle" style="fill:var(--amber)">Client / GC</text>
-      <text class="dg-sub" x="825" y="268" font-size="10" text-anchor="middle">privilege-stripped digest</text>
-
-      <text class="dg-label" x="710" y="205" text-anchor="middle">role-scoped view</text>
-    </svg>
-    <figcaption>The two core principles: real-time capture gate control (left) feeding structured intelligence that branches into role-scoped views (right).</figcaption>
+  <figure class="diagram-card" style="padding:0; border:none; background:transparent;">
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
+      </div>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential Architecture: Capture Gate &amp; Intelligence Routing</strong> — Architectural blueprint of real-time audio capture control, ephemeral buffer quarantining, and role-scoped intelligence distribution.</figcaption>
   </figure>
 </section>
 
@@ -1002,393 +869,42 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">CaseNotes links with firm calendars and practice management software. Before a meeting begins, it checks the matter assignment and applies inherited privilege defaults (litigation calls default to privileged and restricted; firm administrative meetings default to open).</p>
 
   <figure class="figure reveal">
-    <div class="frame">
-      <img loading="lazy" src="assets/images/casenote_01.webp" alt="Authentic CaseNotes Application Dashboard" class="img-zoomable" width="1440" height="972">
-    </div>
-    <figcaption><span class="figure-badge">Core Product Interface</span> <strong>Authentic CaseNotes Application Dashboard</strong> — Original high-fidelity interface: left navigation rail, global search, 4 legal metrics (Today's Meetings, Hours Recorded, Tasks Extracted, Decisions Identified), live meeting actions, and automated CaseNotes Bot meeting joiner.</figcaption>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
+      </div>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential UI: CaseNotes Core Application Dashboard</strong> — Primary desktop workspace displaying matter navigation rail, active calendar sync, live call quick actions, and automated CaseNotes Bot joiner.</figcaption>
   </figure>
 
   <h3 class="h3">2. During: Minimal ambient UI &amp; one-keystroke control</h3>
   <p class="prose">During calls, CaseNotes stays ambient: no bot avatars or scrolling transcript text. A discreet indicator shows recording status, and a single shortcut pauses capture for sensitive discussions.</p>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <!-- AUTHENTIC CASENOTES IN-MEETING LIVE NOTETAKER (LUA LEGAL BENCHMARK) -->
-      <div class="cn-app-shell">
-        <!-- Top App Bar with Matter Breadcrumb -->
-        <div class="cn-top-bar">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">OMNIDATA</span>
-              </div>
-            </div>
-
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span>Meetings</span>
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Deposition Prep: Apex Tech v. MedTech Corp (#2024-884-CV)</span>
-            </div>
-          </div>
-
-          <div class="cn-top-actions">
-            <div class="cn-ai-status-pill">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              <span>Omnis Notetaker Active</span>
-            </div>
-            <div class="cn-user-profile">
-              <div class="cn-user-avatar">SJ</div>
-              <span style="font-weight:600;">Sarah Jenkins, Esq.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Live Status Bar & Attorney Action Controls -->
-        <div class="cn-live-bar">
-          <div class="cn-live-meta">
-            <span class="cn-live-badge-rec">
-              <span class="cn-rec-dot"></span>
-              LIVE RECORDING
-            </span>
-            <span class="cn-live-timer">00:42:15</span>
-            <span class="stitch-badge stitch-badge--green" style="font-size:10px;">🔒 AES-256 E2EE</span>
-            <span class="stitch-badge stitch-badge--neutral" style="font-size:10px;">Clio: CL-884-LIT</span>
-          </div>
-
-          <!-- Attorney Action Bar (Lua Legal Benchmark) -->
-          <div class="cn-legal-ctrls">
-            <button type="button" class="cn-btn-off-record" title="Pause recording and mark segment privileged">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-              <span>Off the Record (⌘ + P)</span>
-            </button>
-            <button type="button" class="cn-btn-strike" title="Exclude utterance under FRCP 37(e) spoliation rules">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
-              <span>Strike Note (FRCP 37(e))</span>
-            </button>
-            <button type="button" class="cn-btn-strike" style="border-color:var(--accent); color:var(--accent);">
-              <span>+ Key Decision</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- In-Meeting Live Grid: Transcript & Live Intelligence -->
-        <div class="cn-live-grid">
-          <!-- Left: Real-Time Diarized Transcript -->
-          <div class="cn-transcript-feed">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-              <span style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); font-family:var(--mono);">Live Audio Diarization Stream</span>
-              <span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; color:var(--green); font-family:var(--mono);">
-                <span class="cn-rec-dot" style="background:var(--green);"></span> 4 Speakers Calibrated
-              </span>
-            </div>
-
-            <!-- Speaker 1: Sarah Jenkins, Esq. -->
-            <div class="cn-transcript-row">
-              <div class="cn-speaker-avatar cn-speaker-avatar--partner">SJ</div>
-              <div class="cn-transcript-content">
-                <div class="cn-speaker-header">
-                  <span class="cn-speaker-name">Sarah Jenkins, Esq.</span>
-                  <span class="cn-speaker-role">· Lead Partner (Gibson &amp; Jenkins)</span>
-                  <span class="cn-speaker-time">10:41:04</span>
-                </div>
-                <div class="cn-transcript-bubble">
-                  "MedTech's initial proposal requires concession on the European priority dates. We need Dr. Moore to verify the 2018 firmware revision before we sign off on any joint stipulations."
-                </div>
-              </div>
-            </div>
-
-            <!-- Speaker 2: Dr. Kenneth Moore -->
-            <div class="cn-transcript-row">
-              <div class="cn-speaker-avatar cn-speaker-avatar--expert">KM</div>
-              <div class="cn-transcript-content">
-                <div class="cn-speaker-header">
-                  <span class="cn-speaker-name">Dr. Kenneth Moore</span>
-                  <span class="cn-speaker-role">· Retained Technical Expert Witness</span>
-                  <span class="cn-speaker-time">10:41:18</span>
-                </div>
-                <div class="cn-transcript-bubble">
-                  "Understood, Sarah. The 2018 firmware logs clearly show the cryptographic handshake was implemented in Berlin five months before MedTech filed their provisional patent."
-                </div>
-              </div>
-            </div>
-
-            <!-- PRIVILEGE PAUSE HUD: Attorney Activated Off-The-Record -->
-            <div class="cn-transcript-bubble cn-transcript-bubble--privileged" style="margin-top:6px;">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                <span style="display:inline-flex; align-items:center; gap:6px; font-weight:700; color:#d97706; font-size:11.5px; font-family:var(--mono);">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                  RECORDING PAUSED — OFF THE RECORD
-                </span>
-                <span class="stitch-badge stitch-badge--amber" style="font-size:9.5px;">FRE 502(b) &amp; Rule 408</span>
-              </div>
-              <div style="font-size:12.5px; color:var(--ink); line-height:1.5;">
-                Capture suspended at <strong>00:41:20</strong> via <code>⌘+P</code>. Audio stream purged from cloud buffer. Confidential settlement ceiling ($2.2M walkaway / $3.5M initial offer) quarantined as <strong>Attorney Work Product</strong>.
-              </div>
-              <div style="margin-top:8px; display:flex; gap:8px;">
-                <button type="button" class="stitch-btn stitch-btn--primary" style="background:#d97706; border-color:#d97706; font-size:11px; padding:4px 10px;">
-                  Resume Capture (⌘+P)
-                </button>
-                <button type="button" class="stitch-btn stitch-btn--ghost" style="font-size:11px; padding:4px 8px;">
-                  Keep Quarantined
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: Live Intelligence Extraction -->
-          <div class="cn-live-side-intel">
-            <!-- Card 1: Key Decisions Auto-Extracted -->
-            <div class="cn-intel-card">
-              <div class="cn-intel-card-header">
-                <span>Key Decisions (Live)</span>
-                <span class="stitch-badge stitch-badge--green" style="font-size:9.5px;">2 Logged</span>
-              </div>
-              <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                <div style="display:flex; align-items:flex-start; gap:6px;">
-                  <span style="color:var(--green); font-weight:700;">✓</span>
-                  <span>Concede venue transfer motion to accelerate Markman hearing schedule.</span>
-                </div>
-                <div style="display:flex; align-items:flex-start; gap:6px;">
-                  <span style="color:var(--green); font-weight:700;">✓</span>
-                  <span>Subpoena Q3 MedTech internal firmware logs by Oct 14 deadline.</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2: Live Action Items with UTBMS Codes -->
-            <div class="cn-intel-card">
-              <div class="cn-intel-card-header">
-                <span>Assigned Tasks &amp; Billing</span>
-                <span class="stitch-badge stitch-badge--neutral" style="font-size:9.5px;">Clio Sync Ready</span>
-              </div>
-              <div style="display:flex; flex-direction:column; gap:8px; font-size:11.5px;">
-                <div style="border-bottom:1px solid var(--line-2); padding-bottom:6px;">
-                  <div style="font-weight:600; color:var(--ink);">Draft motion in limine on patent invalidity</div>
-                  <div style="display:flex; justify-content:space-between; color:var(--muted); margin-top:2px;">
-                    <span>Assignee: <strong>D. Vance (Assoc)</strong></span>
-                    <span style="font-family:var(--mono); color:var(--accent);">L120 // 2.5h</span>
-                  </div>
-                </div>
-                <div>
-                  <div style="font-weight:600; color:var(--ink);">Redact proprietary schematics from Ex. D</div>
-                  <div style="display:flex; justify-content:space-between; color:var(--muted); margin-top:2px;">
-                    <span>Assignee: <strong>K. Lin (Paralegal)</strong></span>
-                    <span style="font-family:var(--mono); color:var(--accent);">A104 // 1.0h</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3: Boundary Protection -->
-            <div class="cn-intel-card" style="background:var(--surface);">
-              <div class="cn-intel-card-header">
-                <span>Ethical Wall &amp; Attendee Privilege</span>
-                <span class="stitch-badge stitch-badge--green" style="font-size:9.5px;">All Cleared</span>
-              </div>
-              <div style="font-size:11px; color:var(--muted); line-height:1.5;">
-                Retained expert <strong>Dr. Moore</strong> screened under FRE 702. Direct settlement figures automatically masked from expert view.
-              </div>
-            </div>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">In-Meeting UI</span> <strong>CaseNotes In-Meeting Live Capture (Lua Legal Benchmark)</strong> — Integrated application view with real-time speaker diarization, one-keystroke Off-the-Record privilege pause (⌘+P), FRCP 37(e) strike control, and live parallel task &amp; decision extraction.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential UI: In-Meeting Live Capture Experience</strong> — Ambient in-call HUD featuring real-time speaker diarization, 1-keystroke off-the-record privilege pause (⌘+P), and parallel decision extraction.</figcaption>
   </figure>
 
   <h3 class="h3">3. After: Structured intelligence, filed where it belongs</h3>
   <p class="prose">Post-meeting summaries file directly to the case: context, decisions, assignees, deadlines, and segment-by-segment privilege tags. Raw transcripts remain in a secondary drawer to minimize discovery exposure.</p>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <!-- AUTHENTIC CASENOTES POST-MEETING DETAIL VIEW -->
-      <div class="cn-app-shell">
-        <!-- App Top Bar -->
-        <div class="cn-top-bar">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">OMNIDATA</span>
-              </div>
-            </div>
-
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span>Meetings</span>
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Apex Tech v. MedTech Corp (#2024-884-CV)</span>
-            </div>
-          </div>
-
-          <div class="cn-top-actions">
-            <div class="cn-ai-status-pill">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              <span>Grounded Matter Intelligence</span>
-            </div>
-            <div class="cn-user-profile">
-              <div class="cn-user-avatar">SJ</div>
-              <span style="font-weight:600;">Sarah Jenkins, Esq.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Meeting Header with Action Controls -->
-        <div class="cn-detail-header">
-          <div class="cn-detail-title-group">
-            <h2>Deposition Prep: Apex Technologies v. MedTech Corp</h2>
-            <div class="cn-detail-meta-pills">
-              <span class="cn-pill cn-pill--completed">• 47m Recorded</span>
-              <span class="stitch-badge stitch-badge--neutral">Tue, May 26 · 10:00 AM EST</span>
-              <span class="stitch-badge stitch-badge--blue">Matter #2024-884-CV (USDC Dist. Del.)</span>
-              <span class="stitch-badge stitch-badge--green">Clio Synced: CL-884-LIT</span>
-              <span class="stitch-badge stitch-badge--amber">FRE 502 Screened</span>
-            </div>
-          </div>
-
-          <div class="cn-detail-actions">
-            <button type="button" class="stitch-btn stitch-btn--secondary" style="font-size:11.5px; padding:6px 12px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
-              Export to Clio
-            </button>
-            <button type="button" class="stitch-btn stitch-btn--primary" style="font-size:11.5px; padding:6px 14px;">
-              Discovery Packet
-            </button>
-          </div>
-        </div>
-
-        <!-- Meeting Tabs -->
-        <div class="cn-tabs-bar">
-          <div class="cn-tab-item active">Executive Summary</div>
-          <div class="cn-tab-item">Key Decisions &amp; Action Items (5)</div>
-          <div class="cn-tab-item">Privilege Stream (3 Segments)</div>
-          <div class="cn-tab-item">Clio UTBMS Billing ($480)</div>
-        </div>
-
-        <!-- Meeting Detail Body: Structured Briefing + Segment Privilege Stream -->
-        <div class="cn-detail-body">
-          <!-- Left: Structured Summary & Action Items -->
-          <div style="display:flex; flex-direction:column; gap:16px;">
-            <div class="stitch-card stitch-card--highlight">
-              <div class="stitch-card__header">
-                <span class="stitch-card__title">Executive Brief // 47m Deposition Strategy</span>
-                <span class="stitch-badge stitch-badge--green">100% Extracted Data</span>
-              </div>
-              <p class="stitch-card__desc" style="font-size:13px; line-height:1.55;">
-                MedTech proposed a conditional settlement conference before Judge Stark. Strategy confirmed: proceed with cross-examination of Dr. Moore regarding European priority disclosures while reserving Rule 408 protections on settlement limits.
-              </p>
-            </div>
-
-            <div class="stitch-card">
-              <div class="stitch-card__header">
-                <span class="stitch-card__title">Key Decisions Identified</span>
-                <span class="stitch-badge stitch-badge--neutral">3 Recorded</span>
-              </div>
-              <div style="display:flex; flex-direction:column; gap:8px; font-size:12.5px;">
-                <div style="display:flex; align-items:flex-start; gap:8px;">
-                  <span style="color:var(--green); font-weight:700;">✓</span>
-                  <span>Concede venue transfer motion to expedite patent claim construction.</span>
-                </div>
-                <div style="display:flex; align-items:flex-start; gap:8px;">
-                  <span style="color:var(--green); font-weight:700;">✓</span>
-                  <span>Subpoena Q3 MedTech internal firmware logs by Oct 14 deadline.</span>
-                </div>
-                <div style="display:flex; align-items:flex-start; gap:8px;">
-                  <span style="color:var(--green); font-weight:700;">✓</span>
-                  <span>Cap initial settlement counter-offer at $3.2M during upcoming mediation.</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="stitch-table-wrapper">
-              <table class="stitch-table">
-                <thead>
-                  <tr>
-                    <th>Action Item</th>
-                    <th>Assignee</th>
-                    <th>Deadline</th>
-                    <th>UTBMS Code</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Draft motion in limine on patent invalidity</td>
-                    <td><strong>D. Vance (Assoc)</strong></td>
-                    <td>Tomorrow, 17:00</td>
-                    <td><code style="font-family:var(--mono); color:var(--accent);">L120 // 2.5h</code></td>
-                  </tr>
-                  <tr>
-                    <td>Redact proprietary schematics from Exhibit D</td>
-                    <td><strong>K. Lin (Paralegal)</strong></td>
-                    <td>Friday, 12:00</td>
-                    <td><code style="font-family:var(--mono); color:var(--accent);">A104 // 1.0h</code></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- Right: Segment-by-Segment Privilege Stream -->
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); font-family:var(--mono);">
-              Segment Privilege Classification (FRE 502)
-            </div>
-
-            <div class="stitch-transcript-bubble">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span style="font-size:11px; font-family:var(--mono); color:var(--muted);">10:02 - 10:18 (16m)</span>
-                <span class="stitch-badge stitch-badge--green">Discoverable</span>
-              </div>
-              <div style="font-size:12.5px; color:var(--ink);">Factual chronology of European patent priority dates and technical documentation exchange.</div>
-            </div>
-
-            <div class="stitch-transcript-bubble stitch-transcript-bubble--priv">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span style="font-size:11px; font-family:var(--mono); color:var(--amber);">10:19 - 10:35 (16m)</span>
-                <span class="stitch-badge stitch-badge--amber">Attorney Work Product</span>
-              </div>
-              <div style="font-size:12.5px; color:var(--ink); font-weight:500;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Trial strategy &amp; settlement threshold discussions. Raw audio quarantined behind partner-level cryptographic key. Excluded from production.
-              </div>
-            </div>
-
-            <div class="stitch-transcript-bubble">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                <span style="font-size:11px; font-family:var(--mono); color:var(--muted);">10:36 - 10:47 (11m)</span>
-                <span class="stitch-badge stitch-badge--green">Discoverable</span>
-              </div>
-              <div style="font-size:12.5px; color:var(--ink);">Expert deposition scheduling and court appearance coordination.</div>
-            </div>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">Hero Surface</span> <strong>CaseNotes Post-Meeting Structured Summary View</strong> — Clean meeting intelligence file: matter header, extracted executive brief, verified decisions, action items with UTBMS codes, and segment-by-segment FRE 502 privilege classification.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential UI: Post-Meeting Structured Summary File</strong> — Primary meeting intelligence record displaying matter metadata, executive brief, verified decisions, action items with UTBMS billing codes, and FRE 502 privilege classification.</figcaption>
   </figure>
 
   <div class="pullquote">
@@ -1426,340 +942,15 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <!-- FIGURE: Grounded AI Intelligence & Interactive Legal AI Workbench -->
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <div class="stitch-ui">
-        <div class="cn-top-bar" style="padding:10px 16px;">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">OMNIS AI</span>
-              </div>
-            </div>
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span>Workbench</span>
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Grounded Legal AI Engine (#2024-884-CV)</span>
-            </div>
-          </div>
-          <div class="cn-top-actions">
-            <span class="stitch-badge stitch-badge--green">Zero Hallucination Guard</span>
-            <span class="stitch-badge stitch-badge--blue">ABA Opinion 512</span>
-          </div>
-        </div>
-
-        <!-- Interactive Workbench Tabs -->
-        <div class="stitch-ai-tabs" role="tablist">
-          <button class="stitch-ai-tab active" data-tab="qa" role="tab" aria-selected="true">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            1. Matter Memory Q&amp;A
-          </button>
-          <button class="stitch-ai-tab" data-tab="letter" role="tab" aria-selected="false">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            2. 1-Click Client Letter
-          </button>
-          <button class="stitch-ai-tab" data-tab="utbms" role="tab" aria-selected="false">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="6" y1="8" x2="10" y2="8"></line><line x1="6" y1="12" x2="14" y2="12"></line><line x1="6" y1="16" x2="18" y2="16"></line></svg>
-            3. UTBMS Billing Sync
-          </button>
-          <button class="stitch-ai-tab" data-tab="spoliation" role="tab" aria-selected="false">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            4. Record &amp; Spoliation Control
-          </button>
-        </div>
-
-        <div class="stitch-body">
-          <!-- PANE 1: MATTER MEMORY Q&A -->
-          <div class="stitch-ai-pane active" id="pane-qa">
-            <!-- Quick Prompt Suggestions Chips -->
-            <div class="stitch-prompt-chips">
-              <span style="font-family:var(--mono); font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em;">Suggested Inquiries:</span>
-              <button class="stitch-prompt-chip active" data-query="What was agreed regarding the patent royalty ceiling and expert witness rebuttal schedule?">
-                <span>⚡ Patent ceiling &amp; Rule 702 schedule</span>
-              </button>
-              <button class="stitch-prompt-chip" data-query="Were any off-the-record representations made regarding plaintiff's trade secret claim?">
-                <span>⚡ Trade secret off-the-record statements</span>
-              </button>
-              <button class="stitch-prompt-chip" data-query="What cross-licensing parameters were approved by Arthur Sterling during the call?">
-                <span>⚡ Cross-licensing parameters</span>
-              </button>
-            </div>
-
-            <!-- Prompt Query Bar -->
-            <div class="stitch-ai-query-bar">
-              <div class="stitch-ai-query-input">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <span id="stitchActiveQueryText"><strong>QUERY:</strong> "What was agreed regarding the patent royalty ceiling and expert witness rebuttal schedule?"</span>
-              </div>
-              <span class="stitch-badge stitch-badge--neutral">Extracted Transcript Only · No Extrapolation</span>
-            </div>
-
-            <!-- Answer Card with Inline Citations -->
-            <div class="stitch-grounded-answer-card">
-              <div class="stitch-grounded-header">
-                <div class="stitch-grounded-title">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                  <span>Grounded Fact Synthesis (Zero Invented Tokens)</span>
-                </div>
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="stitch-badge stitch-badge--green">0% Hallucination</span>
-                  <span class="stitch-badge stitch-badge--amber">FRE 408 Protected</span>
-                </div>
-              </div>
-
-              <div id="stitchAnswerContent">
-                <div class="stitch-grounded-text">
-                  <strong>1. Settlement Ceiling &amp; Mediation Anchor:</strong> The parties agreed to maintain a firm walk-away settlement ceiling of $2.2M, but authorized Sarah Jenkins to open discussions at $3.5M during Friday's mediation conference.
-                  <span class="stitch-cite-tag" title="Click to inspect verbatim audio segment">[28:14 · S. Jenkins, Lead Counsel]</span>
-                </div>
-
-                <div class="stitch-grounded-text">
-                  <strong>2. Expert Witness Rebuttal Disclosures:</strong> Dr. Kenneth Moore confirmed that the Rule 702 technical rebuttal will be completed by November 4th, expressly conditioned on plaintiff delivering the full git commit dump.
-                  <span class="stitch-cite-tag" title="Click to inspect verbatim audio segment">[36:50 · Dr. K. Moore, Expert Witness]</span>
-                </div>
-
-                <div class="stitch-grounded-text" style="color:var(--muted); font-size:12.5px;">
-                  <strong>3. Cross-Licensing Terms:</strong> <span class="stitch-badge stitch-badge--neutral" style="font-size:10px;">Not Addressed in Record</span> — Audio transcript contains zero mentions of cross-licensing parameters; model refusal triggered pursuant to Strict Grounding Invariant.
-                </div>
-              </div>
-
-              <!-- Interactive Audio Snippet Player & Provenance Split -->
-              <div class="stitch-proof-split">
-                <div class="stitch-proof-panel">
-                  <div class="stitch-proof-panel__header">
-                    <span>VERBATIM TRANSCRIPT PROOF // SEGMENT 04 (28:14 - 28:29)</span>
-                    <span style="color:var(--green); font-weight:600;">100% Verbatim Match</span>
-                  </div>
-                  <p class="stitch-proof-panel__quote">
-                    "Look, between us, our client's walk-away settlement ceiling is $2.2M, but we will test their appetite at $3.5M during Friday's mediation conference."
-                  </p>
-                  
-                  <!-- Interactive Audio Player Bar -->
-                  <div class="stitch-audio-bar" id="stitchAudioBar">
-                    <button class="stitch-btn-action" id="stitchPlayAudioBtn" style="padding:4px 10px; font-size:10px;">
-                      <span id="stitchPlayIcon">▶</span> <span id="stitchPlayLabel">Play Audio Snippet</span>
-                    </button>
-                    <div class="stitch-waveform-bars">
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                      <span class="stitch-waveform-bar"></span>
-                    </div>
-                    <span style="color:var(--muted); font-size:10px;">00:15 / Sarah Jenkins (Verified)</span>
-                  </div>
-                </div>
-
-                <div class="stitch-proof-panel" style="background:var(--surface);">
-                  <div class="stitch-proof-panel__header">
-                    <span>CRYPTOGRAPHIC PROVENANCE &amp; ETHICAL COMPLIANCE</span>
-                    <span class="stitch-badge stitch-badge--neutral">FRE 502(b)</span>
-                  </div>
-                  <div style="display:flex; flex-direction:column; gap:6px; font-size:11.5px; font-family:var(--mono);">
-                    <div>Audit Hash: <code style="color:var(--accent);">sha256:d8f4c71a...93be</code></div>
-                    <div>Tenant Security: <strong>Isolated Private Firm Pod</strong></div>
-                    <div>Model Training: <strong style="color:var(--green);">Zero Retention (Never Trained)</strong></div>
-                    <div>Ethical Wall: <strong style="color:var(--amber);">Quarantined from External Portals</strong></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Guardrail Safety Notice -->
-              <div class="stitch-guardrail-banner">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <div><strong>ABA Formal Opinion 512 Deterministic Standard:</strong> Generative inference is architecturally bounded to verified transcript tokens. If a fact was not stated in spoken testimony or docketed in matter records, CaseNotes explicitly rejects the inquiry rather than interpolating assumptions.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PANE 2: 1-CLICK CLIENT FOLLOW-UP LETTER -->
-          <div class="stitch-ai-pane" id="pane-letter">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-              <div>
-                <strong style="font-size:13px;">Automated Post-Meeting Client Debrief &amp; Strategy Memo</strong>
-                <p style="font-size:12px; color:var(--muted); margin:2px 0 0 0;">Synthesized instantly from meeting transcript with automated FRE 408 privilege redaction filters.</p>
-              </div>
-              <div style="display:flex; gap:8px;">
-                <button class="stitch-btn-action" id="stitchCopyLetterBtn">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                  <span id="stitchCopyLetterLabel">Copy Formatted Letter</span>
-                </button>
-                <button class="stitch-btn-action stitch-btn-action--outline">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  Export to iManage
-                </button>
-              </div>
-            </div>
-
-            <!-- Letter Document Preview -->
-            <div class="stitch-letter-doc">
-              <div class="stitch-letter-header">
-                <div>
-                  <strong>TO:</strong> Arthur Sterling, General Counsel (Apex Dynamics, Inc.)<br>
-                  <strong>FROM:</strong> Sarah Jenkins, Partner (Sterling &amp; Cross LLP)<br>
-                  <strong>RE:</strong> Post-Conference Debrief &amp; Mediation Anchor Strategy // Matter #2024-884-CV
-                </div>
-                <div style="text-align:right;">
-                  <span>DATE: October 24, 2024</span><br>
-                  <span class="stitch-badge stitch-badge--amber" style="font-size:10px; margin-top:4px; display:inline-block;">ATTORNEY-CLIENT PRIVILEGED // WORK PRODUCT</span>
-                </div>
-              </div>
-
-              <p>Dear Arthur,</p>
-              <p>Following our strategy conference this afternoon with Dr. Kenneth Moore, I am writing to summarize our agreed positions heading into Friday's mediation before Magistrate Judge Torres.</p>
-
-              <div>
-                <strong>1. Settlement Range &amp; Opening Anchor</strong><br>
-                As confirmed during our discussion, we have documented your authorization to open discussions at <strong>$3.5M</strong>, while preserving a strict internal ceiling of <span class="stitch-redaction-pill">[REDACTED: CONFIDENTIAL CEILING UNDER FRE 408]</span>. Should plaintiff decline to counter below $4.0M, we will immediately pivot to technical invalidity arguments.
-              </div>
-
-              <div>
-                <strong>2. Expert Witness Schedule (Fed. R. Civ. P. 26)</strong><br>
-                Dr. Moore has confirmed that his technical rebuttal report is tracking on schedule for completion by <strong>November 4, 2024</strong>, conditioned on plaintiff producing unredacted git commit logs pursuant to the Oct 12 order.
-              </div>
-
-              <div>
-                <strong>3. Next Action Items</strong><br>
-                • <strong>Oct 25 (09:00 EST):</strong> Jenkins to serve supplemental responses to Request for Production #44.<br>
-                • <strong>Oct 25 (14:30 EST):</strong> Final pre-mediation prep call with Apex executive team.
-              </div>
-
-              <p style="margin-top:8px;">Respectfully submitted,<br><strong>Sarah Jenkins</strong> | Sterling &amp; Cross LLP</p>
-            </div>
-          </div>
-
-          <!-- PANE 3: UTBMS BILLING SYNC -->
-          <div class="stitch-ai-pane" id="pane-utbms">
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-              <div>
-                <strong style="font-size:13px;">Automated UTBMS / LEDES Time Capture Ledger</strong>
-                <p style="font-size:12px; color:var(--muted); margin:2px 0 0 0;">Eliminates timekeeper entry friction by mapping spoken attendance and legal work product to ABA Uniform Task-Based Management Codes.</p>
-              </div>
-              <div style="display:flex; gap:8px;">
-                <button class="stitch-btn-action" id="stitchSyncClioBtn">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  <span id="stitchSyncClioLabel">One-Tap Sync to Clio</span>
-                </button>
-                <button class="stitch-btn-action stitch-btn-action--outline">
-                  <span>Export LEDES 1998B</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- UTBMS Billing Table -->
-            <table class="stitch-utbms-table">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Task / Activity Code</th>
-                  <th>Narrative Description</th>
-                  <th>Hours</th>
-                  <th>Rate</th>
-                  <th>Total</th>
-                  <th>Compliance</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>2024-10-24</td>
-                  <td><strong style="color:var(--accent);">L120</strong> / Analysis</td>
-                  <td>Confer with co-counsel S. Jenkins and expert Dr. K. Moore regarding technical rebuttal boundaries, invalidity defensibility, and mediation anchors.</td>
-                  <td>0.8</td>
-                  <td>$550.00</td>
-                  <td>$440.00</td>
-                  <td><span class="stitch-badge stitch-badge--green" style="font-size:9.5px;">✓ Audit Passed</span></td>
-                </tr>
-                <tr>
-                  <td>2024-10-24</td>
-                  <td><strong style="color:var(--accent);">A103</strong> / Draft/Revise</td>
-                  <td>Draft comprehensive post-conference memorandum to General Counsel Arthur Sterling detailing FRE 408 settlement authorization and expert disclosures.</td>
-                  <td>0.4</td>
-                  <td>$550.00</td>
-                  <td>$220.00</td>
-                  <td><span class="stitch-badge stitch-badge--green" style="font-size:9.5px;">✓ Audit Passed</span></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg); border:1px solid var(--line); padding:10px 14px; font-family:var(--mono); font-size:11.5px; flex-wrap:wrap; gap:8px;">
-              <div>Matter: <strong>#2024-884-CV (Apex Dynamics)</strong> · Timekeeper: <strong>Sarah Jenkins (Partner)</strong></div>
-              <div style="display:flex; gap:16px;">
-                <span>Total Billable: <strong style="color:var(--green);">1.20 hrs ($660.00)</strong></span>
-                <span>Time Saved: <strong style="color:var(--accent);">28 minutes</strong></span>
-              </div>
-            </div>
-          </div>
-
-          <!-- PANE 4: RECORD & SPOLIATION CONTROL (LUA-LEGAL DIRECT BENCHMARK) -->
-          <div class="stitch-ai-pane" id="pane-spoliation">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px;">
-              <div>
-                <strong style="font-size:13px;">Post-Meeting Record &amp; Spoliation Governor (FRCP 37(e) Safe Harbor)</strong>
-                <p style="font-size:12px; color:var(--muted); margin:2px 0 0 0;">Unlike consumer AI meeting bots that create perpetual discovery liabilities, CaseNotes allows litigators to determine whether a record should exist at all.</p>
-              </div>
-              <span class="stitch-badge stitch-badge--green">FRCP 37(e) Compliant</span>
-            </div>
-
-            <!-- 3 Decision Cards -->
-            <div class="stitch-spoliation-grid">
-              <div class="stitch-spoliation-card stitch-spoliation-card--active" data-spoliation="retain">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <strong style="font-size:12px; font-family:var(--mono); color:var(--green);">Option A: Full Record</strong>
-                  <span class="stitch-badge stitch-badge--green" style="font-size:9px;">Active</span>
-                </div>
-                <div style="font-size:12.5px; font-weight:600;">Commit Structured Note &amp; Retain Diarized Audio</div>
-                <p style="font-size:11.5px; color:var(--muted); margin:0; line-height:1.45;">Full preservation in private firm matter vault. Ideal for formal depositions, court conferences, and third-party witness cross-examinations.</p>
-                <div style="margin-top:auto; font-size:10.5px; font-family:var(--mono); color:var(--green);">✓ Evidentiary Provenance Intact</div>
-              </div>
-
-              <div class="stitch-spoliation-card" data-spoliation="quarantine">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <strong style="font-size:12px; font-family:var(--mono); color:var(--amber);">Option B: 30-Day Hold</strong>
-                  <span class="stitch-badge stitch-badge--neutral" style="font-size:9px;">Standby</span>
-                </div>
-                <div style="font-size:12.5px; font-weight:600;">Retain Synthesized Work Product; Quarantine Audio</div>
-                <p style="font-size:11.5px; color:var(--muted); margin:0; line-height:1.45;">Audio is sequestered into an auto-expiring 30-day encrypted vault, leaving only lawyer-approved work product notes in the active case file.</p>
-                <div style="margin-top:auto; font-size:10.5px; font-family:var(--mono); color:var(--amber);">⚠ Auto-Purge Scheduled Nov 24</div>
-              </div>
-
-              <div class="stitch-spoliation-card" data-spoliation="purge">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <strong style="font-size:12px; font-family:var(--mono); color:#ef4444;">Option C: Strike &amp; Purge</strong>
-                  <span class="stitch-badge stitch-badge--neutral" style="font-size:9px;">Zero Footprint</span>
-                </div>
-                <div style="font-size:12.5px; font-weight:600;">Cryptographic Strike &amp; Zero-Overwrite Purge</div>
-                <p style="font-size:11.5px; color:var(--muted); margin:0; line-height:1.45;">Instantly destroys audio, diarization tokens, and temp embeddings. Emits cryptographic proof of zero retention under Rule 37(e) safe harbor.</p>
-                <div style="margin-top:auto; font-size:10.5px; font-family:var(--mono); color:#ef4444;">⚡ Non-Discoverable Off-The-Record</div>
-              </div>
-            </div>
-
-            <!-- Dynamic Feedback Box -->
-            <div id="stitchSpoliationFeedback" class="stitch-guardrail-banner" style="margin-top:4px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-              <div><strong>Current Governance Status:</strong> Full evidentiary retention selected. Diarized audio and synchronized transcript segments are anchored to Matter #2024-884-CV with cryptographic SHA-256 tamper seals. Work-product privilege flags active under FRE 502.</div>
-            </div>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">Interactive Legal AI Workbench</span> <strong>Zero-Hallucination Intelligence, 1-Click Client Communications &amp; Spoliation Governor</strong> — Benchmarked against privilege-first standards (Lua Legal) with live switchable modes for fact extraction, privileged client letters, UTBMS e-billing, and FRCP 37(e) record destruction.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential UI: Legal AI Workbench &amp; Spoliation Governor</strong> — Interactive workbench featuring grounded fact extraction, 1-click privileged client letters, UTBMS billing export, and FRCP 37(e) record destruction controls.</figcaption>
   </figure>
 
   <h3 class="h-sub" style="margin-top:36px;">How the pipeline turns 47 minutes into 5 matter-linked artifacts</h3>
@@ -1808,130 +999,26 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <figure class="diagram-card">
-    <svg viewBox="0 0 960 320" role="img" aria-label="AI Pipeline Diagram">
-      <defs>
-        <marker id="dgArrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0 0L10 5L0 10z" fill="currentColor"/>
-        </marker>
-      </defs>
-
-      <rect class="dg-node" x="10" y="135" width="120" height="55" rx="8"/>
-      <text class="dg-title" x="70" y="158" font-size="12.5" text-anchor="middle">Audio</text>
-      <text class="dg-sub" x="70" y="174" font-size="10" text-anchor="middle">raw meeting</text>
-
-      <line class="dg-edge" x1="130" y1="162" x2="166" y2="162" marker-end="url(#dgArrow2)"/>
-      <text class="dg-label" x="148" y="150" text-anchor="middle">diarize</text>
-
-      <rect class="dg-node" x="170" y="135" width="140" height="55" rx="8"/>
-      <text class="dg-title" x="240" y="158" font-size="12.5" text-anchor="middle">Transcript</text>
-      <text class="dg-sub" x="240" y="174" font-size="10" text-anchor="middle">speaker-labeled</text>
-
-      <line class="dg-edge" x1="310" y1="162" x2="346" y2="162" marker-end="url(#dgArrow2)"/>
-      <text class="dg-label" x="328" y="150" text-anchor="middle">segment</text>
-
-      <rect class="dg-node" x="350" y="135" width="150" height="55" rx="8"/>
-      <text class="dg-title" x="425" y="158" font-size="12.5" text-anchor="middle">Topic segments</text>
-      <text class="dg-sub" x="425" y="174" font-size="10" text-anchor="middle">~8 per 47-min call</text>
-
-      <!-- branch up -->
-      <path class="dg-edge" d="M500 148 C 545 148, 545 68, 590 68" marker-end="url(#dgArrow2)"/>
-      <text class="dg-label" x="540" y="105" text-anchor="middle">extract</text>
-      <rect class="dg-node" x="594" y="42" width="190" height="55" rx="8"/>
-      <text class="dg-title" x="689" y="65" font-size="12" text-anchor="middle">Decisions &amp;</text>
-      <text class="dg-title" x="689" y="80" font-size="12" text-anchor="middle">action items</text>
-
-      <!-- branch down -->
-      <path class="dg-edge dg-edge--accent" d="M500 176 C 545 176, 545 256, 590 256" marker-end="url(#dgArrow2)"/>
-      <text class="dg-label" x="540" y="225" text-anchor="middle">flag (suggest)</text>
-      <rect class="dg-node dg-node--accent" x="594" y="230" width="190" height="55" rx="8"/>
-      <text class="dg-title" x="689" y="253" font-size="12" text-anchor="middle" style="fill:var(--accent)">Privilege flags</text>
-      <text class="dg-sub" x="689" y="268" font-size="10" text-anchor="middle">lawyer confirms/overrides</text>
-
-      <!-- merge -->
-      <path class="dg-edge" d="M784 69 C 830 69, 830 155, 866 155" marker-end="url(#dgArrow2)"/>
-      <path class="dg-edge" d="M784 257 C 830 257, 830 170, 866 170" marker-end="url(#dgArrow2)"/>
-
-      <rect class="dg-node dg-node--warm" x="800" y="135" width="150" height="55" rx="8"/>
-      <text class="dg-title" x="875" y="158" font-size="12.5" text-anchor="middle" style="fill:var(--amber)">Structured</text>
-      <text class="dg-title" x="875" y="173" font-size="12.5" text-anchor="middle" style="fill:var(--amber)">summary</text>
-    </svg>
-    <figcaption>Decisions and action items are extracted in parallel with privilege detection, merging into a unified matter file.</figcaption>
+  <figure class="diagram-card" style="padding:0; border:none; background:transparent;">
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
+      </div>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential Pipeline: Dual-Track AI Extraction Flow</strong> — Technical flow showing raw audio diarization branching simultaneously into matter task extraction and real-time privilege detection.</figcaption>
   </figure>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <div class="stitch-ui">
-        <div class="cn-top-bar" style="padding:10px 16px;">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">PRIVILEGE</span>
-              </div>
-            </div>
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Privilege Classifier &amp; Rule 408 Review (#2024-884-CV)</span>
-            </div>
-          </div>
-          <div class="cn-top-actions">
-            <span class="stitch-badge stitch-badge--amber">Heuristic Review Required</span>
-          </div>
-        </div>
-        <div class="stitch-body">
-          <div class="stitch-card stitch-card--amber">
-            <div class="stitch-card__header">
-              <div>
-                <span class="stitch-card__title">Flagged Utterance // Segment 04 (Timestamp 28:14 - 29:30)</span>
-                <div style="font-size:11.5px; color:var(--muted); font-family:var(--mono); margin-top:2px;">Trigger: Compromise negotiation heuristic match (FRE 408 &amp; 502(b))</div>
-              </div>
-              <div style="text-align:right;">
-                <span class="stitch-badge stitch-badge--green">98.4% Confidence</span>
-              </div>
-            </div>
-
-            <div class="stitch-meter-track">
-              <div class="stitch-meter-fill" style="width: 98.4%;"></div>
-            </div>
-
-            <p class="stitch-quote" style="border-left-color:var(--amber); background:var(--surface); padding:10px 12px; font-size:13px;">
-              "Look, between us, our client's walk-away settlement ceiling is $2.2M, but we will test their appetite at $3.5M during Friday's mediation conference."
-            </p>
-
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
-              <button type="button" class="stitch-btn stitch-btn--primary">✓ Confirm Privileged (Lock &amp; Quarantine)</button>
-              <button type="button" class="stitch-btn stitch-btn--secondary">✎ Override: Mark Discoverable</button>
-              <button type="button" class="stitch-btn stitch-btn--danger">✂ Redact Utterance Entirely</button>
-            </div>
-          </div>
-
-          <div class="stitch-card" style="background:var(--surface);">
-            <div class="stitch-card__header">
-              <span class="stitch-card__title" style="font-family:var(--mono); font-size:11.5px;">FRE 502 Immutable Audit Ledger</span>
-              <span class="stitch-badge stitch-badge--neutral">Cryptographically Verified</span>
-            </div>
-            <div class="stitch-grid-3" style="font-size:11.5px; font-family:var(--mono); color:var(--muted);">
-              <div>Reviewer: <strong style="color:var(--ink);">Sarah Jenkins, Esq. (#88421)</strong></div>
-              <div>Timestamp: <strong style="color:var(--ink);">2026-09-04 14:38:12 UTC</strong></div>
-              <div>Audit SHA-256: <code style="color:var(--accent);">e7a9b8...3f12</code></div>
-            </div>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">Interaction Model</span> <strong>Privilege Confirmation &amp; Override Flow</strong> — One-click verification and override mechanism with FRE 502 compliant immutable audit trail logging.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential Workflow: Privilege Confirmation &amp; Override Modal</strong> — Attorney review interface with confidence scoring, 1-click privilege quarantining, and FRE 502 cryptographically logged audit trail.</figcaption>
   </figure>
 </section>
 
@@ -1975,133 +1062,14 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   </div>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <div class="stitch-ui">
-        <div class="cn-top-bar" style="padding:10px 16px;">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">ANALYTICS</span>
-              </div>
-            </div>
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Matter Intelligence &amp; Portfolio Audit Console</span>
-            </div>
-          </div>
-          <div class="cn-top-actions">
-            <span class="stitch-badge stitch-badge--green">Continuous Audit Active</span>
-          </div>
-        </div>
-        <div class="stitch-body">
-          <div class="stitch-kpi-row">
-            <div class="stitch-kpi-card">
-              <div class="stitch-kpi-card__num stitch-kpi-card__num--accent">14</div>
-              <div class="stitch-kpi-card__label">Sessions Logged</div>
-            </div>
-            <div class="stitch-kpi-card">
-              <div class="stitch-kpi-card__num stitch-kpi-card__num--amber">38</div>
-              <div class="stitch-kpi-card__label">Quarantined Segments</div>
-            </div>
-            <div class="stitch-kpi-card">
-              <div class="stitch-kpi-card__num stitch-kpi-card__num--green">0</div>
-              <div class="stitch-kpi-card__label">Ethical Breaches</div>
-            </div>
-            <div class="stitch-kpi-card">
-              <div class="stitch-kpi-card__num">42.5h</div>
-              <div class="stitch-kpi-card__label">Paralegal Time Saved</div>
-            </div>
-          </div>
-
-          <div class="stitch-grid-2">
-            <!-- Left: Participant Ethical Wall Conflict Audit -->
-            <div class="stitch-card">
-              <div class="stitch-card__header">
-                <span class="stitch-card__title">Ethical Wall &amp; Conflict Ledger</span>
-                <span class="stitch-badge stitch-badge--neutral">Real-time Check</span>
-              </div>
-              <div class="stitch-table-wrapper" style="border:none;">
-                <table class="stitch-table">
-                  <thead>
-                    <tr>
-                      <th>Attendee</th>
-                      <th>Affiliation</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Sarah Jenkins</td>
-                      <td>Firm Partner</td>
-                      <td><span class="stitch-badge stitch-badge--green">Clear</span></td>
-                    </tr>
-                    <tr>
-                      <td>David Vance</td>
-                      <td>Senior Associate</td>
-                      <td><span class="stitch-badge stitch-badge--green">Clear</span></td>
-                    </tr>
-                    <tr>
-                      <td>Marcus Cole</td>
-                      <td>Former Co-Counsel</td>
-                      <td><span class="stitch-badge stitch-badge--red">Screened</span></td>
-                    </tr>
-                    <tr>
-                      <td>Dr. Kenneth Moore</td>
-                      <td>Expert Witness</td>
-                      <td><span class="stitch-badge stitch-badge--amber">Restricted</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Right: Court Filing Gantt Timeline -->
-            <div class="stitch-card">
-              <div class="stitch-card__header">
-                <span class="stitch-card__title">Litigation Court Filing Timeline</span>
-                <span class="stitch-badge stitch-badge--blue">USDC Dist. Del.</span>
-              </div>
-              <div style="display:flex; flex-direction:column; gap:10px;">
-                <div class="stitch-gantt-item">
-                  <div style="display:flex; justify-content:space-between; font-size:11.5px;">
-                    <span>Fact Discovery Cutoff</span>
-                    <span style="font-family:var(--mono); color:var(--green);">Oct 12 (85% Done)</span>
-                  </div>
-                  <div class="stitch-gantt-bar stitch-gantt-bar--green" style="width:85%;">12 Depositions Completed</div>
-                </div>
-                <div class="stitch-gantt-item">
-                  <div style="display:flex; justify-content:space-between; font-size:11.5px;">
-                    <span>Expert Reports Exchange</span>
-                    <span style="font-family:var(--mono); color:var(--amber);">Nov 04 (40% Done)</span>
-                  </div>
-                  <div class="stitch-gantt-bar stitch-gantt-bar--amber" style="width:40%;">Rebuttal Drafting</div>
-                </div>
-                <div class="stitch-gantt-item">
-                  <div style="display:flex; justify-content:space-between; font-size:11.5px;">
-                    <span>Summary Judgment Hearing</span>
-                    <span style="font-family:var(--mono); color:var(--accent);">Dec 15 (Scheduled)</span>
-                  </div>
-                  <div class="stitch-gantt-bar" style="width:100%;">Judge Stark Chambers</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">Case Intelligence</span> <strong>Conflict, Attendance &amp; Coverage Dashboard</strong> — Centralized matter health KPIs, ethical wall monitoring log, and interactive court filing Gantt timeline.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential UI: Conflict Ledger &amp; Court Coverage Dashboard</strong> — Centralized matter health monitoring console displaying ethical wall conflict screening logs, attorney coverage schedules, and interactive court filing Gantt timelines.</figcaption>
   </figure>
 </section>
 
@@ -2117,55 +1085,15 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <h2 class="h reveal">Syncing where the case already lives: Clio, NetDocuments, and client portals</h2>
   <p class="prose">CaseNotes avoids standalone silos by syncing structured data directly into core legal software:</p>
 
-  <figure class="diagram-card">
-    <svg viewBox="0 0 700 330" role="img" aria-label="Workflow Routing Diagram">
-      <defs>
-        <marker id="dgArrow3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-          <path d="M0 0L10 5L0 10z" fill="currentColor"/>
-        </marker>
-      </defs>
-
-      <rect class="dg-node dg-node--accent" x="10" y="135" width="180" height="60" rx="8"/>
-      <text class="dg-title" x="100" y="160" font-size="12.5" text-anchor="middle" style="fill:var(--accent)">Matter summary</text>
-      <text class="dg-sub" x="100" y="177" font-size="10" text-anchor="middle">structured output</text>
-
-      <!-- direct routes -->
-      <line class="dg-edge" x1="190" y1="150" x2="386" y2="42" marker-end="url(#dgArrow3)"/>
-      <text class="dg-label" x="290" y="85" text-anchor="middle">billing time + task</text>
-
-      <line class="dg-edge" x1="190" y1="160" x2="386" y2="120" marker-end="url(#dgArrow3)"/>
-      <text class="dg-label" x="290" y="132" text-anchor="middle">filed documents</text>
-
-      <line class="dg-edge" x1="190" y1="172" x2="386" y2="198" marker-end="url(#dgArrow3)"/>
-      <text class="dg-label" x="290" y="200" text-anchor="middle">court deadlines</text>
-
-      <rect class="dg-node" x="390" y="16" width="220" height="52" rx="8"/>
-      <text class="dg-title" x="500" y="38" font-size="12.5" text-anchor="middle">Practice management</text>
-      <text class="dg-sub" x="500" y="55" font-size="10" text-anchor="middle">Clio · MyCase · PracticePanther</text>
-
-      <rect class="dg-node" x="390" y="94" width="220" height="52" rx="8"/>
-      <text class="dg-title" x="500" y="116" font-size="12.5" text-anchor="middle">Document management</text>
-      <text class="dg-sub" x="500" y="133" font-size="10" text-anchor="middle">NetDocuments · iManage</text>
-
-      <rect class="dg-node" x="390" y="172" width="220" height="52" rx="8"/>
-      <text class="dg-title" x="500" y="194" font-size="12.5" text-anchor="middle">Case calendar</text>
-      <text class="dg-sub" x="500" y="211" font-size="10" text-anchor="middle">filing deadlines</text>
-
-      <!-- filtered route to client portal -->
-      <line class="dg-edge dg-edge--accent" x1="190" y1="180" x2="266" y2="272" marker-end="url(#dgArrow3)"/>
-      <text class="dg-label" x="205" y="230" text-anchor="middle">redacted summary</text>
-
-      <rect class="dg-node dg-node--warm" x="270" y="250" width="150" height="46" rx="8"/>
-      <text class="dg-title" x="345" y="270" font-size="11.5" text-anchor="middle" style="fill:var(--amber)">Strip privileged</text>
-      <text class="dg-sub" x="345" y="285" font-size="9.5" text-anchor="middle">ethical-wall filter</text>
-
-      <line class="dg-edge" x1="420" y1="273" x2="446" y2="273" marker-end="url(#dgArrow3)"/>
-
-      <rect class="dg-node" x="450" y="248" width="160" height="50" rx="8"/>
-      <text class="dg-title" x="530" y="269" font-size="12" text-anchor="middle">Client portal</text>
-      <text class="dg-sub" x="530" y="285" font-size="10" text-anchor="middle">plain-language digest</text>
-    </svg>
-    <figcaption>Direct synchronization with legal practice suites, while external client views route through an automated privilege-stripping filter.</figcaption>
+  <figure class="diagram-card" style="padding:0; border:none; background:transparent;">
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
+      </div>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential Architecture: Legal Ecosystem Sync &amp; Privilege Gate</strong> — Systems integration blueprint showing two-way synchronization with Clio and NetDocuments, with an automated redaction gateway that strips privileged work-product before reaching external client portals.</figcaption>
   </figure>
 </section>
 
@@ -2209,142 +1137,14 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   </div>
 
   <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <div class="stitch-ui">
-        <div class="cn-top-bar" style="padding:10px 16px;">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">SECURITY</span>
-              </div>
-            </div>
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Role Scoping &amp; Ethical Wall Boundary Engine</span>
-            </div>
-          </div>
-          <div class="cn-top-actions">
-            <span class="stitch-badge stitch-badge--blue">Zero-Trust Verified</span>
-          </div>
-        </div>
-        <div class="stitch-body">
-          <div class="stitch-grid-4">
-            <!-- Partner -->
-            <div class="stitch-role-card stitch-role-card--partner">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span class="stitch-badge stitch-badge--blue">Partner</span>
-                <span style="font-family:var(--mono); font-size:11px; color:var(--accent);">Tier 1</span>
-              </div>
-              <div style="font-size:13.5px; font-weight:700; color:var(--ink);">Full Governance</div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Full authoring, revocation, and privilege overrides</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Unrestricted raw audio &amp; transcript access</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Settlement ranges &amp; financial caps visible</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Authorized for court discovery export</span>
-              </div>
-            </div>
-
-            <!-- Associate -->
-            <div class="stitch-role-card stitch-role-card--assoc">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span class="stitch-badge stitch-badge--green">Associate</span>
-                <span style="font-family:var(--mono); font-size:11px; color:var(--green);">Tier 2</span>
-              </div>
-              <div style="font-size:13.5px; font-weight:700; color:var(--ink);">Operational Scope</div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Draft briefs &amp; propose privilege adjustments</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Matter-scoped audio &amp; factual transcripts</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--red); font-weight:700;">✕</span>
-                <span style="color:var(--muted);">Settlement financial caps masked</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--amber); font-weight:700;">!</span>
-                <span>Partner approval required to export</span>
-              </div>
-            </div>
-
-            <!-- Paralegal -->
-            <div class="stitch-role-card stitch-role-card--para">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span class="stitch-badge stitch-badge--amber">Paralegal</span>
-                <span style="font-family:var(--mono); font-size:11px; color:var(--amber);">Tier 3</span>
-              </div>
-              <div style="font-size:13.5px; font-weight:700; color:var(--ink);">Logistics &amp; Triage</div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>UTBMS billing codes &amp; calendar sync</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Clio &amp; iManage document routing</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--red); font-weight:700;">✕</span>
-                <span style="color:var(--muted);">No override or privilege edit rights</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--red); font-weight:700;">✕</span>
-                <span style="color:var(--muted);">Privileged audio segments redacted</span>
-              </div>
-            </div>
-
-            <!-- Client Portal -->
-            <div class="stitch-role-card stitch-role-card--client">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <span class="stitch-badge stitch-badge--neutral">Client Portal</span>
-                <span style="font-family:var(--mono); font-size:11px; color:var(--purple);">Tier 4</span>
-              </div>
-              <div style="font-size:13.5px; font-weight:700; color:var(--ink);">External Digest</div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Executive summary &amp; milestone updates</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--green); font-weight:700;">✓</span>
-                <span>Invoice verification &amp; task milestones</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--red); font-weight:700;">✕</span>
-                <span style="color:var(--muted);">Zero raw transcript exposure</span>
-              </div>
-              <div class="stitch-role-feature">
-                <span style="color:var(--red); font-weight:700;">✕</span>
-                <span style="color:var(--muted);">Attorney work product stripped</span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <a href="mailto:rahamanmuzeeb1108@gmail.com?subject=CaseNotes%20Design%20Walkthrough%20Request" class="cn-nda-lock-card" aria-label="Under NDA - Click to request walkthrough">
+      <div class="cn-nda-icon-box">
+        <img src="assets/images/griddy-icons_lock-filled.svg" alt="Lock icon" class="cn-nda-lock-icon" width="30" height="30" loading="lazy">
       </div>
-    </div>
-    <figcaption><span class="figure-badge">Permission Scoping</span> <strong>Role-Based Interface Comparison Grid</strong> — Dynamic interface adaptation ensuring strict ethical separation across Partner, Associate, Paralegal, and Client views.</figcaption>
+      <h3 class="cn-nda-title">UNDER <span>NDA</span></h3>
+      <p class="cn-nda-desc">This work is confidential. I'd be happy to share this design over the call.</p>
+    </a>
+    <figcaption><strong>Confidential UI: 4-Tier Role-Based Workspace Matrix</strong> — Side-by-side interface breakdown illustrating how CaseNotes dynamically adapts navigation, billing controls, and sensitive case materials across Partner, Senior Associate, Paralegal, and Client views.</figcaption>
   </figure>
 </section>
 
@@ -2378,182 +1178,215 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <figure class="figure reveal">
-    <div class="frame" style="padding:0; border-radius:0;">
-      <div class="stitch-ui">
-        <div class="cn-top-bar" style="padding:10px 16px;">
-          <div class="cn-top-bar__left">
-            <div class="cn-logo-block">
-              <div class="cn-dots-grid">
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-                <span class="cn-dot-grid-cell"></span>
-              </div>
-              <div class="cn-logo-text">
-                <span class="cn-blue">Case</span><span class="cn-navy">Notes</span>
-                <span class="cn-logo-sub">MOBILE</span>
-              </div>
+  <figure class="figure reveal" id="courthouse-mobile-companion-showcase">
+    <div class="mobile-companion-showcase" aria-label="Courthouse Mobile Companion Three Viewports Mockup">
+      <!-- Phone 1: Live Hearing Attendance & 1-Tap Privilege Pause -->
+      <div class="mobile-phone-frame">
+        <div class="phone-island">
+          <span style="font-size:8.5px;font-weight:700;color:#fff;">CaseNotes</span>
+          <span class="phone-island__dot phone-island__dot--orange"></span>
+        </div>
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="font-size:9px;">5G</span>
+            <svg width="14" height="10" viewBox="0 0 24 14" fill="currentColor"><rect x="1" y="1" width="19" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="8" rx="1.5"/><path d="M22 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <div class="phone-screen">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <div class="phone-nav-title">Courtroom Live</div>
+              <div class="phone-heading" style="margin:0;">Matter 24-CV-8812</div>
             </div>
-            <div class="cn-breadcrumb">
-              <span class="cn-breadcrumb-sep">/</span>
-              <span class="cn-breadcrumb-current">Mobile Litigation Companion (iOS &amp; Android Viewports)</span>
+            <span class="phone-badge phone-badge--red">● REC 00:42:18</span>
+          </div>
+
+          <div class="phone-card" style="margin-top:6px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="color:#8e8e93;font-size:10px;font-weight:600;">FEDERAL DISTRICT COURT</span>
+              <span style="color:#ff9f0a;font-size:9.5px;font-weight:600;">ACTIVE SHIELD</span>
+            </div>
+            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px;">Hon. Judge Henderson · Room 4B</div>
+            <!-- Audio Waveform -->
+            <div class="phone-waveform">
+              <span class="phone-waveform__bar" style="height:6px;"></span>
+              <span class="phone-waveform__bar" style="height:14px;"></span>
+              <span class="phone-waveform__bar" style="height:20px;"></span>
+              <span class="phone-waveform__bar" style="height:9px;"></span>
+              <span class="phone-waveform__bar" style="height:18px;"></span>
+              <span class="phone-waveform__bar" style="height:24px;"></span>
+              <span class="phone-waveform__bar" style="height:12px;"></span>
+              <span class="phone-waveform__bar" style="height:16px;"></span>
+              <span class="phone-waveform__bar" style="height:22px;"></span>
+              <span class="phone-waveform__bar" style="height:8px;"></span>
+              <span class="phone-waveform__bar" style="height:17px;"></span>
+              <span class="phone-waveform__bar" style="height:11px;"></span>
             </div>
           </div>
-          <div class="cn-top-actions">
-            <span class="stitch-badge stitch-badge--green">FaceID Secured</span>
-            <span class="stitch-badge stitch-badge--blue">Offline Cache Encrypted</span>
+
+          <div class="phone-diarization">
+            <div class="phone-bubble">
+              <div class="phone-bubble__speaker">
+                <span>Judge Henderson</span>
+                <span class="phone-bubble__time">00:41:50</span>
+              </div>
+              <div style="color:#d1d1d6;">"Counsel, proceed with Exhibit 4B under the FRE 803(6) hearsay exception."</div>
+            </div>
+
+            <div class="phone-bubble">
+              <div class="phone-bubble__speaker" style="color:#30d158;">
+                <span>Marcus Vance (Lead Counsel)</span>
+                <span class="phone-bubble__time">00:42:04</span>
+              </div>
+              <div style="color:#d1d1d6;">"Entering Exhibit 4B into evidence, Your Honor. Foundation established."</div>
+            </div>
+
+            <div class="phone-bubble" style="border-color:rgba(48,209,88,0.25);background:rgba(48,209,88,0.06);">
+              <div style="color:#30d158;font-weight:700;font-size:9.5px;margin-bottom:1px;">✓ REAL-TIME DECISION LOGGED</div>
+              <div style="color:#e5e5ea;font-size:10px;">Ex. 4B admitted to record without objection.</div>
+            </div>
+          </div>
+
+          <!-- 1-Tap Privilege Button (Thumb-Reach) -->
+          <div class="phone-privilege-btn">
+            <div class="phone-privilege-btn__main">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              Mark Privileged / Pause Capture
+            </div>
+            <div class="phone-privilege-btn__sub">1-Tap Hallway Quarantine (⌘P Instant Pause)</div>
           </div>
         </div>
-        <div class="stitch-body">
-          <!-- 3 High-Fidelity Mobile Viewports -->
-          <div class="stitch-phone-wrapper">
-            <!-- Phone 1: Live Meeting Attendance with Ambient Privilege HUD -->
-            <div class="stitch-phone stitch-phone--active">
-              <div class="stitch-phone__notch">
-                <span>09:41</span>
-                <span>CaseNotes Live</span>
-                <span>5G 100%</span>
-              </div>
-              <div class="stitch-phone__body">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span class="stitch-badge stitch-badge--green" style="font-size:9.5px; padding:2px 6px;">● Live Session</span>
-                  <span style="font-family:var(--mono); font-size:11px; color:var(--muted);">00:34:12</span>
-                </div>
-                <div style="font-size:12.5px; font-weight:700; color:var(--ink);">Apex v. MedTech (#2024-884-CV)</div>
+        <div class="phone-home-bar"></div>
+      </div>
 
-                <!-- Live Speaker Banner & Audio Wave -->
-                <div class="stitch-phone-speaker-banner">
-                  <div style="display:flex; align-items:center; gap:6px;">
-                    <span style="font-weight:700; color:var(--green);">SJ</span>
-                    <span style="font-size:11px;">Sarah Jenkins, Esq.</span>
-                  </div>
-                  <div class="stitch-wave-container" style="height:14px; padding:0;">
-                    <span class="stitch-wave-bar" style="height:8px;"></span>
-                    <span class="stitch-wave-bar" style="height:14px;"></span>
-                    <span class="stitch-wave-bar" style="height:6px;"></span>
-                    <span class="stitch-wave-bar" style="height:12px;"></span>
-                  </div>
-                </div>
+      <!-- Phone 2: Instant Post-Meeting Summary & UTBMS Billing -->
+      <div class="mobile-phone-frame">
+        <div class="phone-island">
+          <span style="font-size:8.5px;font-weight:700;color:#fff;">Summary</span>
+          <span class="phone-island__dot phone-island__dot--green"></span>
+        </div>
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="font-size:9px;">5G</span>
+            <svg width="14" height="10" viewBox="0 0 24 14" fill="currentColor"><rect x="1" y="1" width="19" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="8" rx="1.5"/><path d="M22 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <div class="phone-screen">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <div class="phone-nav-title">Intelligence Digest</div>
+              <div class="phone-heading" style="margin:0;">Hearing Summary</div>
+            </div>
+            <span class="phone-badge phone-badge--green">CLIO SYNCED ✓</span>
+          </div>
 
-                <div class="stitch-card" style="padding:8px 10px; margin-top:4px; font-size:11px; background:var(--bg);">
-                  <div style="color:var(--muted); font-size:10px; font-family:var(--mono); text-transform:uppercase;">Topic 04 // 41% Progress</div>
-                  <div style="font-weight:600; color:var(--ink); margin-top:2px;">Patent '941 Settlement Range Discussion</div>
-                </div>
+          <div class="phone-card" style="margin-top:6px;">
+            <div style="color:#8e8e93;font-size:9.5px;font-weight:600;">MERIDIAN v. APEX CORP</div>
+            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px;">Evidentiary Hearing · 48m 10s</div>
+            <div style="display:flex;gap:6px;margin-top:5px;">
+              <span class="phone-badge phone-badge--blue" style="font-size:8.5px;">2 Decisions</span>
+              <span class="phone-badge phone-badge--amber" style="font-size:8.5px;">1 Action Task</span>
+            </div>
+          </div>
 
-                <!-- One-Tap Large Thumb Button for Instant Privilege Pause -->
-                <button type="button" class="stitch-phone-record-tap">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
-                  <span>Tap to Pause // Mark Privileged (⌘+P)</span>
-                </button>
+          <div class="phone-diarization" style="gap:5px;">
+            <div class="phone-bubble">
+              <div style="color:#30d158;font-weight:700;font-size:10px;margin-bottom:2px;">VERIFIED DECISIONS</div>
+              <div style="color:#d1d1d6;font-size:10px;line-height:1.35;">
+                • Ex. 4B admitted without objection<br>
+                • Discovery deadline set: Nov 14, 5 PM
               </div>
             </div>
 
-            <!-- Phone 2: Instant Post-Hearing Summary & UTBMS Time -->
-            <div class="stitch-phone">
-              <div class="stitch-phone__notch">
-                <span>09:41</span>
-                <span>Summary Ready</span>
-                <span>5G 100%</span>
+            <!-- UTBMS Billing Card -->
+            <div class="phone-card" style="background:#131d2e;border-color:rgba(47,109,240,0.3);margin:0;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <span style="color:#2f6df0;font-size:9.5px;font-weight:700;">UTBMS TIME ENTRY</span>
+                <span style="color:#30d158;font-size:9px;font-weight:700;">CODE L120</span>
               </div>
-              <div class="stitch-phone__body">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span class="stitch-badge stitch-badge--blue" style="font-size:9.5px; padding:2px 6px;">47m Meeting Filed</span>
-                  <span class="stitch-badge stitch-badge--amber" style="font-size:9.5px; padding:2px 6px;">FRE 502 Logged</span>
-                </div>
-                <div style="font-size:12.5px; font-weight:700; color:var(--ink);">Executive Summary</div>
-                <div style="font-size:11px; color:var(--muted); line-height:1.4;">Settlement walk-away ceiling set at $2.2M. Rebuttal report finalized with Dr. Moore.</div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:3px;">
+                <div style="font-size:12.5px;font-weight:800;color:#fff;">0.80 hrs · $680.00</div>
+                <span style="color:#8e8e93;font-size:9px;">Rate: $850/hr</span>
+              </div>
+              <div style="color:#8e8e93;font-size:9px;margin-top:2px;">Hearing attendance &amp; argument preparation</div>
+            </div>
+          </div>
 
-                <div style="display:flex; flex-direction:column; gap:6px; margin-top:2px;">
-                  <div class="stitch-phone-summary-pill">
-                    <span><strong>Decision:</strong> Open mediation at $3.5M</span>
-                    <span class="stitch-badge stitch-badge--green" style="font-size:9px; padding:1px 4px;">Verified</span>
-                  </div>
-                  <div class="stitch-phone-summary-pill" style="border-left-color:var(--amber);">
-                    <span><strong>Action:</strong> Vance to file Limine brief</span>
-                    <span style="font-family:var(--mono); font-size:9.5px; color:var(--muted);">Fri 17:00</span>
-                  </div>
-                </div>
+          <div class="phone-action-btn" style="margin-top:auto;">
+            Share Digest to Litigation Team →
+          </div>
+        </div>
+        <div class="phone-home-bar"></div>
+      </div>
 
-                <div class="stitch-card" style="padding:8px 10px; background:var(--bg); border:1px solid var(--line); margin-top:2px;">
-                  <div style="display:flex; justify-content:space-between; font-size:10.5px; font-family:var(--mono);">
-                    <span>UTBMS L120 Motion Prep</span>
-                    <strong style="color:var(--green);">0.8h · $520.00</strong>
-                  </div>
-                </div>
+      <!-- Phone 3: Grounded Mobile AI Assistant & FaceID -->
+      <div class="mobile-phone-frame">
+        <div class="phone-island">
+          <span style="font-size:8.5px;font-weight:700;color:#fff;">FaceID 􀌰</span>
+          <span class="phone-island__dot phone-island__dot--blue"></span>
+        </div>
+        <div class="phone-status-bar">
+          <span>9:41</span>
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="font-size:9px;">5G</span>
+            <svg width="14" height="10" viewBox="0 0 24 14" fill="currentColor"><rect x="1" y="1" width="19" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="8" rx="1.5"/><path d="M22 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </div>
+        <div class="phone-screen">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div>
+              <div class="phone-nav-title">Matter Memory</div>
+              <div class="phone-heading" style="margin:0;">Legal AI Assistant</div>
+            </div>
+            <span class="phone-badge phone-badge--blue">ZERO RETENTION</span>
+          </div>
 
-                <button type="button" class="stitch-btn stitch-btn--primary" style="margin-top:auto; font-size:11px; padding:6px 10px;">
-                  ✓ Sync to Clio &amp; Case Docket
-                </button>
+          <!-- Natural language query from attorney -->
+          <div class="phone-diarization" style="gap:6px;">
+            <div class="phone-bubble" style="background:#1e2233;border-color:rgba(47,109,240,0.25);align-self:flex-end;max-width:92%;">
+              <div style="color:#8e8e93;font-size:9px;margin-bottom:2px;">Marcus Vance · 9:38 AM</div>
+              <div style="color:#fff;font-size:10px;font-weight:500;">"What did Dr. Moore concede regarding the patent priority date in morning deposition?"</div>
+            </div>
+
+            <!-- Grounded zero-hallucination AI response -->
+            <div class="phone-bubble" style="background:#13151f;border-color:rgba(255,255,255,0.1);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
+                <span style="color:#2f6df0;font-weight:700;font-size:9.5px;">GROUNDED CITATION</span>
+                <span style="color:#30d158;font-size:8.5px;font-weight:700;">100% FACTUAL</span>
+              </div>
+              <div style="color:#e5e5ea;font-size:10px;line-height:1.4;">
+                At <strong style="color:#fff;">00:18:24</strong>, Dr. Moore admitted the provisional specification lacked the antenna claim, conceding the effective priority date is <strong style="color:#ff9f0a;">May 12th</strong> rather than January 4th.
               </div>
             </div>
 
-            <!-- Phone 3: Grounded Mobile AI Assistant & Biometric Vault -->
-            <div class="stitch-phone">
-              <div class="stitch-phone__notch">
-                <span>09:41</span>
-                <span>Grounded AI</span>
-                <span>5G 100%</span>
-              </div>
-              <div class="stitch-phone__body">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                  <span class="stitch-badge stitch-badge--green" style="font-size:9.5px; padding:2px 6px;">Zero Hallucination</span>
-                  <span style="font-family:var(--mono); font-size:10px; color:var(--accent);">🔒 FaceID Verified</span>
-                </div>
-
-                <!-- Query Bubble -->
-                <div class="stitch-phone-chat-bubble" style="background:var(--accent-soft); border-color:rgba(47,109,240,0.3);">
-                  <strong style="font-size:10.5px; color:var(--accent);">Query:</strong>
-                  <span>"What did Dr. Moore confirm on the source code timestamp?"</span>
-                </div>
-
-                <!-- Grounded Answer Bubble -->
-                <div class="stitch-phone-chat-bubble" style="border-left:3px solid var(--green);">
-                  <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <strong style="font-size:10.5px; color:var(--green);">Grounded Extraction</strong>
-                    <span class="stitch-cite-tag" style="font-size:9.5px;">[36:50]</span>
-                  </div>
-                  <span>"Dr. Moore confirmed the timestamp was spoofed on Oct 14th: <em>'The git commit log shows manual override.'</em>"</span>
-                </div>
-
-                <div class="stitch-card stitch-card--amber" style="padding:6px 8px; font-size:10px; margin-top:2px;">
-                  <span style="color:var(--amber); font-weight:600;">Rule 408 Work Product:</span> Masked for non-attorney attendees.
-                </div>
-
-                <button type="button" class="stitch-btn stitch-btn--secondary" style="margin-top:auto; font-size:11px; padding:6px 10px;">
-                  ▶ Play 12s Audio Snippet
-                </button>
+            <!-- Audio citation playback chip -->
+            <div class="phone-card" style="padding:6px 9px;margin:0;background:rgba(47,109,240,0.1);border-color:rgba(47,109,240,0.3);display:flex;align-items:center;gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#2f6df0"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <div>
+                <div style="font-size:9.5px;font-weight:700;color:#fff;">Play Excerpt · 00:18:24</div>
+                <div style="font-size:8.5px;color:#8e8e93;">Dr. Moore Depo Vol. 2 (Page 44, Line 12)</div>
               </div>
             </div>
           </div>
 
-          <!-- Bottom: Design System Atomic Specimen Panel -->
-          <div class="stitch-card" style="background:var(--surface); margin-top:12px;">
-            <div class="stitch-card__header">
-              <span class="stitch-card__title" style="font-size:12px; font-family:var(--mono); text-transform:uppercase;">Mobile Companion &amp; Atomic Design Tokens</span>
-              <span class="stitch-badge stitch-badge--neutral">Zero-Radius Spec</span>
+          <!-- FaceID security banner & input -->
+          <div style="margin-top:auto;">
+            <div style="display:flex;align-items:center;justify-content:center;gap:4px;color:#8e8e93;font-size:8.5px;margin-bottom:6px;">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+              <span>FaceID Authenticated · No Model Training</span>
             </div>
-            <div class="stitch-swatch-row">
-              <div class="stitch-swatch"><span class="stitch-swatch__color" style="background:#2F6DF0;"></span> <code>--accent (#2F6DF0)</code></div>
-              <div class="stitch-swatch"><span class="stitch-swatch__color" style="background:#2FA96A;"></span> <code>--green (#2FA96A)</code></div>
-              <div class="stitch-swatch"><span class="stitch-swatch__color" style="background:#F5A623;"></span> <code>--amber (#F5A623)</code></div>
-              <div class="stitch-swatch"><span class="stitch-swatch__color" style="background:#0B0B0C;"></span> <code>--ink (#0B0B0C)</code></div>
-              <div class="stitch-swatch"><span class="stitch-swatch__color" style="background:#FFFFFF;"></span> <code>--surface (#FFFFFF)</code></div>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:6px; font-size:11.5px; font-family:var(--mono); color:var(--muted);">
-              <div>Ergonomics: <strong>Thumb-Accessible Privilege Trigger (48px Min Hit-Target)</strong> · <strong>Biometric Unlock</strong></div>
-              <div>Radius Policy: <code>border-radius: 0px !important</code></div>
+            <div class="phone-card" style="margin:0;padding:8px 10px;background:#181a24;border-color:rgba(255,255,255,0.14);display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:#636366;font-size:10px;">Ask matter intelligence...</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2f6df0" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
             </div>
           </div>
         </div>
+        <div class="phone-home-bar"></div>
       </div>
     </div>
-    <figcaption><span class="figure-badge">Mobile Companion</span> <strong>Courthouse Mobile Companion Viewports &amp; Token Architecture</strong> — Three real-time courtroom viewports (Live Meeting Attendance with 1-Tap Privilege Pause, Instant Post-Meeting Summary with UTBMS Billing, and Grounded Mobile AI Assistant with FaceID).</figcaption>
+    <figcaption><strong>Confidential UI: Courthouse Mobile Companion (iOS &amp; Android)</strong> — Three high-fidelity mobile viewports (430×928px) tailored for on-the-go litigators: live hearing audio capture with thumb-reach privilege pause, post-session UTBMS billing digest, and FaceID-secured grounded AI case assistant.</figcaption>
   </figure>
 </section>
 
@@ -2765,7 +1598,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   var lbClose = document.getElementById("lightboxClose");
   var lbPrev = document.getElementById("lightboxPrev");
   var lbNext = document.getElementById("lightboxNext");
-  var allImages = Array.from(document.querySelectorAll(".figure img, .hero-cover img"));
+  var allImages = Array.from(document.querySelectorAll(".figure img:not(.cn-nda-lock-icon), .hero-cover img"));
   var currentIndex = 0;
   var lastFocused = null;
 
