@@ -5288,7 +5288,6 @@ body.mz-sheet-open {
 .pg-kit-card,
 .pg-media-card,
 .pg-exp-card,
-.mz-work-card,
 .mz-bento__cell {
     position: relative;
     --mouse-x: -999px;
@@ -5304,7 +5303,6 @@ body.mz-sheet-open {
 .pg-kit-card::before,
 .pg-media-card::before,
 .pg-exp-card::before,
-.mz-work-card::before,
 .mz-bento__cell::before {
     content: "";
     position: absolute;
@@ -5325,7 +5323,6 @@ body.mz-sheet-open {
 [data-theme="light"] .pg-kit-card::before,
 [data-theme="light"] .pg-media-card::before,
 [data-theme="light"] .pg-exp-card::before,
-[data-theme="light"] .mz-work-card::before,
 [data-theme="light"] .mz-bento__cell::before {
     background: radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.08), transparent 80%);
 }
@@ -5337,7 +5334,6 @@ body.mz-sheet-open {
 .pg-kit-card > *,
 .pg-media-card > *,
 .pg-exp-card > *,
-.mz-work-card > *,
 .mz-bento__cell > * {
     position: relative;
     z-index: 2;

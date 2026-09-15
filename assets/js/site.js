@@ -861,7 +861,7 @@
   /* ---------- Card Spotlight Cursor Glow ---------- */
   function initCardSpotlight() {
     if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    var CARD_SEL = ".pg-feat-card, .pg-side-card, .pg-solution-card, .pg-comm-card, .pg-kit-card, .pg-media-card, .pg-exp-card, .mz-work-card, .mz-bento__cell, .mz-spotlight-card, .site-editions__card";
+    var CARD_SEL = ".pg-feat-card, .pg-side-card, .pg-solution-card, .pg-comm-card, .pg-kit-card, .pg-media-card, .pg-exp-card, .mz-bento__cell, .mz-spotlight-card, .site-editions__card";
     
     document.addEventListener("pointermove", function (e) {
       var card = e.target.closest(CARD_SEL);
