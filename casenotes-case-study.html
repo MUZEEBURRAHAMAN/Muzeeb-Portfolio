@@ -54,8 +54,8 @@
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
 <link rel="apple-touch-icon" href="assets/images/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css?v=610">
-<link rel="stylesheet" href="assets/css/casenotes-ui.css?v=616">
+<link rel="stylesheet" href="assets/css/style.css?v=613">
+<link rel="stylesheet" href="assets/css/casenotes-ui.css?v=618">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -355,12 +355,12 @@ body { background:var(--bg); color:var(--text); font-family:var(--font-body); li
 
 /* SECTION & HEADINGS */
 section { width:100% !important; max-width:100% !important; margin:0 auto !important; padding:20px 0 40px !important; border-top:none !important; scroll-margin-top:80px; text-align:left; }
-.sec-num { font-family:var(--mono); font-size:12px; color:var(--soft); margin-bottom:12px; text-align:left; }
-.eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; text-align:left; }
-.eyebrow::before { content:""; width:20px; height:1px; background:var(--accent); }
-h2.h, h2 { font-family:var(--font-display); font-size:clamp(26px,3.4vw,38px); line-height:1.18; letter-spacing:-.035em; margin:0 0 20px; font-weight:800; color:var(--ink); max-width:1000px; text-align:left; }
-h2.h-sub { font-size:clamp(20px,2.6vw,26px); letter-spacing:-.03em; font-weight:700; margin-top:32px; }
-h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; color:var(--ink); margin:0 0 12px; letter-spacing:-.02em; }
+.sec-num { font-family:var(--mono); font-size:11.5px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--soft); margin-bottom:12px; text-align:left; }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; text-align:left; }
+.eyebrow::before { content:""; width:22px; height:1.5px; background:var(--accent); border-radius:1px; }
+h2.h, h2 { font-family:var(--font-display); font-size:clamp(26px,3.4vw,38px); line-height:1.2; letter-spacing:-.035em; margin:0 0 20px; font-weight:800; color:var(--ink); max-width:1000px; text-align:left; }
+h2.h-sub { font-family:var(--font-display); font-size:clamp(20px,2.6vw,26px); letter-spacing:-.03em; font-weight:800; margin-top:36px; margin-bottom:16px; color:var(--ink); line-height:1.25; }
+h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; color:var(--ink); margin:0 0 12px; letter-spacing:-.02em; line-height:1.35; }
 .prose, .prose p { max-width:1000px; color:var(--muted); font-size:16px; line-height:1.75; margin:0 0 18px; text-align:left; }
 .prose ul, .prose ol { max-width:1000px; padding-left:20px; color:var(--muted); text-align:left; margin-bottom:18px; }
 .prose li { margin:8px 0; }
@@ -493,17 +493,150 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .figure figcaption strong { color:var(--ink); font-weight:600; }
 .figure-badge { display:inline-flex; align-items:center; font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:6px; margin-right:8px; vertical-align:middle; }
 
-/* NOTE CALLOUT */
-.note { display:flex; align-items:flex-start; gap:14px; border:1px solid rgba(47,109,240,.25); border-left:3px solid var(--accent); border-radius:12px; background:var(--accent-soft); padding:16px 20px; color:var(--note-text); width:100%; box-sizing:border-box; margin:26px 0; text-align:left; line-height:1.6; font-size:14.5px; }
-.note.warn { border-color:rgba(245,166,35,.35); border-left-color:var(--amber); background:var(--amber-soft); color:#8a5a05; }
-.note.good { border-color:rgba(47,169,106,.3); border-left-color:var(--green); background:var(--green-soft); color:#1f6b45; }
-[data-theme="dark"] .note.warn { color:#f5c877; }
-.note__badge svg { width:18px; height:18px; }
-.note__body { flex:1; min-width:0; }
-.note__label { display:inline-block; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-right:8px; }
-.note.warn .note__label { color:var(--amber); }
-.note.good .note__label { color:var(--green); }
-.note b { color:var(--ink); }
+.diagram-card figcaption { text-align:center; font-size:13px; color:var(--muted); margin-top:18px; line-height:1.6; max-width:860px; margin-left:auto; margin-right:auto; }
+.diagram-card figcaption strong, .figure figcaption strong { color:var(--ink); font-weight:700; }
+[data-theme="dark"] .diagram-card figcaption strong, [data-theme="dark"] .figure figcaption strong { color:#ffffff; }
+[data-theme="dark"] .diagram-card figcaption, [data-theme="dark"] .figure figcaption { color:#a1a1aa; }
+
+/* NOTE CALLOUT - ELEVATED SENIOR DESIGN SYSTEM */
+.note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(59, 130, 246, 0.22);
+  border-left: 3px solid #3b82f6;
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.03);
+  padding: 16px 20px;
+  color: #d1d5db;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 26px 0;
+  text-align: left;
+  line-height: 1.65;
+  font-size: 14.5px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+}
+.note__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  flex-shrink: 0;
+}
+.note__badge svg { width: 19px; height: 19px; }
+.note__body { flex: 1; min-width: 0; }
+.note__label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.14);
+  border: 1px solid rgba(59, 130, 246, 0.28);
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  margin-right: 10px;
+  vertical-align: middle;
+  line-height: 1.3;
+}
+
+/* WARN CALLOUT (Legal Precedent) */
+.note.warn {
+  border-color: rgba(245, 166, 35, 0.25);
+  border-left-color: #f59e0b;
+  background: rgba(245, 166, 35, 0.03);
+  color: #d1d5db;
+}
+.note.warn .note__badge {
+  background: rgba(245, 166, 35, 0.12);
+  color: #fbbf24;
+  border-color: rgba(245, 166, 35, 0.25);
+}
+.note.warn .note__label {
+  color: #fbbf24;
+  background: rgba(245, 166, 35, 0.14);
+  border-color: rgba(245, 166, 35, 0.28);
+}
+
+/* GOOD CALLOUT (Client Portal) */
+.note.good {
+  border-color: rgba(16, 185, 129, 0.25);
+  border-left-color: #10b981;
+  background: rgba(16, 185, 129, 0.03);
+  color: #d1d5db;
+}
+.note.good .note__badge {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.note.good .note__label {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.28);
+}
+.note b, .note strong { color: #f4f2ed; font-weight: 600; }
+
+/* LIGHT THEME CALIBRATION */
+[data-theme="light"] .note {
+  background: rgba(47, 109, 240, 0.03);
+  border-color: rgba(47, 109, 240, 0.2);
+  border-left-color: #2563eb;
+  color: #1f2937;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+[data-theme="light"] .note__badge {
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.2);
+}
+[data-theme="light"] .note__label {
+  color: #1d4ed8;
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.22);
+}
+[data-theme="light"] .note.warn {
+  background: rgba(217, 119, 6, 0.03);
+  border-color: rgba(217, 119, 6, 0.2);
+  border-left-color: #d97706;
+  color: #1f2937;
+}
+[data-theme="light"] .note.warn .note__badge {
+  background: rgba(217, 119, 6, 0.08);
+  color: #d97706;
+  border-color: rgba(217, 119, 6, 0.2);
+}
+[data-theme="light"] .note.warn .note__label {
+  color: #b45309;
+  background: rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.22);
+}
+[data-theme="light"] .note.good {
+  background: rgba(5, 150, 105, 0.03);
+  border-color: rgba(5, 150, 105, 0.2);
+  border-left-color: #059669;
+  color: #1f2937;
+}
+[data-theme="light"] .note.good .note__badge {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.2);
+}
+[data-theme="light"] .note.good .note__label {
+  color: #047857;
+  background: rgba(5, 150, 105, 0.08);
+  border-color: rgba(5, 150, 105, 0.22);
+}
+[data-theme="light"] .note b, [data-theme="light"] .note strong { color: #111827; }
 
 /* MINIMAP */
 .minimap { position:fixed; right:24px; top:50%; transform:translateY(-50%); z-index:100; width:34px; }
@@ -1181,212 +1314,21 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <figure class="figure reveal" id="courthouse-mobile-companion-showcase">
     <div class="mobile-companion-showcase" aria-label="Courthouse Mobile Companion Three Viewports Mockup">
       <!-- Phone 1: Live Hearing Attendance & 1-Tap Privilege Pause -->
-      <div class="mobile-phone-frame">
-        <div class="phone-island">
-          <span style="font-size:8.5px;font-weight:700;color:#fff;">CaseNotes</span>
-          <span class="phone-island__dot phone-island__dot--orange"></span>
-        </div>
-        <div class="phone-status-bar">
-          <span>9:41</span>
-          <span style="display:flex;align-items:center;gap:4px;">
-            <span style="font-size:9px;">5G</span>
-            <svg width="14" height="10" viewBox="0 0 24 14" fill="currentColor"><rect x="1" y="1" width="19" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="8" rx="1.5"/><path d="M22 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </span>
-        </div>
-        <div class="phone-screen">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-            <div>
-              <div class="phone-nav-title">Courtroom Live</div>
-              <div class="phone-heading" style="margin:0;">Matter 24-CV-8812</div>
-            </div>
-            <span class="phone-badge phone-badge--red">● REC 00:42:18</span>
-          </div>
-
-          <div class="phone-card" style="margin-top:6px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;">
-              <span style="color:#8e8e93;font-size:10px;font-weight:600;">FEDERAL DISTRICT COURT</span>
-              <span style="color:#ff9f0a;font-size:9.5px;font-weight:600;">ACTIVE SHIELD</span>
-            </div>
-            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px;">Hon. Judge Henderson · Room 4B</div>
-            <!-- Audio Waveform -->
-            <div class="phone-waveform">
-              <span class="phone-waveform__bar" style="height:6px;"></span>
-              <span class="phone-waveform__bar" style="height:14px;"></span>
-              <span class="phone-waveform__bar" style="height:20px;"></span>
-              <span class="phone-waveform__bar" style="height:9px;"></span>
-              <span class="phone-waveform__bar" style="height:18px;"></span>
-              <span class="phone-waveform__bar" style="height:24px;"></span>
-              <span class="phone-waveform__bar" style="height:12px;"></span>
-              <span class="phone-waveform__bar" style="height:16px;"></span>
-              <span class="phone-waveform__bar" style="height:22px;"></span>
-              <span class="phone-waveform__bar" style="height:8px;"></span>
-              <span class="phone-waveform__bar" style="height:17px;"></span>
-              <span class="phone-waveform__bar" style="height:11px;"></span>
-            </div>
-          </div>
-
-          <div class="phone-diarization">
-            <div class="phone-bubble">
-              <div class="phone-bubble__speaker">
-                <span>Judge Henderson</span>
-                <span class="phone-bubble__time">00:41:50</span>
-              </div>
-              <div style="color:#d1d1d6;">"Counsel, proceed with Exhibit 4B under the FRE 803(6) hearsay exception."</div>
-            </div>
-
-            <div class="phone-bubble">
-              <div class="phone-bubble__speaker" style="color:#30d158;">
-                <span>Marcus Vance (Lead Counsel)</span>
-                <span class="phone-bubble__time">00:42:04</span>
-              </div>
-              <div style="color:#d1d1d6;">"Entering Exhibit 4B into evidence, Your Honor. Foundation established."</div>
-            </div>
-
-            <div class="phone-bubble" style="border-color:rgba(48,209,88,0.25);background:rgba(48,209,88,0.06);">
-              <div style="color:#30d158;font-weight:700;font-size:9.5px;margin-bottom:1px;">✓ REAL-TIME DECISION LOGGED</div>
-              <div style="color:#e5e5ea;font-size:10px;">Ex. 4B admitted to record without objection.</div>
-            </div>
-          </div>
-
-          <!-- 1-Tap Privilege Button (Thumb-Reach) -->
-          <div class="phone-privilege-btn">
-            <div class="phone-privilege-btn__main">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-              Mark Privileged / Pause Capture
-            </div>
-            <div class="phone-privilege-btn__sub">1-Tap Hallway Quarantine (⌘P Instant Pause)</div>
-          </div>
-        </div>
-        <div class="phone-home-bar"></div>
+      <div class="mobile-phone-frame" title="Click to view full resolution">
+        <img loading="lazy" src="assets/images/casenotes/casenotes-mobile-courtroom-live.webp" alt="CaseNotes Mobile: Courtroom Live Hearing Attendance &amp; 1-Tap Privilege Pause" class="mobile-phone-img" width="471" height="1024">
       </div>
 
-      <!-- Phone 2: Instant Post-Meeting Summary & UTBMS Billing -->
-      <div class="mobile-phone-frame">
-        <div class="phone-island">
-          <span style="font-size:8.5px;font-weight:700;color:#fff;">Summary</span>
-          <span class="phone-island__dot phone-island__dot--green"></span>
-        </div>
-        <div class="phone-status-bar">
-          <span>9:41</span>
-          <span style="display:flex;align-items:center;gap:4px;">
-            <span style="font-size:9px;">5G</span>
-            <svg width="14" height="10" viewBox="0 0 24 14" fill="currentColor"><rect x="1" y="1" width="19" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="8" rx="1.5"/><path d="M22 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </span>
-        </div>
-        <div class="phone-screen">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-            <div>
-              <div class="phone-nav-title">Intelligence Digest</div>
-              <div class="phone-heading" style="margin:0;">Hearing Summary</div>
-            </div>
-            <span class="phone-badge phone-badge--green">CLIO SYNCED ✓</span>
-          </div>
-
-          <div class="phone-card" style="margin-top:6px;">
-            <div style="color:#8e8e93;font-size:9.5px;font-weight:600;">MERIDIAN v. APEX CORP</div>
-            <div style="font-size:11.5px;font-weight:700;color:#fff;margin-top:2px;">Evidentiary Hearing · 48m 10s</div>
-            <div style="display:flex;gap:6px;margin-top:5px;">
-              <span class="phone-badge phone-badge--blue" style="font-size:8.5px;">2 Decisions</span>
-              <span class="phone-badge phone-badge--amber" style="font-size:8.5px;">1 Action Task</span>
-            </div>
-          </div>
-
-          <div class="phone-diarization" style="gap:5px;">
-            <div class="phone-bubble">
-              <div style="color:#30d158;font-weight:700;font-size:10px;margin-bottom:2px;">VERIFIED DECISIONS</div>
-              <div style="color:#d1d1d6;font-size:10px;line-height:1.35;">
-                • Ex. 4B admitted without objection<br>
-                • Discovery deadline set: Nov 14, 5 PM
-              </div>
-            </div>
-
-            <!-- UTBMS Billing Card -->
-            <div class="phone-card" style="background:#131d2e;border-color:rgba(47,109,240,0.3);margin:0;">
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <span style="color:#2f6df0;font-size:9.5px;font-weight:700;">UTBMS TIME ENTRY</span>
-                <span style="color:#30d158;font-size:9px;font-weight:700;">CODE L120</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:3px;">
-                <div style="font-size:12.5px;font-weight:800;color:#fff;">0.80 hrs · $680.00</div>
-                <span style="color:#8e8e93;font-size:9px;">Rate: $850/hr</span>
-              </div>
-              <div style="color:#8e8e93;font-size:9px;margin-top:2px;">Hearing attendance &amp; argument preparation</div>
-            </div>
-          </div>
-
-          <div class="phone-action-btn" style="margin-top:auto;">
-            Share Digest to Litigation Team →
-          </div>
-        </div>
-        <div class="phone-home-bar"></div>
+      <!-- Phone 2: Daily Meeting Intelligence & Practice Overview -->
+      <div class="mobile-phone-frame" title="Click to view full resolution">
+        <img loading="lazy" src="assets/images/casenotes/casenotes-mobile-dashboard.webp" alt="CaseNotes Mobile: Daily Meeting Intelligence Dashboard &amp; Practice Overview" class="mobile-phone-img" width="471" height="1024">
       </div>
 
-      <!-- Phone 3: Grounded Mobile AI Assistant & FaceID -->
-      <div class="mobile-phone-frame">
-        <div class="phone-island">
-          <span style="font-size:8.5px;font-weight:700;color:#fff;">FaceID 􀌰</span>
-          <span class="phone-island__dot phone-island__dot--blue"></span>
-        </div>
-        <div class="phone-status-bar">
-          <span>9:41</span>
-          <span style="display:flex;align-items:center;gap:4px;">
-            <span style="font-size:9px;">5G</span>
-            <svg width="14" height="10" viewBox="0 0 24 14" fill="currentColor"><rect x="1" y="1" width="19" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="3" width="13" height="8" rx="1.5"/><path d="M22 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </span>
-        </div>
-        <div class="phone-screen">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-            <div>
-              <div class="phone-nav-title">Matter Memory</div>
-              <div class="phone-heading" style="margin:0;">Legal AI Assistant</div>
-            </div>
-            <span class="phone-badge phone-badge--blue">ZERO RETENTION</span>
-          </div>
-
-          <!-- Natural language query from attorney -->
-          <div class="phone-diarization" style="gap:6px;">
-            <div class="phone-bubble" style="background:#1e2233;border-color:rgba(47,109,240,0.25);align-self:flex-end;max-width:92%;">
-              <div style="color:#8e8e93;font-size:9px;margin-bottom:2px;">Marcus Vance · 9:38 AM</div>
-              <div style="color:#fff;font-size:10px;font-weight:500;">"What did Dr. Moore concede regarding the patent priority date in morning deposition?"</div>
-            </div>
-
-            <!-- Grounded zero-hallucination AI response -->
-            <div class="phone-bubble" style="background:#13151f;border-color:rgba(255,255,255,0.1);">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px;">
-                <span style="color:#2f6df0;font-weight:700;font-size:9.5px;">GROUNDED CITATION</span>
-                <span style="color:#30d158;font-size:8.5px;font-weight:700;">100% FACTUAL</span>
-              </div>
-              <div style="color:#e5e5ea;font-size:10px;line-height:1.4;">
-                At <strong style="color:#fff;">00:18:24</strong>, Dr. Moore admitted the provisional specification lacked the antenna claim, conceding the effective priority date is <strong style="color:#ff9f0a;">May 12th</strong> rather than January 4th.
-              </div>
-            </div>
-
-            <!-- Audio citation playback chip -->
-            <div class="phone-card" style="padding:6px 9px;margin:0;background:rgba(47,109,240,0.1);border-color:rgba(47,109,240,0.3);display:flex;align-items:center;gap:6px;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#2f6df0"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <div>
-                <div style="font-size:9.5px;font-weight:700;color:#fff;">Play Excerpt · 00:18:24</div>
-                <div style="font-size:8.5px;color:#8e8e93;">Dr. Moore Depo Vol. 2 (Page 44, Line 12)</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- FaceID security banner & input -->
-          <div style="margin-top:auto;">
-            <div style="display:flex;align-items:center;justify-content:center;gap:4px;color:#8e8e93;font-size:8.5px;margin-bottom:6px;">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-              <span>FaceID Authenticated · No Model Training</span>
-            </div>
-            <div class="phone-card" style="margin:0;padding:8px 10px;background:#181a24;border-color:rgba(255,255,255,0.14);display:flex;justify-content:space-between;align-items:center;">
-              <span style="color:#636366;font-size:10px;">Ask matter intelligence...</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#2f6df0" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="phone-home-bar"></div>
+      <!-- Phone 3: Instant Post-Meeting Summary & UTBMS Billing -->
+      <div class="mobile-phone-frame" title="Click to view full resolution">
+        <img loading="lazy" src="assets/images/casenotes/casenotes-mobile-digest.webp" alt="CaseNotes Mobile: Intelligence Digest with Verified Decisions &amp; UTBMS Time Entries" class="mobile-phone-img" width="471" height="1024">
       </div>
     </div>
-    <figcaption><strong>Confidential UI: Courthouse Mobile Companion (iOS &amp; Android)</strong> — Three high-fidelity mobile viewports (430×928px) tailored for on-the-go litigators: live hearing audio capture with thumb-reach privilege pause, post-session UTBMS billing digest, and FaceID-secured grounded AI case assistant.</figcaption>
+    <figcaption><strong>Confidential UI: Courthouse Mobile Companion (iOS &amp; Android)</strong> — Three high-fidelity production viewports: real-time courtroom hearing attendance with 1-tap privilege quarantine, daily practice intelligence dashboard with automated metric tracking, and post-session intelligence digest with verified decisions and Clio-synced UTBMS billing.</figcaption>
   </figure>
 </section>
 
