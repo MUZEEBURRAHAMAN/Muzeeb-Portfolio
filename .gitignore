@@ -12,5 +12,6 @@ node_modules/
 # Local Claude / Agent tooling (not site content)
 .claude/
 .agents/
+.impeccable/
 skills-lock.json
 
