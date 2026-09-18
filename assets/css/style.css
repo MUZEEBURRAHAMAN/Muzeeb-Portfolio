@@ -5609,7 +5609,7 @@ body.mz-sheet-open {
 }
 
 /* ============================================================
-   ABOUT EDITORIAL 2-COLUMN LAYOUT (Design Manager Craft · 1134px)
+   ABOUT EDITORIAL 2-COLUMN LAYOUT (Design Manager Craft · 1280px)
    ============================================================ */
 .mz-about-wrap {
     width: 100%;
@@ -6156,7 +6156,8 @@ html[data-theme="light"] .mz-highlight[data-action="underline"] {
 }
 
 #main,
-.site-header__inner {
+.site-header__inner,
+body > .mz-footer {
     max-width: var(--mz-container-max);
     margin-left: auto;
     margin-right: auto;

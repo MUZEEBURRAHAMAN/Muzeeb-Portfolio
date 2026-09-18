@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="assets/css/style.css?v=610">
     <style>
         #main {
-            max-width: 1134px;
+            max-width: var(--mz-container-max, 1280px);
             margin: 0 auto;
             padding: 0 16px;
             width: 100%;
@@ -73,7 +73,7 @@
             border-left-color: rgba(0, 0, 0, 0.08);
             border-right-color: rgba(0, 0, 0, 0.08);
         }
-        /* Clean Hatched Section Divider (Synced with index.html) */
+        /* Prominent Hatched Section Divider (Synced with index.html) */
         .hatched-divider {
             display: block !important;
             width: calc(100% + 32px) !important;
@@ -81,8 +81,8 @@
             height: 32px !important;
             position: relative !important;
             overflow: hidden !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
             color: #ffffff !important;
             box-sizing: border-box !important;
             z-index: 2 !important;
@@ -102,20 +102,19 @@
         .hatched-divider__pattern {
             position: absolute !important;
             inset: 0 !important;
-            opacity: 0.25 !important;
-            background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
-            background-size: 10px 10px !important;
+            opacity: 0.45 !important;
+            background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1.5px, transparent 0, transparent 8px) !important;
             pointer-events: none !important;
         }
         [data-theme="light"] .hatched-divider,
         html[data-theme="light"] .hatched-divider {
-            border-top-color: rgba(0, 0, 0, 0.12) !important;
-            border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+            border-top-color: rgba(0, 0, 0, 0.14) !important;
+            border-bottom-color: rgba(0, 0, 0, 0.14) !important;
             color: #000000 !important;
         }
         [data-theme="light"] .hatched-divider__pattern,
         html[data-theme="light"] .hatched-divider__pattern {
-            opacity: 0.15 !important;
+            opacity: 0.25 !important;
         }
 
         /* ============================================================
@@ -263,7 +262,7 @@
         }
 
         /* ============================================================
-           ABOUT EDITORIAL 2-COLUMN LAYOUT (Design Manager Craft · 1134px)
+           ABOUT EDITORIAL 2-COLUMN LAYOUT (Design Manager Craft · 1280px)
            ============================================================ */
         .mz-about-wrap {
             width: 100%;
