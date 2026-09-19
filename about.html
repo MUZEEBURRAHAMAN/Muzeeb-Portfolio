@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+    <script>try{var p=new URLSearchParams(location.search).get("theme");var t=p||localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/favicon.png">
@@ -49,9 +49,9 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/slick-theme.css">
     <!-- Tailwind css -->
-    <link rel="stylesheet" href="assets/css/output.css?v=89">
+    <link rel="stylesheet" href="assets/css/output.css?v=130">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=610">
+    <link rel="stylesheet" href="assets/css/style.css?v=905">
     <style>
         #main {
             max-width: var(--mz-container-max, 1280px);
@@ -73,7 +73,7 @@
             border-left-color: rgba(0, 0, 0, 0.08);
             border-right-color: rgba(0, 0, 0, 0.08);
         }
-        /* Prominent Hatched Section Divider (Synced with index.html) */
+        /* Prominent Hatched Section Divider */
         .hatched-divider {
             display: block !important;
             width: calc(100% + 32px) !important;
@@ -118,460 +118,305 @@
         }
 
         /* ============================================================
-           APPROACH PIPELINE CARD (Design Manager / Systems Craft)
-           ============================================================ */
-        .mz-approach-card {
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 20px 22px;
-            margin: 28px 0 24px;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mz-approach-card__header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 14px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .mz-approach-card__label {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .mz-approach-card__label::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #16a34a;
-            box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25);
-        }
-
-        .mz-approach-card__tagline {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-        }
-
-        .mz-approach-pipeline {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-
-        @media (min-width: 680px) {
-            .mz-approach-pipeline {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 12px;
-            }
-        }
-
-        .mz-approach-step {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 8px;
-            padding: 12px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .mz-approach-step:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-1px);
-        }
-
-        .mz-approach-step__num {
-            font-family: var(--font-sans, 'Archivo', monospace, sans-serif);
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            color: rgba(255, 255, 255, 0.38);
-        }
-
-        .mz-approach-step__title {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: #f4f2ed;
-            line-height: 1.3;
-        }
-
-        .mz-approach-step__desc {
-            font-size: 0.76rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.35;
-        }
-
-        /* Light Theme Approach Card */
-        [data-theme="light"] .mz-approach-card {
-            background: rgba(0, 0, 0, 0.02);
-            border-color: rgba(0, 0, 0, 0.07);
-        }
-
-        [data-theme="light"] .mz-approach-card__header {
-            border-bottom-color: rgba(0, 0, 0, 0.06);
-        }
-
-        [data-theme="light"] .mz-approach-card__label {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        [data-theme="light"] .mz-approach-card__tagline {
-            color: rgba(0, 0, 0, 0.45);
-        }
-
-        [data-theme="light"] .mz-approach-step {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-        }
-
-        [data-theme="light"] .mz-approach-step:hover {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.16);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        [data-theme="light"] .mz-approach-step__num {
-            color: rgba(0, 0, 0, 0.4);
-        }
-
-        [data-theme="light"] .mz-approach-step__title {
-            color: #17170f;
-        }
-
-        [data-theme="light"] .mz-approach-step__desc {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        /* ============================================================
-           ABOUT EDITORIAL 2-COLUMN LAYOUT (Design Manager Craft · 1280px)
+           EDITORIAL 2-COLUMN SECTION (WHAT IT'S LIKE / WORKING WITH ME)
            ============================================================ */
         .mz-about-wrap {
             width: 100%;
             max-width: 100%;
-            margin: clamp(36px, 6vw, 64px) 0 0;
+            margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        .mz-about-lead {
-            font-size: clamp(1.08rem, 1.85vw, 1.32rem);
-            line-height: 1.6;
-            color: #e2e2dc;
-            margin-bottom: 24px;
-            max-width: 68ch;
-        }
-        .mz-about-lead b {
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        /* Section Container with Hairline Separation */
-        .mz-about-section {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            padding-top: 36px;
-            margin-top: 36px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        .mz-working-me {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            padding-top: 48px !important;
+            padding-bottom: 56px !important;
+            max-width: 1160px !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
 
         @media (min-width: 768px) {
-            .mz-about-section {
-                grid-template-columns: 280px 1fr;
-                gap: 56px;
-                padding-top: 48px;
-                margin-top: 48px;
+            .mz-working-me {
+                grid-template-columns: 400px minmax(0, 1fr) !important;
+                gap: clamp(40px, 5.5vw, 80px) !important;
+                align-items: stretch !important;
+            }
+            .mz-working-me__left {
+                position: static !important;
+                align-self: stretch !important;
+                height: 100% !important;
             }
         }
 
-        @media (min-width: 1024px) {
-            .mz-about-section {
-                grid-template-columns: 320px 1fr;
-                gap: 72px;
-                padding-top: 56px;
-                margin-top: 56px;
+        @media (min-width: 1100px) {
+            .mz-working-me {
+                grid-template-columns: 410px minmax(0, 1fr) !important;
+                gap: 88px !important;
             }
         }
 
-        /* Left Heading Column */
+        /* Left Column */
+        .mz-working-me__left {
+            display: flex !important;
+            flex-direction: column !important;
+            width: 100% !important;
+            max-width: 410px !important;
+            height: 100% !important;
+        }
+
+        .mz-working-me__eyebrow {
+            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.22em !important;
+            text-transform: uppercase !important;
+            color: #8c8880 !important;
+            margin: 0 0 16px 0 !important;
+            display: block !important;
+        }
+
+        .mz-working-me__title {
+            font-family: 'Acorn', var(--font-display, serif) !important;
+            font-size: clamp(2.5rem, 3.8vw, 3.2rem) !important;
+            font-weight: 500 !important;
+            line-height: 1.08 !important;
+            color: #f4f2ed !important;
+            letter-spacing: -0.02em !important;
+            margin: 0 0 24px 0 !important;
+            text-transform: lowercase !important;
+        }
+
+        .mz-working-me__photo-wrap {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 410px !important;
+            flex: 1 1 0px !important;
+            min-height: 0 !important;
+            border-radius: 0 !important;
+            overflow: hidden !important;
+            background: #1a1a1c !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .mz-working-me__photo {
+            width: 100% !important;
+            max-width: 410px !important;
+            height: 100% !important;
+            border-radius: 0 !important;
+            object-fit: cover !important;
+            object-position: center 25% !important;
+            display: block !important;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        @media (max-width: 767px) {
+            .mz-working-me__photo-wrap {
+                aspect-ratio: 4 / 5 !important;
+                min-height: 380px !important;
+                height: auto !important;
+            }
+        }
+
+        .mz-working-me__photo-wrap:hover .mz-working-me__photo {
+            transform: scale(1.02) !important;
+        }
+
+        /* Right Column: Editorial Prose (Top aligns with Title, Bottom aligns with Photo) */
+        .mz-working-me__body {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 20px !important;
+            padding-top: 36px !important;
+        }
+
+        .mz-working-me__body p {
+            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-size: clamp(1rem, 1.1vw, 1.1rem) !important;
+            line-height: 1.74 !important;
+            color: #b8b6b0 !important;
+            margin: 0 !important;
+            letter-spacing: -0.005em !important;
+            font-weight: 400 !important;
+        }
+
+        .mz-working-me__body b,
+        .mz-working-me__body strong {
+            color: #f4f2ed !important;
+            font-weight: 600 !important;
+        }
+
+        /* Motion Yellow Highlighter Marker (Matches Case Study Details Pages) */
+        .mz-highlight-yellow,
+        .mz-highlight[data-action="yellow"],
+        .mz-highlight--yellow,
+        .mz-working-me__highlight {
+            position: relative;
+            display: inline;
+            padding: 2px 7px;
+            border-radius: 0px !important;
+            -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 0% 100%;
+            transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+            background-image: linear-gradient(90deg, #ca8a04, #eab308);
+            color: inherit;
+        }
+
+        .mz-highlight-yellow.is-in-view,
+        .mz-highlight[data-action="yellow"].is-in-view,
+        .mz-highlight--yellow.is-in-view,
+        .mz-working-me__highlight.is-in-view {
+            background-size: 100% 100% !important;
+            color: #0c0a09 !important;
+            font-weight: 700;
+        }
+
+        /* LIGHT THEME OVERRIDES (Exact Reference Match) */
+        [data-theme="light"] .mz-working-me__eyebrow {
+            color: #8c8880 !important;
+        }
+
+        [data-theme="light"] .mz-working-me__title {
+            color: #1c1917 !important;
+        }
+
+        [data-theme="light"] .mz-working-me__photo-wrap {
+            background: #f5efe6 !important;
+            border-color: rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        [data-theme="light"] .mz-working-me__body p {
+            color: #2c2a26 !important;
+        }
+
+        [data-theme="light"] .mz-working-me__body b,
+        [data-theme="light"] .mz-working-me__body strong {
+            color: #17170f !important;
+        }
+
+        [data-theme="light"] .mz-highlight-yellow,
+        [data-theme="light"] .mz-highlight[data-action="yellow"],
+        [data-theme="light"] .mz-highlight--yellow,
+        [data-theme="light"] .mz-working-me__highlight,
+        html[data-theme="light"] .mz-highlight-yellow,
+        html[data-theme="light"] .mz-highlight[data-action="yellow"],
+        html[data-theme="light"] .mz-highlight--yellow,
+        html[data-theme="light"] .mz-working-me__highlight {
+            background-image: linear-gradient(90deg, #fef08a, #fde047);
+            color: inherit;
+        }
+
+        [data-theme="light"] .mz-highlight-yellow.is-in-view,
+        [data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+        [data-theme="light"] .mz-highlight--yellow.is-in-view,
+        [data-theme="light"] .mz-working-me__highlight.is-in-view,
+        html[data-theme="light"] .mz-highlight-yellow.is-in-view,
+        html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
+        html[data-theme="light"] .mz-highlight--yellow.is-in-view,
+        html[data-theme="light"] .mz-working-me__highlight.is-in-view {
+            background-size: 100% 100% !important;
+            color: #0f172a !important;
+            font-weight: 700;
+        }
+
+        /* ============================================================
+           SECTIONS: OFF THE CLOCK & LET'S CHAT
+           ============================================================ */
+        .mz-about-section {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+            padding-top: 48px !important;
+            margin-top: 48px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+        }
+
+        @media (min-width: 860px) {
+            .mz-about-section {
+                grid-template-columns: 360px 1fr !important;
+                gap: clamp(48px, 6vw, 84px) !important;
+                padding-top: 56px !important;
+                margin-top: 56px !important;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .mz-about-section {
+                grid-template-columns: 380px 1fr !important;
+                gap: 92px !important;
+            }
+        }
+
         .mz-about-section__head {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            position: sticky;
-            top: 96px;
-            align-self: start;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+            position: sticky !important;
+            top: 96px !important;
+            align-self: start !important;
         }
 
         .mz-about-section__eyebrow {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
+            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.14em !important;
+            text-transform: uppercase !important;
+            color: #8c8983 !important;
         }
 
         .mz-about-section__title {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: clamp(1.2rem, 2vw, 1.45rem);
-            font-weight: 700;
-            color: #f4f2ed;
-            line-height: 1.25;
-            margin: 0;
-            letter-spacing: -0.015em;
+            font-family: 'Acorn', var(--font-display, serif) !important;
+            font-size: clamp(1.4rem, 2.2vw, 1.8rem) !important;
+            font-weight: 500 !important;
+            color: #f4f2ed !important;
+            line-height: 1.2 !important;
+            margin: 0 !important;
+            letter-spacing: -0.015em !important;
         }
 
-        /* Right Content Column */
         .mz-about-section__body {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            color: #a1a19d;
-            font-size: 0.98rem;
-            line-height: 1.65;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            color: #b8b6b0 !important;
+            font-size: 1.05rem !important;
+            line-height: 1.74 !important;
+            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
         }
 
         .mz-about-section__body p {
-            margin: 0;
-            color: #a1a19d;
+            margin: 0 !important;
+            color: #b8b6b0 !important;
         }
 
-        .mz-about-section__body b,
-        .mz-about-section__body strong {
-            color: #f4f2ed;
-            font-weight: 600;
-        }
-
-        /* Experience Cards */
-        .mz-exp-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            width: 100%;
-        }
-
-        .mz-exp-item {
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 10px;
-            padding: 16px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .mz-exp-item:hover {
-            background: rgba(255, 255, 255, 0.045);
-            border-color: rgba(255, 255, 255, 0.14);
-        }
-
-        .mz-exp-item__top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .mz-exp-item__company {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 1.02rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .mz-exp-item__role {
-            font-size: 0.84rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.65);
-        }
-
-        .mz-exp-item__desc {
-            font-size: 0.9rem;
-            color: #a1a19d;
-            line-height: 1.55;
-            margin: 0;
-        }
-
-        /* Specialty Micro Cards (What I'm Good At) */
-        .mz-spec-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        @media (min-width: 600px) {
-            .mz-spec-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .mz-spec-card {
-            background: rgba(255, 255, 255, 0.025);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 10px;
-            padding: 16px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .mz-spec-card__title {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 0.94rem;
-            font-weight: 600;
-            color: #f4f2ed;
-        }
-
-        .mz-spec-card__text {
-            font-size: 0.86rem;
-            color: #9c9c96;
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Question List in How I Work */
-        .mz-question-box {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-left: 3px solid #f4f2ed;
-            border-radius: 8px;
-            padding: 14px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .mz-question-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 0.92rem;
-            color: #f4f2ed;
-            font-weight: 600;
-        }
-
-        .mz-question-num {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Tool Badges (Design x AI x Code) */
-        .mz-tools-cluster {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 4px;
-        }
-
-        .mz-tool-pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 4px 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: #e5e5df;
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-        }
-
-        /* Light Theme Overrides */
-        [data-theme="light"] .mz-about-lead {
-            color: #333330;
-        }
-        [data-theme="light"] .mz-about-lead b {
-            color: #0b0b0a;
-        }
         [data-theme="light"] .mz-about-section {
-            border-top-color: rgba(0, 0, 0, 0.08);
+            border-top-color: rgba(0, 0, 0, 0.08) !important;
         }
+
         [data-theme="light"] .mz-about-section__eyebrow {
-            color: rgba(0, 0, 0, 0.45);
+            color: #8c8983 !important;
         }
+
         [data-theme="light"] .mz-about-section__title {
-            color: #17170f;
+            color: #17170f !important;
         }
+
         [data-theme="light"] .mz-about-section__body {
-            color: #555550;
+            color: #2c2b28 !important;
         }
+
         [data-theme="light"] .mz-about-section__body p {
-            color: #555550;
-        }
-        [data-theme="light"] .mz-about-section__body b,
-        [data-theme="light"] .mz-about-section__body strong {
-            color: #17170f;
-        }
-        [data-theme="light"] .mz-exp-item {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-        }
-        [data-theme="light"] .mz-exp-item:hover {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.16);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-        [data-theme="light"] .mz-exp-item__company {
-            color: #17170f;
-        }
-        [data-theme="light"] .mz-exp-item__role {
-            color: rgba(0, 0, 0, 0.6);
-        }
-        [data-theme="light"] .mz-exp-item__desc {
-            color: #555550;
-        }
-        [data-theme="light"] .mz-spec-card {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-        }
-        [data-theme="light"] .mz-spec-card__title {
-            color: #17170f;
-        }
-        [data-theme="light"] .mz-spec-card__text {
-            color: #555550;
-        }
-        [data-theme="light"] .mz-question-box {
-            background: rgba(0, 0, 0, 0.03);
-            border-color: rgba(0, 0, 0, 0.08);
-            border-left-color: #17170f;
-        }
-        [data-theme="light"] .mz-question-item {
-            color: #17170f;
-        }
-        [data-theme="light"] .mz-question-num {
-            color: rgba(0, 0, 0, 0.4);
-        }
-        [data-theme="light"] .mz-tool-pill {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.09);
-            color: #17170f;
+            color: #2c2b28 !important;
         }
     </style>
 </head>
@@ -625,190 +470,35 @@
             <div class="hatched-divider__pattern"></div>
         </div>
 
-        <div class="mz-about-wrap mz-reveal">
-            <!-- Lead Intro & Approach Card -->
-            <p class="mz-about-lead">I’m <b>Muzeeburrahaman</b>, a <b>Product Designer &amp; Design Engineer</b> with 4.8+ years of experience building AI, SaaS, e-commerce, and enterprise products.</p>
-
-            <!-- HOW I THINK & BUILD (PRESERVED IN COMMENTS FOR FUTURE USE)
-            <div class="mz-approach-card">
-                <div class="mz-approach-card__header">
-                    <span class="mz-approach-card__label">How I Think &amp; Build</span>
-                    <span class="mz-approach-card__tagline">Convictions on Craft, Systems &amp; Code</span>
-                </div>
-                <div class="mz-approach-pipeline">
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">01 / FIDELITY</span>
-                        <span class="mz-approach-step__title">Code is the source of truth</span>
-                        <span class="mz-approach-step__desc">Figma frames don’t ship. Closing the gap between canvas and production DOM ensures zero fidelity loss.</span>
-                    </div>
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">02 / EDGE CASES</span>
-                        <span class="mz-approach-step__title">Design the worst-case state</span>
-                        <span class="mz-approach-step__desc">Happy paths are easy. Real product craft lives in empty states, slow networks, and failure recoveries.</span>
-                    </div>
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">03 / SYSTEMS</span>
-                        <span class="mz-approach-step__title">Strict token governance</span>
-                        <span class="mz-approach-step__desc">Design systems aren’t UI kits; they are shared contracts between engineering and product to ship faster.</span>
-                    </div>
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">04 / AI UX</span>
-                        <span class="mz-approach-step__title">Steerability over magic</span>
-                        <span class="mz-approach-step__desc">Users don’t trust opaque magic. High-trust AI interfaces require clear verification, citations, and editable states.</span>
+        <div class="mz-about-wrap">
+            <!-- WHAT IT'S LIKE / WORKING WITH ME (Editorial 2-Column Layout) -->
+            <section class="mz-working-me" id="workingWithMe" style="display: grid; max-width: 1160px; margin: 0 auto; width: 100%;">
+                <div class="mz-working-me__left" style="max-width: 410px; width: 100%;">
+                    <span class="mz-working-me__eyebrow">WHAT IT'S LIKE</span>
+                    <h2 class="mz-working-me__title">working with me</h2>
+                    <div class="mz-working-me__photo-wrap" style="max-width: 410px; width: 100%; border-radius: 0; overflow: hidden;">
+                        <img loading="lazy" class="mz-working-me__photo" src="assets/images/about-images/muzeeb_editorial_4k.webp?v=10" srcset="assets/images/about-images/muzeeb_editorial.webp?v=10 819w, assets/images/about-images/muzeeb_editorial_4k.webp?v=10 1638w" sizes="(min-width: 768px) 410px, 100vw" alt="Muzeeb Urrahaman" width="1638" height="2048" style="width: 100%; max-width: 410px; height: 100%; object-fit: cover; object-position: center 20%; display: block; border-radius: 0;" decoding="async">
                     </div>
                 </div>
+                <div class="mz-working-me__body">
+                    <p>I like to understand why we’re building something before I start designing it. If the problem isn’t fully clear yet, I’ll probably slow things down and ask more questions so we can think it through properly.</p>
 
-                [Original 4-step pipeline]:
-                <div class="mz-approach-pipeline">
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">01 / DISCOVER</span>
-                        <span class="mz-approach-step__title">Understand the problem</span>
-                        <span class="mz-approach-step__desc">Business needs, friction points &amp; constraints</span>
-                    </div>
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">02 / CRAFT</span>
-                        <span class="mz-approach-step__title">Design the system</span>
-                        <span class="mz-approach-step__desc">Figma components, design tokens &amp; patterns</span>
-                    </div>
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">03 / PROTOTYPE</span>
-                        <span class="mz-approach-step__title">Build realistic UX</span>
-                        <span class="mz-approach-step__desc">High-fidelity interactive states &amp; flows</span>
-                    </div>
-                    <div class="mz-approach-step">
-                        <span class="mz-approach-step__num">04 / EXECUTE</span>
-                        <span class="mz-approach-step__title">Ship the product</span>
-                        <span class="mz-approach-step__desc">Production-grade code close to metal</span>
-                    </div>
-                </div>
-            </div>
+                    <p>I’m direct about what I think, and I don’t like to sugarcoat things. I expect the same honesty from the people I work with, and I’m completely fine when someone is direct with me.</p>
 
-            <p style="color:var(--text);font-size:1.02rem;line-height:1.6;margin-bottom:28px;">I don’t stop at polished screens. I focus on <b>how the product works</b>, <b>why users struggle</b>, <b>what the business needs</b>, and what it takes to turn an idea into something real.</p>
-            -->
+                    <p>I’ve never worked in a field I already knew well. I’m comfortable asking questions, learning quickly, and figuring out how things work on my own.</p>
 
-            <!-- 01 / BACKGROUND -->
-            <section class="mz-about-section">
-                <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">01 / Background</span>
-                    <h2 class="mz-about-section__title">A Little About Me</h2>
-                </div>
-                <div class="mz-about-section__body">
-                    <p>I started my career working across web, mobile, SaaS, and e-commerce products, and gradually moved deeper into complex product systems.</p>
-                    <p>Today, my strongest focus is in <b>AI-powered products</b>, where the challenge is bigger than designing a clean interface. Users need to understand complex information, make decisions, trust AI output, recover from errors, and move through workflows without feeling overwhelmed.</p>
-                    <p>That’s the kind of problem I enjoy solving.</p>
+                    <p>I’ve been the only designer on most of the teams I’ve worked with, so I’m used to dealing with decisions that don’t always have a clear answer.</p>
+
+                    <p><span class="mz-highlight mz-highlight-yellow mz-working-me__highlight" data-action="yellow">I keep choosing early-stage startups because I enjoy being in situations where I don’t have everything figured out.</span> That’s where I learn the most, and it’s how I approach most things in life too.</p>
+
+                    <p>I do my best work with ambitious people, challenging problems, and a high level of trust. Those things matter more to me than the size or scale of a company. I want the people I work with to feel that difficult problems became a little easier to solve when we worked on them together.</p>
                 </div>
             </section>
 
-            <!-- 02 / EXPERIENCE -->
+            <!-- 02 / BEYOND WORK -->
             <section class="mz-about-section">
                 <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">02 / Experience</span>
-                    <h2 class="mz-about-section__title">Track Record</h2>
-                </div>
-                <div class="mz-about-section__body">
-                    <div class="mz-exp-list">
-                        <div class="mz-exp-item">
-                            <div class="mz-exp-item__top">
-                                <span class="mz-exp-item__company">Omnis AI</span>
-                                <span class="mz-exp-item__role">Product Designer &amp; Design Engineer</span>
-                            </div>
-                            <p class="mz-exp-item__desc">Designed across <b>5+ AI-powered SaaS products</b> from 0 to 1 through research, UX, interaction design, design systems, engineering collaboration, and production QA.</p>
-                        </div>
-
-                        <div class="mz-exp-item">
-                            <div class="mz-exp-item__top">
-                                <span class="mz-exp-item__company">LetmeGrab</span>
-                                <span class="mz-exp-item__role">Product Designer (Core UX)</span>
-                            </div>
-                            <p class="mz-exp-item__desc">Redesigned customer onboarding, seller dashboards, and checkout flows for an e-commerce platform, contributing to an <b>18% increase in conversion</b> and a <b>22% reduction in drop-off</b>.</p>
-                        </div>
-
-                        <div class="mz-exp-item">
-                            <div class="mz-exp-item__top">
-                                <span class="mz-exp-item__company">Photoshooto &bull; EngineerHUB &bull; Kartexa</span>
-                                <span class="mz-exp-item__role">Product &amp; UI/UX Designer</span>
-                            </div>
-                            <p class="mz-exp-item__desc">Built web and mobile experiences across SaaS, developer community platforms, e-commerce, and consumer applications.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 03 / SPECIALTY -->
-            <section class="mz-about-section">
-                <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">03 / Specialty</span>
-                    <h2 class="mz-about-section__title">What I’m Good At</h2>
-                </div>
-                <div class="mz-about-section__body">
-                    <div class="mz-spec-grid">
-                        <div class="mz-spec-card">
-                            <div class="mz-spec-card__title">Complex Workflows, Simple UX</div>
-                            <p class="mz-spec-card__text">I enjoy understanding complicated workflows, finding where users get stuck, and turning that complexity into clear, navigable experiences.</p>
-                        </div>
-                        <div class="mz-spec-card">
-                            <div class="mz-spec-card__title">States, Logic &amp; Edge Cases</div>
-                            <p class="mz-spec-card__text">I design beyond the happy path, accounting for edge cases, permission tiers, error recoveries, loading friction, and real-world system constraints.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 04 / METHODOLOGY -->
-            <section class="mz-about-section">
-                <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">04 / Methodology</span>
-                    <h2 class="mz-about-section__title">How I Work</h2>
-                </div>
-                <div class="mz-about-section__body">
-                    <p><b>I start with questions, not screens.</b> Before jumping into Figma, I align on first principles:</p>
-                    
-                    <div class="mz-question-box">
-                        <div class="mz-question-item">
-                            <span class="mz-question-num">01</span>
-                            <span>What’s the core problem?</span>
-                        </div>
-                        <div class="mz-question-item">
-                            <span class="mz-question-num">02</span>
-                            <span>Who experiences it and where?</span>
-                        </div>
-                        <div class="mz-question-item">
-                            <span class="mz-question-num">03</span>
-                            <span>Why does it matter to the business?</span>
-                        </div>
-                    </div>
-
-                    <p>From there, I map journeys, prototype solutions, test assumptions, and collaborate tightly with engineering to ship.</p>
-                    <p>I stay close to implementation: building prototypes, plugins, AI workflows, and front-end components myself.</p>
-                </div>
-            </section>
-
-            <!-- 05 / TOOLKIT & VELOCITY -->
-            <section class="mz-about-section">
-                <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">05 / Toolkit</span>
-                    <h2 class="mz-about-section__title">Design &times; AI &times; Code</h2>
-                </div>
-                <div class="mz-about-section__body">
-                    <div class="mz-tools-cluster">
-                        <span class="mz-tool-pill">Claude</span>
-                        <span class="mz-tool-pill">ChatGPT</span>
-                        <span class="mz-tool-pill">Cursor</span>
-                        <span class="mz-tool-pill">Figma</span>
-                        <span class="mz-tool-pill">GitHub</span>
-                        <span class="mz-tool-pill">HTML &amp; CSS</span>
-                        <span class="mz-tool-pill">Design Systems</span>
-                        <span class="mz-tool-pill">AI Workflows</span>
-                    </div>
-                    <p>I use AI-assisted workflows to explore ideas rapidly and shorten the distance between design concepts and shipped code.</p>
-                    <p>For me, AI isn’t just another design tool: <b>it’s part of how I think, build, test, and ship.</b></p>
-                </div>
-            </section>
-
-            <!-- 06 / BEYOND WORK -->
-            <section class="mz-about-section">
-                <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">06 / Personal</span>
+                    <span class="mz-about-section__eyebrow">02 / Personal</span>
                     <h2 class="mz-about-section__title">Off the Clock</h2>
                 </div>
                 <div class="mz-about-section__body">
@@ -816,10 +506,10 @@
                 </div>
             </section>
 
-            <!-- 07 / GET IN TOUCH -->
+            <!-- 03 / GET IN TOUCH -->
             <section class="mz-about-section" style="padding-bottom: 24px;">
                 <div class="mz-about-section__head">
-                    <span class="mz-about-section__eyebrow">07 / Contact</span>
+                    <span class="mz-about-section__eyebrow">03 / Contact</span>
                     <h2 class="mz-about-section__title">Let’s Chat.</h2>
                 </div>
                 <div class="mz-about-section__body">
@@ -862,7 +552,7 @@
                         </div>
 
                         <div class="mz-social-item">
-                            <a class="mz-ab-icon" href="https://x.com/muzeebuiux" target="_blank" aria-label="X (Twitter)">
+                            <a class="mz-ab-icon" href="https://x.com/Rahamanmuzeeb12" target="_blank" aria-label="X (Twitter)">
                                 <svg viewBox="0 0 256 256" fill="currentColor">
                                     <path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L146,96.86,95.53,36.29A8,8,0,0,0,89.33,32H48a8,8,0,0,0-6.75,12.29l62.6,98.38-61.77,67.95a8,8,0,1,0,11.84,10.76L110,159.14l50.47,60.57A8,8,0,0,0,166.67,224H208a8,8,0,0,0,6.75-12.29ZM169.33,208,60.67,77.33H86.67L195.33,208Z" opacity="0.2"/>
                                     <path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L146,96.86,95.53,36.29A8,8,0,0,0,89.33,32H48a8,8,0,0,0-6.75,12.29l62.6,98.38-61.77,67.95a8,8,0,1,0,11.84,10.76L110,159.14l50.47,60.57A8,8,0,0,0,166.67,224H208a8,8,0,0,0,6.75-12.29ZM169.33,208,60.67,77.33H86.67L195.33,208Z"/>
@@ -873,9 +563,9 @@
                                 <div class="mz-popover-tw__body">
                                     <div class="mz-popover-tw__toprow">
                                         <img loading="lazy" class="mz-popover-tw__avatar" src="assets/images/logo.webp" alt="Muzeeb Urrahaman">
-                                        <a class="mz-popover-tw__btn" href="https://x.com/muzeebuiux" target="_blank">Follow</a>
+                                        <a class="mz-popover-tw__btn" href="https://x.com/Rahamanmuzeeb12" target="_blank">Follow</a>
                                     </div>
-                                    <div class="mz-popover-tw__handle">@muzeebuiux</div>
+                                    <div class="mz-popover-tw__handle">@Rahamanmuzeeb12</div>
                                     <div class="mz-popover-tw__bio">Product Designer & Builder for AI & SaaS: building digital products from 0 to 1.</div>
                                 </div>
                             </div>
@@ -1085,6 +775,7 @@
     <script src="assets/js/nachi-sfx.js"></script>
     <script src="assets/js/sfx.js"></script>
     -->
+    <script src="assets/js/highlighter.js?v=20"></script>
     <script src="assets/js/site.js?v=140"></script>
     <!-- About: copy email + magnetic photo carousel -->
     <script>

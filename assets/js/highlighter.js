@@ -9,7 +9,7 @@
 
   function initHighlighters() {
     var sweepElements = document.querySelectorAll(
-      '[data-slot="highlight-text"], .highlight-text, .mz-highlight-sweep, .mz-highlight[data-action="box"], .mz-highlight--box, .mz-highlight-rect, .mz-highlight-yellow, .mz-highlight--yellow, .mz-highlight[data-action="yellow"], .mz-highlight[data-action="highlight"]'
+      '[data-slot="highlight-text"], .highlight-text, .mz-highlight-sweep, .mz-highlight[data-action="box"], .mz-highlight--box, .mz-highlight-rect, .mz-highlight-yellow, .mz-highlight--yellow, .mz-highlight[data-action="yellow"], .mz-highlight[data-action="highlight"], .mz-working-me__highlight'
     );
 
     if (sweepElements.length) {
