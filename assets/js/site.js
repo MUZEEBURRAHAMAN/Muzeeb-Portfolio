@@ -616,6 +616,10 @@
     document.body.style.overflow = "";
     var pl = document.getElementById("mz-preloader");
     if (pl) pl.remove();
+    var pl2 = document.getElementById("preloader");
+    if (pl2) pl2.remove();
+    document.body.classList.remove("preloader-active");
+    document.body.classList.add("loaded");
   });
 
   /* ---------- Social Profile Popovers & GitHub Contribution Heatmap ---------- */

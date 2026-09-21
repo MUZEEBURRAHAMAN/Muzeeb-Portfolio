@@ -356,7 +356,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 /* COMPARISON GRID (reused for Create-with-AI vs Create-Manually) */
 .comp-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin:28px 0; }
 .comp-card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:26px 24px; box-shadow:0 4px 20px var(--shadow-1); display:flex; flex-direction:column; }
-.comp-card.comp-card--distinct { border-color:var(--accent); background:var(--accent-soft); }
+.comp-card.comp-card--distinct { border-color:var(--accent); background:var(--surface); box-shadow:0 0 0 1.5px var(--accent), 0 16px 36px var(--shadow-2); }
 .comp-card__header { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; min-height:36px; }
 .comp-card h3, .comp-card__title { font-family:var(--font-display); font-size:18px; font-weight:700; margin:0 0 14px 0; color:var(--ink); display:flex; align-items:center; justify-content:space-between; }
 .comp-card .comp-card__tag { display:inline-block; font-family:var(--mono); font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); background:var(--surface); padding:4px 9px; border-radius:6px; border:1px solid var(--line); }
@@ -454,6 +454,97 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .figure-badge { display:inline-flex; align-items:center; font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:3px 9px; border-radius:6px; margin-right:8px; vertical-align:middle; }
 [data-theme="dark"] .figure figcaption strong { color:#ffffff; }
 [data-theme="dark"] .figure figcaption { color:#a1a1aa; }
+
+/* IMAGE ANNOTATIONS — callout box + label pointing at one feature per screenshot */
+.mz-annot-wrap { position:relative; display:block; line-height:0; }
+.mz-annot-box {
+  position:absolute;
+  border:2px solid var(--accent);
+  border-radius:7px;
+  box-shadow:0 0 0 4px rgba(47,109,240,.16);
+  pointer-events:none;
+  opacity:0;
+  transform:scale(.97);
+  transition:opacity .5s var(--ease) .1s, transform .5s var(--ease) .1s;
+}
+.mz-annot-wrap.is-in-view .mz-annot-box { opacity:1; transform:scale(1); }
+.mz-annot-tag {
+  position:absolute;
+  top:0; left:0;
+  transform:translateY(-100%) translateY(-9px);
+  background:var(--ink);
+  color:var(--bg);
+  font-family:var(--mono);
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.01em;
+  padding:6px 11px;
+  border-radius:7px;
+  white-space:nowrap;
+  box-shadow:0 6px 16px rgba(0,0,0,.28);
+  pointer-events:none;
+  line-height:1.3;
+  opacity:0;
+  transition:opacity .5s var(--ease) .25s;
+}
+.mz-annot-wrap.is-in-view .mz-annot-tag { opacity:1; }
+.mz-annot-tag::after {
+  content:"";
+  position:absolute;
+  top:100%; left:16px;
+  width:0; height:0;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid var(--ink);
+}
+.mz-annot-tag--right { left:auto; right:0; }
+.mz-annot-tag--right::after { left:auto; right:16px; }
+.mz-annot-tag--below { top:100%; transform:translateY(9px); }
+.mz-annot-tag--below::after { top:auto; bottom:100%; left:16px; border-top:none; border-bottom:5px solid var(--ink); }
+@media (max-width:640px) {
+  .mz-annot-tag { font-size:9.5px; padding:5px 8px; border-radius:6px; }
+}
+
+/* IMAGE ANNOTATIONS v3 — bounding box + connector + badge label, drawn as one SVG overlay
+   so box/line/label stay pixel-locked to the screenshot at every breakpoint.
+   Styled to match the page's own figure-badge component, not a generic QA-tool overlay.
+   Red = problem (before), Green = solution (after). */
+.mz-annot-svg2 {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .6s var(--ease) .1s;
+}
+.mz-annot-wrap.is-in-view .mz-annot-svg2 { opacity: 1; }
+/* soft outer glow ring, sits behind the crisp box outline */
+.mz-annot-svg2 .mz-a-glow { fill: none; stroke-width: 20; }
+.mz-annot-svg2 .mz-a-glow.problem { stroke: var(--red); opacity: .14; }
+.mz-annot-svg2 .mz-a-glow.solution { stroke: var(--green); opacity: .16; }
+/* crisp box outline, minimal fill wash */
+.mz-annot-svg2 .mz-a-rect { stroke-width: 5; }
+.mz-annot-svg2 .mz-a-rect.problem { stroke: var(--red); fill: var(--red); fill-opacity: .05; }
+.mz-annot-svg2 .mz-a-rect.solution { stroke: var(--green); fill: var(--green); fill-opacity: .06; }
+/* thin connector line, hollow ring at the box end */
+.mz-annot-svg2 .mz-a-line { fill: none; stroke-width: 2.5; }
+.mz-annot-svg2 .mz-a-line.problem { stroke: var(--red); }
+.mz-annot-svg2 .mz-a-line.solution { stroke: var(--green); }
+.mz-annot-svg2 .mz-a-dot { fill: var(--surface); stroke-width: 3.5; }
+.mz-annot-svg2 .mz-a-dot.problem { stroke: var(--red); }
+.mz-annot-svg2 .mz-a-dot.solution { stroke: var(--green); }
+/* label card — plain surface card like every other card on the page, not a colored bubble */
+.mz-annot-svg2 .mz-a-bubble-bg { stroke-width: 1; filter: drop-shadow(0 10px 24px rgba(0,0,0,.16)); }
+.mz-annot-svg2 .mz-a-bubble-bg.problem, .mz-annot-svg2 .mz-a-bubble-bg.solution { fill: var(--surface); stroke: var(--line); }
+[data-theme="dark"] .mz-annot-svg2 .mz-a-bubble-bg { filter: drop-shadow(0 10px 24px rgba(0,0,0,.5)); }
+/* body label reads in ink, exactly like a figcaption <strong> — color lives only in the badge */
+.mz-annot-svg2 .mz-a-bubble-text { font-family: var(--font-display); font-weight: 700; fill: var(--ink); letter-spacing: -.01em; }
+/* kicker = the site's own figure-badge, redrawn in SVG: small pill, mono, uppercase, tracked out */
+.mz-annot-svg2 .mz-a-kicker-bg.problem { fill: var(--red-soft); }
+.mz-annot-svg2 .mz-a-kicker-bg.solution { fill: var(--green-soft); }
+.mz-annot-svg2 .mz-a-kicker { font-family: var(--mono); font-weight: 700; letter-spacing: .08em; }
+.mz-annot-svg2 .mz-a-kicker.problem { fill: var(--red); }
+.mz-annot-svg2 .mz-a-kicker.solution { fill: var(--green); }
+/* one-line explanation under the headline — why this matters, not just what it is */
+.mz-annot-svg2 .mz-a-support { font-family: var(--font-body); font-weight: 500; fill: var(--muted); }
 
 /* NOTE CALLOUT */
 .note {
@@ -580,7 +671,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <!-- HERO COVER -->
 <div class="hero-cover">
   <div class="frame">
-    <img loading="eager" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp" width="3840" height="2160" alt="CasePro Create New Matter screen with a modal asking the user to choose between Create with AI Agent and Create Manually">
+    <img loading="eager" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp?v=2" width="3840" height="2160" alt="CasePro Create New Matter screen with a modal asking the user to choose between Create with AI Agent and Create Manually">
   </div>
 </div>
 
@@ -672,21 +763,60 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/before-01-matter-form-freeform-intake.webp" width="3840" height="1906" alt="Legacy New Matter wizard, step 1 of 6, Matter Overview, with an Intake Questionnaire field that is a single freeform textarea labeled Notes or links to intake form">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/before-01-matter-form-freeform-intake.webp?v=2" width="3840" height="1906" alt="Legacy New Matter wizard, step 1 of 6, Matter Overview, with an Intake Questionnaire field that is a single freeform textarea labeled Notes or links to intake form">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 1906" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow problem" x="269" y="1287" width="1728" height="355" rx="20"></rect>
+        <rect class="mz-a-rect problem" x="269" y="1287" width="1728" height="355" rx="20"></rect>
+        <path class="mz-a-line problem" d="M 520 1287 L 520 1090"></path>
+        <circle class="mz-a-dot problem" cx="520" cy="1287" r="11"></circle>
+        <rect class="mz-a-bubble-bg problem" x="470" y="920" width="860" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg problem" x="496" y="942" width="150" height="38" rx="9"></rect>
+        <text class="mz-a-kicker problem" x="510" y="969" font-size="19">PROBLEM</text>
+        <text class="mz-a-bubble-text problem" x="496" y="1028" font-size="34">Entire intake = one text box</text>
+        <text class="mz-a-support problem" x="496" y="1066" font-size="24">No fields, no structure — just free text.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">Before</span><strong>Legacy "New Matter" wizard — Step 1 of 6.</strong> The entire intake questionnaire is a single freeform textarea, nested inside Matter Overview alongside case type, forecast category, and stage.</figcaption>
   </figure>
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/before-02-intake-tab-buried.webp" width="3840" height="2160" alt="Legacy Matters Details record with an Intake Questionnaires tab open, showing an 8-step wizard nested seven tabs deep inside an already created matter">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/before-02-intake-tab-buried.webp?v=2" width="3840" height="2160" alt="Legacy Matters Details record with an Intake Questionnaires tab open, showing an 8-step wizard nested seven tabs deep inside an already created matter">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 2160" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow problem" x="2035" y="352" width="422" height="69" rx="14"></rect>
+        <rect class="mz-a-rect problem" x="2035" y="352" width="422" height="69" rx="14"></rect>
+        <path class="mz-a-line problem" d="M 2246 352 L 2246 225 L 1660 225"></path>
+        <circle class="mz-a-dot problem" cx="2246" cy="352" r="11"></circle>
+        <rect class="mz-a-bubble-bg problem" x="810" y="120" width="890" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg problem" x="836" y="142" width="150" height="38" rx="9"></rect>
+        <text class="mz-a-kicker problem" x="850" y="169" font-size="19">PROBLEM</text>
+        <text class="mz-a-bubble-text problem" x="836" y="228" font-size="34">Buried 7 tabs into an existing matter</text>
+        <text class="mz-a-support problem" x="836" y="266" font-size="24">Intake only exists after the matter is created.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">Before</span><strong>Intake, seven tabs deep.</strong> The only structured intake experience in the legacy product lived inside an already-created Matter Details record — after the matter existed, not before it.</figcaption>
   </figure>
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/before-03-mega-form-scroll.webp" width="3840" height="7524" alt="The full legacy New Matter flow flattened into one continuous scrolling page with eight stacked sections">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/before-03-mega-form-scroll.webp?v=2" width="3840" height="7524" alt="The full legacy New Matter flow flattened into one continuous scrolling page with eight stacked sections">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 7524" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow problem" x="207" y="357" width="1000" height="6790" rx="24"></rect>
+        <rect class="mz-a-rect problem" x="207" y="357" width="1000" height="6790" rx="24"></rect>
+        <path class="mz-a-line problem" d="M 1207 400 L 1300 400"></path>
+        <circle class="mz-a-dot problem" cx="1207" cy="400" r="11"></circle>
+        <rect class="mz-a-bubble-bg problem" x="1300" y="300" width="920" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg problem" x="1326" y="322" width="150" height="38" rx="9"></rect>
+        <text class="mz-a-kicker problem" x="1340" y="349" font-size="19">PROBLEM</text>
+        <text class="mz-a-bubble-text problem" x="1326" y="408" font-size="34">8 sections stacked as one</text>
+        <text class="mz-a-support problem" x="1326" y="446" font-size="24">No steps, no breaks, no pagination.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">Before</span><strong>The full legacy flow, flattened.</strong> Eight sections — matter overview, parties, incident, legal, deductions, team, media, outcome — stacked as if they were one decision instead of a legal record being assembled step by step.</figcaption>
   </figure>
@@ -835,7 +965,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       </ul>
       <p class="prose" style="font-size:13.5px; margin:14px 0 0;"><b>Rejected —</b> assumes every matter starts from a complete intake. Many don't: walk-in clients, a five-minute phone note. Forcing AI-only creation onto those cases meant either blocking the user entirely or letting the model quietly fill gaps in a legal record with no human in the loop.</p>
     </div>
-    <div class="card" style="border-color:var(--accent); background:var(--accent-soft);">
+    <div class="card" style="border-color:var(--accent); background:var(--surface); box-shadow:0 0 0 1.5px var(--accent), 0 16px 36px var(--shadow-2);">
       <div class="card__ic card__ic--accent">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
@@ -890,7 +1020,30 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp" width="3840" height="2160" alt="Create a New Matter modal with two options: Create with AI Agent, which pulls available intake information, and Create Manually, using a guided six step form">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp?v=2" width="3840" height="2160" alt="Create a New Matter modal with two options: Create with AI Agent, which pulls available intake information, and Create Manually, using a guided six step form">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 2160" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow solution" x="1167" y="745" width="741" height="788" rx="20"></rect>
+        <rect class="mz-a-rect solution" x="1167" y="745" width="741" height="788" rx="20"></rect>
+        <path class="mz-a-line solution" d="M 1537 745 L 1537 585"></path>
+        <circle class="mz-a-dot solution" cx="1537" cy="745" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="1067" y="385" width="940" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="1093" y="407" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="1107" y="434" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="1093" y="493" font-size="32">Pulls from intake automatically</text>
+        <text class="mz-a-support solution" x="1093" y="531" font-size="23">Best when the client's story is already captured.</text>
+
+        <rect class="mz-a-glow solution" x="1935" y="745" width="741" height="788" rx="20"></rect>
+        <rect class="mz-a-rect solution" x="1935" y="745" width="741" height="788" rx="20"></rect>
+        <path class="mz-a-line solution" d="M 2325 1533 L 2325 1610"></path>
+        <circle class="mz-a-dot solution" cx="2325" cy="1533" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="1855" y="1610" width="940" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="1881" y="1632" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="1895" y="1659" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="1881" y="1718" font-size="32">Blank six-step form instead</text>
+        <text class="mz-a-support solution" x="1881" y="1756" font-size="23">Best for a matter with little or no intake yet.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">After</span><strong>Choose the fastest path for the information you already have.</strong> Neither option is presented as the "smart" default — each states exactly what it does and who it's best for.</figcaption>
   </figure>
@@ -950,7 +1103,20 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">Before drafting anything, the agent scores exactly how usable the linked intake record is — how many fields are ready to use as-is, how many need a human glance, and how many are missing outright. That score is shown to the user, not buried in a log.</p>
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-02-intake-readiness.webp" width="3840" height="2160" alt="Understanding your intake modal showing matter information, parties, incident details, legal information, team assignment, and supporting documents each scored, with 17 fields ready, 2 needing review, and 4 missing, at 40 percent overall">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-02-intake-readiness.webp?v=2" width="3840" height="2160" alt="Understanding your intake modal showing matter information, parties, incident details, legal information, team assignment, and supporting documents each scored, with 17 fields ready, 2 needing review, and 4 missing, at 40 percent overall">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 2160" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow solution" x="1167" y="1285" width="1509" height="302" rx="20"></rect>
+        <rect class="mz-a-rect solution" x="1167" y="1285" width="1509" height="302" rx="20"></rect>
+        <path class="mz-a-line solution" d="M 1400 1285 L 1400 1090 L 1440 1090"></path>
+        <circle class="mz-a-dot solution" cx="1400" cy="1285" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="1440" y="990" width="940" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="1466" y="1012" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="1480" y="1039" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="1466" y="1098" font-size="32">Scored before drafting starts</text>
+        <text class="mz-a-support solution" x="1466" y="1136" font-size="23">17 ready, 2 need review, 4 missing — up front.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">After</span><strong>"I've found information that can be used to start your matter."</strong> Six intake categories, each scored individually — 17 fields ready, 2 needing review, 4 missing — instead of one opaque "AI is ready" message.</figcaption>
   </figure>
@@ -959,7 +1125,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">The agent narrates its own work step by step — finding the intake questionnaire, reading client information, identifying parties, extracting incident details, checking legal information — and states plainly that it's running in the background, so the user is never stuck staring at a spinner or forced to babysit the screen.</p>
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-03-ai-preparing.webp" width="3840" height="2160" alt="Preparing your matter modal listing eight sequential steps with checkmarks and a note that AI is working in the background and the user can continue working elsewhere">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-03-ai-preparing.webp?v=2" width="3840" height="2160" alt="Preparing your matter modal listing eight sequential steps with checkmarks and a note that AI is working in the background and the user can continue working elsewhere">
     </div>
     <figcaption><span class="figure-badge">After</span><strong>"AI is working in the background."</strong> Every extraction step is named and checked off individually — never a single ambiguous loading state.</figcaption>
   </figure>
@@ -968,7 +1134,20 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">This is the detail that makes the whole path trustworthy: every field in the drafted matter carries a provenance tag — <span class="mono">From Intake</span>, <span class="mono">AI Matched</span>, or <span class="mono">AI Suggested</span> — so a reviewer knows in one glance whether a value is a verified fact, a confident inference, or a guess that deserves a second look before the matter goes live.</p>
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-04-matter-prefilled-provenance.webp" width="3840" height="2390" alt="AI generated Matter Overview draft with Matter Name, Case Type, Source, and Description all tagged From Intake in green, and Forecast Category tagged AI Suggested in amber">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-04-matter-prefilled-provenance.webp?v=2" width="3840" height="2390" alt="AI generated Matter Overview draft with Matter Name, Case Type, Source, and Description all tagged From Intake in green, and Forecast Category tagged AI Suggested in amber">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 2390" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow solution" x="3187" y="1338" width="288" height="77" rx="14"></rect>
+        <rect class="mz-a-rect solution" x="3187" y="1338" width="288" height="77" rx="14"></rect>
+        <path class="mz-a-line solution" d="M 3187 1338 L 3187 1180 L 3020 1180"></path>
+        <circle class="mz-a-dot solution" cx="3187" cy="1338" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="2100" y="1080" width="920" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="2126" y="1102" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="2140" y="1129" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="2126" y="1188" font-size="32">Flagged for a second look</text>
+        <text class="mz-a-support solution" x="2126" y="1226" font-size="23">AI Suggested fields are never marked as verified.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">After</span><strong>Field-level provenance, not a blanket confidence score.</strong> "From Intake" fields are verified client data; "AI Suggested" fields are flagged for a second look before the matter is created.</figcaption>
   </figure>
@@ -977,7 +1156,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">Rather than sending the user back to the intake readiness score to figure out what's missing, an in-context assistant offers direct next actions — review and suggest changes, fill missing information, generate a case summary, or find similar past matters — right where the reviewer is already working.</p>
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-05-ai-chat-assistant.webp" width="3840" height="2390" alt="Chi AI Assistant panel offering to review and suggest changes, fill missing information, generate a case summary, or find similar past matters, alongside the prefilled matter overview">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-05-ai-chat-assistant.webp?v=2" width="3840" height="2390" alt="Chi AI Assistant panel offering to review and suggest changes, fill missing information, generate a case summary, or find similar past matters, alongside the prefilled matter overview">
     </div>
     <figcaption><span class="figure-badge">After</span><strong>The assistant offers actions, not just answers.</strong> "Fill missing information" and "Find similar past matters" turn a gap in the readiness score directly into a next step.</figcaption>
   </figure>
@@ -986,7 +1165,20 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <p class="prose">Regardless of how confident the draft is, the last step of the AI path is identical to the manual path: every section, grouped and labeled, with an explicit <span class="mono">Ready to Create Matter</span> confirmation before the record is written. AI assistance ends where the legal record begins.</p>
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-06-review-before-create.webp" width="2880" height="5421" alt="Final review screen grouped into Matter Overview, Parties Involved, Incident Details, Legal and Deduction Details, Legal Team Assignment, and Images and Outcome, with a Ready to Create Matter banner and a Create Matter button">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-06-review-before-create.webp?v=2" width="2880" height="5421" alt="Final review screen grouped into Matter Overview, Parties Involved, Incident Details, Legal and Deduction Details, Legal Team Assignment, and Images and Outcome, with a Ready to Create Matter banner and a Create Matter button">
+      <svg class="mz-annot-svg2" viewBox="0 0 2880 5421" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow solution" x="216" y="320" width="2448" height="141" rx="16"></rect>
+        <rect class="mz-a-rect solution" x="216" y="320" width="2448" height="141" rx="16"></rect>
+        <path class="mz-a-line solution" d="M 1440 461 L 1440 555"></path>
+        <circle class="mz-a-dot solution" cx="1440" cy="461" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="970" y="555" width="940" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="996" y="577" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="1010" y="604" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="996" y="663" font-size="32">Nothing skips this check</text>
+        <text class="mz-a-support solution" x="996" y="701" font-size="23">AI or manual, every matter ends here first.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">After</span><strong>Step 6 of 6 — Review &amp; Confirm.</strong> Every section is editable inline before the "Create Matter" commit, whether it started from AI or from scratch.</figcaption>
   </figure>
@@ -1013,21 +1205,47 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-07-manual-step1.webp" width="3840" height="3082" alt="Manual Create New Matter flow, step 1 of 6, Matter Overview, with Core Details and Classification and Tracking grouped into labeled cards on a blank form">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-07-manual-step1.webp?v=2" width="3840" height="3082" alt="Manual Create New Matter flow, step 1 of 6, Matter Overview, with Core Details and Classification and Tracking grouped into labeled cards on a blank form">
     </div>
     <figcaption><span class="figure-badge">After</span><strong>Step 1 of 6 — the same structure, empty.</strong> Fields are grouped into labeled cards (Core Details, Classification &amp; Tracking) instead of one flat, undifferentiated list of inputs.</figcaption>
   </figure>
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-08-manual-incident-autofill.webp" width="3840" height="2646" alt="Manual flow step 3, Incident Details, with an address search field that automatically populates city, state, and zip code once an address is selected">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-08-manual-incident-autofill.webp?v=2" width="3840" height="2646" alt="Manual flow step 3, Incident Details, with an address search field that automatically populates city, state, and zip code once an address is selected">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 2646" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow solution" x="326" y="1416" width="3360" height="212" rx="18"></rect>
+        <rect class="mz-a-rect solution" x="326" y="1416" width="3360" height="212" rx="18"></rect>
+        <path class="mz-a-line solution" d="M 450 1416 L 450 1335"></path>
+        <circle class="mz-a-dot solution" cx="450" cy="1416" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="326" y="1135" width="940" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="352" y="1157" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="366" y="1184" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="352" y="1243" font-size="32">Auto-fills from the address</text>
+        <text class="mz-a-support solution" x="352" y="1281" font-size="23">City, state, and zip populate from one search.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">After</span><strong>Manual doesn't mean unassisted.</strong> Typing an incident address auto-populates city, state, and zip — the system still removes busywork it can safely automate, even on the fully manual path.</figcaption>
   </figure>
 
   <figure class="figure reveal">
     <div class="frame">
-      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-09-manual-team-roundrobin.webp" width="3840" height="3476" alt="Manual flow step 5, Team Assignment, with Principal Attorney, Senior Case Manager, and other roles each labeled Round Robin as a staffing suggestion">
+      <div class="mz-annot-wrap js-annot">
+      <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-09-manual-team-roundrobin.webp?v=2" width="3840" height="3476" alt="Manual flow step 5, Team Assignment, with Principal Attorney, Senior Case Manager, and other roles each labeled Round Robin as a staffing suggestion">
+      <svg class="mz-annot-svg2" viewBox="0 0 3840 3476" preserveAspectRatio="none" aria-hidden="true">
+        <rect class="mz-a-glow solution" x="326" y="737" width="3360" height="222" rx="18"></rect>
+        <rect class="mz-a-rect solution" x="326" y="737" width="3360" height="222" rx="18"></rect>
+        <path class="mz-a-line solution" d="M 450 737 L 450 655"></path>
+        <circle class="mz-a-dot solution" cx="450" cy="737" r="11"></circle>
+        <rect class="mz-a-bubble-bg solution" x="326" y="455" width="1020" height="200" rx="18"></rect>
+        <rect class="mz-a-kicker-bg solution" x="352" y="477" width="128" height="38" rx="9"></rect>
+        <text class="mz-a-kicker solution" x="366" y="504" font-size="19">SOLVED</text>
+        <text class="mz-a-bubble-text solution" x="352" y="563" font-size="32">Suggests staffing automatically</text>
+        <text class="mz-a-support solution" x="352" y="601" font-size="23">Surfaces the firm's own round-robin logic.</text>
+      </svg>
+      </div>
     </div>
     <figcaption><span class="figure-badge">After</span><strong>Staffing suggestions, not just empty dropdowns.</strong> Roles like Principal Attorney and Case Manager are labeled "Round Robin," surfacing the firm's own staffing logic instead of leaving every seat blank.</figcaption>
   </figure>
@@ -1097,30 +1315,39 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <h2 class="h-sub">What Changed Structurally</h2>
-  <div class="stats">
-    <div class="stat"><div class="stat__number stat__number--accent">1 → 2</div><div class="stat__label">Linked entities instead of<br>one merged intake-as-matter object</div></div>
-    <div class="stat"><div class="stat__number"><span class="mz-highlight" data-action="box">2</span></div><div class="stat__label">Honest entry paths<br>instead of one silent default</div></div>
-    <div class="stat"><div class="stat__number stat__number--success">3</div><div class="stat__label">Field provenance states —<br>From Intake, AI Matched, AI Suggested</div></div>
-    <div class="stat"><div class="stat__number"><span class="mz-highlight" data-action="yellow">1</span></div><div class="stat__label">Shared six-step IA<br>across both AI and manual creation</div></div>
+  <div class="note warn">
+    <div class="note__badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    </div>
+    <div class="note__body">
+      <span class="note__label">What's Designed vs. What's Measured</span>
+      The three outcomes above are what the redesign was built to produce, confirmed through design review and the engineering handoff spec — not adoption numbers from production, since the system was at handoff, not live, when this was last updated. I'd rather say that plainly than manufacture a before/after metric to make this section look more finished than it is.
+    </div>
   </div>
 
-  <h2 class="h-sub">Key Design Decisions</h2>
-  <div class="cards">
-    <div class="card">
-      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-      <h3>Fix the Model, Not the Screen</h3>
-      <p class="prose" style="font-size:14px; margin:0;">The redesign started with the data model — separating intake from matter — before a single new screen was drawn, so the UI changes actually resolved the root cause.</p>
+  <h2 class="h-sub">What Changed Structurally</h2>
+  <p class="prose">The redesign replaced one merged intake-as-matter object with two linked entities — intake and matter — connected by two honest entry paths instead of a single silent default. Every field a paralegal sees now carries one of three provenance states (From Intake, AI Matched, AI Suggested), and both entry paths share the same six-step information architecture, so a matter built manually and one built with AI assistance end up structurally identical.</p>
+
+  <h3 class="h3" style="margin-top:36px;">My Role</h3>
+  <p class="prose">I led this redesign end to end: the diagnostic work that traced the intake bug back to the data model rather than the form, the three architectural options I scoped and the case for rejecting two of them, the shared information architecture both creation paths now use, and the field-level provenance system that makes AI-assisted matters auditable. The handoff spec — component states, provenance logic, and edge cases for partial or conflicting intake data — was mine to define before engineering picked it up.</p>
+
+  <h3 class="h3" style="margin-top:28px;">What I Learned</h3>
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">The bug is rarely the screen</h3></div>
+      <ul><li>Every earlier attempt to fix the intake form failed for the same reason: the form was correct for the data model it was built on. The redesign only worked once the model changed first.</li></ul>
     </div>
-    <div class="card">
-      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>Never Hide the Confidence Level</h3>
-      <p class="prose" style="font-size:14px; margin:0;">Readiness scores, narrated progress, and field-level provenance tags all exist for the same reason: an AI-assisted legal record has to show its work.</p>
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">Confidence needs a visible source</h3></div>
+      <ul><li>"The AI got it right" isn't something a paralegal can verify at a glance. Provenance tags and readiness scores exist so trust is checkable, not assumed.</li></ul>
     </div>
-    <div class="card">
-      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-      <h3>Treat the Manual Path as a Peer</h3>
-      <p class="prose" style="font-size:14px; margin:0;">Manual matter creation shares the AI path's information architecture and its smart-field assists, rather than shipping as the unmaintained fallback.</p>
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">A fallback path erodes over time</h3></div>
+      <ul><li>Manual creation only stays usable if it's built and maintained as a first-class path — treat it as a fallback and it starts drifting from whatever the "real" path does.</li></ul>
+    </div>
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">This hasn't shipped to users yet</h3></div>
+      <ul><li>Everything above reflects design review and the engineering handoff spec, not production usage. Whether paralegals actually trust the provenance tags on a live case is still ahead of this project.</li></ul>
     </div>
   </div>
 
@@ -1130,11 +1357,11 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 </section>
 
 <!-- NEXT PROJECT -->
-<a href="casenotes-case-study.html" class="next-project-card">
+<a href="litbox-case-study.html" class="next-project-card">
   <div class="next-project-card__info">
     <div class="next-project-card__eyebrow">NEXT CASE STUDY</div>
-    <h3 class="next-project-card__title">CaseNotes: AI Meeting Notetaker for Lawyers</h3>
-    <p class="next-project-card__desc">How I designed a specialized AI transcription and synthesis workspace that anchors client conversations directly to litigation discovery files.</p>
+    <h3 class="next-project-card__title">LitBox: Designing the File Layer a Legal AI Ecosystem Can Read From</h3>
+    <p class="next-project-card__desc">How I designed a matter-aware secure storage product with live connections into AutoDoc and OmnisProof eSign.</p>
   </div>
   <div class="next-project-card__cta">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1210,6 +1437,25 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 </div>
 
 <script>
+// IMAGE ANNOTATIONS — reveal callout box + label when the screenshot scrolls into view
+(function() {
+  var targets = document.querySelectorAll(".js-annot");
+  if (!targets.length) return;
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach(function(t) { t.classList.add("is-in-view"); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-in-view");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+  targets.forEach(function(t) { io.observe(t); });
+})();
+
 // HORIZONTAL-SCROLL AFFORDANCE (flow-strip, diagram-scroll)
 (function() {
   function wire(wrapSelector, scrollSelector) {

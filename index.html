@@ -45,10 +45,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Preloader Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@600;700&family=Noto+Sans+Devanagari:wght@600;700&family=Noto+Sans+JP:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
     <link rel="stylesheet" href="assets/css/style.css?v=613">
+    <!-- Preloader css -->
+    <link rel="stylesheet" href="assets/css/preloader.css?v=1">
     <!-- Legacy stylesheets (Commented out for performance & future reference):
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/slick-theme.css">
@@ -258,9 +262,21 @@
             .mz-card-pill--after { right: 6px; }
         }
     </style>
+    <style id="preloader-critical">
+        .preloader { position: fixed; inset: 0; z-index: 999999; background: #0a0a0a; display: grid; place-items: center; will-change: transform; }
+        [data-theme="light"] .preloader, html[data-theme="light"] .preloader { background: #f2f1ed; }
+        body.preloader-active { overflow: hidden !important; }
+    </style>
 </head>
 
-<body class="bg-[#0f0f0f] text-[#f4f2ed]">
+<body class="bg-[#0f0f0f] text-[#f4f2ed] preloader-active">
+    <!-- Multi-language Greeting Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+        <div class="word" id="word"></div>
+        <div class="counter" id="counter">0</div>
+    </div>
+    <script src="assets/js/preloader.js?v=1"></script>
+
     <div class="mz-scroll-progress-bar" aria-hidden="true"></div>
     <a href="#main" class="mz-skip">Skip to content</a>
 
@@ -426,7 +442,7 @@
                 <article class="mz-work-card">
                     <a href="matter-redesign-case-study.html" class="mz-work-card__link" aria-label="CasePro Matter Redesign: Splitting Intake from Case Creation">
                         <div class="mz-work-card__img-container">
-                            <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp" alt="CasePro Matter Redesign: Splitting Intake from Case Creation">
+                            <img loading="lazy" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp?v=2" alt="CasePro Matter Redesign: Splitting Intake from Case Creation">
                         </div>
                         <div class="mz-work-card__text">
                             <div class="mz-work-card__content">
@@ -436,6 +452,32 @@
                                     <span class="mz-work-card__meta-tag">Workflow Redesign</span>
                                     <span class="mz-work-card__meta-tag">AI-Assisted Forms</span>
                                     <span class="mz-work-card__meta-tag">Legal Tech</span>
+                                </div>
+                            </div>
+                            <div class="mz-work-card__action">
+                                <span class="mz-work-card__cta">
+                                    <span>View case study</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Case Study 5: LitBox -->
+                <article class="mz-work-card">
+                    <a href="litbox-case-study.html" class="mz-work-card__link" aria-label="LitBox: The File Layer Three Other Omnis AI Products Read From">
+                        <div class="mz-work-card__img-container">
+                            <img loading="lazy" src="assets/images/case-studies/litbox/file-requests-list.png" alt="LitBox: The File Layer Three Other Omnis AI Products Read From" style="object-position: left top;">
+                        </div>
+                        <div class="mz-work-card__text">
+                            <div class="mz-work-card__content">
+                                <h3 class="mz-work-card__title">LitBox: The File Layer Three Other Omnis AI Products Read From</h3>
+                                <p class="mz-work-card__desc">A matter-aware secure storage layer with real staging screenshots proving it's already embedded live inside AutoDoc, MedChron, and OmnisProof.</p>
+                                <div class="mz-work-card__tags">
+                                    <span class="mz-work-card__meta-tag">Secure Storage</span>
+                                    <span class="mz-work-card__meta-tag">Information Architecture</span>
+                                    <span class="mz-work-card__meta-tag">Ecosystem Integration</span>
                                 </div>
                             </div>
                             <div class="mz-work-card__action">
@@ -726,6 +768,10 @@
     <script src="assets/js/lenis.min.js"></script>
     <script>
         const lenis = new Lenis();
+        window.lenis = lenis;
+        if (document.getElementById("preloader")) {
+            try { lenis.stop(); } catch (e) {}
+        }
         function raf(time) {
             lenis.raf(time);
             requestAnimationFrame(raf);
