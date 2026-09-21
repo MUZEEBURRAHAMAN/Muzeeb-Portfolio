@@ -21,7 +21,14 @@
 
 html {
     background-color: #0f0f0f;
-    overflow-y: scroll;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 html[data-theme="light"],
 [data-theme="light"] {
@@ -31,6 +38,13 @@ body {
     overflow-x: clip;
     width: 100%;
     min-height: 100vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 /* ===== Unified interaction system ===== */

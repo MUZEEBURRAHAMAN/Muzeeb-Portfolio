@@ -88,7 +88,7 @@ body.preloader-active {
 }
 
 body.loaded {
-  overflow: auto;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
