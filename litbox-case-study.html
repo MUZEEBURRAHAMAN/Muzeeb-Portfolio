@@ -10,28 +10,28 @@
   document.documentElement.setAttribute("data-theme", t);
 })();
 </script>
-<title>LitBox: The File Layer Three Other Omnis AI Products Read From · Case Study · Muzeeb Urrahaman</title>
-<meta name="description" content="How I designed LitBox — the secure, matter-aware file layer inside Omnis AI's legal tech platform — now embedded live inside AutoDoc, MedChron, and OmnisProof, with real staging screenshots to prove it, not just a Figma prototype." />
+<title>LitBox: The Same Case File Lived in Three Places · Case Study · Muzeeb Urrahaman</title>
+<meta name="description" content="Files lived in personal drives and public links with no shared index and no record of who could still see them, because no generic tool knew a document belonged to a legal matter. Here's how I designed LitBox to fix that." />
 <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/litbox-case-study.html">
-<meta property="og:title" content="LitBox: The File Layer Three Other Omnis AI Products Read From · Case Study · Muzeeb Urrahaman">
+<meta property="og:title" content="LitBox: The Same Case File Lived in Three Places · Case Study · Muzeeb Urrahaman">
 <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/litbox-case-study.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Muzeeb Urrahaman">
-<meta property="og:description" content="How I designed LitBox — the secure, matter-aware file layer inside Omnis AI's legal tech platform — now embedded live inside AutoDoc, MedChron, and OmnisProof, with real staging screenshots to prove it, not just a Figma prototype.">
-<meta property="og:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/litbox/file-requests-list.png">
+<meta property="og:description" content="Files lived in personal drives and public links with no shared index and no record of who could still see them, because no generic tool knew a document belonged to a legal matter. Here's how I designed LitBox to fix that.">
+<meta property="og:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/litbox/cover.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://muzeeb-urrahaman.vercel.app/litbox-case-study.html">
-<meta name="twitter:title" content="LitBox: The File Layer Three Other Omnis AI Products Read From · Case Study · Muzeeb Urrahaman">
-<meta name="twitter:description" content="How I designed LitBox — the secure, matter-aware file layer inside Omnis AI's legal tech platform — now embedded live inside AutoDoc, MedChron, and OmnisProof, with real staging screenshots to prove it, not just a Figma prototype.">
-<meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/litbox/file-requests-list.png">
+<meta name="twitter:title" content="LitBox: The Same Case File Lived in Three Places · Case Study · Muzeeb Urrahaman">
+<meta name="twitter:description" content="Files lived in personal drives and public links with no shared index and no record of who could still see them, because no generic tool knew a document belonged to a legal matter. Here's how I designed LitBox to fix that.">
+<meta name="twitter:image" content="https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/litbox/cover.webp">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "LitBox: The File Layer Three Other Omnis AI Products Read From · Case Study · Muzeeb Urrahaman",
-  "description": "How I designed LitBox — the secure, matter-aware file layer inside Omnis AI's legal tech platform — now embedded live inside AutoDoc, MedChron, and OmnisProof, with real staging screenshots to prove it, not just a Figma prototype.",
-  "image": "https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/litbox/file-requests-list.png",
+  "headline": "LitBox: The Same Case File Lived in Three Places · Case Study · Muzeeb Urrahaman",
+  "description": "Files lived in personal drives and public links with no shared index and no record of who could still see them, because no generic tool knew a document belonged to a legal matter. Here's how I designed LitBox to fix that.",
+  "image": "https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/litbox/cover.webp",
   "author": {
     "@type": "Person",
     "name": "Muzeeb Urrahaman",
@@ -393,12 +393,26 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .diagram-card figcaption { text-align:center; font-size:13px; color:var(--soft); margin-top:18px; line-height:1.6; }
 .diagram-card figcaption strong { color:var(--ink); font-weight:600; }
 
+.wf-sketch-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; margin-top:24px; }
+.wf-sketch { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; margin:0; }
+.wf-sketch svg { display:block; width:100%; height:auto; }
+.wf-sketch figcaption { text-align:center; font-size:12.5px; color:var(--soft); margin-top:12px; }
+@media (max-width:720px) { .wf-sketch-grid { grid-template-columns:1fr; } }
+
 /* WIREFRAME FLOW DIAGRAMS (mini-screen user flows) */
 .diagram-card svg .wf-frame { fill:var(--surface); stroke:var(--line); stroke-width:1.25; }
 .diagram-card svg .wf-tag { font-family:var(--mono); font-weight:700; letter-spacing:.02em; }
 .diagram-card svg .wf-tag--good { fill:var(--green); }
 .diagram-card svg .wf-tag--bad { fill:var(--red); }
 .diagram-card svg .wf-tag--neutral { fill:var(--soft); }
+
+/* MERMAID FLOW DIAGRAMS (decision-logic user flows) */
+.diagram-card--compact { padding:28px 24px; }
+.mermaid-wrap { overflow-x:auto; width:100%; text-align:center; }
+.mermaid-wrap .node rect, .mermaid-wrap .node polygon { rx:10px; stroke-width:1.5px !important; }
+.mermaid-wrap .edgeLabel { background-color:var(--surface) !important; color:var(--soft) !important; font-family:var(--font-body) !important; font-size:11.5px !important; }
+.mermaid-wrap .edgeLabel rect { fill:var(--surface) !important; opacity:1 !important; }
+.mermaid-wrap .nodeLabel { font-family:var(--font-body) !important; font-size:12.5px !important; font-weight:600; }
 
 /* COMPACT FIGURES (modals/popups — shown at a deliberately small, honest size) */
 .figure--compact { max-width:340px; margin-left:auto; margin-right:auto; }
@@ -520,6 +534,56 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .stat__number--success { color:var(--green); }
 .stat__label { font-size:12px; font-weight:500; color:var(--soft); line-height:1.45; text-align:center; }
 @media (max-width:768px) { .stats { grid-template-columns:repeat(2, 1fr); } }
+
+/* DESIGN SYSTEM SECTION */
+.ds-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin:20px 0; align-items:start; }
+.ds-grid__divider { grid-column:1 / -1; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--soft); padding-top:20px; margin-top:4px; border-top:1px solid var(--line); }
+.ds-grid__divider:first-child { padding-top:0; margin-top:0; border-top:none; }
+.ds-block { background:var(--surface); border:1px dashed var(--line); border-radius:16px; padding:24px; box-shadow:0 4px 20px var(--shadow-1); transition:border-color .2s ease, box-shadow .2s ease; }
+.ds-block:hover { border-color:var(--accent); box-shadow:0 8px 28px var(--shadow-2); }
+.ds-block--wide { grid-column:1 / -1; }
+.ds-block__label { display:flex; align-items:center; gap:8px; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; }
+.ds-block__dot { width:7px; height:7px; border-radius:2px; background:var(--accent); transform:rotate(45deg); flex-shrink:0; }
+.ds-block__frame { background:#f8f8fa; border:1px solid var(--line); border-radius:12px; padding:24px; display:flex; align-items:center; justify-content:center; min-height:96px; overflow:hidden; }
+[data-theme="dark"] .ds-block__frame { background:#141414; }
+.ds-block__frame img { max-width:100%; max-height:320px; width:auto; height:auto; display:block; }
+.ds-block__frame--pair { flex-direction:column; gap:18px; }
+.ds-block__frame--pair img { max-height:130px; }
+.ds-controls-frame { display:flex; align-items:flex-start; justify-content:center; gap:40px; flex-wrap:wrap; }
+.ds-control-item { display:flex; flex-direction:column; align-items:center; gap:12px; }
+.ds-control-item img { max-height:80px; width:auto; }
+.ds-control-item__label { font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--soft); }
+.ds-block__cap { font-size:12.5px; color:var(--muted); line-height:1.55; margin:14px 0 0; }
+@media (max-width:768px) { .ds-grid { grid-template-columns:1fr; } }
+
+.ds-swatches { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; }
+.ds-swatch { display:flex; align-items:center; gap:14px; background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
+.ds-swatch__chip { width:40px; height:40px; border-radius:10px; flex-shrink:0; box-shadow:inset 0 0 0 1px rgba(0,0,0,.06); }
+.ds-swatch b { display:block; font-size:13.5px; color:var(--ink); font-weight:600; }
+.ds-swatch code { display:block; font-family:var(--mono); font-size:11.5px; color:var(--accent); margin:2px 0 3px; }
+.ds-swatch span { display:block; font-size:12px; color:var(--muted); line-height:1.4; }
+@media (max-width:640px) { .ds-swatches { grid-template-columns:1fr; } }
+
+.ds-type-rows { display:flex; flex-direction:column; gap:14px; }
+.ds-type-row { display:flex; align-items:center; gap:18px; background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:14px 16px; }
+.ds-type-sample { flex-shrink:0; width:64px; text-align:center; color:var(--ink); }
+.ds-type-row b { display:block; font-size:13px; color:var(--ink); font-weight:600; }
+.ds-type-row span { display:block; font-size:12px; color:var(--muted); margin-top:2px; }
+
+/* ACCOUNT MENU (proposed component, built from LitBox tokens) */
+.ds-am { width:280px; margin:0 auto; background:#ffffff; border-radius:14px; overflow:hidden; box-shadow:0 8px 24px rgba(17,28,83,.1); border:1px solid #eef0f3; font-family:var(--font-body); text-align:left; }
+.ds-am__header { display:flex; align-items:center; gap:12px; padding:18px 20px; }
+.ds-am__avatar { width:42px; height:42px; border-radius:50%; background:#3353f8; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; }
+.ds-am__name { font-size:14.5px; font-weight:600; color:#111c53; }
+.ds-am__role { font-size:12px; color:#667085; margin-top:2px; }
+.ds-am__row { display:flex; align-items:center; gap:12px; padding:12px 20px; font-size:13.5px; color:#111c53; border-top:1px solid #f1f2f4; }
+.ds-am__icon { width:17px; height:17px; color:#667085; flex-shrink:0; }
+.ds-am__label { flex:1; text-align:left; }
+.ds-am__row--active { background:#f5f7ff; }
+.ds-am__badge { background:#ef4444; color:#fff; font-size:10.5px; font-weight:700; padding:2px 7px; border-radius:99px; line-height:1.4; }
+.ds-am__divider { height:1px; background:#f1f2f4; }
+.ds-am__row--danger { color:#ef4444; }
+.ds-am__row--danger .ds-am__icon { color:#ef4444; }
 
 /* REAL FIGURE & ARTIFACTS */
 .figure { margin:36px 0; }
@@ -647,8 +711,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
         </span>
       </div>
     </div>
-    <h1>LitBox: the file layer <span class="mz-highlight" data-action="yellow">three other Omnis AI products</span> already read from.</h1>
-    <p class="hero__sub">AutoDoc needed documents to process. OmnisProof needed documents to sign. MedChron needed a way to attach one without leaving its own screen. None of them agreed on where a file actually lived — so I designed the one layer all three now call into directly, not just link out to.</p>
+    <h1>Every product in the ecosystem depended on Dropbox, Box, or Google Drive to hold a client's files. So I designed <span class="mz-highlight" data-action="box">LitBox</span>.</h1>
+    <p class="hero__sub">Before LitBox, a lawyer uploaded to a third-party drive first, then connected that account to whichever Omnis AI product needed the file — one integration per tool, per product, on a vendor Omnis AI didn't own and couldn't fully vouch for. LitBox replaces that dependency with a secure, <span class="mz-highlight" data-action="yellow">matter-aware</span> storage layer built inside the ecosystem itself.</p>
     <div class="hero__meta">
       <span class="m"><b>Muzeeb Urrahaman</b></span>
       <span class="m">Product Designer</span>
@@ -671,22 +735,21 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <div class="snapshot">
   <div class="cell"><div class="k">Role</div><div class="v">Product Designer, End-to-End</div></div>
   <div class="cell"><div class="k">Domain</div><div class="v">Legal Tech SaaS · Secure Storage</div></div>
-  <div class="cell"><div class="k">Core Problem</div><div class="v">Files Fragmented Across 4+ Tools</div></div>
+  <div class="cell"><div class="k">Core Problem</div><div class="v">Dependent on Third-Party Storage</div></div>
   <div class="cell"><div class="k">Status</div><div class="v">Internal Beta / Dogfooding</div></div>
 </div>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 01 OVERVIEW -->
+<!-- 01 THE PROBLEM -->
 <section id="overview">
-  <div class="sec-num">01 / OVERVIEW</div>
-  <div class="eyebrow reveal">What Is LitBox</div>
-  <h2 class="h reveal">A file system organized around a <span class="mz-highlight" data-action="yellow">legal matter</span>, not a generic folder tree</h2>
+  <div class="sec-num">01 / THE PROBLEM</div>
+  <div class="eyebrow reveal">Before LitBox</div>
+  <h2 class="h reveal">Omnis AI called itself an <span class="mz-highlight" data-action="yellow">ecosystem</span>. Its files said otherwise.</h2>
   <div class="intro">
     <div>
-      <p class="lead">LitBox is the secure file management layer inside Omnis AI's legal tech platform — one place for a firm's documents, evidence, and case media that the rest of the ecosystem is designed to read from and write to, instead of each product holding its own disconnected copy.</p>
-      <p class="prose">On the surface it looks like the category it has to compete with: a Drive- or Dropbox-style workspace with folders, previews, sharing, and search. <b>The difference is what sits underneath.</b> Every file in LitBox can carry a matter context, a permission model built for firm/team/client boundaries rather than personal accounts, and an audit trail — and, unlike a general-purpose drive, it was designed from day one to be a layer other products plug into, not an island.</p>
-      <p class="prose">Omnis AI already ships several purpose-built legal tools — <b>CasePro</b> (case and matter management), <b>AutoDoc</b> (document intelligence and processing), <b>OmnisProof</b> (e-signature), plus MedChron, LitDraft, CaseNotes, and DiscoPro. Every one of them touches files. Before LitBox, storage wasn't a first-party layer any of them shared — it lived wherever each product's team decided to put it, or outside the ecosystem entirely in whatever drive a firm already used.</p>
+      <p class="lead">Before LitBox, a document's journey never started inside Omnis AI. A lawyer had a file, and the first move was never "open CasePro" — it was "open Dropbox, or Box, or Google Drive." Only after the file existed in one of those third-party tools could it be connected, one integration at a time, to whichever Omnis AI product actually needed it.</p>
+      <p class="prose">That habit — third party first, Omnis AI second — created three compounding problems, and it's the reason LitBox exists.</p>
     </div>
     <aside class="side">
       <div class="g"><div class="k">Category</div><div class="v">Legal Tech SaaS · Secure Cloud Storage</div></div>
@@ -697,15 +760,93 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </aside>
   </div>
 
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></div>
+      <h3>1. A Third-Party Detour Before Every Product</h3>
+      <ul>
+        <li>A file had to exist in Dropbox, Box, or Google Drive before it could touch anything Omnis AI built.</li>
+        <li>Then it had to be connected or re-authorized separately inside CasePro, inside OmnisProof, inside MedChron — one integration per tool, per product.</li>
+        <li>The same document could need three separate third-party connections just to be usable across a platform that was supposed to be one system.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+      <h3>2. Security We Couldn't Fully Vouch For</h3>
+      <ul>
+        <li>The moment a client's file left Omnis AI and landed in someone else's storage, we inherited that vendor's security posture.</li>
+        <li>We couldn't tell a firm "your data is 100% secure" while it was sitting in software we didn't build and couldn't audit — and the legal industry has no shortage of breach headlines proving that risk is real.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>3. An Ecosystem That Wasn't Actually One</h3>
+      <ul>
+        <li>Omnis AI's pitch is that CasePro, OmnisProof, MedChron, LitDraft, and the rest work as one connected platform.</li>
+        <li>If the layer holding every product's files is a rented vendor account, that claim only holds at the marketing level.</li>
+        <li>Even a more secure third-party option — something like Sync.com — would still leave storage as a dependency instead of a layer the rest of the platform is actually built on. The fix wasn't a better vendor. It was owning the layer outright.</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="note">
     <div class="note__badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
     </div>
     <div class="note__body">
       <span class="note__label">The Opening Insight</span>
-      LitBox didn't start from a single support ticket or a usability session I ran. It started from a pattern across the other Omnis AI products I'd already worked on: AutoDoc needed a document to process, OmnisProof needed a document to sign, CasePro needed a document attached to a matter — and each one was quietly solving "where does the file live" on its own. The gap wasn't "lawyers need a nicer Dropbox." It was that the ecosystem had no shared file layer at all.
+      LitBox didn't start from a single support ticket or a usability session I ran. It started from a pattern across the other Omnis AI products I'd already worked on: AutoDoc needed a document to process, OmnisProof needed a document to sign, CasePro needed a document attached to a matter — and each one was quietly solving "where does the file live" by pointing a lawyer at a third-party drive. The gap wasn't "lawyers need a nicer Dropbox." It was that the ecosystem had no first-party file layer of its own.
     </div>
   </div>
+
+  <h3 class="h3" style="margin-top:40px;">What That Third-Party Detour Actually Looked Like</h3>
+  <p class="prose">Dropbox and Box are the two tools that showed up most often as the "first stop" before a file ever reached an Omnis AI product — general-purpose drives with no concept of a legal matter, built for a different job entirely.</p>
+
+  <div class="figure-row">
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/competitor-dropbox.png" width="3840" height="1916" alt="Dropbox All Files home screen showing a generic personal/team folder list with no legal-matter context">
+      </div>
+      <figcaption><span class="figure-badge">Reference</span> Dropbox's own "All Files" home — the detour a lawyer made before a document ever reached CasePro or OmnisProof.</figcaption>
+    </figure>
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/provided/ref-box-share-settings.webp" width="1232" height="1648" alt="Box.com Shared Link Settings modal showing manual toggles for link expiration, password protection, and download permissions">
+      </div>
+      <figcaption><span class="figure-badge">Reference</span> Box's real "Shared Link Settings" modal — every one of these toggles was a manual step a lawyer could get wrong, on a file Omnis AI had no visibility into.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="h3" style="margin-top:40px;">How a File Actually Moved, Before LitBox</h3>
+  <p class="prose">Built with the <b>ux-flow-designer</b> methodology used across this case study. The flow below traces one client file from a lawyer's hands to three different Omnis AI products — every red node is friction that existed only because the ecosystem didn't own its own storage layer.</p>
+
+  <figure class="diagram-card reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="before-flow">
+graph LR
+    A["Lawyer receives&lt;br/&gt;a client file"] --> B["Upload to Dropbox,&lt;br/&gt;Box, or Drive"]
+    B --> C{"Which product&lt;br/&gt;needs it?"}
+    C -->|"CasePro"| D["Connect / re-authorize&lt;br/&gt;that account in CasePro"]
+    C -->|"OmnisProof"| E["Connect / re-authorize&lt;br/&gt;that account in OmnisProof"]
+    C -->|"MedChron"| F["Connect / re-authorize&lt;br/&gt;that account in MedChron"]
+    D --> G["Download, then&lt;br/&gt;re-upload into CasePro"]
+    E --> H["Download, then re-upload&lt;br/&gt;into OmnisProof"]
+    F --> I["Download, then&lt;br/&gt;re-upload into MedChron"]
+    G --> J["Three copies, three names,&lt;br/&gt;no shared audit trail"]
+    H --> J
+    I --> J
+    J --> K["Security now depends on a&lt;br/&gt;vendor Omnis AI doesn't control"]
+
+    classDef userStep fill:#eef2ff,stroke:#3353f8,color:#111c53
+    classDef decision fill:#fff7ed,stroke:#f59e0b,color:#7c2d12
+    classDef pain fill:#fef2f2,stroke:#E5484D,color:#7f1d1d,stroke-width:2px
+    class A,B userStep
+    class C decision
+    class D,E,F,G,H,I,J,K pain
+      </div>
+    </div>
+    <figcaption><strong>Before LitBox — one file, three third-party detours.</strong> Every red node is a manual re-connection, a redundant re-upload, or a trust boundary Omnis AI couldn't audit — repeated once per product that needed the same document.</figcaption>
+  </figure>
 
   <figure class="video-embed reveal">
     <div class="frame">
@@ -713,84 +854,41 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
         <source src="assets/videos/case-studies/litbox/walkthrough.mp4" type="video/mp4">
       </video>
     </div>
-    <figcaption><strong>Product walkthrough.</strong> Dashboard → upload → File Request → search — the core loop, in motion.</figcaption>
+    <figcaption><strong>Product walkthrough.</strong> Dashboard → upload → File Request → search — the core loop, in motion, inside the system built to replace the flow above.</figcaption>
   </figure>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 02 THE OPPORTUNITY -->
+<!-- 02 WHY THIS, WHY FIRST -->
 <section id="opportunity">
-  <div class="sec-num">02 / THE OPPORTUNITY</div>
-  <div class="eyebrow reveal">Why Build It</div>
-  <h2 class="h reveal">Why a legal AI platform needed to <span class="mz-highlight" data-action="box">own</span> storage, not rent it</h2>
-  <p class="prose">A legal tech company adding "cloud storage" to its roadmap is an easy pitch to over-sell. So before treating it as obviously worth building, I separated what's actually documented from what's a reasonable-but-unproven hypothesis.</p>
+  <div class="sec-num">02 / WHY THIS, WHY FIRST</div>
+  <div class="eyebrow reveal">Sequencing The Roadmap</div>
+  <h2 class="h reveal">Why storage had to ship <span class="mz-highlight" data-action="box">before</span> the rest of the roadmap</h2>
+  <p class="prose">Omnis AI had a full slate of legal products planned — CasePro, OmnisProof, MedChron, NotaryNow, LitDraft, and more — each on its own launch timeline. But every one of them touches a file at some point: CasePro attaches evidence to a matter, OmnisProof signs a document, MedChron organizes medical records chronologically, NotaryNow notarizes a document. If each product solved "where do files live" on its own, the platform would end up with as many storage implementations, security models, and third-party integrations as it had products — instead of one.</p>
+  <p class="prose">That's why LitBox needed to exist <b>before</b> most of those products launched, not after. Shipping it first meant everything built afterward could assume a shared, owned file layer from day one, instead of retrofitting one in once four or five products already had their own quiet workarounds.</p>
 
   <div class="cards">
     <div class="card">
-      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-      <h3>Every Product Needed Files, None Owned Them</h3>
-      <ul>
-        <li>AutoDoc's whole job is processing documents — it needs a reliable source for them.</li>
-        <li>OmnisProof needs a document to attach a signature workflow to.</li>
-        <li>CasePro needs evidence and case files tied to the matter record it manages.</li>
-      </ul>
+      <h3>CasePro</h3>
+      <ul><li>Evidence and case files need to be tied to the matter record it manages — LitBox is where that evidence actually lives.</li></ul>
     </div>
     <div class="card">
-      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>AI Tools Are Only as Good as What They Can Read</h3>
-      <ul>
-        <li>Document intelligence and search only work on files the platform can actually see.</li>
-        <li>If evidence lives in five different tools, no single product can search across all of it.</li>
-        <li>A shared file layer is what makes cross-product retrieval possible at all.</li>
-      </ul>
+      <h3>OmnisProof</h3>
+      <ul><li>E-signature needs a document to sign, in place, without a round trip through a downloaded file.</li></ul>
     </div>
     <div class="card">
-      <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
-      <h3>Sharing Without a Record Is a Liability</h3>
-      <ul>
-        <li>A public link with no expiry, no password, and no log is convenient — and hard to defend later.</li>
-        <li>Firms handling privileged material need to know who touched a file, not just that it was sent.</li>
-      </ul>
+      <h3>MedChron</h3>
+      <ul><li>Medical chronologies are built from records that need a single, permission-aware source instead of scattered copies.</li></ul>
+    </div>
+    <div class="card">
+      <h3>NotaryNow</h3>
+      <ul><li>Notarization needs the same document trust model as e-signature — one owned layer, not a fourth vendor integration.</li></ul>
     </div>
   </div>
 
-  <p class="prose" style="margin-top:8px;"><b>Confirmed:</b> AutoDoc's Documents-folder pickup and the in-document "Continue to e-signature" action are both built and working today. <b>Not yet measured:</b> how much time firms actually lose bouncing files between tools — no baseline exists yet, and I'm not inventing one.</p>
-
-  <h3 class="h3" style="margin-top:40px;">What Law Firms Are Documented to Struggle With</h3>
-  <p class="prose">This section draws on secondary research — published security and legal-tech sources — not on primary interviews I personally ran with lawyers. I want to be explicit about that distinction up front, because the rest of the case study depends on it.</p>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Fragmented, Not Just Disorganized</h3>
-      <ul>
-        <li>Files split across email attachments, personal cloud drives, and case-management tools with no shared index.</li>
-        <li>The same document can exist in three places with three different names and no way to tell which is current.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Sharing Outruns Access Control</h3>
-      <ul>
-        <li>General-purpose drives make it easy to generate a public link and hard to audit who still has it.</li>
-        <li>Permissions are typically per-file or per-folder, not scoped to a legal matter or a case team.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>No Matter-Level Context</h3>
-      <ul>
-        <li>A generic drive doesn't know a file belongs to <i>Smith v. Jones</i> — a firm has to rebuild that context manually, every time.</li>
-        <li>That's the exact gap a legal-specific layer like LitBox is positioned to close.</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="h3" style="margin-top:36px;">Research Limitations &amp; Open Questions</h3>
-  <p class="prose">In the interest of not overstating what this research package actually is:</p>
-  <ul class="prose">
-    <li><b>No primary interviews yet.</b> The pain points above are triangulated from published legal-tech and security research, not from sitting with paralegals the way I did on the CasePro matter redesign. That's the single biggest validation gap on this project.</li>
-    <li><b>No adoption or time-savings data.</b> LitBox is in internal beta — there's no usage baseline to compare "before" and "after" against yet.</li>
-    <li><b>Questions I'd want answered before the next design pass:</b> How do paralegals currently decide where a new file "belongs" across your existing tools? What actually stops someone from using a personal Dropbox link for a sensitive attachment today? Which of AutoDoc, OmnisProof, or CasePro would a firm expect to be the "source of truth" for a document if there's ever a conflict?</li>
-  </ul>
+  <h3 class="h3" style="margin-top:40px;">My Role</h3>
+  <p class="prose">I led this end to end: framing the three problems above from patterns across the products I'd already worked on, the research that grounded the case for owning storage instead of integrating another vendor, the information architecture and permission model, the full UI system, and the integration points — like the "Import from LitBox" pattern used inside other Omnis AI products — that make LitBox a layer the rest of the ecosystem actually plugs into, not a fourth silo next to the other three.</p>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
@@ -802,8 +900,103 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <h2 class="h reveal">Why secure storage is a <span class="mz-highlight" data-action="box">different problem</span> for a law firm</h2>
   <p class="prose">A generic drive protects files. A law firm's drive has to protect privilege — client identities, litigation strategy, medical and financial records, and communications that are confidential by professional obligation, not just by preference. That distinction is what "secure storage" has to mean for LitBox, and it's worth grounding in real incidents rather than abstract risk language.</p>
 
-  <h3 class="h3">Five Documented Incidents, Checked Independently</h3>
-  <p class="prose">These five cases were supplied to me as potential evidence. I verified each one rather than taking the dates and framing at face value — and in every single case, the date I was given turned out to be when a lawsuit was <i>filed</i> or a settlement was <i>approved</i>, not when the breach itself happened. That gap is worth sitting with on its own: notification and litigation timelines routinely run months to years behind the actual incident.</p>
+  <h3 class="h3">Three Research Methods, Combined</h3>
+  <p class="prose">No single method could carry the case for owning a storage layer on its own — secondary research proves the risk is real, competitive teardown proves the gap is real, and internal conversations proved the demand across products was real. All three live as source material inside the project's Figma file, not just as claims in this case study.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <h3>Legal Research</h3>
+      <p class="prose" style="font-size:14px; margin:0;">ABA Model Rule 1.6(c), five independently-verified law-firm breach incidents, and what legal-software vendors themselves say "secure" has to include. The full breakdown follows below.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+      <h3>Market &amp; Competitive Research</h3>
+      <p class="prose" style="font-size:14px; margin:0;">A module-by-module teardown of Dropbox, Box, and Google Drive — screenshotted, cataloged, and scored for feature parity — is archived as its own research board in Figma, not reconstructed after the fact for this case study. Section 04 shows the results.</p>
+    </div>
+    <div class="card">
+      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>Internal Stakeholder Interviews</h3>
+      <p class="prose" style="font-size:14px; margin:0;">Not lawyers or paralegals — that gap is called out honestly below. These were working conversations with the AutoDoc, OmnisProof, CasePro, and MedChron product leads that surfaced the pattern behind Section 02: every product was solving "where does the file live" on its own.</p>
+    </div>
+  </div>
+
+  <figure class="diagram-card diagram-card--compact reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="research-flow">
+graph LR
+    A["Legal research:&lt;br/&gt;ABA Rule 1.6, breach data"] --> D["Synthesized&lt;br/&gt;pain points"]
+    B["Competitive teardown:&lt;br/&gt;Dropbox, Box, Drive"] --> D
+    C["Stakeholder interviews:&lt;br/&gt;AutoDoc, OmnisProof, CasePro, MedChron"] --> D
+    D --> E["Candidate solutions&lt;br/&gt;weighed in Section 05"]
+
+    classDef accentNode fill:#eef2ff,stroke:#3353f8,color:#111c53,stroke-width:2px
+    classDef greenNode fill:#ecfdf5,stroke:#22c55e,color:#0b4a2e,stroke-width:2px
+    class A,B,C accentNode
+    class D,E greenNode
+      </div>
+    </div>
+    <figcaption><strong>How the three methods converged.</strong> None of the three alone made the case for owning storage — it took the combination to move from "this seems like a good idea" to a scoped, defensible product decision.</figcaption>
+  </figure>
+
+  <h3 class="h3" style="margin-top:32px;">Sorting the Raw Findings Into an Information Architecture</h3>
+  <p class="prose">Once research surfaced dozens of individual findings — module ideas, competitor features, stakeholder asks — the next problem was turning that pile into a navigation structure a firm could actually use. The diagram below is an illustrative reconstruction of that card-sorting pass, not a literal transcript of the exercise, grouping raw findings into the categories that became LitBox's actual sidebar IA (Section 09).</p>
+
+  <figure class="diagram-card reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="card-sort">
+graph LR
+    subgraph Raw["Raw Findings"]
+      direction LR
+      R1["Folder trees, drag &amp; drop,&lt;br/&gt;bulk actions"]
+      R2["Password links,&lt;br/&gt;per-person roles, expiry"]
+      R3["Content search,&lt;br/&gt;filters, saved searches"]
+      R4["Who-did-what logs,&lt;br/&gt;compliance exports"]
+      R5["Quotas, user provisioning,&lt;br/&gt;retention rules"]
+    end
+    R1 --> C1["Core File Management"]
+    R2 --> C2["Sharing &amp; Access"]
+    R3 --> C3["Search &amp; Discovery"]
+    R4 --> C4["Audit &amp; Compliance"]
+    R5 --> C5["Admin &amp; Org Settings"]
+    C1 --> S1["My Files / Folders"]
+    C2 --> S2["File Requests, Shared with Me"]
+    C3 --> S3["Global Search"]
+    C4 --> S4["Audit Logs &amp; Activity"]
+    C5 --> S5["Storage Management"]
+
+    classDef raw fill:#f6f6f4,stroke:#c8c8c0,color:#57574f
+    classDef category fill:#fff7ed,stroke:#f59e0b,color:#7c2d12
+    classDef shipped fill:#ecfdf5,stroke:#22c55e,color:#0b4a2e,stroke-width:2px
+    class R1,R2,R3,R4,R5 raw
+    class C1,C2,C3,C4,C5 category
+    class S1,S2,S3,S4,S5 shipped
+      </div>
+    </div>
+    <figcaption><strong>Illustrative reconstruction — not a literal transcript.</strong> Five raw-finding clusters, five working categories, five sidebar destinations that actually shipped. The green row is what a user sees in the product today.</figcaption>
+  </figure>
+
+  <h3 class="h3" style="margin-top:32px;">Five Documented Incidents, Checked Independently</h3>
+  <p class="prose">Five law firms were named to me as data-breach examples. Instead of taking the dates at face value, I checked each one against its actual news coverage — and in every case, the date I'd been given was when a lawsuit was <i>filed</i>, not when the breach happened. Real incidents run months to years ahead of the headlines.</p>
+
+  <div class="stats" style="margin:24px 0 32px;">
+    <div class="stat">
+      <div class="stat__number stat__number--accent">5</div>
+      <div class="stat__label">Firms, independently verified</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">1.4M+</div>
+      <div class="stat__label">Client records exposed combined</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number stat__number--success">3 of 5</div>
+      <div class="stat__label">Started with social engineering, not malware</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">7 mo.</div>
+      <div class="stat__label">Average delay before clients were notified</div>
+    </div>
+  </div>
 
   <div class="cards cards--2col">
     <div class="card">
@@ -843,11 +1036,18 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
-  <h3 class="h3" style="margin-top:32px;">The Ethical Baseline: ABA Model Rule 1.6 and Comment 8</h3>
-  <p class="prose">Two provisions of the ABA Model Rules of Professional Conduct (adopted state-by-state, not federal law) are the actual ethical floor here. <b>Rule 1.6(c)</b>, added in 2012, requires a lawyer to "make reasonable efforts to prevent the inadvertent or unauthorized disclosure of, or unauthorized access to, information relating to the representation of a client." <b>Comment 8 to Rule 1.1</b> (competence), added the same year, requires a lawyer to "keep abreast of changes in the law and its practice, including the benefits and risks associated with relevant technology" — <a class="inline-source" href="https://www.americanbar.org/groups/law_practice/resources/law-practice-today/2023-december/cybersecurity-for-attorneys-employing-competent-and-reasonable-safeguards/" target="_blank" rel="noopener noreferrer">source: American Bar Association ↗</a>. Most U.S. states have since adopted Comment 8 or an equivalent duty. Neither provision mandates a specific technology or certification — they require <i>reasonable</i> safeguards and <i>informed</i> decisions, which is a lower and more contextual bar than "encrypted" or "compliant," and exactly why I'm not attaching either of those words to LitBox without something to back them up.</p>
+  <h3 class="h3" style="margin-top:32px;">The Rule Lawyers Actually Have to Follow</h3>
+  <p class="prose">Lawyers aren't just choosing security software out of caution — a real ethics rule requires it. <a class="inline-source" href="https://www.americanbar.org/groups/law_practice/resources/law-practice-today/2023-december/cybersecurity-for-attorneys-employing-competent-and-reasonable-safeguards/" target="_blank" rel="noopener noreferrer">ABA Model Rule 1.6(c)</a> says a lawyer must take "reasonable efforts" to stop a client's information from leaking, on purpose or by accident. A companion rule says a lawyer has to understand the tools they're using well enough to know the risk. Neither rule names a specific product or certification to use — just "reasonable" and "informed." That's a lower bar than "encrypted" or "fully compliant," which is exactly why I'm not slapping either word on LitBox without proof behind it.</p>
 
-  <h3 class="h3" style="margin-top:28px;">What "Secure Cloud Storage" Actually Requires</h3>
-  <p class="prose">Drawing on <a class="inline-source" href="https://www.clio.com/blog/law-firm-data-encryption/" target="_blank" rel="noopener noreferrer">Clio's</a> and <a class="inline-source" href="https://www.sync.com/blog/cloud-services-for-law-firms/" target="_blank" rel="noopener noreferrer">Sync's</a> own published security guidance (both are legal-software vendors describing their own practices, so I'm treating this as informative rather than independent research) plus <a class="inline-source" href="https://www.cloudlex.com/cloud-security/warning-signs-your-legal-practice-is-susceptible-to-a-cyberattack/" target="_blank" rel="noopener noreferrer">CloudLex's incident-pattern write-ups</a>: the baseline components are encryption in transit and at rest, multi-factor authentication, role-based access control, session management, audit logging, and a clear distinction between consumer-grade tools and ones built for legal-grade access control. Sync's own material is blunt about this gap: general-purpose consumer cloud tools are "designed for a broad audience" and often lack the audit trails and access controls firms specifically need. On vendor selection itself, <a class="inline-source" href="https://www.cloudlex.com/cloud-security/navigating-the-importance-of-data-privacy-certification-for-lawyers/" target="_blank" rel="noopener noreferrer">CloudLex's piece on data-privacy certification</a> makes the case that a vendor's own certifications matter when a firm is choosing who to trust with client data — a standard LitBox doesn't yet meet, per the note below.</p>
+  <h3 class="h3" style="margin-top:28px;">What "Secure" Actually Has to Include</h3>
+  <p class="prose">Legal-software vendors (<a class="inline-source" href="https://www.clio.com/blog/law-firm-data-encryption/" target="_blank" rel="noopener noreferrer">Clio</a>, <a class="inline-source" href="https://www.sync.com/blog/cloud-services-for-law-firms/" target="_blank" rel="noopener noreferrer">Sync</a>) and incident write-ups from <a class="inline-source" href="https://www.cloudlex.com/cloud-security/warning-signs-your-legal-practice-is-susceptible-to-a-cyberattack/" target="_blank" rel="noopener noreferrer">CloudLex</a> converge on the same short list. This is describing their own practices, not independent research, but the list itself is a useful checklist against a consumer drive:</p>
+  <ul class="prose">
+    <li><b>Encryption</b> — while a file moves, and while it sits in storage.</li>
+    <li><b>Multi-factor login</b> — a password alone isn't enough to get in.</li>
+    <li><b>Per-person, per-file roles</b> — not one link anyone can forward.</li>
+    <li><b>A record of who did what</b> — not just that a file was sent somewhere.</li>
+  </ul>
+  <p class="prose">Sync's own material is blunt about the gap: consumer tools are "designed for a broad audience" and usually skip the access controls and audit trails a firm specifically needs.</p>
 
   <div class="note warn">
     <div class="note__badge">
@@ -855,7 +1055,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
     <div class="note__body">
       <span class="note__label">What LitBox Does Not Claim</span>
-      LitBox does not currently claim SOC 2 certification, HIPAA compliance, zero-knowledge or end-to-end encryption, or attorney-client-privilege protection as shipped, verified capabilities. Encryption in transit and at rest, role-based permissions, and broader audit-export tooling are design targets reflected in the product's own module-architecture research — treat anything above not tied to a screenshot elsewhere in this case study as a <b>proposed capability requiring technical and business validation</b>, not a shipped guarantee. The one security-adjacent surface that is actually built and shown in this case study is the Audit Timeline in Section 09.
+      LitBox does not currently claim SOC 2 certification, HIPAA compliance, zero-knowledge or end-to-end encryption, or attorney-client-privilege protection as shipped, verified capabilities. Encryption in transit and at rest, role-based permissions, and broader audit-export tooling are design targets reflected in the product's own module-architecture research — treat anything above not tied to a screenshot elsewhere in this case study as a <b>proposed capability requiring technical and business validation</b>, not a shipped guarantee. The two security-adjacent surfaces actually built and shown in this case study are per-file role sharing and the Audit Timeline, both in Section 10.
     </div>
   </div>
 </section>
@@ -927,6 +1127,39 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
   </div>
 
+  <h3 class="h3" style="margin-top:36px;">Competitive SWOT</h3>
+  <p class="prose">The same three competitors, scored honestly against LitBox rather than dismissed outright — including where LitBox itself is genuinely weaker today.</p>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">Dropbox / Google Drive</h3></div>
+      <ul>
+        <li><b>Strengths —</b> familiar to nearly every user, deep Office/Workspace integration, mature mobile and desktop sync.</li>
+        <li><b>Weaknesses —</b> no matter context, folder- or file-scoped sharing only, no legal-specific audit trail.</li>
+        <li><b>Opportunities —</b> a firm frustrated by re-uploading the same file into three tools is a switching moment.</li>
+        <li><b>Threats —</b> both could add "legal mode" features faster than a startup can build ecosystem integrations.</li>
+      </ul>
+    </div>
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">Box</h3></div>
+      <ul>
+        <li><b>Strengths —</b> the strongest admin/governance/retention tooling of the three general-purpose tools.</li>
+        <li><b>Weaknesses —</b> organized around departments and folders, not matters; no native e-signature or document-intelligence handoff.</li>
+        <li><b>Opportunities —</b> its own governance strength is proof firms will pay for compliance features — LitBox's Audit Timeline targets the same instinct.</li>
+        <li><b>Threats —</b> Box already sells into the enterprise-legal segment LitBox needs; incumbency is a real barrier.</li>
+      </ul>
+    </div>
+    <div class="comp-card">
+      <div class="comp-card__header"><h3 class="comp-card__title">Sync.com</h3></div>
+      <ul>
+        <li><b>Strengths —</b> zero-knowledge encryption marketed directly at privacy-conscious buyers, including law firms.</li>
+        <li><b>Weaknesses —</b> still a standalone drive — no matter model, no case-team permissions, nothing to plug into.</li>
+        <li><b>Opportunities —</b> proves firms will pay a premium for "more secure than Dropbox" positioning, which LitBox can pair with ecosystem integration.</li>
+        <li><b>Threats —</b> the closest thing to a shortcut — a firm could get "secure enough" from Sync without ever needing LitBox, which is exactly the case made in Section 01's third problem.</li>
+      </ul>
+    </div>
+  </div>
+
   <div class="note">
     <div class="note__badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
@@ -945,7 +1178,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <div class="sec-num">05 / SOLUTIONS CONSIDERED</div>
   <div class="eyebrow reveal">Options on the Table</div>
   <h2 class="h reveal">Three places the shared file layer could have lived. Two were faster to ship — and <span class="mz-highlight" data-action="box">wrong</span></h2>
-  <p class="prose">Once "every product needs files and none of them own storage" was clear (Section 02), the fix wasn't obvious yet — it rarely is. These are the three real architectural paths I weighed, not a polished single recommendation dressed up after the fact.</p>
+  <p class="prose">Once "every product needs files and none of them own storage" was clear (Section 02), the fix wasn't obvious yet — it rarely is. These are the three real architectural paths I weighed, not a polished single recommendation dressed up after the fact. The fuller research behind each option — module notes, competitor teardown, stakeholder input — lives as its own set of pages inside the project's Figma file, not just summarized here.</p>
 
   <div class="cards">
     <div class="card">
@@ -989,7 +1222,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
     <div class="note__body">
       <span class="note__label">The Part I Didn't Expect to Prove Out</span>
-      Option C was a bet that other product teams would actually build against LitBox rather than route around it. Section 12's real staging screenshots — LitBox's search running live inside MedChron and AutoDoc — are the closest thing this case study has to that bet paying off.
+      Option C was a bet that other product teams would actually build against LitBox rather than route around it. Section 15's real staging screenshots — LitBox's search running live inside MedChron and AutoDoc — are the closest thing this case study has to that bet paying off.
     </div>
   </div>
 </section>
@@ -1036,7 +1269,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   </ul>
 
   <h3 class="h3" style="margin-top:24px;">MVP Scope</h3>
-  <p class="prose">The internal-beta scope covers the core file-management loop end to end — upload, organize, preview, share, request, restore/delete, search, and audit — plus the confirmed ecosystem connections: AutoDoc via File Requests, OmnisProof via in-document e-signature, and embedded search live inside MedChron and AutoDoc itself (Section 12). A conversational AI assistant, deeper CasePro matter-linking, and broader third-party integrations are explicitly out of MVP scope; see Section 10 for what that AI question actually looks like.</p>
+  <p class="prose">The internal-beta scope covers the core file-management loop end to end — upload, organize, preview, share, request, restore/delete, search, and audit — plus the confirmed ecosystem connections: AutoDoc via File Requests, OmnisProof via in-document e-signature, and embedded search live inside MedChron and AutoDoc itself (Section 15). A conversational AI assistant, deeper CasePro matter-linking, and broader third-party integrations are explicitly out of MVP scope; see Section 13 for what that AI question actually looks like.</p>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
@@ -1253,9 +1486,101 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 07 INFORMATION ARCHITECTURE -->
+<!-- 08 WIREFRAMES -->
+<section id="wireframes">
+  <div class="sec-num">08 / WIREFRAMES &amp; IDEATION</div>
+  <div class="eyebrow reveal">Sketches Before Screens</div>
+  <h2 class="h reveal">Before any of the polished screens, <span class="mz-highlight" data-action="box">low-fidelity layout sketches</span> for every core surface</h2>
+  <p class="prose">The high-fidelity screens throughout this case study didn't start high-fidelity. Every core surface went through a layout-only pass first — boxes, hierarchy, and content zones, deliberately stripped of color and type so early feedback stayed about structure, not visual polish. Redrawn below in the same wireframe notation used for this page's own flow diagrams.</p>
+
+  <div class="wf-sketch-grid reveal">
+    <figure class="wf-sketch">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Dashboard wireframe sketch">
+        <rect x="1" y="1" width="318" height="198" rx="4" fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 4"></rect>
+        <rect x="1" y="1" width="70" height="198" fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 4"></rect>
+        <rect x="12" y="14" width="46" height="8" rx="2" fill="var(--line-2)"></rect>
+        <rect x="12" y="34" width="46" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="12" y="48" width="46" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="12" y="62" width="46" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="84" y="14" width="130" height="10" rx="2" fill="var(--line-2)"></rect>
+        <rect x="224" y="14" width="84" height="18" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 3"></rect>
+        <rect x="84" y="42" width="66" height="30" rx="3" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="158" y="42" width="66" height="30" rx="3" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="232" y="42" width="76" height="30" rx="3" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="84" y="86" width="224" height="10" rx="2" fill="var(--line-2)"></rect>
+        <line x1="84" y1="104" x2="308" y2="104" stroke="var(--line)" stroke-width="1"></line>
+        <rect x="84" y="112" width="180" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="84" y="126" width="180" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="84" y="140" width="180" height="6" rx="2" fill="var(--line)"></rect>
+      </svg>
+      <figcaption>Dashboard — zones only: nav, stats row, activity list.</figcaption>
+    </figure>
+    <figure class="wf-sketch">
+      <svg viewBox="0 0 320 200" role="img" aria-label="My Files list wireframe sketch">
+        <rect x="1" y="1" width="318" height="198" rx="4" fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 4"></rect>
+        <rect x="1" y="1" width="70" height="198" fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 4"></rect>
+        <rect x="84" y="14" width="110" height="10" rx="2" fill="var(--line-2)"></rect>
+        <rect x="264" y="12" width="44" height="16" rx="3" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 3"></rect>
+        <rect x="84" y="36" width="224" height="14" rx="3" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <line x1="84" y1="58" x2="308" y2="58" stroke="var(--line)" stroke-width="1"></line>
+        <rect x="84" y="66" width="10" height="10" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="100" y="68" width="120" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="260" y="68" width="34" height="6" rx="2" fill="var(--line-2)"></rect>
+        <rect x="84" y="84" width="10" height="10" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="100" y="86" width="150" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="260" y="86" width="34" height="6" rx="2" fill="var(--line-2)"></rect>
+        <rect x="84" y="102" width="10" height="10" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="100" y="104" width="90" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="260" y="104" width="34" height="6" rx="2" fill="var(--line-2)"></rect>
+        <rect x="84" y="120" width="10" height="10" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="100" y="122" width="130" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="260" y="122" width="34" height="6" rx="2" fill="var(--line-2)"></rect>
+      </svg>
+      <figcaption>My Files — row structure before column decisions.</figcaption>
+    </figure>
+    <figure class="wf-sketch">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Document details drawer wireframe sketch">
+        <rect x="1" y="1" width="318" height="198" rx="4" fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.5"></rect>
+        <rect x="196" y="1" width="122" height="198" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 3"></rect>
+        <rect x="210" y="16" width="60" height="8" rx="2" fill="var(--line-2)"></rect>
+        <rect x="210" y="30" width="90" height="16" rx="3" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="210" y="30" width="44" height="16" rx="3" fill="var(--accent-soft)"></rect>
+        <rect x="210" y="56" width="94" height="6" rx="2" fill="var(--line-2)"></rect>
+        <rect x="210" y="70" width="12" height="12" fill="none" stroke="var(--line-2)" stroke-width="1"></rect>
+        <rect x="228" y="72" width="60" height="4" rx="2" fill="var(--line)"></rect>
+        <rect x="210" y="90" width="12" height="12" fill="none" stroke="var(--line-2)" stroke-width="1"></rect>
+        <rect x="228" y="92" width="60" height="4" rx="2" fill="var(--line)"></rect>
+        <rect x="210" y="112" width="94" height="6" rx="2" fill="var(--line-2)"></rect>
+        <rect x="210" y="126" width="94" height="30" rx="3" fill="none" stroke="var(--line)" stroke-width="1"></rect>
+      </svg>
+      <figcaption>Document Details drawer — tabs vs. body split first.</figcaption>
+    </figure>
+    <figure class="wf-sketch">
+      <svg viewBox="0 0 320 200" role="img" aria-label="Share modal wireframe sketch">
+        <rect x="1" y="1" width="318" height="198" rx="4" fill="none" stroke="var(--line-2)" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.4"></rect>
+        <rect x="70" y="30" width="180" height="140" rx="5" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="2 3"></rect>
+        <rect x="86" y="44" width="70" height="8" rx="2" fill="var(--line-2)"></rect>
+        <rect x="86" y="62" width="148" height="16" rx="3" fill="none" stroke="var(--line-2)" stroke-width="1.25"></rect>
+        <rect x="86" y="86" width="60" height="6" rx="2" fill="var(--line)"></rect>
+        <rect x="86" y="98" width="10" height="10" fill="none" stroke="var(--line-2)" stroke-width="1"></rect>
+        <rect x="102" y="100" width="70" height="4" rx="2" fill="var(--line)"></rect>
+        <rect x="86" y="116" width="10" height="10" fill="none" stroke="var(--line-2)" stroke-width="1"></rect>
+        <rect x="102" y="118" width="70" height="4" rx="2" fill="var(--line)"></rect>
+        <rect x="86" y="140" width="60" height="16" rx="3" fill="none" stroke="var(--line)" stroke-width="1"></rect>
+        <rect x="168" y="140" width="66" height="16" rx="3" fill="var(--accent-soft)"></rect>
+      </svg>
+      <figcaption>Share modal — roles list + link options, before copy.</figcaption>
+    </figure>
+  </div>
+
+  <p class="prose" style="margin-top:20px;">More than two dozen empty, error, and permission states were scoped this same low-fidelity way before a single one shipped — see Section 10 for the built result.</p>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 09 INFORMATION ARCHITECTURE -->
 <section id="architecture">
-  <div class="sec-num">08 / INFORMATION ARCHITECTURE</div>
+  <div class="sec-num">09 / INFORMATION ARCHITECTURE</div>
   <div class="eyebrow reveal">Structure &amp; Flows</div>
   <h2 class="h reveal">An IA validated against <span class="mz-highlight" data-action="yellow">what people actually do</span> with files, not a default sidebar</h2>
   <p class="prose">The navigation below is what's actually built, not a wishlist — it maps directly onto the left sidebar in the shipped screens throughout this case study.</p>
@@ -1263,10 +1588,10 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <figure class="diagram-card reveal">
     <div class="diagram-scroll-wrap">
     <div class="diagram-scroll">
-    <svg viewBox="0 0 480 290" role="img" aria-labelledby="iaTitle iaDesc">
+    <svg viewBox="0 0 700 300" role="img" aria-labelledby="iaTitle iaDesc">
           <title id="iaTitle">LitBox information architecture</title>
-          <desc id="iaDesc">A left navigation of Dashboard, My Folders/Files, Shared with Me, Starred, Recent Files, Trash, and File Requests, next to an admin column of Storage Management and Audit Logs above two confirmed downstream connections: AutoDoc Documents Folder and OmnisProof eSign.</desc>
-    
+          <desc id="iaDesc">Three separate groups: every-user navigation (Dashboard, My Folders/Files, Shared with Me, Starred, Recent Files, Trash, and File Requests); admin-only tools (Storage Management and Audit Logs); and downstream connections (AutoDoc Documents Folder and OmnisProof eSign). An arrow routes from File Requests around the admin column into AutoDoc Documents Folder, the one confirmed automatic handoff.</desc>
+
           <text x="20" y="26" class="dg-sub" font-size="11" letter-spacing="0.8">EVERY-USER NAVIGATION</text>
           <rect x="20" y="40" class="dg-node dg-node--accent" width="190" height="44" rx="10"></rect>
           <text x="115" y="67" class="dg-title" font-size="12.5" text-anchor="middle">Dashboard</text>
@@ -1278,23 +1603,26 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
           <text x="115" y="208" class="dg-title" font-size="11.5" text-anchor="middle">Starred · Recent · Trash</text>
           <rect x="20" y="230" class="dg-node dg-node--green" width="190" height="38" rx="9"></rect>
           <text x="115" y="254" class="dg-title" font-size="11.5" text-anchor="middle">File Requests</text>
-    
-          <text x="250" y="26" class="dg-sub" font-size="11" letter-spacing="0.8">ADMIN + CONFIRMED DOWNSTREAM</text>
+
+          <text x="250" y="26" class="dg-sub" font-size="11" letter-spacing="0.8">ADMIN ONLY</text>
           <rect x="250" y="40" class="dg-node dg-node--warm" width="190" height="44" rx="10"></rect>
           <text x="345" y="60" class="dg-title" font-size="12" text-anchor="middle">Storage Management</text>
           <text x="345" y="76" class="dg-sub" font-size="9.5" text-anchor="middle">org usage, quotas, alerts</text>
           <rect x="250" y="92" class="dg-node dg-node--warm" width="190" height="44" rx="10"></rect>
           <text x="345" y="112" class="dg-title" font-size="12" text-anchor="middle">Audit Logs &amp; Activity</text>
           <text x="345" y="128" class="dg-sub" font-size="9.5" text-anchor="middle">compliance-facing timeline</text>
-    
-          <path d="M 210 249 L 230 249 L 230 180 L 246 180" class="dg-edge dg-edge--accent" marker-end="url(#arrowA)"></path>
-          <rect x="250" y="158" class="dg-node dg-node--accent" width="190" height="44" rx="10"></rect>
-          <text x="345" y="178" class="dg-title" font-size="12" text-anchor="middle">AutoDoc Documents Folder</text>
-          <text x="345" y="194" class="dg-sub" font-size="9.5" text-anchor="middle">processes files LitBox delivers</text>
-          <rect x="250" y="210" class="dg-node dg-node--green" width="190" height="44" rx="10"></rect>
-          <text x="345" y="230" class="dg-title" font-size="12" text-anchor="middle">OmnisProof eSign</text>
-          <text x="345" y="246" class="dg-sub" font-size="9.5" text-anchor="middle">launched from a document in place</text>
-    
+
+          <text x="480" y="26" class="dg-sub" font-size="11" letter-spacing="0.8">DOWNSTREAM CONNECTIONS</text>
+          <rect x="480" y="40" class="dg-node dg-node--accent" width="190" height="44" rx="10"></rect>
+          <text x="575" y="60" class="dg-title" font-size="12" text-anchor="middle">AutoDoc Documents Folder</text>
+          <text x="575" y="76" class="dg-sub" font-size="9.5" text-anchor="middle">processes files LitBox delivers</text>
+          <rect x="480" y="92" class="dg-node dg-node--green" width="190" height="44" rx="10"></rect>
+          <text x="575" y="112" class="dg-title" font-size="12" text-anchor="middle">OmnisProof eSign</text>
+          <text x="575" y="128" class="dg-sub" font-size="9.5" text-anchor="middle">opened from any document view</text>
+
+          <path d="M 210 249 L 460 249 L 460 62 L 476 62" class="dg-edge dg-edge--accent" fill="none" marker-end="url(#arrowA)"></path>
+          <text x="335" y="242" class="dg-sub" font-size="9" text-anchor="middle" fill="var(--accent)">the one confirmed automatic handoff</text>
+
           <defs>
             <marker id="arrowM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0L10 5L0 10z" fill="var(--soft)"></path>
@@ -1316,7 +1644,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   <figure class="diagram-card reveal">
     <div class="diagram-scroll-wrap">
     <div class="diagram-scroll">
-    <svg viewBox="0 0 800 400" role="img" aria-labelledby="coreFlowsTitle">
+    <svg viewBox="0 0 800 434" role="img" aria-labelledby="coreFlowsTitle">
     <title id="coreFlowsTitle">coreFlows</title>
     <defs>
     <marker id="wfArrowRed2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--red)"></path></marker>
@@ -1387,6 +1715,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <rect x="626.3" y="137.6" width="7.5" height="7.5" rx="2.5" fill="var(--accent)" opacity="0.22"></rect>
     <rect x="638.8" y="138.4" width="59.9" height="4.2" rx="2.5" fill="var(--line)"></rect>
     <rect x="737.7" y="138.4" width="29.9" height="4.2" rx="2.5" fill="var(--line-2)"></rect>
+    <g transform="translate(0, 34)">
     <text x="12" y="215" font-family="var(--mono)" font-size="10" font-weight="700" letter-spacing="0.05em" fill="var(--green)">B · SEARCH A MATTER BY CONTENT</text>
     <rect x="8" y="224" width="586" height="166" rx="14" fill="none" stroke="var(--green)" stroke-width="1.1" stroke-dasharray="3 5" opacity="0.55"></rect>
     <text x="103" y="243" text-anchor="middle" class="dg-title" font-size="10.5">Global Search — Content</text>
@@ -1431,6 +1760,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <rect x="428.3" y="320.2" width="49.9" height="4.2" rx="2.1" fill="var(--line-2)"></rect>
     <rect x="428.3" y="338.5" width="120.6" height="7.5" rx="3.75" fill="var(--line)"></rect>
     <rect x="533.1" y="347.5" width="34.9" height="10" rx="6" fill="var(--green)"></rect>
+    </g>
     </svg>
     </div>
     </div>
@@ -1474,6 +1804,20 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <figcaption><span class="figure-badge">Design</span><strong>Permission denial, not a dead end.</strong> Explains why, and offers a direct path to request access.</figcaption>
   </figure>
 
+  <figure class="diagram-card diagram-card--compact reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="uc-003">
+graph TD
+    A["User opens a folder"] --> B{"Has access?"}
+    B -->|"Yes"| C["Folder contents load"]
+    B -->|"No"| D["'You don't have access'<br/>state"]
+    D --> E["Click Request Access"]
+    E --> F["Request sent to<br/>folder owner/admin"]
+      </div>
+    </div>
+    <figcaption><strong>Flow C — Permission denied → Request Access.</strong> The denial state itself is the fork in the road: it either dead-ends a user's day, or gives them one click forward. The owner-side approval step past node F isn't shown downstream in the shipped product yet.</figcaption>
+  </figure>
+
   <h3 class="h3" style="margin-top:8px;">Three Small Decisions, Kept Small On Screen</h3>
   <p class="prose">Upload favors clarity over cleverness. Restore stays quiet — reversible, one click. Delete inside the retention window costs a second's friction on purpose, so nothing sensitive disappears silently.</p>
 
@@ -1498,8 +1842,52 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </figure>
   </div>
 
+  <figure class="diagram-card diagram-card--compact reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="uc-006">
+graph TD
+    A["User selects a file"] --> B{"Where is it?"}
+    B -->|"In Trash"| C["Click Restore"]
+    C --> D["File returns<br/>immediately — 1 click"]
+    B -->|"Active, in retention<br/>window"| E["Click Delete"]
+    E --> F{"Confirm?"}
+    F -->|"Cancel"| G["File stays"]
+    F -->|"Confirm"| H["File removed"]
+      </div>
+    </div>
+    <figcaption><strong>Flow D — Restore vs. Delete, two different frictions.</strong> Restore has no gate. Delete has one deliberate confirm gate — drawn on purpose to match the design intent above.</figcaption>
+  </figure>
+
+  <h3 class="h3" style="margin-top:8px;">A Named Person, Not a Link Anyone Can Forward</h3>
+  <p class="prose">Section 03 named the problem: a public link has no idea who still has it. LitBox's answer is that sharing a file means picking named people and giving each one a specific role — Owner, Editor, or Viewer — instead of generating a link. There's no "anyone with the link can view" option to reach for.</p>
+
+  <figure class="figure figure--compact reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/figma/shared-to.webp" width="1320" height="716" alt="LitBox Shared To panel listing four named people, each with an avatar, name, email, and an assigned role of Owner, Viewer, or Editor">
+    </div>
+    <figcaption><span class="figure-badge">Design</span><strong>Shared To, per file.</strong> Rajesh Kumar is Owner; Sumit Kumar and Hardeep Singh are Viewers; Anjali Sharma is an Editor — a role per person, on this one file, not a link that outlives anyone's memory of who has it.</figcaption>
+  </figure>
+
+  <figure class="diagram-card diagram-card--compact reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="uc-004">
+graph TD
+    A["Owner opens Share<br/>on a file"] --> B["Enter a specific<br/>person's email or name"]
+    B --> C{"Assign role"}
+    C -->|"Owner"| D["Full control"]
+    C -->|"Editor"| E["Can modify"]
+    C -->|"Viewer"| F["Read-only"]
+    D --> G["Appears in Shared To<br/>list with role"]
+    E --> G
+    F --> G
+    G --> H["Every access logged<br/>to Audit Timeline"]
+      </div>
+    </div>
+    <figcaption><strong>Flow E — Sharing a file with per-person roles.</strong> The fork is the role, not whether to share publicly — there's no branch in this flow that produces a link anyone can forward.</figcaption>
+  </figure>
+
   <h3 class="h3" style="margin-top:8px;">The Audit Timeline — the One Security Surface Actually Built</h3>
-  <p class="prose">Every upload, download, share, rename, permission change, and restore is written to a single timeline, filterable by action type, with the file, the user and role, and a timestamp on every row. This is the one piece of Section 03's security discussion that isn't a proposed capability — it's built, and it's the concrete answer to "how would a firm know who touched a file."</p>
+  <p class="prose">Every upload, download, share, rename, permission change, and restore is written to a single timeline, filterable by action type, with the file, the user and role, and a timestamp on every row. Alongside the roles above, this is the concrete answer to "how would a firm know who touched a file" — not a proposed capability, something actually built.</p>
 
   <figure class="figure reveal">
     <div class="frame">
@@ -1527,13 +1915,231 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
       A dedicated UI-testing pass on these screens produced direct, unglamorous feedback I then designed against — things like tightening card padding, applying minimum card widths so a grid doesn't collapse awkwardly on narrower viewports, adding tooltips for truncated file and folder names instead of letting them clip silently, and standardizing sidebar and header components against the shared component library rather than letting each screen drift. None of that shows up in a polished screenshot, but it's the difference between a mockup and a system someone else can extend.
     </div>
   </div>
+
+  <h3 class="h3" style="margin-top:36px;">The Component Language Behind Every Screen</h3>
+  <p class="prose">LitBox doesn't run its own isolated visual language — it's built on the same shared Omnis AI design system every other product in the ecosystem draws from, with LitBox-specific components (the Storage Widget, the Audit Timeline row, File Request cards) layered on top of the shared tokens and primitives. Every screen in this case study draws from that same small set of tokens and components, not a one-off style per page. Everything below is cropped directly from the shipped Figma file — not redrawn, not recreated from memory.</p>
+
+  <div class="ds-grid">
+
+    <div class="ds-grid__divider">Foundations</div>
+
+    <div class="ds-block ds-block--wide">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Color</div>
+      <div class="ds-swatches" role="list" aria-label="LitBox color palette">
+        <div class="ds-swatch" role="listitem"><span class="ds-swatch__chip" style="background:#3353f8;"></span><div><b>Primary Blue</b><code>#3353F8</code><span>Primary actions — Upload New, Create Request</span></div></div>
+        <div class="ds-swatch" role="listitem"><span class="ds-swatch__chip" style="background:#1b2234;"></span><div><b>Sidebar Navy</b><code>#1B2234</code><span>Navigation rail, the one dark surface in an otherwise light UI</span></div></div>
+        <div class="ds-swatch" role="listitem"><span class="ds-swatch__chip" style="background:#111c53;"></span><div><b>Ink</b><code>#111C53</code><span>Headings and primary text</span></div></div>
+        <div class="ds-swatch" role="listitem"><span class="ds-swatch__chip" style="background:#667085;"></span><div><b>Muted</b><code>#667085</code><span>Secondary text, timestamps, helper copy</span></div></div>
+        <div class="ds-swatch" role="listitem"><span class="ds-swatch__chip" style="background:#fafafa; border:1px solid #e4e4e7;"></span><div><b>Surface</b><code>#FAFAFA</code><span>Page background, card fills</span></div></div>
+        <div class="ds-swatch" role="listitem"><span class="ds-swatch__chip" style="background:#22c55e;"></span><div><b>Success Green</b><code>#22C55E</code><span>Auto-processed tags, search-flow accents</span></div></div>
+      </div>
+    </div>
+
+    <div class="ds-block ds-block--wide">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Typography</div>
+      <div class="ds-type-rows">
+        <div class="ds-type-row"><span class="ds-type-sample" style="font-family:'Space Grotesk',var(--font-display); font-size:26px; font-weight:700;">Aa</span><div><b>Space Grotesk · Bold · 30px</b><span>Stat numbers — Storage Used, Total Files, Total Folders</span></div></div>
+        <div class="ds-type-row"><span class="ds-type-sample" style="font-family:var(--font-sans); font-size:22px; font-weight:600;">Aa</span><div><b>Inter Display · SemiBold · 18–22px</b><span>Section headings — "Welcome Back", "Storage usage", card titles</span></div></div>
+        <div class="ds-type-row"><span class="ds-type-sample" style="font-family:var(--font-sans); font-size:14px; font-weight:500;">Aa</span><div><b>Inter Display · Medium/Regular · 14px</b><span>Body copy — table rows, file names, descriptions</span></div></div>
+        <div class="ds-type-row"><span class="ds-type-sample" style="font-family:var(--font-sans); font-size:11px; font-weight:400; color:var(--muted);">Aa</span><div><b>Inter Display · Regular · 10–12px</b><span>Metadata — timestamps, helper text, table headers</span></div></div>
+      </div>
+    </div>
+
+    <div class="ds-grid__divider">Components</div>
+
+    <div class="ds-block ds-block--wide">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Filter Chips</div>
+      <div class="ds-block__frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/filters-bar.webp" width="4836" height="192" alt="LitBox Audit Timeline filter chips: All Activity, Uploaded, Downloaded, Shared, Deleted, Renamed, Permissions, Restored, each with a count badge">
+      </div>
+      <p class="ds-block__cap">One active/inactive chip state, reused for every filterable list in the product — this row alone covers all eight Audit Timeline categories.</p>
+    </div>
+
+    <div class="ds-block">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Buttons &amp; Menus</div>
+      <div class="ds-block__frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/buttons.webp" width="1400" height="1368" alt="LitBox primary Upload New button with a file/folder dropdown, and a context menu with Share Document, Document Info, Add to Starred, Download Document, Delete Document, Copy link, Rename, Move, and Copy/Duplicate options">
+      </div>
+      <p class="ds-block__cap">One primary-button style and one context-menu pattern cover every create action and every row action, across Dashboard, My Folders, File Requests, and Trash.</p>
+    </div>
+
+    <div class="ds-block">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Storage Widget</div>
+      <div class="ds-block__frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/storage-widget.webp" width="800" height="1320" alt="LitBox storage usage donut chart showing 104.6 GB of 256 GB used, with a breakdown by Documents, Images, Videos, Audios, and ZIPs, and a Recent Activity feed below it">
+      </div>
+      <p class="ds-block__cap">The one data-visualization component in the product — a donut for total usage, plain bars for the type breakdown underneath it.</p>
+    </div>
+
+    <div class="ds-block">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Badges &amp; Avatars</div>
+      <div class="ds-block__frame ds-block__frame--pair">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/badges.webp" width="884" height="144" alt="LitBox count badges: a purple file icon badge reading 24 Files and a blue folder icon badge reading 04 Folders">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/avatar-group.webp" width="526" height="144" alt="LitBox avatar group: four overlapping circular avatars plus a +5 counter avatar, shown in a File Requests row's Shared With column">
+      </div>
+      <p class="ds-block__cap">Icon-plus-count pill for list totals, and the same overlapping 32px avatar circle whether the source is a photo, an initials avatar (see Shared To above), or a plain icon.</p>
+    </div>
+
+    <div class="ds-block ds-block--wide">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Top Header</div>
+      <div class="ds-block__frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/header-frame.webp" width="2880" height="113" alt="LitBox top header bar: logo, a search input with a Cmd+F shortcut hint, a notification bell, an apps grid icon, and the John Doe Admin avatar with a dropdown chevron">
+      </div>
+      <p class="ds-block__cap">One header, unchanged across every screen in the product — search on the left, identity and notifications on the right. Exported as the complete Figma frame, not a manual crop.</p>
+    </div>
+
+    <div class="ds-block ds-block--wide">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Page Header</div>
+      <div class="ds-block__frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/breadcrumb-tabs.webp" width="2430" height="239" alt="LitBox page header for My Folders/Files: title with 24 Files and 04 Folders count badges, a supporting line, Upload New and Create Folder buttons, a grid/list view toggle, and below it a View all / Files / Folders tab row with a Search in files, folders input">
+      </div>
+      <p class="ds-block__cap">Title, action buttons, view toggle, tabs, and a scoped search — the same two-row header structure behind every list screen in LitBox, not just My Folders/Files.</p>
+    </div>
+
+    <div class="ds-block ds-block--wide">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Empty States</div>
+      <div class="ds-block__frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/empty-state.webp" width="2411" height="222" alt="LitBox empty state: a calendar icon with an alert badge, No Audit Timeline Found heading, and You don't have any activity at the moment subtext">
+      </div>
+      <p class="ds-block__cap">Same icon-plus-heading-plus-subtext pattern across every empty list in the product — more than two dozen of these exist across file management, sharing, search, audit, and admin.</p>
+    </div>
+
+    <div class="ds-block">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Controls</div>
+      <div class="ds-block__frame ds-controls-frame">
+        <div class="ds-control-item">
+          <img loading="lazy" src="assets/images/case-studies/litbox/figma/checkbox.webp" width="80" height="80" alt="LitBox checked checkbox, blue check on a white square with a blue border">
+          <span class="ds-control-item__label">Row selection</span>
+        </div>
+        <div class="ds-control-item">
+          <img loading="lazy" src="assets/images/case-studies/litbox/figma/view-toggle.webp" width="228" height="132" alt="LitBox grid view and list view toggle buttons, list view active">
+          <span class="ds-control-item__label">Grid / list toggle</span>
+        </div>
+      </div>
+      <p class="ds-block__cap">Row selection and grid/list layout switching — small controls, used constantly, so they got no visual flourish beyond a clear active state.</p>
+    </div>
+
+    <div class="ds-block">
+      <div class="ds-block__label"><span class="ds-block__dot"></span>Account Menu <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--muted);">(proposed)</span></div>
+      <div class="ds-block__frame">
+        <div class="ds-am">
+          <div class="ds-am__header">
+            <span class="ds-am__avatar">JD</span>
+            <div>
+              <div class="ds-am__name">John Doe</div>
+              <div class="ds-am__role">Admin · JD Law Firm</div>
+            </div>
+          </div>
+          <div class="ds-am__row">
+            <svg class="ds-am__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="ds-am__label">Notifications</span>
+            <span class="ds-am__badge">8</span>
+          </div>
+          <div class="ds-am__row ds-am__row--active">
+            <svg class="ds-am__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span class="ds-am__label">Settings</span>
+          </div>
+          <div class="ds-am__row">
+            <svg class="ds-am__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span class="ds-am__label">Help Center</span>
+          </div>
+          <div class="ds-am__divider"></div>
+          <div class="ds-am__row ds-am__row--danger">
+            <svg class="ds-am__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span class="ds-am__label">Sign Out</span>
+          </div>
+        </div>
+      </div>
+      <p class="ds-block__cap">Not yet in the shipped Figma file — designed here to complete the pattern using LitBox's own tokens (Primary Blue, the same badge and row-hover language used throughout this case study), not a screenshot.</p>
+    </div>
+
+  </div>
+
+  <p class="prose" style="font-size:13.5px; color:var(--muted); margin-top:20px;">This is a working component set pulled from a shipped product file, not a formal published design system with documented variants, usage guidelines, or accessibility specs — that distinction matters, so I'm not overstating it.</p>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 11 FEATURES -->
+<section id="features">
+  <div class="sec-num">11 / FIVE FEATURES, IN DETAIL</div>
+  <div class="eyebrow reveal">What Ships in the Internal Beta</div>
+  <h2 class="h reveal">Five surfaces that carry <span class="mz-highlight" data-action="yellow">most of the daily weight</span></h2>
+  <p class="prose">Everything below is a real screen from the shipped Figma file, not a mockup built for this case study.</p>
+
+  <h3 class="h3" style="margin-top:32px;">1. Dashboard, With Full Document Detail</h3>
+  <p class="prose">The Dashboard is deliberately data-dense on purpose — storage usage, file/folder counts, and recent activity at a glance, so a firm admin isn't hunting for that information in a separate settings screen. Opening any file surfaces a detail drawer with three views stitched into two tabs: Document Details (who has access, folder metadata, description) and Document Activity (a timeline of edits, renames, and inline comments from the team).</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/dashboard.webp" width="2000" height="1104" alt="LitBox Dashboard showing Welcome Back header, Total Files, Total Folders, Storage Used, and Shared With Me stat cards, a Recently Uploaded Files/Folders table, and a Storage Usage donut chart">
+    </div>
+    <figcaption><span class="figure-badge">Design</span><strong>Dashboard.</strong> Stats, recent uploads, and a live storage breakdown by file type, all above the fold.</figcaption>
+  </figure>
+  <div class="figure-row">
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/document-details.webp" width="2880" height="1554" alt="LitBox Document Details drawer for Witness Statements.docx showing who has access with role badges, folder details, and a description field">
+      </div>
+      <figcaption><span class="figure-badge">Design</span><strong>Document Details tab.</strong> Access list with per-person roles, folder metadata, description.</figcaption>
+    </figure>
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/document-activity.webp" width="2880" height="1554" alt="LitBox Document Activity tab showing a chronological timeline of comments, renames, edits, and deletions with named users and timestamps">
+      </div>
+      <figcaption><span class="figure-badge">Design</span><strong>Document Activity tab.</strong> Comments and edits share one timeline — not a separate comments panel bolted on.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="h3" style="margin-top:40px;">2. Sharing, With Per-Person Roles</h3>
+  <p class="prose">Rather than one public link everyone gets the same access to, sharing a file assigns each person a role — Owner, Editor, or Viewer — by email, the way the rest of this case study's honesty framework requires: no overclaiming a password/expiry system that isn't in the shipped file yet. The reference alongside it is what a fuller privacy-and-password layer looks like in a mature product, and the direction the sharing model is headed.</p>
+  <div class="figure-row">
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/figma/shared-to.webp" width="1320" height="716" alt="LitBox Shared To panel listing four people with named avatars, emails, and role labels Owner, Viewer, Viewer, Editor">
+      </div>
+      <figcaption><span class="figure-badge">Design</span><strong>Shared To.</strong> Per-person roles, not one link everyone gets equal access to.</figcaption>
+    </figure>
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/provided/ref-box-share-settings.webp" width="1232" height="1648" alt="Box.com Shared Link Settings modal showing link expiration, password protection, and download permission toggles">
+      </div>
+      <figcaption><span class="figure-badge">Reference</span><strong>Where privacy/password controls are headed.</strong> Box's own settings modal — expiry, password, download permission — is the pattern this layer is designed toward next.</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="h3" style="margin-top:40px;">3. Storage Management, Admin Only</h3>
+  <p class="prose">A separate permission tier, not a hidden toggle in the same screen everyone sees. Firm admins get organization-wide storage totals, a breakdown by file type, and a per-user table with quota usage — the same screen that would back the "Export Report" a firm's IT lead needs for a compliance review.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/storage-management-full.webp" width="2000" height="1410" alt="LitBox Storage Management screen showing Organization Storage totals, Storage by Type breakdown, and a User Storage Details table with named users and per-user quota usage bars">
+    </div>
+    <figcaption><span class="figure-badge">Design</span><strong>Storage Management.</strong> Per-user quota bars flag who's near their limit before it becomes a support ticket.</figcaption>
+  </figure>
+
+  <h3 class="h3" style="margin-top:40px;">4. Tag Management, Finder-Style</h3>
+  <p class="prose">Colored tags that work across file types — a document, an image, and a video can all carry the same tag — closer to how macOS Finder tags work than to a folder-only organization scheme. A file can carry more than one tag, so "matter" and "document type" don't have to compete for the same folder slot.</p>
+  <figure class="figure figure--compact reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/manage-tags-modal.webp" width="1280" height="1352" alt="LitBox Manage tags modal with a search field and four colored tags each with edit and delete actions">
+    </div>
+    <figcaption><span class="figure-badge">Design</span><strong>Manage tags.</strong> Color-coded, searchable, and editable per file — not a fixed taxonomy set once by an admin.</figcaption>
+  </figure>
+
+  <h3 class="h3" style="margin-top:40px;">5. Global Search</h3>
+  <p class="prose">Search scoped to All Modules, Files/Documents, Folders, or Recent Files, with a clear empty state rather than a blank screen when a query comes back with nothing. Section 12 covers what a populated result actually looks like — path, page, and highlighted snippet — once AutoDoc has extracted a file's text.</p>
+  <figure class="figure figure--compact reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/global-search-empty.webp" width="1200" height="1020" alt="LitBox global search empty state reading No Search data found, with scope tabs for All Modules, Files/Documents, Folders, and Recent Files">
+    </div>
+    <figcaption><span class="figure-badge">Design</span><strong>No results, explained.</strong> A specific empty-state message instead of a blank panel — one of the two dozen empty/error states scoped in Section 08.</figcaption>
+  </figure>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
 <!-- 09 SEARCH & THE AI QUESTION -->
 <section id="search">
-  <div class="sec-num">10 / SEARCH &amp; INTELLIGENCE</div>
+  <div class="sec-num">12 / SEARCH &amp; INTELLIGENCE</div>
   <div class="eyebrow reveal">Search, and the AI Question</div>
   <h2 class="h reveal">Search that reads what <span class="mz-highlight" data-action="yellow">AutoDoc already extracted</span> — and an AI assistant that isn't built yet</h2>
   <p class="prose">Two different things live in this section, and I want to keep them clearly separate: content search across AutoDoc-processed documents is designed and functioning in the prototype today. A conversational AI assistant is a direction worth exploring — and explicitly <b>not</b> something LitBox has built.</p>
@@ -1626,10 +2232,74 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
   </figure>
 
   <h3 class="h3" style="margin-top:8px;">Why This Matters More Than It Looks</h3>
-  <p class="prose">"Search inside documents" sounds like a checkbox feature until you consider what it actually required: LitBox's search only works this way because AutoDoc had already extracted text from the file. Search got meaningfully better specifically <i>because</i> LitBox and AutoDoc share a file — not because of anything search-specific LitBox built on its own. Section 12 shows what that sharing looks like from the other direction.</p>
+  <p class="prose">"Search inside documents" sounds like a checkbox feature until you consider what it actually required: LitBox's search only works this way because AutoDoc had already extracted text from the file. Search got meaningfully better specifically <i>because</i> LitBox and AutoDoc share a file — not because of anything search-specific LitBox built on its own. Section 15 shows what that sharing looks like from the other direction.</p>
 
   <h3 class="h3" style="margin-top:32px;">The AI Assistant Question</h3>
-  <p class="prose">The module-architecture research behind LitBox sketches use cases like "find all medical records related to this matter" or "summarize these documents" — a conversational layer on top of content search. <b>None of that is built.</b> I'm including the thinking because the design considerations are real even before the feature is: any answer would need a source citation back to the exact file and page it came from, retrieval would need to respect the same permission model as manual search, and it would sit on top of the existing search index rather than replace it — search stays the fallback a user trusts when they want to see everything themselves.</p>
+  <p class="prose">The module-architecture research behind LitBox sketches use cases like "find all medical records related to this matter" or "summarize these documents" — a conversational layer on top of content search. That thinking has since moved from research notes into concept screens, covered next in Section 13. <b>None of it is shipped or built into the product today</b> — any answer would need a source citation back to the exact file and page it came from, retrieval would need to respect the same permission model as manual search, and it would sit on top of the existing search index rather than replace it.</p>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 13 AI ASSISTANT -->
+<section id="ai-assistant">
+  <div class="sec-num">13 / AI ASSISTANT (CONCEPT)</div>
+  <div class="eyebrow reveal">ChiAI Inside LitBox</div>
+  <h2 class="h reveal">One assistant, sitting on top of a search index it doesn't <span class="mz-highlight" data-action="box">have to rebuild</span></h2>
+  <p class="prose">Everything in this section is a concept exploration, not a shipped feature — I want that stated plainly before anything else. Where the rest of this case study distinguishes "Design" (a real screen from the shipped Figma file) from "Reference" (someone else's product), the screens below get their own badge — <b>Concept</b> — because they're neither. They're the current best answer to a real design question: once content search and permissions already work (Sections 12 and 10), what does a conversational layer on top of them actually need to look like?</p>
+
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/ai-assistant-overview.webp" width="1672" height="941" alt="LitBox AI Assistant panel docked in the corner of the file workspace, showing a chat conversation about setting up a Slack integration">
+    </div>
+    <figcaption><span class="figure-badge">Concept</span><strong>Docked, not full-screen.</strong> The assistant sits alongside the file list rather than replacing it — search stays the fallback a user trusts when they want to see everything themselves.</figcaption>
+  </figure>
+
+  <p class="prose" style="margin-top:8px;">The module-architecture research (Section 03) sketched twelve possible AI workflows. Five are worth showing here — the ones that build most directly on what's already real: content search and the permission model.</p>
+
+  <div class="cards" style="margin-top:20px;">
+    <div class="card">
+      <h3>1. Natural-Language File Search</h3>
+      <ul><li>"Find the documents related to the Smith accident that mention vehicle damage" instead of keyword search — returns files with a stated reason each one matched.</li></ul>
+    </div>
+    <div class="card">
+      <h3>2. Document Summary &amp; Q&amp;A</h3>
+      <ul><li>Ask a question about a file's contents and get an answer traceable back to the exact page — the same citation requirement manual search already meets.</li></ul>
+    </div>
+    <div class="card">
+      <h3>3. Multi-File Comparison &amp; Extraction</h3>
+      <ul><li>Compare two contract versions clause by clause, with additions, removals, and modifications called out per section.</li></ul>
+    </div>
+    <div class="card">
+      <h3>4. Image &amp; Video Understanding</h3>
+      <ul><li>Search and reason over evidence photos and video, not just text documents — a gap none of LitBox's current search covers.</li></ul>
+    </div>
+    <div class="card">
+      <h3>5. AI-Assisted Organization &amp; Actions</h3>
+      <ul><li>Find related files across a matter, flag missing documents, and take a scoped action — always inside the same per-person permission boundary manual sharing already enforces.</li></ul>
+    </div>
+  </div>
+
+  <div class="figure-row" style="margin-top:28px;">
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/provided/ai-assistant-search-results.webp" width="1688" height="932" alt="LitBox AI Assistant chat showing five files found related to the Smith accident that mention vehicle damage, each with a stated reason for the match">
+      </div>
+      <figcaption><span class="figure-badge">Concept</span><strong>Workflow 1 — Natural-language search.</strong> Every result carries the reason it matched, not just a relevance score.</figcaption>
+    </figure>
+    <figure class="figure reveal">
+      <div class="frame">
+        <img loading="lazy" src="assets/images/case-studies/litbox/provided/ai-assistant-compare-documents.webp" width="1536" height="1024" alt="LitBox AI Assistant Compare Documents view showing two contract versions side by side with added, removed, and modified clauses highlighted and a changes table below">
+      </div>
+      <figcaption><span class="figure-badge">Concept</span><strong>Workflow 3 — Compare &amp; extract.</strong> Clause-level diffing between two document versions, with a structured changes list underneath.</figcaption>
+    </figure>
+  </div>
+
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/ai-assistant-find-related-v2.webp" width="1536" height="1024" alt="LitBox AI Assistant Find Related Files view showing 12 results scoped to the Smith Case folder, each marked You have access or Restricted, with related folders, similar images, earlier versions, and attachments below">
+    </div>
+    <figcaption><span class="figure-badge">Concept</span><strong>Workflow 5 — Permission-aware organization.</strong> Every result is explicitly marked "You have access" or "Restricted" before anything else — the assistant reads the same permission model Section 03's design targets describe, it doesn't get a side door around it.</figcaption>
+  </figure>
 
   <div class="note warn">
     <div class="note__badge">
@@ -1637,19 +2307,19 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     </div>
     <div class="note__body">
       <span class="note__label">Proposed Capability — Requires Technical and Business Validation</span>
-      A conversational AI assistant, hallucination handling, and any claim about the accuracy or confidentiality of AI-generated answers are unbuilt, unvalidated concepts. Nothing here should be read as a shipped or committed feature.
+      A conversational AI assistant, hallucination handling, and any claim about the accuracy or confidentiality of AI-generated answers are unbuilt, unvalidated concepts. "AI can make mistakes — always verify important information" is written directly into the concept screens themselves, not added as a footnote here.
     </div>
   </div>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 10 ECOSYSTEM -->
+<!-- 14 ECOSYSTEM -->
 <section id="ecosystem">
-  <div class="sec-num">11 / THE ECOSYSTEM</div>
+  <div class="sec-num">14 / THE ECOSYSTEM</div>
   <div class="eyebrow reveal">LitBox + Omnis AI</div>
   <h2 class="h reveal">The part of this product that only makes sense <span class="mz-highlight" data-action="box">next to</span> the rest of the platform</h2>
-  <p class="prose">This section is about LitBox handing files <i>off</i> to the rest of the platform — Section 12 covers the opposite direction, LitBox's own interface running <i>inside</i> other products. Two integrations here are built and working in the current prototype, not proposed on a roadmap slide: File Requests feeding AutoDoc, and e-signature launched directly from a document. Both are shown below exactly as designed.</p>
+  <p class="prose">This section is about LitBox handing files <i>off</i> to the rest of the platform — Section 15 covers the opposite direction, LitBox's own interface running <i>inside</i> other products. Two integrations here are built and working in the current prototype, not proposed on a roadmap slide: File Requests feeding AutoDoc, and e-signature launched directly from a document. Both are shown below exactly as designed.</p>
 
   <h3 class="h3">File Requests → AutoDoc</h3>
   <p class="prose">A File Request isn't just "share a link and wait." It has a title, a description, a destination folder, an optional deadline, password protection, and a defined recipient — and when that destination folder is an AutoDoc-connected folder, submitted files are positioned to be picked up for processing without anyone manually forwarding them.</p>
@@ -1683,6 +2353,21 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <figcaption><span class="figure-badge">Design</span><strong>OmnisProof, one click from a LitBox document.</strong> The document underneath stays visible and dimmed — a deliberate cue that this is a continuation of the same file, not a handoff to an unrelated tool.</figcaption>
   </figure>
 
+  <figure class="diagram-card diagram-card--compact reveal">
+    <div class="mermaid-wrap">
+      <div class="mermaid" data-diagram-id="uc-005">
+graph TD
+    A["User opens a document<br/>in LitBox"] --> B{"Needs a<br/>signature?"}
+    B -->|"No"| C["Normal document view"]
+    B -->|"Yes"| D["Click 'Continue<br/>to e-signature'"]
+    D --> E["Hands off into<br/>OmnisProof — same document"]
+    E --> F["Signer setup: general info,<br/>signer list, extra fields"]
+    F --> G["Distribution"]
+      </div>
+    </div>
+    <figcaption><strong>Flow F — E-signature, launched in place.</strong> One node worth noticing: D → E is a direct handoff, not a round trip through a downloaded-then-reuploaded file.</figcaption>
+  </figure>
+
   <p class="prose" style="margin-top:24px;">Still proposed, not implemented: CasePro matter-linking and a shared permission model spanning the whole ecosystem. MedChron and LitDraft, it turns out, are further along than that — see the next section.</p>
 </section>
 
@@ -1690,10 +2375,10 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
 <!-- 11 LITBOX EVERYWHERE -->
 <section id="embedded">
-  <div class="sec-num">12 / LITBOX EVERYWHERE</div>
+  <div class="sec-num">15 / LITBOX EVERYWHERE</div>
   <div class="eyebrow reveal">Embedded, Not Just Linked</div>
-  <h2 class="h reveal">The same search bar, running inside <span class="mz-highlight" data-action="yellow">three other products</span></h2>
-  <p class="prose">Search doesn't have to mean leaving the tool you're already in — that was the design brief in so many words, down to the internal Figma section literally named "avoid context switching." LitBox's search is embedded directly inside other Omnis AI products, and what follows are staging screenshots of the real thing, not mockups.</p>
+  <h2 class="h reveal">Pick a file from LitBox once, use it in <span class="mz-highlight" data-action="yellow">any product</span> — no re-upload</h2>
+  <p class="prose">This is the practical answer to Section 01's first problem. Instead of uploading the same document separately into every Omnis AI product that needs it, a product calls into LitBox directly — a search bar, a document picker — and pulls the file it needs without the user ever leaving the screen they're on. Search doesn't have to mean leaving the tool you're already in — that was the design brief in so many words, down to the internal Figma section literally named "avoid context switching." What follows are staging screenshots of the real thing across three different products, not mockups.</p>
 
   <figure class="figure reveal">
     <div class="frame">
@@ -1738,22 +2423,78 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <figcaption><span class="figure-badge">Live</span><strong>Inside AutoDoc.</strong> Same ⌘+F search, same tabs (All / Files / Folders / Content) — and the Content tab's source column shows results from both <b>AutoDoc Processing</b> and <b>LitDraft Processing</b>. Two ecosystem connections in one screenshot.</figcaption>
   </div>
 
+  <h3 class="h3" style="margin-top:32px;">A Third Product, Same Picker Pattern</h3>
+  <p class="prose">OmnisProof needs a document to attach a signature workflow to — the exact dependency named in Section 02. Rather than build its own upload flow, it opens the same kind of "Select documents" picker, scoped to the workspaces and matters the signer already has access to.</p>
+  <figure class="figure reveal">
+    <div class="frame">
+      <img loading="lazy" src="assets/images/case-studies/litbox/provided/omnisproof-select-documents.webp" width="2000" height="1080" alt="OmnisProof Select documents modal open on top of the e-signature setup screen, showing a workspace and folder list including AutoDoc Processing, with a Cancel and Add documents action row">
+    </div>
+    <figcaption><span class="figure-badge">Live</span><strong>Inside OmnisProof.</strong> "AI reads the document and suggests where everyone signs" sits just below — the picker hands OmnisProof a file without a separate upload step anywhere in the flow.</figcaption>
+  </figure>
+
   <div class="note good">
     <div class="note__badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
     </div>
     <div class="note__body">
       <span class="note__label">Why This Is the Strongest Evidence in the Case Study</span>
-      Everything else here is a Figma prototype. This is four different real products — LitBox, MedChron, AutoDoc, LitDraft — each showing up correctly inside a screen that isn't theirs.
+      Everything else here is a Figma prototype. This is five different real products — LitBox, MedChron, AutoDoc, LitDraft, OmnisProof — each showing up correctly inside a screen that isn't theirs.
     </div>
   </div>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 12 WHY SWITCH -->
+<!-- 16 SECURITY & TRUST -->
+<section id="security-trust">
+  <div class="sec-num">16 / SECURITY &amp; TRUST</div>
+  <div class="eyebrow reveal">Why This Matters Specifically for a Law Firm</div>
+  <h2 class="h reveal">Every pattern in this section exists because <span class="mz-highlight" data-action="box">privilege</span>, not preference, is on the line</h2>
+  <p class="prose">Section 03 made the case with documented breaches and an ethics rule; this section is the shorter, practical version — the six trust surfaces that actually show up in the product, gathered in one place instead of scattered across the case study.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Permission-Based Access</h3>
+      <ul><li>Every file's visibility is scoped to named people and their role, not "anyone with the org login" — the same per-person model shown in Section 11's sharing feature.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Secure File Sharing</h3>
+      <ul><li>Owner, Editor, or Viewer, assigned per person, per file — no default public-link option to reach for when a scoped share would take one extra click.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Clear Access Visibility</h3>
+      <ul><li>The Document Details drawer's "Who has access" list (Section 11) means a paralegal can check who can see a file without opening a separate admin screen.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Audit Logs &amp; Activity</h3>
+      <ul><li>Upload, download, share, permission change, restore, delete — every action lands in the Audit Timeline, the one surface Product Principles (Section 06) singles out by name.</li></ul>
+    </div>
+    <div class="card">
+      <h3>Secure File Requests</h3>
+      <ul><li>External submitters never get a LitBox account — a request carries a deadline, an optional password, and a defined destination folder instead of an open-ended inbox.</li></ul>
+    </div>
+    <div class="card">
+      <h3>AI Permission Awareness</h3>
+      <ul><li>Section 13's concept screens mark every AI result "You have access" or "Restricted" before anything else — a design requirement, not a feature the assistant gets to skip.</li></ul>
+    </div>
+  </div>
+
+  <div class="note warn">
+    <div class="note__badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    </div>
+    <div class="note__body">
+      <span class="note__label">Restating What's Actually Shipped</span>
+      Permission-based sharing, File Requests with expiry/password, and the Audit Timeline are built and shown in this case study with real screens. Encryption at rest, SOC 2, and HIPAA compliance are not shipped claims — Section 03 already says so, and I'm not going to say something different here just because this section reads more like a trust pitch.
+    </div>
+  </div>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 17 WHY SWITCH -->
 <section id="value">
-  <div class="sec-num">13 / PRODUCT VALUE</div>
+  <div class="sec-num">17 / PRODUCT VALUE</div>
   <div class="eyebrow reveal">Why Would a Firm Switch</div>
   <h2 class="h reveal">A balanced case, not a <span class="mz-highlight" data-action="yellow">"we're just better"</span> claim</h2>
   <p class="prose">"Lawyers will switch because LitBox is more secure" isn't a defensible claim — Drive, Dropbox, and Box are all reasonably secure products. The actual case for LitBox has to rest on something more specific.</p>
@@ -1788,13 +2529,37 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 12 IMPACT, ROLE & LEARNINGS -->
+<!-- 18 IMPACT, ROLE & LEARNINGS -->
 <section id="impact">
-  <div class="sec-num">14 / IMPACT &amp; LEARNINGS</div>
+  <div class="sec-num">18 / FINAL EXPERIENCE &amp; IMPACT</div>
   <div class="eyebrow reveal">Where This Stands</div>
   <h2 class="h reveal">What I can claim, what I can't yet, and what I'd <span class="mz-highlight" data-action="box">do differently</span></h2>
 
-  <h3 class="h3">Impact — Honestly Framed</h3>
+  <h3 class="h3">What Actually Changed for the Ecosystem</h3>
+  <p class="prose">Zoom out from any single screen and the shift is structural: Omnis AI went from a set of products that each quietly solved "where do files live" on its own, to a platform with one file layer the rest of it reads from and writes to. AutoDoc picks up files without a manual re-upload. OmnisProof signs a document in place. MedChron and LitDraft search the same index LitBox itself searches. None of that required a firm to change how they work — it required Omnis AI to stop asking every product to solve storage twice.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>For the Firm</h3>
+      <ul>
+        <li>One place to upload a file instead of one per tool it needs to reach.</li>
+        <li>A permission model and audit trail built for a legal matter, not adapted from a generic drive.</li>
+        <li>Fewer uncontrolled public links, because a scoped File Request or a per-person role is the default path, not an extra step.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>For the Ecosystem</h3>
+      <ul>
+        <li>New products — NotaryNow, deeper CasePro matter-linking — can assume a shared file layer exists instead of building their own.</li>
+        <li>Search and AI-assisted workflows (Section 13) get more useful the more products connect to the same index, not less.</li>
+        <li>A file's security posture no longer depends on which third-party vendor happened to hold it that week.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="prose">None of this makes LitBox "done." It makes the third problem from Section 01 — an ecosystem that wasn't actually one — no longer true by default. That's the specific claim this case study is willing to make.</p>
+
+  <h3 class="h3" style="margin-top:36px;">Impact — Honestly Framed</h3>
   <div class="cards">
     <div class="card">
       <div class="card__ic" style="background:var(--line-2);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--soft)" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
@@ -1992,20 +2757,24 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 // MINIMAP ENGINE
 (function() {
   var mmSections = [
-    ["overview", "Overview"],
-    ["opportunity", "The Opportunity"],
-    ["security", "Security & Research"],
+    ["overview", "The Problem"],
+    ["opportunity", "Why This, Why First"],
+    ["security", "Research & Security"],
     ["competitors", "Competitive Landscape"],
     ["solutions", "Solutions Considered"],
     ["strategy", "Product Strategy"],
     ["transformation", "Before & After"],
+    ["wireframes", "Wireframes"],
     ["architecture", "Information Architecture"],
     ["workspace", "The Workspace"],
+    ["features", "Five Features"],
     ["search", "Search & AI"],
+    ["ai-assistant", "AI Assistant"],
     ["ecosystem", "The Ecosystem"],
     ["embedded", "LitBox Everywhere"],
+    ["security-trust", "Security & Trust"],
     ["value", "Product Value"],
-    ["impact", "Impact & Learnings"]
+    ["impact", "Final Experience"]
   ];
   var rail = document.getElementById("mmRail");
   if (!rail) return;
@@ -2126,5 +2895,82 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 </script>
 <script src="assets/js/site.js?v=551"></script>
 <script src="assets/js/highlighter.js"></script>
+
+<!-- MERMAID FLOW DIAGRAMS -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  if (typeof mermaid === "undefined") return;
+
+  var sources = [].slice.call(document.querySelectorAll(".mermaid")).map(function(el) {
+    return { el: el, src: el.textContent };
+  });
+
+  function themeVars() {
+    var cs = getComputedStyle(document.documentElement);
+    var v = function(name) { return cs.getPropertyValue(name).trim(); };
+    return {
+      fontFamily: "Archivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      fontSize: "18px",
+      primaryColor: v("--accent-soft"),
+      primaryTextColor: v("--ink"),
+      primaryBorderColor: v("--accent"),
+      lineColor: v("--soft"),
+      secondaryColor: v("--green-soft"),
+      tertiaryColor: v("--surface"),
+      background: v("--surface"),
+      mainBkg: v("--accent-soft"),
+      nodeTextColor: v("--ink"),
+      edgeLabelBackground: v("--surface"),
+      clusterBkg: v("--surface"),
+      clusterBorder: v("--line"),
+      clusterTextColor: v("--soft")
+    };
+  }
+
+  function sizeDiagrams() {
+    document.querySelectorAll(".mermaid-wrap").forEach(function(wrap) {
+      var svg = wrap.querySelector("svg");
+      if (!svg) return;
+      var vb = svg.viewBox && svg.viewBox.baseVal;
+      var naturalW = (vb && vb.width) ? vb.width : 700;
+      var containerW = wrap.clientWidth || 1000;
+      var targetW = Math.max(Math.min(naturalW, containerW), Math.min(500, containerW));
+      svg.removeAttribute("width");
+      svg.removeAttribute("height");
+      svg.style.removeProperty("max-width");
+      svg.style.width = targetW + "px";
+      svg.style.height = "auto";
+      svg.style.maxWidth = "100%";
+      svg.style.display = "block";
+      svg.style.margin = "0 auto";
+    });
+  }
+
+  function renderAll() {
+    sources.forEach(function(s) {
+      s.el.removeAttribute("data-processed");
+      s.el.innerHTML = s.src;
+    });
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "base",
+      themeVariables: themeVars(),
+      flowchart: { curve: "basis", padding: 18, nodeSpacing: 45, rankSpacing: 65, htmlLabels: true },
+      securityLevel: "loose"
+    });
+    mermaid.run({ querySelector: ".mermaid" }).then(sizeDiagrams);
+  }
+
+  renderAll();
+
+  var mo = new MutationObserver(function(muts) {
+    muts.forEach(function(m) {
+      if (m.attributeName === "data-theme") renderAll();
+    });
+  });
+  mo.observe(document.documentElement, { attributes: true });
+})();
+</script>
 </body>
 </html>
