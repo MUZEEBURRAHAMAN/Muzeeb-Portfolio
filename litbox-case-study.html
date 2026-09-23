@@ -410,9 +410,9 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .diagram-card--compact { padding:28px 24px; }
 .mermaid-wrap { overflow-x:auto; width:100%; text-align:center; }
 .mermaid-wrap .node rect, .mermaid-wrap .node polygon { rx:10px; stroke-width:1.5px !important; }
-.mermaid-wrap .edgeLabel { background-color:var(--surface) !important; color:var(--soft) !important; font-family:var(--font-body) !important; font-size:11.5px !important; }
+.mermaid-wrap .edgeLabel { background-color:var(--surface) !important; color:var(--soft) !important; font-family:var(--font-body) !important; font-size:10px !important; }
 .mermaid-wrap .edgeLabel rect { fill:var(--surface) !important; opacity:1 !important; }
-.mermaid-wrap .nodeLabel { font-family:var(--font-body) !important; font-size:12.5px !important; font-weight:600; }
+.mermaid-wrap .nodeLabel { font-family:var(--font-body) !important; font-size:11px !important; font-weight:600; }
 
 /* COMPACT FIGURES (modals/popups — shown at a deliberately small, honest size) */
 .figure--compact { max-width:340px; margin-left:auto; margin-right:auto; }
@@ -824,18 +824,18 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
     <div class="mermaid-wrap">
       <div class="mermaid" data-diagram-id="before-flow">
 graph LR
-    A["Lawyer receives&lt;br/&gt;a client file"] --> B["Upload to Dropbox,&lt;br/&gt;Box, or Drive"]
-    B --> C{"Which product&lt;br/&gt;needs it?"}
-    C -->|"CasePro"| D["Connect / re-authorize&lt;br/&gt;that account in CasePro"]
-    C -->|"OmnisProof"| E["Connect / re-authorize&lt;br/&gt;that account in OmnisProof"]
-    C -->|"MedChron"| F["Connect / re-authorize&lt;br/&gt;that account in MedChron"]
-    D --> G["Download, then&lt;br/&gt;re-upload into CasePro"]
-    E --> H["Download, then re-upload&lt;br/&gt;into OmnisProof"]
-    F --> I["Download, then&lt;br/&gt;re-upload into MedChron"]
-    G --> J["Three copies, three names,&lt;br/&gt;no shared audit trail"]
+    A["Receive file"] --> B["Upload to&lt;br/&gt;3rd-party drive"]
+    B --> C{"Which&lt;br/&gt;product?"}
+    C -->|"CasePro"| D["Re-authorize&lt;br/&gt;in CasePro"]
+    C -->|"OmnisProof"| E["Re-authorize&lt;br/&gt;in OmnisProof"]
+    C -->|"MedChron"| F["Re-authorize&lt;br/&gt;in MedChron"]
+    D --> G["Download &amp;&lt;br/&gt;re-upload"]
+    E --> H["Download &amp;&lt;br/&gt;re-upload"]
+    F --> I["Download &amp;&lt;br/&gt;re-upload"]
+    G --> J["3 copies, no&lt;br/&gt;audit trail"]
     H --> J
     I --> J
-    J --> K["Security now depends on a&lt;br/&gt;vendor Omnis AI doesn't control"]
+    J --> K["Vendor Omnis&lt;br/&gt;can't control"]
 
     classDef userStep fill:#eef2ff,stroke:#3353f8,color:#111c53
     classDef decision fill:#fff7ed,stroke:#f59e0b,color:#7c2d12
@@ -925,10 +925,10 @@ graph LR
     <div class="mermaid-wrap">
       <div class="mermaid" data-diagram-id="research-flow">
 graph LR
-    A["Legal research:&lt;br/&gt;ABA Rule 1.6, breach data"] --> D["Synthesized&lt;br/&gt;pain points"]
-    B["Competitive teardown:&lt;br/&gt;Dropbox, Box, Drive"] --> D
-    C["Stakeholder interviews:&lt;br/&gt;AutoDoc, OmnisProof, CasePro, MedChron"] --> D
-    D --> E["Candidate solutions&lt;br/&gt;weighed in Section 05"]
+    A["Legal research"] --> D["Pain points"]
+    B["Competitive teardown"] --> D
+    C["Stakeholder interviews"] --> D
+    D --> E["Candidate solutions"]
 
     classDef accentNode fill:#eef2ff,stroke:#3353f8,color:#111c53,stroke-width:2px
     classDef greenNode fill:#ecfdf5,stroke:#22c55e,color:#0b4a2e,stroke-width:2px
@@ -948,22 +948,22 @@ graph LR
 graph LR
     subgraph Raw["Raw Findings"]
       direction LR
-      R1["Folder trees, drag &amp; drop,&lt;br/&gt;bulk actions"]
-      R2["Password links,&lt;br/&gt;per-person roles, expiry"]
-      R3["Content search,&lt;br/&gt;filters, saved searches"]
-      R4["Who-did-what logs,&lt;br/&gt;compliance exports"]
-      R5["Quotas, user provisioning,&lt;br/&gt;retention rules"]
+      R1["Folders, drag &amp; drop"]
+      R2["Roles, links, expiry"]
+      R3["Search &amp; filters"]
+      R4["Activity logs"]
+      R5["Quotas &amp; provisioning"]
     end
-    R1 --> C1["Core File Management"]
-    R2 --> C2["Sharing &amp; Access"]
-    R3 --> C3["Search &amp; Discovery"]
-    R4 --> C4["Audit &amp; Compliance"]
-    R5 --> C5["Admin &amp; Org Settings"]
-    C1 --> S1["My Files / Folders"]
-    C2 --> S2["File Requests, Shared with Me"]
+    R1 --> C1["File Mgmt"]
+    R2 --> C2["Sharing"]
+    R3 --> C3["Search"]
+    R4 --> C4["Audit"]
+    R5 --> C5["Admin"]
+    C1 --> S1["My Files"]
+    C2 --> S2["Shared with Me"]
     C3 --> S3["Global Search"]
-    C4 --> S4["Audit Logs &amp; Activity"]
-    C5 --> S5["Storage Management"]
+    C4 --> S4["Audit Logs"]
+    C5 --> S5["Storage Mgmt"]
 
     classDef raw fill:#f6f6f4,stroke:#c8c8c0,color:#57574f
     classDef category fill:#fff7ed,stroke:#f59e0b,color:#7c2d12
@@ -1807,12 +1807,12 @@ graph LR
   <figure class="diagram-card diagram-card--compact reveal">
     <div class="mermaid-wrap">
       <div class="mermaid" data-diagram-id="uc-003">
-graph TD
-    A["User opens a folder"] --> B{"Has access?"}
-    B -->|"Yes"| C["Folder contents load"]
-    B -->|"No"| D["'You don't have access'<br/>state"]
-    D --> E["Click Request Access"]
-    E --> F["Request sent to<br/>folder owner/admin"]
+graph LR
+    A["Open folder"] --> B{"Access?"}
+    B -->|"Yes"| C["Contents load"]
+    B -->|"No"| D["Denied state"]
+    D --> E["Request Access"]
+    E --> F["Sent to owner"]
       </div>
     </div>
     <figcaption><strong>Flow C — Permission denied → Request Access.</strong> The denial state itself is the fork in the road: it either dead-ends a user's day, or gives them one click forward. The owner-side approval step past node F isn't shown downstream in the shipped product yet.</figcaption>
@@ -1845,14 +1845,12 @@ graph TD
   <figure class="diagram-card diagram-card--compact reveal">
     <div class="mermaid-wrap">
       <div class="mermaid" data-diagram-id="uc-006">
-graph TD
-    A["User selects a file"] --> B{"Where is it?"}
-    B -->|"In Trash"| C["Click Restore"]
-    C --> D["File returns<br/>immediately — 1 click"]
-    B -->|"Active, in retention<br/>window"| E["Click Delete"]
-    E --> F{"Confirm?"}
-    F -->|"Cancel"| G["File stays"]
-    F -->|"Confirm"| H["File removed"]
+graph LR
+    A["Select file"] --> B{"Location?"}
+    B -->|"Trash"| C["Restore"] --> D["Returned instantly"]
+    B -->|"Active"| E["Delete"] --> F{"Confirm?"}
+    F -->|"No"| G["Stays"]
+    F -->|"Yes"| H["Removed"]
       </div>
     </div>
     <figcaption><strong>Flow D — Restore vs. Delete, two different frictions.</strong> Restore has no gate. Delete has one deliberate confirm gate — drawn on purpose to match the design intent above.</figcaption>
@@ -1871,16 +1869,16 @@ graph TD
   <figure class="diagram-card diagram-card--compact reveal">
     <div class="mermaid-wrap">
       <div class="mermaid" data-diagram-id="uc-004">
-graph TD
-    A["Owner opens Share<br/>on a file"] --> B["Enter a specific<br/>person's email or name"]
-    B --> C{"Assign role"}
+graph LR
+    A["Open Share"] --> B["Enter name"]
+    B --> C{"Role?"}
     C -->|"Owner"| D["Full control"]
     C -->|"Editor"| E["Can modify"]
     C -->|"Viewer"| F["Read-only"]
-    D --> G["Appears in Shared To<br/>list with role"]
+    D --> G["Shared To list"]
     E --> G
     F --> G
-    G --> H["Every access logged<br/>to Audit Timeline"]
+    G --> H["Logged to Audit"]
       </div>
     </div>
     <figcaption><strong>Flow E — Sharing a file with per-person roles.</strong> The fork is the role, not whether to share publicly — there's no branch in this flow that produces a link anyone can forward.</figcaption>
@@ -2356,13 +2354,13 @@ graph TD
   <figure class="diagram-card diagram-card--compact reveal">
     <div class="mermaid-wrap">
       <div class="mermaid" data-diagram-id="uc-005">
-graph TD
-    A["User opens a document<br/>in LitBox"] --> B{"Needs a<br/>signature?"}
-    B -->|"No"| C["Normal document view"]
-    B -->|"Yes"| D["Click 'Continue<br/>to e-signature'"]
-    D --> E["Hands off into<br/>OmnisProof — same document"]
-    E --> F["Signer setup: general info,<br/>signer list, extra fields"]
-    F --> G["Distribution"]
+graph LR
+    A["Open document"] --> B{"Signature?"}
+    B -->|"No"| C["View doc"]
+    B -->|"Yes"| D["E-sign button"]
+    D --> E["OmnisProof"]
+    E --> F["Signer setup"]
+    F --> G["Distribute"]
       </div>
     </div>
     <figcaption><strong>Flow F — E-signature, launched in place.</strong> One node worth noticing: D → E is a direct handoff, not a round trip through a downloaded-then-reuploaded file.</figcaption>
@@ -2911,7 +2909,7 @@ graph TD
     var v = function(name) { return cs.getPropertyValue(name).trim(); };
     return {
       fontFamily: "Archivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      fontSize: "18px",
+      fontSize: "13px",
       primaryColor: v("--accent-soft"),
       primaryTextColor: v("--ink"),
       primaryBorderColor: v("--accent"),
@@ -2956,7 +2954,7 @@ graph TD
       startOnLoad: false,
       theme: "base",
       themeVariables: themeVars(),
-      flowchart: { curve: "basis", padding: 18, nodeSpacing: 45, rankSpacing: 65, htmlLabels: true },
+      flowchart: { curve: "basis", padding: 10, nodeSpacing: 25, rankSpacing: 35, htmlLabels: true },
       securityLevel: "loose"
     });
     mermaid.run({ querySelector: ".mermaid" }).then(sizeDiagrams);
