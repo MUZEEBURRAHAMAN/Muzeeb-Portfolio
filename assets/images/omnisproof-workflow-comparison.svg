@@ -1,0 +1,258 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 580" width="100%" height="100%" style="background:#ffffff; font-family:-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(0,0,0,0.04)"/>
+    </filter>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 7 5 L 1 8" fill="none" stroke="#F87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 2 L 7 5 L 1 8" fill="none" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- ================= TOP CONTAINER: FRAGMENTED ================= -->
+  <g transform="translate(24, 18)">
+    <rect width="1552" height="260" rx="16" fill="#FFF7F7" stroke="#FEE2E2" stroke-width="1.5"/>
+    
+    <text x="32" y="38" font-size="20" font-weight="800" fill="#0F172A" letter-spacing="-0.02em">A fragmented, step-by-step workflow</text>
+    <text x="32" y="60" font-size="13.5" font-weight="400" fill="#64748B">Multiple screens, no document context, and manual field placement.</text>
+
+    <!-- STEP 1 -->
+    <g transform="translate(32, 86)">
+      <circle cx="16" cy="35" r="15" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+      <text x="16" y="40" font-size="12.5" font-weight="700" fill="#E11D48" text-anchor="middle">1</text>
+
+      <g transform="translate(44, 0)" filter="url(#card-shadow)">
+        <rect width="244" height="70" rx="12" fill="#FFFFFF" stroke="#FFE4E6" stroke-width="1"/>
+        <rect x="10" y="13" width="44" height="44" rx="8" fill="#FFF1F2"/>
+        <g transform="translate(22, 25)" stroke="#E11D48" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 1h10l4 4v11a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+          <polyline points="12 1 12 5 16 5"/>
+          <line x1="5" y1="9" x2="11" y2="9"/>
+          <line x1="5" y1="13" x2="13" y2="13"/>
+        </g>
+        <text x="64" y="30" font-size="13.5" font-weight="700" fill="#0F172A">General Info</text>
+        <text x="64" y="48" font-size="11" fill="#64748B">Enter document details</text>
+        <text x="64" y="61" font-size="11" fill="#64748B">and settings</text>
+
+        <circle cx="48" cy="70" r="3.5" fill="#E11D48"/>
+        <line x1="48" y1="73.5" x2="48" y2="96" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="54" y="110" font-size="11" font-weight="600" fill="#E11D48">Document not visible until step 3</text>
+      </g>
+    </g>
+
+    <!-- Arrow 1 -> 2 -->
+    <line x1="342" y1="121" x2="390" y2="121" stroke="#F87171" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+
+    <!-- STEP 2 -->
+    <g transform="translate(412, 86)">
+      <circle cx="16" cy="35" r="15" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+      <text x="16" y="40" font-size="12.5" font-weight="700" fill="#E11D48" text-anchor="middle">2</text>
+
+      <g transform="translate(44, 0)" filter="url(#card-shadow)">
+        <rect width="244" height="70" rx="12" fill="#FFFFFF" stroke="#FFE4E6" stroke-width="1"/>
+        <rect x="10" y="13" width="44" height="44" rx="8" fill="#FFF1F2"/>
+        <g transform="translate(21, 24)" stroke="#E11D48" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 16v-1a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v1"/>
+          <circle cx="8" cy="6" r="3"/>
+          <path d="M16 11a2.5 2.5 0 0 0 2-2.5 2.5 2.5 0 0 0-2-2.5"/>
+          <path d="M19 16v-1a2.5 2.5 0 0 0-1.8-2.4"/>
+        </g>
+        <text x="64" y="30" font-size="13.5" font-weight="700" fill="#0F172A">Add Signers</text>
+        <text x="64" y="48" font-size="11" fill="#64748B">Add recipients and</text>
+        <text x="64" y="61" font-size="11" fill="#64748B">set their roles</text>
+
+        <circle cx="48" cy="70" r="3.5" fill="#E11D48"/>
+        <line x1="48" y1="73.5" x2="48" y2="96" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="54" y="110" font-size="11" font-weight="600" fill="#E11D48">Multiple steps create friction</text>
+      </g>
+    </g>
+
+    <!-- Arrow 2 -> 3 -->
+    <line x1="722" y1="121" x2="770" y2="121" stroke="#F87171" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+
+    <!-- STEP 3 -->
+    <g transform="translate(792, 86)">
+      <circle cx="16" cy="35" r="15" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+      <text x="16" y="40" font-size="12.5" font-weight="700" fill="#E11D48" text-anchor="middle">3</text>
+
+      <g transform="translate(44, 0)" filter="url(#card-shadow)">
+        <rect width="244" height="70" rx="12" fill="#FFFFFF" stroke="#FFE4E6" stroke-width="1"/>
+        <rect x="10" y="13" width="44" height="44" rx="8" fill="#FFF1F2"/>
+        <g transform="translate(23, 25)" stroke="#E11D48" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 3 3 17 3 17 6"/>
+          <line x1="10" y1="3" x2="10" y2="17"/>
+          <line x1="7" y1="17" x2="13" y2="17"/>
+        </g>
+        <text x="64" y="30" font-size="13.5" font-weight="700" fill="#0F172A">Add Fields</text>
+        <text x="64" y="48" font-size="11" fill="#64748B">Manually place signature,</text>
+        <text x="64" y="61" font-size="11" fill="#64748B">initials, date, and other fields</text>
+
+        <circle cx="48" cy="70" r="3.5" fill="#E11D48"/>
+        <line x1="48" y1="73.5" x2="48" y2="96" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="54" y="110" font-size="11" font-weight="600" fill="#E11D48">Manual field placement is time-consuming</text>
+      </g>
+    </g>
+
+    <!-- Arrow 3 -> 4 -->
+    <line x1="1102" y1="121" x2="1150" y2="121" stroke="#F87171" stroke-width="1.5" marker-end="url(#arrow-red)"/>
+
+    <!-- STEP 4 -->
+    <g transform="translate(1172, 86)">
+      <circle cx="16" cy="35" r="15" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+      <text x="16" y="40" font-size="12.5" font-weight="700" fill="#E11D48" text-anchor="middle">4</text>
+
+      <g transform="translate(44, 0)" filter="url(#card-shadow)">
+        <rect width="244" height="70" rx="12" fill="#FFFFFF" stroke="#FFE4E6" stroke-width="1"/>
+        <rect x="10" y="13" width="44" height="44" rx="8" fill="#FFF1F2"/>
+        <g transform="translate(22, 25)" stroke="#E11D48" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2L9 11"/>
+          <path d="M18 2L12 18L9 11L2 8L18 2Z"/>
+        </g>
+        <text x="64" y="30" font-size="13.5" font-weight="700" fill="#0F172A">Distribute</text>
+        <text x="64" y="48" font-size="11" fill="#64748B">Review and send</text>
+        <text x="64" y="61" font-size="11" fill="#64748B">the document</text>
+
+        <circle cx="48" cy="70" r="3.5" fill="#E11D48"/>
+        <line x1="48" y1="73.5" x2="48" y2="96" stroke="#E11D48" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="54" y="110" font-size="11" font-weight="600" fill="#E11D48">Errors often discovered after sending</text>
+      </g>
+    </g>
+  </g>
+
+
+  <!-- ================= BOTTOM CONTAINER: GUIDED ================= -->
+  <g transform="translate(24, 300)">
+    <rect width="1552" height="260" rx="16" fill="#F4F9FF" stroke="#DBEAFE" stroke-width="1.5"/>
+    
+    <text x="32" y="38" font-size="20" font-weight="800" fill="#0F172A" letter-spacing="-0.02em">A guided, document-first experience</text>
+    <text x="32" y="60" font-size="13.5" font-weight="400" fill="#64748B">Upload, get AI-suggested fields, review, and send — all in one flow.</text>
+
+    <!-- STEP 1 -->
+    <g transform="translate(30, 86)">
+      <circle cx="14" cy="35" r="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+      <text x="14" y="40" font-size="12" font-weight="700" fill="#2563EB" text-anchor="middle">1</text>
+
+      <g transform="translate(36, 0)" filter="url(#card-shadow)">
+        <rect width="204" height="70" rx="12" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1"/>
+        <rect x="8" y="13" width="44" height="44" rx="8" fill="#EFF6FF"/>
+        <g transform="translate(21, 25)" stroke="#2563EB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 11v5a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-5"/>
+          <polyline points="5 6 9 2 13 6"/>
+          <line x1="9" y1="2" x2="9" y2="13"/>
+        </g>
+        <text x="58" y="30" font-size="13" font-weight="700" fill="#0F172A">Upload Document</text>
+        <text x="58" y="48" font-size="10.5" fill="#64748B">Add your document</text>
+        <text x="58" y="61" font-size="10.5" fill="#64748B">and view it instantly</text>
+
+        <circle cx="42" cy="70" r="3.5" fill="#2563EB"/>
+        <line x1="42" y1="73.5" x2="42" y2="96" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="48" y="110" font-size="10.5" font-weight="600" fill="#2563EB">Document visible from the start</text>
+      </g>
+    </g>
+
+    <!-- Arrow 1 -> 2 -->
+    <line x1="286" y1="121" x2="318" y2="121" stroke="#60A5FA" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+    <!-- STEP 2 -->
+    <g transform="translate(334, 86)">
+      <circle cx="14" cy="35" r="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+      <text x="14" y="40" font-size="12" font-weight="700" fill="#2563EB" text-anchor="middle">2</text>
+
+      <g transform="translate(36, 0)" filter="url(#card-shadow)">
+        <rect width="204" height="70" rx="12" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1"/>
+        <rect x="8" y="13" width="44" height="44" rx="8" fill="#EFF6FF"/>
+        <g transform="translate(21, 25)" stroke="#2563EB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 1l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/>
+        </g>
+        <text x="58" y="30" font-size="13" font-weight="700" fill="#0F172A">AI Suggests Fields</text>
+        <text x="58" y="48" font-size="10.5" fill="#64748B">Fields are automatically</text>
+        <text x="58" y="61" font-size="10.5" fill="#64748B">detected and suggested</text>
+
+        <circle cx="42" cy="70" r="3.5" fill="#2563EB"/>
+        <line x1="42" y1="73.5" x2="42" y2="96" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="48" y="110" font-size="10.5" font-weight="600" fill="#2563EB">AI reduces manual work</text>
+      </g>
+    </g>
+
+    <!-- Arrow 2 -> 3 -->
+    <line x1="590" y1="121" x2="622" y2="121" stroke="#60A5FA" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+    <!-- STEP 3 -->
+    <g transform="translate(638, 86)">
+      <circle cx="14" cy="35" r="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+      <text x="14" y="40" font-size="12" font-weight="700" fill="#2563EB" text-anchor="middle">3</text>
+
+      <g transform="translate(36, 0)" filter="url(#card-shadow)">
+        <rect width="204" height="70" rx="12" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1"/>
+        <rect x="8" y="13" width="44" height="44" rx="8" fill="#EFF6FF"/>
+        <g transform="translate(21, 25)" stroke="#2563EB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="2" y1="6" x2="16" y2="6"/>
+          <circle cx="7" cy="6" r="2" fill="#EFF6FF"/>
+          <line x1="2" y1="12" x2="16" y2="12"/>
+          <circle cx="12" cy="12" r="2" fill="#EFF6FF"/>
+        </g>
+        <text x="58" y="30" font-size="13" font-weight="700" fill="#0F172A">Review &amp; Edit</text>
+        <text x="58" y="48" font-size="10.5" fill="#64748B">Review, adjust, or add</text>
+        <text x="58" y="61" font-size="10.5" fill="#64748B">fields as needed</text>
+
+        <circle cx="42" cy="70" r="3.5" fill="#2563EB"/>
+        <line x1="42" y1="73.5" x2="42" y2="96" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="48" y="110" font-size="10.5" font-weight="600" fill="#2563EB">Fewer errors with built-in guidance</text>
+      </g>
+    </g>
+
+    <!-- Arrow 3 -> 4 -->
+    <line x1="894" y1="121" x2="926" y2="121" stroke="#60A5FA" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+    <!-- STEP 4 -->
+    <g transform="translate(942, 86)">
+      <circle cx="14" cy="35" r="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+      <text x="14" y="40" font-size="12" font-weight="700" fill="#2563EB" text-anchor="middle">4</text>
+
+      <g transform="translate(36, 0)" filter="url(#card-shadow)">
+        <rect width="204" height="70" rx="12" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1"/>
+        <rect x="8" y="13" width="44" height="44" rx="8" fill="#EFF6FF"/>
+        <g transform="translate(21, 24)" stroke="#2563EB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 16v-1a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v1"/>
+          <circle cx="8" cy="6" r="3"/>
+          <path d="M16 11a2.5 2.5 0 0 0 2-2.5 2.5 2.5 0 0 0-2-2.5"/>
+          <path d="M19 16v-1a2.5 2.5 0 0 0-1.8-2.4"/>
+        </g>
+        <text x="58" y="30" font-size="13" font-weight="700" fill="#0F172A">Add Signers</text>
+        <text x="58" y="48" font-size="10.5" fill="#64748B">Assign recipients</text>
+        <text x="58" y="61" font-size="10.5" fill="#64748B">and set their roles</text>
+
+        <circle cx="42" cy="70" r="3.5" fill="#2563EB"/>
+        <line x1="42" y1="73.5" x2="42" y2="96" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="48" y="110" font-size="10.5" font-weight="600" fill="#2563EB">Streamlined signer setup</text>
+      </g>
+    </g>
+
+    <!-- Arrow 4 -> 5 -->
+    <line x1="1198" y1="121" x2="1230" y2="121" stroke="#60A5FA" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+    <!-- STEP 5 -->
+    <g transform="translate(1246, 86)">
+      <circle cx="14" cy="35" r="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+      <text x="14" y="40" font-size="12" font-weight="700" fill="#2563EB" text-anchor="middle">5</text>
+
+      <g transform="translate(36, 0)" filter="url(#card-shadow)">
+        <rect width="204" height="70" rx="12" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1"/>
+        <rect x="8" y="13" width="44" height="44" rx="8" fill="#EFF6FF"/>
+        <g transform="translate(21, 25)" stroke="#2563EB" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2L9 11"/>
+          <path d="M18 2L12 18L9 11L2 8L18 2Z"/>
+        </g>
+        <text x="58" y="30" font-size="13" font-weight="700" fill="#0F172A">Send</text>
+        <text x="58" y="48" font-size="10.5" fill="#64748B">Finalize and send</text>
+        <text x="58" y="61" font-size="10.5" fill="#64748B">the document</text>
+
+        <circle cx="42" cy="70" r="3.5" fill="#2563EB"/>
+        <line x1="42" y1="73.5" x2="42" y2="96" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <text x="48" y="110" font-size="10.5" font-weight="600" fill="#2563EB">Faster and more confident sending</text>
+      </g>
+    </g>
+  </g>
+</svg>

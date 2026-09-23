@@ -262,10 +262,29 @@
             .mz-card-pill--after { right: 6px; }
         }
     </style>
+    <script>
+        (function() {
+            try {
+                var isReload = false;
+                var navEntries = window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation");
+                if (navEntries && navEntries.length > 0) {
+                    isReload = navEntries[0].type === "reload";
+                } else if (window.performance && window.performance.navigation) {
+                    isReload = window.performance.navigation.type === 1;
+                }
+                if (sessionStorage.getItem("mz_greeting_seen") && !isReload) {
+                    document.documentElement.classList.add("skip-preloader");
+                    document.write('<style id="skip-preloader-style">#preloader{display:none!important;}body.preloader-active{overflow:auto!important;}</style>');
+                }
+            } catch(e) {}
+        })();
+    </script>
     <style id="preloader-critical">
         .preloader { position: fixed; inset: 0; z-index: 999999; background: #0a0a0a; display: grid; place-items: center; will-change: transform; }
         [data-theme="light"] .preloader, html[data-theme="light"] .preloader { background: #f2f1ed; }
         body.preloader-active { overflow: hidden !important; }
+        html.skip-preloader .preloader, html.skip-preloader #preloader { display: none !important; }
+        html.skip-preloader body.preloader-active { overflow: auto !important; }
     </style>
 </head>
 

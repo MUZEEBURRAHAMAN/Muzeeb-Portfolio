@@ -23,10 +23,37 @@
   const counter = document.getElementById("counter");
   if (!word || !counter) return;
 
+  // Session & Reload Detection
+  let isReload = false;
+  try {
+    const navEntries = window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation");
+    if (navEntries && navEntries.length > 0) {
+      isReload = navEntries[0].type === "reload";
+    } else if (window.performance && window.performance.navigation) {
+      isReload = window.performance.navigation.type === 1;
+    }
+  } catch (e) {}
+
+  const hasSeen = sessionStorage.getItem("mz_greeting_seen");
+
+  // If already seen in this session and NOT a hard refresh/reload, skip immediately
+  if (hasSeen && !isReload) {
+    document.documentElement.classList.add("skip-preloader");
+    document.body.classList.remove("preloader-active");
+    document.body.classList.add("loaded");
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    if (window.lenis) {
+      try { window.lenis.start(); } catch (e) {}
+    }
+    pre.remove();
+    return;
+  }
+
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const easeOut = t => 1 - Math.pow(1 - t, 2);
 
-  // Lock scroll immediately
+  // Lock scroll immediately for first-time / reload
   document.documentElement.style.overflow = "hidden";
   document.body.classList.add("preloader-active");
   if (window.lenis) {
@@ -85,6 +112,11 @@
     if (window.lenis) {
       try { window.lenis.start(); } catch (e) {}
     }
+    // Record that visitor has seen preloader in this session
+    try {
+      sessionStorage.setItem("mz_greeting_seen", "true");
+    } catch (e) {}
+
     await sleep(950);
     pre.remove();
   }
