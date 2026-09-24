@@ -2669,11 +2669,10 @@ h2.h-sub {
       <button class="lightbox__btn" id="lbZoomOut" aria-label="Zoom out" title="Zoom Out (-)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
       </button>
-      <button class="lightbox__btn lightbox__zoom-val" id="lbZoomVal" aria-label="Current zoom" title="Click to view 100% native 4K resolution">100%</button>
+      <button class="lightbox__btn lightbox__zoom-val" id="lbZoomVal" aria-label="Current zoom" title="Click to toggle 100% / 200% zoom">100%</button>
       <button class="lightbox__btn" id="lbZoomIn" aria-label="Zoom in" title="Zoom In (+)">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
       </button>
-      <button class="lightbox__btn" id="lbZoomFit" aria-label="Fit to screen" title="Fit to screen">Fit</button>
     </div>
     <div class="lightbox__tip">💡 Click image to zoom 1:1 · Drag to pan · Scroll to zoom</div>
     <button class="lightbox__close" id="lightboxClose" aria-label="Close preview" title="Close (Esc)">
@@ -2777,7 +2776,6 @@ h2.h-sub {
     var lbZoomIn = document.getElementById("lbZoomIn");
     var lbZoomOut = document.getElementById("lbZoomOut");
     var lbZoomVal = document.getElementById("lbZoomVal");
-    var lbZoomFit = document.getElementById("lbZoomFit");
 
     var allImages = Array.from(document.querySelectorAll(".figure img, .shot img, .hero-cover img, .frame img"));
     // Remove duplicates
@@ -2807,7 +2805,7 @@ h2.h-sub {
         if (lbStage) lbStage.classList.remove("is-zoomed", "is-dragging");
         lbImg.style.transition = instant ? "none" : "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)";
         lbImg.style.transform = "scale(1)";
-        if (lbZoomVal) lbZoomVal.textContent = "Fit";
+        if (lbZoomVal) lbZoomVal.textContent = "100%";
       } else {
         if (lbStage) lbStage.classList.add("is-zoomed");
         lbImg.style.transition = instant ? "none" : "transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)";
@@ -2911,13 +2909,6 @@ h2.h-sub {
         e.stopPropagation();
         if (scale > 1.05) resetZoom();
         else zoomTo(2.2, window.innerWidth / 2, window.innerHeight / 2);
-      });
-    }
-
-    if (lbZoomFit) {
-      lbZoomFit.addEventListener("click", function(e) {
-        e.stopPropagation();
-        resetZoom();
       });
     }
 
