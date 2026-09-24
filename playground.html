@@ -150,22 +150,17 @@
             box-sizing: border-box;
         }
 
-        /* 01: HERO (Wireframe 2-Column Split) */
+        /* 01: HERO (Centered, In-Between) */
         .pg-hero {
-            padding: clamp(52px, 6.5vw, 84px) 0 clamp(28px, 4vw, 40px);
-            text-align: left;
-            display: grid;
-            grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.98fr);
-            align-items: center;
-            gap: clamp(24px, 4vw, 48px);
-            width: 100%;
-        }
-
-        .pg-hero__content {
+            padding: clamp(56px, 7vw, 92px) 0 clamp(24px, 3.5vw, 36px);
+            text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 14px;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 820px;
+            width: 100%;
         }
 
         .pg-hero__eyebrow {
@@ -175,28 +170,29 @@
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: #8c8c88;
-            margin: 0;
+            margin: 0 0 14px 0;
             display: inline-block;
         }
 
         .pg-hero__title {
             font-family: var(--font-display, 'Archivo', sans-serif);
-            font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 600;
-            line-height: 1.1;
+            line-height: 1.12;
             letter-spacing: -0.03em;
             color: #ffffff;
-            margin: 0;
-            max-width: 640px;
+            margin: 0 0 16px 0;
+            text-align: center;
         }
 
         .pg-hero__desc {
             font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: clamp(0.96rem, 1.4vw, 1.08rem);
+            font-size: clamp(1.02rem, 1.6vw, 1.18rem);
             line-height: 1.6;
             color: #9a9a98;
-            margin: 0;
-            max-width: 560px;
+            margin: 0 auto;
+            text-align: center;
+            max-width: 660px;
         }
 
         .pg-hero__desc p {
@@ -218,92 +214,7 @@
             color: #52524e;
         }
 
-        /* HERO RIGHT: GOOGLE STITCH TECHNICAL ILLUSTRATION BOX */
-        .pg-hero__illustration {
-            background: #141414;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-            position: relative;
-            transition: border-color 0.25s ease, transform 0.25s ease;
-        }
-
-        .pg-hero__illustration:hover {
-            border-color: rgba(255, 255, 255, 0.22);
-            transform: translateY(-2px);
-        }
-
-        [data-theme="light"] .pg-hero__illustration {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.09);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
-        }
-
-        .pg-hero-illu__bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 14px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        [data-theme="light"] .pg-hero-illu__bar {
-            border-bottom-color: rgba(0, 0, 0, 0.06);
-            background: rgba(0, 0, 0, 0.02);
-        }
-
-        .pg-hero-illu__dots {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pg-hero-illu__dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-        }
-        .pg-hero-illu__dot--red { background: #ff5f56; }
-        .pg-hero-illu__dot--yellow { background: #ffbd2e; }
-        .pg-hero-illu__dot--green { background: #27c93f; }
-
-        .pg-hero-illu__tag {
-            font-family: var(--font-mono, monospace);
-            font-size: 0.68rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #79796f;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .pg-hero-illu__badge {
-            font-family: var(--font-mono, monospace);
-            font-size: 0.65rem;
-            padding: 2px 7px;
-            border-radius: 4px;
-            background: rgba(110, 168, 255, 0.12);
-            color: #6ea8ff;
-            border: 1px solid rgba(110, 168, 255, 0.25);
-            font-weight: 600;
-        }
-
-        .pg-hero-illu__body {
-            padding: 20px 24px;
-            position: relative;
-        }
-
-        @media (max-width: 900px) {
-            .pg-hero {
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-        }
-
-        /* STICKY TAB REDIRECTING BAR (Attached to Left & Right Vertical Rails) */
+        /* STICKY TAB REDIRECTING BAR (Centered in page) */
         .pg-tabs-bar {
             position: sticky;
             top: 72px;
@@ -314,16 +225,19 @@
             border-top: 1px solid rgba(255, 255, 255, 0.12);
             border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             width: calc(100% + 32px) !important;
-            margin: 12px -16px clamp(48px, 6vw, 68px) !important;
+            margin: 12px -16px clamp(40px, 5vw, 60px) !important;
             padding: 12px 16px !important;
             box-sizing: border-box !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
         @media (min-width: 640px) {
             .pg-tabs-bar {
                 width: calc(100% + 48px) !important;
-                margin: 12px -24px clamp(48px, 6vw, 68px) !important;
+                margin: 12px -24px clamp(40px, 5vw, 60px) !important;
                 padding: 12px 24px !important;
             }
         }
@@ -331,7 +245,7 @@
         @media (min-width: 768px) {
             .pg-tabs-bar {
                 width: calc(100% + 64px) !important;
-                margin: 12px -32px clamp(48px, 6vw, 68px) !important;
+                margin: 12px -32px clamp(40px, 5vw, 60px) !important;
                 padding: 12px 32px !important;
             }
         }
@@ -345,15 +259,14 @@
         .pg-tabs {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 8px;
             overflow-x: auto;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
             padding: 0;
-            margin: 0;
-            width: 100%;
+            margin: 0 auto;
         }
 
         .pg-tabs::-webkit-scrollbar {
@@ -398,7 +311,6 @@
             color: #0f0f0f;
             border-color: #f4f2ed;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         [data-theme="light"] .pg-tab-btn {
@@ -421,241 +333,146 @@
             background: #111111;
             color: #ffffff;
             border-color: #111111;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         /* ============================================================
-           2-COLUMN BENTO GRID MATCHING WIREFRAME
+           PLAYGROUND CARD GRID (2-Column Flex, ZERO BOX SHADOW)
            ============================================================ */
         .mz-bento-grid {
-            columns: 2;
-            column-gap: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px 24px;
             margin-bottom: 60px;
             width: 100%;
             box-sizing: border-box;
         }
 
+        /* Width classes matching template */
+        .w-full {
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .md\:w-\[calc\(\(100\%-24px\)\/2\)\] {
+                width: calc((100% - 24px) / 2) !important;
+            }
+        }
+
+        /* bg-card and text-foreground tokens */
+        .bg-card {
+            background-color: #171717;
+            transition: background-color 0.2s ease;
+        }
+        [data-theme="light"] .bg-card,
+        html[data-theme="light"] .bg-card {
+            background-color: #f1efea !important;
+        }
+
+        .text-foreground {
+            color: #f4f2ed;
+        }
+        [data-theme="light"] .text-foreground,
+        html[data-theme="light"] .text-foreground {
+            color: #17170f !important;
+        }
+
+        /* ZERO SHADOW on card elements */
+        .mz-bento-card,
+        .mz-bento-card * {
+            box-shadow: none !important;
+        }
+
         .mz-bento-card {
-            background: #141414;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+            background: transparent !important;
+            border: none !important;
             text-decoration: none;
             color: inherit;
             cursor: pointer;
-            width: 100%;
-            break-inside: avoid;
-            -webkit-column-break-inside: avoid;
-            margin: 0 0 24px;
-            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-                        border-color 0.28s ease,
-                        box-shadow 0.28s ease;
             box-sizing: border-box;
-        }
-
-        [data-theme="light"] .mz-bento-card {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+            transition: transform 0.25s ease;
         }
 
         .mz-bento-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.22);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+            transform: translateY(-3px);
         }
 
-        [data-theme="light"] .mz-bento-card:hover {
-            border-color: rgba(0, 0, 0, 0.16);
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
-        }
-
-        @media (max-width: 720px) {
-            .mz-bento-grid {
-                columns: 1;
-                column-gap: 16px;
-            }
-            .mz-bento-card {
-                margin-bottom: 16px;
-            }
-        }
-
-        /* Card 1: Soft Blue Accent Tint as marked in wireframe */
-        .mz-bento-card--tinted {
-            border-color: rgba(110, 168, 255, 0.25);
-        }
-        .mz-bento-card--tinted .mz-bento-media {
-            background: linear-gradient(135deg, rgba(16, 32, 60, 0.85) 0%, rgba(10, 20, 38, 0.95) 100%) !important;
-            border-bottom: 1px solid rgba(110, 168, 255, 0.2);
-        }
-        [data-theme="light"] .mz-bento-card--tinted {
-            border-color: rgba(47, 109, 240, 0.25);
-        }
-        [data-theme="light"] .mz-bento-card--tinted .mz-bento-media {
-            background: linear-gradient(135deg, #e7f1fd 0%, #d6e7fa 100%) !important;
-            border-bottom: 1px solid rgba(47, 109, 240, 0.14);
-        }
-
-        /* Media: fills top of each card */
-        .mz-bento-media {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.35);
-            flex-shrink: 0;
-        }
-        [data-theme="light"] .mz-bento-media {
-            background: #f4f3ef;
-        }
-        .mz-bento-media--tall {
-            aspect-ratio: 16 / 12.5;
-        }
-        .mz-bento-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .mz-bento-card:hover .mz-bento-media img {
-            transform: scale(1.02);
-        }
-
-        /* Body: Tag + Title + Description + Live Link Button */
-        .mz-bento-body {
-            padding: 20px 22px 22px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .mz-bento-tag {
-            align-self: flex-start;
+        /* Top Folder Tabs */
+        .mz-bento-card .rounded-t-\[12px\] {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: none !important;
+            letter-spacing: 0.06em;
             font-family: var(--font-mono, monospace);
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 3px 8px;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #8c8c88;
-            margin-bottom: 2px;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
         }
-
-        [data-theme="light"] .mz-bento-tag {
-            background: rgba(0, 0, 0, 0.04);
+        [data-theme="light"] .mz-bento-card .rounded-t-\[12px\] {
             border-color: rgba(0, 0, 0, 0.08);
-            color: #5c5c56;
+        }
+        .mz-bento-card:hover .rounded-t-\[12px\] {
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+        [data-theme="light"] .mz-bento-card:hover .rounded-t-\[12px\] {
+            border-color: rgba(0, 0, 0, 0.18);
         }
 
-        /* Category accent colors for tags */
-        [data-category="ai"] .mz-bento-tag {
-            color: #a5b4fc;
-            border-color: rgba(165, 180, 252, 0.25);
-            background: rgba(165, 180, 252, 0.08);
+        /* Card Outer Shell */
+        .mz-bento-card .rounded-\[24px\] {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.25s ease;
         }
-        [data-category="extensions"] .mz-bento-tag {
-            color: #7dd3fc;
-            border-color: rgba(125, 211, 252, 0.25);
-            background: rgba(125, 211, 252, 0.08);
+        [data-theme="light"] .mz-bento-card .rounded-\[24px\] {
+            border-color: rgba(0, 0, 0, 0.08);
         }
-        [data-category="tools"] .mz-bento-tag {
-            color: #86efac;
-            border-color: rgba(134, 239, 172, 0.25);
-            background: rgba(134, 239, 172, 0.08);
+        .mz-bento-card:hover .rounded-\[24px\] {
+            border-color: rgba(255, 255, 255, 0.22);
         }
-        [data-category="systems"] .mz-bento-tag {
-            color: #fcd34d;
-            border-color: rgba(252, 211, 77, 0.25);
-            background: rgba(252, 211, 77, 0.08);
+        [data-theme="light"] .mz-bento-card:hover .rounded-\[24px\] {
+            border-color: rgba(0, 0, 0, 0.18);
         }
 
-        .mz-bento-title {
+        /* Inner Image Canvas */
+        .mz-bento-card .rounded-\[18px\] {
+            background-color: #0d0d0d;
+        }
+        [data-theme="light"] .mz-bento-card .rounded-\[18px\] {
+            background-color: #e5e3de;
+        }
+
+        /* Image hover transition */
+        .mz-bento-card img {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mz-bento-card:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Bottom Left Docked Title Tab */
+        .mz-bento-card .rounded-tr-\[24px\] {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            transition: border-color 0.25s ease;
+        }
+        [data-theme="light"] .mz-bento-card .rounded-tr-\[24px\] {
+            border-top-color: rgba(0, 0, 0, 0.08);
+            border-right-color: rgba(0, 0, 0, 0.08);
+        }
+        .mz-bento-card:hover .rounded-tr-\[24px\] {
+            border-top-color: rgba(255, 255, 255, 0.22);
+            border-right-color: rgba(255, 255, 255, 0.22);
+        }
+        [data-theme="light"] .mz-bento-card:hover .rounded-tr-\[24px\] {
+            border-top-color: rgba(0, 0, 0, 0.18);
+            border-right-color: rgba(0, 0, 0, 0.18);
+        }
+
+        .mz-bento-card .rounded-tr-\[24px\] span {
             font-family: var(--font-display, 'Archivo', sans-serif);
-            font-size: 1.15rem;
-            font-weight: 700;
             color: #ffffff;
-            margin: 0;
-            line-height: 1.25;
-            letter-spacing: -0.01em;
         }
-
-        [data-theme="light"] .mz-bento-title {
+        [data-theme="light"] .mz-bento-card .rounded-tr-\[24px\] span {
             color: #111111;
         }
 
-        .mz-bento-desc-row {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            gap: 14px;
-            margin-top: 4px;
-        }
-
-        .mz-bento-desc {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: 0.85rem;
-            color: #8c8c88;
-            margin: 0;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            flex: 1;
-        }
-
-        [data-theme="light"] .mz-bento-desc {
-            color: #6a6a64;
-        }
-
-        .mz-bento-live-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 13px;
-            border-radius: 999px;
-            font-family: var(--font-mono, monospace);
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            color: #f4f2ed;
-            white-space: nowrap;
-            flex-shrink: 0;
-            text-decoration: none;
-            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .mz-bento-card:hover .mz-bento-live-btn {
-            background: #ffffff;
-            color: #0f0f0f;
-            border-color: #ffffff;
-            transform: translateY(-1px);
-        }
-
-        [data-theme="light"] .mz-bento-live-btn {
-            background: rgba(0, 0, 0, 0.04);
-            border-color: rgba(0, 0, 0, 0.12);
-            color: #111111;
-        }
-
-        [data-theme="light"] .mz-bento-card:hover .mz-bento-live-btn {
-            background: #111111;
-            color: #ffffff;
-            border-color: #111111;
+        .mz-bento-card.is-hidden {
+            display: none !important;
         }
 
         .mz-bento-sub {
@@ -3115,96 +2932,17 @@
     <main id="main" class="w-full">
         <div class="pg-wrap">
 
-            <!-- ==================== HERO (2-COLUMN SPLIT WITH WIREFRAME ILLUSTRATION) ==================== -->
+            <!-- ==================== HERO (CENTERED IN-BETWEEN) ==================== -->
             <section class="pg-hero" aria-labelledby="pgHeroTitle">
-                <div class="pg-hero__content">
-                    <span class="pg-hero__eyebrow">PLAYGROUND</span>
-                    <h1 class="pg-hero__title" id="pgHeroTitle">Side Projects I Designed &amp; Built</h1>
-                    <div class="pg-hero__desc">
-                        <p>A collection of personal ventures and experiments exploring new technologies and frameworks.</p>
-                        <p>From concepts to complete applications focusing on user experience, high craft, and design excellence.</p>
-                    </div>
-                </div>
-
-                <!-- Google Stitch Technical Illustration Component -->
-                <div class="pg-hero__illustration" aria-label="Interactive design & architecture illustration">
-                    <div class="pg-hero-illu__bar">
-                        <div class="pg-hero-illu__dots">
-                            <span class="pg-hero-illu__dot pg-hero-illu__dot--red"></span>
-                            <span class="pg-hero-illu__dot pg-hero-illu__dot--yellow"></span>
-                            <span class="pg-hero-illu__dot pg-hero-illu__dot--green"></span>
-                        </div>
-                        <span class="pg-hero-illu__tag">stitch.canvas · v2.4</span>
-                        <span class="pg-hero-illu__badge">● LIVE NODES</span>
-                    </div>
-                    <div class="pg-hero-illu__body">
-                        <svg viewBox="0 0 460 230" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
-                            <!-- Isometric Grid Base Lines -->
-                            <defs>
-                                <linearGradient id="illu-line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#6ea8ff" stop-opacity="0.8" />
-                                    <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0.3" />
-                                </linearGradient>
-                                <linearGradient id="illu-box-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#1f293d" stop-opacity="0.9" />
-                                    <stop offset="100%" stop-color="#111827" stop-opacity="0.95" />
-                                </linearGradient>
-                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="3" result="blur" />
-                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                                </filter>
-                            </defs>
-
-                            <!-- Background Isometric Grid -->
-                            <path d="M40 165 L230 65 L420 165 L230 220 Z" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.015)" />
-                            <path d="M80 150 L230 72 L380 150 L230 205 Z" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 3" />
-                            <line x1="230" y1="65" x2="230" y2="220" stroke="rgba(255,255,255,0.07)" stroke-dasharray="2 2" />
-
-                            <!-- Active Connecting Pulse Cables -->
-                            <path d="M95 125 L165 160 L230 130 L295 160 L365 125" stroke="url(#illu-line-grad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)" />
-                            <path d="M230 130 L230 60" stroke="#6ea8ff" stroke-width="2" stroke-dasharray="4 4" filter="url(#glow)" />
-
-                            <!-- Center Stage Isometric Core Box -->
-                            <g transform="translate(195, 68)">
-                                <!-- Top Face -->
-                                <polygon points="35,0 70,18 35,36 0,18" fill="#253a5e" stroke="#6ea8ff" stroke-width="1.2" />
-                                <!-- Left Face -->
-                                <polygon points="0,18 35,36 35,70 0,52" fill="#142138" stroke="rgba(110,168,255,0.5)" stroke-width="1.2" />
-                                <!-- Right Face -->
-                                <polygon points="35,36 70,18 70,52 35,70" fill="#182742" stroke="rgba(110,168,255,0.5)" stroke-width="1.2" />
-                                <!-- Glowing Core Symbol inside -->
-                                <circle cx="35" cy="18" r="4.5" fill="#6ea8ff" filter="url(#glow)" />
-                            </g>
-
-                            <!-- Left Satellite Node (AI Agent / Prompt) -->
-                            <g transform="translate(48, 90)">
-                                <rect x="0" y="0" width="105" height="40" rx="8" fill="url(#illu-box-grad)" stroke="rgba(165,180,252,0.35)" stroke-width="1" />
-                                <circle cx="15" cy="17" r="4" fill="#a5b4fc" />
-                                <text x="26" y="16" fill="#f4f2ed" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">agent.prompt()</text>
-                                <text x="26" y="28" fill="#8c8c88" font-family="'Inter', sans-serif" font-size="7.5">Claude 3.7 Sonnet</text>
-                            </g>
-
-                            <!-- Right Satellite Node (Design Token / Live Output) -->
-                            <g transform="translate(305, 90)">
-                                <rect x="0" y="0" width="108" height="40" rx="8" fill="url(#illu-box-grad)" stroke="rgba(110,168,255,0.35)" stroke-width="1" />
-                                <circle cx="15" cy="17" r="4" fill="#6ea8ff" />
-                                <text x="26" y="16" fill="#f4f2ed" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">tokens.compile()</text>
-                                <text x="26" y="28" fill="#8c8c88" font-family="'Inter', sans-serif" font-size="7.5">Zero-runtime CSS</text>
-                            </g>
-
-                            <!-- Bottom Floating Micro HUD -->
-                            <g transform="translate(145, 178)">
-                                <rect x="0" y="0" width="170" height="28" rx="6" fill="#0f0f0f" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
-                                <circle cx="14" cy="14" r="3" fill="#27c93f" />
-                                <text x="24" y="18" fill="#e5e5e0" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="600">STATE: 10 APPS SHIPPED</text>
-                                <text x="142" y="18" fill="#6ea8ff" font-family="'JetBrains Mono', monospace" font-size="9">99.8%</text>
-                            </g>
-                        </svg>
-                    </div>
+                <span class="pg-hero__eyebrow">PLAYGROUND</span>
+                <h1 class="pg-hero__title" id="pgHeroTitle">Side Projects I Designed &amp; Built</h1>
+                <div class="pg-hero__desc">
+                    <p>A collection of personal ventures and experiments exploring new technologies and frameworks.</p>
+                    <p>From concepts to complete applications focusing on user experience, high craft, and design excellence.</p>
                 </div>
             </section>
 
-            <!-- ==================== BENTO CATEGORY FILTER TABS ==================== -->
+            <!-- ==================== BENTO CATEGORY FILTER TABS (CENTERED) ==================== -->
             <nav class="pg-tabs-bar" aria-label="Filter playground collection">
                 <div class="pg-tabs">
                     <button type="button" class="pg-tab-btn active" data-filter="all">
@@ -3225,158 +2963,208 @@
                 </div>
             </nav>
 
-            <!-- ==================== 2-COLUMN WIREFRAME BENTO GRID ==================== -->
+            <!-- ==================== PLAYGROUND CARDS (ZERO SHADOW, FOLDER TABS, INVERTED TITLE) ==================== -->
             <div class="mz-bento-grid" id="playgroundBento">
 
-                <!-- 01: AI UX AUDIT ASSISTANT (Wireframe Card 1 with soft blue tint) -->
-                <a href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener noreferrer" class="mz-bento-card mz-bento-card--tinted" data-category="ai">
-                    <div class="mz-bento-media" style="aspect-ratio: 1920 / 1296;">
-                        <img loading="lazy" src="assets/images/ux%20audit%20assistant_cover.webp" alt="AI UX Audit Assistant Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">AI Agent</span>
-                        <h2 class="mz-bento-title">AI UX Audit Assistant</h2>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Claude-powered accessibility &amp; heuristics scanner for live product interfaces.</p>
-                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <!-- 01: AI UX AUDIT ASSISTANT -->
+                <div id="work-ai-ux-audit" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="ai">
+                    <a class="group flex h-full flex-col" href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener noreferrer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">AI Agent</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Accessibility</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="AI UX Audit Assistant" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ux%20audit%20assistant_cover.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">AI UX Audit Assistant</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                <!-- 02: CATCHLY CHROME EXTENSION (Wireframe Card 2) -->
-                <a href="https://chromewebstore.google.com/detail/catchly-capture-share-ins/lpfecjledmppaejhicjffebpfdmpfofa" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="extensions">
-                    <div class="mz-bento-media mz-bento-media--tall" style="aspect-ratio: 1920 / 1296;">
-                        <img loading="lazy" src="assets/images/catchly-cover.webp" alt="Catchly Visual QA Bug Logger Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Extension</span>
-                        <h3 class="mz-bento-title">Catchly</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Visual QA bug logger with one-click screenshot capture and Slack/Linear export.</p>
-                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <!-- 02: CATCHLY CHROME EXTENSION -->
+                <div id="work-catchly" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="extensions">
+                    <a class="group flex h-full flex-col" href="https://chromewebstore.google.com/detail/catchly-capture-share-ins/lpfecjledmppaejhicjffebpfdmpfofa" target="_blank" rel="noopener noreferrer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Chrome Extension</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Visual QA</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Catchly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/catchly-cover.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Catchly</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                <!-- 03: GOFULLY CHROME EXTENSION (Wireframe Card 3) -->
-                <a href="https://chromewebstore.google.com/detail/go-fully-full-page-screen/gogloimfplnkfpckflkpekmepddbofde" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="extensions">
-                    <div class="mz-bento-media mz-bento-media--tall" style="aspect-ratio: 1100 / 782;">
-                        <img loading="lazy" src="assets/images/pg-2.webp" alt="GoFully Viewport Stitcher placeholder visual" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Extension</span>
-                        <h3 class="mz-bento-title">GoFully</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Full-page viewport stitcher across desktop, tablet, and mobile in one click.</p>
-                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <!-- 03: GOFULLY CHROME EXTENSION (Updated Link) -->
+                <div id="work-gofully" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="extensions">
+                    <a class="group flex h-full flex-col" href="https://chromewebstore.google.com/detail/gofully-full-page-screens/akfbmhmdlbmljklgajkgoekobofhhofc" target="_blank" rel="noopener noreferrer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Chrome Extension</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Viewport Stitcher</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="GoFully" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-2.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">GoFully</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-                <!-- 04: THUMBLY CREATOR BENCHMARKER (Wireframe Card 4) -->
-                <article class="mz-bento-card" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
-                    <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
-                        <img loading="lazy" src="assets/images/web.webp" alt="Thumbly YouTube Feed Benchmarker" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Web Tool</span>
-                        <h3 class="mz-bento-title">Thumbly</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Simulates YouTube feeds to benchmark thumbnail CTR and visual hierarchy.</p>
-                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <!-- 04: THUMBLY CREATOR BENCHMARKER -->
+                <div id="work-thumbly" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
+                    <div class="group flex h-full flex-col cursor-pointer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Web Tool</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Creator Economy</span>
+                            </div>
+                        </div>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Thumbly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/web.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Thumbly</span>
+                            </div>
                         </div>
                     </div>
-                </article>
+                </div>
 
                 <!-- 05: GULORA OKLCH COLOR ENGINE -->
-                <article class="mz-bento-card" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
-                    <div class="mz-bento-media" style="aspect-ratio: 1100 / 825;">
-                        <img loading="lazy" src="assets/images/pg-3.webp" alt="Gulora Color Engine placeholder visual" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Color Engine</span>
-                        <h3 class="mz-bento-title">Gulora</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">OKLCH palette generator with live APCA and WCAG 2.2 contrast compliance checks.</p>
-                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <div id="work-gulora" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
+                    <div class="group flex h-full flex-col cursor-pointer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Color Engine</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">WCAG 2.2</span>
+                            </div>
+                        </div>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Gulora" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-3.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Gulora</span>
+                            </div>
                         </div>
                     </div>
-                </article>
+                </div>
 
                 <!-- 06: BLOBBY FIGMA PLUGIN -->
-                <a href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="systems">
-                    <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
-                        <img loading="lazy" src="assets/images/blobby-plugin.webp" alt="Blobby Figma Plugin Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Figma Plugin</span>
-                        <h3 class="mz-bento-title">Blobby</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Organic, editable vector SVG blob generator with custom mathematical curves.</p>
-                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <div id="work-blobby" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
+                    <a class="group flex h-full flex-col" href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Figma Plugin</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Generative SVG</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Blobby" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/blobby-plugin.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Blobby</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
                 <!-- 07: TOOLTIPS & TOASTS UI KIT -->
-                <a href="https://www.figma.com/community/file/1535935401113364323/tooltips-toastssnackbar" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="systems">
-                    <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
-                        <img loading="lazy" src="assets/images/ui-kits.webp" alt="Tooltips, Toasts & Snackbar Component Kit Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Figma Kit</span>
-                        <h3 class="mz-bento-title">Tooltips &amp; Snackbars</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Free component kit with micro-copy guidelines and full interactive state matrices.</p>
-                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <div id="work-tooltips" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
+                    <a class="group flex h-full flex-col" href="https://www.figma.com/community/file/1535935401113364323/tooltips-toastssnackbar" target="_blank" rel="noopener noreferrer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Figma Kit</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Design System</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Tooltips &amp; Snackbars" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ui-kits.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Tooltips &amp; Snackbars</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
                 <!-- 08: MOBILE GESTURE & INTERACTION LAB -->
-                <article class="mz-bento-card" data-category="tools" data-modal-target="modal-build-apps" role="button" tabindex="0">
-                    <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
-                        <img loading="lazy" src="assets/images/app.webp" alt="Mobile Gesture Lab Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Prototypes</span>
-                        <h3 class="mz-bento-title">Mobile Gesture Lab</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Fluid drag physics, swipe-to-dismiss dynamics, and haptic-synced micro-interactions.</p>
-                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <div id="work-gesture-lab" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-apps" role="button" tabindex="0">
+                    <div class="group flex h-full flex-col cursor-pointer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Prototypes</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Interaction Lab</span>
+                            </div>
+                        </div>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Mobile Gesture Lab" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/app.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Mobile Gesture Lab</span>
+                            </div>
                         </div>
                     </div>
-                </article>
+                </div>
 
                 <!-- 09: CLAUDE SKILLS & MCP ENGINE -->
-                <article class="mz-bento-card" data-category="ai" data-modal-target="modal-claude-skills" role="button" tabindex="0">
-                    <div class="mz-bento-media" style="aspect-ratio: 1920 / 1296;">
-                        <img loading="lazy" src="assets/images/forge-skill.webp" alt="Claude Skills & MCP Workflow Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">AI Architecture</span>
-                        <h3 class="mz-bento-title">Claude Skills &amp; MCP</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">Declarative agent skills and model context protocol workflows for design systems.</p>
-                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <div id="work-claude-skills" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="ai" data-modal-target="modal-claude-skills" role="button" tabindex="0">
+                    <div class="group flex h-full flex-col cursor-pointer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">AI Architecture</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Claude MCP</span>
+                            </div>
+                        </div>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Claude Skills &amp; MCP" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/forge-skill.webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Claude Skills &amp; MCP</span>
+                            </div>
                         </div>
                     </div>
-                </article>
+                </div>
 
                 <!-- 10: OMNIS DESIGN SYSTEM -->
-                <a href="best-work.html" class="mz-bento-card" data-category="systems">
-                    <div class="mz-bento-media" style="aspect-ratio: 4096 / 3072;">
-                        <img loading="lazy" src="assets/images/best-work/bw_image%2038(component%20design).webp" alt="Omnis AI Design System Preview" decoding="async">
-                    </div>
-                    <div class="mz-bento-body">
-                        <span class="mz-bento-tag">Design System</span>
-                        <h3 class="mz-bento-title">Omnis AI Design System</h3>
-                        <div class="mz-bento-desc-row">
-                            <p class="mz-bento-desc">60+ accessible components scaling consistent UI across 8 production products.</p>
-                            <span class="mz-bento-live-btn">Case study <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                <div id="work-omnis" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
+                    <a class="group flex h-full flex-col" href="best-work.html">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Design System</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground rounded-t-[12px]">Multi-Product</span>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                        <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
+                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
+                                <img alt="Omnis AI Design System" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/best-work/bw_image%2038(component%20design).webp">
+                            </div>
+                            <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Omnis AI Design System</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -4303,7 +4091,7 @@
                             <span class="pg-project-name">GoFully</span>
                             <span class="pg-project-version">v1.0</span>
                         </div>
-                        <a href="https://chromewebstore.google.com/detail/gofully/akfbmhmdlbmljklgajkgoekobofhhofc" target="_blank" rel="noopener" class="pg-project-status pg-project-status--live" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:700;">
+                        <a href="https://chromewebstore.google.com/detail/gofully-full-page-screens/akfbmhmdlbmljklgajkgoekobofhhofc" target="_blank" rel="noopener" class="pg-project-status pg-project-status--live" style="text-decoration:none; display:inline-flex; align-items:center; gap:4px; font-weight:700;">
                             <span>Chrome Web Store</span>
                             <span aria-hidden="true">↗</span>
                         </a>
