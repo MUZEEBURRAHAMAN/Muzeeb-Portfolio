@@ -501,7 +501,7 @@
       { href: "index.html", label: "Home" },
       { href: "about.html", label: "About" },
       { href: "best-work.html", label: "Best work" },
-      // { href: "playground.html", label: "Playground" },
+      { href: "playground.html", label: "Playground" },
       { href: "resume.html", label: "Resume" }
     ];
 

@@ -619,16 +619,17 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <body>
     <a href="#main" class="mz-skip">Skip to content</a>
 
-<header class="site-header" id="siteHeader">
+<header class="site-header" id="siteHeader" role="banner">
   <div class="site-header__inner">
     <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
       <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
       <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
     </a>
-    <nav class="site-header__nav">
+    <nav class="site-header__nav" aria-label="Main Navigation">
       <a class="site-header__link" href="index.html">Home</a>
       <a class="site-header__link" href="about.html">About</a>
       <a class="site-header__link active" href="best-work.html">Best work</a>
+      <a class="site-header__link" href="playground.html">Playground</a>
       <a class="site-header__link" href="resume.html">Resume</a>
       <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
