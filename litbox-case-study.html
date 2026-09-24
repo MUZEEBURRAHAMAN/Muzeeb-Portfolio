@@ -339,7 +339,40 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .side .v { font-size:14.5px; font-weight:600; color:var(--ink); }
 @media (max-width:900px) { .intro { grid-template-columns:1fr; gap:24px; } }
 
-.mono { font-family:var(--mono); font-size:.88em; background:var(--line-2); padding:2px 6px; border-radius:5px; color:var(--ink); }
+.mono { font-family:var(--mono); font-size:.88em; background:var(--line-2); padding:2px 6px; border-radius:0 !important; color:var(--ink); }
+
+/* WHAT WE'RE BUILDING / FEATURE NARRATIVE (OMNISPROOF PATTERN) */
+.feature-item { margin-top: 48px; margin-bottom: 64px; }
+.feature-item:last-of-type { margin-bottom: 40px; }
+.feature-title { font-family:var(--font-display); font-size:clamp(20px, 2.4vw, 26px); font-weight:700; color:var(--ink); letter-spacing:-0.025em; margin:0 0 16px; }
+.overview-lead-text { font-family:var(--font-display); font-size:clamp(16px, 1.7vw, 17.5px); line-height:1.75; color:var(--muted); letter-spacing:-0.012em; margin:0 0 44px; max-width:100%; }
+[data-theme="dark"] .overview-lead-text { color:#a3a39d; }
+
+.feature-narrative { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:20px; width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
+@media (min-width: 768px) {
+  .feature-narrative { grid-template-columns:1fr 1fr; gap:20px; }
+}
+.narrative-card { padding:20px 24px; border-radius:0 !important; border:1px solid var(--line); background:var(--surface); font-size:15px; line-height:1.65; box-shadow:0 4px 16px var(--shadow-1); box-sizing:border-box; width:100%; }
+.narrative-card--prob { border-left:3.5px solid var(--amber, #f59e0b) !important; }
+.narrative-card--sol { border-left:3.5px solid var(--accent, #2f6df0) !important; background:var(--accent-soft); }
+.narrative-tag { font-family:var(--mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+.narrative-card--prob .narrative-tag { color:var(--amber, #f59e0b); }
+.narrative-card--sol .narrative-tag { color:var(--accent, #2f6df0); }
+.narrative-text { margin:0; color:var(--muted); font-size:15px; line-height:1.65; }
+.narrative-card--sol .narrative-text { color:var(--ink); }
+
+.ui-mockup-frame { width:100%; margin-top:20px; }
+.ui-mockup-frame .frame { border:1px solid var(--line); border-radius:0 !important; padding:12px; background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); position:relative; }
+.ui-mockup-wrapper { position:relative; width:100%; border-radius:0 !important; overflow:hidden; background:rgba(0,0,0,0.03); display:block; }
+[data-theme="dark"] .ui-mockup-wrapper { background:rgba(255,255,255,0.03); }
+.ui-mockup-wrapper img { width:100%; height:auto; display:block; border-radius:0 !important; cursor:zoom-in; }
+.ui-mockup-badge { position:absolute; top:14px; right:14px; display:inline-flex; align-items:center; gap:7px; background:rgba(15,15,15,0.82); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#ffffff; font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:0.04em; padding:5px 12px; border-radius:0 !important; border:1px solid rgba(255,255,255,0.15); pointer-events:none; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.25); }
+.ui-mockup-dot { width:6px; height:6px; border-radius:50%; background:#3b82f6; box-shadow:0 0 0 2px rgba(59,130,246,0.3); }
+
+.goal-callout { margin:56px 0 20px; padding:32px 36px; border-radius:0 !important; border:1px solid var(--line); background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); position:relative; overflow:hidden; border-left:4px solid var(--accent) !important; }
+.goal-callout__badge { font-family:var(--mono); font-size:11.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; }
+.goal-callout__dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(47,109,240,0.2); }
+.goal-callout__text { font-family:var(--font-display); font-size:clamp(19px, 2.5vw, 24px); font-weight:700; line-height:1.42; letter-spacing:-0.02em; color:var(--ink); margin:0; }
 
 /* 3 CARDS */
 .cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-sm); margin-top:var(--space-lg); padding:0 !important; text-align:left; }
@@ -712,15 +745,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
         </span>
       </div>
     </div>
-    <h1>Every product in the ecosystem depended on Dropbox, Box, or Google Drive to hold a client's files. So I designed <span class="mz-highlight" data-action="box">LitBox</span>.</h1>
-    <p class="hero__sub">Before LitBox, a lawyer uploaded to a third-party drive first, then connected that account to whichever Omnis AI product needed the file — one integration per tool, per product, on a vendor Omnis AI didn't own and couldn't fully vouch for. LitBox replaces that dependency with a secure, <span class="mz-highlight" data-action="yellow">matter-aware</span> storage layer built inside the ecosystem itself.</p>
-    <div class="hero__meta">
-      <span class="m"><b>Muzeeb Urrahaman</b></span>
-      <span class="m">Product Designer</span>
-      <span class="m">Legal Tech SaaS · Secure Storage</span>
-      <span class="m">Platform / Infrastructure Design</span>
-      <span class="m">IA × Security × Ecosystem Integration</span>
-    </div>
+    <h1>When every legal product needs the same files, <span class="mz-highlight" data-action="box">why store them in different places?</span></h1>
+    <p class="hero__sub">I designed <b>LitBox</b>, a unified file management platform that brings documents, collaboration, and secure storage into <span class="mz-highlight" data-action="box">one connected experience</span> for legal teams. By replacing fragmented third-party storage dependencies, LitBox creates a shared foundation where Omnis AI products can securely access, manage, and collaborate on files—<span class="mz-highlight" data-action="yellow">all within one ecosystem</span>.</p>
   </div>
 </header>
 
@@ -742,55 +768,134 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- 01 THE PROBLEM -->
+<!-- 01 WHAT WE'RE BUILDING -->
 <section id="overview">
-  <div class="sec-num">01 / THE PROBLEM</div>
-  <div class="eyebrow reveal">Before LitBox</div>
-  <h2 class="h reveal">Omnis AI called itself an <span class="mz-highlight" data-action="yellow">ecosystem</span>. Its files said otherwise.</h2>
-  <div class="intro">
-    <div>
-      <p class="lead">Before LitBox, a document's journey never started inside Omnis AI. A lawyer had a file, and the first move was never "open CasePro" — it was "open Dropbox, or Box, or Google Drive." Only after the file existed in one of those third-party tools could it be connected, one integration at a time, to whichever Omnis AI product actually needed it.</p>
-      <p class="prose">That habit — third party first, Omnis AI second — created three compounding problems, and it's the reason LitBox exists.</p>
-    </div>
-    <aside class="side">
-      <div class="g"><div class="k">Category</div><div class="v">Legal Tech SaaS · Secure Cloud Storage</div></div>
-      <div class="g"><div class="k">Role</div><div class="v">Product Designer</div></div>
-      <div class="g"><div class="k">Scope</div><div class="v">IA, Research, UI System, Ecosystem Integration</div></div>
-      <div class="g"><div class="k">Users</div><div class="v">Attorneys, Paralegals, Firm Admins, Litigation Support</div></div>
-      <div class="g"><div class="k">Status</div><div class="v">Internal Beta / Dogfooding</div></div>
-    </aside>
+  <div class="sec-num">01 / WHAT WE'RE BUILDING</div>
+  <h2 class="h reveal">Building a unified legal file layer <span class="mz-highlight" data-action="box">inside the ecosystem</span>.</h2>
+  
+  <div class="overview-intro reveal">
+    <p class="overview-lead-text">
+      LitBox is a dedicated, matter-aware file management platform built to power the entire Omnis AI legal suite.<br>
+      We replaced fragmented third-party drive dependencies and unaudited sharing links with a single owned foundation.<br>
+      Here is how LitBox directly tackles three foundational bottlenecks across the legal document lifecycle.
+    </p>
   </div>
+
+  <!-- 01 FEATURE -->
+  <div class="feature-item reveal">
+    <div class="feature-header">
+      <h3 class="feature-title">01 — Third-party drive detours before every legal workflow</h3>
+    </div>
+    <div class="feature-narrative">
+      <div class="narrative-card narrative-card--prob">
+        <span class="narrative-tag">The Problem</span>
+        <p class="narrative-text">A file had to exist in Dropbox, Box, or Google Drive before it could touch any Omnis AI product. Attorneys faced repetitive re-authorizations, disconnected accounts, and fragmented storage silos with zero unified matter context.</p>
+      </div>
+      <div class="narrative-card narrative-card--sol">
+        <span class="narrative-tag">What We're Building</span>
+        <p class="narrative-text">We're building a <span class="mz-highlight" data-action="box">unified legal file workspace</span> where documents live natively alongside active matters. LitBox eliminates vendor detours by providing an owned, matter-organized file directory accessible to every tool in the firm.</p>
+      </div>
+    </div>
+    <div class="ui-mockup-frame">
+      <div class="frame">
+        <div class="ui-mockup-wrapper">
+          <img src="assets/images/case-studies/litbox/my-files-workspace.png" alt="01 — LitBox Unified Workspace: Centralized legal file directory organized by matter" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 FEATURE -->
+  <div class="feature-item reveal">
+    <div class="feature-header">
+      <h3 class="feature-title">02 — External file sharing without legal privilege or chain of custody</h3>
+    </div>
+    <div class="feature-narrative">
+      <div class="narrative-card narrative-card--prob">
+        <span class="narrative-tag">The Problem</span>
+        <p class="narrative-text">Requesting confidential records via external drive links exposed sensitive litigation data to unverified vendor security models. Firms lacked automated folder routing, expiration controls, pin security, and matter-level audit logging.</p>
+      </div>
+      <div class="narrative-card narrative-card--sol">
+        <span class="narrative-tag">What We're Building</span>
+        <p class="narrative-text">We're building <span class="mz-highlight" data-action="box">matter-governed File Requests</span> with end-to-end security. Clients upload sensitive files directly into matter folders through encrypted, pin-protected links with custom expirations and real-time audit trails.</p>
+      </div>
+    </div>
+    <div class="ui-mockup-frame">
+      <div class="frame">
+        <div class="ui-mockup-wrapper">
+          <img src="assets/images/case-studies/litbox/create-request-advanced.png" alt="02 — Secure File Requests: Matter-routed uploads with pin codes and expiration controls" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 FEATURE -->
+  <div class="feature-item reveal">
+    <div class="feature-header">
+      <h3 class="feature-title">03 — Disconnected product silos requiring manual file transfers</h3>
+    </div>
+    <div class="feature-narrative">
+      <div class="narrative-card narrative-card--prob">
+        <span class="narrative-tag">The Problem</span>
+        <p class="narrative-text">CasePro, OmnisProof, and MedChron each handled file ingestion in isolation. Attorneys were forced to repeatedly download files and re-upload them into separate tools, creating duplicate copies and version control chaos.</p>
+      </div>
+      <div class="narrative-card narrative-card--sol">
+        <span class="narrative-tag">What We're Building</span>
+        <p class="narrative-text">We're building a <span class="mz-highlight" data-action="box">shared ecosystem file layer</span> that integrates directly into every Omnis AI product. Through embedded pickers and native APIs, products attach evidence, sign agreements, and extract chronologies without leaving their workflow.</p>
+      </div>
+    </div>
+    <div class="ui-mockup-frame">
+      <div class="frame">
+        <div class="ui-mockup-wrapper">
+          <img src="assets/images/case-studies/litbox/esign-integration.png" alt="03 — Native Ecosystem Integration: Direct document execution across Omnis AI tools" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE GOAL -->
+  <div class="goal-callout reveal">
+    <div class="goal-callout__badge">
+      <span class="goal-callout__dot"></span>
+      THE GOAL
+    </div>
+    <p class="goal-callout__text">Turn fragmented third-party file storage into a <span class="mz-highlight" data-action="box">unified, secure document foundation</span> that powers every product and collaboration workflow across the legal ecosystem.</p>
+  </div>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 02 WHY THIS, WHY FIRST -->
+<section id="opportunity">
+  <div class="sec-num">02 / WHY THIS, WHY FIRST</div>
+  <div class="eyebrow reveal">Sequencing The Roadmap</div>
+  <h2 class="h reveal">Why storage had to ship <span class="mz-highlight" data-action="box">before</span> the rest of the roadmap</h2>
+  <p class="prose">Omnis AI had a full slate of legal products planned — CasePro, OmnisProof, MedChron, NotaryNow, LitDraft, and more — each on its own launch timeline. But every one of them touches a file at some point: CasePro attaches evidence to a matter, OmnisProof signs a document, MedChron organizes medical records chronologically, NotaryNow notarizes a document. If each product solved "where do files live" on its own, the platform would end up with as many storage implementations, security models, and third-party integrations as it had products — instead of one.</p>
+  <p class="prose">That's why LitBox needed to exist <b>before</b> most of those products launched, not after. Shipping it first meant everything built afterward could assume a shared, owned file layer from day one, instead of retrofitting one in once four or five products already had their own quiet workarounds.</p>
 
   <div class="cards">
     <div class="card">
-      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></div>
-      <h3>1. A Third-Party Detour Before Every Product</h3>
-      <ul>
-        <li>A file had to exist in Dropbox, Box, or Google Drive before it could touch anything Omnis AI built.</li>
-        <li>Then it had to be connected or re-authorized separately inside CasePro, inside OmnisProof, inside MedChron — one integration per tool, per product.</li>
-        <li>The same document could need three separate third-party connections just to be usable across a platform that was supposed to be one system.</li>
-      </ul>
+      <h3>CasePro</h3>
+      <ul><li>Evidence and case files need to be tied to the matter record it manages — LitBox is where that evidence actually lives.</li></ul>
     </div>
     <div class="card">
-      <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
-      <h3>2. Security We Couldn't Fully Vouch For</h3>
-      <ul>
-        <li>The moment a client's file left Omnis AI and landed in someone else's storage, we inherited that vendor's security posture.</li>
-        <li>We couldn't tell a firm "your data is 100% secure" while it was sitting in software we didn't build and couldn't audit — and the legal industry has no shortage of breach headlines proving that risk is real.</li>
-      </ul>
+      <h3>OmnisProof</h3>
+      <ul><li>E-signature needs a document to sign, in place, without a round trip through a downloaded file.</li></ul>
     </div>
     <div class="card">
-      <div class="card__ic card__ic--amber"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <h3>3. An Ecosystem That Wasn't Actually One</h3>
-      <ul>
-        <li>Omnis AI's pitch is that CasePro, OmnisProof, MedChron, LitDraft, and the rest work as one connected platform.</li>
-        <li>If the layer holding every product's files is a rented vendor account, that claim only holds at the marketing level.</li>
-        <li>Even a more secure third-party option — something like Sync.com — would still leave storage as a dependency instead of a layer the rest of the platform is actually built on. The fix wasn't a better vendor. It was owning the layer outright.</li>
-      </ul>
+      <h3>MedChron</h3>
+      <ul><li>Medical chronologies are built from records that need a single, permission-aware source instead of scattered copies.</li></ul>
+    </div>
+    <div class="card">
+      <h3>NotaryNow</h3>
+      <ul><li>Notarization needs the same document trust model as e-signature — one owned layer, not a fourth vendor integration.</li></ul>
     </div>
   </div>
 
-  <div class="note">
+  <h3 class="h3" style="margin-top:40px;">My Role</h3>
+  <p class="prose">I led this end to end: framing the three problems above from patterns across the products I'd already worked on, the research that grounded the case for owning storage instead of integrating another vendor, the information architecture and permission model, the full UI system, and the integration points — like the "Import from LitBox" pattern used inside other Omnis AI products — that make LitBox a layer the rest of the ecosystem actually plugs into, not a fourth silo next to the other three.</p>
+
+  <div class="note" style="margin-top:36px;">
     <div class="note__badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
     </div>
@@ -857,39 +962,6 @@ graph LR
     </div>
     <figcaption><strong>Product walkthrough.</strong> Dashboard → upload → File Request → search — the core loop, in motion, inside the system built to replace the flow above.</figcaption>
   </figure>
-</section>
-
-<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
-
-<!-- 02 WHY THIS, WHY FIRST -->
-<section id="opportunity">
-  <div class="sec-num">02 / WHY THIS, WHY FIRST</div>
-  <div class="eyebrow reveal">Sequencing The Roadmap</div>
-  <h2 class="h reveal">Why storage had to ship <span class="mz-highlight" data-action="box">before</span> the rest of the roadmap</h2>
-  <p class="prose">Omnis AI had a full slate of legal products planned — CasePro, OmnisProof, MedChron, NotaryNow, LitDraft, and more — each on its own launch timeline. But every one of them touches a file at some point: CasePro attaches evidence to a matter, OmnisProof signs a document, MedChron organizes medical records chronologically, NotaryNow notarizes a document. If each product solved "where do files live" on its own, the platform would end up with as many storage implementations, security models, and third-party integrations as it had products — instead of one.</p>
-  <p class="prose">That's why LitBox needed to exist <b>before</b> most of those products launched, not after. Shipping it first meant everything built afterward could assume a shared, owned file layer from day one, instead of retrofitting one in once four or five products already had their own quiet workarounds.</p>
-
-  <div class="cards">
-    <div class="card">
-      <h3>CasePro</h3>
-      <ul><li>Evidence and case files need to be tied to the matter record it manages — LitBox is where that evidence actually lives.</li></ul>
-    </div>
-    <div class="card">
-      <h3>OmnisProof</h3>
-      <ul><li>E-signature needs a document to sign, in place, without a round trip through a downloaded file.</li></ul>
-    </div>
-    <div class="card">
-      <h3>MedChron</h3>
-      <ul><li>Medical chronologies are built from records that need a single, permission-aware source instead of scattered copies.</li></ul>
-    </div>
-    <div class="card">
-      <h3>NotaryNow</h3>
-      <ul><li>Notarization needs the same document trust model as e-signature — one owned layer, not a fourth vendor integration.</li></ul>
-    </div>
-  </div>
-
-  <h3 class="h3" style="margin-top:40px;">My Role</h3>
-  <p class="prose">I led this end to end: framing the three problems above from patterns across the products I'd already worked on, the research that grounded the case for owning storage instead of integrating another vendor, the information architecture and permission model, the full UI system, and the integration points — like the "Import from LitBox" pattern used inside other Omnis AI products — that make LitBox a layer the rest of the ecosystem actually plugs into, not a fourth silo next to the other three.</p>
 </section>
 
 <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
@@ -2756,7 +2828,7 @@ graph LR
 // MINIMAP ENGINE
 (function() {
   var mmSections = [
-    ["overview", "The Problem"],
+    ["overview", "What We're Building"],
     ["opportunity", "Why This, Why First"],
     ["security", "Research & Security"],
     ["competitors", "Competitive Landscape"],
