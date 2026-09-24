@@ -2947,6 +2947,30 @@
             color: #ffffff !important;
         }
 
+        .pg-project-status--amber {
+            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
+        }
+
+        [data-theme="light"] .pg-project-status--amber {
+            background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+            color: #ffffff !important;
+        }
+
+        .pg-project-status--beta {
+            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+        }
+
+        [data-theme="light"] .pg-project-status--beta {
+            background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+            color: #ffffff !important;
+        }
+
         .pg-project-version,
         .pg-project-status--version {
             font-family: var(--font-mono, monospace);
@@ -3140,8 +3164,8 @@
                     </a>
                 </div>
 
-                <!-- 04: THUMBLY CREATOR BENCHMARKER -->
-                <div id="work-thumbly" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
+                <!-- 04: WEB APPS -->
+                <div id="work-webapps" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
                     <div class="group flex h-full flex-col cursor-pointer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
@@ -3151,10 +3175,10 @@
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
                             <div class="card-image-wrap relative aspect-(--asset-ratio) w-full overflow-hidden rounded-none" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
-                                <img alt="Thumbly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/thumbly-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
+                                <img alt="Web Apps" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/thumbly-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Thumbly</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Web Apps</span>
                             </div>
                         </div>
                     </div>
@@ -4163,7 +4187,7 @@
                 <div class="pg-project-card">
                     <div class="pg-project-card__head">
                         <span class="pg-project-name">UIRare</span>
-                        <span class="pg-project-status" style="background: rgba(234, 179, 8, 0.15); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3);">Publish Beta End of Month</span>
+                        <span class="pg-project-status pg-project-status--amber">Publish Beta End of Month</span>
                     </div>
                     <div class="pg-project-tags">Rare UI Component · Figma Component Library · Web Animation</div>
                     <p class="pg-project-desc">A curated directory of rare UI components and a comprehensive Figma component library featuring micro-animated interaction design patterns, spring physics transitions, and tactile UI tokens.</p>
@@ -4176,7 +4200,7 @@
                 <div class="pg-project-card">
                     <div class="pg-project-card__head">
                         <span class="pg-project-name">Cutcliply</span>
-                        <span class="pg-project-status" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">In Beta Testing</span>
+                        <span class="pg-project-status pg-project-status--beta">In Beta Testing</span>
                     </div>
                     <div class="pg-project-tags">Extension + Tools · Clip Cutting · Audio Extraction · Split Video · Screenshot from Video · Highlighted Clips</div>
                     <p class="pg-project-desc">An all-in-one browser extension and web tool for creators: clip cutting, audio extraction, video splitting, taking instant high-res screenshots from video, and generating highlighted video clips without timeline clutter.</p>
