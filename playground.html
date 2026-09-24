@@ -150,10 +150,18 @@
             box-sizing: border-box;
         }
 
-        /* 01: HERO */
+        /* 01: HERO (Wireframe 2-Column Split) */
         .pg-hero {
-            padding: clamp(60px, 8vw, 96px) 0 clamp(28px, 4vw, 40px);
+            padding: clamp(52px, 6.5vw, 84px) 0 clamp(28px, 4vw, 40px);
             text-align: left;
+            display: grid;
+            grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.98fr);
+            align-items: center;
+            gap: clamp(24px, 4vw, 48px);
+            width: 100%;
+        }
+
+        .pg-hero__content {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -173,22 +181,29 @@
 
         .pg-hero__title {
             font-family: var(--font-display, 'Archivo', sans-serif);
-            font-size: clamp(2.3rem, 5vw, 3.8rem);
+            font-size: clamp(2.2rem, 4.4vw, 3.5rem);
             font-weight: 600;
             line-height: 1.1;
             letter-spacing: -0.03em;
             color: #ffffff;
             margin: 0;
-            max-width: 840px;
+            max-width: 640px;
         }
 
         .pg-hero__desc {
             font-family: var(--font-sans, 'Archivo', sans-serif);
-            font-size: clamp(1.05rem, 1.8vw, 1.22rem);
-            line-height: 1.55;
+            font-size: clamp(0.96rem, 1.4vw, 1.08rem);
+            line-height: 1.6;
             color: #9a9a98;
             margin: 0;
-            max-width: 700px;
+            max-width: 560px;
+        }
+
+        .pg-hero__desc p {
+            margin: 0 0 8px 0;
+        }
+        .pg-hero__desc p:last-child {
+            margin-bottom: 0;
         }
 
         [data-theme="light"] .pg-hero__eyebrow {
@@ -201,6 +216,91 @@
 
         [data-theme="light"] .pg-hero__desc {
             color: #52524e;
+        }
+
+        /* HERO RIGHT: GOOGLE STITCH TECHNICAL ILLUSTRATION BOX */
+        .pg-hero__illustration {
+            background: #141414;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .pg-hero__illustration:hover {
+            border-color: rgba(255, 255, 255, 0.22);
+            transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .pg-hero__illustration {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.09);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+        }
+
+        .pg-hero-illu__bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        [data-theme="light"] .pg-hero-illu__bar {
+            border-bottom-color: rgba(0, 0, 0, 0.06);
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .pg-hero-illu__dots {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pg-hero-illu__dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+        .pg-hero-illu__dot--red { background: #ff5f56; }
+        .pg-hero-illu__dot--yellow { background: #ffbd2e; }
+        .pg-hero-illu__dot--green { background: #27c93f; }
+
+        .pg-hero-illu__tag {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #79796f;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pg-hero-illu__badge {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.65rem;
+            padding: 2px 7px;
+            border-radius: 4px;
+            background: rgba(110, 168, 255, 0.12);
+            color: #6ea8ff;
+            border: 1px solid rgba(110, 168, 255, 0.25);
+            font-weight: 600;
+        }
+
+        .pg-hero-illu__body {
+            padding: 20px 24px;
+            position: relative;
+        }
+
+        @media (max-width: 900px) {
+            .pg-hero {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
         }
 
         /* STICKY TAB REDIRECTING BAR (Attached to Left & Right Vertical Rails) */
@@ -325,11 +425,11 @@
         }
 
         /* ============================================================
-           MINIMAL IMAGE-FORWARD BENTO GRID (media + small title/sub only)
+           2-COLUMN BENTO GRID MATCHING WIREFRAME
            ============================================================ */
         .mz-bento-grid {
-            columns: 3;
-            column-gap: 20px;
+            columns: 2;
+            column-gap: 24px;
             margin-bottom: 60px;
             width: 100%;
             box-sizing: border-box;
@@ -337,8 +437,8 @@
 
         .mz-bento-card {
             background: #141414;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -349,7 +449,7 @@
             width: 100%;
             break-inside: avoid;
             -webkit-column-break-inside: avoid;
-            margin: 0 0 20px;
+            margin: 0 0 24px;
             transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
                         border-color 0.28s ease,
                         box-shadow 0.28s ease;
@@ -358,28 +458,22 @@
 
         [data-theme="light"] .mz-bento-card {
             background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.07);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
         }
 
         .mz-bento-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
         }
 
         [data-theme="light"] .mz-bento-card:hover {
-            border-color: rgba(0, 0, 0, 0.14);
-            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.16);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
         }
 
-        @media (max-width: 900px) {
-            .mz-bento-grid {
-                columns: 2;
-            }
-        }
-
-        @media (max-width: 640px) {
+        @media (max-width: 720px) {
             .mz-bento-grid {
                 columns: 1;
                 column-gap: 16px;
@@ -389,11 +483,27 @@
             }
         }
 
-        /* Media: fills almost the whole card */
+        /* Card 1: Soft Blue Accent Tint as marked in wireframe */
+        .mz-bento-card--tinted {
+            border-color: rgba(110, 168, 255, 0.25);
+        }
+        .mz-bento-card--tinted .mz-bento-media {
+            background: linear-gradient(135deg, rgba(16, 32, 60, 0.85) 0%, rgba(10, 20, 38, 0.95) 100%) !important;
+            border-bottom: 1px solid rgba(110, 168, 255, 0.2);
+        }
+        [data-theme="light"] .mz-bento-card--tinted {
+            border-color: rgba(47, 109, 240, 0.25);
+        }
+        [data-theme="light"] .mz-bento-card--tinted .mz-bento-media {
+            background: linear-gradient(135deg, #e7f1fd 0%, #d6e7fa 100%) !important;
+            border-bottom: 1px solid rgba(47, 109, 240, 0.14);
+        }
+
+        /* Media: fills top of each card */
         .mz-bento-media {
             position: relative;
             width: 100%;
-            aspect-ratio: 16 / 11;
+            aspect-ratio: 16 / 10;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.35);
             flex-shrink: 0;
@@ -401,11 +511,14 @@
         [data-theme="light"] .mz-bento-media {
             background: #f4f3ef;
         }
+        .mz-bento-media--tall {
+            aspect-ratio: 16 / 12.5;
+        }
         .mz-bento-media img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
+            object-fit: cover;
+            object-position: center top;
             display: block;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -413,158 +526,136 @@
             transform: scale(1.02);
         }
 
-        /* Body: kicker + title + one-line subheading, nothing else */
+        /* Body: Tag + Title + Description + Live Link Button */
         .mz-bento-body {
-            padding: 18px 20px 20px;
+            padding: 20px 22px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        .mz-bento-kick {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .mz-bento-tag {
+            align-self: flex-start;
             font-family: var(--font-mono, monospace);
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #79796f;
-            margin: 0 0 7px 0;
-        }
-        [data-theme="light"] .mz-bento-kick {
-            color: #9a9a94;
-        }
-        .mz-bento-kick::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: currentColor;
-            opacity: 0.55;
-            flex-shrink: 0;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8c8c88;
+            margin-bottom: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        /* Category accent colors — quick visual scanning across the bento */
-        [data-category="ai"] .mz-bento-kick { color: #a5b4fc; }
-        [data-category="extensions"] .mz-bento-kick { color: #7dd3fc; }
-        [data-category="tools"] .mz-bento-kick { color: #86efac; }
-        [data-category="systems"] .mz-bento-kick { color: #fcd34d; }
-        [data-theme="light"] [data-category="ai"] .mz-bento-kick { color: #6366f1; }
-        [data-theme="light"] [data-category="extensions"] .mz-bento-kick { color: #0284c7; }
-        [data-theme="light"] [data-category="tools"] .mz-bento-kick { color: #16a34a; }
-        [data-theme="light"] [data-category="systems"] .mz-bento-kick { color: #b45309; }
+        [data-theme="light"] .mz-bento-tag {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.08);
+            color: #5c5c56;
+        }
+
+        /* Category accent colors for tags */
+        [data-category="ai"] .mz-bento-tag {
+            color: #a5b4fc;
+            border-color: rgba(165, 180, 252, 0.25);
+            background: rgba(165, 180, 252, 0.08);
+        }
+        [data-category="extensions"] .mz-bento-tag {
+            color: #7dd3fc;
+            border-color: rgba(125, 211, 252, 0.25);
+            background: rgba(125, 211, 252, 0.08);
+        }
+        [data-category="tools"] .mz-bento-tag {
+            color: #86efac;
+            border-color: rgba(134, 239, 172, 0.25);
+            background: rgba(134, 239, 172, 0.08);
+        }
+        [data-category="systems"] .mz-bento-tag {
+            color: #fcd34d;
+            border-color: rgba(252, 211, 77, 0.25);
+            background: rgba(252, 211, 77, 0.08);
+        }
 
         .mz-bento-title {
             font-family: var(--font-display, 'Archivo', sans-serif);
-            font-size: 1.08rem;
+            font-size: 1.15rem;
             font-weight: 700;
-            color: #f4f2ed;
-            margin: 0 0 5px 0;
-            line-height: 1.3;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.25;
             letter-spacing: -0.01em;
-            display: flex;
-            align-items: center;
-            gap: 7px;
         }
+
         [data-theme="light"] .mz-bento-title {
             color: #111111;
         }
-        .mz-bento-title::after {
-            content: "→";
-            opacity: 0;
-            transform: translateX(-4px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            color: #a1a19a;
-        }
-        .mz-bento-card:hover .mz-bento-title::after {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .mz-bento-card--row-2 .mz-bento-title::after {
-            display: none;
-        }
 
-        /* Category accent: soft top border on each card */
-        .mz-bento-card {
-            border-top: 3px solid transparent;
-        }
-        [data-category="ai"] { border-top-color: #818cf8; }
-        [data-category="extensions"] { border-top-color: #38bdf8; }
-        [data-category="tools"] { border-top-color: #4ade80; }
-        [data-category="systems"] { border-top-color: #fbbf24; }
-
-        /* Featured hero card: full-width split banner above the masonry */
-        .mz-bento-card--row-2 {
-            column-span: all;
-            flex-direction: row;
-            align-items: stretch;
-            margin-bottom: 28px;
-        }
-        .mz-bento-card--row-2 .mz-bento-media {
-            width: 56%;
-            flex-shrink: 0;
-        }
-        .mz-bento-card--row-2 .mz-bento-body {
-            flex: 1;
+        .mz-bento-desc-row {
             display: flex;
-            flex-direction: column;
-            padding: 36px 44px;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 14px;
+            margin-top: 4px;
         }
-        .mz-bento-body__spacer {
-            flex: 0 0 auto;
-            height: clamp(48px, 20%, 130px);
-        }
-        .mz-bento-card--row-2 .mz-bento-title {
-            font-size: 1.7rem;
-        }
-        .mz-bento-card--row-2 .mz-bento-sub {
-            font-size: 0.98rem;
-            -webkit-line-clamp: 4;
-        }
-        .mz-bento-cta {
-            margin-top: auto;
-            align-self: flex-end;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 11px 20px;
-            border-radius: 999px;
+
+        .mz-bento-desc {
             font-family: var(--font-sans, 'Archivo', sans-serif);
             font-size: 0.85rem;
+            color: #8c8c88;
+            margin: 0;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        [data-theme="light"] .mz-bento-desc {
+            color: #6a6a64;
+        }
+
+        .mz-bento-live-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 13px;
+            border-radius: 999px;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.72rem;
             font-weight: 600;
-            background: #f4f2ed;
-            color: #0f0f0f;
-            transition: transform 0.2s ease, background 0.2s ease;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #f4f2ed;
+            white-space: nowrap;
+            flex-shrink: 0;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .mz-bento-card--row-2:hover .mz-bento-cta {
+
+        .mz-bento-card:hover .mz-bento-live-btn {
             background: #ffffff;
-            transform: translateY(-2px);
+            color: #0f0f0f;
+            border-color: #ffffff;
+            transform: translateY(-1px);
         }
-        [data-theme="light"] .mz-bento-cta {
+
+        [data-theme="light"] .mz-bento-live-btn {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #111111;
+        }
+
+        [data-theme="light"] .mz-bento-card:hover .mz-bento-live-btn {
             background: #111111;
             color: #ffffff;
-        }
-        [data-theme="light"] .mz-bento-card--row-2:hover .mz-bento-cta {
-            background: #27272a;
-        }
-        @media (max-width: 780px) {
-            .mz-bento-card--row-2 {
-                flex-direction: column;
-            }
-            .mz-bento-card--row-2 .mz-bento-media {
-                width: 100%;
-            }
-            .mz-bento-card--row-2 .mz-bento-body {
-                padding: 20px;
-            }
-            .mz-bento-body__spacer {
-                height: clamp(20px, 8%, 40px);
-            }
-            .mz-bento-card--row-2 .mz-bento-title {
-                font-size: 1.3rem;
-            }
-            .mz-bento-cta {
-                margin-top: 16px;
-            }
+            border-color: #111111;
         }
 
         .mz-bento-sub {
@@ -3024,11 +3115,93 @@
     <main id="main" class="w-full">
         <div class="pg-wrap">
 
-            <!-- ==================== HERO ==================== -->
+            <!-- ==================== HERO (2-COLUMN SPLIT WITH WIREFRAME ILLUSTRATION) ==================== -->
             <section class="pg-hero" aria-labelledby="pgHeroTitle">
-                <span class="pg-hero__eyebrow">PLAYGROUND</span>
-                <h1 class="pg-hero__title" id="pgHeroTitle">What I build outside the day job.</h1>
-                <p class="pg-hero__desc">Experiments, tools, and ideas I explore when I want to learn by building.</p>
+                <div class="pg-hero__content">
+                    <span class="pg-hero__eyebrow">PLAYGROUND</span>
+                    <h1 class="pg-hero__title" id="pgHeroTitle">Side Projects I Designed &amp; Built</h1>
+                    <div class="pg-hero__desc">
+                        <p>A collection of personal ventures and experiments exploring new technologies and frameworks.</p>
+                        <p>From concepts to complete applications focusing on user experience, high craft, and design excellence.</p>
+                    </div>
+                </div>
+
+                <!-- Google Stitch Technical Illustration Component -->
+                <div class="pg-hero__illustration" aria-label="Interactive design & architecture illustration">
+                    <div class="pg-hero-illu__bar">
+                        <div class="pg-hero-illu__dots">
+                            <span class="pg-hero-illu__dot pg-hero-illu__dot--red"></span>
+                            <span class="pg-hero-illu__dot pg-hero-illu__dot--yellow"></span>
+                            <span class="pg-hero-illu__dot pg-hero-illu__dot--green"></span>
+                        </div>
+                        <span class="pg-hero-illu__tag">stitch.canvas · v2.4</span>
+                        <span class="pg-hero-illu__badge">● LIVE NODES</span>
+                    </div>
+                    <div class="pg-hero-illu__body">
+                        <svg viewBox="0 0 460 230" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block;">
+                            <!-- Isometric Grid Base Lines -->
+                            <defs>
+                                <linearGradient id="illu-line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#6ea8ff" stop-opacity="0.8" />
+                                    <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0.3" />
+                                </linearGradient>
+                                <linearGradient id="illu-box-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#1f293d" stop-opacity="0.9" />
+                                    <stop offset="100%" stop-color="#111827" stop-opacity="0.95" />
+                                </linearGradient>
+                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                </filter>
+                            </defs>
+
+                            <!-- Background Isometric Grid -->
+                            <path d="M40 165 L230 65 L420 165 L230 220 Z" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="rgba(255,255,255,0.015)" />
+                            <path d="M80 150 L230 72 L380 150 L230 205 Z" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 3" />
+                            <line x1="230" y1="65" x2="230" y2="220" stroke="rgba(255,255,255,0.07)" stroke-dasharray="2 2" />
+
+                            <!-- Active Connecting Pulse Cables -->
+                            <path d="M95 125 L165 160 L230 130 L295 160 L365 125" stroke="url(#illu-line-grad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)" />
+                            <path d="M230 130 L230 60" stroke="#6ea8ff" stroke-width="2" stroke-dasharray="4 4" filter="url(#glow)" />
+
+                            <!-- Center Stage Isometric Core Box -->
+                            <g transform="translate(195, 68)">
+                                <!-- Top Face -->
+                                <polygon points="35,0 70,18 35,36 0,18" fill="#253a5e" stroke="#6ea8ff" stroke-width="1.2" />
+                                <!-- Left Face -->
+                                <polygon points="0,18 35,36 35,70 0,52" fill="#142138" stroke="rgba(110,168,255,0.5)" stroke-width="1.2" />
+                                <!-- Right Face -->
+                                <polygon points="35,36 70,18 70,52 35,70" fill="#182742" stroke="rgba(110,168,255,0.5)" stroke-width="1.2" />
+                                <!-- Glowing Core Symbol inside -->
+                                <circle cx="35" cy="18" r="4.5" fill="#6ea8ff" filter="url(#glow)" />
+                            </g>
+
+                            <!-- Left Satellite Node (AI Agent / Prompt) -->
+                            <g transform="translate(48, 90)">
+                                <rect x="0" y="0" width="105" height="40" rx="8" fill="url(#illu-box-grad)" stroke="rgba(165,180,252,0.35)" stroke-width="1" />
+                                <circle cx="15" cy="17" r="4" fill="#a5b4fc" />
+                                <text x="26" y="16" fill="#f4f2ed" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">agent.prompt()</text>
+                                <text x="26" y="28" fill="#8c8c88" font-family="'Inter', sans-serif" font-size="7.5">Claude 3.7 Sonnet</text>
+                            </g>
+
+                            <!-- Right Satellite Node (Design Token / Live Output) -->
+                            <g transform="translate(305, 90)">
+                                <rect x="0" y="0" width="108" height="40" rx="8" fill="url(#illu-box-grad)" stroke="rgba(110,168,255,0.35)" stroke-width="1" />
+                                <circle cx="15" cy="17" r="4" fill="#6ea8ff" />
+                                <text x="26" y="16" fill="#f4f2ed" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700">tokens.compile()</text>
+                                <text x="26" y="28" fill="#8c8c88" font-family="'Inter', sans-serif" font-size="7.5">Zero-runtime CSS</text>
+                            </g>
+
+                            <!-- Bottom Floating Micro HUD -->
+                            <g transform="translate(145, 178)">
+                                <rect x="0" y="0" width="170" height="28" rx="6" fill="#0f0f0f" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+                                <circle cx="14" cy="14" r="3" fill="#27c93f" />
+                                <text x="24" y="18" fill="#e5e5e0" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="600">STATE: 10 APPS SHIPPED</text>
+                                <text x="142" y="18" fill="#6ea8ff" font-family="'JetBrains Mono', monospace" font-size="9">99.8%</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
             </section>
 
             <!-- ==================== BENTO CATEGORY FILTER TABS ==================== -->
@@ -3052,128 +3225,156 @@
                 </div>
             </nav>
 
-            <!-- ==================== MODERN BENTO GRID ==================== -->
+            <!-- ==================== 2-COLUMN WIREFRAME BENTO GRID ==================== -->
             <div class="mz-bento-grid" id="playgroundBento">
 
-                <!-- 01: AI UX AUDIT ASSISTANT (featured) -->
-                <a href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener noreferrer" class="mz-bento-card mz-bento-card--row-2" data-category="ai">
+                <!-- 01: AI UX AUDIT ASSISTANT (Wireframe Card 1 with soft blue tint) -->
+                <a href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener noreferrer" class="mz-bento-card mz-bento-card--tinted" data-category="ai">
                     <div class="mz-bento-media" style="aspect-ratio: 1920 / 1296;">
                         <img loading="lazy" src="assets/images/ux%20audit%20assistant_cover.webp" alt="AI UX Audit Assistant Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <div class="mz-bento-body__spacer" aria-hidden="true"></div>
-                        <span class="mz-bento-kick">AI Agent</span>
+                        <span class="mz-bento-tag">AI Agent</span>
                         <h2 class="mz-bento-title">AI UX Audit Assistant</h2>
-                        <p class="mz-bento-sub">Claude-powered accessibility &amp; heuristics scanner for live products.</p>
-                        <span class="mz-bento-cta">View on GitHub <span aria-hidden="true">↗</span></span>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Claude-powered accessibility &amp; heuristics scanner for live product interfaces.</p>
+                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </a>
 
-                <!-- 02: CATCHLY CHROME EXTENSION (4 cols) -->
+                <!-- 02: CATCHLY CHROME EXTENSION (Wireframe Card 2) -->
                 <a href="https://chromewebstore.google.com/detail/catchly-capture-share-ins/lpfecjledmppaejhicjffebpfdmpfofa" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="extensions">
-                    <div class="mz-bento-media" style="aspect-ratio: 1920 / 1296;">
+                    <div class="mz-bento-media mz-bento-media--tall" style="aspect-ratio: 1920 / 1296;">
                         <img loading="lazy" src="assets/images/catchly-cover.webp" alt="Catchly Visual QA Bug Logger Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Extension</span>
+                        <span class="mz-bento-tag">Extension</span>
                         <h3 class="mz-bento-title">Catchly</h3>
-                        <p class="mz-bento-sub">Visual QA bug logger with one-click Slack &amp; Linear export.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Visual QA bug logger with one-click screenshot capture and Slack/Linear export.</p>
+                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </a>
 
-                <!-- 03: GOFULLY CHROME EXTENSION (4 cols) -->
+                <!-- 03: GOFULLY CHROME EXTENSION (Wireframe Card 3) -->
                 <a href="https://chromewebstore.google.com/detail/go-fully-full-page-screen/gogloimfplnkfpckflkpekmepddbofde" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="extensions">
-                    <div class="mz-bento-media" style="aspect-ratio: 1100 / 782;">
+                    <div class="mz-bento-media mz-bento-media--tall" style="aspect-ratio: 1100 / 782;">
                         <img loading="lazy" src="assets/images/pg-2.webp" alt="GoFully Viewport Stitcher placeholder visual" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Extension</span>
+                        <span class="mz-bento-tag">Extension</span>
                         <h3 class="mz-bento-title">GoFully</h3>
-                        <p class="mz-bento-sub">Full-page viewport stitcher across desktop, tablet &amp; mobile.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Full-page viewport stitcher across desktop, tablet, and mobile in one click.</p>
+                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </a>
 
-                <!-- 04: THUMBLY CREATOR BENCHMARKER (4 cols) -->
+                <!-- 04: THUMBLY CREATOR BENCHMARKER (Wireframe Card 4) -->
                 <article class="mz-bento-card" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
                     <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
                         <img loading="lazy" src="assets/images/web.webp" alt="Thumbly YouTube Feed Benchmarker" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Web Tool</span>
+                        <span class="mz-bento-tag">Web Tool</span>
                         <h3 class="mz-bento-title">Thumbly</h3>
-                        <p class="mz-bento-sub">Simulates YouTube feeds to benchmark thumbnail CTR.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Simulates YouTube feeds to benchmark thumbnail CTR and visual hierarchy.</p>
+                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </article>
 
-                <!-- 05: GULORA OKLCH COLOR ENGINE (4 cols) -->
+                <!-- 05: GULORA OKLCH COLOR ENGINE -->
                 <article class="mz-bento-card" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
                     <div class="mz-bento-media" style="aspect-ratio: 1100 / 825;">
                         <img loading="lazy" src="assets/images/pg-3.webp" alt="Gulora Color Engine placeholder visual" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Color Engine</span>
+                        <span class="mz-bento-tag">Color Engine</span>
                         <h3 class="mz-bento-title">Gulora</h3>
-                        <p class="mz-bento-sub">OKLCH palette generator with live APCA/WCAG contrast checks.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">OKLCH palette generator with live APCA and WCAG 2.2 contrast compliance checks.</p>
+                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </article>
 
-                <!-- 06: BLOBBY FIGMA PLUGIN (4 cols) -->
+                <!-- 06: BLOBBY FIGMA PLUGIN -->
                 <a href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="systems">
                     <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
                         <img loading="lazy" src="assets/images/blobby-plugin.webp" alt="Blobby Figma Plugin Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Figma Plugin</span>
+                        <span class="mz-bento-tag">Figma Plugin</span>
                         <h3 class="mz-bento-title">Blobby</h3>
-                        <p class="mz-bento-sub">Organic, editable SVG blob generator for Figma.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Organic, editable vector SVG blob generator with custom mathematical curves.</p>
+                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </a>
 
-                <!-- 07: TOOLTIPS & TOASTS UI KIT (6 cols) -->
+                <!-- 07: TOOLTIPS & TOASTS UI KIT -->
                 <a href="https://www.figma.com/community/file/1535935401113364323/tooltips-toastssnackbar" target="_blank" rel="noopener noreferrer" class="mz-bento-card" data-category="systems">
                     <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
                         <img loading="lazy" src="assets/images/ui-kits.webp" alt="Tooltips, Toasts & Snackbar Component Kit Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Figma Kit</span>
-                        <h3 class="mz-bento-title">Tooltips, Toasts &amp; Snackbars</h3>
-                        <p class="mz-bento-sub">Free component kit with full interactive states.</p>
+                        <span class="mz-bento-tag">Figma Kit</span>
+                        <h3 class="mz-bento-title">Tooltips &amp; Snackbars</h3>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Free component kit with micro-copy guidelines and full interactive state matrices.</p>
+                            <span class="mz-bento-live-btn">Live link <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </a>
 
-                <!-- 08: MOBILE GESTURE & INTERACTION LAB (6 cols) -->
+                <!-- 08: MOBILE GESTURE & INTERACTION LAB -->
                 <article class="mz-bento-card" data-category="tools" data-modal-target="modal-build-apps" role="button" tabindex="0">
                     <div class="mz-bento-media" style="aspect-ratio: 2192 / 1392;">
                         <img loading="lazy" src="assets/images/app.webp" alt="Mobile Gesture Lab Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Prototypes</span>
+                        <span class="mz-bento-tag">Prototypes</span>
                         <h3 class="mz-bento-title">Mobile Gesture Lab</h3>
-                        <p class="mz-bento-sub">Fluid drag physics &amp; haptic-synced micro-interactions.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Fluid drag physics, swipe-to-dismiss dynamics, and haptic-synced micro-interactions.</p>
+                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </article>
 
-                <!-- 09: CLAUDE SKILLS & MCP ENGINE (6 cols) -->
+                <!-- 09: CLAUDE SKILLS & MCP ENGINE -->
                 <article class="mz-bento-card" data-category="ai" data-modal-target="modal-claude-skills" role="button" tabindex="0">
                     <div class="mz-bento-media" style="aspect-ratio: 1920 / 1296;">
                         <img loading="lazy" src="assets/images/forge-skill.webp" alt="Claude Skills & MCP Workflow Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">AI Architecture</span>
+                        <span class="mz-bento-tag">AI Architecture</span>
                         <h3 class="mz-bento-title">Claude Skills &amp; MCP</h3>
-                        <p class="mz-bento-sub">Declarative agent skills for design-system automation.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">Declarative agent skills and model context protocol workflows for design systems.</p>
+                            <span class="mz-bento-live-btn">Live demo <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </article>
 
-                <!-- 10: OMNIS DESIGN SYSTEM (6 cols) -->
+                <!-- 10: OMNIS DESIGN SYSTEM -->
                 <a href="best-work.html" class="mz-bento-card" data-category="systems">
                     <div class="mz-bento-media" style="aspect-ratio: 4096 / 3072;">
                         <img loading="lazy" src="assets/images/best-work/bw_image%2038(component%20design).webp" alt="Omnis AI Design System Preview" decoding="async">
                     </div>
                     <div class="mz-bento-body">
-                        <span class="mz-bento-kick">Design System</span>
+                        <span class="mz-bento-tag">Design System</span>
                         <h3 class="mz-bento-title">Omnis AI Design System</h3>
-                        <p class="mz-bento-sub">60+ components scaling consistent UI across 8 products.</p>
+                        <div class="mz-bento-desc-row">
+                            <p class="mz-bento-desc">60+ accessible components scaling consistent UI across 8 production products.</p>
+                            <span class="mz-bento-live-btn">Case study <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M7 7H17V17"/></svg></span>
+                        </div>
                     </div>
                 </a>
 
