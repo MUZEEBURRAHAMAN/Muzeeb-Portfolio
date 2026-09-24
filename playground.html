@@ -336,30 +336,91 @@
         }
 
         /* ============================================================
-           PLAYGROUND CARD GRID (2-Column Flex, ZERO BOX SHADOW)
+           PLAYGROUND CARD GRID (2-Column Grid, ZERO BOX SHADOW)
            ============================================================ */
         .mz-bento-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px 24px;
-            margin-bottom: 60px;
-            width: 100%;
-            box-sizing: border-box;
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 40px 24px !important;
+            margin-bottom: 60px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
 
-        /* Width classes matching template */
-        .w-full {
-            width: 100%;
-        }
-        @media (min-width: 768px) {
-            .md\:w-\[calc\(\(100\%-24px\)\/2\)\] {
-                width: calc((100% - 24px) / 2) !important;
+        @media (max-width: 768px) {
+            .mz-bento-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
             }
         }
 
-        /* bg-card and text-foreground tokens */
+        /* Base card element & Zero shadow rules */
+        .mz-bento-card {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            background: transparent !important;
+            border: none !important;
+            text-decoration: none !important;
+            color: inherit !important;
+            cursor: pointer !important;
+            box-sizing: border-box !important;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            box-shadow: none !important;
+        }
+
+        .mz-bento-card,
+        .mz-bento-card * {
+            box-shadow: none !important;
+        }
+
+        .mz-bento-card:hover {
+            transform: translateY(-4px) !important;
+        }
+
+        /* Support for template Tailwind utilities */
+        .w-full { width: 100% !important; }
+        .h-full { height: 100% !important; }
+        .flex { display: flex !important; }
+        .flex-col { flex-direction: column !important; }
+        .flex-wrap { flex-wrap: wrap !important; }
+        .items-center { align-items: center !important; }
+        .items-start { align-items: flex-start !important; }
+        .justify-center { justify-content: center !important; }
+        .relative { position: relative !important; }
+        .absolute { position: absolute !important; }
+        .inset-0 { top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important; inset: 0 !important; }
+        .size-full { width: 100% !important; height: 100% !important; }
+        .object-cover { object-fit: cover !important; }
+        .overflow-hidden { overflow: hidden !important; }
+        .block { display: block !important; }
+        .uppercase { text-transform: uppercase !important; }
+        .font-bold { font-weight: 700 !important; }
+
+        /* Arbitrary padding & spacing classes from user template */
+        .px-\[32px\] { padding-left: 32px !important; padding-right: 32px !important; }
+        .gap-\[4\.5px\] { gap: 4.5px !important; }
+        .px-\[12px\] { padding-left: 12px !important; padding-right: 12px !important; }
+        .py-\[7\.5px\] { padding-top: 7.5px !important; padding-bottom: 7.5px !important; }
+        .text-\[10\.5px\] { font-size: 10.5px !important; }
+        .leading-\[10\.5px\] { line-height: 10.5px !important; }
+        .rounded-t-\[12px\] { border-radius: 12px 12px 0 0 !important; }
+        .rounded-\[24px\] { border-radius: 24px !important; }
+        .p-1\.5 { padding: 6px !important; }
+        .rounded-\[18px\] { border-radius: 18px !important; }
+        .bottom-0 { bottom: 0 !important; }
+        .left-1\.5 { left: 6px !important; }
+        .rounded-tr-\[24px\] { border-top-right-radius: 24px !important; }
+        .px-\[28px\] { padding-left: 28px !important; padding-right: 28px !important; }
+        .pt-\[9px\] { padding-top: 9px !important; }
+        .pb-\[15px\] { padding-bottom: 15px !important; }
+        .text-\[16px\] { font-size: 16px !important; }
+        .leading-\[24px\] { line-height: 24px !important; }
+        .tracking-\[-0\.03em\] { letter-spacing: -0.03em !important; }
+
+        /* Theme tokens */
         .bg-card {
-            background-color: #171717;
+            background-color: #171717 !important;
             transition: background-color 0.2s ease;
         }
         [data-theme="light"] .bg-card,
@@ -368,107 +429,111 @@
         }
 
         .text-foreground {
-            color: #f4f2ed;
+            color: #f4f2ed !important;
         }
         [data-theme="light"] .text-foreground,
         html[data-theme="light"] .text-foreground {
             color: #17170f !important;
         }
 
-        /* ZERO SHADOW on card elements */
-        .mz-bento-card,
-        .mz-bento-card * {
-            box-shadow: none !important;
-        }
-
-        .mz-bento-card {
-            background: transparent !important;
-            border: none !important;
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-            box-sizing: border-box;
-            transition: transform 0.25s ease;
-        }
-
-        .mz-bento-card:hover {
-            transform: translateY(-3px);
-        }
-
         /* Top Folder Tabs */
         .mz-bento-card .rounded-t-\[12px\] {
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
             border-bottom: none !important;
             letter-spacing: 0.06em;
             font-family: var(--font-mono, monospace);
             transition: border-color 0.2s ease, background-color 0.2s ease;
         }
         [data-theme="light"] .mz-bento-card .rounded-t-\[12px\] {
-            border-color: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.08) !important;
         }
         .mz-bento-card:hover .rounded-t-\[12px\] {
-            border-color: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.22) !important;
         }
         [data-theme="light"] .mz-bento-card:hover .rounded-t-\[12px\] {
-            border-color: rgba(0, 0, 0, 0.18);
+            border-color: rgba(0, 0, 0, 0.18) !important;
         }
 
         /* Card Outer Shell */
         .mz-bento-card .rounded-\[24px\] {
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
             transition: border-color 0.25s ease;
+            position: relative !important;
+            overflow: hidden !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
         }
         [data-theme="light"] .mz-bento-card .rounded-\[24px\] {
-            border-color: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.08) !important;
         }
         .mz-bento-card:hover .rounded-\[24px\] {
-            border-color: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.22) !important;
         }
         [data-theme="light"] .mz-bento-card:hover .rounded-\[24px\] {
-            border-color: rgba(0, 0, 0, 0.18);
+            border-color: rgba(0, 0, 0, 0.18) !important;
         }
 
-        /* Inner Image Canvas */
-        .mz-bento-card .rounded-\[18px\] {
-            background-color: #0d0d0d;
+        /* Inner Image Canvas: Enforce 2880 / 2070 aspect ratio with real height */
+        .mz-bento-card .rounded-\[18px\],
+        .mz-bento-card [style*="--asset-ratio"] {
+            aspect-ratio: 2880 / 2070 !important;
+            width: 100% !important;
+            position: relative !important;
+            display: block !important;
+            background-color: #0d0d0d !important;
+            overflow: hidden !important;
+            border-radius: 18px !important;
         }
-        [data-theme="light"] .mz-bento-card .rounded-\[18px\] {
-            background-color: #e5e3de;
+        [data-theme="light"] .mz-bento-card .rounded-\[18px\],
+        [data-theme="light"] .mz-bento-card [style*="--asset-ratio"] {
+            background-color: #e5e3de !important;
         }
 
-        /* Image hover transition */
+        /* Image sizing & hover transition */
         .mz-bento-card img {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            object-fit: cover !important;
+            display: block !important;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .mz-bento-card:hover img {
-            transform: scale(1.04);
+            transform: scale(1.04) !important;
         }
 
         /* Bottom Left Docked Title Tab */
         .mz-bento-card .rounded-tr-\[24px\] {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 6px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
             transition: border-color 0.25s ease;
+            z-index: 2 !important;
         }
         [data-theme="light"] .mz-bento-card .rounded-tr-\[24px\] {
-            border-top-color: rgba(0, 0, 0, 0.08);
-            border-right-color: rgba(0, 0, 0, 0.08);
+            border-top-color: rgba(0, 0, 0, 0.08) !important;
+            border-right-color: rgba(0, 0, 0, 0.08) !important;
         }
         .mz-bento-card:hover .rounded-tr-\[24px\] {
-            border-top-color: rgba(255, 255, 255, 0.22);
-            border-right-color: rgba(255, 255, 255, 0.22);
+            border-top-color: rgba(255, 255, 255, 0.22) !important;
+            border-right-color: rgba(255, 255, 255, 0.22) !important;
         }
         [data-theme="light"] .mz-bento-card:hover .rounded-tr-\[24px\] {
-            border-top-color: rgba(0, 0, 0, 0.18);
-            border-right-color: rgba(0, 0, 0, 0.18);
+            border-top-color: rgba(0, 0, 0, 0.18) !important;
+            border-right-color: rgba(0, 0, 0, 0.18) !important;
         }
 
         .mz-bento-card .rounded-tr-\[24px\] span {
             font-family: var(--font-display, 'Archivo', sans-serif);
-            color: #ffffff;
+            color: #ffffff !important;
         }
         [data-theme="light"] .mz-bento-card .rounded-tr-\[24px\] span {
-            color: #111111;
+            color: #111111 !important;
         }
 
         .mz-bento-card.is-hidden {
@@ -2976,8 +3041,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="AI UX Audit Assistant" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ux%20audit%20assistant_cover.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="AI UX Audit Assistant" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ux-audit-assistant-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">AI UX Audit Assistant</span>
@@ -2996,8 +3061,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Catchly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/catchly-cover.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Catchly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/catchly-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Catchly</span>
@@ -3016,8 +3081,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="GoFully" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-2.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="GoFully" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-2.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">GoFully</span>
@@ -3036,8 +3101,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Thumbly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/web.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Thumbly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-1.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Thumbly</span>
@@ -3056,8 +3121,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Gulora" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-3.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Gulora" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-3.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Gulora</span>
@@ -3076,8 +3141,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Blobby" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/blobby-plugin.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Blobby" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/blobby-plugin.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Blobby</span>
@@ -3096,8 +3161,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Tooltips &amp; Snackbars" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ui-kits.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Tooltips &amp; Snackbars" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ui-kits.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Tooltips &amp; Snackbars</span>
@@ -3116,8 +3181,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Mobile Gesture Lab" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/app.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Mobile Gesture Lab" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/app.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Mobile Gesture Lab</span>
@@ -3136,8 +3201,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Claude Skills &amp; MCP" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/forge-skill.webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Claude Skills &amp; MCP" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/forge-skill.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Claude Skills &amp; MCP</span>
@@ -3156,8 +3221,8 @@
                             </div>
                         </div>
                         <div class="bg-card relative overflow-hidden rounded-[24px] p-1.5">
-                            <div class="relative w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070;">
-                                <img alt="Omnis AI Design System" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/best-work/bw_image%2038(component%20design).webp">
+                            <div class="relative aspect-(--asset-ratio) w-full overflow-hidden rounded-[18px]" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Omnis AI Design System" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-5.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card absolute bottom-0 left-1.5 rounded-tr-[24px] px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Omnis AI Design System</span>
