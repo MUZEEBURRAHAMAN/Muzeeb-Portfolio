@@ -456,27 +456,40 @@
             color: #17170f !important;
         }
 
-        /* Top Folder Tabs - Zero Radius */
-        .mz-bento-card .rounded-t-\[12px\],
-        .mz-bento-card .folder-tab-badge {
-            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        /* Top Folder Tabs - High Contrast Inverted Theme Fill (White on Dark, Dark on White) */
+        .mz-bento-card .folder-tab-badge,
+        .mz-bento-card .rounded-t-\[12px\] {
+            background-color: #ffffff !important;
+            color: #0c0c0c !important;
+            border: 1px solid #ffffff !important;
             border-bottom: none !important;
             border-radius: 0 !important;
             letter-spacing: 0.06em;
             font-family: var(--font-mono, monospace);
-            transition: border-color 0.2s ease, background-color 0.2s ease;
+            font-weight: 700 !important;
+            transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
         }
+        .mz-bento-card:hover .folder-tab-badge,
+        .mz-bento-card:hover .rounded-t-\[12px\] {
+            background-color: #ededed !important;
+            border-color: #ededed !important;
+            color: #000000 !important;
+        }
+        [data-theme="light"] .mz-bento-card .folder-tab-badge,
+        html[data-theme="light"] .mz-bento-card .folder-tab-badge,
         [data-theme="light"] .mz-bento-card .rounded-t-\[12px\],
-        [data-theme="light"] .mz-bento-card .folder-tab-badge {
-            border-color: rgba(0, 0, 0, 0.08) !important;
+        html[data-theme="light"] .mz-bento-card .rounded-t-\[12px\] {
+            background-color: #111111 !important;
+            color: #ffffff !important;
+            border-color: #111111 !important;
         }
-        .mz-bento-card:hover .rounded-t-\[12px\],
-        .mz-bento-card:hover .folder-tab-badge {
-            border-color: rgba(255, 255, 255, 0.22) !important;
-        }
+        [data-theme="light"] .mz-bento-card:hover .folder-tab-badge,
+        html[data-theme="light"] .mz-bento-card:hover .folder-tab-badge,
         [data-theme="light"] .mz-bento-card:hover .rounded-t-\[12px\],
-        [data-theme="light"] .mz-bento-card:hover .folder-tab-badge {
-            border-color: rgba(0, 0, 0, 0.18) !important;
+        html[data-theme="light"] .mz-bento-card:hover .rounded-t-\[12px\] {
+            background-color: #262626 !important;
+            border-color: #262626 !important;
+            color: #ffffff !important;
         }
 
         /* Card Outer Shell - Zero Radius */
@@ -3047,7 +3060,7 @@
             <nav class="pg-tabs-bar" aria-label="Filter playground collection">
                 <div class="pg-tabs">
                     <button type="button" class="pg-tab-btn active" data-filter="all">
-                        <span>All Works <span class="pg-tab-count">(10)</span></span>
+                        <span>All Works <span class="pg-tab-count">(11)</span></span>
                     </button>
                     <button type="button" class="pg-tab-btn" data-filter="ai">
                         <span>AI &amp; Agents <span class="pg-tab-count">(2)</span></span>
@@ -3056,7 +3069,7 @@
                         <span>Chrome Extensions <span class="pg-tab-count">(2)</span></span>
                     </button>
                     <button type="button" class="pg-tab-btn" data-filter="tools">
-                        <span>Web Apps &amp; Tools <span class="pg-tab-count">(2)</span></span>
+                        <span>Web Apps &amp; Tools <span class="pg-tab-count">(3)</span></span>
                     </button>
                     <button type="button" class="pg-tab-btn" data-filter="systems">
                         <span>Figma &amp; Systems <span class="pg-tab-count">(4)</span></span>
@@ -3072,8 +3085,8 @@
                     <a class="group flex h-full flex-col" href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener noreferrer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">AI Agent</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Accessibility</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">AI Agent</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Accessibility</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3092,8 +3105,8 @@
                     <a class="group flex h-full flex-col" href="https://chromewebstore.google.com/detail/catchly/ogfdfheefhnmgkafcahpelmcofmgcobk?authuser=0&hl=en" target="_blank" rel="noopener noreferrer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Chrome Extension</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Visual QA</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Chrome Extension</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Visual QA</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3112,8 +3125,8 @@
                     <a class="group flex h-full flex-col" href="https://chromewebstore.google.com/detail/gofully-full-page-screens/akfbmhmdlbmljklgajkgoekobofhhofc" target="_blank" rel="noopener noreferrer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Chrome Extension</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Viewport Stitcher</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Chrome Extension</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Viewport Stitcher</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3132,8 +3145,8 @@
                     <div class="group flex h-full flex-col cursor-pointer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Web Tool</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Creator Economy</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Web Tool</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Creator Economy</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3152,8 +3165,8 @@
                     <div class="group flex h-full flex-col cursor-pointer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Video Tool</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Smart Cropping</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Video Tool</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Smart Cropping</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3172,8 +3185,8 @@
                     <a class="group flex h-full flex-col" href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Figma Plugin</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Generative SVG</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Figma Plugin</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Generative SVG</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3192,8 +3205,8 @@
                     <a class="group flex h-full flex-col" href="https://www.figma.com/community/file/1535935401113364323/tooltips-toastssnackbar" target="_blank" rel="noopener noreferrer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Figma Kit</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Design System</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Figma Kit</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Design System</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3207,13 +3220,33 @@
                     </a>
                 </div>
 
-                <!-- 08: AVATARLY FIGMA PLUGIN (Replaced Mobile Gesture Lab) -->
+                <!-- 08: MOBILE APP & INTERACTION LAB -->
+                <div id="work-gesture-lab" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-apps" role="button" tabindex="0">
+                    <div class="group flex h-full flex-col cursor-pointer">
+                        <div class="flex flex-col items-center px-[32px]">
+                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Mobile App</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Gesture UX</span>
+                            </div>
+                        </div>
+                        <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
+                            <div class="card-image-wrap relative aspect-(--asset-ratio) w-full overflow-hidden rounded-none" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
+                                <img alt="Mobile App Interaction Lab" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/mobile-app-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
+                            </div>
+                            <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Mobile App</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 09: AVATARLY FIGMA PLUGIN -->
                 <div id="work-avatarly" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
                     <a class="group flex h-full flex-col" href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Figma Plugin</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Avatar Generator</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Figma Plugin</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Avatar Generator</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3227,13 +3260,13 @@
                     </a>
                 </div>
 
-                <!-- 09: CLAUDE SKILLS & MCP ENGINE -->
+                <!-- 10: CLAUDE SKILLS & MCP ENGINE -->
                 <div id="work-claude-skills" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="ai" data-modal-target="modal-claude-skills" role="button" tabindex="0">
                     <div class="group flex h-full flex-col cursor-pointer">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">AI Architecture</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Claude MCP</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">AI Architecture</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Claude MCP</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3247,18 +3280,18 @@
                     </div>
                 </div>
 
-                <!-- 10: OMNIS DESIGN SYSTEM -->
+                <!-- 11: OMNIS DESIGN SYSTEM -->
                 <div id="work-omnis" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
                     <a class="group flex h-full flex-col" href="best-work.html">
                         <div class="flex flex-col items-center px-[32px]">
                             <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Design System</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase bg-card text-foreground folder-tab-badge rounded-none">Multi-Product</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Design System</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Multi-Product</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
                             <div class="card-image-wrap relative aspect-(--asset-ratio) w-full overflow-hidden rounded-none" style="--asset-ratio: 2880 / 2070; aspect-ratio: 2880 / 2070; width: 100%; position: relative; display: block;">
-                                <img alt="Omnis AI Design System" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/pg-5.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
+                                <img alt="Omnis AI Design System" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/omnis-design-system-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
                                 <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Omnis AI Design System</span>
