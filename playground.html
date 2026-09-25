@@ -2199,6 +2199,56 @@
             color: #ffffff !important;
         }
 
+        /* State Resilience Badges with High Contrast for Dark and Light Themes */
+        .pg-state-badge {
+            background: rgba(255, 255, 255, 0.08) !important;
+            color: #f4f2ed !important;
+            border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        }
+        [data-theme="light"] .pg-state-badge {
+            background: rgba(0, 0, 0, 0.05) !important;
+            color: #17170f !important;
+            border-color: rgba(0, 0, 0, 0.12) !important;
+        }
+        .pg-state-badge--focus {
+            background: rgba(99, 102, 241, 0.18) !important;
+            color: #c7d2fe !important;
+            border-color: rgba(99, 102, 241, 0.35) !important;
+        }
+        [data-theme="light"] .pg-state-badge--focus {
+            background: rgba(99, 102, 241, 0.1) !important;
+            color: #3730a3 !important;
+            border-color: rgba(99, 102, 241, 0.25) !important;
+        }
+        .pg-state-badge--danger {
+            background: rgba(239, 68, 68, 0.18) !important;
+            color: #fca5a5 !important;
+            border-color: rgba(239, 68, 68, 0.35) !important;
+        }
+        [data-theme="light"] .pg-state-badge--danger {
+            background: rgba(239, 68, 68, 0.1) !important;
+            color: #991b1b !important;
+            border-color: rgba(239, 68, 68, 0.25) !important;
+        }
+        .pg-state-badge--warn {
+            background: rgba(245, 158, 11, 0.18) !important;
+            color: #fcd34d !important;
+            border-color: rgba(245, 158, 11, 0.35) !important;
+        }
+        [data-theme="light"] .pg-state-badge--warn {
+            background: rgba(245, 158, 11, 0.1) !important;
+            color: #92400e !important;
+            border-color: rgba(245, 158, 11, 0.25) !important;
+        }
+
+        /* Light Theme Contrast Enhancements for Emerald Elements */
+        [data-theme="light"] [style*="color:#10b981"],
+        [data-theme="light"] [style*="color: #10b981"],
+        [data-theme="light"] [style*="color:#10b981;"],
+        [data-theme="light"] [style*="color: #10b981;"] {
+            color: #047857 !important;
+        }
+
         /* RED PROBLEM ALERT BOXES */
         .pg-problem-card {
             background: rgba(239, 68, 68, 0.07);
@@ -4365,13 +4415,13 @@
                         <span>Complete State Coverage Standard</span>
                     </div>
                     <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
-                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">01 · Default</span>
-                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">02 · Hover</span>
-                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">03 · Active / Pressed</span>
-                        <span class="pg-action-badge" style="background:rgba(99,102,241,0.15); color:#818cf8;">04 · Focus-Visible (Keyboard)</span>
-                        <span class="pg-action-badge" style="background:rgba(255,255,255,0.06); color:var(--ink, #fff);">05 · Disabled</span>
-                        <span class="pg-action-badge" style="background:rgba(239,68,68,0.15); color:#f87171;">06 · Error / Invalid</span>
-                        <span class="pg-action-badge" style="background:rgba(245,158,11,0.15); color:#fcd34d;">07 · Loading / Pending</span>
+                        <span class="pg-action-badge pg-state-badge">01 · Default</span>
+                        <span class="pg-action-badge pg-state-badge">02 · Hover</span>
+                        <span class="pg-action-badge pg-state-badge">03 · Active / Pressed</span>
+                        <span class="pg-action-badge pg-state-badge pg-state-badge--focus">04 · Focus-Visible (Keyboard)</span>
+                        <span class="pg-action-badge pg-state-badge">05 · Disabled</span>
+                        <span class="pg-action-badge pg-state-badge pg-state-badge--danger">06 · Error / Invalid</span>
+                        <span class="pg-action-badge pg-state-badge pg-state-badge--warn">07 · Loading / Pending</span>
                     </div>
                 </div>
             </div>
