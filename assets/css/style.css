@@ -5189,7 +5189,7 @@ body.mz-sheet-open {
     border-color: #e4e4e7;
 }
 [data-theme="light"] .mz-sheet__result {
-    color: #059669;
+    color: #047857;
 }
 
 /* Light Theme Build Items */
@@ -5216,11 +5216,11 @@ body.mz-sheet-open {
     color: #52525b;
 }
 [data-theme="light"] .mz-sheet__principle {
-    border-left-color: #059669;
+    border-left-color: #047857;
     background: #f8fafc;
     color: #334155;
     border: 1px solid #e2e8f0;
-    border-left: 3px solid #059669;
+    border-left: 3px solid #047857;
 }
 [data-theme="light"] .mz-sheet__principle b {
     color: #0f172a;
@@ -7298,9 +7298,9 @@ html[data-theme="light"] .hatched-divider__pattern {
    Light Theme Overrides for .mz-roadmap
 ========================================================== */
 [data-theme="light"] .mz-roadmap__eyebrow {
-    color: #059669;
-    background: rgba(16, 185, 129, 0.1);
-    border-color: rgba(16, 185, 129, 0.28);
+    color: #047857;
+    background: rgba(4, 120, 87, 0.1);
+    border-color: rgba(4, 120, 87, 0.28);
 }
 
 [data-theme="light"] .mz-roadmap__title {
@@ -7326,11 +7326,11 @@ html[data-theme="light"] .hatched-divider__pattern {
 }
 
 [data-theme="light"] .mz-roadmap-stat__num--accent {
-    color: #059669;
+    color: #047857;
 }
 
 [data-theme="light"] .mz-roadmap-stat__label {
-    color: #64748b;
+    color: #475569;
 }
 
 [data-theme="light"] .mz-roadmap__controls {

@@ -2241,12 +2241,30 @@
             border-color: rgba(245, 158, 11, 0.25) !important;
         }
 
-        /* Light Theme Contrast Enhancements for Emerald Elements */
+        /* Light Theme Contrast Enhancements for Problem/Alert and Flow Elements */
         [data-theme="light"] [style*="color:#10b981"],
         [data-theme="light"] [style*="color: #10b981"],
         [data-theme="light"] [style*="color:#10b981;"],
         [data-theme="light"] [style*="color: #10b981;"] {
             color: #047857 !important;
+        }
+        [data-theme="light"] [style*="color:#ef4444"],
+        [data-theme="light"] [style*="color: #ef4444"],
+        [data-theme="light"] [style*="color:#ef4444;"],
+        [data-theme="light"] [style*="color: #ef4444;"] {
+            color: #b91c1c !important;
+        }
+        [data-theme="light"] [style*="border-left:3px solid #ef4444"] {
+            border-left-color: #b91c1c !important;
+        }
+        [data-theme="light"] [style*="border-left:3px solid #10b981"] {
+            border-left-color: #047857 !important;
+        }
+        [data-theme="light"] [style*="color:#8c8c88"],
+        [data-theme="light"] [style*="color: #8c8c88"],
+        [data-theme="light"] [style*="color:#8c8c88;"],
+        [data-theme="light"] [style*="color: #8c8c88;"] {
+            color: #4b5563 !important;
         }
 
         /* RED PROBLEM ALERT BOXES */
@@ -3609,7 +3627,7 @@
                 <div class="pg-flow-badge" style="background:rgba(239,68,68,0.08); border-color:rgba(239,68,68,0.25); color:#ef4444; margin:10px 0 8px;">
                     <span>Explain Context</span> <span>→</span> <span>Prompt</span> <span>→</span> <span>Token Drift</span> <span>→</span> <span>Manual Fix</span> <span>→</span> <span>Re-prompt</span> <span>→</span> <span>Review</span>
                 </div>
-                <p class="pg-problem-card__desc" style="font-size:0.84rem; color:#8c8c88;">I wanted a consistent, predictable, and automated starting point for any session.</p>
+                <p class="pg-problem-card__desc" style="font-size:0.84rem;">I wanted a consistent, predictable, and automated starting point for any session.</p>
             </div>
 
             <!-- 02 HOW I BUILD A SKILL (EXCALIDRAW FLOW) -->
@@ -3744,7 +3762,7 @@
                 <div class="pg-flow-item" style="border-left:3px solid #ef4444;">
                     <div class="pg-flow-item__head" style="color:#ef4444">BEFORE (RAW CHAT)</div>
                     <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Repeat context and formatting rules from scratch every time.</p>
-                    <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:#8c8c88; line-height:1.4;">
+                    <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:var(--text-muted, #8c8c88); line-height:1.4;">
                         CONTEXT → PROMPT → CORRECT → REVIEW
                     </div>
                 </div>

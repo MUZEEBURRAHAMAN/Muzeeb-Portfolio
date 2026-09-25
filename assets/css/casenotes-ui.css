@@ -2129,8 +2129,14 @@ html[data-theme="light"] {
 
 .cn-pill--live {
   background: #ecfdf3;
-  color: #12b76a;
-  border: 1px solid rgba(18, 183, 106, 0.3);
+  color: #027a48;
+  border: 1px solid rgba(2, 122, 72, 0.3);
+}
+
+[data-theme="dark"] .cn-pill--live {
+  background: rgba(18, 183, 106, 0.15);
+  color: #6ce9a6;
+  border-color: rgba(18, 183, 106, 0.35);
 }
 
 .cn-pill--completed {
@@ -2139,10 +2145,22 @@ html[data-theme="light"] {
   border: 1px solid rgba(247, 144, 9, 0.3);
 }
 
+[data-theme="dark"] .cn-pill--completed {
+  background: rgba(247, 144, 9, 0.15);
+  color: #fde047;
+  border-color: rgba(247, 144, 9, 0.35);
+}
+
 .cn-pill--zoom {
   background: #eff8ff;
   color: #2563eb;
   border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+[data-theme="dark"] .cn-pill--zoom {
+  background: rgba(37, 99, 235, 0.15);
+  color: #93c5fd;
+  border-color: rgba(37, 99, 235, 0.35);
 }
 
 .cn-pill--participants {
