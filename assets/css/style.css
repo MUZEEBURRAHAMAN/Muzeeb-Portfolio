@@ -837,6 +837,7 @@ body.mz-hide-cursor-follow .mz-cursor-follow {
 .mz-pg-head { max-width: 1024px; margin: 0 auto 32px; }
 .mz-pg-head h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 600; letter-spacing: -0.02em; color: #f4f2ed; margin-bottom: 12px; }
 .mz-pg-head p { color: #9a9a98; font-size: 1rem; max-width: 46ch; }
+.pg-hero__title { font-family: 'Acorn', var(--font-display, serif) !important; }
 .mz-pg-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; max-width: 1024px; margin: 0 auto; }
 .mz-pg-card {
     position: relative;
