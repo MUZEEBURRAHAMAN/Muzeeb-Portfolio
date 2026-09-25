@@ -2763,7 +2763,7 @@ html[data-theme="light"] {
 }
 
 .cn-nda-title span {
-  color: #777777 !important;
+  color: #a1a19b !important;
   font-weight: 800;
 }
 
@@ -2771,7 +2771,7 @@ html[data-theme="light"] {
   font-family: var(--font-body, 'Inter', -apple-system, sans-serif);
   font-size: clamp(13px, 1.4vw, 15px);
   line-height: 1.5;
-  color: #888888 !important;
+  color: #a1a19b !important;
   margin: 0;
   max-width: 560px;
   font-weight: 400;
