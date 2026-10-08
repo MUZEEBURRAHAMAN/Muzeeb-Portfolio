@@ -72,15 +72,108 @@
 
   /* ---------- Scroll reveal (opt-in via .mz-reveal) ---------- */
   function initReveal() {
-    var els = document.querySelectorAll(".mz-reveal");
+    // Design system v2.1 section reveal: .mz-reveal, case-study .reveal blocks, and flow diagrams (.flow → .revealed)
+    var els = document.querySelectorAll(".mz-reveal, .reveal, .flow[data-flow], .journey, .draw, .hl");
+    function show(el) { el.classList.add("in"); if (el.matches(".flow")) el.classList.add("revealed"); }
     if (!els.length || !("IntersectionObserver" in window)) {
-      els.forEach(function (e) { e.classList.add("in"); });
+      els.forEach(show);
       return;
     }
+    document.documentElement.classList.add("mz-reveal-ready");
     var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: "0px 0px -6% 0px" });
     els.forEach(function (e) { io.observe(e); });
+  }
+
+
+  /* ---------- Animated icons (design system v2.1) ----------
+     Vanilla port of lucide-animated / animateicons: stroke icons draw themselves in when they
+     first enter the viewport and redraw on hover of their card / button; arrows nudge instead. */
+  function initIconMotion() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var SKIP = ".anno-overlay, .draw, .viz-card, .flow, .journey-step .where, #mz-preloader, .cw-load, #cwclip, .mz-cursor, [data-no-icon-motion]";
+    var HOST = "a, button, [role='button'], .card, .trio-card, .metric, .edge-case, .persona-card, .journey-step, .challenge-card, .jump, .iter, [class*='__card'], [class*='-card']";
+    var ARROW = /M5 12h14|M19 12H5|m12 5 7 7-7 7|M12 5l7 7-7 7|m9 18 6-6-6-6|M9 18l6-6-6-6|m15 18-6-6 6-6|9 18 15 12 9 6|15 18 9 12 15 6|M7 17 17 7|M7 17L17 7|M17 7H7|M5 12h13|m13 5 7 7-7 7|M4 12h16|m14 6 6 6-6 6/i;
+    function shapes(svg) {
+      return Array.prototype.filter.call(svg.querySelectorAll("path, line, polyline, polygon, circle, rect, ellipse"), function (el) {
+        var cs = getComputedStyle(el);
+        return cs.stroke && cs.stroke !== "none" && parseFloat(cs.strokeWidth) > 0 && typeof el.getTotalLength === "function";
+      });
+    }
+    function draw(svg, delay) {
+      var list = shapes(svg);
+      list.forEach(function (el, i) {
+        var len;
+        try { len = el.getTotalLength(); } catch (e) { return; }
+        if (!len || len > 4000) return;
+        el.animate(
+          [{ strokeDasharray: len, strokeDashoffset: len }, { strokeDasharray: len, strokeDashoffset: 0 }],
+          { duration: 520, delay: (delay || 0) + i * 70, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "backwards" }
+        );
+      });
+    }
+    var icons = Array.prototype.filter.call(document.querySelectorAll("svg"), function (svg) {
+      if (svg.closest(SKIP)) return false;
+      var r = svg.getBoundingClientRect();
+      if (!r.width || r.width > 72 || r.height > 72) return false;       // icons only, not illustrations
+      return shapes(svg).length > 0;
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        if (!e.target.classList.contains("ic-nudge")) draw(e.target, 120);
+      });
+    }, { threshold: 0.6 });
+    icons.forEach(function (svg) {
+      var d = Array.prototype.map.call(svg.querySelectorAll("path, polyline, line"), function (p) { return p.getAttribute("d") || p.getAttribute("points") || ""; }).join(" ");
+      var isArrow = ARROW.test(d) && svg.querySelectorAll("path, polyline, line").length <= 2;
+      var host = svg.closest(HOST);
+      if (isArrow) {
+        svg.classList.add("ic-nudge");
+        if (/M19 12H5|m15 18-6-6 6-6|15 18 9 12 15 6/i.test(d)) svg.classList.add("ic-back");
+        if (host) host.classList.add("ic-host");
+        return;
+      }
+      io.observe(svg);
+      if (host && !host.closest(".cw-widget, #cw-panel")) {
+        var busy = false;
+        host.addEventListener("mouseenter", function () {
+          if (busy) return; busy = true;
+          draw(svg, 0);
+          setTimeout(function () { busy = false; }, 700);
+        });
+      }
+    });
+  }
+
+
+  /* ---------- Blog carousel (homepage Writing section) ---------- */
+  function initBlogCarousel() {
+    var track = document.getElementById("blogTrack");
+    if (!track) return;
+    var btns = document.querySelectorAll("[data-blog-dir]");
+    function sync() {
+      if (!btns.length) return;
+      btns[0].disabled = track.scrollLeft < 4;
+      btns[1].disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var card = track.querySelector(".blog-card");
+        var step = card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 20) : track.clientWidth;
+        track.scrollBy({ left: +b.getAttribute("data-blog-dir") * step, behavior: "smooth" });
+      });
+    });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); btns[1] && btns[1].click(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); btns[0] && btns[0].click(); }
+    });
+    track.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    sync();
   }
 
   /* ---------- 0. Preloader (pixel-dissolve, once per session) ---------- */
@@ -99,7 +192,7 @@
     try { sessionStorage.setItem("mz-preloaded", "1"); } catch (e) {}
 
     // Cover color follows theme: dark cover on light page, light cover on dark page.
-    var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#0f0f0f" : "#faf9f7";
+    var COLOR = document.documentElement.getAttribute("data-theme") === "light" ? "#000000" : "#ffffff";
     var GRID = 16, EDGE = 0.12, DUR = 2.4;
 
     var canvas = wrap.querySelector("canvas");
@@ -287,7 +380,7 @@
       { k: ["challenge", "challenges", "hard", "difficult", "tough", "problem", "complex"], a: "His favorite problems are dense B2B workflows: legal tools full of edge cases, regulations and trade-offs, where the job is turning real complexity into something clear and usable.", l: [{ t: "About Muzeeb", u: "about.html" }] },
       { k: ["process", "approach", "how do you", "how does he", "method", "workflow"], a: "He starts by asking a lot of questions to find what's actually causing a problem before touching screens, maps how flows connect, and stress-tests the weak spots before users hit them.", l: [{ t: "About Muzeeb", u: "about.html" }] },
       { k: ["location", "based", "where", "country", "relocat", "india", "remote"], a: "Based in Uttar Pradesh, India: open to remote work and relocation." },
-      { k: ["skill", "skills", "strength", "good at", "specialize", "expertise", "do you do"], a: "End-to-end: discovery & research, design systems, prototyping, and launch, then building AI-assisted workflows and internal tools. He sits between UX logic and UI craft, and ships, not just mockups.", l: [{ t: "Best work", u: "best-work.html" }, { t: "About Muzeeb", u: "about.html" }] },
+      { k: ["skill", "skills", "strength", "good at", "specialize", "expertise", "do you do"], a: "End-to-end: discovery & research, design systems, prototyping, and launch, then building AI-assisted workflows and internal tools. He sits between UX logic and UI craft, and ships working product.", l: [{ t: "Best work", u: "best-work.html" }, { t: "About Muzeeb", u: "about.html" }] },
       { k: ["blog", "writing", "notes", "article"], a: "He writes notes on AI, design systems, and building: check his prototyping & process notes.", l: [{ t: "Prototyping notes", u: "Prototyping-blog.html" }] },
       { k: ["name", "pronounce", "pronunciation", "say your name"], a: "It's “muh-zeeb” (easier than it looks :))" }
     ];
@@ -426,7 +519,7 @@
       if (!toast) {
         toast = document.createElement("div");
         toast.id = "mz-email-toast";
-        toast.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#18181b;color:#ffffff;padding:10px 20px;border-radius:999px;font-size:0.85rem;font-weight:600;z-index:99999;box-shadow:0 10px 30px rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s, transform 0.2s;pointer-events:none;";
+        toast.style.cssText = "position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#141414;color:#ffffff;padding:10px 20px;border-radius:999px;font-size:0.85rem;font-weight:600;z-index:99999;box-shadow:0 10px 30px rgba(0,0,0,0.3);opacity:0;transition:opacity 0.2s, transform 0.2s;pointer-events:none;";
         document.body.appendChild(toast);
       }
       toast.textContent = "Opening Gmail to rahamanmuzeeb1108@gmail.com...";
@@ -473,10 +566,28 @@
     render();
     btn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("mz-theme", next); } catch (e) {}
-      render();
+      function apply() {
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("mz-theme", next); } catch (e) {}
+        render();
+      }
       mzPlay(next === "dark" ? "toggle-on" : "toggle-off");
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!document.startViewTransition || reduce) { apply(); return; }
+      // New theme grows out of the toggle as a circle (design system: theme-reveal, 500ms ease-in-out)
+      var r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+      var end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      root.classList.add("mz-theme-switching");
+      var vt = document.startViewTransition(apply);
+      if (vt.updateCallbackDone) vt.updateCallbackDone.catch(function () {});
+      vt.ready.then(function () {
+        root.animate(
+          { clipPath: ["circle(0px at " + x + "px " + y + "px)", "circle(" + end + "px at " + x + "px " + y + "px)"] },
+          { duration: 500, easing: "cubic-bezier(0.65, 0, 0.35, 1)", pseudoElement: "::view-transition-new(root)" }
+        );
+      }).catch(function () {});
+      // A skipped transition (hidden tab, rapid double-click) still applies the theme via the update callback.
+      vt.finished.catch(function () {}).then(function () { root.classList.remove("mz-theme-switching"); });
     });
   }
 
@@ -975,6 +1086,8 @@
     initCursor();
     initChat();
     initReveal();
+    initIconMotion();
+    initBlogCarousel();
     initSocialPopovers();
     initHoverSFX();
     initGlobalSFX();

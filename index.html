@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/">
     <meta property="og:title" content="Muzeeb Urrahaman · Product Designer &amp; Builder · AI &amp; SaaS">
     <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/">
     <meta property="og:type" content="website">
@@ -44,13 +46,13 @@
     <!-- Google Fonts: Archivo & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <!-- Preloader Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@600;700&family=Noto+Sans+Devanagari:wght@600;700&family=Noto+Sans+JP:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=613">
+    <link rel="stylesheet" href="assets/css/style.css?v=614">
     <!-- Preloader css -->
     <link rel="stylesheet" href="assets/css/preloader.css?v=1">
     <!-- Legacy stylesheets (Commented out for performance & future reference):
@@ -128,7 +130,7 @@
             aspect-ratio: 2048 / 1071;
             overflow: hidden;
             isolation: isolate;
-            border-radius: 14px;
+            border-radius: 12px;
             background: #ffffff;
             box-shadow: 0 20px 50px rgba(18, 31, 67, 0.25), 0 8px 20px rgba(18, 31, 67, 0.12);
             user-select: none;
@@ -245,14 +247,12 @@
         .mz-card-pill--before {
             left: 10px;
             color: #fff;
-            background: rgba(229, 72, 77, 0.9);
-            backdrop-filter: blur(6px);
+            background: #b42318;
         }
         .mz-card-pill--after {
             right: 10px;
             color: #fff;
-            background: rgba(39, 174, 96, 0.9);
-            backdrop-filter: blur(6px);
+            background: #116329;
         }
         @media (max-width: 640px) {
             .mz-card-slider-stage { padding: 10px; }
@@ -281,14 +281,15 @@
     </script>
     <style id="preloader-critical">
         .preloader { position: fixed; inset: 0; z-index: 999999; background: #0a0a0a; display: grid; place-items: center; will-change: transform; }
-        [data-theme="light"] .preloader, html[data-theme="light"] .preloader { background: #f2f1ed; }
+        [data-theme="light"] .preloader, html[data-theme="light"] .preloader { background: #f5f5f5; }
         body.preloader-active { overflow: hidden !important; }
         html.skip-preloader .preloader, html.skip-preloader #preloader { display: none !important; }
         html.skip-preloader body.preloader-active { overflow: auto !important; }
     </style>
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
 </head>
 
-<body class="bg-[#0f0f0f] text-[#f4f2ed] preloader-active">
+<body class="bg-[#000000] text-[#ffffff] preloader-active">
     <!-- Multi-language Greeting Preloader -->
     <div class="preloader" id="preloader" aria-hidden="true">
         <div class="word" id="word"></div>
@@ -388,7 +389,7 @@
                         <div class="mz-work-card__text">
                             <div class="mz-work-card__content">
                                 <h3 class="mz-work-card__title">OmnisProof: Redesigning Document Setup for Self-Serve Legal Signing</h3>
-                                <p class="mz-work-card__desc">How I redesigned contract preparation in OmnisProof—replacing a disjointed modal wizard and manual field placement with a persistent canvas and reviewable AI detection.</p>
+                                <p class="mz-work-card__desc">I replaced OmnisProof's disjointed modal wizard and manual field placement with a persistent canvas and reviewable AI detection.</p>
                                 <div class="mz-work-card__tags">
                                     <span class="mz-work-card__meta-tag">Workflow Redesign</span>
                                     <span class="mz-work-card__meta-tag">AI Field Detection</span>
@@ -414,7 +415,7 @@
                         <div class="mz-work-card__text">
                             <div class="mz-work-card__content">
                                 <h3 class="mz-work-card__title">CaseNotes: Designing an AI Notetaker Where Every Word Carries Legal Privilege</h3>
-                                <p class="mz-work-card__desc">How I designed a specialized AI transcription and synthesis workspace that anchors client conversations directly to litigation discovery files.</p>
+                                <p class="mz-work-card__desc">I designed an AI transcription and synthesis workspace that anchors client conversations to litigation discovery files.</p>
                                 <div class="mz-work-card__tags">
                                     <span class="mz-work-card__meta-tag">AI Product Design</span>
                                     <span class="mz-work-card__meta-tag">Legal Tech</span>
@@ -466,7 +467,7 @@
                         <div class="mz-work-card__text">
                             <div class="mz-work-card__content">
                                 <h3 class="mz-work-card__title">CasePro Matter Redesign: Splitting Intake from Case Creation</h3>
-                                <p class="mz-work-card__desc">How I split a merged intake-and-matter form into two linked systems, with an AI-assisted and a fully manual path into every new matter.</p>
+                                <p class="mz-work-card__desc">I split a merged intake-and-matter form into two linked systems: an AI-assisted path and a manual path into each new matter.</p>
                                 <div class="mz-work-card__tags">
                                     <span class="mz-work-card__meta-tag">Workflow Redesign</span>
                                     <span class="mz-work-card__meta-tag">AI-Assisted Forms</span>
@@ -492,7 +493,7 @@
                         <div class="mz-work-card__text">
                             <div class="mz-work-card__content">
                                 <h3 class="mz-work-card__title">LitBox: The File Layer That Knows a File Belongs to a Matter</h3>
-                                <p class="mz-work-card__desc">Every product in the ecosystem depended on Dropbox, Box, or Google Drive to hold a client's files — so I designed a secure, matter-scoped storage layer Omnis AI actually owns, embedded live inside AutoDoc, MedChron, and OmnisProof.</p>
+                                <p class="mz-work-card__desc">Omnis AI's products relied on Dropbox, Box, or Google Drive to hold client files. I designed a secure, matter-scoped storage layer that Omnis AI owns, embedded live in AutoDoc, MedChron, and OmnisProof.</p>
                                 <div class="mz-work-card__tags">
                                     <span class="mz-work-card__meta-tag">Secure Storage</span>
                                     <span class="mz-work-card__meta-tag">Information Architecture</span>
@@ -581,83 +582,127 @@
             </div>
         </section>
 
-        <!-- Section Divider: Selected Work to Beyond The UI -->
+        <!-- Section Divider: Selected Work to Writing -->
         <div class="hatched-divider" aria-hidden="true">
             <div class="hatched-divider__pattern"></div>
         </div>
 
-        <!-- ==================== BEYOND THE UI SECTION ==================== -->
-        <section class="site-editions w-full" id="beyond-the-ui">
-            <div class="site-editions__head">
-                <span class="site-editions__eyebrow">BEYOND THE UI</span>
-                <h2 class="site-editions__heading">I build what helps products <em style="font-style:italic">work better.</em></h2>
-            </div>
-
-            <div class="site-editions__grid">
-                <!-- Card 01: AI -->
-                <div class="site-editions__item">
-                    <a class="site-editions__card" href="audit-engine-case-study.html">
-                        <span class="site-editions__no">NO. 01 · AI</span>
-                        <h3 class="site-editions__title">AI workflows &amp; experiments</h3>
-                        <p class="site-editions__desc">Claude Skills · AI UX Audit · AI-assisted workflows</p>
-                        <div class="site-editions__footer">
-                            <span>Explore</span>
-                            <svg class="site-editions__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
+        <!-- ==================== WRITING (MEDIUM) SECTION ==================== -->
+        <section class="mz-blog w-full" id="writing" aria-labelledby="writingTitle">
+            <div class="blog-head">
+                <div>
+                    <span class="site-editions__eyebrow">BLOG</span>
+                    <h2 class="site-editions__heading" id="writingTitle">Articles I've written</h2>
                 </div>
-
-                <!-- Card 02: SYSTEMS -->
-                <div class="site-editions__item">
-                    <a class="site-editions__card" href="omnisproof-case-study.html">
-                        <span class="site-editions__no">NO. 02 · SYSTEMS</span>
-                        <h3 class="site-editions__title">Scalable design systems</h3>
-                        <p class="site-editions__desc">Design tokens · Components · System architecture · Governance</p>
-                        <div class="site-editions__footer">
-                            <span>Explore</span>
-                            <svg class="site-editions__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Card 03: BUILD -->
-                <div class="site-editions__item">
-                    <a class="site-editions__card" href="casenotes-case-study.html">
-                        <span class="site-editions__no">NO. 03 · BUILD</span>
-                        <h3 class="site-editions__title">Prototypes &amp; design-to-code</h3>
-                        <p class="site-editions__desc">Forge · Prototypes · Code · Design-to-code experiments</p>
-                        <div class="site-editions__footer">
-                            <span>Explore</span>
-                            <svg class="site-editions__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
+                <div class="blog-nav">
+                    <button type="button" data-blog-dir="-1" aria-label="Previous articles" aria-controls="blogTrack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+                    <button type="button" data-blog-dir="1" aria-label="Next articles" aria-controls="blogTrack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
                 </div>
             </div>
-
-            <div class="site-editions__actions">
-                <a class="site-editions__btn site-editions__btn--primary" href="best-work.html">
-                    <span>Explore Best Work</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <!-- <a class="site-editions__btn site-editions__btn--primary" href="playground.html"><span>Explore Playground</span></a> -->
-                <button type="button" class="site-editions__btn site-editions__btn--secondary js-open-problem-sheet" id="openProblemSheet" aria-label="Enter the full problem-solving timeline">
-                    <span>Enter the full problem-solving timeline</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </button>
+            <div class="blog-track" id="blogTrack" role="list" tabindex="0" aria-label="Articles on Medium">
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="assets/images/blog/blog-100-screens-4-days-card.webp?v=2" alt="" loading="lazy" decoding="async"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2026-09-30">Sep 30, 2026</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">I designed 100+ screens in 4 days. Here’s what speed without research really costs.</h3>
+                        <div class="blog-card__foot"><span class="tag-tint plum">User Research</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/i-designed-100-screens-in-4-days-heres-what-speed-without-research-really-costs-f80333be1bbc" target="_blank" rel="noopener noreferrer" aria-label="Read “I designed 100+ screens in 4 days. Here’s what speed without research really costs.” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="assets/images/blog/blog-1-reason-products-fail-card.webp?v=2" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2025-07-20">Jul 20, 2025</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">The #1 Reason Most Digital Products Fail (Hint: It’s Usability)</h3>
+                        <div class="blog-card__foot"><span class="tag-tint slate">Usability</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/the-1-reason-most-digital-products-fail-hint-its-usability-157f8f70ef72" target="_blank" rel="noopener noreferrer" aria-label="Read “The #1 Reason Most Digital Products Fail (Hint: It’s Usability)” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="assets/images/blog/blog-products-people-love-card.webp?v=2" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2025-05-22">May 22, 2025</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">The Secret to Designing Products People Love (Without Making Them Addictive)</h3>
+                        <div class="blog-card__foot"><span class="tag-tint rose">Psychology</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/the-secret-to-designing-products-people-love-without-making-them-addictive-655ad97f4efa" target="_blank" rel="noopener noreferrer" aria-label="Read “The Secret to Designing Products People Love (Without Making Them Addictive)” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/1024/1*vjNXDUbz1gxGVueVNGi6RA.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2025-07-14">Jul 14, 2025</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">Designing for Real People: Why Human Experience (HX) Matters More Than Just UX</h3>
+                        <div class="blog-card__foot"><span class="tag-tint plum">Human experience</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/designing-for-real-people-why-human-experience-hx-matters-more-than-just-ux-bda7dfb24ec6" target="_blank" rel="noopener noreferrer" aria-label="Read “Designing for Real People: Why Human Experience (HX) Matters More Than Just UX” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="assets/images/blog/blog-ai-polls-chat-chaos-card.webp?v=2" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2025-04-21">Apr 21, 2025</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">How AI Polls Could Save YouTube and Twitch Streamers From Chat Chaos</h3>
+                        <div class="blog-card__foot"><span class="tag-tint plum">AI concepts</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/how-ai-polls-could-save-youtube-and-twitch-streamers-from-chat-chaos-ce1c5997e054" target="_blank" rel="noopener noreferrer" aria-label="Read “How AI Polls Could Save YouTube and Twitch Streamers From Chat Chaos” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/1024/1*lu52ukmZ0KptXp_X2PuTRg.jpeg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2025-04-16">Apr 16, 2025</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">From Pretty Pixels to User Wins: Your UI/UX Guide to Designing with Impact</h3>
+                        <div class="blog-card__foot"><span class="tag-tint tan">UI/UX</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/from-pretty-pixels-to-user-wins-your-ui-ux-guide-to-designing-with-impact-7b16b7071790" target="_blank" rel="noopener noreferrer" aria-label="Read “From Pretty Pixels to User Wins: Your UI/UX Guide to Designing with Impact” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/1024/0*IaRl_ixUhkLVUDLb.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2024-06-05">Jun 5, 2024</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">Unlock Your Talent: The Case Study Formula for UI/UX Design Success- Part 2</h3>
+                        <div class="blog-card__foot"><span class="tag-tint sage">Portfolio</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/unlock-your-talent-the-case-study-formula-for-ui-ux-design-success-part-2-da1ba2453dbd" target="_blank" rel="noopener noreferrer" aria-label="Read “Unlock Your Talent: The Case Study Formula for UI/UX Design Success- Part 2” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/1024/1*X6H8l_wWpILV7_HA5HnGRg.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2024-05-27">May 27, 2024</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">Unlock Your Talent: The Case Study Formula for UI/UX Design Success PART — 1</h3>
+                        <div class="blog-card__foot"><span class="tag-tint sage">Case studies</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/unlock-your-talent-the-case-study-formula-for-ui-ux-design-success-part-1-8df5010c02af" target="_blank" rel="noopener noreferrer" aria-label="Read “Unlock Your Talent: The Case Study Formula for UI/UX Design Success PART — 1” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/1024/0*0gSESdZm7330BNta.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2024-05-06">May 6, 2024</time><span aria-hidden="true">•</span><span>Bootcamp</span></div>
+                        <h3 class="blog-card__title">Design Like a Pro: Mastering Metrics, Testing, and human touch</h3>
+                        <div class="blog-card__foot"><span class="tag-tint slate">Metrics &amp; testing</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/design-bootcamp/design-like-a-pro-mastering-metrics-testing-and-human-touch-4585a9e71704" target="_blank" rel="noopener noreferrer" aria-label="Read “Design Like a Pro: Mastering Metrics, Testing, and human touch” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/1024/0*P24BI59qPVWTittD.gif" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2024-04-04">Apr 4, 2024</time><span aria-hidden="true">•</span><span>Medium</span></div>
+                        <h3 class="blog-card__title">Mastering Interaction Design and Prototyping: Your Essential Guide to Product Management</h3>
+                        <div class="blog-card__foot"><span class="tag-tint tan">Prototyping</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/@Muzeebdesign/mastering-interaction-design-and-prototyping-your-essential-guide-to-product-management-ac7b64b00e4c" target="_blank" rel="noopener noreferrer" aria-label="Read “Mastering Interaction Design and Prototyping: Your Essential Guide to Product Management” on Medium"></a>
+                </article>
+                <article class="blog-card" role="listitem">
+                    <div class="blog-card__media"><img src="https://cdn-images-1.medium.com/max/810/0*4A3PcLvmMtRtpnbJ.png" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__meta"><time datetime="2024-04-03">Apr 3, 2024</time><span aria-hidden="true">•</span><span>Medium</span></div>
+                        <h3 class="blog-card__title">UX for PMs: The Secret to Building Products Users Love</h3>
+                        <div class="blog-card__foot"><span class="tag-tint rose">Product</span><span class="blog-card__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div>
+                    </div>
+                    <a class="blog-card__link" href="https://medium.com/@Muzeebdesign/ux-for-pms-the-secret-to-building-products-users-love-30996ff37c02" target="_blank" rel="noopener noreferrer" aria-label="Read “UX for PMs: The Secret to Building Products Users Love” on Medium"></a>
+                </article>
             </div>
         </section>
 
-        <!-- Section Divider: Beyond The UI to Testimonials -->
+        <!-- Section Divider: Writing to Testimonials -->
         <div class="hatched-divider" aria-hidden="true">
             <div class="hatched-divider__pattern"></div>
         </div>
@@ -757,7 +802,7 @@
                         <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
                     </svg>
                 </a>
-                <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                <a href="https://medium.com/@Muzeebdesign" target="_blank" rel="noopener noreferrer" aria-label="Medium">
                     <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
                         <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
                         <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
@@ -798,7 +843,7 @@
         }
         requestAnimationFrame(raf);
     </script>
-    <script src="assets/js/site.js?v=553"></script>
+    <script src="assets/js/site.js?v=561"></script>
     <!-- OmnisProof Card Before/After Slider Interaction & Animation -->
     <script>
     (function () {
@@ -1148,7 +1193,7 @@
             <div class="mz-sheet__headrow">
                 <div>
                     <div class="mz-sheet__eyebrow">Problem-Solving Timeline</div>
-                    <h2 class="mz-sheet__title">What I've been solving</h2>
+                    <h2 class="mz-sheet__title">Problems I've worked on</h2>
                     <p class="mz-sheet__subtitle">My work spans interaction design, design systems architecture, and automated engineering tooling built in production code.</p>
                 </div>
                 <button type="button" class="mz-sheet__close" id="problemSheetClose" aria-label="Close sheet">
@@ -1197,7 +1242,7 @@
                                     <p class="mz-sheet__text">Users were navigating fragmented onboarding, dashboards, and checkout experiences with unnecessary friction between steps.</p>
                                 </div>
                                 <div class="mz-sheet__part">
-                                    <div class="mz-sheet__label">How I approached it</div>
+                                    <div class="mz-sheet__label">My approach</div>
                                     <div class="mz-sheet__chips">
                                         <span class="mz-sheet__chip">Workflow mapping</span>
                                         <span class="mz-sheet__chip">Research</span>
@@ -1224,7 +1269,7 @@
                     </div>
                     <div class="mz-timeline-entry__main">
                         <h3 class="mz-timeline-entry__title">Making complex legal workflows understandable</h3>
-                        <p class="mz-timeline-entry__lead">At Omnis AI, I worked across AI-powered legal products where the challenge was not removing complexity, but making it navigable.</p>
+                        <p class="mz-timeline-entry__lead">At Omnis AI, I worked across AI-powered legal products where the complexity stays and the work is making it navigable.</p>
                         
                         <div class="mz-frame-panel">
                             <div class="mz-frame-panel__bg-grid" aria-hidden="true">
@@ -1236,7 +1281,7 @@
                                     <p class="mz-sheet__text">Legal teams work across interconnected cases, clients, documents, medical records, litigation, and discovery workflows.</p>
                                 </div>
                                 <div class="mz-sheet__part">
-                                    <div class="mz-sheet__label">How I approached it</div>
+                                    <div class="mz-sheet__label">My approach</div>
                                     <div class="mz-sheet__chips">
                                         <span class="mz-sheet__chip">0 → 1 product design</span>
                                         <span class="mz-sheet__chip">Workflow architecture</span>
@@ -1272,7 +1317,7 @@
                             <div class="mz-frame-panel__content">
                                 <div class="mz-sheet__part">
                                     <div class="mz-sheet__label">Problem</div>
-                                    <p class="mz-sheet__text">Designers and developers repeatedly spend time checking staging builds for usability, accessibility, visual, and interaction issues.</p>
+                                    <p class="mz-sheet__text">Designers and developers spend time checking staging builds for usability, accessibility, visual, and interaction issues.</p>
                                 </div>
                                 <div class="mz-sheet__part">
                                     <div class="mz-sheet__label">What I built</div>
@@ -1308,7 +1353,7 @@
                     </div>
                     <div class="mz-timeline-entry__main">
                         <h3 class="mz-timeline-entry__title">Building the tools that solve the problems</h3>
-                        <p class="mz-timeline-entry__lead">I'm now moving beyond designing a solution. When I see a repetitive or underserved problem, I prototype and build the tool myself.</p>
+                        <p class="mz-timeline-entry__lead">I now build as well as design. When I see a repetitive or underserved problem, I prototype and build the tool myself.</p>
                         
                         <div class="mz-frame-panel mz-frame-panel--active">
                             <div class="mz-frame-panel__bg-grid" aria-hidden="true">
@@ -1351,7 +1396,7 @@
                                                 </a>
                                                 -->
                                             </div>
-                                            <span>Forge component library engine, Blobby, and CSS Inspector utilities that streamline design engineering.</span>
+                                            <span>Forge component library engine, Blobby, and CSS Inspector utilities that speed up design engineering.</span>
                                         </div>
                                     </div>
                                     <div class="mz-sheet__build">
@@ -1383,12 +1428,12 @@
                                                 </a>
                                                 -->
                                             </div>
-                                            <span>Autonomous skills like AI Reasoning Framework, UX Audit Engine, and Edge-State Fixer that rigorously challenge design assumptions.</span>
+                                            <span>Autonomous skills like AI Reasoning Framework, UX Audit Engine, and Edge-State Fixer that challenge design assumptions.</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mz-sheet__principle">
-                                    <b>The pattern behind all of it:</b> I don't want to only design the interface around a problem. I want to understand it deeply enough to build the system, tool, or workflow that solves it.
+                                    <b>The pattern behind all of it:</b> I want to understand a problem well enough to build the system, tool, or workflow that solves it.
                                 </div>
                             </div>
                         </div>

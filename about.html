@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>try{var p=new URLSearchParams(location.search).get("theme");var t=p||localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/about.html">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/about.html">
     <meta name="description" content="About Muzeeb Urrahaman: Product Designer &amp; Design Engineer with 4.8+ years of experience building AI, SaaS, and enterprise products.">
     <meta property="og:title" content="About · Muzeeb Urrahaman">
     <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/about.html">
@@ -44,14 +46,14 @@
     <!-- Google Fonts: Archivo & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <!-- Slick slider css -->
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/slick-theme.css">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=130">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=905">
+    <link rel="stylesheet" href="assets/css/style.css?v=614">
     <style>
         #main {
             max-width: var(--mz-container-max, 1280px);
@@ -170,22 +172,22 @@
         }
 
         .mz-working-me__eyebrow {
-            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-family: var(--font-sans, 'Inter', sans-serif) !important;
             font-size: 11px !important;
             font-weight: 500 !important;
             letter-spacing: 0.22em !important;
             text-transform: uppercase !important;
-            color: #8c8880 !important;
+            color: #888888 !important;
             margin: 0 0 16px 0 !important;
             display: block !important;
         }
 
         .mz-working-me__title {
-            font-family: 'Acorn', var(--font-display, serif) !important;
+            font-family: 'Inter', var(--font-display, serif) !important;
             font-size: clamp(2.5rem, 3.8vw, 3.2rem) !important;
             font-weight: 500 !important;
             line-height: 1.08 !important;
-            color: #f4f2ed !important;
+            color: #ffffff !important;
             letter-spacing: -0.02em !important;
             margin: 0 0 24px 0 !important;
             text-transform: lowercase !important;
@@ -199,7 +201,7 @@
             min-height: 0 !important;
             border-radius: 0 !important;
             overflow: hidden !important;
-            background: #1a1a1c !important;
+            background: #1a1a1a !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
             box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3) !important;
         }
@@ -236,10 +238,10 @@
         }
 
         .mz-working-me__body p {
-            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-family: var(--font-sans, 'Inter', sans-serif) !important;
             font-size: clamp(1rem, 1.1vw, 1.1rem) !important;
             line-height: 1.74 !important;
-            color: #b8b6b0 !important;
+            color: #b6b6b6 !important;
             margin: 0 !important;
             letter-spacing: -0.005em !important;
             font-weight: 400 !important;
@@ -247,7 +249,7 @@
 
         .mz-working-me__body b,
         .mz-working-me__body strong {
-            color: #f4f2ed !important;
+            color: #ffffff !important;
             font-weight: 600 !important;
         }
 
@@ -266,7 +268,7 @@
             background-position: left center;
             background-size: 0% 100%;
             transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
-            background-image: linear-gradient(90deg, #ca8a04, #eab308);
+            background-image: linear-gradient(90deg, rgba(250, 204, 21, 0.3), rgba(250, 204, 21, 0.3));
             color: inherit;
         }
 
@@ -275,32 +277,32 @@
         .mz-highlight--yellow.is-in-view,
         .mz-working-me__highlight.is-in-view {
             background-size: 100% 100% !important;
-            color: #0c0a09 !important;
+            color: #ffffff !important;
             font-weight: 700;
         }
 
         /* LIGHT THEME OVERRIDES (Exact Reference Match) */
         [data-theme="light"] .mz-working-me__eyebrow {
-            color: #555550 !important;
+            color: #555555 !important;
         }
 
         [data-theme="light"] .mz-working-me__title {
-            color: #1c1917 !important;
+            color: #1a1a1a !important;
         }
 
         [data-theme="light"] .mz-working-me__photo-wrap {
-            background: #f5efe6 !important;
+            background: #f5f5f5 !important;
             border-color: rgba(0, 0, 0, 0.06) !important;
             box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08) !important;
         }
 
         [data-theme="light"] .mz-working-me__body p {
-            color: #2c2a26 !important;
+            color: #2a2a2a !important;
         }
 
         [data-theme="light"] .mz-working-me__body b,
         [data-theme="light"] .mz-working-me__body strong {
-            color: #17170f !important;
+            color: #000000 !important;
         }
 
         [data-theme="light"] .mz-highlight-yellow,
@@ -311,7 +313,7 @@
         html[data-theme="light"] .mz-highlight[data-action="yellow"],
         html[data-theme="light"] .mz-highlight--yellow,
         html[data-theme="light"] .mz-working-me__highlight {
-            background-image: linear-gradient(90deg, #fef08a, #fde047);
+            background-image: linear-gradient(90deg, #fff1a8, #fff1a8);
             color: inherit;
         }
 
@@ -324,7 +326,7 @@
         html[data-theme="light"] .mz-highlight--yellow.is-in-view,
         html[data-theme="light"] .mz-working-me__highlight.is-in-view {
             background-size: 100% 100% !important;
-            color: #0f172a !important;
+            color: #000000 !important;
             font-weight: 700;
         }
 
@@ -366,19 +368,19 @@
         }
 
         .mz-about-section__eyebrow {
-            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-family: var(--font-sans, 'Inter', sans-serif) !important;
             font-size: 11px !important;
             font-weight: 600 !important;
             letter-spacing: 0.14em !important;
             text-transform: uppercase !important;
-            color: #a1a19b !important;
+            color: #a1a1a1 !important;
         }
 
         .mz-about-section__title {
-            font-family: 'Acorn', var(--font-display, serif) !important;
+            font-family: 'Inter', var(--font-display, serif) !important;
             font-size: clamp(1.4rem, 2.2vw, 1.8rem) !important;
             font-weight: 500 !important;
-            color: #f4f2ed !important;
+            color: #ffffff !important;
             line-height: 1.2 !important;
             margin: 0 !important;
             letter-spacing: -0.015em !important;
@@ -388,15 +390,15 @@
             display: flex !important;
             flex-direction: column !important;
             gap: 16px !important;
-            color: #b8b6b0 !important;
+            color: #b6b6b6 !important;
             font-size: 1.05rem !important;
             line-height: 1.74 !important;
-            font-family: var(--font-sans, 'Archivo', sans-serif) !important;
+            font-family: var(--font-sans, 'Inter', sans-serif) !important;
         }
 
         .mz-about-section__body p {
             margin: 0 !important;
-            color: #b8b6b0 !important;
+            color: #b6b6b6 !important;
         }
 
         [data-theme="light"] .mz-about-section {
@@ -404,24 +406,25 @@
         }
 
         [data-theme="light"] .mz-about-section__eyebrow {
-            color: #555550 !important;
+            color: #555555 !important;
         }
 
         [data-theme="light"] .mz-about-section__title {
-            color: #17170f !important;
+            color: #000000 !important;
         }
 
         [data-theme="light"] .mz-about-section__body {
-            color: #2c2b28 !important;
+            color: #2b2b2b !important;
         }
 
         [data-theme="light"] .mz-about-section__body p {
-            color: #2c2b28 !important;
+            color: #2b2b2b !important;
         }
     </style>
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
 </head>
 
-<body class="bg-[#0f0f0f] text-[#f4f2ed]">
+<body class="bg-[#000000] text-[#ffffff]">
     <a href="#main" class="mz-skip">Skip to content</a>
 
     <header class="site-header" id="siteHeader" role="banner">
@@ -481,17 +484,17 @@
                     </div>
                 </div>
                 <div class="mz-working-me__body">
-                    <p>I like to understand why we’re building something before I start designing it. If the problem isn’t fully clear yet, I’ll probably slow things down and ask more questions so we can think it through properly.</p>
+                    <p>I like to understand why we’re building something before I start designing it. If the problem isn’t clear yet, I slow things down and ask questions until it is.</p>
 
-                    <p>I’m direct about what I think, and I don’t like to sugarcoat things. I expect the same honesty from the people I work with, and I’m completely fine when someone is direct with me.</p>
+                    <p>I’m direct about what I think, and I don’t sugarcoat things. I expect the same honesty from the people I work with, and I’m fine when someone is direct with me.</p>
 
-                    <p>I’ve never worked in a field I already knew well. I’m comfortable asking questions, learning quickly, and figuring out how things work on my own.</p>
+                    <p>I didn’t know any of the fields I’ve worked in when I started. I ask questions, learn fast, and work out how things run on my own.</p>
 
-                    <p>I’ve been the only designer on most of the teams I’ve worked with, so I’m used to dealing with decisions that don’t always have a clear answer.</p>
+                    <p>I was the only designer on most of my teams, so I’m used to making decisions without a clear answer.</p>
 
                     <p><span class="mz-highlight mz-highlight-yellow mz-working-me__highlight" data-action="yellow">I keep choosing early-stage startups because I enjoy being in situations where I don’t have everything figured out.</span> That’s where I learn the most, and it’s how I approach most things in life too.</p>
 
-                    <p>I do my best work with ambitious people, challenging problems, and a high level of trust. Those things matter more to me than the size or scale of a company. I want the people I work with to feel that difficult problems became a little easier to solve when we worked on them together.</p>
+                    <p>I do my best work with ambitious people, challenging problems, and a high level of trust. Those things matter more to me than the size or scale of a company. I want the people I work with to feel we made difficult problems easier to solve together.</p>
                 </div>
             </section>
 
@@ -502,7 +505,7 @@
                     <h2 class="mz-about-section__title">Off the Clock</h2>
                 </div>
                 <div class="mz-about-section__body">
-                    <p>Building side projects, experimenting with new developer tools, making unnecessary Figma plugins, planning trips, following tech drama, and starting hobbies with far too much confidence.</p>
+                    <p>Building side projects, experimenting with new developer tools, making unnecessary Figma plugins, planning trips, following tech drama, and starting hobbies with too much confidence.</p>
                 </div>
             </section>
 
@@ -606,7 +609,7 @@
                         <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
                     </svg>
                 </a>
-                <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                <a href="https://medium.com/@Muzeebdesign" target="_blank" rel="noopener noreferrer" aria-label="Medium">
                     <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
                         <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
                         <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
@@ -642,7 +645,6 @@
     <script src="assets/js/slick.min.js"></script>
     <!-- Gsap animation js -->
     <script src="assets/js/gsap-latest-beta.min.js"></script>
-    <script src="assets/js/ScrambleText.js"></script>
 
     <!-- Lenis smooth scroll js start -->
     <script>
@@ -657,21 +659,6 @@
         requestAnimationFrame(raf)
     </script>
     <!-- Lenis smooth scroll js end -->
-
-    <!-- Typed js start -->
-    <script>
-        $("#typed").typed({
-            strings: ["Figma", "Cursor", "Claude", "Framer", "Illustrator"],
-            typeSpeed: 100,
-            startDelay: 0,
-            backSpeed: 60,
-            backDelay: 100,
-            loop: true,
-            cursorChar: "|",
-            contentType: 'html'
-        });
-    </script>
-    <!-- Typed js end -->
 
     <!-- Slick slider js start -->
     <script>
@@ -717,24 +704,6 @@
     </script>
     <!-- Slick slider js end -->
 
-    <!-- Gsap scramble text js start -->
-    <script>
-        // var tl = gsap.timeline({ defaults: { duration: 2, ease: "none" } });
-        // tl.to("#text1", { scrambleText: { text: "Hello! I'm Muzeeb, a UI/UX", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text2", { scrambleText: { text: "Designer & No Code Developer,", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text3", { scrambleText: { text: "Crafting Digital", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text4", { scrambleText: { text: "Experiences Simple &", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        //     .to("#text5", { scrambleText: { text: "Easy to Use.", chars: "lowerCase", speed: 0.1, ease: Linear.easeNone } })
-        var scrambleText = new ScrambleText(document.getElementById('text1')).start();
-    </script>
-
-    <style>
-        .scramble {
-            transition: all 0.5s ease-in-out;
-        }
-    </style>
-    <!-- Gsap scramble text js end -->
-
     <!-- Scroll to top js start -->
     <script>
         $(window).on('scroll', function () {
@@ -776,7 +745,7 @@
     <script src="assets/js/sfx.js"></script>
     -->
     <script src="assets/js/highlighter.js?v=20"></script>
-    <script src="assets/js/site.js?v=140"></script>
+    <script src="assets/js/site.js?v=561"></script>
     <!-- About: copy email + magnetic photo carousel -->
     <script>
     (function () {

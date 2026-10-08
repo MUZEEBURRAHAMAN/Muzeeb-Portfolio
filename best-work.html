@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-  <link rel="apple-touch-icon" href="assets/images/favicon.png">
-  <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/best-work.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/best-work.html">
   <meta property="og:title" content="Best Work · Muzeeb Urrahaman">
   <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/best-work.html">
   <meta property="og:type" content="website">
@@ -28,50 +30,50 @@
   <!-- Google Fonts: Archivo & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=610">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=614">
   <style>
     /* ===== theme tokens (portfolio colours + Archivo) ===== */
     :root {
-      --bwg-disp: 'Archivo', 'Poppins', system-ui, sans-serif;
-      --bwg-sans: 'Archivo', system-ui, sans-serif;
+      --bwg-disp: 'Inter', 'Poppins', system-ui, sans-serif;
+      --bwg-sans: 'Inter', system-ui, sans-serif;
       --ease: cubic-bezier(.87, 0, .13, 1);
       /* dark (default) */
-      --bwg-bg: #0f0f0f;
-      --bwg-ink: #f4f2ed;
-      --bwg-sub: #9a9a98;
+      --bwg-bg: #000000;
+      --bwg-ink: #ffffff;
+      --bwg-sub: #9a9a9a;
       --bwg-cell: #141414;
       --bwg-stroke: rgba(255, 255, 255, .10);
-      --bwg-panel: #191919;
+      --bwg-panel: #1a1a1a;
       --bwg-panel-bd: rgba(255, 255, 255, .14);
       --bwg-panel-ink: #d6d6d6;
       --bwg-chip-bg: #f0f0f0;
-      --bwg-chip-ink: #17170f;
+      --bwg-chip-ink: #000000;
       --bwg-btn: rgba(255, 255, 255, .10);
       --bwg-btn-bd: rgba(255, 255, 255, .20);
       --bwg-btn-ink: #fff;
       --bwg-btn-hov: rgba(255, 255, 255, .22);
-      --bwg-overlay: rgba(10, 10, 11, .82);
+      --bwg-overlay: rgba(0, 0, 0, .82);
       --bwg-vig: linear-gradient(180deg, rgba(0, 0, 0, .55), transparent 20%, transparent 82%, rgba(0, 0, 0, .45));
       --bwg-chip-num: rgba(0, 0, 0, .42);
     }
 
     [data-theme="light"] {
-      --bwg-bg: #faf9f7;
-      --bwg-ink: #17170f;
-      --bwg-sub: #6b6b66;
+      --bwg-bg: #ffffff;
+      --bwg-ink: #000000;
+      --bwg-sub: #6b6b6b;
       --bwg-cell: #ffffff;
       --bwg-stroke: rgba(0, 0, 0, .12);
       --bwg-panel: #ffffff;
-      --bwg-panel-bd: #e6e4df;
-      --bwg-panel-ink: #3a3a36;
-      --bwg-chip-bg: #17170f;
-      --bwg-chip-ink: #faf9f7;
+      --bwg-panel-bd: #ebebeb;
+      --bwg-panel-ink: #3a3a3a;
+      --bwg-chip-bg: #000000;
+      --bwg-chip-ink: #ffffff;
       --bwg-btn: rgba(0, 0, 0, .05);
       --bwg-btn-bd: rgba(0, 0, 0, .14);
-      --bwg-btn-ink: #17170f;
+      --bwg-btn-ink: #000000;
       --bwg-btn-hov: rgba(0, 0, 0, .10);
-      --bwg-overlay: rgba(250, 249, 247, .86);
+      --bwg-overlay: rgba(255, 255, 255, .86);
       --bwg-vig: linear-gradient(180deg, rgba(0, 0, 0, .05), transparent 16%, transparent 86%, rgba(0, 0, 0, .04));
       --bwg-chip-num: rgba(255, 255, 255, .72);
     }
@@ -191,7 +193,7 @@
       cursor: pointer;
       overflow: hidden;
       will-change: transform, opacity;
-      border-radius: 10px;
+      border-radius: 8px;
       opacity: 1;
       border: 1px solid var(--bwg-stroke);
       /* minimal stroke: keeps white images from bleeding into a light bg */
@@ -516,7 +518,7 @@
       margin-top: 28px;
     }
     .bw-nojs__card {
-      background: var(--bwg-cell, #181818);
+      background: var(--bwg-cell, #1a1a1a);
       border: 1px solid var(--bwg-stroke, rgba(255,255,255,0.08));
       border-radius: 12px;
       overflow: hidden;
@@ -541,7 +543,7 @@
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.08em;
-      color: var(--accent, #f4f2ed);
+      color: var(--accent, #ffffff);
       text-transform: uppercase;
       font-family: var(--bwg-sans);
     }
@@ -549,17 +551,18 @@
       font-size: 18px;
       font-weight: 600;
       margin: 4px 0 6px;
-      color: var(--bwg-ink, #f4f2ed);
+      color: var(--bwg-ink, #ffffff);
       font-family: var(--bwg-disp);
     }
     .bw-nojs__desc {
       font-size: 13.5px;
-      color: var(--bwg-sub, #a0a098);
+      color: var(--bwg-sub, #9f9f9f);
       line-height: 1.5;
       margin: 0;
     }
 
   </style>
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
 </head>
 
 <body>
@@ -588,7 +591,7 @@
   </header>
 
   <main id="main">
-    <h1 class="sr-only">Best Work — Visual Design, UI Systems &amp; Experiments by Muzeeb Urrahaman</h1>
+    <h1 class="sr-only">Best Work · Visual Design, UI Systems &amp; Experiments by Muzeeb Urrahaman</h1>
     <!-- GALLERY -->
     <div class="viewport" id="viewport" role="application" aria-label="Interactive portfolio project canvas">
       <div class="canvas" id="canvas">
@@ -1622,7 +1625,7 @@
   <script src="assets/js/nachi-sfx.js"></script>
   <script src="assets/js/sfx.js"></script>
   -->
-  <script src="assets/js/site.js?v=98"></script>
+  <script src="assets/js/site.js?v=561"></script>
 </body>
 
 </html>

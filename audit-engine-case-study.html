@@ -45,13 +45,15 @@
   }
 }
 </script>
-<link rel="icon" type="image/png" href="assets/images/favicon.png">
-<link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-<link rel="apple-touch-icon" href="assets/images/favicon.png">
-<link rel="stylesheet" href="assets/css/style.css?v=610">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="assets/css/style.css?v=614">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* Motion HighlightText (Rectangle Box & Yellow Marker Highlights) */
 [data-slot="highlight-text"],
@@ -70,7 +72,7 @@
   background-position: left center;
   background-size: 0% 100%;
   transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
-  background-image: linear-gradient(90deg, #f4f2ed, #ffffff);
+  background-image: linear-gradient(90deg, #ffffff, #ffffff);
   color: inherit;
 }
 
@@ -81,7 +83,7 @@
 .mz-highlight--box.is-in-view,
 .mz-highlight-rect.is-in-view {
   background-size: 100% 100% !important;
-  color: #09090b !important;
+  color: #000000 !important;
   font-weight: 700;
 }
 
@@ -97,7 +99,7 @@ html[data-theme="light"] .mz-highlight-sweep,
 html[data-theme="light"] .mz-highlight[data-action="box"],
 html[data-theme="light"] .mz-highlight--box,
 html[data-theme="light"] .mz-highlight-rect {
-  background-image: linear-gradient(90deg, #18181b, #09090b);
+  background-image: linear-gradient(90deg, #141414, #000000);
   color: inherit;
 }
 
@@ -132,7 +134,7 @@ html[data-theme="light"] .mz-highlight-rect.is-in-view {
   background-position: left center;
   background-size: 0% 100%;
   transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
-  background-image: linear-gradient(90deg, #ca8a04, #eab308);
+  background-image: linear-gradient(90deg, rgba(250, 204, 21, 0.3), rgba(250, 204, 21, 0.3));
   color: inherit;
 }
 
@@ -140,7 +142,7 @@ html[data-theme="light"] .mz-highlight-rect.is-in-view {
 .mz-highlight[data-action="yellow"].is-in-view,
 .mz-highlight--yellow.is-in-view {
   background-size: 100% 100% !important;
-  color: #0c0a09 !important;
+  color: #ffffff !important;
   font-weight: 700;
 }
 
@@ -150,7 +152,7 @@ html[data-theme="light"] .mz-highlight-rect.is-in-view {
 html[data-theme="light"] .mz-highlight-yellow,
 html[data-theme="light"] .mz-highlight[data-action="yellow"],
 html[data-theme="light"] .mz-highlight--yellow {
-  background-image: linear-gradient(90deg, #fef08a, #fde047);
+  background-image: linear-gradient(90deg, #fff1a8, #fff1a8);
   color: inherit;
 }
 
@@ -161,19 +163,19 @@ html[data-theme="light"] .mz-highlight-yellow.is-in-view,
 html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
 html[data-theme="light"] .mz-highlight--yellow.is-in-view {
   background-size: 100% 100% !important;
-  color: #0f172a !important;
+  color: #000000 !important;
   font-weight: 700;
 }
 
 /* Safe Inline Underline */
 .mz-highlight[data-action="underline"] {
   display: inline;
-  border-bottom: 2.5px solid #f59e0b;
+  border-bottom: 2.5px solid #8f8f8f;
   padding-bottom: 1px;
 }
 [data-theme="light"] .mz-highlight[data-action="underline"],
 html[data-theme="light"] .mz-highlight[data-action="underline"] {
-  border-bottom-color: #d97706;
+  border-bottom-color: #333333;
 }
 
 /* Vertical side rails & 1134px layout */
@@ -211,7 +213,7 @@ html[data-theme="light"] #main {
   top: 0 !important;
   z-index: 1000 !important;
   width: 100% !important;
-  background: rgba(15, 15, 15, 0.86) !important;
+  background: rgba(0, 0, 0, 0.86) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -221,7 +223,7 @@ html[data-theme="light"] #main {
 
 [data-theme="light"] .site-header,
 html[data-theme="light"] .site-header {
-  background: rgba(251, 251, 250, 0.88) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   border-bottom-color: rgba(0, 0, 0, 0.08) !important;
 }
 
@@ -291,22 +293,22 @@ html[data-theme="light"] .hatched-divider__pattern {
 }
 
 :root {
-  --bg: #FBFBFA;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --ink: #0B0B0C;
-  --text: #111111;
-  --muted: #57574f;
-  --soft: #6e6e67;
-  --line: rgba(11, 11, 12, 0.09);
-  --line-2: rgba(11, 11, 12, 0.06);
-  --accent: #2F6DF0;
-  --accent-soft: #EAF1FE;
-  --red: #E5484D;
-  --red-soft: #FDECEC;
-  --green: #2FA96A;
-  --green-soft: #E9F6EF;
-  --amber: #F5A623;
-  --amber-soft: #FEF4E1;
+  --ink: #000000;
+  --text: #0a0a0a;
+  --muted: #555555;
+  --soft: #6b6b6b;
+  --line: rgba(0, 0, 0, 0.09);
+  --line-2: rgba(0, 0, 0, 0.06);
+  --accent: #000000;
+  --accent-soft: #f2f2f2;
+  --red: #6b6b6b;
+  --red-soft: #f5f5f5;
+  --green: #000000;
+  --green-soft: #fafafa;
+  --amber: #333333;
+  --amber-soft: #f5f5f5;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   /* spacing scale: used for the gap before/after a content block (cards,
      metrics, galleries, tables, figures) so that rhythm stays consistent
@@ -316,56 +318,60 @@ html[data-theme="light"] .hatched-divider__pattern {
   --space-md: 24px;
   --space-lg: 40px;
   --space-xl: 60px;
-  --font-display: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --shadow-1: rgba(0, 0, 0, 0.04);
   --shadow-2: rgba(0, 0, 0, 0.06);
   --shadow-3: rgba(0, 0, 0, 0.1);
-  --diff-bad: #b3383c;
-  --diff-good: #1f7a4c;
-  --note-text: #2451b0;
+  --diff-bad: #6b6b6b;
+  --diff-good: #000000;
+  --note-text: #333333;
   --table-head-bg: #fafafa;
   /* results chart: categorical (track breakdown): validated all-pairs, light mode */
-  --viz-cat-1: #2a78d6;
-  --viz-cat-2: #eb6834;
-  --viz-cat-3: #1baf7a;
+  --viz-cat-1: #000000;
+  --viz-cat-2: #6b6b6b;
+  --viz-cat-3: #a3a3a3;
   /* results chart: status (severity breakdown): fixed, never themed */
-  --viz-critical: #d03b3b;
-  --viz-serious: #ec835a;
-  --viz-warning: #fab219;
-  --viz-neutral: #9a9a92;
-  --viz-good: #0ca30c;
+  --viz-critical: #000000;
+  --viz-serious: #333333;
+  --viz-warning: #6b6b6b;
+  --viz-neutral: #a3a3a3;
+  --viz-good: #d4d4d4;
 }
 
 [data-theme="dark"] {
-  --bg: #0f0f0f;
-  --surface: #171717;
-  --ink: #f4f2ed;
-  --text: #f4f2ed;
-  --muted: #a3a39d;
-  --soft: #83837a;
+  --bg: #000000;
+  --surface: #141414;
+  --ink: #ffffff;
+  --text: #ffffff;
+  --muted: #a3a3a3;
+  --soft: #8f8f8f;
   --line: rgba(255, 255, 255, 0.12);
   --line-2: rgba(255, 255, 255, 0.08);
-  --accent: #6ea8ff;
-  --accent-soft: #182a4a;
-  --red: #ff6b6f;
-  --red-soft: #2a1516;
-  --green: #4fce8f;
-  --green-soft: #123321;
-  --amber: #f5b84f;
-  --amber-soft: #2e2410;
+  --accent: #ffffff;
+  --accent-soft: #1a1a1a;
+  --red: #8f8f8f;
+  --red-soft: #141414;
+  --green: #ffffff;
+  --green-soft: #0a0a0a;
+  --amber: #d4d4d4;
+  --amber-soft: #141414;
   --shadow-1: rgba(0, 0, 0, 0.35);
   --shadow-2: rgba(0, 0, 0, 0.45);
   --shadow-3: rgba(0, 0, 0, 0.55);
-  --diff-bad: #ff9599;
-  --diff-good: #63d99c;
-  --note-text: #bcd3ff;
-  --table-head-bg: #1c1c1c;
-  --viz-cat-1: #3987e5;
-  --viz-cat-2: #d95926;
-  --viz-cat-3: #199e70;
-  --viz-neutral: #6f6f68;
+  --diff-bad: #8f8f8f;
+  --diff-good: #ffffff;
+  --note-text: #d4d4d4;
+  --table-head-bg: #1a1a1a;
+  --viz-cat-1: #ffffff;
+  --viz-cat-2: #8f8f8f;
+  --viz-cat-3: #5c5c5c;
+  --viz-neutral: #5c5c5c;
+  --viz-critical: #ffffff;
+  --viz-serious: #d4d4d4;
+  --viz-warning: #8f8f8f;
+  --viz-good: #333333;
 }
 
 html {
@@ -398,6 +404,7 @@ img {
   background: transparent;
   text-align: left;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .hero__in {
@@ -474,7 +481,7 @@ img {
   letter-spacing: -0.045em;
   max-width: 960px;
   margin: 0 0 24px;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--ink);
   text-align: left;
 }
@@ -528,7 +535,7 @@ img {
 .hero-cover .frame {
   position: relative;
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 12px;
   background: var(--surface);
   box-shadow: 0 16px 40px var(--shadow-1);
@@ -569,7 +576,7 @@ img {
 .stat .n {
   font-family: var(--font-display);
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.04em;
   color: var(--ink);
 }
@@ -710,7 +717,7 @@ h2 {
   line-height: 1.1;
   letter-spacing: -0.038em;
   margin: 0 0 24px;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--ink);
   max-width: 1000px;
   text-align: left;
@@ -779,7 +786,7 @@ h2.h-sub {
 .intro .side {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 12px;
   padding: 24px;
   text-align: left;
   box-shadow: 0 4px 20px var(--shadow-1);
@@ -823,7 +830,7 @@ h2.h-sub {
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 26px;
   text-align: left;
   box-shadow: 0 4px 20px var(--shadow-1);
@@ -839,7 +846,7 @@ h2.h-sub {
   margin-bottom: 18px;
   width: 42px;
   height: 42px;
-  border-radius: 11px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -897,7 +904,7 @@ h2.h-sub {
 .challenge-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 12px;
   padding: 26px;
   text-align: left;
   box-shadow: 0 4px 20px var(--shadow-1);
@@ -936,19 +943,19 @@ h2.h-sub {
 
 .ba .col {
   padding: 26px;
-  border-radius: 18px;
+  border-radius: 12px;
   border: 1px solid var(--line);
   text-align: left;
 }
 
 .ba .before {
   background: var(--red-soft);
-  border-color: rgba(229, 72, 77, 0.2);
+  border-color: rgba(128, 128, 128, 0.2);
 }
 
 .ba .after {
   background: var(--green-soft);
-  border-color: rgba(47, 169, 106, 0.22);
+  border-color: rgba(128, 128, 128, 0.22);
 }
 
 .ba .tag {
@@ -1009,7 +1016,7 @@ h2.h-sub {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   background: var(--surface);
   font-size: 14px;
@@ -1054,7 +1061,7 @@ h2.h-sub {
 
 .figure .frame {
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 14px;
   background: var(--surface);
   box-shadow: 0 16px 40px var(--shadow-1);
@@ -1093,14 +1100,14 @@ h2.h-sub {
 
 .shot {
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 12px;
   padding: 12px;
   background: var(--surface);
   box-shadow: 0 10px 28px var(--shadow-1);
 }
 
 .shot img {
-  border-radius: 11px;
+  border-radius: 8px;
   width: 100%;
 }
 
@@ -1129,7 +1136,7 @@ h2.h-sub {
 .gallery--match .shot__frame {
   aspect-ratio: 4 / 3;
   background: var(--bg);
-  border-radius: 11px;
+  border-radius: 8px;
   overflow: hidden;
 }
 .gallery--match .shot__frame img {
@@ -1152,7 +1159,7 @@ h2.h-sub {
 .metric {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 12px;
   padding: 26px;
   text-align: left;
   box-shadow: 0 4px 20px var(--shadow-1);
@@ -1161,7 +1168,7 @@ h2.h-sub {
 .metric .n {
   font-family: var(--font-display);
   font-size: 38px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.05em;
   color: var(--ink);
   line-height: 1;
@@ -1191,7 +1198,7 @@ h2.h-sub {
 .viz-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 20px var(--shadow-1);
 }
@@ -1260,7 +1267,7 @@ h2.h-sub {
   display: flex;
   align-items: center;
   gap: 16px;
-  border: 1px solid rgba(47, 109, 240, 0.25);
+  border: 1px solid rgba(128, 128, 128, 0.25);
   border-left: 3px solid var(--accent);
   border-radius: 12px;
   background: var(--accent-soft);
@@ -1334,7 +1341,7 @@ h2.h-sub {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(6, 6, 8, 0.96);
+  background: rgba(0, 0, 0, 0.96);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   opacity: 0;
@@ -1367,7 +1374,7 @@ h2.h-sub {
   align-items: center;
   gap: 4px;
   padding: 4px 8px;
-  background: rgba(24, 24, 28, 0.88);
+  background: rgba(20, 20, 20, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   backdrop-filter: blur(12px);
@@ -1391,7 +1398,7 @@ h2.h-sub {
 .lightbox__btn {
   background: transparent;
   border: none;
-  color: #f4f2ed;
+  color: #ffffff;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1420,7 +1427,7 @@ h2.h-sub {
   height: 44px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(24, 24, 28, 0.88);
+  background: rgba(20, 20, 20, 0.88);
   color: #ffffff;
   display: inline-flex;
   align-items: center;
@@ -1544,13 +1551,13 @@ h2.h-sub {
 }
 
 .faq details:hover {
-  border-color: rgba(47,109,240,.35);
+  border-color: rgba(128, 128, 128,.35);
   box-shadow: 0 10px 26px var(--shadow-2);
 }
 
 .faq details[open] {
   border-color: var(--accent);
-  box-shadow: 0 14px 34px rgba(47,109,240,.1);
+  box-shadow: 0 14px 34px rgba(128, 128, 128,.1);
 }
 
 .faq summary {
@@ -1607,13 +1614,13 @@ h2.h-sub {
 }
 
 [data-theme="dark"] .faq details { background: var(--surface); }
-[data-theme="dark"] .faq summary::before { background: rgba(110,168,255,.15); }
+[data-theme="dark"] .faq summary::before { background: rgba(128, 128, 128,.15); }
 
 /* SKILL DOWNLOAD / EMAIL SECTION */
 .skill-box {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 36px 32px;
   box-shadow: 0 8px 32px var(--shadow-1);
   margin-top: var(--space-md);
@@ -1645,13 +1652,13 @@ h2.h-sub {
   font-family: var(--mono);
   font-size: 11.5px;
   font-weight: 700;
-  color: #ffffff;
-  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+  color: var(--bg);
+  background: var(--ink);
   padding: 5px 14px;
   border-radius: 999px;
   align-self: flex-start;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+  border: 0;
+  box-shadow: none;
 }
 .skill-box__title {
   font-family: var(--font-display);
@@ -1749,7 +1756,7 @@ h2.h-sub {
   font-size: 14px;
   font-weight: 600;
   padding: 13px 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 4px 14px var(--shadow-1);
   transition: transform .2s var(--ease), background .2s, box-shadow .2s;
@@ -1787,7 +1794,7 @@ h2.h-sub {
   font-size: 13px;
   font-weight: 500;
   padding: 11px 18px;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: transform .15s ease, background .2s, border-color .2s;
 }
@@ -1945,7 +1952,39 @@ h2.h-sub {
     padding: 10px 12px;
   }
 }
+
+.hero h1.ae-h1 { font-size:clamp(30px, 4.1vw, 58px) !important; line-height:1.12 !important; }
+.ae-h1 > span { display:block; }
+@media (min-width:860px) { .ae-h1 > span { white-space:nowrap; } }
+/* ===== Interspace-style rewrite (ae-*) ===== */
+.ae-meta { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px 32px; margin-top:32px; padding-top:24px; border-top:1px solid var(--line); max-width:1000px; }
+.ae-meta .k { font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--soft); margin-bottom:6px; }
+.ae-meta .v { font-size:15px; line-height:1.5; color:var(--ink); }
+.ae-meta__skills { grid-column:1 / -1; }
+.ae-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.ae-chips span { font-family:var(--mono); font-size:11.5px; padding:4px 10px; border:1px solid var(--line); color:var(--muted); background:var(--surface); }
+.ae-statement { font-family:var(--font-display); font-size:20px !important; line-height:1.5 !important; color:var(--ink) !important; font-weight:600; }
+.ae-badge { display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; margin-right:10px; background:#fff1a8; color:#3d3200; vertical-align:1px; }
+.ae-ver { border:1px solid var(--line); background:var(--surface); padding:28px; margin:28px 0; }
+.ae-ver--final { border-color:var(--ink); }
+.ae-ver__title { display:flex; align-items:center; gap:12px; font-size:20px; font-weight:600; color:var(--ink); margin:0 0 20px; }
+.ae-ver__title span { font-family:var(--mono); font-size:12px; font-weight:600; padding:3px 9px; background:var(--ink); color:var(--bg); }
+.ae-ver .figure { margin:0 0 24px; }
+.ae-ver__rows { margin:0; display:grid; gap:18px; }
+.ae-ver__rows dt { font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); margin-bottom:6px; }
+.ae-ver__rows dd { margin:0; font-size:16px; line-height:1.7; color:var(--muted); max-width:860px; }
+.ae-ver__rows dd b, .ae-insight { color:var(--ink) !important; font-weight:600; }
+.ae-decisions { list-style:none; padding:0; margin:28px 0; max-width:1000px; }
+.ae-decisions > li { display:grid; grid-template-columns:40px 1fr; column-gap:16px; margin:0 0 22px; }
+.ae-decisions > li::before { content:attr(data-n); grid-row:1 / span 3; display:grid; place-items:center; width:32px; height:32px; background:var(--ink); color:var(--bg); font-family:var(--mono); font-size:13px; font-weight:600; }
+.ae-decisions h4 { font-size:17px; font-weight:600; color:var(--ink); margin:4px 0 6px; }
+.ae-decisions p { font-size:16px; line-height:1.7; color:var(--muted); margin:0; }
+.ae-roles { margin:12px 0 0; padding-left:18px; color:var(--muted); font-size:15.5px; line-height:1.7; }
+.ae-roles b { color:var(--ink); font-weight:600; }
+.results-viz--single { grid-template-columns:minmax(0,1fr) !important; max-width:720px; }
+@media (max-width:700px) { .ae-meta { grid-template-columns:1fr; } .ae-ver { padding:20px; } }
 </style>
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
 </head>
 <body>
     <a href="#main" class="mz-skip">Skip to content</a>
@@ -1974,27 +2013,26 @@ h2.h-sub {
 
 <main id="main" class="w-full">
 
-<!-- HERO (LEFT ALIGNED · 1134px CONTAINER) -->
+<!-- HERO -->
 <header class="hero">
   <div class="hero__in">
     <div class="mz-hero__eyebrow-wrapper">
       <div class="mz-hero__badge-pill">
-        <span class="mz-hero__badge-tag">
-          <span class="mz-hero__dot"></span>
-          CASE STUDY
-        </span>
-        <span class="mz-hero__badge-text">
-          Product Designer &amp; Builder · Omnis AI
-        </span>
+        <span class="mz-hero__badge-tag"><span class="mz-hero__dot"></span>CASE STUDY</span>
+        <span class="mz-hero__badge-text">Product Designer &amp; Builder · Omnis AI</span>
       </div>
     </div>
-    <h1>I was spending a day finding UX problems. So I built the <span class="mz-highlight" data-action="box">audit engine</span>.</h1>
-    <p class="hero__sub">At Omnis AI, I was the <span class="mz-highlight" data-action="yellow">solo product designer across five legal-tech products</span>. Manual staging reviews took hours and missed hidden states. I built an engine that logs in, explores interactive states, and generates developer-ready reports at <span class="mz-highlight" data-action="box">~$0.30 a screen</span>.</p>
-
+    <h1 class="ae-h1"><span>Design QA took me a day per release.</span><span>So I built an engine that takes <span class="mz-highlight" data-action="box">minutes</span>.</span></h1>
+    <p class="hero__sub">A tool that opens a web app the way a person would, clicks through its menus and pop-ups, and lists each design problem it finds with <span class="mz-highlight" data-action="yellow">the exact code fix</span>. It costs about <span class="mz-highlight" data-action="box">$0.30 a screen</span>.</p>
+    <div class="ae-meta">
+      <div><div class="k">Role</div><div class="v">Solo product designer &amp; builder</div></div>
+      <div><div class="k">Duration</div><div class="v">Jun – Jul 2026 · Omnis AI</div></div>
+      <div><div class="k">Owned</div><div class="v">Problem, design, architecture, ~27k lines of TypeScript</div></div>
+      <div class="ae-meta__skills"><div class="k">Skills</div><div class="ae-chips"><span>Design QA</span><span>Accessibility</span><span>AI pipeline design</span><span>Full-stack TypeScript</span></div></div>
+    </div>
   </div>
 </header>
 
-<!-- HERO COVER -->
 <div class="hero-cover reveal">
   <div class="frame">
     <picture>
@@ -2004,214 +2042,129 @@ h2.h-sub {
   </div>
 </div>
 
-<!-- STATS BAR (1134px CONTAINER) -->
-<div class="stats reveal">
-  <div class="stat"><div class="n"><span class="mz-highlight" data-action="yellow">229</span></div><div class="l">Deterministic checks</div></div>
-  <div class="stat"><div class="n">342</div><div class="l">Total audit rules</div></div>
-  <div class="stat"><div class="n">31</div><div class="l">AI analysis lenses</div></div>
-  <div class="stat"><div class="n">187</div><div class="l">Passing tests</div></div>
-  <div class="stat"><div class="n">~27k</div><div class="l">Lines of TypeScript</div></div>
-  <div class="stat"><div class="n"><span class="mz-highlight" data-action="box">90%+</span></div><div class="l">Findings tied to real elements</div></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- Section Divider: Hero to Context -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 01: CONTEXT -->
-<section id="context">
-  <div class="intro reveal">
-    <div>
-      <div class="sec-num">01</div>
-      <div class="eyebrow">Context</div>
-      <p class="lead">Given a product URL and staging credentials, the engine logs in, explores interactive states, and outputs a self-contained report with code-level findings.</p>
-      <p>As the solo product designer across five legal-tech products at Omnis AI, I had to audit live staging apps screen by screen. Doing that manually for every release was unsustainable, so I built an automated audit engine to handle the repetitive passes.</p>
-      <p>A typical manual audit required capturing screenshots, redlining issues in Figma, cataloging tokens, and filing engineering tickets. Because fixes required complete re-verification, design QA quickly became a release bottleneck.</p>
-    </div>
-    <aside class="side">
-      <div class="g"><div class="k">Author</div><div class="v">Muzeeb Urrahaman</div></div>
-      <div class="g"><div class="k">Role</div><div class="v">Solo designer + builder</div></div>
-      <div class="g"><div class="k">Timeframe</div><div class="v">Jun – Jul 2026</div></div>
-      <div class="g"><div class="k">Type</div><div class="v">AI tool · UX audit · v5.0</div></div>
-      <div class="g"><div class="k">Owned</div><div class="v">Problem, design, architecture &amp; ~27k lines of code</div></div>
-    </aside>
+<!-- 01 OVERVIEW -->
+<section id="overview">
+  <div class="prose reveal">
+    <div class="sec-num">01</div>
+    <div class="eyebrow">Overview</div>
+    <h2 class="h">I built the QA teammate I didn't have.</h2>
+    <p>I was the <b>only designer across five legal-tech products</b> at Omnis AI. Before each release I checked every screen by hand, and it took hours. So I built a tool that does the checking, and <b>I keep the final say</b>.</p>
   </div>
-
-  <div class="cards reveal">
-    <div class="card">
-      <div class="card__ic card__ic--red"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
-      <h3>Problem</h3>
-      <ul>
-        <li>Manual QA across 5 products took hours and produced inconsistent tickets.</li>
-        <li>Interactive states (modals, validation errors, empty views) were routinely missed.</li>
-        <li>Verifying engineer fixes required repeating the entire manual review cycle.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card__ic card__ic--accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4z"/></svg></div>
-      <h3>Solution</h3>
-      <ul>
-        <li>Automated crawler logs in and walks every screen and interactive view.</li>
-        <li>Applies deterministic WCAG rules and design heuristics grounded in the live DOM.</li>
-        <li>Exports annotated reports with exact CSS selectors and remediation code.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card__ic card__ic--green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-      <h3>Results</h3>
-      <ul>
-        <li>Audits complete in <span class="mz-highlight" data-action="yellow">~3 minutes</span> at <span class="mz-highlight" data-action="box">~$0.30 per screen</span>.</li>
-        <li>Systematic state exploration provides verified coverage across all controls.</li>
-        <li>Engineers receive copy-paste CSS patches with before/after visual diffs.</li>
-      </ul>
+  <div class="flow new" data-flow>
+    <div class="flow-label"><span class="lozenge inverted">How it works</span><span class="flow-title">Four steps, no designer needed in the loop</span></div>
+    <div class="flow-pipe">
+      <div class="flow-stage" style="--i:0">Give it a link and a test login</div><div class="flow-conn" style="--i:1"></div>
+      <div class="flow-stage" style="--i:2">It clicks through screens, menus, and pop-ups</div><div class="flow-conn" style="--i:3"></div>
+      <div class="flow-stage" style="--i:4">It checks each state against 229 rules</div><div class="flow-conn" style="--i:5"></div>
+      <div class="flow-stage end" style="--i:6">You get a report with a fix for each problem</div>
     </div>
   </div>
 </section>
 
-<!-- Section Divider: Context to Insight -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- SECTION 02: THE INSIGHT -->
-<section id="insight">
+<!-- 02 THE PROBLEM -->
+<section id="problem">
   <div class="prose reveal">
     <div class="sec-num">02</div>
-    <div class="eyebrow">The insight</div>
-    <h2 class="h">Quality regressions lived inside interactive states.</h2>
-    <p>A default dashboard layout often looked clean on initial render. Regressions appeared once a user opened a dropdown, triggered form validation errors, expanded drawer menus, or encountered empty data views.</p>
-    <p>Manual reviewers rarely had time to click through every interactive permutation on staging. Consequently, state-specific bugs consistently reached production.</p>
-    <p>Solving this required moving beyond static screenshot inspection to build a crawler capable of interacting with the live application.</p>
+    <div class="eyebrow">The problem</div>
+    <h2 class="h">Design bugs hide behind clicks.</h2>
+    <p>A screen can pass review when it first loads. The problems show up <b>after someone opens a dropdown, submits a form with an error, or lands on an empty page</b>.</p>
+    <p>Nobody had time to click through all of those states before each release, so those bugs reached real users.</p>
   </div>
-</section>
-
-<!-- Section Divider: Insight to Challenge -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 03: THE CHALLENGE -->
-<section id="challenge">
-  <div class="prose reveal" style="margin-bottom:34px">
-    <div class="sec-num">03</div>
-    <div class="eyebrow">The challenge</div>
-    <h2 class="h">Key technical hurdles for automated design QA.</h2>
-  </div>
-  <div class="challenge-grid reveal">
-    <div class="challenge-card">
-      <div class="cc-num">01</div>
-      <h3>Interactive State Exploration</h3>
-      <p>Crawling not only initial page loads, but opening every dialog, dropdown, and tab dynamically.</p>
-    </div>
-    <div class="challenge-card">
-      <div class="cc-num">02</div>
-      <h3>DOM-Grounded Verification</h3>
-      <p>Rejecting visual hallucinations by requiring every issue to anchor to an existing DOM selector.</p>
-    </div>
-    <div class="challenge-card">
-      <div class="cc-num">03</div>
-      <h3>Actionable Engineering Handoff</h3>
-      <p>Providing exact line numbers, computed CSS values, and diff-ready token patches.</p>
-    </div>
-    <div class="challenge-card">
-      <div class="cc-num">04</div>
-      <h3>Deterministic Accuracy</h3>
-      <p>Running code-level axe accessibility math first, reserving LLM vision strictly for semantic layout judgment.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Section Divider: Challenge to Workflow -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 04: THE WORKFLOW -->
-<section id="workflow">
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/samples/audit-dropdown-states.webp?v=1" alt="The same New meeting dialog, closed and open"/></div><figcaption><b>Left:</b> at first load the form passes review. <b>Right:</b> open the Matter dropdown and three problems appear. The list is cut off by the dialog edge, the options are too faint to read, and the list covers the Schedule button.</figcaption></figure>
   <div class="prose reveal">
-    <div class="sec-num">04</div>
-    <div class="eyebrow">Before &rarr; After</div>
-    <h2 class="h">Replacing manual design redlining with automated audit passes.</h2>
-    <p>Comparing the manual review loop against the automated inspection pipeline.</p>
+    <p class="ae-statement">I needed a way to check every state of every screen, <span class="mz-highlight" data-action="yellow">fast enough to run before each release</span>, and accurate enough that engineers would trust it.</p>
   </div>
+</section>
 
-  <div class="ba reveal">
-    <div class="col before">
-      <div class="tag">Before · Manual QA (1+ day per product)</div>
-      <ul>
-        <li>Open each staging screen manually in a browser.</li>
-        <li>Take screenshots, paste into Figma, draw redlines and annotate notes.</li>
-        <li>Attempt to test modals, dropdowns, and error states manually.</li>
-        <li>Export image files and answer developer questions on specific selectors.</li>
-        <li>Repeat the entire review from scratch after engineers push fixes.</li>
-      </ul>
-    </div>
-    <div class="col after">
-      <div class="tag">After · Automated Engine (~3 min per screen)</div>
-      <ul>
-        <li>Run the CLI: <span style="font-family:var(--mono);font-size:.85em">audit &lt;url&gt; &lt;credentials&gt;</span></li>
-        <li>Crawler logs in, walks every screen, and triggers all interactive controls.</li>
-        <li>Maps findings to DOM elements, calculates contrast, and builds reports.</li>
-        <li>Developers receive exact CSS selectors with copy-paste token patches.</li>
-        <li>Re-auditing after a PR requires a single command with delta tracking.</li>
-      </ul>
-    </div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 03 SOLUTION -->
+<section id="solution">
+  <div class="prose reveal">
+    <div class="sec-num">03</div>
+    <div class="eyebrow">Solution</div>
+    <h2 class="h">Three parts: a clicker, a checker, and a reporter.</h2>
   </div>
-
   <div class="tbl reveal">
     <table>
-      <tr><th>Dimension</th><th>Before · Manual</th><th>After · The Engine</th></tr>
-      <tr><td>Time per screen</td><td class="b">~2–3 hours of designer time</td><td class="a">~3 minutes</td></tr>
-      <tr><td>Cost per screen</td><td class="b">~$400 (designer time estimate)</td><td class="a">~$0.30 (compute + API)</td></tr>
-      <tr><td>Interactive states</td><td class="b">Inconsistently checked</td><td class="a">Every state explored</td></tr>
-      <tr><td>Consistency</td><td class="b">Varies by reviewer bandwidth</td><td class="a">Deterministic rule evaluation</td></tr>
-      <tr><td>Coverage record</td><td class="b">None</td><td class="a">Exact DOM inventory record</td></tr>
-      <tr><td>Dev handoff</td><td class="b">Static Figma screenshot</td><td class="a">CSS selector + diff-ready patch</td></tr>
-      <tr><td>Re-audit verification</td><td class="b">Complete manual redo</td><td class="a">Automated delta comparison</td></tr>
+      <tr><th>Part</th><th>What it does</th><th>What you get</th></tr>
+      <tr><td><b>Crawler</b></td><td>Logs in and clicks through screens, menus, dialogs, and tabs</td><td>A record of each state it reached</td></tr>
+      <tr><td><b>Checker</b></td><td>Runs 229 fixed rules (contrast, design tokens, accessibility), then an AI pass for layout</td><td>Problems, each tied to a real element on the page</td></tr>
+      <tr><td><b>Reporter</b></td><td>Sorts problems into a view for each role</td><td>A report with the exact code fix for each problem</td></tr>
     </table>
   </div>
-
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-01.webp?v=q95" alt="Workflow comparison diagram: manual review cycle in red versus the automated engine pass in green"/></div><figcaption>Workflow comparison: manual review cycle (top, red) versus the automated engine pass (bottom, green).</figcaption></figure>
-
-  <div class="gallery gallery--match reveal">
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-02.webp?v=q95" alt="Before: manual screenshot markup in Figma, one note per problem"/></div><div class="sc">Before: manual screenshot markup in Figma, one note per problem.</div></div>
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-03.webp?v=q95" alt="After: automated report with annotated screen and DOM-anchored finding cards"/></div><div class="sc">After: automated report with annotated screen and DOM-anchored finding cards.</div></div>
+  <div class="prose reveal">
+    <p><b>Who it's for:</b> product designers, frontend engineers, QA, content designers, and the managers who sign off on releases.</p>
   </div>
 </section>
 
-<!-- Section Divider: Workflow to Turning Point -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- SECTION 05: THE TURNING POINT -->
-<section id="turning">
+<!-- 04 BACKGROUND -->
+<section id="background">
+  <div class="prose reveal">
+    <div class="sec-num">04</div>
+    <div class="eyebrow">Background</div>
+    <h2 class="h">One designer, five products, no QA team.</h2>
+  </div>
+  <div class="persona reveal">
+    <div class="persona-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Who this was built for · me, first</div>
+    <div class="persona-grid">
+      <div class="persona-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="7" x="3" y="3"/><rect width="7" height="7" x="14" y="3"/><rect width="7" height="7" x="14" y="14"/><rect width="7" height="7" x="3" y="14"/></svg></div><h5>Owned five products</h5><p>Each one shipped on its own schedule.</p></div>
+      <div class="persona-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div><h5>Checked each release by hand</h5><p>Screenshots, red boxes in Figma, then tickets.</p></div>
+      <div class="persona-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div><h5>Repeated it after each fix</h5><p>A fix meant checking the whole screen again.</p></div>
+    </div>
+  </div>
+  <div class="prose reveal">
+    <p>A typical manual check meant taking screenshots, drawing red boxes in Figma, listing the design tokens, and writing tickets. When engineers fixed something, I checked everything again. <b>Design QA became the thing holding releases back.</b></p>
+  </div>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-02.webp?v=q95" alt="Before: manual screenshot markup in Figma, one note per problem"/></div><figcaption>Before: my manual review in Figma, one note per problem.</figcaption></figure>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 05 DESIGN PROCESS -->
+<section id="process">
   <div class="prose reveal">
     <div class="sec-num">05</div>
-    <div class="eyebrow">The turning point</div>
-    <h2 class="h">Why static screenshot analysis failed.</h2>
-    <p>The initial prototype analyzed static screenshots. It produced quick lists of findings, but real-world testing revealed a critical problem.</p>
-    <p>When run against a dashboard screen I knew thoroughly, the vision model reported: <b>"Low contrast on the secondary button beside the search field."</b> It generated coordinates, severity, and a suggested CSS token.</p>
-    <p>That secondary button did not exist in the DOM. The vision model had hallucinated an element based on typical dashboard layout patterns. A tool that invents issues requires manual verification for every line item, wiping out the efficiency gains.</p>
-    <p>I shifted the core architectural rule: <b>every finding must be provably grounded in a real DOM element</b>.</p>
+    <div class="eyebrow">Design process</div>
+    <h2 class="h">Two versions. The first one made things up.</h2>
+    <p>Each version tested the same question: <b>can a tool find design problems that engineers trust enough to fix?</b></p>
   </div>
-</section>
 
-<!-- Section Divider: Turning Point to Principle -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+  <article class="ae-ver reveal">
+    <h3 class="ae-ver__title"><span>V1</span>Reading screenshots with AI</h3>
+    <figure class="figure"><div class="frame"><img loading="lazy" src="assets/media/audit/samples/audit-v1-vision-report.webp?v=1" alt="V1 report flagging low contrast on a button that does not exist"/></div><figcaption>V1's report flagged low contrast on a button beside the search field. The red box marks that spot: <b>there's no button there.</b></figcaption></figure>
+    <dl class="ae-ver__rows">
+      <div><dt>What I built</dt><dd>The tool took screenshots and asked an AI vision model to list problems, each with a location, a severity, and a suggested fix.</dd></div>
+      <div><dt>What I saw</dt><dd>On a dashboard I knew well, it reported low contrast on "the secondary button beside the search field." <b>That button didn't exist.</b> The AI had guessed from what dashboards usually look like.</dd></div>
+      <div><dt>Insight</dt><dd class="ae-insight">If one finding is made up, you have to double-check all of them, and that cancels out the time saved.</dd></div>
+    </dl>
+  </article>
 
-<!-- SECTION 06: THE PRINCIPLE -->
-<section id="principle">
-  <div class="prose reveal">
-    <div class="sec-num">06</div>
-    <div class="eyebrow">The principle</div>
-    <h2 class="h">Grounding findings on live DOM elements.</h2>
-    <p>To eliminate phantom issues, I enforced a strict rule:</p>
-    <p><b><span class="mz-highlight" data-action="box">If a finding cannot be mapped to a real DOM node, the engine rejects it.</span></b></p>
-    <p>This required giving the engine live session management, computed style inspection, and coordinate snapping. Instead of guessing from screenshots, the tool collects deterministic evidence directly from the browser runtime.</p>
+  <article class="ae-ver ae-ver--final reveal">
+    <h3 class="ae-ver__title"><span>Final</span>Checking the real page, with proof</h3>
+    <figure class="figure"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-08.webp?v=q95" alt="Annotated screen: flagged interface elements mapped to numbered finding cards with CSS selectors and diffs"/></div><figcaption>Final: each flagged element maps to a numbered finding with its selector and fix.</figcaption></figure>
+    <dl class="ae-ver__rows">
+      <div><dt>What I built</dt><dd>The tool works inside a live browser. It runs 229 fixed rules first and uses AI only for layout questions. <b>Any problem that can't point to a real element on the page gets thrown out.</b></dd></div>
+      <div><dt>What I saw</dt><dd>Over 90% of findings point to an exact element in the page code, so an engineer can find each problem in one click.</dd></div>
+      <div><dt>Insight</dt><dd class="ae-insight">A short list people trust beats a long list they have to verify.</dd></div>
+    </dl>
+  </article>
+
+  <div class="flow new reveal" data-flow>
+    <div class="flow-label"><span class="lozenge inverted">Keep or drop</span><span class="flow-title">How each finding earns its place in the report</span></div>
+    <div class="flow-pipe">
+      <div class="flow-stage" style="--i:0">A rule or the AI spots a problem</div><div class="flow-conn" style="--i:1"></div>
+      <div class="flow-stage" style="--i:2">Does it point to a real element on the page?</div><div class="flow-conn" style="--i:3"></div>
+      <div class="flow-stage" style="--i:4">Yes: it goes in the report</div><div class="flow-conn" style="--i:5"></div>
+      <div class="flow-stage end" style="--i:6">No: it gets dropped</div>
+    </div>
+    <div class="flow-return"><span>If a designer rejects a finding, the tool remembers and won't flag it again</span></div>
   </div>
 
   <figure class="figure reveal">
@@ -2221,164 +2174,57 @@ h2.h-sub {
         Your browser does not support HTML5 video.
       </video>
     </div>
-    <figcaption>Live DOM element inspection in action: extracting computed styles, layout coordinates, and selector trees directly from active browser sessions.</figcaption>
+    <figcaption>The tool reading a live page: styles, positions, and the element tree, straight from the browser.</figcaption>
   </figure>
 </section>
 
-<!-- Section Divider: Principle to Product -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- SECTION 07: THE PRODUCT -->
-<section id="product">
+<!-- 06 OUTCOME -->
+<section id="outcome">
   <div class="prose reveal">
-    <div class="sec-num">07</div>
-    <div class="eyebrow">The product</div>
-    <h2 class="h">The automated audit pipeline.</h2>
-    <p>Today the audit pipeline runs as an automated end-to-end verification suite across staging applications:</p>
-    <ul>
-      <li>Handles authentication through saved session tokens, scripted login sequences, and automated fallbacks.</li>
-      <li>Captures full-page screenshots alongside the DOM tree and runs live axe-core accessibility checks.</li>
-      <li>Explores interactive states by triggering buttons, dropdowns, dialogs, and tabs across the interface.</li>
-      <li>Runs deterministic rule checks (contrast math, token conformance, axe audit) alongside targeted UX heuristic lenses.</li>
-      <li>Deduplicates findings, filters ungrounded items, and separates copy issues into a dedicated content review track.</li>
-      <li>Generates direct CSS patch tokens for style defects with before/after visual diffs.</li>
-    </ul>
+    <div class="sec-num">06</div>
+    <div class="eyebrow">Outcome</div>
+    <h2 class="h">What changed between the manual way and the tool.</h2>
   </div>
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-05.webp?v=q95" alt="State explorer screenshot: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns"/></div><figcaption>State explorer: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns.</figcaption></figure>
-
-  <div class="prose reveal prose--sub">
-    <div class="eyebrow">Anatomy</div>
-    <h2 class="h h-sub">Structured finding cards for engineering handoff.</h2>
-    <p>Each finding card includes a <b>severity badge</b>, the <b>category and rule ID</b> for provenance, a plain-English <b>title</b>, a <b>principle reference</b>, a copy-paste <b>CSS fix</b>, and a <b>confidence score</b>. Findings missing required evidence are filtered prior to report generation.</p>
-  </div>
-  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp?v=q95" alt="Anatomy of a finding card: verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes"/></div><figcaption>Anatomy of a finding card: a verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes.</figcaption></figure>
-</section>
-
-<!-- Section Divider: Product to Stack -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 08: THE STACK -->
-<section id="stack">
-  <div class="prose reveal">
-    <div class="sec-num">08</div>
-    <div class="eyebrow">The stack</div>
-    <h2 class="h">Two codebases.</h2>
-    <p>The <b>engine</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-mcp</span>) handles capture and analysis. The <b>service</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-service</span>) provides a multi-product dashboard and CI automation.</p>
-  </div>
-  <div class="tbl stack reveal">
-    <table>
-      <tr><th>Layer</th><th>Technology</th></tr>
-      <tr><td>runtime</td><td>Node + TypeScript, Model Context Protocol (MCP) SDK</td></tr>
-      <tr><td>capture</td><td>Playwright (session management, full-page screenshots, DOM inventory, state crawler)</td></tr>
-      <tr><td>a11y</td><td>@axe-core/playwright (live axe engine execution per page)</td></tr>
-      <tr><td>ai-vision</td><td>OpenAI-compatible SDK with Gemini Flash and OpenRouter fallbacks</td></tr>
-      <tr><td>image</td><td>Sharp (annotation rendering), tesseract.js (OCR coordinate snapping), pixelmatch (diffing)</td></tr>
-      <tr><td>service</td><td>Next.js 16, React 19, Tailwind 4, Prisma 7 + Postgres, BullMQ + Redis, GitHub Actions, Docker</td></tr>
-    </table>
-  </div>
-</section>
-
-<!-- Section Divider: Stack to Scenarios -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 09: SCENARIOS -->
-<section id="scenarios">
-  <div class="prose reveal">
-    <div class="sec-num">09</div>
-    <div class="eyebrow">User scenarios</div>
-    <h2 class="h">One audit run. Six distinct stakeholder views.</h2>
-    <p>Findings are routed into targeted views tailored for each team member:</p>
-    <ul>
-      <li><b>Product Designer</b>: high-level severity breakdown and design token mismatches; rejecting false positives creates persistent exclusion rules.</li>
-      <li><b>Frontend Developer</b>: blocker views with DOM selector paths, computed style properties, and verified CSS patches.</li>
-      <li><b>QA Engineer</b>: interactive state logs that expose dialog, drawer, and dropdown regressions missed by static tests.</li>
-      <li><b>Content Designer</b>: dedicated copy track highlighting confusing labels alongside standardized UX copy suggestions.</li>
-      <li><b>Engineering Manager</b>: aggregate fleet dashboard and CI release gates that block pull requests with new critical defects.</li>
-      <li><b>Leadership</b>: quantitative compliance records showing regression resolution over time across all products.</li>
-    </ul>
-    <p class="mt-tight">In practice, a single run on CaseNotes produced 89 findings categorized across 35 deterministic accessibility rules, 45 heuristic design checks, and 22 copy suggestions, allowing each contributor to filter directly to their own tasks.</p>
-  </div>
-  <div class="gallery gallery--match reveal">
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-06.webp?v=q95" alt="Content review track: text suggestions reviewed and edited independently from code rules"/></div><div class="sc">Content track: text suggestions reviewed and edited independently from code rules.</div></div>
-    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-07.webp?v=q95" alt="Product screen index: overview tracking element counts and rule coverage across staging screens"/></div><div class="sc">Product index: screen status overview tracking element counts and rule coverage.</div></div>
-  </div>
-  <div class="gallery reveal gallery--tight">
-    <div class="shot full"><img loading="lazy" src="assets/media/audit/audit-08.webp?v=q95" alt="Annotated screen: flagged interface elements mapped directly to numbered finding cards with CSS selectors and diffs"/><div class="sc">Annotated screen: flagged interface elements mapped directly to numbered finding cards.</div></div>
-  </div>
-</section>
-
-<!-- Section Divider: Scenarios to Trust -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 10: TRUST -->
-<section id="trust">
-  <div class="prose reveal">
-    <div class="sec-num">10</div>
-    <div class="eyebrow">Verification Architecture</div>
-    <h2 class="h">Eliminating false positives through deterministic checks.</h2>
-    <p>Generating high finding counts is trivial. Generating reliable findings requires multi-tiered verification before any defect reaches a report.</p>
-    <ul>
-      <li><b>DOM Grounding</b>: every finding maps directly to a verified DOM node. Unanchored visual observations are automatically dropped.</li>
-      <li><b>Layered Verification</b>: 229 hardcoded rules execute code-level checks at zero compute cost; LLM vision functions purely as a secondary check for contextual layout issues.</li>
-      <li><b>Explicit Provenance</b>: all heuristic findings cite specific WCAG criteria or design guidelines alongside computed confidence ratings.</li>
-      <li><b>Exclusion Rules</b>: designer rejections are permanently recorded as exclusion rules in the repository configuration.</li>
-      <li><b>Deterministic Patching</b>: style remediation provides before/after visual diffs; layout recommendations are marked clearly for human review rather than faked as solved.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Section Divider: Trust to Results -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 11: RESULTS -->
-<section id="results">
-  <div class="prose reveal">
-    <div class="sec-num">11</div>
-    <div class="eyebrow">Results</div>
-    <h2 class="h">Measured impact on staging applications.</h2>
-    <p>On our CaseNotes staging app, a 4-screen audit identified <span class="mz-highlight" data-action="yellow">89 issues across 22 interactive states</span> in ~11 minutes for <span class="mz-highlight" data-action="box">~$1.20 in compute and API costs</span>. The run inspected 1,035 elements, auto-remediated 26 token mismatches, and filtered out 800+ redundant duplicate triggers. On AutoDoc, the engine identified 87 categorized findings across blocker, major, minor, and nit categories.</p>
-    <p class="mt-tight">The engine also handles edge conditions gracefully: generating empty passing reports for compliant pages and falling back to saved session cookies when authentication challenges occur.</p>
+  <div class="vs reveal">
+    <div class="vs-head"><div class="gap">Before · by hand</div><div class="good">After · the tool</div></div>
+    <div class="vs-row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Hours of designer time per product</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>About 3 minutes</b> per screen</span></div></div>
+    <div class="vs-row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Some states checked, when there was time</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>All reachable controls</b> on the audited screens</span></div></div>
+    <div class="vs-row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>A Figma screenshot with a red box</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>The exact element</b> and a copy-paste fix</span></div></div>
+    <div class="vs-row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Check everything again after a fix</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>One command</b> re-checks and shows what changed</span></div></div>
   </div>
 
-  <div class="results-viz reveal">
-    <div class="viz-card">
-      <div class="viz-card__title">CaseNotes: 89 findings by track</div>
-      <div class="viz-card__sub">4-screen audit, 1,035 elements, ~11 min runtime</div>
-      <div class="viz-bars">
-        <div class="viz-bar-row">
-          <div class="viz-bar-row__head">
-            <span class="viz-bar-row__name"><span class="viz-bar-row__swatch" style="background:var(--viz-cat-1)"></span>Deterministic</span>
-            <span class="viz-bar-row__value">35</span>
-          </div>
-          <div class="viz-bar-track"><div class="viz-bar-fill" style="width:77.8%;background:var(--viz-cat-1)"></div></div>
-        </div>
-        <div class="viz-bar-row">
-          <div class="viz-bar-row__head">
-            <span class="viz-bar-row__name"><span class="viz-bar-row__swatch" style="background:var(--viz-cat-2)"></span>AI</span>
-            <span class="viz-bar-row__value">45</span>
-          </div>
-          <div class="viz-bar-track"><div class="viz-bar-fill" style="width:100%;background:var(--viz-cat-2)"></div></div>
-        </div>
-        <div class="viz-bar-row">
-          <div class="viz-bar-row__head">
-            <span class="viz-bar-row__name"><span class="viz-bar-row__swatch" style="background:var(--viz-cat-3)"></span>Content</span>
-            <span class="viz-bar-row__value">22</span>
-          </div>
-          <div class="viz-bar-track"><div class="viz-bar-fill" style="width:48.9%;background:var(--viz-cat-3)"></div></div>
-        </div>
-      </div>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-03.webp?v=q95" alt="After: automated report with annotated screen and DOM-anchored finding cards"/></div><figcaption>After: the tool's report, with the screen annotated and each problem tied to its element.</figcaption></figure>
+
+  <div class="flow old" data-flow>
+    <div class="flow-label"><span class="lozenge outline">Before · by hand</span><span class="flow-title">Every release, every screen, every fix</span></div>
+    <div class="flow-pipe">
+      <div class="flow-stage" style="--i:0">Open each screen</div><div class="flow-conn" style="--i:1"></div>
+      <div class="flow-stage" style="--i:2">Screenshot and mark it in Figma</div><div class="flow-conn" style="--i:3"></div>
+      <div class="flow-stage" style="--i:4">Click menus and errors by hand</div><div class="flow-conn" style="--i:5"></div>
+      <div class="flow-stage" style="--i:6">Answer "which element?" questions</div><div class="flow-conn" style="--i:7"></div>
+      <div class="flow-stage end" style="--i:8">Start over after each fix</div>
     </div>
+  </div>
+  <div class="flow new" data-flow>
+    <div class="flow-label"><span class="lozenge inverted">After · the tool</span><span class="flow-title">One command, proof attached</span></div>
+    <div class="flow-pipe">
+      <div class="flow-stage" style="--i:0">Run one command</div><div class="flow-conn" style="--i:1"></div>
+      <div class="flow-stage" style="--i:2">The tool clicks through each state</div><div class="flow-conn" style="--i:3"></div>
+      <div class="flow-stage" style="--i:4">Each problem points to a real element</div><div class="flow-conn" style="--i:5"></div>
+      <div class="flow-stage end" style="--i:6">Engineers paste the fix</div>
+    </div>
+    <div class="flow-return"><span>Run it again after a fix to see only what changed</span></div>
+  </div>
 
+  <div class="metrics reveal">
+    <div class="metric"><div class="n">$0.30</div><h4>per screen, in about 3 minutes</h4><p>Measured compute and API cost. Manual reviews took 2 to 3 hours per product.</p></div>
+    <div class="metric"><div class="n">89</div><h4>problems across 22 states</h4><p>A 4-screen check of CaseNotes, in about 11 minutes, for about $1.20.</p></div>
+    <div class="metric"><div class="n">90%+</div><h4>tied to a real element</h4><p>Each finding links to the exact spot in the page code.</p></div>
+  </div>
+
+  <div class="results-viz results-viz--single reveal">
     <div class="viz-card">
       <div class="viz-card__title">AutoDoc: 87 findings by severity</div>
       <div class="viz-card__sub">Ordered by triage priority</div>
@@ -2399,31 +2245,77 @@ h2.h-sub {
     </div>
   </div>
 
-  <div class="metrics reveal">
-    <div class="metric"><div class="n">$0.30</div><h4>per screen, in ~3 min</h4><p>Measured compute and API cost. Manual designer reviews averaged 2 to 3 hours per product.</p></div>
-    <div class="metric"><div class="n">100%</div><h4>interactive state coverage</h4><p>Crawls all active buttons, modals, dropdowns, and form validation states.</p></div>
-    <div class="metric"><div class="n">90%+</div><h4>DOM-anchored findings</h4><p>Every defect card links directly to an existing DOM selector path.</p></div>
-  </div>
-
   <div class="note reveal note--loose">
-    <div class="note__badge" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <circle cx="12" cy="12" r="10" fill="#0066FF"/>
-        <path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/>
-      </svg>
-    </div>
-    <div class="note__body">
-      <span class="note__label">Scope note</span>
-      These numbers are from my own staging test runs on Omnis apps (not a peer-reviewed benchmark, not third-party audited, and not measured against production traffic).
-    </div>
+    <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" style="fill:var(--ink, currentColor)"/><path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" style="fill:var(--bg, #fff)"/></svg></div>
+    <div class="note__body"><span class="note__label">Scope note</span>These numbers come from my own test runs on Omnis staging apps. They are not a published benchmark, not checked by a third party, and not measured on live user traffic.</div>
   </div>
+</section>
 
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 07 DESIGN DECISIONS -->
+<section id="decisions">
+  <div class="prose reveal">
+    <div class="sec-num">07</div>
+    <div class="eyebrow">Design decisions</div>
+    <h2 class="h">Proof first, clicks before judging, fixes ready to paste.</h2>
+  </div>
+  <ol class="ae-decisions reveal">
+    <li data-n="1"><h4>Proof before opinion.</h4><p>Fixed rules handle what can be measured: contrast, accessibility attributes, and design tokens. AI handles judgment calls, and only when it can point to the element.</p></li>
+    <li data-n="2"><h4>Click before judging.</h4><p>The tool opens each dialog, dropdown, drawer, and tab before it reviews a screen.</p></li>
+  </ol>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-05.webp?v=q95" alt="State explorer screenshot: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns"/></div><figcaption>The tool going past the first screen to check dialogs, drawers, and open dropdowns.</figcaption></figure>
+  <ol class="ae-decisions reveal" start="3">
+    <li data-n="3"><h4>Every problem comes with its fix.</h4><p>Each card shows a severity, the rule it broke, a plain-English title, the design principle behind it, a copy-paste CSS fix, and a confidence score.</p></li>
+  </ol>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/audit-04.webp?v=q95" alt="Anatomy of a finding card: verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes"/></div><figcaption>One finding card, from severity to the fix an engineer pastes.</figcaption></figure>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/samples/audit-pr-handoff.webp?v=1" alt="A finding inside a GitHub pull request, with selector, measured colors and a suggested fix"/></div><figcaption>What the engineer receives: the rule, the exact element, the measured colors, and a fix they can commit in one click.</figcaption></figure>
+  <ol class="ae-decisions reveal" start="4">
+    <li data-n="4"><h4>Each role sees its own list.</h4><p>One run, six readers, each filtered to the work they can act on:</p>
+      <ul class="ae-roles">
+        <li><b>Product designer:</b> problems by severity and token mismatches. Rejecting a false alarm stops it coming back.</li>
+        <li><b>Frontend developer:</b> blockers with the exact element, its styles, and the fix.</li>
+        <li><b>QA:</b> a log of every dialog, drawer, and dropdown the tool opened.</li>
+        <li><b>Content designer:</b> a separate list of confusing labels and copy.</li>
+        <li><b>Engineering manager:</b> a dashboard across all products.</li>
+        <li><b>Leadership:</b> a record of problems fixed over time.</li>
+      </ul>
+    </li>
+  </ol>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/samples/audit-fleet-dashboard.webp?v=1" alt="Dashboard showing findings across four products, open blockers and a release gate"/></div><figcaption>One run across four products: finding counts per product, open blockers with an owner, fixes per week, and a release gate.</figcaption></figure>
+  <div class="gallery gallery--match reveal">
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-06.webp?v=q95" alt="Content review track: text suggestions reviewed and edited separately from code rules"/></div></div>
+    <div class="shot"><div class="shot__frame"><img loading="lazy" src="assets/media/audit/audit-07.webp?v=q95" alt="Product screen index: overview tracking element counts and rule coverage across staging screens"/></div></div>
+  </div>
+</section>
+
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+
+<!-- 08 UNDER THE HOOD -->
+<section id="stack">
+  <div class="prose reveal">
+    <div class="sec-num">08</div>
+    <div class="eyebrow">Under the hood</div>
+    <h2 class="h">Two codebases, one TypeScript stack.</h2>
+    <p>The <b>engine</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-mcp</span>) captures and checks pages. The <b>service</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-service</span>) adds the multi-product dashboard and automation.</p>
+  </div>
+  <figure class="figure reveal"><div class="frame"><img loading="lazy" src="assets/media/audit/samples/audit-terminal-run.webp?v=1" alt="Terminal output of one audit run, ending with 89 findings and two report files"/></div><figcaption>One command logs in, opens each state, drops findings it can't tie to a real element, and saves an HTML and a Markdown report.</figcaption></figure>
+  <div class="tbl stack reveal">
+    <table>
+      <tr><th>Layer</th><th>Technology</th></tr>
+      <tr><td>runtime</td><td>Node + TypeScript, Model Context Protocol (MCP) SDK</td></tr>
+      <tr><td>capture</td><td>Playwright (session management, full-page screenshots, DOM inventory, state crawler)</td></tr>
+      <tr><td>a11y</td><td>@axe-core/playwright (live axe engine execution per page)</td></tr>
+      <tr><td>ai-vision</td><td>OpenAI-compatible SDK with Gemini Flash and OpenRouter fallbacks</td></tr>
+      <tr><td>image</td><td>Sharp (annotation rendering), tesseract.js (OCR coordinate snapping), pixelmatch (diffing)</td></tr>
+      <tr><td>service</td><td>Next.js 16, React 19, Tailwind 4, Prisma 7 + Postgres, BullMQ + Redis, GitHub Actions, Docker</td></tr>
+    </table>
+  </div>
   <div class="prose reveal prose--sub">
-    <div class="eyebrow">Export</div>
-    <h2 class="h h-sub">Self-contained report formats.</h2>
-    <p>The pipeline outputs complete audits as standalone HTML dashboards and Markdown files formatted for GitHub pull requests and Linear tickets.</p>
+    <div class="eyebrow">Reports</div>
+    <h2 class="h h-sub">Reports open anywhere.</h2>
+    <p>Each audit saves as a standalone HTML page and a Markdown file ready for GitHub or Linear.</p>
   </div>
-
   <div class="gallery gallery--match reveal">
     <div class="shot">
       <div class="shot__frame"><img loading="lazy" src="assets/media/audit/export-html-icon.webp" alt="audit-report.html open in browser"/></div>
@@ -2436,15 +2328,11 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- Section Divider: Results to Skill Access -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- SECTION 12: SKILL & AGENT WORKFLOW -->
 <section id="skill-access">
   <div class="prose reveal">
-    <div class="sec-num">12</div>
+    <div class="sec-num">09</div>
     <div class="eyebrow">Agent Skill &amp; Bundle</div>
     <h2 class="h">Download the UX Audit Assistant Skill.</h2>
     <p>I packaged the heuristics engine, WCAG 2.2 accessibility rules, DOM state exploration prompts, and report markdown templates into a drop-in Claude and AI agent skill bundle. Download the package to run automated design reviews in your own workflow.</p>
@@ -2508,100 +2396,61 @@ h2.h-sub {
   </div>
 </section>
 
-<!-- Section Divider: Skill to Reflection -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- SECTION 13: REFLECTION & LEARNINGS -->
+<!-- 10 LOOKING BACK -->
 <section id="reflection">
   <div class="prose reveal">
-    <div class="sec-num">13</div>
-    <div class="eyebrow">Learnings</div>
-    <h2 class="h">Core takeaways from building automated audit tools.</h2>
-    <p>Automated design QA requires balancing speed with strict verification:</p>
+    <div class="sec-num">10</div>
+    <div class="eyebrow">Looking back</div>
+    <h2 class="h">What building it taught me.</h2>
     <ul>
-      <li><b>Grounding is non-negotiable</b>: A tool that reports 50 issues with 15 hallucinations wastes more time in triage than a manual audit. Anchor every finding directly to a selector.</li>
-      <li><b>Coverage requires state interaction</b>: Testing initial views misses dropdown overflow, validation errors, and empty states. Real QA requires interacting with controls.</li>
-      <li><b>Output must be diff-ready</b>: Vague heuristic critiques get deprioritized. Providing computed CSS properties, DOM selectors, and token patches leads to immediate pull request merges.</li>
+      <li><b>Trust comes before speed.</b> A tool that reports 50 problems with 15 made up costs more time than checking by hand.</li>
+      <li><b>Real checks need clicks.</b> Looking only at first loads misses overflowing dropdowns, error messages, and empty pages.</li>
+      <li><b>Engineers fix what they can paste.</b> A selector and a code fix get merged. A vague comment gets skipped.</li>
     </ul>
   </div>
-
+  <div class="note reveal">
+    <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" style="fill:var(--ink, currentColor)"/><path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" style="fill:var(--bg, #fff)"/></svg></div>
+    <div class="note__body"><span class="note__label">Where it stands</span>A working prototype with 187 automated tests and about 27,000 lines of TypeScript. After a company restructuring changed the staging setup, I parked it. Testing at a larger scale is still open.</div>
+  </div>
   <div class="prose reveal prose--sub">
-    <div class="eyebrow">Project Status</div>
-    <h2 class="h h-sub">Production readiness and scope boundary.</h2>
-    <p>The system is a fully functional engineering prototype with 187 automated tests and ~27,000 lines of TypeScript. Following company restructuring and staging environment changes, further enterprise-scale validation remains open.</p>
-    <p>Next engineering steps include multi-tenant baseline tracking, automated regression alerting, and direct Figma annotation synchronization.</p>
-    <div class="note">
-      <div class="note__badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <circle cx="12" cy="12" r="10" fill="#0066FF"/>
-          <path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" fill="#ffffff"/>
-        </svg>
-      </div>
-      <div class="note__body">
-        <span class="note__label">Takeaway</span>
-        <b>Clear technical boundaries and evidence criteria define durable design engineering.</b>
-      </div>
-    </div>
+    <div class="eyebrow">If I pick it back up</div>
+    <ol>
+      <li><b>Remember a starting point</b> for each product, so later runs flag only new problems.</li>
+      <li><b>Run on every staging deploy</b> through GitHub Actions and flag new blockers on pull requests.</li>
+      <li><b>Re-check after a fix is merged</b> to confirm it worked.</li>
+      <li><b>Send verified notes back into Figma</b> files through the Figma API.</li>
+    </ol>
   </div>
 </section>
 
-<!-- Section Divider: Reflection to Future -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- SECTION 14: WHAT'S NEXT -->
-<section id="future">
-  <div class="prose reveal">
-    <div class="sec-num">14</div>
-    <div class="eyebrow">Future Roadmap</div>
-    <h2 class="h">If I picked this back up.</h2>
-    <p>The project is currently parked, not active (see §13). This isn't a committed roadmap, it's what I'd build next if I resumed it.</p>
-    <ul>
-      <li><b>Phase 1: Baseline Tracking</b>: automated initial crawl establish product baselines to flag regressions on future runs.</li>
-      <li><b>Phase 2: CI Integration</b>: GitHub Actions integration that runs audits on staging deploys and flags new blockers directly on pull requests.</li>
-      <li><b>Phase 3: Remediation Verification</b>: automated re-crawling following PR merges to confirm target defects have been resolved.</li>
-      <li><b>Phase 4: Figma Canvas Sync</b>: pushing verified staging annotations directly onto design system canvas files via Figma REST APIs.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Section Divider: Future to QA -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- SECTION 15: Q&A -->
 <section id="qa">
   <div class="prose reveal" style="margin-bottom:34px">
-    <div class="sec-num">15</div>
-    <div class="eyebrow">Technical Q&amp;A</div>
-    <h2 class="h">Common technical and design inquiries.</h2>
+    <div class="sec-num">11</div>
+    <div class="eyebrow">Questions</div>
+    <h2 class="h">Questions people ask.</h2>
   </div>
   <div class="faq reveal">
-    <details open><summary><span class="q-text">Who approved giving a product designer live credentials to staging environments?</span></summary><div class="a">No new grant was needed: it reused the same staging access I already held as the product designer manually auditing those apps screen by screen. The engine logs in with my credentials, scoped to the same environments I was already reviewing; it never touched production or anyone else's access.</div></details>
+    <details open><summary><span class="q-text">Who approved giving a product designer live credentials to staging environments?</span></summary><div class="a">No new grant was needed: it reused the same staging access I already held as the product designer auditing those apps by hand. The engine logs in with my credentials, scoped to the same environments I already reviewed, and never touched production or anyone else's access.</div></details>
     <details><summary><span class="q-text">Are you a designer or an engineer?</span></summary><div class="a">Product design is my core foundation: research, UX architecture, interaction design, and design systems. I also write production TypeScript to ship working prototypes and developer tooling end-to-end.</div></details>
-    <details><summary><span class="q-text">What was your contribution compared to engineering?</span></summary><div class="a">I conceived, designed, and built the entire engine independently, covering the MCP architecture, Playwright crawlers, axe integrations, and Next.js reporting dashboard.</div></details>
-    <details><summary><span class="q-text">How do you prevent model hallucinations?</span></summary><div class="a">Deterministic checks evaluate objective rules (contrast math, aria attributes) directly. AI heuristic findings are rejected unless they map to a valid DOM node and pass structured false-positive validation.</div></details>
+    <details><summary><span class="q-text">What was your contribution compared to engineering?</span></summary><div class="a">I conceived, designed, and built the entire engine myself, covering the MCP architecture, Playwright crawlers, axe integrations, and Next.js reporting dashboard.</div></details>
+    <details><summary><span class="q-text">How do you prevent model hallucinations?</span></summary><div class="a">Deterministic checks evaluate objective rules (contrast math, aria attributes). AI heuristic findings are rejected unless they map to a valid DOM node and pass structured false-positive validation.</div></details>
     <details><summary><span class="q-text">How does this differ from axe-core or Lighthouse?</span></summary><div class="a">Lighthouse and axe evaluate a single static URL. This engine authenticates, crawls interactive application states, pairs axe-core with semantic layout heuristics, and exports diff-ready CSS token patches.</div></details>
     <details><summary><span class="q-text">How did you measure audit effectiveness?</span></summary><div class="a">By tracking verified findings per screen and measuring false-positive rates against real product staging environments.</div></details>
-    <details><summary><span class="q-text">Can this deploy to production CI pipelines?</span></summary><div class="a">Yes. The containerized MCP service connects directly to GitHub Actions for automated regression gating on release candidates.</div></details>
+    <details><summary><span class="q-text">Can this deploy to production CI pipelines?</span></summary><div class="a">Not yet. Running audits on every staging deploy and flagging new blockers on pull requests is the next step listed above.</div></details>
   </div>
 </section>
 
-<!-- Section Divider: QA to Footer -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
 
-<!-- NEXT CASE STUDY -->
 <a href="matter-redesign-case-study.html" class="next-project-card">
   <div class="next-project-card__info">
     <div class="next-project-card__eyebrow">NEXT CASE STUDY</div>
     <h3 class="next-project-card__title">CasePro Matter Redesign: Splitting Intake from Case Creation</h3>
-    <p class="next-project-card__desc">How I split a merged intake-and-matter form into two linked systems, with an AI-assisted and a fully manual path into every new matter.</p>
+    <p class="next-project-card__desc">I split a merged intake-and-matter form into two linked systems: an AI-assisted path and a manual path into each new matter.</p>
   </div>
   <div class="next-project-card__cta">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -2624,7 +2473,7 @@ h2.h-sub {
           <path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"/>
         </svg>
       </a>
-      <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" aria-label="Medium">
+      <a href="https://medium.com/@Muzeebdesign" target="_blank" aria-label="Medium">
         <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
           <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
           <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
@@ -2662,7 +2511,8 @@ h2.h-sub {
   </div>
 </footer>
 
-</main><!-- /#main -->
+</main>
+<!-- /#main -->
 
 <!-- MINIMAP -->
 <nav class="minimap" aria-label="Case study minimap">
@@ -2998,7 +2848,7 @@ h2.h-sub {
 <script src="assets/js/nachi-sfx.js"></script>
 <script src="assets/js/sfx.js"></script>
 -->
-<script src="assets/js/site.js?v=551"></script>
+<script src="assets/js/site.js?v=561"></script>
 <script src="assets/js/highlighter.js"></script>
 </body>
 </html>

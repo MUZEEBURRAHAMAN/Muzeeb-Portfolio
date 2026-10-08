@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/resume.html">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/resume.html">
     <meta name="description" content="Resume of Muzeeb Urrahaman: Product Designer & Design Engineer. View experience, skills, and download the PDF.">
     <meta property="og:title" content="Resume · Muzeeb Urrahaman">
     <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/resume.html">
@@ -41,14 +43,14 @@
       }
     }
     </script>
-    <!-- Google Fonts: Barlow Condensed & Barlow -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=611">
+    <link rel="stylesheet" href="assets/css/style.css?v=614">
     <style>
         @media screen {
             #main {
@@ -132,14 +134,14 @@
         }
         
         .mz-resume-title {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 700;
-            color: #f4f2ed;
+            color: #ffffff;
             margin: 0;
             letter-spacing: -0.02em;
         }
-        [data-theme="light"] .mz-resume-title { color: #17170f; }
+        [data-theme="light"] .mz-resume-title { color: #000000; }
         
         .mz-resume-download {
             display: inline-flex;
@@ -147,7 +149,7 @@
             gap: 8px;
             padding: 12px 24px;
             background: #ffffff;
-            color: #0b0b0c;
+            color: #000000;
             font-size: 0.95rem;
             font-weight: 600;
             text-decoration: none;
@@ -156,10 +158,10 @@
         }
         .mz-resume-download:hover {
             transform: translateY(-2px);
-            background: #e2e2dc;
+            background: #e5e5e5;
         }
         [data-theme="light"] .mz-resume-download {
-            background: #111111;
+            background: #0a0a0a;
             color: #ffffff;
         }
         [data-theme="light"] .mz-resume-download:hover {
@@ -182,12 +184,12 @@
             max-width: 794px;
             margin: 0 auto 36px auto;
             background: #ffffff;
-            color: #0f172a;
+            color: #000000;
             box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
             box-sizing: border-box;
             padding: 46px 50px;
             position: relative;
-            font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -202,30 +204,30 @@
             position: absolute;
             top: -24px;
             right: 0;
-            font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             font-size: 11px;
             letter-spacing: 0.05em;
-            color: #a1a1aa;
+            color: #a2a2a2;
             user-select: none;
         }
         [data-theme="light"] .mz-page-tag {
-            color: #52525b;
+            color: #535353;
         }
 
         /* Technical Framing Box with Crosshairs (Upper Card Design) */
         .mz-resume-header-box {
             position: relative;
-            border: 1px solid #d4d4d8;
+            border: 1px solid #d4d4d4;
             background: #ffffff;
             margin-bottom: 30px;
             box-sizing: border-box;
         }
         .mz-crosshair {
             position: absolute;
-            font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
             font-size: 13px;
             font-weight: 300;
-            color: #52525b;
+            color: #535353;
             line-height: 1;
             width: 14px;
             height: 14px;
@@ -245,32 +247,31 @@
             padding: 18px 22px 14px 22px;
         }
         .mz-header-name {
-            font-family: 'Barlow Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 34px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            color: #0f172a;
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            color: #000000;
             margin: 0 0 5px 0;
             line-height: 1.05;
-            text-transform: uppercase;
         }
         .mz-header-subtitle {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             font-weight: 400;
-            color: #334155;
+            color: #404040;
             margin: 0;
             line-height: 1.35;
         }
         .mz-header-subtitle .mz-sep {
-            color: #64748b;
+            color: #737373;
             margin: 0 4px;
             font-weight: 300;
         }
 
         .mz-header-contacts {
             display: flex;
-            border-top: 1px solid #d4d4d8;
+            border-top: 1px solid #d4d4d4;
             background: #ffffff;
             width: 100%;
             box-sizing: border-box;
@@ -280,14 +281,14 @@
             padding: 7px 8px;
             text-align: center;
             font-size: 12px;
-            color: #475569;
-            border-right: 1px solid #d4d4d8;
+            color: #545454;
+            border-right: 1px solid #d4d4d4;
             display: flex;
             align-items: center;
             justify-content: center;
             white-space: nowrap;
             text-decoration: none;
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 400;
         }
         .mz-contact-item:first-child {
@@ -298,12 +299,12 @@
             border-right: none;
         }
         .mz-contact-item a {
-            color: #334155;
+            color: #404040;
             text-decoration: none;
             transition: color 0.15s ease;
         }
         .mz-contact-item a:hover {
-            color: #0f172a;
+            color: #000000;
             text-decoration: underline;
         }
 
@@ -312,23 +313,23 @@
             margin-bottom: 28px;
         }
         .mz-sec-heading {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 14.5px;
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #475569;
+            color: #545454;
             margin: 0 0 12px 0;
             padding-bottom: 4px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e7e7e7;
             line-height: 1.1;
         }
         .mz-summary-p {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13.5px;
             font-weight: 400;
             line-height: 1.55;
-            color: #1e293b;
+            color: #292929;
             margin: 0;
             text-align: justify;
         }
@@ -358,28 +359,28 @@
             margin-bottom: 3px;
         }
         .mz-exp-company {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 16.5px;
             font-weight: 700;
             text-transform: uppercase;
-            color: #0f172a;
+            color: #000000;
             letter-spacing: 0.025em;
             margin: 0;
         }
         .mz-exp-date {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 12.5px;
             font-weight: 400;
-            color: #64748b;
+            color: #737373;
             white-space: nowrap;
             text-align: right;
         }
         .mz-exp-role {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13.5px;
             font-style: italic;
             font-weight: 400;
-            color: #475569;
+            color: #545454;
             margin-bottom: 8px;
             line-height: 1.3;
         }
@@ -391,11 +392,11 @@
         .mz-bullet-list li {
             position: relative;
             padding-left: 14px;
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             font-weight: 400;
             line-height: 1.5;
-            color: #1e293b;
+            color: #292929;
             margin-bottom: 5.5px;
         }
         .mz-bullet-list li:last-child {
@@ -406,7 +407,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: #0f172a;
+            color: #000000;
             font-size: 12px;
         }
 
@@ -415,19 +416,19 @@
             margin-top: 22px;
         }
         .mz-earlier-title {
-            font-family: 'Barlow Condensed', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
             font-weight: 700;
             text-transform: uppercase;
-            color: #0f172a;
+            color: #000000;
             letter-spacing: 0.025em;
             margin: 0 0 4px 0;
         }
         .mz-earlier-meta {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             font-weight: 400;
-            color: #475569;
+            color: #545454;
             margin-bottom: 8px;
             line-height: 1.35;
         }
@@ -445,13 +446,13 @@
             margin-bottom: 5px;
         }
         .mz-doc-link {
-            color: #475569;
+            color: #545454;
             text-decoration: underline;
             text-underline-offset: 2px;
             transition: color 0.15s ease;
         }
         .mz-doc-link:hover {
-            color: #0f172a;
+            color: #000000;
         }
         .mz-skills-group {
             display: flex;
@@ -459,27 +460,27 @@
             gap: 10px;
         }
         .mz-skill-line {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 12.5px;
             font-weight: 400;
             line-height: 1.5;
-            color: #1e293b;
+            color: #292929;
             margin: 0;
         }
         .mz-skill-line strong {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            color: #0f172a;
+            color: #000000;
         }
         .mz-edu-item {
             margin-bottom: 6px;
         }
         .mz-edu-school {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 13px;
             font-style: italic;
             font-weight: 400;
-            color: #475569;
+            color: #545454;
             margin-top: 2px;
             line-height: 1.3;
         }
@@ -531,7 +532,7 @@
             .mz-doc-page {
                 background: #ffffff !important;
                 background-color: #ffffff !important;
-                color: #0f172a !important;
+                color: #000000 !important;
                 border: none !important;
                 border-left: none !important;
                 border-right: none !important;
@@ -612,7 +613,7 @@
             /* Upper Card Design preserved in print */
             .mz-resume-header-box {
                 position: relative !important;
-                border: 1px solid #d4d4d8 !important;
+                border: 1px solid #d4d4d4 !important;
                 background: #ffffff !important;
                 margin-bottom: 24px !important;
                 box-sizing: border-box !important;
@@ -622,10 +623,10 @@
             .mz-crosshair {
                 display: flex !important;
                 position: absolute !important;
-                font-family: 'Geist Mono', ui-monospace, monospace !important;
+                font-family: 'JetBrains Mono', ui-monospace, monospace !important;
                 font-size: 13px !important;
                 font-weight: 300 !important;
-                color: #52525b !important;
+                color: #535353 !important;
                 width: 14px !important;
                 height: 14px !important;
                 align-items: center !important;
@@ -644,11 +645,11 @@
             }
             .mz-header-name {
                 font-size: 30px !important;
-                color: #0f172a !important;
+                color: #000000 !important;
             }
             .mz-header-contacts {
                 display: flex !important;
-                border-top: 1px solid #d4d4d8 !important;
+                border-top: 1px solid #d4d4d4 !important;
                 background: #ffffff !important;
                 width: 100% !important;
                 box-sizing: border-box !important;
@@ -658,8 +659,8 @@
                 padding: 6px 8px !important;
                 text-align: center !important;
                 font-size: 11.5px !important;
-                color: #475569 !important;
-                border-right: 1px solid #d4d4d8 !important;
+                color: #545454 !important;
+                border-right: 1px solid #d4d4d4 !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
@@ -673,11 +674,11 @@
                 border-right: none !important;
             }
             .mz-contact-item a {
-                color: #334155 !important;
+                color: #404040 !important;
                 text-decoration: none !important;
             }
             .mz-sec-heading {
-                border-bottom: 1px solid #e2e8f0 !important;
+                border-bottom: 1px solid #e7e7e7 !important;
                 padding-bottom: 3px !important;
                 margin-bottom: 10px !important;
             }
@@ -694,14 +695,15 @@
 
         /* ATS Strong Keywords */
         .mz-doc-page strong {
-            font-family: 'Barlow', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            color: #09090b;
+            color: #000000;
         }
     </style>
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
 </head>
 
-<body class="bg-[#0f0f0f] text-[#f4f2ed]">
+<body class="bg-[#000000] text-[#ffffff]">
     <a href="#main" class="mz-skip">Skip to content</a>
 
     <header class="site-header" id="siteHeader" role="banner">
@@ -784,7 +786,7 @@
                 <section class="mz-sec-block" aria-labelledby="sec-summary">
                     <h2 class="mz-sec-heading" id="sec-summary">01 &middot; SUMMARY</h2>
                     <p class="mz-summary-p">
-                        <strong>Product Designer and Design Engineer</strong> with <strong>4.8+ years of experience</strong> shipping <strong>AI-powered SaaS products</strong> from <strong>0 to 1</strong> across <strong>legal tech</strong>, <strong>e-commerce</strong>, and <strong>enterprise platforms</strong>. Strong in <strong>UX strategy</strong>, <strong>interaction design</strong>, <strong>design systems</strong>, <strong>prototyping</strong>, and <strong>product delivery</strong>, with <strong>front-end engineering</strong> skills that help turn product decisions into scalable, production-ready experiences. Track record of <strong>reducing user friction</strong>, <strong>improving conversion</strong>, and <strong>accelerating delivery</strong> through <strong>reusable systems</strong> and <strong>AI-assisted workflows</strong>.
+                        <strong>Product Designer and Design Engineer</strong> with <strong>4.8+ years of experience</strong> shipping <strong>AI-powered SaaS products</strong> from <strong>0 to 1</strong> across <strong>legal tech</strong>, <strong>e-commerce</strong>, and <strong>enterprise platforms</strong>. I work in <strong>UX strategy</strong>, <strong>interaction design</strong>, <strong>design systems</strong>, <strong>prototyping</strong>, and <strong>product delivery</strong>, and my <strong>front-end engineering</strong> skills turn product decisions into production-ready experiences. I have a track record of <strong>reducing user friction</strong>, <strong>improving conversion</strong>, and <strong>accelerating delivery</strong> through <strong>reusable systems</strong> and <strong>AI-assisted workflows</strong>.
                     </p>
                 </section>
 
@@ -801,7 +803,7 @@
                         <div class="mz-exp-role">Product Designer / Design Engineer</div>
                         <ul class="mz-bullet-list">
                             <li>Led <strong>end-to-end product design</strong> across <strong>7 AI-powered legal tech products</strong>. Owned <strong>UX research</strong>, <strong>interaction design</strong>, <strong>prototyping</strong>, and close collaboration with founders and engineering.</li>
-                            <li>Built and scaled the <strong>Omnis Design System</strong> across the product ecosystem. Established a <strong>unified component library</strong>, <strong>token structure</strong>, and <strong>interaction patterns</strong>, reducing UI inconsistencies by <strong>40%</strong> and cutting new-feature design time from <strong>days to hours</strong>.</li>
+                            <li>Built and scaled the <strong>Omnis Design System</strong> across the products. Established a <strong>unified component library</strong>, <strong>token structure</strong>, and <strong>interaction patterns</strong>, reducing UI inconsistencies by <strong>40%</strong> and cutting new-feature design time from <strong>days to hours</strong>.</li>
                             <li>Streamlined complex <strong>legal case-management workflows</strong> from <strong>8 steps to 3</strong>. Improved internal operational efficiency by <strong>25%</strong>.</li>
                             <li>Created <strong>AI-powered design automation tools for UX QA</strong>. Replaced <strong>4+ hours of manual design QA</strong> per sprint with automated staging reviews and Slack-delivered annotated reports.</li>
                         </ul>
@@ -851,13 +853,13 @@
                         </div>
                         <ul class="mz-bullet-list">
                             <li>Designed the full suite of <strong>AI-powered products for law firms</strong>: CasePro CRM, MedChron AI, CaseNotes, LitBox, NotaryNow, OmnisProof, and AI Agent.</li>
-                            <li><strong>CasePro CRM</strong> &mdash; <strong>AI-powered case and client management</strong>. Smart intake, timeline views, and automated task assignment for litigation teams.</li>
-                            <li><strong>MedChron AI</strong> &mdash; <strong>Medical intelligence tool</strong>. Extracts, organizes, and summarizes medical records into chronological timelines.</li>
-                            <li><strong>CaseNotes</strong> &mdash; <strong>AI-assisted note-taking system</strong>. Captures, tags, and links case-related notes to documents and clients.</li>
-                            <li><strong>LitBox</strong> &mdash; <strong>Centralized litigation workspace</strong>. Brings documents, deadlines, and team collaboration into one interface.</li>
-                            <li><strong>NotaryNow</strong> &mdash; <strong>Remote online notarization platform</strong>. Identity verification, live video sessions, and e-signature workflows.</li>
-                            <li><strong>OmnisProof</strong> &mdash; <strong>AI-powered document review and proofing</strong>. Flags inconsistencies across legal filings before submission.</li>
-                            <li><strong>AI Agent</strong> &mdash; <strong>Conversational AI assistant</strong>. Supports document search, task automation, and workflow guidance across Omnis products.</li>
+                            <li><strong>CasePro CRM</strong>: <strong>AI-powered case and client management</strong>. Smart intake, timeline views, and automated task assignment for litigation teams.</li>
+                            <li><strong>MedChron AI</strong>: <strong>Medical intelligence tool</strong>. Extracts, organizes, and summarizes medical records into chronological timelines.</li>
+                            <li><strong>CaseNotes</strong>: <strong>AI-assisted note-taking system</strong>. Captures, tags, and links case-related notes to documents and clients.</li>
+                            <li><strong>LitBox</strong>: <strong>Centralized litigation workspace</strong>. Brings documents, deadlines, and team collaboration into one interface.</li>
+                            <li><strong>NotaryNow</strong>: <strong>Remote online notarization platform</strong>. Identity verification, live video sessions, and e-signature workflows.</li>
+                            <li><strong>OmnisProof</strong>: <strong>AI-powered document review and proofing</strong>. Flags inconsistencies across legal filings before submission.</li>
+                            <li><strong>AI Agent</strong>: <strong>Conversational AI assistant</strong>. Supports document search, task automation, and workflow guidance across Omnis products.</li>
                         </ul>
                     </div>
 
@@ -891,16 +893,16 @@
                     <h2 class="mz-sec-heading" id="sec-skills">04 &middot; CORE SKILLS</h2>
                     <div class="mz-skills-group">
                         <p class="mz-skill-line">
-                            <strong>Product &amp; UX</strong> &mdash; <strong>Product Design</strong>, <strong>UX Strategy</strong>, <strong>User Research</strong>, <strong>Interaction Design</strong>, <strong>Design Systems</strong>, <strong>Prototyping</strong>, <strong>Information Architecture</strong>, <strong>Accessibility</strong>, <strong>UX Writing</strong>
+                            <strong>Product &amp; UX</strong>: <strong>Product Design</strong>, <strong>UX Strategy</strong>, <strong>User Research</strong>, <strong>Interaction Design</strong>, <strong>Design Systems</strong>, <strong>Prototyping</strong>, <strong>Information Architecture</strong>, <strong>Accessibility</strong>, <strong>UX Writing</strong>
                         </p>
                         <p class="mz-skill-line">
-                            <strong>Research &amp; Validation</strong> &mdash; <strong>User Interviews</strong>, <strong>Usability Testing</strong>, <strong>Heuristic Evaluation</strong>, <strong>Journey Mapping</strong>, <strong>A/B Testing</strong>, <strong>Behavioral Data Analysis</strong>
+                            <strong>Research &amp; Validation</strong>: <strong>User Interviews</strong>, <strong>Usability Testing</strong>, <strong>Heuristic Evaluation</strong>, <strong>Journey Mapping</strong>, <strong>A/B Testing</strong>, <strong>Behavioral Data Analysis</strong>
                         </p>
                         <p class="mz-skill-line">
-                            <strong>Engineering</strong> &mdash; <strong>HTML</strong>, <strong>CSS</strong>, <strong>GitHub</strong>, <strong>Workflow Automation</strong>, <strong>AI Prompt Engineering</strong>, <strong>Data Visualization</strong>
+                            <strong>Engineering</strong>: <strong>HTML</strong>, <strong>CSS</strong>, <strong>GitHub</strong>, <strong>Workflow Automation</strong>, <strong>AI Prompt Engineering</strong>, <strong>Data Visualization</strong>
                         </p>
                         <p class="mz-skill-line">
-                            <strong>AI &amp; Tools</strong> &mdash; <strong>AI-Assisted Design Workflows</strong>, <strong>Generative AI Prototyping</strong>, <strong>Figma</strong>, <strong>Framer</strong>, <strong>Photoshop</strong>, <strong>Illustrator</strong>, <strong>Jira</strong>, <strong>Notion</strong>
+                            <strong>AI &amp; Tools</strong>: <strong>AI-Assisted Design Workflows</strong>, <strong>Generative AI Prototyping</strong>, <strong>Figma</strong>, <strong>Framer</strong>, <strong>Photoshop</strong>, <strong>Illustrator</strong>, <strong>Jira</strong>, <strong>Notion</strong>
                         </p>
                     </div>
                 </section>
@@ -910,7 +912,7 @@
                     <h2 class="mz-sec-heading" id="sec-education">05 &middot; EDUCATION</h2>
                     <div class="mz-edu-item">
                         <div class="mz-exp-header">
-                            <h3 class="mz-exp-company">B.TECH &mdash; COMPUTER SCIENCE &amp; ENGINEERING</h3>
+                            <h3 class="mz-exp-company">B.TECH, COMPUTER SCIENCE &amp; ENGINEERING</h3>
                             <span class="mz-exp-date">2023</span>
                         </div>
                         <div class="mz-edu-school">Ajay Kumar Garg Engineering College</div>
@@ -950,7 +952,7 @@
                             <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
                         </svg>
                     </a>
-                    <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                    <a href="https://medium.com/@Muzeebdesign" target="_blank" rel="noopener noreferrer" aria-label="Medium">
                         <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
                             <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
                             <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
@@ -979,7 +981,7 @@
 
     <!-- Core Scripts -->
     <script src="assets/js/jquery-3.7.1.min.js"></script>
-    <script src="assets/js/site.js?v=552"></script>
+    <script src="assets/js/site.js?v=561"></script>
     <script>
         const year = new Date().getFullYear();
         document.querySelectorAll('.mz-footer__year, #currentYear').forEach(el => el.textContent = year);

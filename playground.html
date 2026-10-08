@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>try{var t=localStorage.getItem("mz-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png">
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/favicon.png">
-    <link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/playground.html">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="https://muzeeb-urrahaman.vercel.app/playground.html">
     <meta property="og:title" content="Playground · Muzeeb Urrahaman">
     <meta property="og:url" content="https://muzeeb-urrahaman.vercel.app/playground.html">
     <meta property="og:type" content="website">
@@ -30,11 +32,11 @@
     <!-- Google Fonts: Archivo, Inter & Caveat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Caveat:wght@600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
-    <link rel="stylesheet" href="assets/css/style.css?v=610">
+    <link rel="stylesheet" href="assets/css/style.css?v=614">
 
     <style>
         /* ============================================================
@@ -109,8 +111,8 @@
         }
 
         :root {
-            --font-display: 'Archivo', system-ui, -apple-system, sans-serif;
-            --font-sans: 'Archivo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             --font-mono: 'SF Mono', Monaco, Inconsolata, 'Fira Code', monospace;
         }
 
@@ -119,8 +121,8 @@
         }
 
         body {
-            background-color: #0f0f0f;
-            color: #f4f2ed;
+            background-color: #000000;
+            color: #ffffff;
             font-family: var(--font-sans);
             transition: background-color 0.2s ease, color 0.2s ease;
             -webkit-font-smoothing: antialiased;
@@ -129,8 +131,8 @@
 
         html[data-theme="light"] body,
         [data-theme="light"] body {
-            background-color: #faf9f7 !important;
-            color: #17170f !important;
+            background-color: #ffffff !important;
+            color: #000000 !important;
         }
 
         .pg-wrap {
@@ -169,13 +171,13 @@
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin: 0 0 14px 0;
             display: inline-block;
         }
 
         .pg-hero__title {
-            font-family: 'Acorn', var(--font-display, serif) !important;
+            font-family: 'Inter', var(--font-display, serif) !important;
             font-size: clamp(2.4rem, 5vw, 3.8rem);
             font-weight: 600;
             line-height: 1.15;
@@ -186,10 +188,10 @@
         }
 
         .pg-hero__desc {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: clamp(1rem, 1.4vw, 1.14rem);
             line-height: 1.55;
-            color: #9a9a98;
+            color: #9a9a9a;
             margin: 0 auto;
             text-align: center;
             max-width: 820px;
@@ -197,21 +199,22 @@
 
         .pg-hero__desc p {
             margin: 0 0 6px 0;
+            text-wrap: balance;
         }
         .pg-hero__desc p:last-child {
             margin-bottom: 0;
         }
 
         [data-theme="light"] .pg-hero__eyebrow {
-            color: #6a6a66;
+            color: #6b6b6b;
         }
 
         [data-theme="light"] .pg-hero__title {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-hero__desc {
-            color: #52524e;
+            color: #525252;
         }
 
         /* STICKY TAB REDIRECTING BAR (Centered in page) */
@@ -219,7 +222,7 @@
             position: sticky;
             top: 72px;
             z-index: 35;
-            background: rgba(15, 15, 15, 0.94);
+            background: rgba(0, 0, 0, 0.94);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -251,7 +254,7 @@
         }
 
         [data-theme="light"] .pg-tabs-bar {
-            background: rgba(250, 249, 247, 0.94);
+            background: rgba(255, 255, 255, 0.94);
             border-top-color: rgba(0, 0, 0, 0.1);
             border-bottom-color: rgba(0, 0, 0, 0.1);
         }
@@ -276,7 +279,7 @@
         .pg-tab-btn {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #8c8c88;
+            color: #8c8c8c;
             font-family: var(--font-mono, monospace);
             font-size: 0.78rem;
             font-weight: 600;
@@ -307,19 +310,19 @@
         }
 
         .pg-tab-btn.active {
-            background: #f4f2ed;
-            color: #0f0f0f;
-            border-color: #f4f2ed;
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
             font-weight: 700;
         }
 
         [data-theme="light"] .pg-tab-btn {
             border-color: rgba(0, 0, 0, 0.12);
-            color: #5c5c56;
+            color: #5c5c5c;
         }
 
         [data-theme="light"] .pg-tab-btn:hover {
-            color: #111111;
+            color: #0a0a0a;
             border-color: rgba(0, 0, 0, 0.28);
             background: rgba(0, 0, 0, 0.05);
             transform: none;
@@ -330,9 +333,9 @@
         }
 
         [data-theme="light"] .pg-tab-btn.active {
-            background: #111111;
+            background: #0a0a0a;
             color: #ffffff;
-            border-color: #111111;
+            border-color: #0a0a0a;
         }
 
         /* ============================================================
@@ -440,20 +443,20 @@
 
         /* Theme tokens */
         .bg-card {
-            background-color: #171717 !important;
+            background-color: #141414 !important;
             transition: background-color 0.2s ease;
         }
         [data-theme="light"] .bg-card,
         html[data-theme="light"] .bg-card {
-            background-color: #f1efea !important;
+            background-color: #efefef !important;
         }
 
         .text-foreground {
-            color: #f4f2ed !important;
+            color: #ffffff !important;
         }
         [data-theme="light"] .text-foreground,
         html[data-theme="light"] .text-foreground {
-            color: #17170f !important;
+            color: #000000 !important;
         }
 
         /* Top Folder Tabs - High Contrast Inverted Theme Fill (White on Dark, Dark on White) */
@@ -479,9 +482,9 @@
         html[data-theme="light"] .mz-bento-card .folder-tab-badge,
         [data-theme="light"] .mz-bento-card .rounded-t-\[12px\],
         html[data-theme="light"] .mz-bento-card .rounded-t-\[12px\] {
-            background-color: #111111 !important;
+            background-color: #0a0a0a !important;
             color: #ffffff !important;
-            border-color: #111111 !important;
+            border-color: #0a0a0a !important;
         }
         [data-theme="light"] .mz-bento-card:hover .folder-tab-badge,
         html[data-theme="light"] .mz-bento-card:hover .folder-tab-badge,
@@ -523,13 +526,13 @@
             width: 100% !important;
             position: relative !important;
             display: block !important;
-            background-color: #0d0d0d !important;
+            background-color: #000000 !important;
             overflow: hidden !important;
             border-radius: 0 !important;
         }
         [data-theme="light"] .mz-bento-card .rounded-\[18px\],
         [data-theme="light"] .mz-bento-card [style*="--asset-ratio"] {
-            background-color: #e5e3de !important;
+            background-color: #e3e3e3 !important;
         }
 
         /* Image sizing & hover transition with ZERO RADIUS */
@@ -578,11 +581,11 @@
         }
 
         .mz-bento-card .rounded-tr-\[24px\] span {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             color: #ffffff !important;
         }
         [data-theme="light"] .mz-bento-card .rounded-tr-\[24px\] span {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         .mz-bento-card.is-hidden {
@@ -590,9 +593,9 @@
         }
 
         .mz-bento-sub {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.85rem;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin: 0;
             line-height: 1.5;
             display: -webkit-box;
@@ -601,7 +604,7 @@
             overflow: hidden;
         }
         [data-theme="light"] .mz-bento-sub {
-            color: #71716c;
+            color: #717171;
         }
 
         .mz-bento-card.is-hidden {
@@ -625,13 +628,13 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #8c8c88;
+            color: #8c8c8c;
             display: block;
             margin-bottom: 6px;
         }
 
         .pg-section__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: clamp(1.7rem, 3vw, 2.3rem);
             font-weight: 600;
             letter-spacing: -0.025em;
@@ -640,24 +643,24 @@
         }
 
         .pg-section__sub {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.98rem;
             line-height: 1.55;
-            color: #9a9a98;
+            color: #9a9a9a;
             max-width: 680px;
             margin: 0;
         }
 
         [data-theme="light"] .pg-section__title {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-section__sub {
-            color: #52524e;
+            color: #525252;
         }
 
         [data-theme="light"] .pg-section__eyebrow {
-            color: #6a6a66;
+            color: #6b6b6b;
         }
 
         /* ============================================================
@@ -747,7 +750,7 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: #a1a1aa;
+            color: #a2a2a2;
         }
 
         .pg-feat-card__badge {
@@ -768,24 +771,24 @@
         }
 
         .pg-feat-card__badge--casestudy {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             color: #ffffff !important;
             border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.35);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.35);
         }
 
         .pg-feat-card__badge--prototype {
-            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             color: #ffffff !important;
             border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.35);
         }
 
         .pg-feat-card__badge--soon {
-            background: linear-gradient(180deg, #71717a 0%, #52525b 100%);
+            background: linear-gradient(180deg, #727272 0%, #535353 100%);
             color: #ffffff !important;
             border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 2px 6px rgba(82, 82, 91, 0.25);
+            box-shadow: 0 2px 6px rgba(85, 85, 85, 0.25);
         }
 
         [data-theme="light"] .pg-feat-card__badge--soon {
@@ -796,7 +799,7 @@
         }
 
         .pg-feat-card__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: clamp(1.35rem, 2.3vw, 1.6rem);
             font-weight: 650;
             letter-spacing: -0.025em;
@@ -806,19 +809,19 @@
         }
 
         .pg-feat-card__sub {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.92rem;
             line-height: 1.58;
-            color: #a1a1aa;
+            color: #a2a2a2;
             margin: 0 0 16px;
         }
 
         .pg-feat-card__tags {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.8rem;
             font-weight: 500;
             letter-spacing: 0.01em;
-            color: #71717a;
+            color: #727272;
             margin: 0 0 20px;
         }
 
@@ -852,7 +855,7 @@
         .pg-side-card:hover .pg-arrow-btn,
         .pg-comm-card:hover .pg-arrow-btn {
             background: #ffffff;
-            color: #0f0f0f;
+            color: #000000;
             border-color: #ffffff;
             transform: translateX(3px);
             box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
@@ -870,7 +873,7 @@
         .pg-side-card {
             background: #141414;
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 20px 22px 14px;
             display: flex;
             flex-direction: column;
@@ -885,7 +888,7 @@
         }
 
         .pg-side-card:hover {
-            background: #191919;
+            background: #1a1a1a;
             border-color: rgba(255, 255, 255, 0.2);
             transform: none !important;
             box-shadow: none;
@@ -908,7 +911,7 @@
         }
 
         .pg-side-card__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 1.06rem;
             font-weight: 600;
             letter-spacing: -0.015em;
@@ -918,9 +921,9 @@
         }
 
         .pg-side-card__tags {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.82rem;
-            color: #71717a;
+            color: #727272;
             margin: 0;
             line-height: 1.4;
         }
@@ -962,7 +965,7 @@
         }
 
         .pg-comm-card:hover {
-            background: #191919;
+            background: #1a1a1a;
             border-color: rgba(255, 255, 255, 0.2);
             transform: none !important;
             box-shadow: none;
@@ -973,7 +976,7 @@
             height: clamp(280px, 26vw, 340px);
             border-radius: 8px;
             overflow: hidden;
-            background: #0d0d0d;
+            background: #000000;
             border: 1px solid rgba(255, 255, 255, 0.08);
             margin-bottom: 18px;
         }
@@ -1027,7 +1030,7 @@
         }
 
         .pg-comm-card__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: clamp(1.2rem, 2vw, 1.4rem);
             font-weight: 600;
             letter-spacing: -0.015em;
@@ -1037,10 +1040,10 @@
         }
 
         .pg-comm-card__tags {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.86rem;
             line-height: 1.45;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin: 0 0 16px;
         }
 
@@ -1126,19 +1129,19 @@
         }
 
         [data-theme="light"] .pg-feat-card__title {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         [data-theme="light"] .pg-feat-card__sub {
-            color: #52524e !important;
+            color: #525252 !important;
         }
 
         [data-theme="light"] .pg-feat-card__kick {
-            color: #6a6a66 !important;
+            color: #6b6b6b !important;
         }
 
         [data-theme="light"] .pg-feat-card__tags {
-            color: #767672 !important;
+            color: #767676 !important;
         }
 
         [data-theme="light"] .pg-feat-card__footer {
@@ -1148,15 +1151,15 @@
         [data-theme="light"] .pg-arrow-btn {
             background: rgba(0, 0, 0, 0.05);
             border-color: rgba(0, 0, 0, 0.12);
-            color: #111111;
+            color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-feat-card:hover .pg-arrow-btn,
         [data-theme="light"] .pg-side-card:hover .pg-arrow-btn,
         [data-theme="light"] .pg-comm-card:hover .pg-arrow-btn {
-            background: #111111;
+            background: #0a0a0a;
             color: #ffffff;
-            border-color: #111111;
+            border-color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-side-card {
@@ -1173,15 +1176,15 @@
         }
 
         [data-theme="light"] .pg-side-card__title {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         [data-theme="light"] .pg-side-card__kick {
-            color: #6a6a66 !important;
+            color: #6b6b6b !important;
         }
 
         [data-theme="light"] .pg-side-card__tags {
-            color: #767672 !important;
+            color: #767676 !important;
         }
 
         [data-theme="light"] .pg-comm-card {
@@ -1203,15 +1206,15 @@
         }
 
         [data-theme="light"] .pg-comm-card__title {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         [data-theme="light"] .pg-comm-card__kick {
-            color: #6a6a66 !important;
+            color: #6b6b6b !important;
         }
 
         [data-theme="light"] .pg-comm-card__tags {
-            color: #6a6a66 !important;
+            color: #6b6b6b !important;
         }
 
         [data-theme="light"] .pg-comm-card__footer {
@@ -1240,13 +1243,13 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #8c8c88;
+            color: #8c8c8c;
             display: block;
             margin-bottom: 6px;
         }
 
         .pg-curious__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: clamp(1.6rem, 2.8vw, 2.2rem);
             font-weight: 600;
             letter-spacing: -0.025em;
@@ -1255,11 +1258,11 @@
         }
 
         [data-theme="light"] .pg-curious__title {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         [data-theme="light"] .pg-curious__eyebrow {
-            color: #6a6a66 !important;
+            color: #6b6b6b !important;
         }
 
         .pg-curious__grid {
@@ -1284,7 +1287,7 @@
 
         .pg-curious__card:hover {
             border-color: rgba(255, 255, 255, 0.14);
-            background: #181818;
+            background: #1a1a1a;
         }
 
         [data-theme="light"] .pg-curious__card {
@@ -1298,28 +1301,28 @@
         }
 
         .pg-curious__topic {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 1.05rem;
             font-weight: 600;
             letter-spacing: -0.01em;
-            color: #f4f2ed;
+            color: #ffffff;
             margin: 0 0 6px;
         }
 
         [data-theme="light"] .pg-curious__topic {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         .pg-curious__note {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.9rem;
             line-height: 1.52;
-            color: #9a9a98;
+            color: #9a9a9a;
             margin: 0;
         }
 
         [data-theme="light"] .pg-curious__note {
-            color: #52524e !important;
+            color: #525252 !important;
         }
 
         /* 07: ENDING */
@@ -1334,7 +1337,7 @@
         }
 
         .pg-ending__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: clamp(1.6rem, 2.8vw, 2.2rem);
             font-weight: 600;
             letter-spacing: -0.025em;
@@ -1343,19 +1346,19 @@
         }
 
         [data-theme="light"] .pg-ending__title {
-            color: #111111 !important;
+            color: #0a0a0a !important;
         }
 
         .pg-ending__sub {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 1rem;
             line-height: 1.5;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin: 0;
         }
 
         [data-theme="light"] .pg-ending__sub {
-            color: #6a6a66 !important;
+            color: #6b6b6b !important;
         }
 
         /* ============================================================
@@ -1389,7 +1392,7 @@
         .pg-modal-dialog {
             background: #151515;
             border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
+            border-radius: 12px;
             width: 100%;
             max-width: 680px;
             max-height: 88vh;
@@ -1444,7 +1447,7 @@
         [data-theme="light"] .pg-modal-close {
             background: rgba(0, 0, 0, 0.05);
             border-color: rgba(0, 0, 0, 0.1);
-            color: #111111;
+            color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-modal-close:hover {
@@ -1458,14 +1461,14 @@
             font-weight: 700;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin-bottom: 12px;
             display: block;
             line-height: 1;
         }
 
         .pg-modal-title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: clamp(1.45rem, 2.6vw, 1.85rem);
             font-weight: 650;
             letter-spacing: -0.025em;
@@ -1476,19 +1479,19 @@
         }
 
         [data-theme="light"] .pg-modal-title {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-modal-lead {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.95rem;
             line-height: 1.62;
-            color: #a5a5a0;
+            color: #a5a5a5;
             margin: 0 0 28px;
         }
 
         [data-theme="light"] .pg-modal-lead {
-            color: #4a4a46;
+            color: #4a4a4a;
         }
 
         .pg-modal-divider {
@@ -1528,12 +1531,12 @@
         .pg-excalidraw-note {
             font-family: 'Caveat', cursive, sans-serif;
             font-size: 1.15rem;
-            color: #fcd34d;
+            color: #d4d4d4;
             letter-spacing: 0.02em;
         }
 
         [data-theme="light"] .pg-excalidraw-note {
-            color: #b45309;
+            color: #333333;
         }
 
         .pg-excali-grid {
@@ -1591,12 +1594,12 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin-bottom: 6px;
         }
 
         .pg-excali-node__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 0.95rem;
             font-weight: 700;
             color: #ffffff;
@@ -1605,18 +1608,18 @@
         }
 
         [data-theme="light"] .pg-excali-node__title {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-excali-node__desc {
             font-size: 0.8rem;
             line-height: 1.45;
-            color: #9a9a98;
+            color: #9a9a9a;
             margin: 0 0 12px;
         }
 
         [data-theme="light"] .pg-excali-node__desc {
-            color: #52524e;
+            color: #525252;
         }
 
         .pg-excali-pill {
@@ -1639,13 +1642,13 @@
         }
 
         .pg-excali-pill--success {
-            background: rgba(16, 185, 129, 0.12);
-            border-color: rgba(16, 185, 129, 0.35);
-            color: #34d399;
+            background: rgba(128, 128, 128, 0.12);
+            border-color: rgba(128, 128, 128, 0.35);
+            color: #d4d4d4;
         }
 
         [data-theme="light"] .pg-excali-pill--success {
-            color: #047857;
+            color: #333333;
         }
 
         .pg-excali-arrow {
@@ -1679,23 +1682,23 @@
         .pg-excali-curly-arrow {
             width: 24px;
             height: 24px;
-            color: #34d399;
+            color: #d4d4d4;
             flex-shrink: 0;
         }
 
         [data-theme="light"] .pg-excali-curly-arrow {
-            color: #047857 !important;
+            color: #333333 !important;
         }
 
         .pg-excali-handwritten {
             font-family: 'Caveat', cursive, sans-serif;
             font-size: 1.2rem;
-            color: #34d399;
+            color: #d4d4d4;
             line-height: 1.2;
         }
 
         [data-theme="light"] .pg-excali-handwritten {
-            color: #047857 !important;
+            color: #333333 !important;
         }
 
         .pg-modal-section-title {
@@ -1704,13 +1707,13 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #a1a1aa;
+            color: #a2a2a2;
             margin: 0 0 16px;
             display: block;
         }
 
         [data-theme="light"] .pg-modal-section-title {
-            color: #71717a;
+            color: #727272;
         }
 
         .pg-flow-list {
@@ -1728,7 +1731,7 @@
         }
 
         [data-theme="light"] .pg-flow-item {
-            background: #f8f8f6;
+            background: #f8f8f8;
             border-color: rgba(0, 0, 0, 0.06);
         }
 
@@ -1744,24 +1747,24 @@
         }
 
         [data-theme="light"] .pg-flow-item__head {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-flow-item__desc {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.88rem;
             line-height: 1.5;
-            color: #9a9a98;
+            color: #9a9a9a;
             margin: 0;
         }
 
         [data-theme="light"] .pg-flow-item__desc {
-            color: #52524e;
+            color: #525252;
         }
 
         .pg-flow-arrow {
             text-align: center;
-            color: #666662;
+            color: #666666;
             font-size: 0.9rem;
             margin: -4px 0;
         }
@@ -1772,7 +1775,7 @@
             padding: 14px 18px;
             border-radius: 0 6px 6px 0;
             margin: 20px 0;
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.94rem;
             line-height: 1.55;
             color: #e2e8f0;
@@ -1780,7 +1783,7 @@
 
         [data-theme="light"] .pg-quote-box {
             background: rgba(99, 102, 241, 0.06);
-            color: #0f172a !important;
+            color: #000000 !important;
         }
 
         [data-theme="light"] .pg-quote-box .pg-quote-box__sub,
@@ -1818,7 +1821,7 @@
         }
 
         .pg-trust-stat__val {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 1.25rem;
             font-weight: 700;
             color: #ffffff;
@@ -1827,7 +1830,7 @@
         }
 
         [data-theme="light"] .pg-trust-stat__val {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-trust-stat__lbl {
@@ -1836,7 +1839,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.06em;
-            color: #8c8c88;
+            color: #8c8c8c;
         }
 
         /* VS Matrix Comparison */
@@ -1865,8 +1868,8 @@
         }
 
         .pg-trust-vs__col--good {
-            background: rgba(16, 185, 129, 0.06);
-            border-color: rgba(16, 185, 129, 0.22);
+            background: rgba(128, 128, 128, 0.06);
+            border-color: rgba(128, 128, 128, 0.22);
         }
 
         [data-theme="light"] .pg-trust-vs__col--bad {
@@ -1896,7 +1899,7 @@
         }
 
         [data-theme="light"] .pg-trust-vs__col--good .pg-trust-vs__head {
-            color: #047857 !important;
+            color: #333333 !important;
         }
 
         .pg-trust-vs__list {
@@ -1914,7 +1917,7 @@
             display: flex;
             align-items: flex-start;
             gap: 8px;
-            color: #d4d4d8;
+            color: #d4d4d4;
         }
 
         [data-theme="light"] .pg-trust-vs__item {
@@ -1923,7 +1926,7 @@
 
         .pg-trust-vs__desc {
             font-size: 0.84rem;
-            color: #d4d4d8;
+            color: #d4d4d4;
             margin: 0;
             line-height: 1.5;
         }
@@ -1935,9 +1938,9 @@
 
         /* Interactive UI Demo Cards */
         .pg-mock-frame {
-            background: #111111;
+            background: #0a0a0a;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             margin-bottom: 16px;
         }
@@ -1958,7 +1961,7 @@
         }
 
         [data-theme="light"] .pg-mock-frame__top {
-            background: #fafaf9;
+            background: #fafafa;
             border-bottom-color: rgba(0, 0, 0, 0.08);
         }
 
@@ -1968,11 +1971,11 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: #8c8c88;
+            color: #8c8c8c;
         }
 
         [data-theme="light"] .pg-mock-frame__title {
-            color: #52525b;
+            color: #535353;
         }
 
         .pg-mock-frame__content {
@@ -1988,18 +1991,18 @@
             margin-bottom: 12px;
         }
         [data-theme="light"] .pg-mock-inner {
-            background: #f8fafc;
+            background: #fafafa;
             border-color: #e2e8f0;
         }
 
         .pg-mock-text-main {
             font-size: 0.88rem;
             line-height: 1.5;
-            color: #f1f5f9;
+            color: #f4f4f4;
             margin: 0 0 10px;
         }
         [data-theme="light"] .pg-mock-text-main {
-            color: #0f172a !important;
+            color: #000000 !important;
         }
 
         .pg-mock-text-sub {
@@ -2017,7 +2020,7 @@
             background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
             border: 1px solid rgba(255, 255, 255, 0.25);
             color: #ffffff !important;
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.68rem;
             font-weight: 600;
             padding: 3px 9px;
@@ -2038,7 +2041,7 @@
         }
 
         .pg-badge-ref {
-            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border: 1px solid rgba(255, 255, 255, 0.25);
             color: #ffffff !important;
             font-family: var(--font-mono, monospace);
@@ -2049,46 +2052,46 @@
             display: inline-flex;
             align-items: center;
             letter-spacing: 0.02em;
-            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.28);
+            box-shadow: 0 2px 5px rgba(128, 128, 128, 0.28);
             line-height: 1.2;
             white-space: nowrap;
             flex-shrink: 0;
         }
         [data-theme="light"] .pg-badge-ref {
-            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border-color: rgba(255, 255, 255, 0.3);
             color: #ffffff !important;
-            box-shadow: 0 2px 5px rgba(37, 99, 235, 0.22);
+            box-shadow: 0 2px 5px rgba(128, 128, 128, 0.22);
         }
 
         .pg-badge-fix {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.68rem;
             font-weight: 600;
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border: 1px solid rgba(255, 255, 255, 0.25);
             color: #ffffff !important;
             padding: 3px 9px;
             border-radius: 999px;
             display: inline-flex;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(5, 150, 105, 0.28);
+            box-shadow: 0 2px 5px rgba(128, 128, 128, 0.28);
             line-height: 1.2;
             white-space: nowrap;
             flex-shrink: 0;
         }
         [data-theme="light"] .pg-badge-fix {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border-color: rgba(255, 255, 255, 0.3);
             color: #ffffff !important;
-            box-shadow: 0 2px 5px rgba(5, 150, 105, 0.22);
+            box-shadow: 0 2px 5px rgba(128, 128, 128, 0.22);
         }
 
         .pg-badge-code {
             font-family: var(--font-mono, monospace);
             font-size: 0.68rem;
             font-weight: 500;
-            color: #a1a1aa;
+            color: #a2a2a2;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 2px 8px;
@@ -2101,7 +2104,7 @@
         }
         [data-theme="light"] .pg-badge-code {
             color: #475569 !important;
-            background: #f1f5f9;
+            background: #f4f4f4;
             border-color: #e2e8f0;
         }
 
@@ -2127,15 +2130,15 @@
         }
 
         .pg-mode-block--audit {
-            background: rgba(16, 185, 129, 0.06);
-            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(128, 128, 128, 0.06);
+            border-color: rgba(128, 128, 128, 0.2);
         }
         [data-theme="light"] .pg-mode-block--audit {
             background: #f0fdf4;
-            border-color: #a7f3d0;
+            border-color: #d4d4d4;
         }
         .pg-mode-block--audit .pg-mode-title {
-            color: #34d399;
+            color: #d4d4d4;
         }
         [data-theme="light"] .pg-mode-block--audit .pg-mode-title {
             color: #166534 !important;
@@ -2173,20 +2176,20 @@
             border: 1px solid rgba(255, 255, 255, 0.25);
         }
         .pg-action-badge--success {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
-            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.3);
         }
         [data-theme="light"] .pg-action-badge--success {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             color: #ffffff !important;
         }
 
         .pg-action-badge--warn {
-            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
-            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.3);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.3);
         }
         [data-theme="light"] .pg-action-badge--warn {
-            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             color: #ffffff !important;
         }
 
@@ -2202,12 +2205,12 @@
         /* State Resilience Badges with High Contrast for Dark and Light Themes */
         .pg-state-badge {
             background: rgba(255, 255, 255, 0.08) !important;
-            color: #f4f2ed !important;
+            color: #ffffff !important;
             border: 1px solid rgba(255, 255, 255, 0.16) !important;
         }
         [data-theme="light"] .pg-state-badge {
             background: rgba(0, 0, 0, 0.05) !important;
-            color: #17170f !important;
+            color: #000000 !important;
             border-color: rgba(0, 0, 0, 0.12) !important;
         }
         .pg-state-badge--focus {
@@ -2231,22 +2234,22 @@
             border-color: rgba(239, 68, 68, 0.25) !important;
         }
         .pg-state-badge--warn {
-            background: rgba(245, 158, 11, 0.18) !important;
-            color: #fcd34d !important;
-            border-color: rgba(245, 158, 11, 0.35) !important;
+            background: rgba(128, 128, 128, 0.18) !important;
+            color: #d4d4d4 !important;
+            border-color: rgba(128, 128, 128, 0.35) !important;
         }
         [data-theme="light"] .pg-state-badge--warn {
-            background: rgba(245, 158, 11, 0.1) !important;
-            color: #92400e !important;
-            border-color: rgba(245, 158, 11, 0.25) !important;
+            background: rgba(128, 128, 128, 0.1) !important;
+            color: #333333 !important;
+            border-color: rgba(128, 128, 128, 0.25) !important;
         }
 
         /* Light Theme Contrast Enhancements for Problem/Alert and Flow Elements */
-        [data-theme="light"] [style*="color:#10b981"],
-        [data-theme="light"] [style*="color: #10b981"],
-        [data-theme="light"] [style*="color:#10b981;"],
-        [data-theme="light"] [style*="color: #10b981;"] {
-            color: #047857 !important;
+        [data-theme="light"] [style*="color:#8f8f8f"],
+        [data-theme="light"] [style*="color: #8f8f8f"],
+        [data-theme="light"] [style*="color:#8f8f8f;"],
+        [data-theme="light"] [style*="color: #8f8f8f;"] {
+            color: #333333 !important;
         }
         [data-theme="light"] [style*="color:#ef4444"],
         [data-theme="light"] [style*="color: #ef4444"],
@@ -2257,13 +2260,13 @@
         [data-theme="light"] [style*="border-left:3px solid #ef4444"] {
             border-left-color: #b91c1c !important;
         }
-        [data-theme="light"] [style*="border-left:3px solid #10b981"] {
-            border-left-color: #047857 !important;
+        [data-theme="light"] [style*="border-left:3px solid #8f8f8f"] {
+            border-left-color: #333333 !important;
         }
-        [data-theme="light"] [style*="color:#8c8c88"],
-        [data-theme="light"] [style*="color: #8c8c88"],
-        [data-theme="light"] [style*="color:#8c8c88;"],
-        [data-theme="light"] [style*="color: #8c8c88;"] {
+        [data-theme="light"] [style*="color:#8c8c8c"],
+        [data-theme="light"] [style*="color: #8c8c8c"],
+        [data-theme="light"] [style*="color:#8c8c8c;"],
+        [data-theme="light"] [style*="color: #8c8c8c;"] {
             color: #4b5563 !important;
         }
 
@@ -2279,7 +2282,7 @@
         }
 
         [data-theme="light"] .pg-problem-card {
-            background: #fdf6f6;
+            background: #f8f8f8;
             border-color: #fecaca;
             border-left-color: #ef4444;
         }
@@ -2298,10 +2301,10 @@
         }
 
         .pg-problem-card__desc {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.9rem;
             line-height: 1.55;
-            color: #c4c4c0;
+            color: #c4c4c4;
             margin: 0;
         }
 
@@ -2313,7 +2316,7 @@
         .pg-solution-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-left: 3.5px solid #10b981;
+            border-left: 3.5px solid #8f8f8f;
             border-radius: 6px;
             padding: 18px 20px;
             margin-bottom: 14px;
@@ -2322,7 +2325,7 @@
         [data-theme="light"] .pg-solution-card {
             background: #ffffff;
             border-color: rgba(0, 0, 0, 0.08);
-            border-left-color: #10b981;
+            border-left-color: #8f8f8f;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
@@ -2332,19 +2335,19 @@
             font-weight: 700;
             letter-spacing: 0.06em;
             text-transform: uppercase;
-            color: #10b981;
+            color: #8f8f8f;
             margin-bottom: 6px;
         }
 
         [data-theme="light"] .pg-solution-card__head {
-            color: #059669;
+            color: #333333;
         }
 
         .pg-solution-card__desc {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.9rem;
             line-height: 1.58;
-            color: #a5a5a0;
+            color: #a5a5a5;
             margin: 0;
         }
 
@@ -2357,21 +2360,21 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 6px;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.22);
+            background: rgba(128, 128, 128, 0.08);
+            border: 1px solid rgba(128, 128, 128, 0.22);
             border-radius: 4px;
             padding: 6px 12px;
             font-family: var(--font-mono, monospace);
             font-size: 0.78rem;
             font-weight: 600;
-            color: #34d399;
+            color: #d4d4d4;
             margin-top: 10px;
         }
 
         [data-theme="light"] .pg-flow-badge {
-            background: #ecfdf5;
-            border-color: #a7f3d0;
-            color: #065f46;
+            background: #f5f5f5;
+            border-color: #d4d4d4;
+            color: #333333;
         }
 
         .pg-action-pills {
@@ -2393,8 +2396,8 @@
         }
 
         [data-theme="light"] .pg-action-pill {
-            background: #f3f4f6;
-            border-color: #e5e7eb;
+            background: #f4f4f4;
+            border-color: #e7e7e7;
             color: #1f2937;
         }
 
@@ -2442,8 +2445,8 @@
             bottom: calc(100% + 8px);
             right: 50%;
             transform: translateX(50%) translateY(4px);
-            background: #111111;
-            color: #f4f2ed;
+            background: #0a0a0a;
+            color: #ffffff;
             font-family: var(--font-mono, monospace);
             font-size: 0.72rem;
             font-weight: 500;
@@ -2468,7 +2471,7 @@
             transform: translateX(50%) translateY(4px);
             border-width: 5px 5px 0 5px;
             border-style: solid;
-            border-color: #111111 transparent transparent transparent;
+            border-color: #0a0a0a transparent transparent transparent;
             opacity: 0;
             pointer-events: none;
             visibility: hidden;
@@ -2485,7 +2488,7 @@
 
         [data-theme="light"] .pg-download-btn::before {
             background: #ffffff;
-            color: #111111;
+            color: #0a0a0a;
             border-color: rgba(0, 0, 0, 0.12);
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
         }
@@ -2507,15 +2510,15 @@
         }
 
         [data-theme="light"] .pg-download-btn {
-            background: #f3f4f6;
+            background: #f4f4f4;
             border-color: rgba(0, 0, 0, 0.12);
-            color: #111111;
+            color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-download-btn:hover {
-            background: #111111;
+            background: #0a0a0a;
             color: #ffffff;
-            border-color: #111111;
+            border-color: #0a0a0a;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
         }
 
@@ -2600,25 +2603,25 @@
         }
 
         [data-theme="light"] .pg-stage-name {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-stage-subtitle {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 0.88rem;
             font-weight: 600;
-            color: #10b981;
+            color: #8f8f8f;
         }
 
         [data-theme="light"] .pg-stage-subtitle {
-            color: #059669;
+            color: #333333;
         }
 
         .pg-stage-desc {
-            font-family: var(--font-sans, 'Archivo', sans-serif);
+            font-family: var(--font-sans, 'Inter', sans-serif);
             font-size: 0.9rem;
             line-height: 1.55;
-            color: #a5a5a0;
+            color: #a5a5a5;
             margin: 4px 0 10px;
         }
 
@@ -2638,15 +2641,15 @@
             font-size: 0.72rem;
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #c4c4c0;
+            color: #c4c4c4;
             padding: 4px 10px;
             border-radius: 4px;
         }
 
         [data-theme="light"] .pg-tag-pill {
-            background: #ededeb;
+            background: #ededed;
             border-color: rgba(0, 0, 0, 0.08);
-            color: #444440;
+            color: #444444;
         }
 
         /* AI WORKFLOWS: ROLES, SYSTEMIZE & LOOP */
@@ -2671,7 +2674,7 @@
         }
 
         [data-theme="light"] .pg-role-box {
-            background: #f9fafb;
+            background: #fafafa;
             border-color: rgba(0, 0, 0, 0.07);
         }
 
@@ -2690,7 +2693,7 @@
         }
 
         .pg-role-label--human {
-            color: #10b981;
+            color: #8f8f8f;
         }
 
         [data-theme="light"] .pg-role-label--ai {
@@ -2698,13 +2701,13 @@
         }
 
         [data-theme="light"] .pg-role-label--human {
-            color: #059669;
+            color: #333333;
         }
 
         .pg-role-text {
             font-size: 0.84rem;
             line-height: 1.45;
-            color: #c4c4c0;
+            color: #c4c4c4;
             margin: 0;
         }
 
@@ -2718,14 +2721,14 @@
             flex-wrap: wrap;
             gap: 6px;
             font-size: 0.76rem;
-            color: #8c8c88;
+            color: #8c8c8c;
             font-family: var(--font-mono, monospace);
             margin-top: 6px;
         }
 
         .pg-tools-label {
             font-weight: 700;
-            color: #71717a;
+            color: #727272;
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }
@@ -2760,7 +2763,7 @@
         .pg-systemize-lead {
             font-size: 0.88rem;
             line-height: 1.5;
-            color: #a5a5a0;
+            color: #a5a5a5;
             margin: 0 0 14px;
         }
 
@@ -2788,7 +2791,7 @@
         }
 
         [data-theme="light"] .pg-systemize-item {
-            background: #f9fafb;
+            background: #fafafa;
             border-color: rgba(0, 0, 0, 0.06);
         }
 
@@ -2802,12 +2805,12 @@
         }
 
         [data-theme="light"] .pg-sys-name {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-sys-desc {
             font-size: 0.8rem;
-            color: #8c8c88;
+            color: #8c8c8c;
             line-height: 1.4;
             display: block;
         }
@@ -2825,7 +2828,7 @@
         }
 
         [data-theme="light"] .pg-loop-card {
-            background: #f5f7ff;
+            background: #f7f7f7;
             border-color: rgba(99, 102, 241, 0.22);
         }
 
@@ -2845,29 +2848,29 @@
             border-radius: 4px;
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e4e4e7;
+            color: #e4e4e4;
         }
 
         .pg-loop-node--accent {
-            background: rgba(16, 185, 129, 0.15);
-            border-color: rgba(16, 185, 129, 0.35);
-            color: #34d399;
+            background: rgba(128, 128, 128, 0.15);
+            border-color: rgba(128, 128, 128, 0.35);
+            color: #d4d4d4;
         }
 
         [data-theme="light"] .pg-loop-node {
             background: #ffffff;
             border-color: rgba(0, 0, 0, 0.1);
-            color: #111111;
+            color: #0a0a0a;
         }
 
         [data-theme="light"] .pg-loop-node--accent {
-            background: #ecfdf5;
-            border-color: #a7f3d0;
-            color: #059669;
+            background: #f5f5f5;
+            border-color: #d4d4d4;
+            color: #333333;
         }
 
         .pg-loop-arrow {
-            color: #71717a;
+            color: #727272;
             font-size: 0.85rem;
         }
 
@@ -2916,7 +2919,7 @@
         }
 
         .pg-mcp-node__title {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 0.92rem;
             font-weight: 700;
             color: #ffffff;
@@ -2924,13 +2927,13 @@
         }
 
         [data-theme="light"] .pg-mcp-node__title {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-mcp-node__desc {
             font-size: 0.82rem;
             line-height: 1.45;
-            color: #a1a1aa;
+            color: #a2a2a2;
             margin: 0;
         }
 
@@ -2979,14 +2982,14 @@
         }
 
         .pg-project-name {
-            font-family: var(--font-display, 'Archivo', sans-serif);
+            font-family: var(--font-display, 'Inter', sans-serif);
             font-size: 1.05rem;
             font-weight: 600;
             color: #ffffff;
         }
 
         [data-theme="light"] .pg-project-name {
-            color: #111111;
+            color: #0a0a0a;
         }
 
         .pg-project-status {
@@ -3004,38 +3007,38 @@
         }
 
         .pg-project-status--live {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border-color: rgba(255, 255, 255, 0.25);
             color: #ffffff !important;
-            box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.3);
         }
 
         [data-theme="light"] .pg-project-status--live {
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             color: #ffffff !important;
         }
 
         .pg-project-status--amber {
-            background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border-color: rgba(255, 255, 255, 0.25);
             color: #ffffff !important;
-            box-shadow: 0 2px 6px rgba(217, 119, 6, 0.35);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.35);
         }
 
         [data-theme="light"] .pg-project-status--amber {
-            background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+            background: linear-gradient(180deg, #333333 0%, #333333 100%);
             color: #ffffff !important;
         }
 
         .pg-project-status--beta {
-            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(180deg, #8f8f8f 0%, #333333 100%);
             border-color: rgba(255, 255, 255, 0.25);
             color: #ffffff !important;
-            box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 2px 6px rgba(128, 128, 128, 0.35);
         }
 
         [data-theme="light"] .pg-project-status--beta {
-            background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+            background: linear-gradient(180deg, #333333 0%, #333333 100%);
             color: #ffffff !important;
         }
 
@@ -3049,7 +3052,7 @@
             border-radius: 999px;
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #a1a1aa !important;
+            color: #a2a2a2 !important;
             box-shadow: none !important;
             line-height: 1.4;
             display: inline-flex;
@@ -3067,14 +3070,14 @@
         .pg-project-tags {
             font-family: var(--font-mono, monospace);
             font-size: 0.75rem;
-            color: #8c8c88;
+            color: #8c8c8c;
             margin-bottom: 8px;
         }
 
         .pg-project-desc {
             font-size: 0.88rem;
             line-height: 1.5;
-            color: #c4c4c0;
+            color: #c4c4c4;
             margin: 0 0 10px;
         }
 
@@ -3089,11 +3092,11 @@
             border-left: 2px solid #818cf8;
             padding: 8px 12px;
             border-radius: 0 4px 4px 0;
-            color: #a5a5a0;
+            color: #a5a5a5;
         }
 
         [data-theme="light"] .pg-project-learn {
-            background: #f9fafb;
+            background: #fafafa;
             border-left-color: #4f46e5;
             color: #4b5563;
         }
@@ -3104,9 +3107,10 @@
         }
 
         [data-theme="light"] .pg-project-learn strong {
-            color: #111111;
+            color: #0a0a0a;
         }
     </style>
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
 </head>
 
 <body>
@@ -3143,31 +3147,10 @@
                 <span class="pg-hero__eyebrow">PLAYGROUND</span>
                 <h1 class="pg-hero__title" id="pgHeroTitle">Side Projects I Designed &amp; Built</h1>
                 <div class="pg-hero__desc">
-                    <p>A collection of experimental tools, Chrome extensions, and interface systems.</p>
-                    <p>Crafted from concept to code to explore modern interactions and new frameworks.</p>
+                    <p>I build tools and interface systems, Chrome extensions included, and take each from concept to code to test new interactions and frameworks.</p>
                 </div>
             </section>
 
-            <!-- ==================== BENTO CATEGORY FILTER TABS (CENTERED) ==================== -->
-            <nav class="pg-tabs-bar" aria-label="Filter playground collection">
-                <div class="pg-tabs">
-                    <button type="button" class="pg-tab-btn active" data-filter="all">
-                        <span>All Works <span class="pg-tab-count">(11)</span></span>
-                    </button>
-                    <button type="button" class="pg-tab-btn" data-filter="ai">
-                        <span>AI &amp; Agents <span class="pg-tab-count">(2)</span></span>
-                    </button>
-                    <button type="button" class="pg-tab-btn" data-filter="extensions">
-                        <span>Chrome Extensions <span class="pg-tab-count">(2)</span></span>
-                    </button>
-                    <button type="button" class="pg-tab-btn" data-filter="tools">
-                        <span>Web Apps &amp; Tools <span class="pg-tab-count">(3)</span></span>
-                    </button>
-                    <button type="button" class="pg-tab-btn" data-filter="systems">
-                        <span>Figma &amp; Systems <span class="pg-tab-count">(4)</span></span>
-                    </button>
-                </div>
-            </nav>
 
             <!-- ==================== PLAYGROUND CARDS (ZERO SHADOW, FOLDER TABS, INVERTED TITLE) ==================== -->
             <div class="mz-bento-grid" id="playgroundBento">
@@ -3175,10 +3158,10 @@
                 <!-- 01: AI UX AUDIT ASSISTANT -->
                 <div id="work-ai-ux-audit" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="ai">
                     <a class="group flex h-full flex-col" href="https://github.com/MUZEEBURRAHAMAN/AI-UX-Audit-Assistant" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">AI Agent</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Accessibility</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint plum rounded-none">AI Agent</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Accessibility</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3186,7 +3169,7 @@
                                 <img alt="AI UX Audit Assistant" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ux-audit-assistant-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">AI UX Audit Assistant</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">AI UX Audit Assistant</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3195,10 +3178,10 @@
                 <!-- 02: CATCHLY CHROME EXTENSION (Updated Webstore Link) -->
                 <div id="work-catchly" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="extensions">
                     <a class="group flex h-full flex-col" href="https://chromewebstore.google.com/detail/catchly/ogfdfheefhnmgkafcahpelmcofmgcobk?authuser=0&hl=en" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Chrome Extension</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Visual QA</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint slate rounded-none">Chrome Extension</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Visual QA</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3206,7 +3189,7 @@
                                 <img alt="Catchly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/catchly-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Catchly</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Catchly</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3215,10 +3198,10 @@
                 <!-- 03: GOFULLY CHROME EXTENSION (Updated Cover Image) -->
                 <div id="work-gofully" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="extensions">
                     <a class="group flex h-full flex-col" href="https://chromewebstore.google.com/detail/gofully-full-page-screens/akfbmhmdlbmljklgajkgoekobofhhofc" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Chrome Extension</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Viewport Stitcher</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint slate rounded-none">Chrome Extension</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Viewport Stitcher</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3226,7 +3209,7 @@
                                 <img alt="GoFully" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/gofully-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">GoFully</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">GoFully</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3235,10 +3218,10 @@
                 <!-- 04: WEB APPS -->
                 <div id="work-webapps" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-webapps" role="button" tabindex="0">
                     <div class="group flex h-full flex-col cursor-pointer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Web Tool</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Creator Economy</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint tan rounded-none">Web Tool</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Creator Economy</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3246,7 +3229,7 @@
                                 <img alt="Web Apps" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/thumbly-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Web Apps</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Web Apps</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </div>
@@ -3255,10 +3238,10 @@
                 <!-- 05: CUTCLIPLY VIDEO CROPPER -->
                 <div id="work-cutcliply" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools">
                     <a class="group flex h-full flex-col" href="https://cutcliply.up.railway.app/" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Video Tool</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Smart Cropping</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint tan rounded-none">Video Tool</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Smart Cropping</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3266,7 +3249,7 @@
                                 <img alt="Cutcliply" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/cutcliply-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Cutcliply</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Cutcliply</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3275,10 +3258,10 @@
                 <!-- 06: BLOBBY FIGMA PLUGIN -->
                 <div id="work-blobby" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
                     <a class="group flex h-full flex-col" href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Figma Plugin</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Generative SVG</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint sage rounded-none">Figma Plugin</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Generative SVG</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3286,7 +3269,7 @@
                                 <img alt="Blobby" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/blobby-plugin.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Blobby</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Blobby</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3295,10 +3278,10 @@
                 <!-- 07: TOOLTIPS & TOASTS UI KIT -->
                 <div id="work-tooltips" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
                     <a class="group flex h-full flex-col" href="https://www.figma.com/community/file/1535935401113364323/tooltips-toastssnackbar" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Figma Kit</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Design System</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint sage rounded-none">Figma Kit</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Design System</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3306,7 +3289,7 @@
                                 <img alt="Tooltips &amp; Snackbars" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/ui-kits.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Tooltips &amp; Snackbars</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Tooltips &amp; Snackbars</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3315,10 +3298,10 @@
                 <!-- 08: MOBILE APPS (SafeSide, Anchor, Photoly) -->
                 <div id="work-gesture-lab" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="tools" data-modal-target="modal-build-apps" role="button" tabindex="0">
                     <div class="group flex h-full flex-col cursor-pointer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Mobile App</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Product Design</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint tan rounded-none">Mobile App</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Product Design</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3326,7 +3309,7 @@
                                 <img alt="Mobile Apps: SafeSide, Anchor, Photoly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/mobile-apps-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Mobile Apps</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Mobile Apps</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </div>
@@ -3335,10 +3318,10 @@
                 <!-- 09: AVATARLY FIGMA PLUGIN -->
                 <div id="work-avatarly" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
                     <a class="group flex h-full flex-col" href="https://www.figma.com/community/plugin/1672948027574838944/blobby-editable-blob-generator" target="_blank" rel="noopener noreferrer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Figma Plugin</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Avatar Generator</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint sage rounded-none">Figma Plugin</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Avatar Generator</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3346,7 +3329,7 @@
                                 <img alt="Avatarly" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/avatarly-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Avatarly</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Avatarly</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3355,10 +3338,10 @@
                 <!-- 10: CLAUDE SKILLS & MCP ENGINE -->
                 <div id="work-claude-skills" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="ai" data-modal-target="modal-claude-skills" role="button" tabindex="0">
                     <div class="group flex h-full flex-col cursor-pointer">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">AI Architecture</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Claude MCP</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint plum rounded-none">AI Architecture</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Claude MCP</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3366,7 +3349,7 @@
                                 <img alt="Claude Skills &amp; MCP" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/forge-skill.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Claude Skills &amp; MCP</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Claude Skills &amp; MCP</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </div>
@@ -3375,10 +3358,10 @@
                 <!-- 11: OMNIS DESIGN SYSTEM -->
                 <div id="work-omnis" class="mz-bento-card w-full md:w-[calc((100%-24px)/2)]" data-category="systems">
                     <a class="group flex h-full flex-col" href="best-work.html">
-                        <div class="flex flex-col items-center px-[32px]">
-                            <div class="flex flex-wrap items-start justify-center gap-[4.5px]">
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Design System</span>
-                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge rounded-none">Multi-Product</span>
+                        <div class="pg-card-head flex flex-col items-center px-[32px]">
+                            <div class="pg-card-tags flex flex-wrap items-start justify-center gap-[4.5px]">
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge is-cat tag-tint sage rounded-none">Design System</span>
+                                <span class="flex items-center px-[12px] py-[7.5px] text-[10.5px] leading-[10.5px] font-bold uppercase folder-tab-badge tag-tint grey rounded-none">Multi-Product</span>
                             </div>
                         </div>
                         <div class="bg-card card-shell relative overflow-hidden rounded-none p-1.5">
@@ -3386,7 +3369,7 @@
                                 <img alt="Omnis AI Design System" loading="lazy" decoding="async" class="absolute inset-0 size-full object-cover ease-power3-in-out transition-transform duration-500 group-hover:scale-105" src="assets/images/omnis-design-system-cover.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; object-fit: cover;">
                             </div>
                             <div class="bg-card card-title-badge absolute bottom-0 left-1.5 rounded-none px-[28px] pt-[9px] pb-[15px]">
-                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Omnis AI Design System</span>
+                                <span class="block text-[16px] leading-[24px] font-bold tracking-[-0.03em]">Omnis AI Design System</span><svg class="pg-card-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                             </div>
                         </div>
                     </a>
@@ -3427,7 +3410,7 @@
                         <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"/>
                     </svg>
                 </a>
-                <a href="https://medium.com/@Muzeeb2010002-d" target="_blank" rel="noopener noreferrer" aria-label="Medium">
+                <a href="https://medium.com/@Muzeebdesign" target="_blank" rel="noopener noreferrer" aria-label="Medium">
                     <svg class="mz-footer__social" viewBox="0 0 256 256" fill="currentColor">
                         <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"/>
                         <path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"/>
@@ -3463,8 +3446,8 @@
         <div class="pg-modal-dialog">
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">AI WORKFLOWS &amp; DESIGN CRAFT</span>
-            <h3 class="pg-modal-title" id="m-ai-workflows-title">How AI fits into my product-design process</h3>
-            <p class="pg-modal-lead">I use AI across the product lifecycle to compress research synthesis, uncover non-obvious edge cases, and build working prototypes earlier. AI is my velocity multiplier; design taste, user empathy, and strategic trade-offs stay 100% human.</p>
+            <h3 class="pg-modal-title" id="m-ai-workflows-title">AI in my product-design process</h3>
+            <p class="pg-modal-lead">I use AI across the product lifecycle to compress research synthesis, uncover non-obvious edge cases, and build working prototypes earlier. AI speeds me up; design taste, user empathy, and strategic trade-offs stay 100% human.</p>
 
             <!-- IMPACT STATS -->
             <div class="pg-trust-stats">
@@ -3576,9 +3559,9 @@
                             <path d="M4 12 C 14 8, 24 16, 34 12 M 27 6 L 35 12 L 27 18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="pg-excali-node" style="border-color:#10b981;">
-                        <div class="pg-excali-node__badge" style="color:#10b981;">CORE GATE</div>
-                        <div class="pg-excali-node__title" style="color:#10b981;">Design Judgment</div>
+                    <div class="pg-excali-node" style="border-color:#8f8f8f;">
+                        <div class="pg-excali-node__badge" style="color:#8f8f8f;">CORE GATE</div>
+                        <div class="pg-excali-node__title" style="color:#8f8f8f;">Design Judgment</div>
                         <p class="pg-excali-node__desc">Taste, critique &amp; trade-offs.</p>
                         <div class="pg-excali-pill pg-excali-pill--success">Human Owned</div>
                     </div>
@@ -3604,7 +3587,7 @@
 
             <!-- QUOTE PRINCIPLE -->
             <div class="pg-quote-box">
-                <strong>Core Takeaway:</strong> Modern design engineering requires defining clear evaluation criteria and validating AI output against real production tokens.
+                <strong>Core Takeaway:</strong> Design engineers need clear evaluation criteria and must validate AI output against real production tokens.
             </div>
         </div>
     </div>
@@ -3615,19 +3598,19 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">CLAUDE SKILLS &amp; AUTOMATION</span>
             <h3 class="pg-modal-title" id="m-skills-title">Turning repeatable design thinking into reusable workflows</h3>
-            <p class="pg-modal-lead">I started building Claude Skills when I noticed I was repeatedly giving AI the same context, frameworks, and instructions. Instead of recreating the workflow every time, I turned the processes I trusted into reusable tools that run directly inside Claude Code.</p>
+            <p class="pg-modal-lead">I started building Claude Skills when I noticed I kept giving AI the same context, frameworks, and instructions. I turned the processes I trusted into reusable tools that run inside Claude Code.</p>
 
             <div class="pg-modal-divider"></div>
 
             <!-- 01 THE PROBLEM -->
             <span class="pg-modal-section-title">01 · The Problem</span>
             <div class="pg-problem-card" style="margin-bottom: 24px;">
-                <div class="pg-problem-card__head">Good AI output depends heavily on the workflow around it.</div>
-                <p class="pg-problem-card__desc">Without a structured rule system, designers get trapped in continuous prompting friction:</p>
+                <div class="pg-problem-card__head">Good AI output depends on the workflow around it.</div>
+                <p class="pg-problem-card__desc">Without a structured rule system, designers repeat the same prompting loop:</p>
                 <div class="pg-flow-badge" style="background:rgba(239,68,68,0.08); border-color:rgba(239,68,68,0.25); color:#ef4444; margin:10px 0 8px;">
                     <span>Explain Context</span> <span>→</span> <span>Prompt</span> <span>→</span> <span>Token Drift</span> <span>→</span> <span>Manual Fix</span> <span>→</span> <span>Re-prompt</span> <span>→</span> <span>Review</span>
                 </div>
-                <p class="pg-problem-card__desc" style="font-size:0.84rem;">I wanted a consistent, predictable, and automated starting point for any session.</p>
+                <p class="pg-problem-card__desc" style="font-size:0.84rem;">I wanted a consistent, automated starting point for each session.</p>
             </div>
 
             <!-- 02 HOW I BUILD A SKILL (EXCALIDRAW FLOW) -->
@@ -3762,21 +3745,21 @@
                 <div class="pg-flow-item" style="border-left:3px solid #ef4444;">
                     <div class="pg-flow-item__head" style="color:#ef4444">BEFORE (RAW CHAT)</div>
                     <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Repeat context and formatting rules from scratch every time.</p>
-                    <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:var(--text-muted, #8c8c88); line-height:1.4;">
+                    <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:var(--text-muted, #8c8c8c); line-height:1.4;">
                         CONTEXT → PROMPT → CORRECT → REVIEW
                     </div>
                 </div>
-                <div class="pg-flow-item" style="border-left:3px solid #10b981;">
-                    <div class="pg-flow-item__head" style="color:#10b981">AFTER (SKILL RUNTIME)</div>
+                <div class="pg-flow-item" style="border-left:3px solid #8f8f8f;">
+                    <div class="pg-flow-item__head" style="color:#8f8f8f">AFTER (SKILL RUNTIME)</div>
                     <p class="pg-flow-item__desc" style="font-size:0.84rem; margin-bottom:6px;">Reuse codified heuristic workflows &amp; focus on design decisions.</p>
-                    <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:#10b981; line-height:1.4; font-weight:600;">
+                    <div style="font-family:var(--font-mono, monospace); font-size:0.72rem; color:#8f8f8f; line-height:1.4; font-weight:600;">
                         .SKILL → CONTEXT → OUTPUT → DESIGN JUDGMENT
                     </div>
                 </div>
             </div>
 
             <div class="pg-quote-box">
-                <strong>Tool Builder Insight:</strong> When you encode your design taste into structured rules, AI stops being a generic chat assistant and becomes a reliable extension of your craft.
+                <strong>Tool Builder Insight:</strong> Encode your design taste as structured rules, and AI follows your craft instead of giving generic chat answers.
             </div>
         </div>
     </div>
@@ -3787,7 +3770,7 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">MODEL CONTEXT PROTOCOL (MCP)</span>
             <h3 class="pg-modal-title" id="m-mcp-title">Connecting design tools, documentation, and code into one workflow</h3>
-            <p class="pg-modal-lead">MCP connects Claude Code directly to relevant data sources: Jira tickets, Figma variables, local codebases, and live web endpoints, allowing AI models to evaluate grounded project context.</p>
+            <p class="pg-modal-lead">MCP connects Claude Code to relevant data sources: Jira tickets, Figma variables, local codebases, and live web endpoints. AI models then work from real project context.</p>
 
             <div class="pg-modal-divider"></div>
 
@@ -3799,14 +3782,14 @@
                         <span>✕</span>
                         <span>Isolated AI Chat</span>
                     </div>
-                    <p class="pg-trust-vs__desc">Designer must manually copy-paste PR specs, CSS code, and token values back and forth. Stale context leads to hallucinated UI components.</p>
+                    <p class="pg-trust-vs__desc">Designers copy-paste PR specs, CSS code, and token values back and forth by hand. Stale context leads to hallucinated UI components.</p>
                 </div>
                 <div class="pg-trust-vs__col pg-trust-vs__col--good">
-                    <div class="pg-trust-vs__head" style="color:#10b981;">
+                    <div class="pg-trust-vs__head" style="color:#8f8f8f;">
                         <span>✓</span>
                         <span>MCP Connected Runtime</span>
                     </div>
-                    <p class="pg-trust-vs__desc">Claude Code queries Figma variables, reads local code repositories, and checks live PR previews autonomously through standardized tool calling.</p>
+                    <p class="pg-trust-vs__desc">Claude Code queries Figma variables, reads local code repositories, and checks live PR previews through standardized tool calling.</p>
                 </div>
             </div>
 
@@ -3820,7 +3803,7 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 15.3l-9-9a2 2 0 0 0-2.8 0l-5.2 5.2a2 2 0 0 0 0 2.8l9 9a2 2 0 0 0 2.8 0l5.2-5.2a2 2 0 0 0 0-2.8z"/><line x1="8.5" y1="8.5" x2="11" y2="11"/><line x1="12" y1="12" x2="14.5" y2="14.5"/><line x1="15.5" y1="15.5" x2="18" y2="18"/></svg>
                     </div>
                     <div class="pg-mcp-node__title">Figma Context</div>
-                    <p class="pg-mcp-node__desc">Read tokens, variables, component structures, and layer hierarchies directly from design files.</p>
+                    <p class="pg-mcp-node__desc">Read tokens, variables, component structures, and layer hierarchies from design files.</p>
                 </div>
                 <div class="pg-mcp-node">
                     <div class="pg-mcp-node__icon" aria-hidden="true">
@@ -3893,7 +3876,7 @@
                     <svg class="pg-excali-curly-arrow" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                         <path d="M22 6 C 12 10, 8 20, 16 26 M 10 22 L 16 26 L 19 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span class="pg-excali-handwritten">Design tokens &amp; code specs stay permanently in sync!</span>
+                    <span class="pg-excali-handwritten">Design tokens &amp; code specs stay in sync.</span>
                 </div>
             </div>
 
@@ -3904,7 +3887,7 @@
             <div class="pg-flow-list">
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">Grounded Critique</div>
-                    <p class="pg-solution-card__desc">AI models verify designs directly against active project tokens and local design system libraries.</p>
+                    <p class="pg-solution-card__desc">AI models verify designs against active project tokens and local design system libraries.</p>
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">Spec-Driven Design</div>
@@ -3912,7 +3895,7 @@
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">Design-to-Code Parity</div>
-                    <p class="pg-solution-card__desc">Audit the gap between Figma designs and deployed code by comparing design tokens against CSS output automatically.</p>
+                    <p class="pg-solution-card__desc">Audit the gap between Figma designs and deployed code by comparing design tokens against CSS output.</p>
                 </div>
             </div>
         </div>
@@ -3924,7 +3907,7 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">DESIGN QA &amp; EVIDENCE SYSTEMS</span>
             <h3 class="pg-modal-title" id="m-aiux-title">Designing verifiable, code-anchored review interfaces</h3>
-            <p class="pg-modal-lead">Automated design feedback fails when suggestions are disconnected from source code. I design review systems where every flagged issue links directly to DOM nodes, CSS variables, and design tokens so engineers and designers can act on them immediately.</p>
+            <p class="pg-modal-lead">Automated design feedback fails when its suggestions don't connect to source code. In the review systems I design, each flagged issue links to DOM nodes, CSS variables, and design tokens, so engineers and designers can act on it.</p>
 
             <!-- IMPACT METRICS RIBBON -->
             <div class="pg-trust-stats">
@@ -3964,29 +3947,29 @@
                         </li>
                         <li class="pg-trust-vs__item">
                             <span style="color:#ef4444;">•</span>
-                            <span><strong>Token Drift:</strong> Visual designs diverge silently from production CSS styles.</span>
+                            <span><strong>Token Drift:</strong> Visual designs diverge from production CSS styles.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- GOOD / SYSTEM -->
                 <div class="pg-trust-vs__col pg-trust-vs__col--good">
-                    <div class="pg-trust-vs__head" style="color:#10b981;">
+                    <div class="pg-trust-vs__head" style="color:#8f8f8f;">
                         <span>✓</span>
                         <span>Evidence-Anchored System</span>
                     </div>
                     <ul class="pg-trust-vs__list">
                         <li class="pg-trust-vs__item">
-                            <span style="color:#10b981;">•</span>
-                            <span><strong>Direct Traceability:</strong> 1-click line anchors linking findings directly to code.</span>
+                            <span style="color:#8f8f8f;">•</span>
+                            <span><strong>Direct Traceability:</strong> 1-click line anchors link findings to code.</span>
                         </li>
                         <li class="pg-trust-vs__item">
-                            <span style="color:#10b981;">•</span>
+                            <span style="color:#8f8f8f;">•</span>
                             <span><strong>Executive &amp; Dev Views:</strong> High-level blocker scores ↔ Deep tabular rule audits.</span>
                         </li>
                         <li class="pg-trust-vs__item">
-                            <span style="color:#10b981;">•</span>
-                            <span><strong>Automated PR Patches:</strong> Generate verified token fixes directly for staging PRs.</span>
+                            <span style="color:#8f8f8f;">•</span>
+                            <span><strong>Automated PR Patches:</strong> Generate verified token fixes for staging PRs.</span>
                         </li>
                     </ul>
                 </div>
@@ -4025,7 +4008,7 @@
                                 <span class="pg-badge-code">token(--color-primary-400)</span>
                             </div>
                         </div>
-                        <p class="pg-mock-text-sub">Every finding contains a direct DOM anchor linking straight to the source CSS line for zero-friction verification.</p>
+                        <p class="pg-mock-text-sub">Each finding contains a DOM anchor linking to the source CSS line for quick verification.</p>
                     </div>
                 </div>
 
@@ -4075,7 +4058,7 @@
                             </div>
                             <p class="pg-mock-text-main" style="margin:0;">WCAG 2.2 contrast rule auto-remediated and ready for pull request merge.</p>
                         </div>
-                        <p class="pg-mock-text-sub">Proposed token fixes require intentional designer approval before syncing into production staging branches.</p>
+                        <p class="pg-mock-text-sub">Proposed token fixes need designer approval before they sync to production staging branches.</p>
                     </div>
                 </div>
 
@@ -4131,12 +4114,12 @@
                     <svg class="pg-excali-curly-arrow" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                         <path d="M22 6 C 12 10, 8 20, 16 26 M 10 22 L 16 26 L 19 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span class="pg-excali-handwritten">Every design suggestion links directly to the underlying CSS or component file.</span>
+                    <span class="pg-excali-handwritten">Each design suggestion links to the underlying CSS or component file.</span>
                 </div>
             </div>
 
             <div class="pg-quote-box">
-                <strong>Design Systems Principle:</strong> A design critique tool is only valuable if its findings can be immediately reproduced, verified, and fixed in code.
+                <strong>Design Systems Principle:</strong> A design critique tool is only valuable if you can reproduce, verify, and fix its findings in code.
             </div>
 
             <span class="pg-modal-section-title">Core Competencies</span>
@@ -4157,14 +4140,14 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">PLUGINS &amp; SCRIPTS</span>
             <h3 class="pg-modal-title" id="m-plugins-title">Automation tools built for repetitive problems</h3>
-            <p class="pg-modal-lead">Custom design utilities, CLI helpers, and build scripts engineered to eliminate manual friction across design systems, token extraction, and production asset optimization.</p>
+            <p class="pg-modal-lead">Custom design utilities, CLI helpers, and build scripts that remove manual work from design systems, token extraction, and production asset optimization.</p>
 
             <div class="pg-modal-divider"></div>
 
             <div class="pg-flow-list">
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">TOKEN EXPORTER &amp; DTCG PARSER</div>
-                    <p class="pg-solution-card__desc">Converts Figma Variables directly into W3C-compliant JSON token files and semantic CSS custom properties with dark-mode mapping.</p>
+                    <p class="pg-solution-card__desc">Converts Figma Variables into W3C-compliant JSON token files and semantic CSS custom properties with dark-mode mapping.</p>
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">WEBP &amp; VECTOR ASSET OPTIMIZER</div>
@@ -4194,7 +4177,7 @@
                     <div class="pg-project-tags">Food Preservation · Mobile App · Product Design</div>
                     <p class="pg-project-desc">A mobile app designed to help users discover, organize, and manage preserved food products while making food storage more convenient and accessible.</p>
                     <div class="pg-project-learn">
-                        <strong>What I'm exploring:</strong> Simplifying food preservation workflows through intuitive navigation, clear product information, and a user-friendly mobile experience.
+                        <strong>Exploring:</strong> Simplifying food preservation workflows through intuitive navigation, clear product information, and a user-friendly mobile experience.
                     </div>
                 </div>
 
@@ -4207,7 +4190,7 @@
                     <div class="pg-project-tags">Digital Wellbeing · Mobile App · Product Design</div>
                     <p class="pg-project-desc">A digital wellbeing app designed to help users build healthier screen habits, reduce distractions, and create more intentional time away from their devices.</p>
                     <div class="pg-project-learn">
-                        <strong>What I'm exploring:</strong> Designing calm, supportive experiences that encourage mindful technology use without adding unnecessary pressure.
+                        <strong>Exploring:</strong> Designing calm, supportive experiences that encourage mindful technology use without adding unnecessary pressure.
                     </div>
                 </div>
 
@@ -4218,9 +4201,9 @@
                         <span class="pg-project-status">In Research Phase</span>
                     </div>
                     <div class="pg-project-tags">Photography · Mobile App · Product Design</div>
-                    <p class="pg-project-desc">A photography companion app designed to help users improve their composition, discover better shooting angles, and capture more compelling photos.</p>
+                    <p class="pg-project-desc">A photography companion app designed to help users improve their composition, discover better shooting angles, and capture better photos.</p>
                     <div class="pg-project-learn">
-                        <strong>What I'm exploring:</strong> Making photography guidance accessible through practical visual tools, composition tips, and a simple learning experience.
+                        <strong>Exploring:</strong> Making photography guidance accessible through practical visual tools, composition tips, and a simple learning experience.
                     </div>
                 </div>
             </div>
@@ -4247,7 +4230,7 @@
                     <div class="pg-project-tags">Thumbnail Creation Using AI · Creator Tool · Next.js · Canvas</div>
                     <p class="pg-project-desc">A visual previewer and thumbnail creation tool using AI for creators to test how YouTube thumbnails and titles perform across mobile feeds, sidebars, and dark/light modes before publishing.</p>
                     <div class="pg-project-learn">
-                        <strong>What I learned:</strong> High-contrast text hierarchy and focal-point contrast scoring at small thumbnail resolutions (down to 120px mobile feeds).
+                        <strong>Learned:</strong> High-contrast text hierarchy and focal-point contrast scoring at small thumbnail resolutions (down to 120px mobile feeds).
                     </div>
                 </div>
 
@@ -4258,7 +4241,7 @@
                         <span class="pg-project-status pg-project-status--amber">Publish Beta End of Month</span>
                     </div>
                     <div class="pg-project-tags">Rare UI Component · Figma Component Library · Web Animation</div>
-                    <p class="pg-project-desc">A curated directory of rare UI components and a comprehensive Figma component library featuring micro-animated interaction design patterns, spring physics transitions, and tactile UI tokens.</p>
+                    <p class="pg-project-desc">A curated directory of rare UI components and a Figma component library featuring micro-animated interaction design patterns, spring physics transitions, and tactile UI tokens.</p>
                     <div class="pg-project-learn">
                         <strong>Milestone:</strong> Scheduled to publish the public beta version by the end of this month with full variable modes and code tokens.
                     </div>
@@ -4276,7 +4259,7 @@
                     <div class="pg-project-tags">Extension + Tools · Clip Cutting · Audio Extraction · Split Video · Screenshot from Video · Highlighted Clips</div>
                     <p class="pg-project-desc">An all-in-one browser extension and web tool for creators: clip cutting, audio extraction, video splitting, taking instant high-res screenshots from video, and generating highlighted video clips without timeline clutter.</p>
                     <div class="pg-project-learn">
-                        <strong>What I learned:</strong> Leveraging browser WebCodecs and canvas compositing for instantaneous client-side video cropping, frame capture, and sub-frame trim precision.
+                        <strong>Learned:</strong> Using browser WebCodecs and canvas compositing for client-side video cropping, frame capture, and sub-frame trim precision.
                     </div>
                 </div>
             </div>
@@ -4289,7 +4272,7 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">EXTENSIONS</span>
             <h3 class="pg-modal-title" id="m-ext-title">Tools that improve everyday workflows</h3>
-            <p class="pg-modal-lead">Chrome extensions built to automate repetitive design QA, DOM inspection, and visual asset capture directly in the browser.</p>
+            <p class="pg-modal-lead">Chrome extensions built to automate repetitive design QA, DOM inspection, and visual asset capture in the browser.</p>
 
             <div class="pg-modal-divider"></div>
 
@@ -4307,9 +4290,9 @@
                         </a>
                     </div>
                     <div class="pg-project-tags">Chrome Extension · Manifest V3 · Visual Bookmarking · Design QA</div>
-                    <p class="pg-project-desc">Instant browser utility for capturing UI screenshots, logging CSS properties, and annotating design QA bugs directly into project boards.</p>
+                    <p class="pg-project-desc">Instant browser utility for capturing UI screenshots, logging CSS properties, and annotating design QA bugs into project boards.</p>
                     <div class="pg-project-learn">
-                        <strong>What I learned:</strong> Building non-intrusive shadow-DOM overlays that work seamlessly across complex single-page apps without CSS style collisions.
+                        <strong>Learned:</strong> Building non-intrusive shadow-DOM overlays that work across complex single-page apps without CSS style collisions.
                     </div>
                 </div>
 
@@ -4328,7 +4311,7 @@
                     <div class="pg-project-tags">DOM Virtualization · Scroll Capture · High-Res Export</div>
                     <p class="pg-project-desc">Automates full-page viewport stitching across mobile, tablet, and desktop breakpoints in one click for instant design audits and competitive benchmarking.</p>
                     <div class="pg-project-learn">
-                        <strong>What I learned:</strong> Handling sticky navbars, fixed headers, and dynamically loaded infinite-scroll containers during canvas stitching.
+                        <strong>Learned:</strong> Handling sticky navbars, fixed headers, and dynamically loaded infinite-scroll containers during canvas stitching.
                     </div>
                 </div>
             </div>
@@ -4341,7 +4324,7 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">DESIGN TOKENS &amp; ARCHITECTURE</span>
             <h3 class="pg-modal-title" id="m-tokens-title">Making design decisions reusable across platforms</h3>
-            <p class="pg-modal-lead">Hardcoded hex values and arbitrary pixel margins create systemic brand drift. I engineer multi-tier token architectures following W3C Design Token Community Group (DTCG) standards to ensure design decisions compile flawlessly into CSS, iOS, and Android.</p>
+            <p class="pg-modal-lead">Hardcoded hex values and arbitrary pixel margins create brand drift. I build multi-tier token architectures to W3C Design Token Community Group (DTCG) standards, so design decisions compile into CSS, iOS, and Android.</p>
 
             <div class="pg-modal-divider"></div>
 
@@ -4364,7 +4347,7 @@
                         <span class="pg-badge-code">color.action.primary = token(blue.600)</span>
                     </div>
                     <div class="pg-mock-frame__content">
-                        <p class="pg-mock-text-sub">Intent-driven tokens that change dynamically depending on active theme (Dark Mode / High Contrast).</p>
+                        <p class="pg-mock-text-sub">Intent-driven tokens that change with the active theme (Dark Mode / High Contrast).</p>
                     </div>
                 </div>
 
@@ -4374,7 +4357,7 @@
                         <span class="pg-badge-code">button.primary.bg = token(color.action.primary)</span>
                     </div>
                     <div class="pg-mock-frame__content">
-                        <p class="pg-mock-text-sub">Strictly isolated bindings protecting components from unintentional global side-effects.</p>
+                        <p class="pg-mock-text-sub">Isolated bindings that protect components from global side-effects.</p>
                     </div>
                 </div>
             </div>
@@ -4388,7 +4371,7 @@
                     <div class="pg-excali-node">
                         <div class="pg-excali-node__badge">SOURCE</div>
                         <div class="pg-excali-node__title">Figma Variables</div>
-                        <p class="pg-excali-node__desc">Design tokens managed directly in Figma Collections.</p>
+                        <p class="pg-excali-node__desc">Design tokens managed in Figma Collections.</p>
                     </div>
                     <div class="pg-excali-arrow">
                         <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
@@ -4421,14 +4404,14 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">COMPONENT ARCHITECTURES</span>
             <h3 class="pg-modal-title" id="m-comp-title">Designing for consistency and resilience at scale</h3>
-            <p class="pg-modal-lead">A design system is only as robust as its edge cases. I design components with mandatory 7-state coverage, keyboard accessibility traps prevention, and ARIA compliant semantics before developer handoff.</p>
+            <p class="pg-modal-lead">A design system is only as strong as its edge cases. Before developer handoff, I design components with 7-state coverage, keyboard-trap prevention, and ARIA-compliant semantics.</p>
 
             <div class="pg-modal-divider"></div>
 
             <span class="pg-modal-section-title">The 7-State Resilience Matrix</span>
             <div class="pg-trust-vs" style="margin-bottom:16px;">
                 <div class="pg-trust-vs__col pg-trust-vs__col--good" style="grid-column: 1 / -1;">
-                    <div class="pg-trust-vs__head" style="color:#10b981;">
+                    <div class="pg-trust-vs__head" style="color:#8f8f8f;">
                         <span>✓</span>
                         <span>Complete State Coverage Standard</span>
                     </div>
@@ -4445,7 +4428,7 @@
             </div>
 
             <div class="pg-quote-box" style="margin-top:14px;">
-                <strong>Enterprise Principle:</strong> If a component doesn't define its loading, error, and keyboard focus states, it is only 40% designed.
+                <strong>Enterprise Principle:</strong> If a component doesn't define its loading, error, and keyboard focus states, it is 40% designed.
             </div>
         </div>
     </div>
@@ -4456,7 +4439,7 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">DESIGN WORKFLOWS &amp; GOVERNANCE</span>
             <h3 class="pg-modal-title" id="m-wf-title">Eliminating friction in product design handoffs</h3>
-            <p class="pg-modal-lead">Bridging the communication gap between Product Managers, Designers, and Frontend Engineers with structured review gates, automated PR previews, and spec-driven documentation.</p>
+            <p class="pg-modal-lead">Closing the gap between Product Managers, Designers, and Frontend Engineers with structured review gates, automated PR previews, and spec-driven documentation.</p>
 
             <div class="pg-modal-divider"></div>
 
@@ -4468,7 +4451,7 @@
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">GATE 02 · INTERACTION &amp; STATE REVIEW</div>
-                    <p class="pg-solution-card__desc">Validating keyboard navigation, responsive breakpoints, and error states directly in interactive prototypes.</p>
+                    <p class="pg-solution-card__desc">Validating keyboard navigation, responsive breakpoints, and error states in interactive prototypes.</p>
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">GATE 03 · DESIGN QA &amp; CODEMOD PR AUDIT</div>
@@ -4484,7 +4467,7 @@
             <button type="button" class="pg-modal-close" aria-label="Close modal">✕</button>
             <span class="pg-modal-eyebrow">FIGMA PLUGINS &amp; TOOLING</span>
             <h3 class="pg-modal-title" id="m-fplugins-title">Tools that remove repetitive design friction</h3>
-            <p class="pg-modal-lead">Custom plugins built for the Figma Plugin API that automate vector calculations, naming sanitization, and token validation directly in canvas.</p>
+            <p class="pg-modal-lead">Custom plugins built for the Figma Plugin API that automate vector calculations, naming sanitization, and token validation in the canvas.</p>
 
             <div class="pg-modal-divider"></div>
 
@@ -4495,7 +4478,7 @@
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">TOKEN AUDIT HELPER</div>
-                    <p class="pg-solution-card__desc">Scans selected Figma frames for unattached colors or raw font sizes and maps them automatically to official design tokens.</p>
+                    <p class="pg-solution-card__desc">Scans selected Figma frames for unattached colors or raw font sizes and maps them to official design tokens.</p>
                 </div>
             </div>
         </div>
@@ -4523,11 +4506,11 @@
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">03 · STRATEGIC OPTIONS &amp; TRADEOFFS</div>
-                    <p class="pg-solution-card__desc">Presenting thoughtful architectural options with honest evaluations of engineering effort vs. user value.</p>
+                    <p class="pg-solution-card__desc">Presenting architectural options with honest evaluations of engineering effort vs. user value.</p>
                 </div>
                 <div class="pg-solution-card">
                     <div class="pg-solution-card__head">04 · CLEAR NEXT ACTIONS</div>
-                    <p class="pg-solution-card__desc">Providing unambiguous roadmap phasing and immediate release milestones for engineering and leadership.</p>
+                    <p class="pg-solution-card__desc">Providing clear roadmap phasing and near-term release milestones for engineering and leadership.</p>
                 </div>
             </div>
         </div>
@@ -4536,45 +4519,9 @@
 
 
 
-    <script src="assets/js/site.js?v=110"></script>
+    <script src="assets/js/site.js?v=561"></script>
     <script>
     (function () {
-        // ==================== BENTO CATEGORY FILTER ENGINE ====================
-        var filterBtns = Array.from(document.querySelectorAll('.pg-tab-btn[data-filter]'));
-        var bentoCards = Array.from(document.querySelectorAll('.mz-bento-card[data-category]'));
-
-        function applyFilter(filterCategory) {
-            filterBtns.forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-filter') === filterCategory);
-            });
-
-            bentoCards.forEach(function(card) {
-                var cat = card.getAttribute('data-category');
-                if (filterCategory === 'all' || cat === filterCategory) {
-                    card.classList.remove('is-hidden');
-                } else {
-                    card.classList.add('is-hidden');
-                }
-            });
-        }
-
-        filterBtns.forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                var filter = btn.getAttribute('data-filter');
-                applyFilter(filter);
-                if (history.replaceState) {
-                    history.replaceState(null, '', filter === 'all' ? window.location.pathname : '#' + filter);
-                }
-            });
-        });
-
-        // Deep-link filter support on initial load
-        var initialHash = window.location.hash.replace('#', '').toLowerCase();
-        if (['ai', 'extensions', 'tools', 'systems'].indexOf(initialHash) !== -1) {
-            applyFilter(initialHash);
-        }
-
         // ==================== MODAL SYSTEM ENGINE ====================
         function openModal(modalId) {
             var modal = document.getElementById(modalId);

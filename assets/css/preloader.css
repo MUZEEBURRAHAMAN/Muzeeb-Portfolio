@@ -1,16 +1,16 @@
 /* Multi-language Greeting Preloader */
 :root {
-  --pre-bg: #f2f1ed;
-  --pre-ink: #111111;
-  --pre-muted: #8a8985;
+  --pre-bg: #f5f5f5;
+  --pre-ink: #0a0a0a;
+  --pre-muted: #898989;
   --pre-zoom: #555555;
 }
 :root[data-theme="dark"],
 html[data-theme="dark"] {
   --pre-bg: #0a0a0a;
-  --pre-ink: #f5f5f2;
-  --pre-muted: #8a8985;
-  --pre-zoom: #b5b5b2;
+  --pre-ink: #f5f5f5;
+  --pre-muted: #898989;
+  --pre-zoom: #b5b5b5;
 }
 
 .preloader {
