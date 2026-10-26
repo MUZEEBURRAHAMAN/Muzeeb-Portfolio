@@ -444,7 +444,7 @@ html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3 {
    ========================================================================== */
 body.cs3-page { background: var(--color-bg) !important; color: var(--color-text); font-family: var(--font-sans); }
 .cs3-page #main { max-width: none !important; padding: 0 !important; border: 0 !important; }
-.cs3-page #main > .mz-footer { max-width: calc(var(--container-max) + 2 * var(--space-gutter)); margin-inline: auto; padding-inline: var(--space-gutter); }
+.cs3-page #main > .mz-footer { max-width: calc(var(--container-max) + 2 * var(--space-gutter)); margin-inline: auto; padding-inline: var(--space-gutter) !important; }
 
 /* announcement bar */
 .cs3-announce {
@@ -510,9 +510,9 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-ba__handle { border-
 .cs3-rail { position: fixed; left: max(12px, env(safe-area-inset-left, 0px)); top: 50%; translate: 0 -50%; z-index: 900; display: grid; gap: 10px; opacity: 0; pointer-events: none; transition: opacity var(--duration-base) var(--ease-out); }
 .cs3-rail.is-on { opacity: 1; pointer-events: auto; }
 .cs3-rail a { position: relative; display: block; width: 24px; height: 14px; }
-.cs3-rail a::before { content: ""; position: absolute; left: 0; top: 50%; width: 12px; height: 1.5px; background: var(--color-text-muted); transition: width var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out); }
-.cs3-rail a:hover::before { width: 18px; background: var(--color-text); }
-.cs3-rail a.is-active::before { width: 22px; background: var(--color-text); }
+.cs3-rail a::before { content: ""; position: absolute; left: 0; top: 50%; width: 22px; height: 1.5px; background: var(--color-text-muted); transform: scaleX(.5455); transform-origin: left center; transition: transform var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out); }
+.cs3-rail a:hover::before { transform: scaleX(.8182); background: var(--color-text); }
+.cs3-rail a.is-active::before { transform: none; background: var(--color-text); }
 .cs3-rail__tip { position: absolute; left: 30px; top: 50%; translate: 0 -50%; white-space: nowrap; padding: 6px 10px; background: var(--color-text); color: var(--color-bg); font: 500 var(--text-xs)/1 var(--font-sans); opacity: 0; pointer-events: none; transition: opacity var(--duration-fast) var(--ease-out); }
 .cs3-rail a:hover .cs3-rail__tip, .cs3-rail a:focus-visible .cs3-rail__tip { opacity: 1; }
 @media (max-width: 1100px) { .cs3-rail { display: none; } }
