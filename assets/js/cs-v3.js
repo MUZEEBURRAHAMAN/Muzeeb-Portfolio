@@ -86,6 +86,46 @@
   addEventListener("resize", onScroll);
   onScroll();
 
+  /* ---------- section markers (left rail) + bottom bar ---------- */
+  const sections = $$(".cs3-section[id]", page).filter(sec => sec.querySelector(".cs3-sec-title"));
+  const rail = document.createElement("nav");
+  rail.className = "cs3-rail";
+  rail.setAttribute("aria-label", "Sections");
+  sections.forEach(sec => {
+    const a = document.createElement("a");
+    a.href = "#" + sec.id;
+    const tip = document.createElement("span");
+    tip.className = "cs3-rail__tip";
+    tip.textContent = sec.querySelector(".cs3-sec-title").textContent;
+    a.setAttribute("aria-label", tip.textContent);
+    a.appendChild(tip);
+    rail.appendChild(a);
+  });
+  page.appendChild(rail);
+  const railLinks = $$("a", rail);
+  const hero = page.querySelector(".cs3-hero");
+  const dock = document.querySelector(".cs3-dock");
+  const footer = document.querySelector(".mz-footer");
+  let railTick = false;
+  const syncRail = () => {
+    if (railTick) return;
+    railTick = true;
+    requestAnimationFrame(() => {
+      railTick = false;
+      const marker = innerHeight * 0.35;
+      let active = -1;
+      sections.forEach((sec, i) => { if (sec.getBoundingClientRect().top <= marker) active = i; });
+      railLinks.forEach((a, i) => a.classList.toggle("is-active", i === active));
+      const pastHero = hero ? hero.getBoundingClientRect().bottom < innerHeight * 0.5 : true;
+      const atFooter = footer ? footer.getBoundingClientRect().top < innerHeight : false;
+      rail.classList.toggle("is-on", pastHero && !atFooter);
+      if (dock) dock.classList.toggle("is-on", pastHero && !atFooter);
+    });
+  };
+  addEventListener("scroll", syncRail, { passive: true });
+  addEventListener("resize", syncRail);
+  syncRail();
+
   /* ---------- before / after slider ---------- */
   $$(".cs3-ba", page).forEach(ba => {
     const handle = ba.querySelector(".cs3-ba__handle");

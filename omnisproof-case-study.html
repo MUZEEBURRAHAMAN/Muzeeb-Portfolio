@@ -60,12 +60,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
-<link rel="stylesheet" href="assets/css/cs-v3.css?v=1">
+<link rel="stylesheet" href="assets/css/cs-v3.css?v=2">
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
 </head>
 <body class="cs3-page">
     <a href="#main" class="mz-skip">Skip to content</a>
 
+<a class="cs3-announce" href="mailto:rahamanmuzeeb1108@gmail.com"><span class="tag">Open</span><span>Available for product design roles · remote &amp; relocation</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
 <header class="site-header" id="siteHeader">
   <div class="site-header__inner">
     <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
@@ -81,6 +82,7 @@
       <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
       </button>
+      <a class="cs3-cta" href="mailto:rahamanmuzeeb1108@gmail.com">Get in touch</a>
     </nav>
   </div>
 </header>
@@ -108,10 +110,12 @@
       <div><dt class="eyebrow">Scope</dt><dd>Workflow redesign, AI field detection, prototyping</dd></div>
       <div><dt class="eyebrow">Users</dt><dd>Lawyers, paralegals, legal assistants</dd></div>
     </dl>
-    <figure class="cs3-media cs3-cover" data-rv="unfold" style="--d:5">
-      <div class="cs3-media__frame" style="border:0"><img src="assets/images/omnisproof-cover.webp?v=q98" alt="OmnisProof: Get your document signed cover preview with key workflow annotations" loading="eager" fetchpriority="high"></div>
-    </figure>
   </div>
+  <figure class="cs3-band cs3-cover" style="margin-top:var(--space-block)">
+    <div class="cs3-band__inner" data-rv="unfold" style="--d:5">
+      <div class="cs3-media__frame"><img src="assets/images/omnisproof-cover.webp?v=q98" alt="OmnisProof: Get your document signed cover preview with key workflow annotations" loading="eager" fetchpriority="high"></div>
+    </div>
+  </figure>
 </header>
 
 <!-- ============ RESULTS BAND ============ -->
@@ -126,39 +130,37 @@
 <!-- ============ 01 OVERVIEW ============ -->
 <section class="cs3-section" id="overview" style="margin-top:var(--space-section)">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">01</span><span class="cs3-aside__name">What we're building</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">01</span><h2 class="cs3-sec-title">What we're building</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">Making document signing <span class="mark">simpler</span> from the very first step.</h2>
+        <p class="cs3-lead">Making document signing <span class="mark">simpler</span> from the very first step.</p>
         <div class="cs3-prose"><p>OmnisProof is a dedicated e-signing platform built for high-velocity legal workflows. We eliminated disjointed modal wizards and automated manual field placement into a single guided workspace. The redesign tackles three major bottlenecks across the preparation lifecycle.</p></div>
       </div>
 
-      <div class="cs3-rows">
-        <article class="cs3-row" data-rv>
+        <article class="cs3-row cs3-wide" data-rv>
           <div class="cs3-row__head"><span class="cs3-row__num">01</span><h3 class="cs3-row__title">Too many steps before sending a document</h3></div>
           <div class="cs3-row__cols">
             <div><span class="tag tag-bad">The problem</span><p>Preparing a document for signature involved moving through multiple screens and disconnected steps. Users had to work through the setup process before they could place signature fields.</p></div>
             <div><span class="tag tag-good">What we're building</span><p>A <b>single, guided workspace</b> where users can upload a document, configure signing details, and prepare it for sending, all in one continuous flow.</p></div>
           </div>
-          <figure class="cs3-media"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-01.webp?v=q98" alt="Before vs After Redesign: collapsing the 4-step wizard into 1 guided page" loading="lazy"></div></figure>
         </article>
-        <article class="cs3-row" data-rv>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-01.webp?v=q98" alt="Before vs After Redesign: collapsing the 4-step wizard into 1 guided page" loading="lazy"></div></div></figure>
+        <article class="cs3-row cs3-wide" data-rv>
           <div class="cs3-row__head"><span class="cs3-row__num">02</span><h3 class="cs3-row__title">Manual field placement slows everything down</h3></div>
           <div class="cs3-row__cols">
             <div><span class="tag tag-bad">The problem</span><p>Placing signature fields manually across lengthy legal documents is repetitive, time-consuming, and easy to get wrong. Users had to scan documents to determine where each person needed to sign.</p></div>
             <div><span class="tag tag-good">What we're building</span><p><b>AI-assisted field detection</b> that identifies potential signing locations and suggests where fields belong, while keeping users in control of reviewing and confirming them.</p></div>
           </div>
-          <figure class="cs3-media"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-02.webp?v=q98" alt="AI-Assisted Detection: reviewable suggested signing fields" loading="lazy"></div></figure>
         </article>
-        <article class="cs3-row" data-rv>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-02.webp?v=q98" alt="AI-Assisted Detection: reviewable suggested signing fields" loading="lazy"></div></div></figure>
+        <article class="cs3-row cs3-wide" data-rv>
           <div class="cs3-row__head"><span class="cs3-row__num">03</span><h3 class="cs3-row__title">Making document preparation easier to manage</h3></div>
           <div class="cs3-row__cols">
             <div><span class="tag tag-bad">The problem</span><p>Legal teams work with different document types, signing requirements, and workflows. The experience needed to support these variations without adding more complexity.</p></div>
             <div><span class="tag tag-good">What we're building</span><p>A <b>flexible signing experience</b> that supports document uploads, reusable templates, and existing files, giving teams more ways to start and complete their signing workflow.</p></div>
           </div>
-          <figure class="cs3-media"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-03.webp?v=q98" alt="Document Management: flexible workflows, templates and folders" loading="lazy"></div></figure>
         </article>
-      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-03.webp?v=q98" alt="Document Management: flexible workflows, templates and folders" loading="lazy"></div></div></figure>
 
       <blockquote class="cs3-quote" data-rv>
         <span class="eyebrow" style="margin-bottom:var(--space-3)">The goal</span>
@@ -171,17 +173,17 @@
 <!-- ============ 02 CONTEXT ============ -->
 <section class="cs3-section" id="context">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">02</span><span class="cs3-aside__name">The product</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">02</span><h2 class="cs3-sec-title">The product</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">The <span class="mark">document execution layer</span> inside a legal AI ecosystem.</h2>
+        <p class="cs3-lead">The <span class="mark">document execution layer</span> inside a legal AI ecosystem.</p>
         <div class="cs3-prose">
           <p>OmnisProof is the document execution layer of the Omnis legal AI ecosystem. It turns a drafted agreement into a <b>signed, filed legal record</b>: prepare, assign signers, place fields, send and track, without leaving the platform.</p>
           <p>It sounds like the easy part. But drafting, matter tracking and client portals all produce documents that end up here. <b>If signing is slow or error-prone, it undermines everything upstream.</b></p>
         </div>
       </div>
 
-      <div data-rv>
+      <div class="cs3-wide" data-rv>
         <div class="cs3-flow cs3-flow--new">
           <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-good" style="margin-right:8px">Target</span>Ecosystem experience</span><span class="cs3-flow__stats">High adoption &amp; retention</span></div>
           <ol>
@@ -200,7 +202,7 @@
         </div>
       </div>
 
-      <div class="cs3-cards cs3-cards--2" data-rv>
+      <div class="cs3-cards cs3-cards--2 cs3-wide" data-rv>
         <div class="cs3-card"><span class="eyebrow">Situation before this project</span><p>Engineering had shipped a working MVP: a 4-step wizard (<span class="mono">General Info → Add Signers → Add Fields → Distribute</span>) modelled on e-signature admin panels. It covered every setting, but not how lawyers work. <b>The document didn't appear until step three.</b></p></div>
         <div class="cs3-card"><span class="eyebrow">Why this became urgent</span><p>Leadership pitched OmnisProof as a <b>full DocuSign replacement</b>. That pitch fails if our setup is slower and clumsier than DocuSign's. When I took over, that gap was the <b>most-cited risk in product reviews</b>.</p></div>
       </div>
@@ -211,10 +213,10 @@
 <!-- ============ 03 SIGNALS ============ -->
 <section class="cs3-section" id="signals">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">03</span><span class="cs3-aside__name">Why we solved this</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">03</span><h2 class="cs3-sec-title">Why we solved this</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">We didn't have time for a full research cycle. We looked at the <span class="mark">strongest signals available</span>.</h2>
+        <p class="cs3-lead">We didn't have time for a full research cycle. We looked at the <span class="mark">strongest signals available</span>.</p>
         <div class="cs3-prose">
           <p>No research budget and no access to law firms before launch. So I combined all the signals that existed: <b>walkthroughs</b> with 2 lawyers and a paralegal, the <b>PM's testing notes</b>, a <b>teardown of 5 competitors</b>, and <b>G2 &amp; Capterra reviews</b>.</p>
           <p>The same pattern kept showing up across all sources:</p>
@@ -227,7 +229,7 @@
         </div>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <span class="eyebrow">Target users · one person, three job titles</span>
         <div class="cs3-cards cs3-cards--3">
           <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><h4>Lawyers</h4><p>Prepare agreements for signature and are accountable if anything goes out wrong.</p></div>
@@ -243,7 +245,7 @@
         <p>Legal teams need a way to prepare and send documents for signature that doesn't require them to become experts in field placement, or lose sight of the document itself while configuring it.</p>
       </blockquote>
 
-      <div data-rv>
+      <div class="cs3-wide" data-rv>
         <div class="cs3-flow cs3-flow--old">
           <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">Before · MVP wizard</span>Multiple screens, no document context, manual fields</span></div>
           <ol>
@@ -271,14 +273,14 @@
 <!-- ============ 04 RESEARCH ============ -->
 <section class="cs3-section" id="research">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">04</span><span class="cs3-aside__name">Research</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">04</span><h2 class="cs3-sec-title">Research</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">Configuring a document correctly was the hard part. Getting it into the system was easy.</h2>
+        <p class="cs3-lead">Configuring a document correctly was the hard part. Getting it into the system was easy.</p>
         <div class="cs3-prose"><p>I ran a structured teardown of DocuSign, Adobe Sign, Dropbox Sign, PandaDoc, and Documenso: their public documentation, review-site screenshots, and (where available) free-tier trials.</p></div>
       </div>
 
-      <div class="cs3-vs" data-rv>
+      <div class="cs3-vs cs3-wide" data-rv>
         <div class="cs3-vs__row cs3-vs__row--head"><div class="eyebrow">What competitors do well</div><div class="eyebrow">Where they fall short</div></div>
         <div class="cs3-vs__row">
           <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Document upload and recipient invitation</b> are fast and well-documented across all five platforms.</span></div>
@@ -300,7 +302,7 @@
         <p>That reframed the direction of the whole project: <span class="mark">let the system handle more of the setup, and let users review and correct only what needs their attention</span>, instead of making manual configuration slightly faster.</p>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Mapping the fragmented baseline against the streamlined workflow</h3>
         <div>
           <div class="cs3-flow cs3-flow--old">
@@ -342,10 +344,10 @@
 <!-- ============ 05 CONSTRAINTS ============ -->
 <section class="cs3-section" id="constraints">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">05</span><span class="cs3-aside__name">Constraints &amp; decisions</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">05</span><h2 class="cs3-sec-title">Constraints &amp; decisions</h2></header>
     <div class="cs3-body">
-      <h2 class="cs3-h2" data-rv>Not "redesign the interface": decide which complexity stays with the user, and which the system should absorb.</h2>
-      <div class="cs3-cards cs3-cards--2" data-rv>
+      <p class="cs3-lead" data-rv>Not "redesign the interface": decide which complexity stays with the user, and which the system should absorb.</p>
+      <div class="cs3-cards cs3-cards--2 cs3-wide" data-rv>
         <div class="cs3-card"><span class="cs3-aside__num">Constraint 01</span><h4>Field placement was required, but too heavy to leave manual</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>Every document needs signature, date, name, and initials fields placed correctly before it can go out. This step couldn't be removed, but making users place every field on every page by hand was the largest time cost we'd identified.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Turn field placement from a manual task into a system-assisted one: AI detects and proposes placement, the user reviews and corrects only where needed. <a href="#problem-ai" style="color:var(--color-accent)">Deep dive 01 →</a></dd></div></dl></div>
         <div class="cs3-card"><span class="cs3-aside__num">Constraint 02</span><h4>The 4-step structure mapped to something real, but hiding the document behind it didn't</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>"Who's involved → what goes where → is it ready to send" is how document prep works. The three-stage logic was fine. Presenting each stage as a separate full screen hid the document being configured.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Keep the underlying stages, rebuild the presentation as one page: the document stays visible at all times, with a persistent step tracker and a side panel that changes per stage. <a href="#problem-steps" style="color:var(--color-accent)">Deep dive 02 →</a></dd></div></dl></div>
         <div class="cs3-card"><span class="cs3-aside__num">Constraint 03</span><h4>No direct access to external users</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>Each decision below needed some form of validation, but law firms weren't reachable pre-launch. Relying only on internal opinion risked designing for people who already trust the product.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Validate with internal legal professionals as a proxy, cross-check against competitive review-site complaints as external signal, and label each claim with its actual confidence level instead of letting it read as more validated than it is.</dd></div></dl></div>
@@ -358,14 +360,14 @@
 <!-- ============ 06 DEEP DIVE 01 ============ -->
 <section class="cs3-section" id="problem-ai">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">06 · Deep dive 01</span><span class="cs3-aside__name">AI-assisted field placement</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">06 · Deep dive 01</span><h2 class="cs3-sec-title">AI-assisted field placement</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">How do you make legal professionals trust an AI that places their signature fields?</h2>
+        <p class="cs3-lead">How do you make legal professionals trust an AI that places their signature fields?</p>
         <div class="cs3-prose"><p>Placing every field by hand, for every recipient, took the <b>largest share of prep time</b> and caused <b>each placement mistake</b> we saw. Automating was easy. Trust was hard: <span class="mark">a wrong AI guess sends a contract to the wrong person.</span></p></div>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Testing three ways to introduce AI field detection</h3>
         <div class="cs3-cards cs3-cards--3">
           <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Iteration 1 · rejected</span><h4>Automatic, silent placement</h4><p>AI detects and places each field the moment a document is uploaded. No review step: the fields are there, ready to send.</p><p class="why"><b>Why it failed:</b> a lawyer on our team moved each AI-placed field, even the correct ones: <i>"I didn't see it place them, so I don't trust them."</i> The checking work just moved somewhere with no support.</p></div>
@@ -374,7 +376,7 @@
         </div>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">The shipped loop: the AI proposes, the user disposes</h3>
         <div>
           <div class="cs3-flow cs3-flow--old">
@@ -389,12 +391,12 @@
         </div>
       </div>
 
-      <figure class="cs3-media" data-rv="unfold">
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
         <div class="cs3-media__frame"><img loading="lazy" src="assets/images/omnisproof-ai-field-annotation.png" alt="OmnisProof signing setup screen with Detect with AI button, visual field identification, and AI feedback callouts"></div>
         <figcaption><b>AI-assisted field placement in action.</b> "Detect with AI" scans the document in context, identifies 38 form fields, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
-      </figure>
+      </div></figure>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Designing for failure and non-standard inputs</h3>
         <div>
           <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>Non-standard or custom field types</b> that fall outside the seven types the model recognizes (signature, date, name, initials, title, email, text) aren't guessed at: they're left for manual placement using the same field library, with no error state implying something went wrong.</p></div>
@@ -403,7 +405,7 @@
         </div>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Observed walkthrough validation</h3>
         <div class="cs3-cards cs3-cards--3 cs3-metrics">
           <div class="cs3-card"><span class="n">~72%</span><h5>Suggestions accepted without edits</h5><p>Across 6 internal prototype walkthroughs. The 28% that got adjusted is why each suggestion stays editable instead of final.</p></div>
@@ -420,14 +422,14 @@
 <!-- ============ 07 DEEP DIVE 02 ============ -->
 <section class="cs3-section" id="problem-steps">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">07 · Deep dive 02</span><span class="cs3-aside__name">Collapsing the setup wizard</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">07 · Deep dive 02</span><h2 class="cs3-sec-title">Collapsing the setup wizard</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">The signing setup was a 4-step modal wizard. I collapsed it into one page without losing control.</h2>
+        <p class="cs3-lead">The signing setup was a 4-step modal wizard. I collapsed it into one page without losing control.</p>
         <div class="cs3-prose"><p>The MVP stacked <b>four full-screen steps</b> as a modal over the document list, each with its own settings. The document wasn't visible until step three, so people <b>lost track of what they were setting up</b>.</p></div>
       </div>
 
-      <div class="cs3-block" data-rv="unfold">
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
         <div class="cs3-ba">
           <img src="assets/images/omnisproof-after-onepage.png?v=2" alt="Redesigned single-page signing setup with document as the central focus, recipient panel, and field library" loading="lazy">
           <img class="cs3-ba__before" src="assets/images/omnisproof-before-wizard.png?v=2" alt="Original four-step modal wizard for document setup, showing General Info form with the document barely visible behind it" loading="lazy">
@@ -440,9 +442,9 @@
           <p><b>Before · 4-step modal wizard</b>: General Info, Add Signers, Add Fields, Distribute Document. The document is a thumbnail on the left, not the focus of the screen.</p>
           <p><b>After · 1 guided page</b>: the document is the center of the screen the entire time. Recipients, fields, and progress live in persistent side panels.</p>
         </div>
-      </div>
+      </div></figure>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Same three stages, one page instead of four screens</h3>
         <div>
           <div class="cs3-flow cs3-flow--old">
@@ -457,7 +459,7 @@
         </div>
       </div>
 
-      <figure class="cs3-media" data-rv>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv>
         <div class="cs3-anno">
           <img loading="lazy" src="assets/images/omnisproof-after-onepage.png?v=2" alt="Redesigned single-page signing setup, annotated: the step tracker on the left, the document in the centre, and the Detect with AI button in the field panel">
           <svg viewBox="0 0 1000 760" aria-hidden="true">
@@ -478,9 +480,9 @@
           <li><b>Centre:</b> the document never leaves the middle of the screen.</li>
           <li><b>Right:</b> “Detect with AI” proposes fields; the user reviews.</li>
         </ol>
-      </figure>
+      </div></figure>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Exploring layouts for progressive disclosure</h3>
         <div class="cs3-cards cs3-cards--3">
           <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Iteration 1 · rejected</span><h4>Delete the steps</h4><p>Strip the wizard down to one dense screen: recipients, fields, document preview, and settings all visible at once. Fewer screens, assumed to mean faster.</p><p class="why"><b>Why it failed:</b> a lawyer called it <i>"a cockpit"</i>, and neither tester knew where to start. Removing screens doesn't remove complexity; it squeezes it onto one screen.</p></div>
@@ -489,7 +491,7 @@
         </div>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Replacing 4 fragmented screens with 1 persistent workspace</h3>
         <div class="cs3-prose"><p>The redesign removes the cognitive disconnect by keeping the document visible at all times, so users never configure blind.</p></div>
         <div class="cs3-table">
@@ -504,7 +506,7 @@
         </div>
       </div>
 
-      <div class="cs3-block" data-rv>
+      <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Handling changes and missing fields</h3>
         <div>
           <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>A recipient is added after fields are already placed.</b> Any field already assigned to a now-invalid configuration is flagged inline in the field panel instead of being reassigned, so the user makes the call on where it belongs.</p></div>
@@ -522,13 +524,13 @@
 <!-- ============ 08 OUTCOME ============ -->
 <section class="cs3-section" id="outcome">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">08</span><span class="cs3-aside__name">Outcome</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">08</span><h2 class="cs3-sec-title">Outcome</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">The complexity didn't disappear. It moved from the user to the system.</h2>
+        <p class="cs3-lead">The complexity didn't disappear. It moved from the user to the system.</p>
         <div class="cs3-prose"><p>The two heaviest jobs moved to the system: <b>AI proposes fields</b>, and the three stages live on <b>one page</b> where the document never leaves view. Users now review and correct instead of configuring blind.</p></div>
       </div>
-      <div class="cs3-table" data-rv>
+      <div class="cs3-table cs3-wide" data-rv>
         <table>
           <tr><th>Category</th><th>What we have</th></tr>
           <tr><td><span class="tag tag-good">Validated</span></td><td>6 internal prototype walkthroughs with lawyers and legal assistants inside our organization. Both redesigns tested against the same two participants before and after. <b>~72% of AI field suggestions accepted without edits</b>. The participant who distrusted silent AI placement left correct suggestions untouched after the redesign.</td></tr>
@@ -543,24 +545,24 @@
 <!-- ============ 09 REFLECTION ============ -->
 <section class="cs3-section" id="reflection">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">09</span><span class="cs3-aside__name">Final thoughts</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">09</span><h2 class="cs3-sec-title">Final thoughts</h2></header>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
-        <h2 class="cs3-h2">Designing for confidence <span class="mark">as well as completion</span>.</h2>
+        <p class="cs3-lead">Designing for confidence <span class="mark">as well as completion</span>.</p>
         <div class="cs3-prose">
           <p>Redesigning OmnisProof taught me to simplify a workflow by making each step clear, purposeful, and easy to recover from.</p>
           <p>Legal teams need to send documents quickly and need confidence that the right document reaches the right people, with the right fields, without extra back-and-forth.</p>
         </div>
       </div>
-      <div class="cs3-rows" data-rv>
+      <div class="cs3-rows cs3-wide" data-rv>
         <article class="cs3-row"><div class="cs3-row__head"><span class="cs3-row__num">01</span><h3 class="cs3-row__title">Put the document at the center</h3></div><div class="cs3-row__cols" style="grid-template-columns:1fr"><p style="margin:0">Users should keep sight of the thing they're working on. Keeping the document visible turned a configuration-heavy process into an understandable workspace.</p></div></article>
         <article class="cs3-row"><div class="cs3-row__head"><span class="cs3-row__num">02</span><h3 class="cs3-row__title">Let AI handle the repetitive work</h3></div><div class="cs3-row__cols" style="grid-template-columns:1fr"><p style="margin:0">AI is most useful when it removes tedious tasks while keeping users in control. Suggested fields reduce manual effort, but review and approval remain with the person preparing the document.</p></div></article>
         <article class="cs3-row"><div class="cs3-row__head"><span class="cs3-row__num">03</span><h3 class="cs3-row__title">Clear structure over false simplicity</h3></div><div class="cs3-row__cols" style="grid-template-columns:1fr"><p style="margin:0">The signing workflow involved documents, recipients, fields, permissions, and delivery settings. I organized that complexity so users could move through it.</p></div></article>
       </div>
-      <figure class="cs3-media" data-rv="unfold">
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
         <div class="cs3-media__frame"><img loading="lazy" src="assets/images/omnisproof-before-after-redesign.webp?v=q98" alt="Before vs After Redesign: comparing the 4-step disconnected setup wizard with the document-first workspace powered by AI suggested fields"></div>
         <figcaption><b>Before vs. after.</b> Collapsing the multi-step configuration wizard into an intuitive, document-centered signing workspace with AI field detection.</figcaption>
-      </figure>
+      </div></figure>
       <div class="cs3-prose" data-rv>
         <span class="eyebrow">What I'd explore next</span>
         <p>With more time and access to real usage data, I'd focus on:</p>
@@ -586,10 +588,10 @@
 <!-- ============ 10 FAQ ============ -->
 <section class="cs3-section" id="qa">
   <div class="cs3-wrap cs3-grid">
-    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">10</span><span class="cs3-aside__name">Questions I expect</span></div></aside>
+    <header class="cs3-aside" data-rv><span class="cs3-aside__num">10</span><h2 class="cs3-sec-title">Questions I expect</h2></header>
     <div class="cs3-body">
-      <h2 class="cs3-h2" data-rv>Anticipated questions on these two problems.</h2>
-      <div class="cs3-faq" data-rv>
+      <p class="cs3-lead" data-rv>Anticipated questions on these two problems.</p>
+      <div class="cs3-faq cs3-wide" data-rv>
         <details open><summary>Why only two problems instead of the whole product?<span class="plus" aria-hidden="true"></span></summary><div class="a">Going deep on two hard problems shows how I think better than a product tour. Both had a clear arc: a rejected first attempt, evidence of why, and a validated fix.</div></details>
         <details><summary>How confident are you in the 72% AI-acceptance number?<span class="plus" aria-hidden="true"></span></summary><div class="a">Moderately. It's from six internal walkthroughs with legal professionals in our own organization, not a controlled study or production telemetry. I treat it as directional evidence the detection is useful, not a validated product metric, and I say that up front.</div></details>
         <details><summary>Why didn't you just delete the wizard's steps to simplify it?<span class="plus" aria-hidden="true"></span></summary><div class="a">I tried it first: one dense screen with everything visible. A tester called it "a cockpit." The three stages were the right structure; hiding the document behind them was the mistake.</div></details>
@@ -598,6 +600,15 @@
     </div>
   </div>
 </section>
+
+<div class="cs3-dock" aria-label="Project summary">
+  <div class="cs3-dock__meta"><span class="eyebrow">Product</span><i aria-hidden="true"></i><span>OmnisProof</span></div>
+  <div class="cs3-dock__actions">
+    <a class="cs3-btn cs3-btn--primary" href="mailto:rahamanmuzeeb1108@gmail.com">Get in touch</a>
+    <a class="cs3-btn cs3-btn--ghost" href="resume.html">View resume</a>
+  </div>
+  <div class="cs3-dock__meta"><span class="eyebrow">Role</span><i aria-hidden="true"></i><span>Product Designer</span></div>
+</div>
 
 <!-- ============ NEXT PROJECT ============ -->
 <section class="cs3-section" style="padding-bottom:var(--space-block)">
@@ -672,6 +683,6 @@
 </main>
 
 <script src="assets/js/site.js?v=561"></script>
-<script src="assets/js/cs-v3.js?v=1"></script>
+<script src="assets/js/cs-v3.js?v=2"></script>
 </body>
 </html>
