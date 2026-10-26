@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var t = params.get("theme") || localStorage.getItem("mz-theme") || (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+  document.documentElement.setAttribute("data-theme", t);
+})();
+</script>
+<title>GoFully Redesign: A Screenshot Extension Built Around Privacy · Case Study · Muzeeb Urrahaman</title>
+<meta content="I redesigned GoFully, a Chrome extension for full-page screenshots: a new viewfinder-G brand, a token-based design system, 70+ extension screens and a website that leads with one promise, nothing leaves your device." name="description"/>
+<link href="https://muzeeb-urrahaman.vercel.app/gofully-case-study.html" rel="canonical"/>
+<meta content="GoFully Redesign: A Screenshot Extension Built Around Privacy · Case Study · Muzeeb Urrahaman" property="og:title"/>
+<meta content="https://muzeeb-urrahaman.vercel.app/gofully-case-study.html" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="Muzeeb Urrahaman" property="og:site_name"/>
+<meta content="Brand, design system, extension UI and website redesign for a Chrome extension that never uploads a screenshot." property="og:description"/>
+<meta content="https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/gofully/after-site-hero.webp" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="GoFully Redesign: A Screenshot Extension Built Around Privacy · Case Study · Muzeeb Urrahaman" name="twitter:title"/>
+<meta content="https://muzeeb-urrahaman.vercel.app/assets/images/case-studies/gofully/after-site-hero.webp" name="twitter:image"/>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="assets/images/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/images/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="assets/images/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<link href="assets/css/style.css?v=615" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/ds-v2.css?v=13" rel="stylesheet"/>
+<link href="assets/css/cs-v3.css?v=10" rel="stylesheet"/>
+<style>
+/* GoFully page: multi-image layouts inside the shared .cs3-band */
+.cs3 .gf-grid { display: grid; gap: var(--space-4); }
+.cs3 .gf-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cs3 .gf-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; }
+.cs3 .gf-grid figure { margin: 0; display: grid; gap: var(--space-2); align-content: start; }
+.cs3 .gf-grid figcaption { font-size: var(--text-xs); color: var(--color-text-muted); }
+.cs3 .gf-pair-tall .cs3-band__inner { max-width: 1100px; }
+.cs3 .gf-pair-tall .gf-grid { align-items: start; }
+.cs3 .gf-icons { display: flex; align-items: center; justify-content: center; gap: var(--space-10); flex-wrap: wrap; }
+.cs3 .gf-icons figure { margin: 0; display: grid; justify-items: center; gap: var(--space-3); }
+.cs3 .gf-icons img { width: 128px; height: 128px; }
+.cs3 .gf-icons .arrow { font-size: var(--text-2xl); color: var(--color-text-muted); }
+@media (max-width: 760px) {
+  .cs3 .gf-grid--2 { grid-template-columns: minmax(0, 1fr); }
+  .cs3 .gf-grid--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
+</head>
+<body class="cs3-page">
+<a class="cs3-announce" href="mailto:rahamanmuzeeb1108@gmail.com"><span class="tag">Open</span><span>Available for product design roles · remote &amp; relocation</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
+      <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
+      <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+    </a>
+    <nav class="site-header__nav">
+      <a class="site-header__link" href="index.html">Home</a>
+      <a class="site-header__link" href="about.html">About</a>
+      <a class="site-header__link active" href="best-work.html">Best work</a>
+      <a class="site-header__link" href="playground.html">Playground</a>
+      <a class="site-header__link" href="resume.html">Resume</a>
+      <button type="button" id="siteThemeBtn" aria-label="Toggle theme" class="site-header__theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="w-full">
+<div class="cs3" data-no-icon-motion>
+
+<!-- ============ HERO ============ -->
+<header class="cs3-hero">
+  <div class="cs3-wrap">
+    <div class="cs3-hero__top">
+      <a class="cs3-back" href="index.html#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>All work</a>
+      <span class="tag tag-outline">Case study</span>
+      <span class="tag tag-blue">Chrome extension · Redesign</span>
+      <span class="tag tag-badge">Brand + product + web</span>
+    </div>
+    <h1 class="cs3-hl">GoFully: redesigning a screenshot extension around one promise, nothing leaves your device.</h1>
+    <div class="cs3-hero__lead cs3-hero__lead--one" data-rv style="--d:3">
+      <p>GoFully already did a lot: full-page capture, text reading, markup, redaction and PDF export, all offline. The old extension and website said all of it at once. I redesigned the brand, the extension and the website so the tool is <span class="mark">calm to pick up and private by default</span>.</p>
+    </div>
+    <dl class="cs3-facts" data-rv style="--d:4">
+      <div><dt class="eyebrow">Role</dt><dd>Product Designer, End-to-End Redesign</dd></div>
+      <div><dt class="eyebrow">Product</dt><dd>Chrome Extension · 5 Browsers</dd></div>
+      <div><dt class="eyebrow">Scope</dt><dd>Brand, Design System, Extension UI, Website</dd></div>
+      <div><dt class="eyebrow">Status</dt><dd>Redesign Designed · New Site in Development</dd></div>
+    </dl>
+  </div>
+  <figure class="cs3-band cs3-cover" style="margin-top:var(--space-block)">
+    <div class="cs3-band__inner" data-rv="unfold" style="--d:5">
+      <div class="cs3-media__frame"><img loading="eager" src="assets/images/case-studies/gofully/after-site-hero.webp" width="1440" height="900" alt="Redesigned GoFully website hero: Screenshot the whole page. Share it ready to go, set in an editorial serif on a soft sky gradient, with one Add to Chrome button"></div>
+    </div>
+  </figure>
+</header>
+
+<!-- ============ RESULTS BAND ============ -->
+<div class="cs3-wrap">
+  <div class="cs3-results" data-rv>
+    <div><span class="eyebrow">Brand guide</span><span class="n">41 pages</span><p>From positioning and voice to the app icon at 16 px, written so design and code read from one source.</p></div>
+    <div><span class="eyebrow">Extension screens</span><span class="n">70+</span><p>Popup, on-page overlays, editor, settings and guides, each state designed in light and dark.</p></div>
+    <div><span class="eyebrow">Rule on every screen</span><span class="n">1 action</span><p>One primary action per screen, in navy. Everything else stays quiet.</p></div>
+  </div>
+</div>
+
+<!-- ============ 01 OVERVIEW ============ -->
+<section class="cs3-section" id="overview" style="margin-top:var(--space-section)">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">01</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Overview · What is GoFully</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">A capable tool that <span class="mark">looked like every other screenshot extension</span></h2>
+        <div class="cs3-prose">
+          <p><b>GoFully is a Chrome extension for full-page screenshots.</b> It scrolls a page, waits for lazy images, handles sticky headers and stitches one clean image. It reads text out of any capture in six languages, marks up and redacts, beautifies captures for posts and slides, and exports PNG, JPG, WebP or PDF.</p>
+          <p><b>Everything runs inside the browser.</b> There is no account and no server. Capture, editing, text reading and redaction all happen on the device, which is rare for this category of tool.</p>
+          <p><b>The redesign brief was to keep every feature and change how it feels.</b> The product had grown feature by feature, and the extension, the store listing and the website showed it. The goal was one calm, consistent product whose strongest idea, privacy, comes first.</p>
+        </div>
+      </div>
+      <dl class="cs3-facts cs3-facts--5 cs3-wide" data-rv>
+        <div><dt class="eyebrow">Category</dt><dd>Productivity · Chrome Extension</dd></div>
+        <div><dt class="eyebrow">Role</dt><dd>Product Designer</dd></div>
+        <div><dt class="eyebrow">Scope</dt><dd>Brand, Design System, Extension UI, Website</dd></div>
+        <div><dt class="eyebrow">Users</dt><dd>Developers, QA Testers, Writers, Researchers, Privacy Teams</dd></div>
+        <div><dt class="eyebrow">Works in</dt><dd>Chrome, Edge, Brave, Arc, Opera</dd></div>
+      </dl>
+      <div class="cs3-note cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><span class="eyebrow">The opening insight</span>On the old website, "100% on-device" was a small badge above the headline, and the headline itself was about features. The one thing that set GoFully apart from the dozens of screenshot extensions in the Chrome Web Store was the quietest thing on the page.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 THE OLD GOFULLY ============ -->
+<section class="cs3-section" id="problem">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">02</span><i aria-hidden="true"></i><span class="cs3-kicker__label">The problem · The old GoFully</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Every feature, all at once, <span class="mark">on every surface</span></h2>
+        <div class="cs3-prose"><p>The extension worked well. What it said about itself, in the store, on the website and in its own UI, made it hard to see why.</p></div>
+      </div>
+      <div class="cs3-cards cs3-cards--3 cs3-wide" data-rv>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span><h4>A headline made of features</h4><ul><li>The old hero read <span class="mono">Full Page Screenshot Tool. One Extension. Every Job.</span></li><li>The paragraph under it named WebAssembly OCR, 4K export and PDF in one sentence.</li><li>The privacy promise sat in a small badge above it all.</li></ul></div>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span><h4>A generic identity</h4><ul><li>The icon was a glossy camera with flash rays.</li><li>In the Chrome Web Store, it sat next to other screenshot extensions using camera icons too.</li><li>Nothing in the mark said what made GoFully different.</li></ul></div>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><h4>Busy visuals that hid the UI</h4><ul><li>Store screenshots and site mockups layered gradients, tilted devices, arrows and handwritten callouts.</li><li>The product UI itself was small inside each picture.</li><li>Each surface used its own style, so the extension, store and site did not read as one product.</li></ul></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-site-hero.webp" width="1440" height="900" alt="Old GoFully website hero: Full Page Screenshot Tool. One Extension. Every Job., with two badge pills, a long feature paragraph and a tablet mockup covered in handwritten callouts"></div><figcaption><span class="tag tag-bad">Before</span> <b>The old website hero.</b> Two badges, a feature-list headline and a 40-word paragraph before the first button. "100% on-device" is the small badge at the top left.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-capture.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Capture Anything using Gofully, with capture mode chips over a Google homepage"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-entire.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Capture Entire pages in one click, on a navy background with tilted mockups"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-editor.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Edit every detail, your way, with an annotated editor mockup"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-redact.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Hide sensitive information instantly, with a tilted invoice"></div>
+        </div>
+        <figcaption><span class="tag tag-bad">Before</span> <b>The old Chrome Web Store screenshots.</b> Four images, four different layouts. Gradients, tilted mockups and callouts compete with the UI they are meant to show.</figcaption>
+      </div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-ui-capture.webp" width="900" height="600" alt="Old GoFully popup with capture modes, shown over a website mockup"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-ui-annotate.webp" width="900" height="600" alt="Old GoFully annotation toolbar over a website, with handwritten callouts"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-ui-history.webp" width="900" height="600" alt="Old GoFully history screen with a grid of past captures"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-ui-ocr.webp" width="900" height="600" alt="Old GoFully text capture result panel"></div>
+        </div>
+        <figcaption><span class="tag tag-bad">Before</span> <b>The old extension UI,</b> as the old website presented it: capture popup, annotation, history and text capture.</figcaption>
+      </div></figure>
+      <div class="cs3-note cs3-note--warn cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="eyebrow">Where it broke down</span>GoFully was private, precise and free. The way it looked said "another screenshot tool". The redesign had to make the product's real strengths visible on every surface, starting with the brand.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 DIRECTION ============ -->
+<section class="cs3-section" id="direction">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">03</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Direction · Positioning and values</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">One promise for every screen: <span class="mark">capture the whole page, keep every pixel private</span></h2>
+        <div class="cs3-prose">
+          <p>Before drawing anything, I wrote down who GoFully is for and the problem it solves. The audience is everyday sharers: developers, QA testers, writers, researchers and privacy teams who send screenshots every day. The problem fits in three words from the brand guide: <b>three tools, one leak</b>. Long pages get cut off, private data slips through, and a capture needs three apps before it can be shared.</p>
+          <p>I then collected references for each surface (landing pages, extension popups and in-page UI, editors, components and store screenshots) and kept them as an internal moodboard, filtered for fit with a calm sky-and-navy direction.</p>
+        </div>
+      </div>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">Four values that settle every design and writing choice</h3>
+        <div class="cs3-prose"><p>When two options look equal, the guide says to pick the one that serves these better.</p></div>
+        <div class="cs3-cards cs3-cards--2">
+          <div class="cs3-card"><h4>Private</h4><p>Everything runs on the device. No account, no upload, no tracking.</p></div>
+          <div class="cs3-card"><h4>Precise</h4><p>Pixel-exact captures, checked seams and crops that keep the marks.</p></div>
+          <div class="cs3-card"><h4>Fast</h4><p>One click or one shortcut from page to finished file.</p></div>
+          <div class="cs3-card"><h4>Friendly</h4><p>Plain words, soft shapes and a clear next step on every screen.</p></div>
+        </div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/brand-positioning.webp" width="1600" height="900" alt="Positioning slide: the promise, who it is for, the problem and the answer"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/brand-moodboard.webp" width="1600" height="900" alt="Brand moodboard slide: calm blues, soft rounded shapes and real product screens"></div>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>Positioning and moodboard,</b> from the 41-page brand guide: calm blues, soft rounded shapes and real product screens, so GoFully reads as a precise tool that is easy to pick up, never a toy.</figcaption>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 BRAND ============ -->
+<section class="cs3-section" id="brand">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">04</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Brand · Mark, voice, type and colour</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">From a glossy camera to <span class="mark">a viewfinder drawn as a G</span></h2>
+        <div class="cs3-prose"><p>The new symbol is a camera viewfinder drawn as the letter G. It still says "screenshot", and it can only be GoFully. Each of its four parts has a job, so the guide asks to keep every part whenever the mark is used.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-icons">
+          <figure><img src="assets/images/case-studies/gofully/before-icon.webp" width="128" height="128" alt="Old GoFully icon: a glossy blue camera with flash rays" loading="lazy"><span class="tag tag-bad">Before</span></figure>
+          <span class="arrow" aria-hidden="true">→</span>
+          <figure><img src="assets/images/case-studies/gofully/r0-mark-a.webp" width="128" height="128" alt="New GoFully icon: a white viewfinder G on sky blue" loading="lazy"><span class="tag tag-good">After</span></figure>
+          <figure><img src="assets/images/case-studies/gofully/r0-mark-b.webp" width="128" height="128" alt="New GoFully icon on deep navy" loading="lazy"><span class="tag tag-outline">Navy</span></figure>
+        </div>
+        <figcaption><b>The extension icon, at its real store size of 128 px.</b> The old camera blends in with other screenshot tools. The viewfinder G keeps the meaning and adds a name.</figcaption>
+      </div></figure>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">Four parts, each with a job</h3>
+        <div>
+          <div class="cs3-edge"><b>Viewfinder frame</b><span>The rounded square of a camera screen. It holds the mark together at every size.</span></div>
+          <div class="cs3-edge"><b>Lens ring</b><span>Focus. The ring pulls the eye to the centre, where the capture happens.</span></div>
+          <div class="cs3-edge"><b>Shutter dot</b><span>The moment of capture. Kept round, solid and off-centre.</span></div>
+          <div class="cs3-edge"><b>Tail</b><span>Closes the shape into a G. Never trimmed or straightened.</span></div>
+        </div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/logo-anatomy.webp" width="1600" height="900" alt="Logo anatomy slide numbering the viewfinder frame, lens ring, shutter dot and tail"></div><figcaption><span class="tag tag-good">After</span> <b>Logo anatomy,</b> from the brand guide.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/logo-variants.webp" width="1600" height="900" alt="Logo variants: primary lockup, reversed lockup, full-colour symbol and one-colour symbols"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/logo-min-size.webp" width="1600" height="900" alt="Minimum size slide: 16 px toolbar, 32 px favicon, 48 px extensions page, 128 px Web Store"></div>
+        </div>
+        <figcaption><b>Variants and minimum sizes.</b> Chrome shows the symbol at 16 px in the toolbar, so the mark had to read at that size. Below 32 px the wordmark drops and the symbol stands alone.</figcaption>
+      </div></figure>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">A voice that says what happened, and what to do next</h3>
+        <div class="cs3-prose"><p>The voice is a calm expert: plain words, real numbers, no hype and no exclamation marks.</p></div>
+        <div class="cs3-vs">
+          <div class="cs3-vs__row cs3-vs__row--head"><div class="good"><span class="eyebrow">Do</span></div><div class="gap"><span class="eyebrow">Don't</span></div></div>
+          <div class="cs3-vs__row"><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>"Screenshot saved. 4,200 px captured."</span></div><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>"Your amazing screenshot has been successfully saved!"</span></div></div>
+          <div class="cs3-vs__foot">Toasts state the result in a few words, and errors say what to do next: <span class="mono">Copy failed. Try Save PNG.</span></div>
+        </div>
+      </div>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">Colour with a tested ground for every text pair</h3>
+        <div class="cs3-prose"><p>Sky Blue <span class="mono">#6AB0FF</span> and Deep Navy <span class="mono">#014073</span> lead the palette. Archivo carries headings and Inter carries everything people read and click. Every text colour was checked against its background, which set one hard rule: Sky is a fill and an accent, never text on white. Dark mode keeps the navy family instead of plain black, so GoFully still feels like GoFully at night.</p></div>
+        <div class="cs3-table">
+          <table>
+            <thead><tr><th>Role</th><th>Pair</th><th>Contrast</th></tr></thead>
+            <tbody>
+              <tr><td>Body text</td><td>Ink on White · <span class="mono">#152333 / #FFFFFF</span></td><td class="a">15.9:1 Pass</td></tr>
+              <tr><td>Headings</td><td>Navy on White · <span class="mono">#014073 / #FFFFFF</span></td><td class="a">10.6:1 Pass</td></tr>
+              <tr><td>Primary button</td><td>White on Navy · <span class="mono">#FFFFFF / #014073</span></td><td class="a">10.6:1 Pass</td></tr>
+              <tr><td>Muted text</td><td>Slate on White · <span class="mono">#4B5C70 / #FFFFFF</span></td><td class="a">6.9:1 Pass</td></tr>
+              <tr><td>Accent on dark</td><td>Sky on Ink · <span class="mono">#6AB0FF / #152333</span></td><td class="a">7.0:1 Pass</td></tr>
+              <tr><td>Text on Sky fills</td><td>Navy on Sky · <span class="mono">#014073 / #6AB0FF</span></td><td class="a">4.7:1 Pass</td></tr>
+              <tr><td>Never for text</td><td>Sky on White · <span class="mono">#6AB0FF / #FFFFFF</span></td><td class="b">2.3:1 Fail</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/type-product.webp" width="1600" height="900" alt="Type in product: display 40/48, heading 28/36 and 20/28, body 14/22, label 13/18, caption 12/16"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/color-status-dark.webp" width="1600" height="900" alt="Status colours in light and dark, and the navy-based dark mode palette"></div>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>Type scale in product, and status colours with the navy dark mode.</b></figcaption>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 DESIGN SYSTEM ============ -->
+<section class="cs3-section" id="system">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">05</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Design system · Foundations and components</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Soft corners, a 4 px grid and <span class="mark">two quiet shadows</span></h2>
+        <div class="cs3-prose"><p>The values live as variables in the Figma file, so design and code read from the same source. Navy does the work, and Sky shows focus and selection.</p></div>
+      </div>
+      <div class="cs3-cards cs3-cards--2 cs3-wide" data-rv>
+        <div class="cs3-card"><h4>Radius by role</h4><p>6 px inputs, 10 px buttons, 16 px cards and 24 px dialogs. Toggles and tags use a full pill.</p></div>
+        <div class="cs3-card"><h4>Two shadows, tinted navy</h4><p>Raised for cards and the result bar, Overlay for menus, dialogs and toasts. Never pure black.</p></div>
+        <div class="cs3-card"><h4>One icon weight</h4><p>A 24 px grid, 1.75 px stroke, round caps and joins. No filled icons except state dots.</p></div>
+        <div class="cs3-card"><h4>Shapes from the symbol</h4><p>Rings, viewfinder corners and a label chip, used one at a time, never all three together.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ui-foundations.webp" width="1600" height="900" alt="UI foundations: radius, 4 px spacing grid, elevation and icon rules"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ui-components.webp" width="1600" height="900" alt="Components: primary, secondary and ghost buttons in four states, inputs, toggles and toasts"></div>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>UI foundations and core components,</b> each control shown in default, hover, focus and disabled.</figcaption>
+      </div></figure>
+      <figure class="cs3-band gf-pair-tall"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ds-foundations.webp" width="1600" height="2598" alt="Design System v2 foundations page: colour, type scale, spacing and elevation"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ds-components.webp" width="1600" height="1596" alt="Design System v2 components page: buttons, chips, inputs, toasts and menus"></div>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>Design System v2 in Figma:</b> foundations and the component library.</figcaption>
+      </div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ds-icons.webp" width="1600" height="773" alt="Icon set on a 24 px grid with a single stroke weight"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ds-illustrations.webp" width="1600" height="600" alt="Line illustrations for empty, blocked and error states"></div>
+        </div>
+        <figcaption><b>Icons and empty-state illustrations,</b> drawn in the same line weight.</figcaption>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 POPUP ============ -->
+<section class="cs3-section" id="popup">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">06</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Extension · The popup</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">One primary action per screen, <span class="mark">and a clear way out of every error</span></h2>
+        <div class="cs3-prose">
+          <p>Every capture starts in the popup. It lists each way to capture with its shortcut: full page, visible area, a selected area, a panel that scrolls, one element, draw on page and text capture.</p>
+          <p>The redesign then followed a capture through every state it can reach, including the ones that go wrong: a page Chrome won't allow, a capture that stopped halfway, and a history search with no results. Each one explains what happened and offers the next step.</p>
+        </div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--5">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-default.webp" width="760" height="1151" alt="Popup default: capture modes with shortcuts"></div><figcaption>Default</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-capturing.webp" width="760" height="939" alt="Popup capturing the full page with a progress bar"></div><figcaption>Capturing</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-complete.webp" width="760" height="1109" alt="Popup capture complete with copy, save, PDF and edit actions"></div><figcaption>Saved</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-blocked.webp" width="760" height="932" alt="Popup: this page can't be captured, with an explanation"></div><figcaption>Page blocked</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-failed.webp" width="760" height="897" alt="Popup: the capture stopped, with Try again and Visible area only"></div><figcaption>Failed, with a fix</figcaption></figure>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>From click to saved, and when it goes wrong.</b></figcaption>
+      </div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--5">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-history.webp" width="760" height="1408" alt="Popup history listing past captures with thumbnails"></div><figcaption>History</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-no-results.webp" width="760" height="986" alt="Popup history search with no matching captures"></div><figcaption>No results</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-history-empty.webp" width="760" height="876" alt="Popup history empty state with a Capture full page button"></div><figcaption>Empty</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-dark.webp" width="760" height="1151" alt="Popup default in dark mode"></div><figcaption>Default, dark</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/popup-complete-dark.webp" width="760" height="1109" alt="Popup capture complete in dark mode"></div><figcaption>Saved, dark</figcaption></figure>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>History and dark mode.</b> Past captures are searchable and stay on the device.</figcaption>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 ON THE PAGE ============ -->
+<section class="cs3-section" id="overlays">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">07</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Extension · On-page overlays</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Overlays that sit on any website <span class="mark">without fighting it</span></h2>
+        <div class="cs3-prose"><p>Most capture modes happen on the page itself. People drag a region, hover to pick one element, or pick a panel that scrolls inside its own box. After a capture, a result card offers copy, save, edit and pin. Text capture hands back text to paste, draw on page marks up a live site before it is captured, and a pinned capture floats over any page as a reference.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-region.webp" width="1600" height="1000" alt="Overlay: dragging a region over a payment page"></div><figcaption>Drag a region</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-element.webp" width="1600" height="1000" alt="Overlay: hovering highlights one element to capture"></div><figcaption>Pick one element</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-result-card.webp" width="1600" height="1000" alt="Overlay: result card after a capture with copy, save, edit and pin"></div><figcaption>Result card</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-text-result.webp" width="1600" height="1000" alt="Overlay: text captured from the page, ready to copy"></div><figcaption>Text capture</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-draw.webp" width="1600" height="1000" alt="Overlay: drawing on the live page with a toolbar of pens and colours"></div><figcaption>Draw on page</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-pin.webp" width="1600" height="1000" alt="Overlay: a pinned capture floating over the page with hover controls"></div><figcaption>Pin to screen</figcaption></figure>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>Capture, read, draw and pin,</b> all on a realistic test page.</figcaption>
+      </div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ov-scroll-capture.webp" width="2400" height="1120" alt="Six-step storyboard of a scroll capture moving down a long article"></div><figcaption><b>Scroll capture, step by step.</b> The page scrolls, images load and the capture builds into one tall image.</figcaption></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 EDITOR ============ -->
+<section class="cs3-section" id="editor">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">08</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Extension · The editor</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Everything after the capture, <span class="mark">in one quiet window</span></h2>
+        <div class="cs3-prose"><p>The editor holds crop, arrows and shapes, text, blur, auto-redact, Beautify and export. Auto-redact scans a capture for details like emails and card numbers and covers them before anything is shared. Beautify adds a background, padding, a browser frame or a 3D tilt for posts and slides. Light and dark share one layout; drag the slider to compare them.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-ui-annotate.webp" width="900" height="600" alt="Old annotation view with a dense toolbar and handwritten callouts"></div><figcaption><span class="tag tag-bad">Before</span> Tools spread along a crowded bar</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ed-default.webp" width="1600" height="1000" alt="New editor with a slim tool rail, the canvas centred and one properties panel"></div><figcaption><span class="tag tag-good">After</span> One tool rail, one canvas, one properties panel</figcaption></figure>
+        </div>
+      </div></figure>
+      <div class="cs3-ba cs3-wide" style="aspect-ratio:1600/1000" data-rv>
+        <img src="assets/images/case-studies/gofully/ed-dark.webp" width="1600" height="1000" alt="The editor in dark mode" loading="lazy">
+        <img class="cs3-ba__before" src="assets/images/case-studies/gofully/ed-default.webp" width="1600" height="1000" alt="The editor in light mode" loading="lazy">
+        <span class="tag tag-ink cs3-ba__tag-before">Light</span>
+        <span class="tag tag-ink cs3-ba__tag-after">Dark</span>
+        <span class="cs3-ba__line" aria-hidden="true"></span>
+        <button class="cs3-ba__handle" type="button" role="slider" aria-label="Compare light and dark editor" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18-6-6 6-6M15 6l6 6-6 6"/></svg></button>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ed-redact.webp" width="1600" height="1000" alt="Auto-redact results listing found details to cover"></div><figcaption>Auto-redact results</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ed-blur.webp" width="1600" height="1000" alt="Editor blur tool over private details"></div><figcaption>Blur</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ed-beautify.webp" width="1600" height="1000" alt="Beautify: the capture on a blue gradient background with padding and shadow"></div><figcaption>Beautify</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/ed-export.webp" width="1600" height="1000" alt="Export settings dialog"></div><figcaption>Export settings</figcaption></figure>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>Hide, polish and export</b> without leaving the editor.</figcaption>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 SETTINGS & GUIDES ============ -->
+<section class="cs3-section" id="settings">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">09</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Extension · Settings, guides and help</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">The quiet screens got <span class="mark">the same care</span></h2>
+        <div class="cs3-prose"><p>Settings, step-by-step guides, a welcome page that teaches the first capture, and help articles. Guides collect a series of captures with a line under each and export one PDF or Markdown file, which turns a set of screenshots into onboarding docs or a bug report.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/welcome.webp" width="1600" height="1296" alt="Welcome page shown after install, teaching the first capture"></div><figcaption>Welcome, after install</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/guide-filled.webp" width="1600" height="1000" alt="Step-by-step guide with captures and captions"></div><figcaption>Step-by-step guide</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/set-capture.webp" width="1600" height="1000" alt="Settings: capture options"></div><figcaption>Settings, capture</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/help-article.webp" width="1600" height="1000" alt="Help article: capture one element"></div><figcaption>Help article</figcaption></figure>
+        </div>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 WEBSITE ============ -->
+<section class="cs3-section" id="website">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">10</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Website · Old and new</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">From a list of features to <span class="mark">one sentence anyone can repeat</span></h2>
+        <div class="cs3-prose">
+          <p><b>Old:</b> <span class="mono">Full Page Screenshot Tool. One Extension. Every Job.</span> <b>New:</b> <span class="mono">Screenshot the whole page. Share it ready to go.</span> The privacy promise moved from a badge into the first paragraph: all on your computer, with no account.</p>
+          <p>I tried three hero layouts against a realistic long article, then storyboarded every feature demo frame by frame, so the site shows the real extension working on a real page instead of tilted mockups.</p>
+        </div>
+      </div>
+      <div class="cs3-ba cs3-wide" style="aspect-ratio:1440/900" data-rv>
+        <img src="assets/images/case-studies/gofully/after-site-hero.webp" width="1440" height="900" alt="New website hero" loading="lazy">
+        <img class="cs3-ba__before" src="assets/images/case-studies/gofully/before-site-hero.webp" width="1440" height="900" alt="Old website hero" loading="lazy">
+        <span class="tag tag-bad cs3-ba__tag-before">Before</span>
+        <span class="tag tag-good cs3-ba__tag-after">After</span>
+        <span class="cs3-ba__line" aria-hidden="true"></span>
+        <button class="cs3-ba__handle" type="button" role="slider" aria-label="Compare old and new website hero" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18-6-6 6-6M15 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="cs3-ba-caps cs3-wide" data-rv><span><span class="tag tag-bad">Before</span> The live site at gofully-extension.vercel.app.</span><span><span class="tag tag-good">After</span> The redesigned site, captured from its development build.</span></div>
+      <figure class="cs3-band gf-pair-tall"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-site-full.webp" width="1440" height="9211" alt="The full old landing page: repeated tablet mockups, feature blocks, a comparison table and testimonials"></div><figcaption><span class="tag tag-bad">Before</span> The whole old page</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/landing-full.webp" width="1440" height="10122" alt="The full redesigned landing page: features with live demos, privacy, price comparison, FAQ and install steps"></div><figcaption><span class="tag tag-good">After</span> The whole new page</figcaption></figure>
+        </div>
+        <figcaption><b>Both landing pages, top to bottom.</b> Fitting for a full-page screenshot tool. Click either one to open it full size.</figcaption>
+      </div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/landing-hero-options.webp" width="2400" height="676" alt="Three hero layout options for the new landing page"></div><figcaption><b>Three hero directions,</b> each tested against the same long article.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/landing-storyboards.webp" width="2000" height="2468" alt="Storyboard frames for each feature demo on the landing page"></div><figcaption><b>Feature demo storyboards.</b> Each step holds briefly, then animates to the next, and demos pause on hover or off-screen.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/asset-browser.webp" width="1600" height="900" alt="The new GoFully symbol in the browser tab and toolbar"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/asset-app-icon.webp" width="1600" height="900" alt="The new GoFully app icon"></div>
+        </div>
+        <figcaption><span class="tag tag-good">After</span> <b>The new mark where people meet it:</b> the browser toolbar and the app icon.</figcaption>
+      </div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 RESULTS ============ -->
+<section class="cs3-section" id="results">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">11</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Where it stands · And what's next</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">One product, one look, <span class="mark">one promise on every surface</span></h2>
+        <div class="cs3-prose">
+          <p><b>Designed:</b> the new brand and its 41-page guide, Design System v2, more than 70 extension screens and states in light and dark, and the new website.</p>
+          <p><b>Built:</b> the new website runs in development and is not live yet; the live site and store listing still show the old design. The extension's current release is v1.1.3.</p>
+        </div>
+      </div>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">Next: v1.2 pushes further on privacy and precision</h3>
+        <div class="cs3-cards cs3-cards--2">
+          <div class="cs3-card"><h4>Redact page</h4><p>Covers emails, card numbers, phone numbers, ID numbers and API keys on the live page, before the capture.</p></div>
+          <div class="cs3-card"><h4>Measure</h4><p>Hover any element for its size, padding, margin and text style, measure gaps, and copy any colour as hex.</p></div>
+          <div class="cs3-card"><h4>Delayed capture</h4><p>Wait 3, 5 or 10 seconds to catch an open menu or a tooltip.</p></div>
+          <div class="cs3-card"><h4>QR codes and barcodes</h4><p>Read on the device, with a safe Open button for web links.</p></div>
+        </div>
+      </div>
+      <div class="cs3-closing cs3-wide" data-rv>
+        <p class="cs3-closing__big">The features didn't change. <span>What changed is that every surface, from a 16 px toolbar icon to the landing page, now says the same thing: capture the whole page, keep every pixel private.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs3-dock" aria-label="Project summary">
+  <div class="cs3-dock__meta"><span class="eyebrow">Product</span><i aria-hidden="true"></i><span>GoFully Chrome Extension</span></div>
+  <div class="cs3-dock__meta"><span class="eyebrow">Role</span><i aria-hidden="true"></i><span>Product Designer, End-to-End Redesign</span></div>
+</div>
+
+<section class="cs3-section cs3-more" aria-label="More case studies">
+  <div class="cs3-wrap">
+    <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
+    <div class="cs3-more__grid" data-rv>
+      <a class="cs3-more__card" href="matter-redesign-case-study.html">
+        <span class="cs3-more__media"><img src="assets/images/case-studies/matter-redesign/cover.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__meta"><span class="cs3-more__name">CasePro</span><span class="tag tag-plain">Workflow redesign</span><span class="cs3-more__org">Omnis AI</span></span>
+        <span class="cs3-more__foot"><span class="cs3-more__line">I split a merged intake-and-matter form into two linked systems: an AI-assisted path and a manual path into each new matter.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+      <a class="cs3-more__card" href="omnisproof-case-study.html">
+        <span class="cs3-more__media"><img src="assets/images/omnisproof-cover.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__meta"><span class="cs3-more__name">OmnisProof</span><span class="tag tag-plain">Legal tech</span><span class="cs3-more__org">Omnis AI</span></span>
+        <span class="cs3-more__foot"><span class="cs3-more__line">I replaced OmnisProof's disjointed modal wizard and manual field placement with a persistent canvas and reviewable AI detection.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+      <a class="cs3-more__card" href="casenotes-case-study.html">
+        <span class="cs3-more__media"><img src="assets/images/Casenotes_cover page_1.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__meta"><span class="cs3-more__name">CaseNotes</span><span class="tag tag-plain">AI product</span><span class="cs3-more__org">Omnis AI</span></span>
+        <span class="cs3-more__foot"><span class="cs3-more__line">I designed an AI transcription and synthesis workspace that anchors client conversations to litigation discovery files.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</div>
+<footer class="mz-footer">
+<div class="mz-footer__row">
+<div class="mz-footer__id">
+<a aria-label="Muzeeb Urrahaman" class="mz-footer__logo" href="index.html">
+<img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp"/>
+<img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp"/>
+</a>
+</div>
+<div class="mz-footer__socials">
+<a aria-label="GitHub Profile" href="https://github.com/MUZEEBURRAHAMAN" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg>
+</a>
+<a aria-label="Linktree" href="https://linktr.ee/muzeeb1998" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 256 256"><path d="M128,115.31,77.66,165.66a8,8,0,0,1-11.32-11.32L108.69,112H48a8,8,0,0,1,0-16h60.69L66.34,53.66A8,8,0,0,1,77.66,42.34L120,84.69V24a8,8,0,0,1,16,0V84.69l42.34-42.35a8,8,0,0,1,11.32,11.32L147.31,96H208a8,8,0,0,1,0,16H147.31l42.35,42.34a8,8,0,0,1-11.32,11.32L128,115.31Z" opacity="0.2"></path><path d="M136,160v72a8,8,0,0,1-16,0V160a8,8,0,0,1,16,0Zm72-64H147.31l42.35-42.34a8,8,0,0,0-11.32-11.32L136,84.69V24a8,8,0,0,0-16,0V84.69L77.66,42.34A8,8,0,0,0,66.34,53.66L108.69,96H48a8,8,0,0,0,0,16h60.69L66.34,154.34a8,8,0,0,0,11.32,11.32L128,115.31l50.34,50.35a8,8,0,0,0,11.32-11.32L147.31,112H208a8,8,0,0,0,0-16Z"></path></svg>
+</a>
+<a aria-label="Medium" href="https://medium.com/@Muzeebdesign" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 256 256"><path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm112,0c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm56,8V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z" opacity="0.2"></path><path d="M72,64a64,64,0,1,0,64,64A64.07,64.07,0,0,0,72,64Zm0,112a48,48,0,1,1,48-48A48.05,48.05,0,0,1,72,176ZM184,64c-5.68,0-16.4,2.76-24.32,21.25C154.73,96.8,152,112,152,128s2.73,31.2,7.68,42.75C167.6,189.24,178.32,192,184,192s16.4-2.76,24.32-21.25C213.27,159.2,216,144,216,128s-2.73-31.2-7.68-42.75C200.4,66.76,189.68,64,184,64Zm0,112c-5.64,0-16-18.22-16-48s10.36-48,16-48,16,18.22,16,48S189.64,176,184,176ZM248,72V184a8,8,0,0,1-16,0V72a8,8,0,0,1,16,0Z"></path></svg>
+</a>
+<a aria-label="LinkedIn" href="https://www.linkedin.com/in/muzeeburrahaman" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 256 256"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24ZM96,176H80V112H96Zm88,0H168V140a12,12,0,0,0-24,0v36H128V112h16v10.45A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z" opacity="0.2"></path><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a12,12,0,0,0-24,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A27.79,27.79,0,0,1,184,140ZM88,80a12,12,0,1,1,12-12A12,12,0,0,1,88,80Z"></path></svg>
+</a>
+<a aria-label="Behance" href="https://www.behance.net/muzeeburrahaman0" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 256 256"><path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158Z" opacity="0.2"></path><path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"></path></svg>
+</a>
+<a aria-label="Dribbble" href="https://dribbble.com/Muzeeburrahaman" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Z" opacity="0.2"></path><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm87.65,96.18Q211.83,120,208,120a168.58,168.58,0,0,0-43.94,5.84A166.52,166.52,0,0,0,150.61,96a168.32,168.32,0,0,0,38.2-31.55A87.78,87.78,0,0,1,215.65,120.18ZM176.28,54.46A151.75,151.75,0,0,1,142,82.52a169.22,169.22,0,0,0-38.63-39,88,88,0,0,1,73,10.94ZM85.65,50.88a153.13,153.13,0,0,1,42,39.18A151.82,151.82,0,0,1,64,104a154.19,154.19,0,0,1-20.28-1.35A88.39,88.39,0,0,1,85.65,50.88ZM40,128a87.73,87.73,0,0,1,.53-9.64A168.85,168.85,0,0,0,64,120a167.84,167.84,0,0,0,72.52-16.4,150.82,150.82,0,0,1,12.31,27.13,167.11,167.11,0,0,0-24.59,11.6,169.22,169.22,0,0,0-55.07,51.06A87.8,87.8,0,0,1,40,128Zm42,75a152.91,152.91,0,0,1,50.24-46.79,148.81,148.81,0,0,1,20.95-10,152.48,152.48,0,0,1,3.73,33.47,152.93,152.93,0,0,1-3.49,32.56A87.92,87.92,0,0,1,82,203Zm89.06,1.73a170,170,0,0,0,1.86-25,168.69,168.69,0,0,0-4.45-38.47A152.31,152.31,0,0,1,208,136q3.8,0,7.61.19A88.13,88.13,0,0,1,171.06,204.72Z"></path></svg>
+</a>
+<a aria-label="Instagram" href="https://www.instagram.com/muzeebuiux" rel="noopener noreferrer" target="_blank">
+<svg class="mz-footer__social" fill="currentColor" viewbox="0 0 256 256"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z" opacity="0.2"></path><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-88V184a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V72A40,40,0,0,1,80,32h96A40,40,0,0,1,216,72Zm-16,0a24,24,0,0,0-24-24H80A24,24,0,0,0,56,72V184a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path></svg>
+</a>
+</div>
+</div>
+<div class="mz-footer__band">
+<div class="mz-footer__loc"><span class="mz-footer__flag">🇮🇳</span> Based in Uttar Pradesh, India · Open to remote &amp; relocation</div>
+<div class="mz-footer__copy">© 2026 Muzeeb Urrahaman · All rights reserved</div>
+</div>
+</footer>
+</main>
+<script src="assets/js/site.js?v=561"></script>
+<script src="assets/js/cs-v3.js?v=5"></script>
+</body>
+</html>
