@@ -702,7 +702,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .lightbox__nav.prev { left:24px; top:50%; transform:translateY(-50%); }
 .lightbox__nav.next { right:24px; top:50%; transform:translateY(-50%); }
 </style>
-<link href="assets/css/cs-v3.css?v=7" rel="stylesheet"/>
+<link href="assets/css/cs-v3.css?v=8" rel="stylesheet"/>
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
 </head>
 <body class="cs3-page">
@@ -2472,17 +2472,30 @@ graph LR
   <div class="cs3-dock__meta"><span class="eyebrow">Role</span><i aria-hidden="true"></i><span>Product Designer, End-to-End</span></div>
 </div>
 
-<section class="cs3-section" style="padding-bottom:var(--space-block)">
+<section class="cs3-section cs3-more" aria-labelledby="moreTitle">
   <div class="cs3-wrap">
-    <a class="cs3-next" href="omnisproof-case-study.html" data-rv>
-      <div class="cs3-next__body">
-        <span class="eyebrow">Next case study</span>
-        <h3>OmnisProof: Redesigning Document Setup for Self-Serve Legal Signing</h3>
-        <p>How I redesigned contract preparation in OmnisProof—replacing a disjointed modal wizard with a persistent canvas and reviewable AI detection.</p>
-        <span class="cs3-link">Read the case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
-      <div class="cs3-next__media"><img src="assets/images/omnisproof-cover.webp" alt="" loading="lazy"></div>
-    </a>
+    <header class="cs3-more__head" data-rv>
+      <span class="eyebrow">Keep reading</span>
+      <h2 id="moreTitle">More case studies</h2>
+      <p>Want to see more? Browse <a href="index.html#work">all work</a> or <a href="mailto:rahamanmuzeeb1108@gmail.com">get in touch</a>.</p>
+    </header>
+    <div class="cs3-more__grid" data-rv>
+      <a class="cs3-more__card" href="omnisproof-case-study.html">
+        <span class="cs3-more__media"><img src="assets/images/omnisproof-cover.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__meta"><span class="cs3-more__name">OmnisProof</span><span class="tag tag-plain">Legal tech</span><span class="cs3-more__org">Omnis AI</span></span>
+        <span class="cs3-more__foot"><span class="cs3-more__line">I replaced OmnisProof's disjointed modal wizard and manual field placement with a persistent canvas and reviewable AI detection.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+      <a class="cs3-more__card" href="casenotes-case-study.html">
+        <span class="cs3-more__media"><img src="assets/images/Casenotes_cover page_1.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__meta"><span class="cs3-more__name">CaseNotes</span><span class="tag tag-plain">AI product</span><span class="cs3-more__org">Omnis AI</span></span>
+        <span class="cs3-more__foot"><span class="cs3-more__line">I designed an AI transcription and synthesis workspace that anchors client conversations to litigation discovery files.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+      <a class="cs3-more__card" href="audit-engine-case-study.html">
+        <span class="cs3-more__media"><img src="assets/images/ux-audit-assistant.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__meta"><span class="cs3-more__name">AI UX Audit</span><span class="tag tag-plain">AI tooling</span><span class="cs3-more__org">Omnis AI</span></span>
+        <span class="cs3-more__foot"><span class="cs3-more__line">Designing an autonomous staging review engine that detects UI regressions, verifies accessibility, and delivers developer-ready PR reports in Slack.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+      </a>
+    </div>
   </div>
 </section>
 
