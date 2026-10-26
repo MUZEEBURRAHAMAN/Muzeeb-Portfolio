@@ -520,7 +520,7 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-ba__handle { border-
 /* ---------- sticky bottom bar ---------- */
 .cs3-dock {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 950;
-  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-4);
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
   padding: 10px max(var(--space-gutter), env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(var(--space-gutter), env(safe-area-inset-left, 0px));
   background: color-mix(in srgb, var(--color-bg) 88%, transparent);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
@@ -535,11 +535,41 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-ba__handle { border-
 .cs3-dock__meta span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cs3-dock__actions { display: flex; gap: 0; }
 @media (max-width: 760px) {
-  .cs3-dock { grid-template-columns: 1fr; justify-items: center; }
-  .cs3-dock__meta { display: none; }
+  .cs3-dock__meta:last-child { padding-right: 56px; }
+  .cs3-dock__meta .eyebrow, .cs3-dock__meta i { display: none; }
+  .cs3-dock__meta { font-size: var(--text-xs); }
 }
 body.cs3-page { padding-bottom: 64px; }
 
 @media (prefers-reduced-motion: reduce) {
   .cs3-dock, .cs3-rail, .cs3-rail a::before { transition: none !important; }
 }
+
+/* hero with a single intro paragraph */
+.cs3-hero__lead--one { grid-template-columns: minmax(0, 1fr); }
+.cs3-hero__lead--one p { max-width: none; }
+
+/* section heading + first paragraph read as one unit */
+.cs3-body > .cs3-block:first-child + .cs3-prose { margin-top: calc(var(--space-5) - var(--rhythm)); }
+
+/* portrait (phone) screenshots: keep them phone-sized inside the band */
+.cs3-band--narrow .cs3-band__inner { max-width: 880px; }
+.cs3-band--narrow .cs3-media__frame { max-width: 400px; margin-inline: auto; }
+.cs3-band--narrow figcaption { text-align: center; margin-inline: auto; }
+
+/* converted pages keep their old minimap markup for their scripts; the tick rail replaces it */
+.cs3-page .minimap { display: none !important; }
+
+/* related pieces sit close: a label hugs what it labels, a sub-heading hugs its content,
+   consecutive paragraphs read as one passage; the big rhythm gap is only between blocks */
+.cs3-body > .eyebrow { margin-bottom: calc(var(--space-3) - var(--rhythm)); }
+.cs3-body > .cs3-h3 + * { margin-top: calc(var(--space-5) - var(--rhythm)); }
+.cs3-body > .cs3-prose + .cs3-prose { margin-top: calc(var(--space-4) - var(--rhythm)); }
+/* paragraphs carried over from older pages keep their own caps; lift them to header width */
+.cs3 .cs3-prose > *, .cs3 .cs3-prose p { max-width: none !important; }
+/* carried-over components bring their own outer margins; the section grid owns spacing */
+.cs3 .cs3-legacy > :first-child { margin-top: 0 !important; }
+.cs3 .cs3-legacy > :last-child { margin-bottom: 0 !important; }
+/* LitBox design-system grid: let its columns shrink below their content's min width on phones */
+.cs3 .ds-grid > * { min-width: 0; }
+@media (max-width: 768px) { .cs3 .ds-grid { grid-template-columns: minmax(0, 1fr); } }
