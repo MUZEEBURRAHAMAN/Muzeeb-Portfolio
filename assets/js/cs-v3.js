@@ -87,7 +87,7 @@
   onScroll();
 
   /* ---------- section markers (left rail) + bottom bar ---------- */
-  const sections = $$(".cs3-section[id]", page).filter(sec => sec.querySelector(".cs3-sec-title"));
+  const sections = $$(".cs3-section[id]", page).filter(sec => sec.querySelector(".cs3-kicker__label"));
   const rail = document.createElement("nav");
   rail.className = "cs3-rail";
   rail.setAttribute("aria-label", "Sections");
@@ -96,7 +96,7 @@
     a.href = "#" + sec.id;
     const tip = document.createElement("span");
     tip.className = "cs3-rail__tip";
-    tip.textContent = sec.querySelector(".cs3-sec-title").textContent;
+    tip.textContent = sec.querySelector(".cs3-kicker__label").textContent;
     a.setAttribute("aria-label", tip.textContent);
     a.appendChild(tip);
     rail.appendChild(a);
