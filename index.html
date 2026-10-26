@@ -285,9 +285,10 @@
         html.skip-preloader body.preloader-active { overflow: auto !important; }
     </style>
 <link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
+<link rel="stylesheet" href="assets/css/home-v3.css?v=1">
 </head>
 
-<body class="bg-[#000000] text-[#ffffff] preloader-active">
+<body class="bg-[#000000] text-[#ffffff] preloader-active mz-home">
     <!-- Preloader v2: selection-frame canvas loader -->
     <div class="preloader" id="preloader" aria-hidden="true">
         <div class="pl-grid"></div>
@@ -343,6 +344,7 @@
 
     <main id="main" class="w-full">
         <section class="mz-hero w-full" aria-labelledby="heroTitle">
+            <div class="hv3-canvas" aria-hidden="true"></div>
             <div class="mz-hero__eyebrow-wrapper">
                 <a href="mailto:rahamanmuzeeb1108@gmail.com" class="mz-hero__badge-pill" aria-label="Available for Product Design opportunities. Get in touch">
                     <span class="mz-hero__badge-tag">
@@ -371,6 +373,11 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
+            <dl class="hv3-stats">
+                <div><dt>Experience</dt><dd>4.8+ years</dd></div>
+                <div><dt>Domains</dt><dd>AI · Legal · SaaS</dd></div>
+                <div><dt>Workflow</dt><dd>Design → Code</dd></div>
+            </dl>
         </section>
 
         <!-- Section Divider: Hero to Selected Work -->
@@ -381,8 +388,8 @@
         <section class="mz-projects" id="work">
             <div class="mz-projects__head">
                 <div class="mz-projects__title">
-                    <span class="mz-projects__count">Selected Work (2022–2026)</span>
-                    <h2>Featured <em style="font-style:italic">case studies</em></h2>
+                    <span class="mz-projects__count hv3-idx" data-hv3-reveal><b>01</b>Selected work · 2022–2026</span>
+                    <h2>Featured <em style="font-style:italic">case studies</em><span class="hv3-count" aria-hidden="true">(04)</span></h2>
                 </div>
             </div>
 
@@ -391,6 +398,8 @@
                 <article class="mz-work-card">
                     <a href="omnisproof-case-study.html" class="mz-work-card__link" aria-label="OmnisProof: Redesigning Document Setup for Self-Serve Legal Signing">
                         <div class="mz-work-card__img-container mz-work-card__img-container--slider" id="omnisCardSliderContainer">
+                            <span class="hv3-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                            <span class="hv3-badge" aria-hidden="true">01 <span>/ Legal Tech</span></span>
                             <div class="mz-card-slider-stage">
                                 <div class="mz-card-comparison" id="homeOmnisComparison" aria-label="OmnisProof Before and After Redesign Slider">
                                     <img src="assets/images/omnisproof-slider-after.png?v=2" alt="Redesigned OmnisProof: 1 Guided Workspace" draggable="false" />
@@ -429,6 +438,8 @@
                 <article class="mz-work-card">
                     <a href="casenotes-case-study.html" class="mz-work-card__link" aria-label="CaseNotes: Designing an AI Notetaker Where Every Word Carries Legal Privilege">
                         <div class="mz-work-card__img-container">
+                            <span class="hv3-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                            <span class="hv3-badge" aria-hidden="true">02 <span>/ AI Product</span></span>
                             <img loading="lazy" src="assets/images/Casenotes_cover page_1.webp" alt="CaseNotes: Designing an AI Notetaker Where Every Word Carries Legal Privilege">
                         </div>
                         <div class="mz-work-card__text">
@@ -455,6 +466,8 @@
                 <article class="mz-work-card">
                     <a href="audit-engine-case-study.html" class="mz-work-card__link" aria-label="AI UX Audit: Eliminating 4+ Hours of Manual Design QA per Sprint">
                         <div class="mz-work-card__img-container">
+                            <span class="hv3-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                            <span class="hv3-badge" aria-hidden="true">03 <span>/ AI Tooling</span></span>
                             <img loading="lazy" src="assets/images/ux-audit-assistant.webp" alt="AI UX Audit: Eliminating 4+ Hours of Manual Design QA per Sprint">
                         </div>
                         <div class="mz-work-card__text">
@@ -481,6 +494,8 @@
                 <article class="mz-work-card">
                     <a href="matter-redesign-case-study.html" class="mz-work-card__link" aria-label="CasePro Matter Redesign: Splitting Intake from Case Creation">
                         <div class="mz-work-card__img-container">
+                            <span class="hv3-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                            <span class="hv3-badge" aria-hidden="true">04 <span>/ Legal Tech</span></span>
                             <img loading="lazy" src="assets/images/case-studies/matter-redesign/cover.webp" alt="CasePro Matter Redesign: Splitting Intake from Case Creation">
                         </div>
                         <div class="mz-work-card__text">
@@ -610,7 +625,7 @@
         <section class="mz-blog w-full" id="writing" aria-labelledby="writingTitle">
             <div class="blog-head">
                 <div>
-                    <span class="site-editions__eyebrow">BLOG</span>
+                    <span class="site-editions__eyebrow hv3-idx" data-hv3-reveal><b>02</b>Writing on Medium</span>
                     <h2 class="site-editions__heading" id="writingTitle">Articles I've written</h2>
                 </div>
                 <div class="blog-nav">
@@ -730,7 +745,7 @@
         <!-- ==================== RECOMMENDATIONS & FEEDBACK SECTION (LINEAR 2-CARD) ==================== -->
         <section class="site-testimonials w-full" id="testimonials">
             <div class="site-testimonials__head">
-                <span class="site-testimonials__eyebrow">RECOMMENDATIONS &amp; FEEDBACK</span>
+                <span class="site-testimonials__eyebrow hv3-idx" data-hv3-reveal><b>03</b>Recommendations &amp; feedback</span>
                 <h2 class="site-testimonials__title">Trusted by the people I <em style="font-style:italic">build with.</em></h2>
             </div>
 
@@ -781,7 +796,7 @@
             </div>
 
             <!-- Footer Strip -->
-            <div class="mz-customer-footer">
+            <div class="mz-customer-footer" data-hv3-reveal>
                 <p>Partnered with design and engineering leads across health-tech, legal-tech, and high-growth B2B SaaS.</p>
                 <a href="https://www.linkedin.com/in/muzeeburrahaman" target="_blank" rel="noopener noreferrer" class="mz-customer-footer__link">
                     <span>View LinkedIn recommendations</span>
@@ -863,6 +878,7 @@
         requestAnimationFrame(raf);
     </script>
     <script src="assets/js/site.js?v=561"></script>
+    <script src="assets/js/home-v3.js?v=1"></script>
     <!-- OmnisProof Card Before/After Slider Interaction & Animation -->
     <script>
     (function () {
