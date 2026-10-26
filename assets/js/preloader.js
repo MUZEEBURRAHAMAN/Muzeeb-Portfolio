@@ -1,129 +1,122 @@
 (() => {
-  const GREETINGS = [
-    { text: "hello",     lang: "en" },
-    { text: "olá",       lang: "pt" },
-    { text: "hola",      lang: "es" },
-    { text: "bonjour",   lang: "fr" },
-    { text: "ciao",      lang: "it" },
-    { text: "привет",    lang: "ru" },
-    { text: "नमस्ते",     lang: "hi" },
-    { text: "مرحبا",     lang: "ar" },
-    { text: "سلام",      lang: "ur" },
-    { text: "こんにちは",  lang: "ja" },
-    { text: "안녕하세요",  lang: "ko" },
+  // Preloader v2 — selection frame + real-progress counter, once per session
+  // (and on hard reload). Markup lives inline at the top of <body> on Home.
+  const MIN_DURATION = 1900;   // ms — never flash; lets the frame finish drawing
+  const MAX_DURATION = 6000;   // ms — never hold the visitor hostage on slow nets
+  const STATUS = [
+    [0,   "Setting up the canvas"],
+    [30,  "Loading case studies"],
+    [60,  "Tuning type & spacing"],
+    [88,  "Final polish"],
+    [100, "Ready"],
   ];
-
-  const HOLD = 330;             // ms each greeting stays (incl. fade in)
-  const FADE = 130;             // must match CSS transition
-  const TOTAL = GREETINGS.length * HOLD;
 
   const pre = document.getElementById("preloader");
   if (!pre) return;
-  const word = document.getElementById("word");
-  const counter = document.getElementById("counter");
-  if (!word || !counter) return;
+  const counter = pre.querySelector("[data-pl-counter]");
+  const status = pre.querySelector("[data-pl-status]");
+  const size = pre.querySelector("[data-pl-size]");
+  const stage = pre.querySelector(".pl-stage");
 
-  // Session & Reload Detection
   let isReload = false;
   try {
-    const navEntries = window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation");
-    if (navEntries && navEntries.length > 0) {
-      isReload = navEntries[0].type === "reload";
-    } else if (window.performance && window.performance.navigation) {
-      isReload = window.performance.navigation.type === 1;
-    }
+    const nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
+    if (nav && nav.length) isReload = nav[0].type === "reload";
+    else if (performance.navigation) isReload = performance.navigation.type === 1;
   } catch (e) {}
 
-  const hasSeen = sessionStorage.getItem("mz_greeting_seen");
+  let seen = false;
+  try { seen = !!sessionStorage.getItem("mz_greeting_seen"); } catch (e) {}
 
-  // If already seen in this session and NOT a hard refresh/reload, skip immediately
-  if (hasSeen && !isReload) {
-    document.documentElement.classList.add("skip-preloader");
+  const release = () => {
     document.body.classList.remove("preloader-active");
     document.body.classList.add("loaded");
     document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
-    if (window.lenis) {
-      try { window.lenis.start(); } catch (e) {}
-    }
+    if (window.lenis) { try { window.lenis.start(); } catch (e) {} }
+  };
+
+  if (seen && !isReload) {
+    document.documentElement.classList.add("skip-preloader");
+    release();
     pre.remove();
     return;
   }
 
   const sleep = ms => new Promise(r => setTimeout(r, ms));
-  const easeOut = t => 1 - Math.pow(1 - t, 2);
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
 
-  // Lock scroll immediately for first-time / reload
   document.documentElement.style.overflow = "hidden";
   document.body.classList.add("preloader-active");
-  if (window.lenis) {
-    try { window.lenis.stop(); } catch (e) {}
+  if (window.lenis) { try { window.lenis.stop(); } catch (e) {} }
+
+  // ---- real progress: eager images + fonts + window load ----
+  let real = 0;
+  let pageLoaded = document.readyState === "complete";
+  function measure() {
+    const imgs = Array.from(document.images).filter(i => i.loading !== "lazy");
+    const total = imgs.length + 1;
+    let done = imgs.filter(i => i.complete).length;
+    if (!document.fonts || document.fonts.status === "loaded") done += 1;
+    real = pageLoaded ? 1 : Math.min(0.95, done / total);
+  }
+  window.addEventListener("load", () => { pageLoaded = true; }, { once: true });
+
+  function setStatus(pct) {
+    let label = STATUS[0][1];
+    for (const [at, text] of STATUS) if (pct >= at) label = text;
+    if (status.textContent !== label) status.textContent = label;
   }
 
-  // Counter 0 -> 100 across the whole greeting sequence
-  function runCounter() {
-    const start = performance.now();
-    (function tick(now) {
-      const t = Math.min((now - start) / TOTAL, 1);
-      counter.textContent = Math.round(easeOut(t) * 100);
-      if (t < 1) requestAnimationFrame(tick);
-    })(start);
-  }
-
-  async function show(g) {
-    word.className = "word";
-    word.textContent = g.text;
-    word.lang = g.lang;
-    void word.offsetWidth;          // restart transition
-    word.classList.add("in");
-    await sleep(HOLD - FADE);
+  function setSize() {
+    if (!size || !stage) return;
+    const r = stage.getBoundingClientRect();
+    size.textContent = `${Math.round(r.width)} × ${Math.round(r.height)}`;
   }
 
   async function run() {
-    try {
-      if (document.fonts && document.fonts.ready) {
-        await Promise.race([
-          document.fonts.ready,
-          sleep(1200)
-        ]);
-      }
-    } catch (e) {}
+    pre.classList.add("is-run");
+    setSize();
+    window.addEventListener("resize", setSize);
 
-    runCounter();
-    for (let i = 0; i < GREETINGS.length; i++) {
-      await show(GREETINGS[i]);
-      if (i < GREETINGS.length - 1) {
-        word.classList.replace("in", "out");
-        await sleep(FADE);
-      }
-    }
-    counter.textContent = "100";
-    await sleep(250);
-    // last word scales up, then the curtain lifts
-    counter.classList.add("hide");
-    word.classList.remove("in");
-    word.classList.add("zoom");
-    await sleep(550);
-    pre.classList.add("exit");
-    document.body.classList.remove("preloader-active");
-    document.body.classList.add("loaded");
-    document.documentElement.style.overflow = "";
-    document.body.style.overflow = "";
-    if (window.lenis) {
-      try { window.lenis.start(); } catch (e) {}
-    }
-    // Record that visitor has seen preloader in this session
-    try {
-      sessionStorage.setItem("mz_greeting_seen", "true");
-    } catch (e) {}
+    const start = performance.now();
+    let shown = 0;
+
+    await new Promise(resolve => {
+      (function tick(now) {
+        const elapsed = now - start;
+        measure();
+        // Time gate: the counter can't outrun MIN_DURATION; real progress can't
+        // be faked past what has actually loaded (unless MAX_DURATION hits).
+        const timeCap = easeOut(Math.min(elapsed / MIN_DURATION, 1));
+        const target = elapsed >= MAX_DURATION ? 1 : Math.min(timeCap, real);
+        shown += (target - shown) * 0.12;
+        if (target === 1 && 1 - shown < 0.004) shown = 1;
+
+        const pct = Math.round(shown * 100);
+        counter.firstChild.nodeValue = String(pct).padStart(3, "0");
+        pre.style.setProperty("--pl-p", shown.toFixed(4));
+        setStatus(pct);
+
+        if (shown >= 1) resolve();
+        else requestAnimationFrame(tick);
+      })(start);
+    });
+
+    window.removeEventListener("resize", setSize);
+    pre.classList.add("is-done");
+    await sleep(320);
+
+    pre.classList.add("is-exit");
+    await sleep(520);
+    pre.classList.add("is-wipe");
+    release();
+    try { sessionStorage.setItem("mz_greeting_seen", "true"); } catch (e) {}
 
     await sleep(950);
     pre.remove();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", run);
-  } else {
-    run();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
 })();

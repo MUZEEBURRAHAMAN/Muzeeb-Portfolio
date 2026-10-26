@@ -47,14 +47,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <!-- Preloader Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Arabic:wght@600;700&family=Noto+Sans+Devanagari:wght@600;700&family=Noto+Sans+JP:wght@500;700&family=Noto+Sans+KR:wght@500;700&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
     <!-- Tailwind css -->
     <link rel="stylesheet" href="assets/css/output.css?v=125">
     <!-- Custom css -->
     <link rel="stylesheet" href="assets/css/style.css?v=614">
     <!-- Preloader css -->
-    <link rel="stylesheet" href="assets/css/preloader.css?v=1">
+    <link rel="stylesheet" href="assets/css/preloader.css?v=2">
     <!-- Legacy stylesheets (Commented out for performance & future reference):
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/slick-theme.css">
@@ -280,8 +278,8 @@
         })();
     </script>
     <style id="preloader-critical">
-        .preloader { position: fixed; inset: 0; z-index: 999999; background: #0a0a0a; display: grid; place-items: center; will-change: transform; }
-        [data-theme="light"] .preloader, html[data-theme="light"] .preloader { background: #f5f5f5; }
+        .preloader { position: fixed; inset: 0; z-index: 999999; background: #000000; display: grid; place-items: center; }
+        [data-theme="light"] .preloader, html[data-theme="light"] .preloader { background: #ffffff; }
         body.preloader-active { overflow: hidden !important; }
         html.skip-preloader .preloader, html.skip-preloader #preloader { display: none !important; }
         html.skip-preloader body.preloader-active { overflow: auto !important; }
@@ -290,12 +288,33 @@
 </head>
 
 <body class="bg-[#000000] text-[#ffffff] preloader-active">
-    <!-- Multi-language Greeting Preloader -->
+    <!-- Preloader v2: selection-frame canvas loader -->
     <div class="preloader" id="preloader" aria-hidden="true">
-        <div class="word" id="word"></div>
-        <div class="counter" id="counter">0</div>
+        <div class="pl-grid"></div>
+        <div class="pl-meta pl-meta--top">
+            <span>Muzeeb Urrahaman</span>
+            <span>Portfolio &copy; 2026</span>
+        </div>
+        <div class="pl-stage">
+            <span class="pl-edge pl-edge--t"></span><span class="pl-edge pl-edge--r"></span>
+            <span class="pl-edge pl-edge--b"></span><span class="pl-edge pl-edge--l"></span>
+            <span class="pl-handle pl-handle--tl"></span><span class="pl-handle pl-handle--tr"></span>
+            <span class="pl-handle pl-handle--bl"></span><span class="pl-handle pl-handle--br"></span>
+            <span class="pl-layer">Frame / Portfolio</span>
+            <span class="pl-size" data-pl-size>0 × 0</span>
+            <p class="pl-name">
+                <span class="pl-line"><span>Muzeeb</span></span>
+                <span class="pl-line"><span>Urrahaman</span></span>
+            </p>
+            <p class="pl-role">Product Designer &amp; Builder &middot; AI &amp; SaaS</p>
+        </div>
+        <div class="pl-meta pl-meta--bottom">
+            <span class="pl-status" data-pl-status>Setting up the canvas</span>
+            <span class="pl-counter" data-pl-counter>000<small>%</small></span>
+        </div>
+        <div class="pl-bar"><span></span></div>
     </div>
-    <script src="assets/js/preloader.js?v=1"></script>
+    <script src="assets/js/preloader.js?v=2"></script>
 
     <div class="mz-scroll-progress-bar" aria-hidden="true"></div>
     <a href="#main" class="mz-skip">Skip to content</a>
