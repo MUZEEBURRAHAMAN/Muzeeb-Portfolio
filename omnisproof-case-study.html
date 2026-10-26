@@ -59,1050 +59,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<style>
-/* Motion HighlightText (Rectangle Box & Yellow Marker Highlights) */
-[data-slot="highlight-text"],
-.highlight-text,
-.mz-highlight-sweep,
-.mz-highlight[data-action="box"],
-.mz-highlight--box,
-.mz-highlight-rect {
-  position: relative;
-  display: inline;
-  padding: 2px 7px;
-  border-radius: 0px !important;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 0% 100%;
-  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
-  background-image: linear-gradient(90deg, #ffffff, #ffffff);
-  color: inherit;
-}
-
-[data-slot="highlight-text"].is-in-view,
-.highlight-text.is-in-view,
-.mz-highlight-sweep.is-in-view,
-.mz-highlight[data-action="box"].is-in-view,
-.mz-highlight--box.is-in-view,
-.mz-highlight-rect.is-in-view {
-  background-size: 100% 100% !important;
-  color: #000000 !important;
-  font-weight: 700;
-}
-
-[data-theme="light"] [data-slot="highlight-text"],
-[data-theme="light"] .highlight-text,
-[data-theme="light"] .mz-highlight-sweep,
-[data-theme="light"] .mz-highlight[data-action="box"],
-[data-theme="light"] .mz-highlight--box,
-[data-theme="light"] .mz-highlight-rect,
-html[data-theme="light"] [data-slot="highlight-text"],
-html[data-theme="light"] .highlight-text,
-html[data-theme="light"] .mz-highlight-sweep,
-html[data-theme="light"] .mz-highlight[data-action="box"],
-html[data-theme="light"] .mz-highlight--box,
-html[data-theme="light"] .mz-highlight-rect {
-  background-image: linear-gradient(90deg, #141414, #000000);
-  color: inherit;
-}
-
-[data-theme="light"] [data-slot="highlight-text"].is-in-view,
-[data-theme="light"] .highlight-text.is-in-view,
-[data-theme="light"] .mz-highlight-sweep.is-in-view,
-[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
-[data-theme="light"] .mz-highlight--box.is-in-view,
-[data-theme="light"] .mz-highlight-rect.is-in-view,
-html[data-theme="light"] [data-slot="highlight-text"].is-in-view,
-html[data-theme="light"] .highlight-text.is-in-view,
-html[data-theme="light"] .mz-highlight-sweep.is-in-view,
-html[data-theme="light"] .mz-highlight[data-action="box"].is-in-view,
-html[data-theme="light"] .mz-highlight--box.is-in-view,
-html[data-theme="light"] .mz-highlight-rect.is-in-view {
-  background-size: 100% 100% !important;
-  color: #ffffff !important;
-  font-weight: 700;
-}
-
-/* Yellow Marker Highlight */
-.mz-highlight-yellow,
-.mz-highlight[data-action="yellow"],
-.mz-highlight--yellow {
-  position: relative;
-  display: inline;
-  padding: 2px 7px;
-  border-radius: 0px !important;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: 0% 100%;
-  transition: background-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
-  background-image: linear-gradient(90deg, rgba(250, 204, 21, 0.3), rgba(250, 204, 21, 0.3));
-  color: inherit;
-}
-
-.mz-highlight-yellow.is-in-view,
-.mz-highlight[data-action="yellow"].is-in-view,
-.mz-highlight--yellow.is-in-view {
-  background-size: 100% 100% !important;
-  color: #ffffff !important;
-  font-weight: 700;
-}
-
-[data-theme="light"] .mz-highlight-yellow,
-[data-theme="light"] .mz-highlight[data-action="yellow"],
-[data-theme="light"] .mz-highlight--yellow,
-html[data-theme="light"] .mz-highlight-yellow,
-html[data-theme="light"] .mz-highlight[data-action="yellow"],
-html[data-theme="light"] .mz-highlight--yellow {
-  background-image: linear-gradient(90deg, #fff1a8, #fff1a8);
-  color: inherit;
-}
-
-[data-theme="light"] .mz-highlight-yellow.is-in-view,
-[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
-[data-theme="light"] .mz-highlight--yellow.is-in-view,
-html[data-theme="light"] .mz-highlight-yellow.is-in-view,
-html[data-theme="light"] .mz-highlight[data-action="yellow"].is-in-view,
-html[data-theme="light"] .mz-highlight--yellow.is-in-view {
-  background-size: 100% 100% !important;
-  color: #000000 !important;
-  font-weight: 700;
-}
-
-/* Safe Inline Underline */
-.mz-highlight[data-action="underline"] {
-  display: inline;
-  border-bottom: 2.5px solid #8f8f8f;
-  padding-bottom: 1px;
-}
-[data-theme="light"] .mz-highlight[data-action="underline"],
-html[data-theme="light"] .mz-highlight[data-action="underline"] {
-  border-bottom-color: #333333;
-}
-
-/* Vertical side rails & 1134px layout */
-#main {
-  max-width: 1134px !important;
-  margin: 0 auto !important;
-  padding: 0 16px !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
-  position: relative !important;
-}
-
-@media (min-width: 640px) {
-  #main {
-    padding: 0 24px !important;
-  }
-}
-
-@media (min-width: 768px) {
-  #main {
-    padding: 0 32px !important;
-  }
-}
-
-[data-theme="light"] #main,
-html[data-theme="light"] #main {
-  border-left-color: rgba(0, 0, 0, 0.08) !important;
-  border-right-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-.site-header {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1000 !important;
-  width: 100% !important;
-  background: rgba(0, 0, 0, 0.86) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  transition: background 0.25s ease, border-color 0.25s ease;
-  box-sizing: border-box !important;
-}
-
-[data-theme="light"] .site-header,
-html[data-theme="light"] .site-header {
-  background: rgba(255, 255, 255, 0.88) !important;
-  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-.site-header__inner {
-  max-width: 1134px !important;
-  padding: 0 16px !important;
-}
-@media (min-width: 640px) {
-  .site-header__inner {
-    padding: 0 24px !important;
-  }
-}
-@media (min-width: 768px) {
-  .site-header__inner {
-    padding: 0 32px !important;
-  }
-}
-
-/* Hatched Section Divider (Attached edge-to-edge to #main vertical side rails) */
-.hatched-divider {
-  display: block !important;
-  width: calc(100% + 32px) !important;
-  margin: 3.5rem -16px !important;
-  height: 32px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: #ffffff !important;
-  box-sizing: border-box !important;
-  z-index: 2 !important;
-}
-
-@media (min-width: 640px) {
-  .hatched-divider {
-    width: calc(100% + 48px) !important;
-    margin: 4.5rem -24px !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .hatched-divider {
-    width: calc(100% + 64px) !important;
-    margin: 5rem -32px !important;
-  }
-}
-
-.hatched-divider__pattern {
-  position: absolute !important;
-  inset: 0 !important;
-  opacity: 0.25 !important;
-  background-image: repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%) !important;
-  background-size: 10px 10px !important;
-  pointer-events: none !important;
-}
-
-[data-theme="light"] .hatched-divider,
-html[data-theme="light"] .hatched-divider {
-  border-top-color: rgba(0, 0, 0, 0.12) !important;
-  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
-  color: #000000 !important;
-}
-
-[data-theme="light"] .hatched-divider__pattern,
-html[data-theme="light"] .hatched-divider__pattern {
-  opacity: 0.15 !important;
-}
-
-:root {
-  --bg: #ffffff; --surface: #ffffff; --ink: #000000; --text: #0a0a0a;
-  --muted: #555555; --soft: #6b6b6b;
-  --line: rgba(0, 0, 0,.09); --line-2: rgba(0, 0, 0,.06);
-  --accent: #000000; --accent-soft: #f2f2f2;
-  --red: #6b6b6b; --red-soft: #f5f5f5;
-  --green: #000000; --green-soft: #fafafa;
-  --amber: #333333; --amber-soft: #f5f5f5;
-  --purple: #000000; --purple-soft: #f2f2f2;
-  --ease: cubic-bezier(.16,1,.3,1);
-  --space-xs:12px; --space-sm:18px; --space-md:24px; --space-lg:40px; --space-xl:60px;
-  --font-display:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-  --shadow-1: rgba(0,0,0,.04); --shadow-2: rgba(0,0,0,.06); --shadow-3: rgba(0,0,0,.1);
-  --note-text: #333333; --table-head-bg: #fafafa;
-}
-[data-theme="dark"] {
-  --bg: #000000; --surface: #141414; --ink: #ffffff; --text: #ffffff;
-  --muted: #a3a3a3; --soft: #8f8f8f;
-  --line: rgba(255,255,255,.12); --line-2: rgba(255,255,255,.08);
-  --accent: #ffffff; --accent-soft: #1a1a1a;
-  --red: #8f8f8f; --red-soft: #141414;
-  --green: #ffffff; --green-soft: #0a0a0a;
-  --amber: #d4d4d4; --amber-soft: #141414;
-  --purple: #ffffff; --purple-soft: #1a1a1a;
-  --shadow-1: rgba(0,0,0,.35); --shadow-2: rgba(0,0,0,.45); --shadow-3: rgba(0,0,0,.55);
-  --note-text: #d4d4d4; --table-head-bg: #1a1a1a;
-}
-* { box-sizing:border-box; margin:0; padding:0; }
-html { -webkit-font-smoothing:antialiased; scroll-behavior:smooth; overflow-x:clip; }
-body { background:var(--bg); color:var(--text); font-family:var(--font-body); line-height:1.65; overflow-x:clip; }
-img { image-rendering: -webkit-optimize-contrast; image-rendering: high-quality; max-width: 100%; height: auto; }
-
-/* HERO */
-.hero { position:relative; padding:clamp(50px, 7vw, 90px) 0 clamp(24px, 4vw, 40px); background:transparent; text-align:left; width:100%; }
-.hero__in { width:100%; max-width:100%; margin:0; text-align:left; }
-.mz-hero__eyebrow-wrapper { margin-bottom: 24px; display: flex; width: fit-content; }
-.mz-hero__badge-pill { display: inline-flex; align-items: center; gap: 10px; padding: 4px; background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--ink); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; }
-.mz-hero__badge-pill:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.25); }
-.mz-hero__badge-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--bg); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 9px; line-height: 1.4; }
-.mz-hero__badge-tag .mz-hero__dot { width: 6px; height: 6px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25); flex: none; }
-.mz-hero__badge-text { padding: 0 8px 0 2px; color: var(--muted); font-size: 0.82rem; letter-spacing: 0.01em; display: inline-flex; align-items: center; gap: 4px; transition: color 0.2s ease; }
-.mz-hero__badge-pill:hover .mz-hero__badge-text { color: var(--ink); }
-.hero .hook { font-family:var(--font-display); font-size:clamp(22px,2.6vw,28px); font-weight:600; color:var(--muted); font-style:italic; max-width:820px; margin-bottom:20px; letter-spacing:-.01em; }
-.hero h1 { font-family:var(--font-display); font-size:clamp(34px,4.6vw,54px); line-height:1.12; letter-spacing:-.04em; max-width:960px; margin:0 0 20px; font-weight: 600; color:var(--ink); text-align:left; }
-.hero h1 .grad { color:var(--accent); }
-.hero__sub { font-family:var(--font-display); letter-spacing:-0.012em; max-width:100%; color:var(--muted); font-size:17px; line-height:1.7; margin:0 0 8px; text-align:left; font-weight:400; }
-.hero__sub b, .hero__sub strong { color:var(--ink); font-weight:600; }
-
-.hero-cover { width:100%; max-width:100%; margin:24px 0 32px; }
-.hero-cover .frame { border:none; border-radius:0; padding:0; background:transparent; box-shadow:none; }
-.hero-cover img { border-radius:12px; width:100%; height:auto; display:block; cursor:zoom-in; box-shadow:none; }
-
-/* Section 2: What We're Building Components */
-.feature-item { margin-top: 48px; margin-bottom: 64px; }
-.feature-item:last-of-type { margin-bottom: 40px; }
-.feature-title { font-family:var(--font-display); font-size:clamp(20px, 2.4vw, 26px); font-weight:700; color:var(--ink); letter-spacing:-0.025em; margin:0 0 16px; }
-.overview-lead-text { font-family:var(--font-display); font-size:clamp(16px, 1.7vw, 17.5px); line-height:1.75; color:var(--muted); letter-spacing:-0.012em; margin:0 0 44px; max-width:100%; }
-[data-theme="dark"] .overview-lead-text { color:#a3a3a3; }
-
-.feature-narrative { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:20px; width:100% !important; max-width:100% !important; box-sizing:border-box !important; }
-@media (min-width: 768px) {
-  .feature-narrative { grid-template-columns:1fr 1fr; gap:20px; }
-}
-.narrative-card { padding:20px 24px; border-radius:16px; border:1px solid var(--line); background:var(--surface); font-size:15px; line-height:1.65; box-shadow:0 4px 16px var(--shadow-1); box-sizing:border-box; width:100%; }
-.narrative-card--prob { border-left:3.5px solid var(--amber, #8f8f8f); }
-.narrative-card--sol { border-left:3.5px solid var(--accent, #000000); background:var(--accent-soft); }
-.narrative-tag { font-family:var(--mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
-.narrative-card--prob .narrative-tag { color:var(--amber, #8f8f8f); }
-.narrative-card--sol .narrative-tag { color:var(--accent, #000000); }
-.narrative-text { margin:0; color:var(--muted); font-size:15px; line-height:1.65; }
-.narrative-card--sol .narrative-text { color:var(--ink); }
-
-.ui-mockup-frame { width:100%; margin-top:20px; }
-.ui-mockup-frame .frame { border:1px solid var(--line); border-radius:16px; padding:12px; background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); position:relative; }
-.ui-mockup-wrapper { position:relative; width:100%; border-radius:12px; overflow:hidden; background:rgba(0,0,0,0.03); display:block; }
-[data-theme="dark"] .ui-mockup-wrapper { background:rgba(255,255,255,0.03); }
-.ui-mockup-wrapper img { width:100%; height:auto; display:block; border-radius:12px; cursor:zoom-in; }
-.ui-mockup-badge { position:absolute; top:14px; right:14px; display:inline-flex; align-items:center; gap:7px; background:rgba(0, 0, 0,0.82); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#ffffff; font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:0.04em; padding:5px 12px; border-radius:6px; border:1px solid rgba(255,255,255,0.15); pointer-events:none; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.25); }
-.ui-mockup-dot { width:6px; height:6px; border-radius:50%; background:#8f8f8f; box-shadow:0 0 0 2px rgba(128, 128, 128,0.3); }
-
-.goal-callout { margin:56px 0 20px; padding:32px 36px; border-radius:16px; border:1px solid var(--line); background:var(--surface); box-shadow:0 16px 40px var(--shadow-1); position:relative; overflow:hidden; border-left:4px solid var(--accent); }
-.goal-callout__badge { font-family:var(--mono); font-size:11.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; }
-.goal-callout__dot { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(128, 128, 128,0.2); }
-.goal-callout__text { font-family:var(--font-display); font-size:clamp(19px, 2.5vw, 24px); font-weight:700; line-height:1.42; letter-spacing:-0.02em; color:var(--ink); margin:0; }
-
-.snapshot { width:100%; max-width:100%; margin:24px 0 32px; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
-.snapshot .cell { background:var(--surface); padding:20px 22px; }
-.snapshot .k { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--soft); margin-bottom:6px; }
-.snapshot .v { font-size:14px; font-weight:600; color:var(--ink); line-height:1.4; }
-
-.two-up { width:100%; max-width:100%; margin:0 0 32px; display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-.jump { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:24px; text-align:left; transition:transform .3s var(--ease), box-shadow .3s var(--ease); text-decoration:none; display:block; box-shadow:0 4px 20px var(--shadow-1); }
-.jump:hover { transform:translateY(-3px); box-shadow:0 16px 36px var(--shadow-2); }
-.jump .tag { font-family:var(--mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:10px; display:block; }
-.jump h3 { font-family:var(--font-display); font-size:18px; font-weight:700; color:var(--ink); margin-bottom:8px; letter-spacing:-.02em; }
-.jump p { font-size:13.5px; color:var(--muted); margin:0; line-height:1.55; }
-
-section { width:100% !important; max-width:100% !important; margin:0 auto !important; padding:20px 0 40px !important; border-top:none !important; scroll-margin-top:80px; text-align:left; }
-.sec-num { font-family:var(--mono); font-size:12px; color:var(--soft); margin-bottom:12px; text-align:left; }
-
-.minimap { position:fixed; right:24px; top:50%; transform:translateY(-50%); z-index:100; width:34px; }
-.minimap .rail { display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:6px; max-height:80vh; padding:8px 2px; }
-.minimap .mm-item { position:relative; width:28px; height:3px; display:flex; justify-content:flex-end; align-items:center; }
-.minimap .mm-bar { appearance:none; border:0; padding:0; width:16px; height:2px; border-radius:99px; background:#c8c8c8; cursor:pointer; transition:width .18s var(--ease), background .18s ease, height .18s ease; }
-.minimap .mm-bar:hover { width:22px; background:#888; }
-.minimap .mm-bar.active { width:26px; height:2.5px; background:var(--ink); }
-.minimap .mm-tip { position:absolute; right:34px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:9px; white-space:nowrap; padding:8px 11px; border:1px solid var(--line); border-radius:8px; background:var(--surface); box-shadow:0 6px 24px var(--shadow-2); font-size:12px; pointer-events:none; }
-.minimap .mm-tip .mm-idx { color:var(--soft); }
-.minimap .mm-tip .mm-lbl { font-weight:500; color:var(--ink); }
-@media (max-width:900px) { .minimap { display:none; } }
-[data-theme="dark"] .minimap .mm-bar { background:rgba(255,255,255,.22); }
-[data-theme="dark"] .minimap .mm-bar:hover { background:rgba(255,255,255,.5); width:22px; }
-[data-theme="dark"] .minimap .mm-bar.active { width:26px; height:2.5px; background:#fff !important; box-shadow:0 0 10px rgba(255,255,255,.55); }
-[data-theme="dark"] .minimap .mm-tip { background:#1a1a1a; border-color:rgba(255,255,255,.12); }
-
-.eyebrow { display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:16px; text-align:left; }
-.eyebrow::before { content:""; width:20px; height:1px; background:var(--accent); }
-h2.h, h2 { font-family:var(--font-display); font-size:clamp(26px,3.4vw,38px); line-height:1.18; letter-spacing:-.035em; margin:0 0 20px; font-weight: 600; color:var(--ink); max-width:1000px; text-align:left; }
-h2.h-sub { font-size:clamp(20px,2.6vw,26px); letter-spacing:-.03em; font-weight:700; }
-h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:var(--ink); margin:0 0 12px; letter-spacing:-.02em; }
-.prose, .prose p { max-width:1000px; color:var(--muted); font-size:16px; line-height:1.75; margin:0 0 18px; text-align:left; }
-.prose ul, .prose ol { max-width:1000px; padding-left:20px; color:var(--muted); text-align:left; margin-bottom:18px; }
-.prose li { margin:8px 0; }
-.prose b { color:var(--ink); font-weight:600; }
-/* HERO META */
-.hero__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
-}
-.hero__meta .m {
-  font-family: var(--mono);
-  font-size: 11.5px;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 6px 14px;
-}
-.hero__meta .m b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-/* OVERVIEW INTRO GRID (LIKE FORGE / AUDIT ENGINE) */
-.intro {
-  display: grid !important;
-  grid-template-columns: 1.7fr 1fr;
-  gap: 44px;
-  align-items: start;
-  text-align: left;
-  margin-bottom: 36px;
-}
-.intro .lead {
-  font-family: var(--font-display);
-  font-size: 20px;
-  line-height: 1.5;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-.intro .side {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 24px;
-  text-align: left;
-  box-shadow: 0 4px 20px var(--shadow-1);
-}
-.side .g {
-  padding: 12px 0;
-  border-top: 1px solid var(--line-2);
-}
-.side .g:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-.side .k {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--soft);
-  margin-bottom: 4px;
-}
-.side .v {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.mono { font-family:var(--mono); font-size:.88em; background:var(--line-2); padding:2px 6px; border-radius:5px; color:var(--ink); }
-
-/* IMPACT FLOW MATRIX (High-fidelity user flow visualizer) */
-.flow-matrix {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 32px 0 36px;
-  width: 100%;
-}
-.flow-card {
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  padding: 22px 24px;
-  box-shadow: 0 4px 20px var(--shadow-1);
-  position: relative;
-  overflow: hidden;
-}
-.flow-card.good {
-  background: var(--green-soft);
-  border-color: rgba(128, 128, 128, 0.28);
-}
-.flow-card.bad {
-  background: var(--red-soft);
-  border-color: rgba(128, 128, 128, 0.28);
-}
-[data-theme="dark"] .flow-card.good {
-  background: linear-gradient(135deg, rgba(128, 128, 128, 0.12) 0%, rgba(18, 51, 33, 0.45) 100%);
-  border-color: rgba(128, 128, 128, 0.32);
-}
-[data-theme="dark"] .flow-card.bad {
-  background: linear-gradient(135deg, rgba(128, 128, 128, 0.12) 0%, rgba(42, 21, 22, 0.45) 100%);
-  border-color: rgba(128, 128, 128, 0.32);
-}
-.flow-card__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line-2);
-}
-.flow-card__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.flow-card.good .flow-card__badge { color: var(--green); }
-.flow-card.bad .flow-card__badge { color: var(--red); }
-.flow-card__badge-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-}
-.flow-card.good .flow-card__badge-dot { background: var(--green); box-shadow: 0 0 8px rgba(128, 128, 128, 0.6); }
-.flow-card.bad .flow-card__badge-dot { background: var(--red); box-shadow: 0 0 8px rgba(128, 128, 128, 0.6); }
-
-.flow-card__meta {
-  font-size: 12px;
-  font-family: var(--mono);
-  color: var(--soft);
-}
-.flow-card__steps {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr;
-  align-items: center;
-  gap: 12px;
-}
-@media (max-width: 768px) {
-  .flow-card__steps {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-}
-.flow-node {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.flow-card.good .flow-node {
-  border-color: rgba(128, 128, 128, 0.2);
-}
-.flow-card.bad .flow-node {
-  border-color: rgba(128, 128, 128, 0.2);
-}
-.flow-node:hover {
-  transform: translateY(-2px);
-}
-.flow-node__step {
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.flow-card.good .flow-node__step {
-  background: var(--green-soft);
-  color: var(--green);
-  border: 1px solid rgba(128, 128, 128, 0.3);
-}
-.flow-card.bad .flow-node__step {
-  background: var(--red-soft);
-  color: var(--red);
-  border: 1px solid rgba(128, 128, 128, 0.3);
-}
-.flow-node__text {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.35;
-}
-.flow-node__sub {
-  display: block;
-  font-size: 11.5px;
-  font-weight: 400;
-  color: var(--muted);
-  margin-top: 2px;
-}
-.flow-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--soft);
-  font-size: 18px;
-}
-@media (max-width: 768px) {
-  .flow-arrow {
-    transform: rotate(90deg);
-    padding: 2px 0;
-  }
-}
-
-.constraint-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; margin-top:28px; }
-@media (max-width:860px){ .constraint-grid { grid-template-columns:1fr; } }
-.constraint { display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:22px; margin:0; box-shadow:0 1px 2px var(--shadow-1); }
-.constraint .cnum { display:inline-flex; align-items:center; gap:10px; font-family:var(--mono); font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:12px; }
-.constraint .cnum b { display:inline-grid; place-items:center; min-width:28px; height:28px; padding:0 6px; border-radius:6px; background:var(--ink); color:var(--bg); font-size:12px; font-weight:600; letter-spacing:0; }
-.constraint h4 { font-family:var(--font-display); font-size:17px; font-weight:600; line-height:1.35; letter-spacing:-.01em; color:var(--ink); margin:0 0 16px; }
-.cgrid { display:flex; flex-direction:column; gap:12px; margin:0; flex:1; }
-.cgrid > div:first-child p { color:var(--muted); }
-.cgrid > div:last-child { margin-top:auto; background:var(--line-2); border-left:3px solid var(--ink); border-radius:0 8px 8px 0; padding:14px 16px; }
-.cgrid > div:last-child p { color:var(--text); }
-.cgrid > div:last-child .lbl { display:inline-block; color:var(--bg); background:var(--ink); padding:2px 7px; border-radius:4px; margin-bottom:8px; }
-.cgrid .lbl { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-bottom:6px; }
-.cgrid p { font-size:14.5px; line-height:1.6; margin:0; }
-.c-link { display:inline-flex; align-items:center; gap:6px; margin-top:12px; font-size:13px; font-weight:600; color:var(--ink); text-decoration:none; padding:6px 10px; border-radius:6px; border:1px solid var(--line); background:var(--surface); transition:background .12s, border-color .12s; }
-.c-link:hover { border-color:var(--muted); }
-.cgrid ul { margin:0; padding-left:18px; font-size:14px; color:var(--muted); line-height:1.7; }
-
-.note { display:flex; align-items:flex-start; gap:14px; border:1px solid rgba(128, 128, 128,.25); border-left:3px solid var(--accent); border-radius:12px; background:var(--accent-soft); padding:16px 20px; color:var(--note-text); width:100%; box-sizing:border-box; margin:26px 0; text-align:left; line-height:1.6; font-size:14.5px; }
-.note.warn { border-color:rgba(128, 128, 128,.35); border-left-color:var(--amber); background:var(--amber-soft); color:#333333; }
-.note.risk { border-color:rgba(128, 128, 128,.3); border-left-color:var(--red); background:var(--red-soft); color:#333333; }
-.note.good { border-color:rgba(128, 128, 128,.3); border-left-color:var(--green); background:var(--green-soft); color:#333333; }
-[data-theme="dark"] .note.warn { color:#d4d4d4; }
-[data-theme="dark"] .note.risk { color:#8f8f8f; }
-[data-theme="dark"] .note.good { color:#d4d4d4; }
-.note__badge { flex-shrink:0; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; margin-top:2px; }
-.note__badge svg { width:18px; height:18px; }
-.note__body { flex:1; min-width:0; }
-.note__label { display:inline-block; font-family:var(--mono); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-right:8px; }
-.note.warn .note__label { color:var(--amber); }
-.note.risk .note__label { color:var(--red); }
-.note.good .note__label { color:var(--green); }
-.note b { color:var(--ink); }
-
-.problem-head { display:flex; align-items:center; gap:16px; margin-bottom:10px; }
-.problem-num { flex:none; width:46px; height:46px; border-radius:12px; background:var(--ink); color:var(--bg); font-family:var(--font-display); font-weight: 600; font-size:19px; display:flex; align-items:center; justify-content:center; }
-.problem-eyebrow { font-family:var(--mono); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--accent); margin-bottom:4px; }
-
-.iteration-track { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0 32px; width: 100%; }
-.iter { border-radius: 16px; padding: 22px; border: 1.5px solid var(--line); background: var(--surface); position: relative; box-shadow: 0 4px 20px var(--shadow-1); }
-.iter.rejected { opacity: .92; }
-.iter.rejected::after { content: "REJECTED"; position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em; color: var(--red); background: var(--red-soft); padding: 3px 8px; border-radius: 5px; }
-.iter.winner { border-color: var(--green); background: var(--green-soft); }
-.iter.winner::after { content: "SHIPPED"; position: absolute; top: 16px; right: 16px; font-family: var(--mono); font-size: 9.5px; font-weight: 700; letter-spacing: .06em; color: var(--green); background: var(--surface); padding: 3px 8px; border-radius: 5px; }
-.iter .it-num { font-family: var(--mono); font-size: 10.5px; color: var(--soft); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-.iter h5 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 10px; padding-right: 70px; }
-.iter p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 8px; }
-.iter .why { font-size: 13px; color: var(--muted); line-height: 1.6; padding-top: 10px; border-top: 1px solid var(--line-2); margin-top: 10px; }
-.iter .why b { color: var(--ink); }
-
-.edge-case { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; margin: 16px 0; width: 100%; box-shadow: 0 4px 16px var(--shadow-1); }
-.edge-case .ec-tag { display: inline-block; font-family: var(--mono); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--amber); background: var(--amber-soft); padding: 3px 9px; border-radius: 6px; margin-bottom: 10px; }
-.edge-case p { font-size: 14.5px; color: var(--muted); line-height: 1.65; margin: 0 0 6px; }
-.edge-case p:last-child { margin-bottom: 0; }
-.edge-case b { color: var(--ink); }
-
-.figure { margin: 36px 0; width: 100%; }
-.figure .frame { border: 1px solid var(--line); border-radius: 16px; padding: 14px; background: var(--surface); box-shadow: 0 16px 40px var(--shadow-1); }
-.figure img { border-radius: 12px; width: 100%; cursor: zoom-in; display: block; }
-/* BEFORE / AFTER CARDS (AUDIT-ENGINE STYLE) */
-.ba {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin: 28px 0;
-  width: 100%;
-}
-.ba .col {
-  border-radius: 12px;
-  padding: 26px 28px;
-  border: 1px solid var(--line);
-  box-shadow: 0 4px 20px var(--shadow-1);
-}
-.ba .before {
-  background: var(--red-soft);
-  border-color: rgba(128, 128, 128, 0.25);
-}
-.ba .after {
-  background: var(--green-soft);
-  border-color: rgba(128, 128, 128, 0.25);
-}
-.ba .tag {
-  font-family: var(--mono);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.ba .before .tag { color: var(--red); }
-.ba .after .tag { color: var(--green); }
-.ba ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-.ba li {
-  position: relative;
-  padding-left: 26px;
-  font-size: 14.5px;
-  color: var(--text);
-  margin-bottom: 12px;
-  line-height: 1.55;
-}
-.ba li:last-child { margin-bottom: 0; }
-.ba .before li::before {
-  content: "✕";
-  position: absolute;
-  left: 0;
-  color: var(--red);
-  font-weight: 700;
-  font-size: 13px;
-}
-.ba .after li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--green);
-  font-weight: 700;
-  font-size: 14px;
-}
-
-/* 3-CARD HERO SUMMARY */
-.hero-trio {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: 100%;
-  margin: 36px 0 0;
-}
-.trio-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 26px;
-  box-shadow: 0 4px 20px var(--shadow-1);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-.trio-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px var(--shadow-2);
-}
-.trio-card .trio-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-.trio-card.prob .trio-icon { background: var(--red-soft); color: var(--red); }
-.trio-card.sol .trio-icon { background: var(--accent-soft); color: var(--accent); }
-.trio-card.res .trio-icon { background: var(--green-soft); color: var(--green); }
-.trio-card h3 {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
-.trio-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.trio-card li {
-  position: relative;
-  padding-left: 16px;
-  font-size: 13.5px;
-  color: var(--muted);
-  line-height: 1.55;
-  margin-bottom: 8px;
-}
-.trio-card li:last-child { margin-bottom: 0; }
-.trio-card li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--soft);
-  font-size: 16px;
-  line-height: 1.2;
-}
-
-.tbl td.b { color: var(--red); font-weight: 600; }
-.tbl td.a { color: var(--green); font-weight: 600; }
-
-.figure figcaption { color: var(--soft); font-size: 13px; text-align: center; margin-top: var(--space-xs); line-height: 1.5; }
-.figure .cap-label { color: var(--ink); font-weight: 600; }
-
-.gallery-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); margin: 32px 0; width: 100%; }
-.shot { border: 1px solid var(--line); border-radius: 12px; padding: 12px; background: var(--surface); box-shadow: 0 10px 28px var(--shadow-1); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
-.shot:hover { transform: translateY(-3px); box-shadow: 0 16px 36px var(--shadow-2); }
-.shot img { border-radius: 8px; width: 100%; cursor: zoom-in; display: block; }
-.shot .sc { color: var(--soft); font-size: 12.5px; text-align: center; margin-top: var(--space-xs); line-height: 1.45; }
-.shot .sc b { color: var(--ink); font-weight: 600; }
-.shot.tag-before { border-color: rgba(128, 128, 128, .3); }
-.shot.tag-after { border-color: rgba(128, 128, 128, .3); }
-.shot .pill { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
-.pill-before { background: var(--red-soft); color: var(--red); }
-.pill-after { background: var(--green-soft); color: var(--green); }
-
-.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-sm); margin: 32px 0 24px; width: 100%; }
-.metric { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; text-align: left; box-shadow: 0 4px 20px var(--shadow-1); }
-.metric .n { font-family: var(--font-display); font-size: 32px; font-weight: 600; letter-spacing: -.05em; color: var(--ink); line-height: 1; margin-bottom: 10px; }
-.metric h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: var(--ink); font-family: var(--font-display); }
-.metric p { font-size: 13px; color: var(--soft); line-height: 1.5; margin: 0; }
-
-.tbl { overflow-x:auto; margin:var(--space-lg) 0 var(--space-md); }
-.tbl table { width:100%; border-collapse:collapse; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); font-size:13.5px; text-align:left; }
-.tbl th, .tbl td { padding:13px 15px; text-align:left; border-bottom:1px solid var(--line-2); line-height:1.55; vertical-align:top; }
-.tbl th { font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--soft); background:var(--table-head-bg); }
-.tbl tr:last-child td { border-bottom:0; }
-.tbl td:first-child { font-weight:600; color:var(--ink); white-space:nowrap; }
-
-.faq { margin-top:var(--space-lg); counter-reset:faq; }
-.faq details { border:1px solid var(--line); border-radius:16px; margin:12px 0; overflow:hidden; background:var(--surface); text-align:left; transition:border-color .2s, box-shadow .2s; counter-increment:faq; }
-.faq details:hover { border-color:rgba(128, 128, 128,.35); box-shadow:0 10px 26px var(--shadow-2); }
-.faq details[open] { border-color:var(--accent); box-shadow:0 14px 34px rgba(128, 128, 128,.1); }
-.faq summary { cursor:pointer; list-style:none; padding:20px 22px; font-size:15px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:16px; }
-.faq summary::-webkit-details-marker { display:none; }
-.faq summary::before { content:counter(faq, decimal-leading-zero); flex-shrink:0; font-family:var(--mono); font-size:11px; font-weight:600; color:var(--accent); background:var(--accent-soft); width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; }
-.faq summary .q-text { flex:1; }
-.faq summary::after { content:""; flex-shrink:0; width:18px; height:18px; background:var(--soft); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center/contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") center/contain no-repeat; transition:transform .25s var(--ease); }
-.faq details[open] summary::after { transform:rotate(180deg); background:var(--accent); }
-.faq .a { padding:0 22px 22px 66px; color:var(--muted); font-size:14px; line-height:1.7; text-align:left; }
-.faq .a b { color:var(--ink); }
-
-.figure img, .shot img, .hero-cover img, .ui-mockup-wrapper img, .frame img { cursor:zoom-in; }
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.96);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .25s var(--ease), visibility 0s linear .25s;
-  overflow: hidden;
-  user-select: none;
-  touch-action: none;
-}
-.lightbox.open {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity .25s var(--ease), visibility 0s;
-}
-.lightbox__toolbar {
-  position: fixed;
-  top: 18px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  z-index: 100005 !important;
-  pointer-events: none;
-}
-.lightbox__zoom-controls {
-  pointer-events: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  background: rgba(20, 20, 20, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-}
-.lightbox__tip {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  background: rgba(0, 0, 0, 0.65);
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  pointer-events: auto;
-}
-@media (max-width: 820px) {
-  .lightbox__tip { display: none; }
-}
-.lightbox__btn {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-  font-size: 12px;
-  font-weight: 600;
-  font-family: inherit;
-}
-.lightbox__btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
-}
-.lightbox__zoom-val {
-  width: auto;
-  padding: 0 10px;
-  border-radius: 12px;
-}
-.lightbox__close {
-  pointer-events: auto;
-  position: static;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(20, 20, 20, 0.88);
-  color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background .2s, transform .2s, border-color .2s;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-}
-.lightbox__close:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: scale(1.06);
-}
-.lightbox__close svg {
-  width: 20px;
-  height: 20px;
-  stroke: currentColor;
-}
-.lightbox__nav {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  color: #ffffff;
-  z-index: 100002 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background .2s, transform .2s, border-color .2s;
-}
-.lightbox__nav:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-50%) scale(1.06);
-}
-.lightbox__nav.prev { left: 24px; }
-.lightbox__nav.next { right: 24px; }
-.lightbox__stage {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  cursor: zoom-in;
-}
-.lightbox__stage.is-zoomed {
-  cursor: grab;
-}
-.lightbox__stage.is-dragging {
-  cursor: grabbing;
-}
-.lightbox__img {
-  max-width: 90vw;
-  max-height: 80vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  transform-origin: center center;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
-  cursor: zoom-in;
-}
-.lightbox__stage.is-zoomed .lightbox__img {
-  cursor: grab;
-  transition: none; /* silky smooth 60fps drag */
-}
-.lightbox__stage.is-dragging .lightbox__img {
-  cursor: grabbing;
-}
-.lightbox__caption {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100001 !important;
-  max-width: 80vw;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(0, 0, 0, 0.75);
-  padding: 8px 18px;
-  border-radius: 999px;
-  font-size: 13px;
-  line-height: 1.5;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-}
-@media (max-width: 700px) {
-  .lightbox__close { width: 40px; height: 40px; }
-  .lightbox__nav { width: 42px; height: 42px; }
-  .lightbox__nav.prev { left: 10px; }
-  .lightbox__nav.next { right: 10px; }
-}
-
-@media (max-width:900px) {
-  .hero { padding: 120px 20px 50px; }
-  section { padding:64px 0; width:min(1000px, calc(100% - 40px)); }
-  .snapshot { grid-template-columns:repeat(2, 1fr); width:100%; gap:12px; }
-  .intro { grid-template-columns:1fr !important; gap:24px; }
-  .hero-trio { grid-template-columns:1fr; gap:16px; width:100%; }
-  .two-up, .metrics, .diff, .ba, .gallery-2, .cgrid, .iteration-track { grid-template-columns:1fr; gap:16px; width:100%; }
-}
-@media (max-width:700px) {
-  .hero { padding:100px 16px 40px; }
-  .hero h1 { font-size:clamp(24px, 5.5vw, 34px); margin-bottom:16px; word-break:break-word; }
-  .hero__sub { font-size:15px; line-height:1.65; }
-  section { width:min(1000px, calc(100% - 32px)); padding:52px 0; }
-  .faq .a { padding-left:16px; padding-right:16px; }
-  .chain-row { flex-direction:column; align-items: stretch; }
-  .snapshot { grid-template-columns:1fr; }
-  .side { padding:20px 16px; }
-  .trio-card, .ba .col, .iter, .constraint { padding:20px 16px; }
-  .flow-card { padding:18px 16px; }
-  .flow-card__steps { grid-template-columns:1fr; gap:10px; }
-  .flow-arrow { transform:rotate(90deg); padding:4px 0; }
-}
-@media (max-width:480px) {
-  .hero { padding:88px 16px 36px; }
-  section { width:min(1000px, calc(100% - 32px)); padding:44px 0; }
-  .jump { padding:16px; }
-  .note { padding:14px 16px; font-size:13.5px; }
-  .hero__meta { gap:6px; }
-  .hero__meta .m { font-size:11px; padding:5px 10px; }
-}
-</style>
 <link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
+<link rel="stylesheet" href="assets/css/cs-v3.css?v=1">
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
 </head>
-<body>
+<body class="cs3-page">
     <a href="#main" class="mz-skip">Skip to content</a>
 
 <header class="site-header" id="siteHeader">
@@ -1125,837 +86,535 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
 </header>
 
 <main id="main" class="w-full">
+<div class="cs3" data-no-icon-motion>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero__in">
-    <div class="mz-hero__eyebrow-wrapper">
-      <div class="mz-hero__badge-pill">
-        <span class="mz-hero__badge-tag">
-          <span class="mz-hero__dot"></span>
-          CASE STUDY
-        </span>
-        <span class="mz-hero__badge-text">
-          Redesign Signing experience for legal teams
-        </span>
-      </div>
+<!-- ============ HERO ============ -->
+<header class="cs3-hero">
+  <div class="cs3-wrap">
+    <div class="cs3-hero__top">
+      <a class="cs3-back" href="index.html#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>All work</a>
+      <span class="tag tag-outline">Case study</span>
+      <span class="tag tag-blue">Legal tech</span>
+      <span class="tag tag-badge">AI</span>
     </div>
-    <h1>From manual document setup to <span class="mz-highlight" data-action="box">effortless signing</span>.</h1>
-    <p class="hero__sub">Legal teams shouldn't have to wrestle with <b>complicated workflows</b> to send a document for signature. The task is straightforward, yet it often involves <b>multiple steps, hidden documents, and repetitive field placement</b>. All of that adds friction before a document reaches the signer.</p>
-    <p class="hero__sub" style="margin-top: 14px;">I redesigned OmnisProof's signing setup so legal teams move from document to signature with less effort: <b>upload, field placement and AI assistance in one self-serve flow</b>.</p>
+    <h1 class="cs3-hl">From manual document setup to effortless signing.</h1>
+    <div class="cs3-hero__lead" data-rv style="--d:3">
+      <p>Legal teams shouldn't have to wrestle with <b>complicated workflows</b> to send a document for signature. The task is straightforward, yet it often involves <b>multiple steps, hidden documents, and repetitive field placement</b>. All of that adds friction before a document reaches the signer.</p>
+      <p>I redesigned OmnisProof's signing setup so legal teams move from document to signature with less effort: <b>upload, field placement and AI assistance in one self-serve flow</b>.</p>
+    </div>
+    <dl class="cs3-facts" data-rv style="--d:4">
+      <div><dt class="eyebrow">Product</dt><dd>OmnisProof, part of the Omnis legal AI suite</dd></div>
+      <div><dt class="eyebrow">Role</dt><dd>Product Designer / Design Engineer</dd></div>
+      <div><dt class="eyebrow">Scope</dt><dd>Workflow redesign, AI field detection, prototyping</dd></div>
+      <div><dt class="eyebrow">Users</dt><dd>Lawyers, paralegals, legal assistants</dd></div>
+    </dl>
+    <figure class="cs3-media cs3-cover" data-rv="unfold" style="--d:5">
+      <div class="cs3-media__frame" style="border:0"><img src="assets/images/omnisproof-cover.webp?v=q98" alt="OmnisProof: Get your document signed cover preview with key workflow annotations" loading="eager" fetchpriority="high"></div>
+    </figure>
   </div>
 </header>
 
-<!-- HERO COVER -->
-<div class="hero-cover">
-  <div class="frame">
-    <img src="assets/images/omnisproof-cover.webp?v=q98" alt="OmnisProof: Get your document signed cover preview with key workflow annotations" loading="eager">
+<!-- ============ RESULTS BAND ============ -->
+<div class="cs3-wrap">
+  <div class="cs3-results" data-rv>
+    <div><span class="eyebrow">AI field suggestions</span><span class="n">~72%</span><p>Accepted without edits across 6 internal prototype walkthroughs.</p></div>
+    <div><span class="eyebrow">Setup screens</span><span class="n">4 → 1</span><p>A 4-step modal wizard became one guided page where the document never leaves view.</p></div>
+    <div><span class="eyebrow">End-to-end workflow</span><span class="n">11 → 8</span><p>Steps to execute a contract, moving from 6 disconnected tools to 1 system.</p></div>
   </div>
 </div>
 
-<!-- Section Divider: Hero to Overview -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<!-- ============ 01 OVERVIEW ============ -->
+<section class="cs3-section" id="overview" style="margin-top:var(--space-section)">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">01</span><span class="cs3-aside__name">What we're building</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">Making document signing <span class="mark">simpler</span> from the very first step.</h2>
+        <div class="cs3-prose"><p>OmnisProof is a dedicated e-signing platform built for high-velocity legal workflows. We eliminated disjointed modal wizards and automated manual field placement into a single guided workspace. The redesign tackles three major bottlenecks across the preparation lifecycle.</p></div>
+      </div>
 
-<!-- 01 WHAT WE'RE BUILDING -->
-<section id="overview">
-  <div class="sec-num">01 / WHAT WE'RE BUILDING</div>
-  <h2 class="h reveal">Making document signing <span class="mz-highlight" data-action="box">simpler</span> from the very first step.</h2>
-  
-  <div class="overview-intro reveal">
-    <p class="overview-lead-text">
-      OmnisProof is a dedicated e-signing platform built for high-velocity legal workflows.<br>
-      We eliminated disjointed modal wizards and automated manual field placement into a single guided workspace.<br>
-      The redesign tackles three major bottlenecks across the preparation lifecycle.
-    </p>
-  </div>
+      <div class="cs3-rows">
+        <article class="cs3-row" data-rv>
+          <div class="cs3-row__head"><span class="cs3-row__num">01</span><h3 class="cs3-row__title">Too many steps before sending a document</h3></div>
+          <div class="cs3-row__cols">
+            <div><span class="tag tag-bad">The problem</span><p>Preparing a document for signature involved moving through multiple screens and disconnected steps. Users had to work through the setup process before they could place signature fields.</p></div>
+            <div><span class="tag tag-good">What we're building</span><p>A <b>single, guided workspace</b> where users can upload a document, configure signing details, and prepare it for sending, all in one continuous flow.</p></div>
+          </div>
+          <figure class="cs3-media"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-01.webp?v=q98" alt="Before vs After Redesign: collapsing the 4-step wizard into 1 guided page" loading="lazy"></div></figure>
+        </article>
+        <article class="cs3-row" data-rv>
+          <div class="cs3-row__head"><span class="cs3-row__num">02</span><h3 class="cs3-row__title">Manual field placement slows everything down</h3></div>
+          <div class="cs3-row__cols">
+            <div><span class="tag tag-bad">The problem</span><p>Placing signature fields manually across lengthy legal documents is repetitive, time-consuming, and easy to get wrong. Users had to scan documents to determine where each person needed to sign.</p></div>
+            <div><span class="tag tag-good">What we're building</span><p><b>AI-assisted field detection</b> that identifies potential signing locations and suggests where fields belong, while keeping users in control of reviewing and confirming them.</p></div>
+          </div>
+          <figure class="cs3-media"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-02.webp?v=q98" alt="AI-Assisted Detection: reviewable suggested signing fields" loading="lazy"></div></figure>
+        </article>
+        <article class="cs3-row" data-rv>
+          <div class="cs3-row__head"><span class="cs3-row__num">03</span><h3 class="cs3-row__title">Making document preparation easier to manage</h3></div>
+          <div class="cs3-row__cols">
+            <div><span class="tag tag-bad">The problem</span><p>Legal teams work with different document types, signing requirements, and workflows. The experience needed to support these variations without adding more complexity.</p></div>
+            <div><span class="tag tag-good">What we're building</span><p>A <b>flexible signing experience</b> that supports document uploads, reusable templates, and existing files, giving teams more ways to start and complete their signing workflow.</p></div>
+          </div>
+          <figure class="cs3-media"><div class="cs3-media__frame"><img src="assets/images/omnisproof-preview-03.webp?v=q98" alt="Document Management: flexible workflows, templates and folders" loading="lazy"></div></figure>
+        </article>
+      </div>
 
-  <!-- 01 FEATURE -->
-  <div class="feature-item reveal">
-    <div class="feature-header">
-      <h3 class="feature-title">01 · Too many steps before sending a document</h3>
+      <blockquote class="cs3-quote" data-rv>
+        <span class="eyebrow" style="margin-bottom:var(--space-3)">The goal</span>
+        <p>Turn document signing from a multi-step chore into a straightforward, guided experience that legal teams can complete with confidence.</p>
+      </blockquote>
     </div>
-    <div class="feature-narrative">
-      <div class="narrative-card narrative-card--prob">
-        <span class="narrative-tag">The Problem</span>
-        <p class="narrative-text">Preparing a document for signature involved moving through multiple screens and disconnected steps. Users had to work through the setup process before they could place signature fields.</p>
-      </div>
-      <div class="narrative-card narrative-card--sol">
-        <span class="narrative-tag">What We're Building</span>
-        <p class="narrative-text">We're building a <span class="mz-highlight" data-action="box">single, guided workspace</span> where users can upload a document, configure signing details, and prepare it for sending, all in one continuous flow.</p>
-      </div>
-    </div>
-    <div class="ui-mockup-frame">
-      <div class="frame">
-        <div class="ui-mockup-wrapper">
-          <img src="assets/images/omnisproof-preview-01.webp?v=q98" alt="01 · Before vs After Redesign: Collapsing the 4-step wizard into 1 guided page" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 02 FEATURE -->
-  <div class="feature-item reveal">
-    <div class="feature-header">
-      <h3 class="feature-title">02 · Manual field placement slows everything down</h3>
-    </div>
-    <div class="feature-narrative">
-      <div class="narrative-card narrative-card--prob">
-        <span class="narrative-tag">The Problem</span>
-        <p class="narrative-text">Placing signature fields manually across lengthy legal documents is repetitive, time-consuming, and easy to get wrong. Users had to scan documents to determine where each person needed to sign.</p>
-      </div>
-      <div class="narrative-card narrative-card--sol">
-        <span class="narrative-tag">What We're Building</span>
-        <p class="narrative-text">We're building <span class="mz-highlight" data-action="box">AI-assisted field detection</span> that identifies potential signing locations and suggests where fields belong, while keeping users in control of reviewing and confirming them.</p>
-      </div>
-    </div>
-    <div class="ui-mockup-frame">
-      <div class="frame">
-        <div class="ui-mockup-wrapper">
-          <img src="assets/images/omnisproof-preview-02.webp?v=q98" alt="02 · AI-Assisted Detection: Reviewable suggested signing fields" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 03 FEATURE -->
-  <div class="feature-item reveal">
-    <div class="feature-header">
-      <h3 class="feature-title">03 · Making document preparation easier to manage</h3>
-    </div>
-    <div class="feature-narrative">
-      <div class="narrative-card narrative-card--prob">
-        <span class="narrative-tag">The Problem</span>
-        <p class="narrative-text">Legal teams work with different document types, signing requirements, and workflows. The experience needed to support these variations without adding more complexity.</p>
-      </div>
-      <div class="narrative-card narrative-card--sol">
-        <span class="narrative-tag">What We're Building</span>
-        <p class="narrative-text">We're building a <span class="mz-highlight" data-action="box">flexible signing experience</span> that supports document uploads, reusable templates, and existing files, giving teams more ways to start and complete their signing workflow.</p>
-      </div>
-    </div>
-    <div class="ui-mockup-frame">
-      <div class="frame">
-        <div class="ui-mockup-wrapper">
-          <img src="assets/images/omnisproof-preview-03.webp?v=q98" alt="03 · Document Management: Flexible Workflows, Templates &amp; Folders" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE GOAL -->
-  <div class="goal-callout reveal">
-    <div class="goal-callout__badge">
-      <span class="goal-callout__dot"></span>
-      THE GOAL
-    </div>
-    <p class="goal-callout__text">Turn document signing from a multi-step chore into a <span class="mz-highlight" data-action="box">straightforward, guided experience</span> that legal teams can complete with confidence.</p>
   </div>
 </section>
 
-<!-- Section Divider: Overview to Context -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- 02 CONTEXT -->
-<section id="context">
-  <div class="sec-num">02 / THE PRODUCT</div>
-  <h2 class="h reveal">The <span class="mz-highlight" data-action="box">document execution layer</span> inside a legal AI ecosystem.</h2>
-  <div class="prose reveal">
-    <p>OmnisProof is the document execution layer of the Omnis legal AI ecosystem. It turns a drafted agreement into a <b>signed, filed legal record</b>: prepare, assign signers, place fields, send and track, without leaving the platform.</p>
-    <p>It sounds like the easy part. But drafting, matter tracking and client portals all produce documents that end up here. <b>If signing is slow or error-prone, it undermines everything upstream.</b></p>
-  </div>
-
-  <div class="flow-matrix reveal">
-    <!-- Success Flow -->
-    <div class="flow-card good">
-      <div class="flow-card__head">
-        <span class="flow-card__badge">
-          <span class="flow-card__badge-dot"></span>
-          Target Ecosystem Experience
-        </span>
-        <span class="flow-card__meta">High Adoption &amp; Retention</span>
+<!-- ============ 02 CONTEXT ============ -->
+<section class="cs3-section" id="context">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">02</span><span class="cs3-aside__name">The product</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">The <span class="mark">document execution layer</span> inside a legal AI ecosystem.</h2>
+        <div class="cs3-prose">
+          <p>OmnisProof is the document execution layer of the Omnis legal AI ecosystem. It turns a drafted agreement into a <b>signed, filed legal record</b>: prepare, assign signers, place fields, send and track, without leaving the platform.</p>
+          <p>It sounds like the easy part. But drafting, matter tracking and client portals all produce documents that end up here. <b>If signing is slow or error-prone, it undermines everything upstream.</b></p>
+        </div>
       </div>
-      <div class="flow-card__steps">
-        <div class="flow-node">
-          <span class="flow-node__step">01</span>
-          <div>
-            <div class="flow-node__text">Fast &amp; Reliable E-Sign</div>
-            <span class="flow-node__sub">Zero friction prep &amp; AI detect</span>
+
+      <div data-rv>
+        <div class="cs3-flow cs3-flow--new">
+          <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-good" style="margin-right:8px">Target</span>Ecosystem experience</span><span class="cs3-flow__stats">High adoption &amp; retention</span></div>
+          <ol>
+            <li><span class="k">01</span><h5>Fast &amp; reliable e-sign</h5><p>Zero friction prep &amp; AI detect</p></li>
+            <li><span class="k">02</span><h5>Matters close on time</h5><p>Zero back-and-forth rework</p></li>
+            <li><span class="k">03</span><h5>Full ecosystem trust</h5><p>Complete replacement of DocuSign</p></li>
+          </ol>
+        </div>
+        <div class="cs3-flow cs3-flow--old">
+          <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-bad" style="margin-right:8px">Baseline risk</span>Pre-redesign</span><span class="cs3-flow__stats">High churn hazard</span></div>
+          <ol>
+            <li><span class="k">01</span><h5>Slow / error-prone setup</h5><p>Document hidden behind 4 steps</p></li>
+            <li><span class="k">02</span><h5>Manual rework &amp; delays</h5><p>Missed signatures &amp; wrong signers</p></li>
+            <li><span class="k">03</span><h5>Firm falls back to DocuSign</h5><p>Undermines upstream AI platform</p></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cs3-cards cs3-cards--2" data-rv>
+        <div class="cs3-card"><span class="eyebrow">Situation before this project</span><p>Engineering had shipped a working MVP: a 4-step wizard (<span class="mono">General Info → Add Signers → Add Fields → Distribute</span>) modelled on e-signature admin panels. It covered every setting, but not how lawyers work. <b>The document didn't appear until step three.</b></p></div>
+        <div class="cs3-card"><span class="eyebrow">Why this became urgent</span><p>Leadership pitched OmnisProof as a <b>full DocuSign replacement</b>. That pitch fails if our setup is slower and clumsier than DocuSign's. When I took over, that gap was the <b>most-cited risk in product reviews</b>.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 SIGNALS ============ -->
+<section class="cs3-section" id="signals">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">03</span><span class="cs3-aside__name">Why we solved this</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">We didn't have time for a full research cycle. We looked at the <span class="mark">strongest signals available</span>.</h2>
+        <div class="cs3-prose">
+          <p>No research budget and no access to law firms before launch. So I combined all the signals that existed: <b>walkthroughs</b> with 2 lawyers and a paralegal, the <b>PM's testing notes</b>, a <b>teardown of 5 competitors</b>, and <b>G2 &amp; Capterra reviews</b>.</p>
+          <p>The same pattern kept showing up across all sources:</p>
+          <ul>
+            <li>Users could complete each step of the wizard but lost track of which document they were configuring</li>
+            <li>Manual field placement was the single largest source of both time spent and errors made</li>
+            <li>Reviewers of competitor tools described documents sent with a missing field or the wrong recipient, discovered only after the fact</li>
+          </ul>
+          <p>Walkthroughs surfaced it, the PM's testing reproduced it, and reviews showed a <b>category-wide failure mode</b> nobody had solved. That's why it beat other roadmap items.</p>
+        </div>
+      </div>
+
+      <div class="cs3-block" data-rv>
+        <span class="eyebrow">Target users · one person, three job titles</span>
+        <div class="cs3-cards cs3-cards--3">
+          <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></span><h4>Lawyers</h4><p>Prepare agreements for signature and are accountable if anything goes out wrong.</p></div>
+          <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></span><h4>Paralegals</h4><p>Do most of the day-to-day document prep across many matters.</p></div>
+          <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg></span><h4>Legal assistants</h4><p>Often prep the document on an attorney's behalf, then hand it back to send.</p></div>
+        </div>
+        <div class="cs3-prose" style="font-size:var(--text-sm)"><p>At Omnis, "user," "attorney," and "legal team" are used interchangeably in internal docs. They all mean the same person here: <b>whoever is sitting in OmnisProof getting a document ready to send.</b></p></div>
+        <div class="cs3-note cs3-note--warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="eyebrow">Evidence limitation</span>My primary evidence came from internal team members standing in for these users, a real limitation I address in the final thoughts (§09).</div></div>
+      </div>
+
+      <blockquote class="cs3-quote" data-rv>
+        <span class="eyebrow" style="margin-bottom:var(--space-3)">Problem statement</span>
+        <p>Legal teams need a way to prepare and send documents for signature that doesn't require them to become experts in field placement, or lose sight of the document itself while configuring it.</p>
+      </blockquote>
+
+      <div data-rv>
+        <div class="cs3-flow cs3-flow--old">
+          <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">Before · MVP wizard</span>Multiple screens, no document context, manual fields</span></div>
+          <ol>
+            <li><span class="k">01</span><h5>General Info</h5><p>Enter document details and settings.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Document not visible until step 3</span></li>
+            <li><span class="k">02</span><h5>Add Signers</h5><p>Add recipients and set their roles.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Multiple steps create friction</span></li>
+            <li><span class="k">03</span><h5>Add Fields</h5><p>Place signature, initials, date and other fields by hand.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Manual field placement is time-consuming</span></li>
+            <li><span class="k">04</span><h5>Distribute</h5><p>Review and send the document.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Errors often discovered after sending</span></li>
+          </ol>
+        </div>
+        <div class="cs3-flow cs3-flow--new">
+          <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">After · document-first</span>Upload, AI-suggested fields, review and send in one flow</span></div>
+          <ol>
+            <li><span class="k">01</span><h5>Upload document</h5><p>Add your document and see it on screen.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Document visible from the start</span></li>
+            <li><span class="k">02</span><h5>AI suggests fields</h5><p>AI detects fields and suggests them.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AI reduces manual work</span></li>
+            <li><span class="k">03</span><h5>Review &amp; edit</h5><p>Review, adjust or add fields as needed.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fewer errors with built-in guidance</span></li>
+            <li><span class="k">04</span><h5>Add signers</h5><p>Assign recipients and set their roles.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Streamlined signer setup</span></li>
+            <li><span class="k">05</span><h5>Send</h5><p>Finalize and send the document.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Faster, more confident sending</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 RESEARCH ============ -->
+<section class="cs3-section" id="research">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">04</span><span class="cs3-aside__name">Research</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">Configuring a document correctly was the hard part. Getting it into the system was easy.</h2>
+        <div class="cs3-prose"><p>I ran a structured teardown of DocuSign, Adobe Sign, Dropbox Sign, PandaDoc, and Documenso: their public documentation, review-site screenshots, and (where available) free-tier trials.</p></div>
+      </div>
+
+      <div class="cs3-vs" data-rv>
+        <div class="cs3-vs__row cs3-vs__row--head"><div class="eyebrow">What competitors do well</div><div class="eyebrow">Where they fall short</div></div>
+        <div class="cs3-vs__row">
+          <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Document upload and recipient invitation</b> are fast and well-documented across all five platforms.</span></div>
+          <div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>Field placement is manual</b>: click, drag, resize, repeat, for every signature block and date field on every page.</span></div>
+        </div>
+        <div class="cs3-vs__row">
+          <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>DocuSign offers limited auto-placement</b> for a narrow set of pre-formatted templates.</span></div>
+          <div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>Outside that narrow case</b>, nothing in the category offers reviewable AI assistance for field detection.</span></div>
+        </div>
+        <div class="cs3-vs__row">
+          <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Send flows are optimized to be fast</b>: most competitors market “send in under a minute.”</span></div>
+          <div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>That speed costs verification.</b> G2 reviews describe documents sent with a missing field or wrong recipient, caught only after the fact.</span></div>
+        </div>
+        <div class="cs3-vs__foot">Pattern across all five: <b>getting a document in is solved; making it correct once it's there is not.</b></div>
+      </div>
+
+      <div class="cs3-prose" data-rv>
+        <p><b>Key insight:</b> getting a document in is solved everywhere, including our MVP. The unsolved part sits between "uploaded" and "ready to send": <b>field placement, recipients, and catching mistakes before they go out.</b></p>
+        <p>That reframed the direction of the whole project: <span class="mark">let the system handle more of the setup, and let users review and correct only what needs their attention</span>, instead of making manual configuration slightly faster.</p>
+      </div>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Mapping the fragmented baseline against the streamlined workflow</h3>
+        <div>
+          <div class="cs3-flow cs3-flow--old">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">Baseline reality</span>11 steps across disconnected tools</span><span class="cs3-flow__stats"><span>11 steps</span><span>6 tools</span><span>7 tool switches</span></span></div>
+            <ol>
+              <li><span class="k">01</span><h5>Client intake</h5><p>CRM / case management</p></li>
+              <li><span class="k">02</span><h5>Create / draft agreement</h5><p>Word / drafting tool</p></li>
+              <li><span class="k">03</span><h5>Internal review &amp; approval</h5><p>Email / doc sharing</p></li>
+              <li><span class="k">04</span><h5>Export as PDF</h5><p>Local folder / device</p></li>
+              <li><span class="k">05</span><h5>Upload to e-sign platform</h5><p>DocuSign / other e-sign</p></li>
+              <li><span class="k">06</span><h5>Add recipients &amp; signature fields</h5><p>E-sign platform</p></li>
+              <li><span class="k">07</span><h5>Send to client</h5><p>E-sign platform</p></li>
+              <li><span class="k">08</span><h5>Follow up &amp; track progress</h5><p>Email / e-sign dashboard</p></li>
+              <li><span class="k">09</span><h5>Download signed agreement</h5><p>Local folder / device</p></li>
+              <li><span class="k">10</span><h5>Upload to practice management</h5><p>Practice mgmt system</p></li>
+              <li><span class="k">11</span><h5>Close / update matter</h5><p>Practice mgmt system</p></li>
+            </ol>
+          </div>
+          <div class="cs3-flow cs3-flow--new">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">Target experience</span>8 steps inside OmnisProof</span><span class="cs3-flow__stats"><span>8 steps</span><span>1 system</span><span>0 tool switches</span></span></div>
+            <ol>
+              <li><span class="k">01</span><h5>Create agreement</h5><p>Start from scratch or an existing template.</p></li>
+              <li><span class="k">02</span><h5>Prepare document</h5><p>Add content, templates and AI field suggestions.</p></li>
+              <li><span class="k">03</span><h5>Configure signers</h5><p>Assign signers, roles, signing order and authentication.</p></li>
+              <li><span class="k">04</span><h5>Review &amp; approve</h5><p>Review internally before anything is sent.</p></li>
+              <li><span class="k">05</span><h5>Send for signature</h5><p>Email signers with built-in notifications.</p></li>
+              <li><span class="k">06</span><h5>Track progress</h5><p>Real-time status, reminders and signer activity.</p></li>
+              <li><span class="k">07</span><h5>Completed</h5><p>Every party has signed.</p></li>
+              <li><span class="k">08</span><h5>Store &amp; manage</h5><p>Audit trail, document history and matter records.</p></li>
+            </ol>
+            <div class="cs3-flow__foot"><b>From 11 steps across 6 tools to 8 steps in one system.</b> Before OmnisProof, legal teams bounced between Word, email, local folders, an external e-signature platform and practice-management software to execute a single contract.</div>
           </div>
         </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-node">
-          <span class="flow-node__step">02</span>
-          <div>
-            <div class="flow-node__text">Matters Close on Time</div>
-            <span class="flow-node__sub">Zero back-and-forth rework</span>
-          </div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-node">
-          <span class="flow-node__step">03</span>
-          <div>
-            <div class="flow-node__text">Full Ecosystem Trust</div>
-            <span class="flow-node__sub">Complete replacement of DocuSign</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Failure Flow -->
-    <div class="flow-card bad">
-      <div class="flow-card__head">
-        <span class="flow-card__badge">
-          <span class="flow-card__badge-dot"></span>
-          Baseline Risk (Pre-Redesign)
-        </span>
-        <span class="flow-card__meta">High Churn Hazard</span>
-      </div>
-      <div class="flow-card__steps">
-        <div class="flow-node">
-          <span class="flow-node__step">01</span>
-          <div>
-            <div class="flow-node__text">Slow / Error-Prone Setup</div>
-            <span class="flow-node__sub">Document hidden behind 4 steps</span>
-          </div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-node">
-          <span class="flow-node__step">02</span>
-          <div>
-            <div class="flow-node__text">Manual Rework &amp; Delays</div>
-            <span class="flow-node__sub">Missed signatures &amp; wrong signers</span>
-          </div>
-        </div>
-        <div class="flow-arrow">&rarr;</div>
-        <div class="flow-node">
-          <span class="flow-node__step">03</span>
-          <div>
-            <div class="flow-node__text">Firm Falls Back to DocuSign</div>
-            <span class="flow-node__sub">Undermines upstream AI platform</span>
-          </div>
-        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="prose reveal">
-    <div class="eyebrow">Situation before this project</div>
-    <p>Engineering had shipped a working MVP: a 4-step wizard (<span class="mono">General Info → Add Signers → Add Fields → Distribute</span>) modelled on e-signature admin panels. It covered every setting, but not how lawyers work. <b>The document didn't appear until step three.</b></p>
-
-    <div class="eyebrow" style="margin-top:8px;">Why this became urgent</div>
-    <p>Leadership pitched OmnisProof as a <b>full DocuSign replacement</b>. That pitch fails if our setup is slower and clumsier than DocuSign's. When I took over, that gap was the <b>most-cited risk in product reviews</b>.</p>
+<!-- ============ 05 CONSTRAINTS ============ -->
+<section class="cs3-section" id="constraints">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">05</span><span class="cs3-aside__name">Constraints &amp; decisions</span></div></aside>
+    <div class="cs3-body">
+      <h2 class="cs3-h2" data-rv>Not "redesign the interface": decide which complexity stays with the user, and which the system should absorb.</h2>
+      <div class="cs3-cards cs3-cards--2" data-rv>
+        <div class="cs3-card"><span class="cs3-aside__num">Constraint 01</span><h4>Field placement was required, but too heavy to leave manual</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>Every document needs signature, date, name, and initials fields placed correctly before it can go out. This step couldn't be removed, but making users place every field on every page by hand was the largest time cost we'd identified.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Turn field placement from a manual task into a system-assisted one: AI detects and proposes placement, the user reviews and corrects only where needed. <a href="#problem-ai" style="color:var(--color-accent)">Deep dive 01 →</a></dd></div></dl></div>
+        <div class="cs3-card"><span class="cs3-aside__num">Constraint 02</span><h4>The 4-step structure mapped to something real, but hiding the document behind it didn't</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>"Who's involved → what goes where → is it ready to send" is how document prep works. The three-stage logic was fine. Presenting each stage as a separate full screen hid the document being configured.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Keep the underlying stages, rebuild the presentation as one page: the document stays visible at all times, with a persistent step tracker and a side panel that changes per stage. <a href="#problem-steps" style="color:var(--color-accent)">Deep dive 02 →</a></dd></div></dl></div>
+        <div class="cs3-card"><span class="cs3-aside__num">Constraint 03</span><h4>No direct access to external users</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>Each decision below needed some form of validation, but law firms weren't reachable pre-launch. Relying only on internal opinion risked designing for people who already trust the product.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Validate with internal legal professionals as a proxy, cross-check against competitive review-site complaints as external signal, and label each claim with its actual confidence level instead of letting it read as more validated than it is.</dd></div></dl></div>
+        <div class="cs3-card"><span class="cs3-aside__num">Constraint 04</span><h4>The fix had to ship inside the existing timeline</h4><dl><div><dt class="eyebrow">Why this mattered</dt><dd>The competitive gap was already being cited as a risk in product reviews. A ground-up redesign of the entire setup experience wasn't realistic in the time available.</dd></div><div><dt class="eyebrow">Decision</dt><dd>Scope to the two moments with the clearest evidence of friction (field placement and the wizard structure) rather than trying to fix every part of document prep at once.</dd></div></dl></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Section Divider: Context to Signals -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<!-- ============ 06 DEEP DIVE 01 ============ -->
+<section class="cs3-section" id="problem-ai">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">06 · Deep dive 01</span><span class="cs3-aside__name">AI-assisted field placement</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">How do you make legal professionals trust an AI that places their signature fields?</h2>
+        <div class="cs3-prose"><p>Placing every field by hand, for every recipient, took the <b>largest share of prep time</b> and caused <b>each placement mistake</b> we saw. Automating was easy. Trust was hard: <span class="mark">a wrong AI guess sends a contract to the wrong person.</span></p></div>
+      </div>
 
-<!-- 03 SIGNALS -->
-<section id="signals">
-  <div class="sec-num">03 / WHY WE DECIDED TO SOLVE THIS</div>
-  <h2 class="h reveal">We didn't have time for a full research cycle. We looked at the <span class="mz-highlight" data-action="box">strongest signals available</span>.</h2>
-  <div class="prose reveal">
-    <p>No research budget and no access to law firms before launch. So I combined all the signals that existed: <b>walkthroughs</b> with 2 lawyers and a paralegal, the <b>PM's testing notes</b>, a <b>teardown of 5 competitors</b>, and <b>G2 &amp; Capterra reviews</b>.</p>
-    <p>The same pattern kept showing up across all sources:</p>
-    <ul>
-      <li>Users could complete each step of the wizard but <span class="mz-highlight" data-action="yellow">lost track of which document they were configuring</span></li>
-      <li><span class="mz-highlight" data-action="yellow">Manual field placement was the single largest source</span> of both time spent and errors made</li>
-      <li>Reviewers of competitor tools described documents sent with a <span class="mz-highlight" data-action="yellow">missing field or the wrong recipient</span>, discovered only after the fact</li>
-    </ul>
-    <p>Walkthroughs surfaced it, the PM's testing reproduced it, and reviews showed a <span class="mz-highlight" data-action="box">category-wide failure mode</span> nobody had solved. That's why it beat other roadmap items.</p>
-  </div>
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Testing three ways to introduce AI field detection</h3>
+        <div class="cs3-cards cs3-cards--3">
+          <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Iteration 1 · rejected</span><h4>Automatic, silent placement</h4><p>AI detects and places each field the moment a document is uploaded. No review step: the fields are there, ready to send.</p><p class="why"><b>Why it failed:</b> a lawyer on our team moved each AI-placed field, even the correct ones: <i>"I didn't see it place them, so I don't trust them."</i> The checking work just moved somewhere with no support.</p></div>
+          <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Iteration 2 · rejected</span><h4>Chat-based AI assistant</h4><p>A conversational interface where the user could type "place a signature field for Lucas on page 3" and the AI would execute it.</p><p class="why"><b>Why it was rejected:</b> field placement is one-time setup, not a conversation. Typing instructions added a step and a new pattern to learn, for a task people want done in seconds.</p></div>
+          <div class="cs3-card cs3-card--win"><span class="tag tag-good" style="width:max-content">Final · shipped</span><h4>Inline, reviewable "Detect with AI"</h4><p>One button inside the existing field panel. Clicking it places suggested fields on the document, using the same drag-and-edit interaction as a manually placed field.</p><p class="why"><b>Why it worked:</b> the placement is visible as it happens, each suggestion is editable or deletable with no new interaction to learn, and there's no separate "accept" step. The AI proposes and the user decides, using tools they already know.</p></div>
+        </div>
+      </div>
 
-  <div class="persona reveal">
-    <div class="persona-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Target users · one person, three job titles</div>
-    <div class="persona-grid">
-      <div class="persona-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><h5>Lawyers</h5><p>Prepare agreements for signature and are accountable if anything goes out wrong.</p></div>
-      <div class="persona-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div><h5>Paralegals</h5><p>Do most of the day-to-day document prep across many matters.</p></div>
-      <div class="persona-card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 15H7a4 4 0 0 0-4 4v2"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="7" r="4"/></svg></div><h5>Legal assistants</h5><p>Often prep the document on an attorney's behalf, then hand it back to send.</p></div>
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">The shipped loop: the AI proposes, the user disposes</h3>
+        <div>
+          <div class="cs3-flow cs3-flow--old">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">Iteration 1 · silent</span>AI places everything → user re-checks everything</span></div>
+            <ol><li><span class="k">01</span><h5>Upload document</h5></li><li><span class="k">02</span><h5>AI places each field, unseen</h5></li><li><span class="k">03</span><h5>User can't tell what changed</h5></li><li><span class="k">04</span><h5>Moves each field by hand</h5></li><li><span class="k">05</span><h5>Trust lost</h5></li></ol>
+          </div>
+          <div class="cs3-flow cs3-flow--new">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">Shipped · reviewable</span>Visible suggestion → inline review → send</span></div>
+            <ol><li><span class="k">01</span><h5>Open document</h5></li><li><span class="k">02</span><h5>Click “Detect with AI”</h5></li><li><span class="k">03</span><h5>Fields appear on the page, in view</h5></li><li><span class="k">04</span><h5>Drag, edit or delete inline</h5></li><li><span class="k">05</span><h5>Send with confidence</h5></li></ol>
+            <div class="cs3-flow__foot">~28% of suggestions adjusted · each one stays editable</div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="cs3-media" data-rv="unfold">
+        <div class="cs3-media__frame"><img loading="lazy" src="assets/images/omnisproof-ai-field-annotation.png" alt="OmnisProof signing setup screen with Detect with AI button, visual field identification, and AI feedback callouts"></div>
+        <figcaption><b>AI-assisted field placement in action.</b> "Detect with AI" scans the document in context, identifies 38 form fields, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
+      </figure>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Designing for failure and non-standard inputs</h3>
+        <div>
+          <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>Non-standard or custom field types</b> that fall outside the seven types the model recognizes (signature, date, name, initials, title, email, text) aren't guessed at: they're left for manual placement using the same field library, with no error state implying something went wrong.</p></div>
+          <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>Scanned documents with non-selectable text</b> can't be reliably parsed by the detection model. "Detect with AI" stays visible but shows a clear inline message explaining why detection isn't available for this file, instead of failing or returning wrong guesses.</p></div>
+          <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>A user rejects most suggestions on one document.</b> The next document still gets a fresh detection pass. The real risk is someone deciding "the AI doesn't work" and switching it off. Trust recovery is untested, so I flag it as open.</p></div>
+        </div>
+      </div>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Observed walkthrough validation</h3>
+        <div class="cs3-cards cs3-cards--3 cs3-metrics">
+          <div class="cs3-card"><span class="n">~72%</span><h5>Suggestions accepted without edits</h5><p>Across 6 internal prototype walkthroughs. The 28% that got adjusted is why each suggestion stays editable instead of final.</p></div>
+          <div class="cs3-card"><span class="n">5 / 7</span><h5>Standard field types reliably auto-detected</h5><p>Signature, date, name, initials, and title. Email and free-text fields still default to manual placement.</p></div>
+          <div class="cs3-card"><span class="n">1 → 0</span><h5>Participants who distrusted AI output after the redesign</h5><p>The same lawyer who moved every field under silent automation left correct suggestions untouched once placement became visible.</p></div>
+        </div>
+        <div class="cs3-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><span class="eyebrow">Honest confidence level</span>These numbers come from six internal walkthroughs with legal professionals inside our own organization (not a controlled study, not external users, not production telemetry). I treat them as directional evidence the detection is useful, not as a validated product metric, and I say that when asked.</div></div>
+        <p class="hand">directional, not a product metric ↗</p>
+      </div>
     </div>
-    <p class="persona-note">At Omnis, "user," "attorney," and "legal team" are used interchangeably in internal docs. They all mean the same person here: <b>whoever is sitting in OmnisProof getting a document ready to send.</b></p>
-    <div class="state warning"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="state-label">Evidence limitation</span>My primary evidence came from internal team members standing in for these users, a real limitation I address in the final thoughts (§09).</div></div>
-  </div>
-
-  <div class="prose reveal">
-    <div class="eyebrow">Problem statement</div>
-    <p style="font-size:18px; color:var(--ink); font-weight:600; font-family:var(--font-display); line-height:1.5;">Legal teams need a way to prepare and send documents for signature that doesn't require them to <span class="mz-highlight" data-action="box">become experts in field placement</span>, or lose sight of the document itself while configuring it.</p>
-  </div>
-
-  <div class="journey old reveal">
-    <div class="journey-head">
-      <div class="flow-label"><span class="lozenge outline">Before · MVP wizard</span><span class="flow-title">Multiple screens, no document context, manual fields</span></div>
-    </div>
-    <ol class="journey-steps journey-cols-4">
-      <li class="journey-step" style="--i:0"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><h5>General Info</h5><p>Enter document details and settings.</p><div class="effect bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Document not visible until step 3</span></div></li>
-      <li class="journey-step" style="--i:1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h5>Add Signers</h5><p>Add recipients and set their roles.</p><div class="effect bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Multiple steps create friction</span></div></li>
-      <li class="journey-step" style="--i:2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span><h5>Add Fields</h5><p>Place signature, initials, date and other fields by hand.</p><div class="effect bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Manual field placement is time-consuming</span></div></li>
-      <li class="journey-step" style="--i:3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><h5>Distribute</h5><p>Review and send the document.</p><div class="effect bad"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span>Errors often discovered after sending</span></div></li>
-    </ol>
-  </div>
-  <div class="journey new reveal">
-    <div class="journey-head">
-      <div class="flow-label"><span class="lozenge inverted">After · document-first</span><span class="flow-title">Upload, AI-suggested fields, review and send in one flow</span></div>
-    </div>
-    <ol class="journey-steps journey-cols-5">
-      <li class="journey-step" style="--i:0"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6"/><path d="M12 18v-6"/></svg></span><h5>Upload document</h5><p>Add your document and see it on screen.</p><div class="effect good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Document visible from the start</span></div></li>
-      <li class="journey-step" style="--i:1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span><h5>AI suggests fields</h5><p>AI detects fields and suggests them.</p><div class="effect good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>AI reduces manual work</span></div></li>
-      <li class="journey-step" style="--i:2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span><h5>Review &amp; edit</h5><p>Review, adjust or add fields as needed.</p><div class="effect good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Fewer errors with built-in guidance</span></div></li>
-      <li class="journey-step" style="--i:3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="15" r="3"/><circle cx="9" cy="7" r="4"/><path d="M10 15H6a4 4 0 0 0-4 4v2"/><path d="m21.7 16.4-.9-.3"/><path d="m15.2 13.9-.9-.3"/><path d="m16.6 18.7.3-.9"/><path d="m19.1 12.2.3-.9"/><path d="m19.6 18.7-.4-1"/><path d="m16.8 12.3-.4-1"/><path d="m14.3 16.6 1-.4"/><path d="m20.7 13.8 1-.4"/></svg></span><h5>Add signers</h5><p>Assign recipients and set their roles.</p><div class="effect good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Streamlined signer setup</span></div></li>
-      <li class="journey-step end" style="--i:4"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><h5>Send</h5><p>Finalize and send the document.</p><div class="effect good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Faster, more confident sending</span></div></li>
-    </ol>
   </div>
 </section>
 
-<!-- Section Divider: Signals to Research -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
+<!-- ============ 07 DEEP DIVE 02 ============ -->
+<section class="cs3-section" id="problem-steps">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">07 · Deep dive 02</span><span class="cs3-aside__name">Collapsing the setup wizard</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">The signing setup was a 4-step modal wizard. I collapsed it into one page without losing control.</h2>
+        <div class="cs3-prose"><p>The MVP stacked <b>four full-screen steps</b> as a modal over the document list, each with its own settings. The document wasn't visible until step three, so people <b>lost track of what they were setting up</b>.</p></div>
+      </div>
 
-<!-- 04 RESEARCH -->
-<section id="research">
-  <div class="sec-num">04 / RESEARCH: DIGGING DEEPER</div>
-  <h2 class="h reveal">Configuring a document correctly was the hard part. Getting it into the system was easy.</h2>
-  <div class="prose reveal">
-    <p>I ran a structured teardown of DocuSign, Adobe Sign, Dropbox Sign, PandaDoc, and Documenso: their public documentation, review-site screenshots, and (where available) free-tier trials.</p>
-  </div>
+      <div class="cs3-block" data-rv="unfold">
+        <div class="cs3-ba">
+          <img src="assets/images/omnisproof-after-onepage.png?v=2" alt="Redesigned single-page signing setup with document as the central focus, recipient panel, and field library" loading="lazy">
+          <img class="cs3-ba__before" src="assets/images/omnisproof-before-wizard.png?v=2" alt="Original four-step modal wizard for document setup, showing General Info form with the document barely visible behind it" loading="lazy">
+          <span class="tag cs3-ba__tag-before" style="background:#b42318;color:#fff">Before</span>
+          <span class="tag cs3-ba__tag-after" style="background:#1a7f37;color:#fff">After</span>
+          <span class="cs3-ba__line" aria-hidden="true"></span>
+          <button type="button" class="cs3-ba__handle" role="slider" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/></svg></button>
+        </div>
+        <div class="cs3-ba-caps">
+          <p><b>Before · 4-step modal wizard</b>: General Info, Add Signers, Add Fields, Distribute Document. The document is a thumbnail on the left, not the focus of the screen.</p>
+          <p><b>After · 1 guided page</b>: the document is the center of the screen the entire time. Recipients, fields, and progress live in persistent side panels.</p>
+        </div>
+      </div>
 
-  <div class="vs reveal">
-    <div class="vs-head"><div class="good">What competitors do well</div><div class="gap">Where they fall short</div></div>
-    <div class="vs-row">
-      <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Document upload and recipient invitation</b> are fast and well-documented across all five platforms.</span></div>
-      <div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span><b>Field placement is manual</b>: click, drag, resize, repeat, for every signature block and date field on every page.</span></div>
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Same three stages, one page instead of four screens</h3>
+        <div>
+          <div class="cs3-flow cs3-flow--old">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">MVP wizard</span>4 modal screens → document hidden until step 3</span></div>
+            <ol><li><span class="k">01</span><h5>General Info</h5></li><li><span class="k">02</span><h5>Add Signers</h5></li><li><span class="k">03</span><h5>Add Fields (document visible)</h5></li><li><span class="k">04</span><h5>Distribute Document</h5></li><li><span class="k">05</span><h5>Wrong signer? Back through every screen</h5></li></ol>
+          </div>
+          <div class="cs3-flow cs3-flow--new">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">Shipped · 1 guided page</span>Document stays centred → side panel swaps per stage</span></div>
+            <ol><li><span class="k">01</span><h5>Open the document</h5></li><li><span class="k">02</span><h5>Document &amp; Recipients</h5></li><li><span class="k">03</span><h5>Add Fields: drag or Detect with AI</h5></li><li><span class="k">04</span><h5>Review &amp; Send</h5></li><li><span class="k">05</span><h5>Sent, no state lost</h5></li></ol>
+            <div class="cs3-flow__foot">Step tracker: jump back to any stage without leaving the page</div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="cs3-media" data-rv>
+        <div class="cs3-anno">
+          <img loading="lazy" src="assets/images/omnisproof-after-onepage.png?v=2" alt="Redesigned single-page signing setup, annotated: the step tracker on the left, the document in the centre, and the Detect with AI button in the field panel">
+          <svg viewBox="0 0 1000 760" aria-hidden="true">
+            <text x="18" y="52" transform="rotate(-3 18 52)">3 stages kept, as a tracker</text>
+            <path style="--len:220" d="M96 66 C 70 118, 62 170, 92 228"/>
+            <path style="--len:40" d="M78 212 L 92 230 L 104 210"/>
+            <text x="392" y="46" transform="rotate(2 392 46)">the document never leaves the centre</text>
+            <path style="--len:260" d="M560 62 C 600 130, 560 230, 520 300"/>
+            <path style="--len:40" d="M512 280 L 519 302 L 538 290"/>
+            <path style="--len:640" d="M770 596 C 768 560, 990 552, 992 596 C 994 640, 790 648, 772 612 C 766 596, 800 572, 840 566"/>
+            <text x="540" y="730" transform="rotate(-2 540 730)">AI proposes the fields, you just review</text>
+            <path style="--len:180" d="M860 704 C 900 690, 920 668, 900 650"/>
+            <path style="--len:40" d="M888 660 L 900 648 L 914 662"/>
+          </svg>
+        </div>
+        <ol class="cs3-legend">
+          <li><b>Left:</b> the 3 stages kept, now as a tracker instead of screens.</li>
+          <li><b>Centre:</b> the document never leaves the middle of the screen.</li>
+          <li><b>Right:</b> “Detect with AI” proposes fields; the user reviews.</li>
+        </ol>
+      </figure>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Exploring layouts for progressive disclosure</h3>
+        <div class="cs3-cards cs3-cards--3">
+          <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Iteration 1 · rejected</span><h4>Delete the steps</h4><p>Strip the wizard down to one dense screen: recipients, fields, document preview, and settings all visible at once. Fewer screens, assumed to mean faster.</p><p class="why"><b>Why it failed:</b> a lawyer called it <i>"a cockpit"</i>, and neither tester knew where to start. Removing screens doesn't remove complexity; it squeezes it onto one screen.</p></div>
+          <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Iteration 2 · rejected</span><h4>Merge General Info into Add Signers</h4><p>A smaller fix: combine the first two steps into one, going from four screens to three, keeping the rest of the wizard structure intact.</p><p class="why"><b>Why it was rejected:</b> it reduced the click count but didn't touch the actual complaint: the document was still hidden until step two of three. A marginal improvement to the wrong metric.</p></div>
+          <div class="cs3-card cs3-card--win"><span class="tag tag-good" style="width:max-content">Final · shipped</span><h4>Same 3-stage logic, one persistent page</h4><p>Keep <span class="mono">Document &amp; Recipients → Add Fields → Review &amp; Send</span> as the underlying structure, but render it as three states of a single page: a persistent step tracker on the left, the document centered, and a right-hand panel whose content changes per stage.</p><p class="why"><b>Why it worked:</b> the document never disappears behind its own configuration. The underlying logic stayed the same; only how much of it stayed visible changed.</p></div>
+        </div>
+      </div>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Replacing 4 fragmented screens with 1 persistent workspace</h3>
+        <div class="cs3-prose"><p>The redesign removes the cognitive disconnect by keeping the document visible at all times, so users never configure blind.</p></div>
+        <div class="cs3-table">
+          <table>
+            <tr><th>Dimension</th><th>Before · 4-step wizard</th><th>After · 1 guided page</th></tr>
+            <tr><td>Document visibility</td><td class="b">Hidden behind modal until Step 3</td><td class="a">100% visible from second zero</td></tr>
+            <tr><td>Field placement</td><td class="b">100% manual drag &amp; drop</td><td class="a">AI detection + 1-click review</td></tr>
+            <tr><td>Navigation friction</td><td class="b">4 disconnected full screens</td><td class="a">1 persistent page + 3 panel states</td></tr>
+            <tr><td>Error recovery</td><td class="b">Back-button loop across screens</td><td class="a">Instant inline step switching</td></tr>
+            <tr><td>User mental model</td><td class="b">Felt like "a cockpit" / form filling</td><td class="a">Direct document interaction</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Handling changes and missing fields</h3>
+        <div>
+          <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>A recipient is added after fields are already placed.</b> Any field already assigned to a now-invalid configuration is flagged inline in the field panel instead of being reassigned, so the user makes the call on where it belongs.</p></div>
+          <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>A required field is missing at Review &amp; Send.</b> Step 2 gets flagged and Send stays disabled with an inline reason: the same error pattern as field mapping, so users learn one style.</p></div>
+        </div>
+      </div>
+
+      <div class="cs3-note" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><span class="eyebrow">What survived from the original wizard, on purpose</span>The three-stage logic itself. Deleting steps to "reduce friction" is a common trap: the wizard's sequence (who's involved → what goes where → is it ready) was correct information architecture. The failure was in the presentation, not the sequence, so I kept the sequence and rebuilt the presentation.</div></div>
+
+      <div class="cs3-prose" data-rv><p>The same two lawyers who were lost in both the old wizard and the "cockpit" <b>completed the new flow without a single question</b>. Small sample, but the same people and task, before and after.</p></div>
     </div>
-    <div class="vs-row">
-      <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>DocuSign offers limited auto-placement</b> for a narrow set of pre-formatted templates.</span></div>
-      <div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span><b>Outside that narrow case</b>, nothing in the category offers reviewable AI assistance for field detection.</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Send flows are optimized to be fast</b>: most competitors market “send in under a minute.”</span></div>
-      <div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg><span><b>That speed costs verification.</b> G2 reviews describe documents sent with a missing field or wrong recipient, caught only after the fact.</span></div>
-    </div>
-    <div class="vs-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg><span>Pattern across all five: <b>getting a document in is solved; making it correct once it's there is not.</b></span></div>
-  </div>
-
-  <div class="prose reveal">
-    <p><b>Key insight:</b> getting a document in is solved everywhere, including our MVP. The unsolved part sits between "uploaded" and "ready to send": <b>field placement, recipients, and catching mistakes before they go out.</b></p>
-    <p>That reframed the direction of the whole project: <b>let the system handle more of the setup, and let users review and correct only what needs their attention</b>, instead of making manual configuration slightly faster.</p>
-  </div>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Mapping the fragmented baseline against the streamlined workflow</h3>
-  </div>
-
-  <div class="journey old reveal">
-    <div class="journey-head">
-      <div class="flow-label"><span class="lozenge outline">Baseline reality</span><span class="flow-title">11 steps across disconnected tools</span></div>
-      <div class="journey-stat"><span>11 steps</span><span>6 tools</span><span>7 tool switches</span></div>
-    </div>
-    <ol class="journey-steps journey-cols-6">
-      <li class="journey-step" style="--i:0"><h5>Client intake</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>CRM / case management</span></div></li>
-      <li class="journey-step" style="--i:1"><h5>Create / draft agreement</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Word / drafting tool</span></div></li>
-      <li class="journey-step" style="--i:2"><h5>Internal review &amp; approval</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email / doc sharing</span></div></li>
-      <li class="journey-step" style="--i:3"><h5>Export as PDF</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Local folder / device</span></div></li>
-      <li class="journey-step" style="--i:4"><h5>Upload to e-sign platform</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>DocuSign / other e-sign</span></div></li>
-      <li class="journey-step" style="--i:5"><h5>Add recipients &amp; signature fields</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>E-sign platform</span></div></li>
-      <li class="journey-step" style="--i:6"><h5>Send to client</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>E-sign platform</span></div></li>
-      <li class="journey-step" style="--i:7"><h5>Follow up &amp; track progress</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>Email / e-sign dashboard</span></div></li>
-      <li class="journey-step" style="--i:8"><h5>Download signed agreement</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Local folder / device</span></div></li>
-      <li class="journey-step" style="--i:9"><h5>Upload to practice management</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>Practice mgmt system</span></div></li>
-      <li class="journey-step" style="--i:10"><h5>Close / update matter</h5><div class="where"><small>Where it happens</small><span class="tool"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>Practice mgmt system</span></div></li>
-    </ol>
-  </div>
-  <div class="journey new reveal">
-    <div class="journey-head">
-      <div class="flow-label"><span class="lozenge inverted">Target experience</span><span class="flow-title">8 steps inside OmnisProof</span></div>
-      <div class="journey-stat"><span>8 steps</span><span>1 system</span><span>0 tool switches</span></div>
-    </div>
-    <ol class="journey-steps journey-cols-4">
-      <li class="journey-step" style="--i:0"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M9 15h6"/><path d="M12 18v-6"/></svg></span><h5>Create agreement</h5><p>Start from scratch or an existing template.</p></li>
-      <li class="journey-step" style="--i:1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v9.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M13.378 15.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg></span><h5>Prepare document</h5><p>Add content, templates and AI field suggestions.</p></li>
-      <li class="journey-step" style="--i:2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="15" r="3"/><circle cx="9" cy="7" r="4"/><path d="M10 15H6a4 4 0 0 0-4 4v2"/><path d="m21.7 16.4-.9-.3"/><path d="m15.2 13.9-.9-.3"/><path d="m16.6 18.7.3-.9"/><path d="m19.1 12.2.3-.9"/><path d="m19.6 18.7-.4-1"/><path d="m16.8 12.3-.4-1"/><path d="m14.3 16.6 1-.4"/><path d="m20.7 13.8 1-.4"/></svg></span><h5>Configure signers</h5><p>Assign signers, roles, signing order and authentication.</p></li>
-      <li class="journey-step" style="--i:3"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg></span><h5>Review &amp; approve</h5><p>Review internally before anything is sent.</p></li>
-      <li class="journey-step" style="--i:4"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></span><h5>Send for signature</h5><p>Email signers with built-in notifications.</p></li>
-      <li class="journey-step" style="--i:5"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span><h5>Track progress</h5><p>Real-time status, reminders and signer activity.</p></li>
-      <li class="journey-step" style="--i:6"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></span><h5>Completed</h5><p>Every party has signed.</p></li>
-      <li class="journey-step end" style="--i:7"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg></span><h5>Store &amp; manage</h5><p>Audit trail, document history and matter records.</p></li>
-    </ol>
-  </div>
-  <p class="journey-caption" style="margin:14px 0 0;font-size:13px;color:var(--soft);text-align:center;line-height:1.5"><b style="color:var(--ink)">From 11 steps across 6 tools to 8 steps in one system.</b> Before OmnisProof, legal teams bounced between Word, email, local folders, an external e-signature platform and practice-management software to execute a single contract.</p>
-</section>
-
-<!-- Section Divider: Research to Constraints -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- 05 CONSTRAINTS -->
-<section id="constraints">
-  <div class="sec-num">05 / CONSTRAINTS &amp; DESIGN DECISIONS</div>
-  <h2 class="h reveal">Not "redesign the interface": decide which complexity stays with the user, and which the system should absorb.</h2>
-
-  <div class="constraint-grid">
-  <div class="constraint reveal">
-    <span class="cnum"><b>01</b>Constraint</span>
-    <h4>Field placement was required, but too heavy to leave manual</h4>
-    <div class="cgrid">
-      <div><div class="lbl">Why this mattered</div><p>Every document needs signature, date, name, and initials fields placed correctly before it can go out. This step couldn't be removed, but making users place every field on every page by hand was the largest time cost we'd identified.</p></div>
-      <div><div class="lbl">Decision</div><p>Turn field placement from a manual task into a system-assisted one: AI detects and proposes placement, the user reviews and corrects only where needed.</p><a class="c-link" href="#problem-ai">Deep dive 01 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
-    </div>
-  </div>
-
-  <div class="constraint reveal">
-    <span class="cnum"><b>02</b>Constraint</span>
-    <h4>The 4-step structure mapped to something real, but hiding the document behind it didn't</h4>
-    <div class="cgrid">
-      <div><div class="lbl">Why this mattered</div><p>"Who's involved → what goes where → is it ready to send" is how document prep works. The three-stage logic was fine. Presenting each stage as a separate full screen hid the document being configured.</p></div>
-      <div><div class="lbl">Decision</div><p>Keep the underlying stages, rebuild the presentation as one page: <span class="mz-highlight" data-action="yellow">the document stays visible at all times</span>, with a persistent step tracker and a side panel that changes per stage.</p><a class="c-link" href="#problem-steps">Deep dive 02 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
-    </div>
-  </div>
-
-  <div class="constraint reveal">
-    <span class="cnum"><b>03</b>Constraint</span>
-    <h4>No direct access to external users</h4>
-    <div class="cgrid">
-      <div><div class="lbl">Why this mattered</div><p>Each decision below needed some form of validation, but law firms weren't reachable pre-launch. Relying only on internal opinion risked designing for people who already trust the product.</p></div>
-      <div><div class="lbl">Decision</div><p>Validate with internal legal professionals as a proxy, cross-check against competitive review-site complaints as external signal, and label each claim with its actual confidence level instead of letting it read as more validated than it is.</p></div>
-    </div>
-  </div>
-
-  <div class="constraint reveal">
-    <span class="cnum"><b>04</b>Constraint</span>
-    <h4>The fix had to ship inside the existing timeline</h4>
-    <div class="cgrid">
-      <div><div class="lbl">Why this mattered</div><p>The competitive gap was already being cited as a risk in product reviews. A ground-up redesign of the entire setup experience wasn't realistic in the time available.</p></div>
-      <div><div class="lbl">Decision</div><p>Scope to the two moments with the clearest evidence of friction (field placement and the wizard structure) rather than trying to fix every part of document prep at once.</p></div>
-    </div>
-  </div>
   </div>
 </section>
 
-<!-- Section Divider: Constraints to Problem AI -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- 06 PROBLEM AI -->
-<section id="problem-ai">
-  <div class="sec-num">06 / DEEP DIVE 01</div>
-  <div class="problem-head reveal">
-    <div class="problem-num">01</div>
-    <div>
-      <div class="problem-eyebrow">AI-assisted field placement</div>
-      <h2 class="h" style="margin-bottom:0;">How do you make legal professionals trust an AI that places their signature fields?</h2>
+<!-- ============ 08 OUTCOME ============ -->
+<section class="cs3-section" id="outcome">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">08</span><span class="cs3-aside__name">Outcome</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">The complexity didn't disappear. It moved from the user to the system.</h2>
+        <div class="cs3-prose"><p>The two heaviest jobs moved to the system: <b>AI proposes fields</b>, and the three stages live on <b>one page</b> where the document never leaves view. Users now review and correct instead of configuring blind.</p></div>
+      </div>
+      <div class="cs3-table" data-rv>
+        <table>
+          <tr><th>Category</th><th>What we have</th></tr>
+          <tr><td><span class="tag tag-good">Validated</span></td><td>6 internal prototype walkthroughs with lawyers and legal assistants inside our organization. Both redesigns tested against the same two participants before and after. <b>~72% of AI field suggestions accepted without edits</b>. The participant who distrusted silent AI placement left correct suggestions untouched after the redesign.</td></tr>
+          <tr><td><span class="tag tag-blue">Qualitative</span></td><td><i>"I didn't see it place them, so I don't trust them"</i> (on the rejected silent-AI iteration). <i>"This looks like a cockpit"</i> (on the rejected single-screen iteration). Both quotes came from the same two-person internal test group and shaped the shipped design.</td></tr>
+          <tr><td><span class="tag tag-outline">Not yet validated</span></td><td>Production usage data (setup completion rate, time-to-complete, support ticket volume): the feature is live but hasn't been in market long enough to generate meaningful telemetry. External law firm feedback: still untested outside our own organization.</td></tr>
+        </table>
+      </div>
     </div>
-  </div>
-
-  <div class="prose reveal" style="margin-top:20px;">
-    <p>Placing every field by hand, for every recipient, took the <b>largest share of prep time</b> and caused <b>each placement mistake</b> we saw. Automating was easy. Trust was hard: <b>a wrong AI guess sends a contract to the wrong person.</b></p>
-  </div>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Testing three ways to introduce AI field detection</h3>
-  </div>
-
-  <div class="iteration-track reveal">
-    <div class="iter rejected">
-      <div class="it-num">Iteration 1</div>
-      <h5>Automatic, silent placement</h5>
-      <p>AI detects and places each field the moment a document is uploaded. No review step: the fields are there, ready to send.</p>
-      <div class="why"><b>Why it failed:</b> a lawyer on our team moved each AI-placed field, even the correct ones: <i>"I didn't see it place them, so I don't trust them."</i> The checking work just moved somewhere with no support.</div>
-    </div>
-    <div class="iter rejected">
-      <div class="it-num">Iteration 2</div>
-      <h5>Chat-based AI assistant</h5>
-      <p>A conversational interface where the user could type "place a signature field for Lucas on page 3" and the AI would execute it.</p>
-      <div class="why"><b>Why it was rejected:</b> field placement is one-time setup, not a conversation. Typing instructions added a step and a new pattern to learn, for a task people want done in seconds.</div>
-    </div>
-    <div class="iter winner">
-      <div class="it-num">Final</div>
-      <h5>Inline, reviewable "Detect with AI"</h5>
-      <p>One button inside the existing field panel. Clicking it places suggested fields on the document, using the same drag-and-edit interaction as a manually placed field.</p>
-      <div class="why"><b>Why it worked:</b> the placement is visible as it happens, each suggestion is editable or deletable with no new interaction to learn, and there's no separate "accept" step. The AI proposes and the user decides, using tools they already know.</div>
-    </div>
-  </div>
-
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">The shipped loop: the AI proposes, the user disposes</h3>
-  </div>
-
-  <div class="flow old" data-flow>
-    <div class="flow-label"><span class="lozenge outline">Iteration 1 · silent</span><span class="flow-title">AI places everything → user re-checks everything</span></div>
-    <div class="flow-pipe">
-        <div class="flow-stage" style="--i:0">Upload document</div><div class="flow-conn" style="--i:1"></div>
-        <div class="flow-stage" style="--i:2">AI places each field, unseen</div><div class="flow-conn" style="--i:3"></div>
-        <div class="flow-stage" style="--i:4">User can't tell what changed</div><div class="flow-conn" style="--i:5"></div>
-        <div class="flow-stage" style="--i:6">Moves each field by hand</div><div class="flow-conn" style="--i:7"></div>
-        <div class="flow-stage end" style="--i:8">Trust lost</div>
-    </div>
-  </div>
-  <div class="flow new" data-flow>
-    <div class="flow-label"><span class="lozenge inverted">Shipped · reviewable</span><span class="flow-title">Visible suggestion → inline review → send</span></div>
-    <div class="flow-pipe">
-        <div class="flow-stage" style="--i:0">Open document</div><div class="flow-conn" style="--i:1"></div>
-        <div class="flow-stage" style="--i:2">Click “Detect with AI”</div><div class="flow-conn" style="--i:3"></div>
-        <div class="flow-stage" style="--i:4">Fields appear on the page, in view</div><div class="flow-conn" style="--i:5"></div>
-        <div class="flow-stage" style="--i:6">Drag, edit or delete inline</div><div class="flow-conn" style="--i:7"></div>
-        <div class="flow-stage end" style="--i:8">Send with confidence</div>
-    </div>
-    <div class="flow-return"><span>~28% of suggestions adjusted · each one stays editable</span></div>
-  </div>
-
-  <figure class="figure reveal">
-    <div class="frame"><img loading="lazy" src="assets/images/omnisproof-ai-field-annotation.png" alt="OmnisProof signing setup screen with Detect with AI button, visual field identification, and AI feedback callouts" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/></div>
-    <figcaption><span class="cap-label">AI-Assisted Field Placement in Action</span>: "Detect with AI" scans the document in context, identifies 38 form fields, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
-  </figure>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Designing for failure and non-standard inputs</h3>
-  </div>
-
-  <div class="edge-case reveal">
-    <span class="ec-tag">Edge case</span>
-    <p><b>Non-standard or custom field types</b> that fall outside the seven types the model recognizes (signature, date, name, initials, title, email, text) aren't guessed at: they're left for manual placement using the same field library, with no error state implying something went wrong.</p>
-  </div>
-  <div class="edge-case reveal">
-    <span class="ec-tag">Edge case</span>
-    <p><b>Scanned documents with non-selectable text</b> can't be reliably parsed by the detection model. "Detect with AI" stays visible but shows a clear inline message explaining why detection isn't available for this file, instead of failing or returning wrong guesses.</p>
-  </div>
-  <div class="edge-case reveal">
-    <span class="ec-tag">Edge case</span>
-    <p><b>A user rejects most suggestions on one document.</b> The next document still gets a fresh detection pass. The real risk is someone deciding "the AI doesn't work" and switching it off. Trust recovery is untested, so I flag it as open.</p>
-  </div>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Observed walkthrough validation</h3>
-  </div>
-
-  <div class="metrics reveal">
-    <div class="metric"><div class="n">~72%</div><h4>Suggestions accepted without edits</h4><p>Across 6 internal prototype walkthroughs. The 28% that got adjusted is why each suggestion stays editable instead of final.</p></div>
-    <div class="metric"><div class="n">5 / 7</div><h4>Standard field types reliably auto-detected</h4><p>Signature, date, name, initials, and title. Email and free-text fields still default to manual placement.</p></div>
-    <div class="metric"><div class="n">1 → 0</div><h4>Participants who distrusted AI output after the redesign</h4><p>The same lawyer who moved every field under silent automation left correct suggestions untouched once placement became visible.</p></div>
-  </div>
-
-  <div class="note reveal">
-    <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" style="fill:var(--ink, currentColor)"/><path d="M12 7a1.25 1.25 0 1 0 0-2.5A1.25 1.25 0 0 0 12 7Zm1.25 3.5h-2.5a.75.75 0 0 0 0 1.5h.5v4.5h-.5a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-.5v-5.25a.75.75 0 0 0-.75-.75Z" style="fill:var(--bg, #fff)"/></svg></div>
-    <div class="note__body"><span class="note__label">Honest confidence level</span> These numbers come from six internal walkthroughs with legal professionals inside our own organization (not a controlled study, not external users, not production telemetry). I treat them as directional evidence the detection is useful, not as a validated product metric, and I say that when asked.</div>
   </div>
 </section>
 
-<!-- Section Divider: Problem AI to Problem Steps -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- 07 PROBLEM STEPS -->
-<section id="problem-steps">
-  <div class="sec-num">07 / DEEP DIVE 02</div>
-  <div class="problem-head reveal">
-    <div class="problem-num">02</div>
-    <div>
-      <div class="problem-eyebrow">Collapsing the setup wizard</div>
-      <h2 class="h" style="margin-bottom:0;">The signing setup was a 4-step modal wizard. I collapsed it into one page without losing control.</h2>
+<!-- ============ 09 REFLECTION ============ -->
+<section class="cs3-section" id="reflection">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">09</span><span class="cs3-aside__name">Final thoughts</span></div></aside>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-h2">Designing for confidence <span class="mark">as well as completion</span>.</h2>
+        <div class="cs3-prose">
+          <p>Redesigning OmnisProof taught me to simplify a workflow by making each step clear, purposeful, and easy to recover from.</p>
+          <p>Legal teams need to send documents quickly and need confidence that the right document reaches the right people, with the right fields, without extra back-and-forth.</p>
+        </div>
+      </div>
+      <div class="cs3-rows" data-rv>
+        <article class="cs3-row"><div class="cs3-row__head"><span class="cs3-row__num">01</span><h3 class="cs3-row__title">Put the document at the center</h3></div><div class="cs3-row__cols" style="grid-template-columns:1fr"><p style="margin:0">Users should keep sight of the thing they're working on. Keeping the document visible turned a configuration-heavy process into an understandable workspace.</p></div></article>
+        <article class="cs3-row"><div class="cs3-row__head"><span class="cs3-row__num">02</span><h3 class="cs3-row__title">Let AI handle the repetitive work</h3></div><div class="cs3-row__cols" style="grid-template-columns:1fr"><p style="margin:0">AI is most useful when it removes tedious tasks while keeping users in control. Suggested fields reduce manual effort, but review and approval remain with the person preparing the document.</p></div></article>
+        <article class="cs3-row"><div class="cs3-row__head"><span class="cs3-row__num">03</span><h3 class="cs3-row__title">Clear structure over false simplicity</h3></div><div class="cs3-row__cols" style="grid-template-columns:1fr"><p style="margin:0">The signing workflow involved documents, recipients, fields, permissions, and delivery settings. I organized that complexity so users could move through it.</p></div></article>
+      </div>
+      <figure class="cs3-media" data-rv="unfold">
+        <div class="cs3-media__frame"><img loading="lazy" src="assets/images/omnisproof-before-after-redesign.webp?v=q98" alt="Before vs After Redesign: comparing the 4-step disconnected setup wizard with the document-first workspace powered by AI suggested fields"></div>
+        <figcaption><b>Before vs. after.</b> Collapsing the multi-step configuration wizard into an intuitive, document-centered signing workspace with AI field detection.</figcaption>
+      </figure>
+      <div class="cs3-prose" data-rv>
+        <span class="eyebrow">What I'd explore next</span>
+        <p>With more time and access to real usage data, I'd focus on:</p>
+        <ul>
+          <li>Testing the redesigned workflow with external law firms.</li>
+          <li>Understanding how users interact with AI suggestions over time.</li>
+          <li>Exploring smarter detection for complex document fields.</li>
+          <li>Measuring setup time, completion rates, and correction patterns.</li>
+        </ul>
+      </div>
+      <div class="cs3-closing" data-rv>
+        <span class="eyebrow">Closing thought</span>
+        <p class="cs3-closing__big">Great product design doesn't remove complexity. <span>It makes complexity feel effortless.</span></p>
+        <div class="cs3-prose">
+          <p>OmnisProof gave me a chance to rethink how legal teams prepare documents: keep the essential steps and make each interaction clearer, more intentional, and easier to trust.</p>
+          <p><b>Less manual work, more clarity, and more confidence in each signature.</b> That's the kind of experience I believe legal technology should deliver.</p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="prose reveal" style="margin-top:20px;">
-    <p>The MVP stacked <b>four full-screen steps</b> as a modal over the document list, each with its own settings. The document wasn't visible until step three, so people <b>lost track of what they were setting up</b>.</p>
-  </div>
-
-  <div class="gallery-2 reveal">
-    <div class="shot tag-before">
-      <span class="pill pill-before">Before</span>
-      <img loading="lazy" src="assets/images/omnisproof-before-wizard.png?v=2" alt="Original four-step modal wizard for document setup, showing General Info form with the document barely visible behind it" onerror="this.src='assets/images/bw_image 40(upload design).webp'"/>
-      <div class="sc"><b>4-step modal wizard</b>: General Info, Add Signers, Add Fields, Distribute Document. The document is a thumbnail on the left, not the focus of the screen.</div>
-    </div>
-    <div class="shot tag-after">
-      <span class="pill pill-after">After</span>
-      <img loading="lazy" src="assets/images/omnisproof-after-onepage.png?v=2" alt="Redesigned single-page signing setup with document as the central focus, recipient panel, and field library" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'"/>
-      <div class="sc"><b>1 guided page</b>: the document is the center of the screen the entire time. Recipients, fields, and progress live in persistent side panels.</div>
-    </div>
-  </div>
-
-
-  <div class="prose reveal" style="margin-top:40px;">
-    <h3 class="h3">Same three stages, one page instead of four screens</h3>
-  </div>
-
-  <div class="flow old" data-flow>
-    <div class="flow-label"><span class="lozenge outline">MVP wizard</span><span class="flow-title">4 modal screens → document hidden until step 3</span></div>
-    <div class="flow-pipe">
-        <div class="flow-stage" style="--i:0">General Info</div><div class="flow-conn" style="--i:1"></div>
-        <div class="flow-stage" style="--i:2">Add Signers</div><div class="flow-conn" style="--i:3"></div>
-        <div class="flow-stage" style="--i:4">Add Fields (document visible)</div><div class="flow-conn" style="--i:5"></div>
-        <div class="flow-stage" style="--i:6">Distribute Document</div><div class="flow-conn" style="--i:7"></div>
-        <div class="flow-stage end" style="--i:8">Wrong signer? Back through every screen</div>
-    </div>
-  </div>
-  <div class="flow new" data-flow>
-    <div class="flow-label"><span class="lozenge inverted">Shipped · 1 guided page</span><span class="flow-title">Document stays centred → side panel swaps per stage</span></div>
-    <div class="flow-pipe">
-        <div class="flow-stage" style="--i:0">Open the document</div><div class="flow-conn" style="--i:1"></div>
-        <div class="flow-stage" style="--i:2">Document &amp; Recipients</div><div class="flow-conn" style="--i:3"></div>
-        <div class="flow-stage" style="--i:4">Add Fields: drag or Detect with AI</div><div class="flow-conn" style="--i:5"></div>
-        <div class="flow-stage" style="--i:6">Review &amp; Send</div><div class="flow-conn" style="--i:7"></div>
-        <div class="flow-stage end" style="--i:8">Sent, no state lost</div>
-    </div>
-    <div class="flow-return"><span>Step tracker: jump back to any stage without leaving the page</span></div>
-  </div>
-
-  <figure class="figure anno-fig reveal">
-    <div class="anno-canvas">
-      <img loading="lazy" src="assets/images/omnisproof-after-onepage.png?v=2" alt="Redesigned single-page signing setup, annotated: the step tracker on the left, the document in the centre, and the Detect with AI button in the field panel" onerror="this.src='assets/images/bw_image 46(E-sign Component Design).webp'">
-      <svg class="anno-overlay draw" viewBox="0 0 1000 760" aria-hidden="true">
-        <text class="anno-t" x="18" y="52" transform="rotate(-3 18 52)">3 stages kept, as a tracker</text>
-        <path style="--len:220" d="M96 66 C 70 118, 62 170, 92 228"/>
-        <path style="--len:40" d="M78 212 L 92 230 L 104 210"/>
-
-        <text class="anno-t" x="392" y="46" transform="rotate(2 392 46)">the document never leaves the centre</text>
-        <path style="--len:260" d="M560 62 C 600 130, 560 230, 520 300"/>
-        <path style="--len:40" d="M512 280 L 519 302 L 538 290"/>
-
-        <path style="--len:640" d="M770 596 C 768 560, 990 552, 992 596 C 994 640, 790 648, 772 612 C 766 596, 800 572, 840 566"/>
-        <text class="anno-t" x="540" y="730" transform="rotate(-2 540 730)">AI proposes the fields, you just review</text>
-        <path style="--len:180" d="M860 704 C 900 690, 920 668, 900 650"/>
-        <path style="--len:40" d="M888 660 L 900 648 L 914 662"/>
-      </svg>
-    </div>
-    <ol class="anno-legend">
-      <li><b>Left:</b> the 3 stages kept, now as a tracker instead of screens.</li>
-      <li><b>Centre:</b> the document never leaves the middle of the screen.</li>
-      <li><b>Right:</b> “Detect with AI” proposes fields; the user reviews.</li>
-    </ol>
-    <figcaption><span class="cap-label">Anatomy of the one-page setup</span>: the wizard's logic survived as a tracker (left), the document stays centred, and field placement moved into a reviewable AI action (right).</figcaption>
-  </figure>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Exploring layouts for progressive disclosure</h3>
-  </div>
-
-  <div class="iteration-track reveal">
-    <div class="iter rejected">
-      <div class="it-num">Iteration 1</div>
-      <h5>Delete the steps</h5>
-      <p>Strip the wizard down to one dense screen: recipients, fields, document preview, and settings all visible at once. Fewer screens, assumed to mean faster.</p>
-      <div class="why"><b>Why it failed:</b> a lawyer called it <i>"a cockpit"</i>, and neither tester knew where to start. Removing screens doesn't remove complexity; it squeezes it onto one screen.</div>
-    </div>
-    <div class="iter rejected">
-      <div class="it-num">Iteration 2</div>
-      <h5>Merge General Info into Add Signers</h5>
-      <p>A smaller fix: combine the first two steps into one, going from four screens to three, keeping the rest of the wizard structure intact.</p>
-      <div class="why"><b>Why it was rejected:</b> it reduced the click count but didn't touch the actual complaint: the document was still hidden until step two of three. A marginal improvement to the wrong metric.</div>
-    </div>
-    <div class="iter winner">
-      <div class="it-num">Final</div>
-      <h5>Same 3-stage logic, one persistent page</h5>
-      <p>Keep <span class="mono">Document &amp; Recipients → Add Fields → Review &amp; Send</span> as the underlying structure, but render it as three states of a single page: a persistent step tracker on the left, the document centered, and a right-hand panel whose content changes per stage.</p>
-      <div class="why"><b>Why it worked:</b> the document never disappears behind its own configuration. The underlying logic stayed the same; only how much of it stayed visible changed.</div>
-    </div>
-  </div>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Replacing 4 fragmented screens with 1 persistent workspace</h3>
-    <p>The redesign removes the cognitive disconnect by keeping the document visible at all times, so users never configure blind.</p>
-  </div>
-
-  <div class="tbl reveal">
-    <table>
-      <tr><th>Dimension</th><th>Before · 4-step wizard</th><th>After · 1 guided page</th></tr>
-      <tr><td>Document Visibility</td><td class="b">Hidden behind modal until Step 3</td><td class="a">100% visible from second zero</td></tr>
-      <tr><td>Field Placement</td><td class="b">100% manual drag &amp; drop</td><td class="a">AI detection + 1-click review</td></tr>
-      <tr><td>Navigation Friction</td><td class="b">4 disconnected full screens</td><td class="a">1 persistent page + 3 panel states</td></tr>
-      <tr><td>Error Recovery</td><td class="b">Back-button loop across screens</td><td class="a">Instant inline step switching</td></tr>
-      <tr><td>User Mental Model</td><td class="b">Felt like "a cockpit" / form filling</td><td class="a">Direct document interaction</td></tr>
-    </table>
-  </div>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <h3 class="h3">Handling changes and missing fields</h3>
-  </div>
-
-  <div class="edge-case reveal">
-    <span class="ec-tag">Edge case</span>
-    <p><b>A recipient is added after fields are already placed.</b> Any field already assigned to a now-invalid configuration is flagged inline in the field panel instead of being reassigned, so the user makes the call on where it belongs.</p>
-  </div>
-  <div class="edge-case reveal">
-    <span class="ec-tag">Edge case</span>
-    <p><b>A required field is missing at Review &amp; Send.</b> Step 2 gets flagged and Send stays disabled with an inline reason: the same error pattern as field mapping, so users learn one style.</p>
-  </div>
-
-  <div class="note good reveal">
-    <div class="note__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" style="fill:var(--ink, currentColor)"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    <div class="note__body"><span class="note__label">What survived from the original wizard, on purpose</span> The three-stage logic itself. Deleting steps to "reduce friction" is a common trap: the wizard's sequence (who's involved → what goes where → is it ready) was correct information architecture. The failure was in the presentation, not the sequence, so I kept the sequence and rebuilt the presentation.</div>
-  </div>
-
-  <div class="prose reveal">
-    <p>The same two lawyers who were lost in both the old wizard and the "cockpit" <b>completed the new flow without a single question</b>. Small sample, but the same people and task, before and after.</p>
   </div>
 </section>
 
-<!-- Section Divider: Problem Steps to Outcome -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- 08 OUTCOME -->
-<section id="outcome">
-  <div class="sec-num">08 / OUTCOME</div>
-  <h2 class="h reveal">The complexity didn't disappear. It moved from the user to the system.</h2>
-  <div class="prose reveal">
-    <p>The two heaviest jobs moved to the system: <b>AI proposes fields</b>, and the three stages live on <b>one page</b> where the document never leaves view. Users now review and correct instead of configuring blind.</p>
-  </div>
-
-  <div class="tbl reveal">
-    <table>
-      <tr><th>Category</th><th>What we have</th></tr>
-      <tr><td>Validated</td><td>6 internal prototype walkthroughs with lawyers and legal assistants inside our organization. Both redesigns tested against the same two participants before and after. <span class="mz-highlight" data-action="box">~72% of AI field suggestions accepted without edits</span>. The participant who distrusted silent AI placement left correct suggestions untouched after the redesign.</td></tr>
-      <tr><td>Qualitative</td><td><i>"I didn't see it place them, so I don't trust them"</i> (on the rejected silent-AI iteration). <i>"This looks like a cockpit"</i> (on the rejected single-screen iteration). Both quotes came from the same two-person internal test group and shaped the shipped design.</td></tr>
-      <tr><td>Not yet validated</td><td>Production usage data (setup completion rate, time-to-complete, support ticket volume): the feature is live but hasn't been in market long enough to generate meaningful telemetry. External law firm feedback: still untested outside our own organization.</td></tr>
-    </table>
+<!-- ============ 10 FAQ ============ -->
+<section class="cs3-section" id="qa">
+  <div class="cs3-wrap cs3-grid">
+    <aside class="cs3-aside"><div class="cs3-aside__sticky"><span class="cs3-aside__num">10</span><span class="cs3-aside__name">Questions I expect</span></div></aside>
+    <div class="cs3-body">
+      <h2 class="cs3-h2" data-rv>Anticipated questions on these two problems.</h2>
+      <div class="cs3-faq" data-rv>
+        <details open><summary>Why only two problems instead of the whole product?<span class="plus" aria-hidden="true"></span></summary><div class="a">Going deep on two hard problems shows how I think better than a product tour. Both had a clear arc: a rejected first attempt, evidence of why, and a validated fix.</div></details>
+        <details><summary>How confident are you in the 72% AI-acceptance number?<span class="plus" aria-hidden="true"></span></summary><div class="a">Moderately. It's from six internal walkthroughs with legal professionals in our own organization, not a controlled study or production telemetry. I treat it as directional evidence the detection is useful, not a validated product metric, and I say that up front.</div></details>
+        <details><summary>Why didn't you just delete the wizard's steps to simplify it?<span class="plus" aria-hidden="true"></span></summary><div class="a">I tried it first: one dense screen with everything visible. A tester called it "a cockpit." The three stages were the right structure; hiding the document behind them was the mistake.</div></details>
+        <details><summary>What would you do differently with more time or budget?<span class="plus" aria-hidden="true"></span></summary><div class="a">Test with external law firm users instead of internal proxies, and instrument real production metrics instead of relying on six walkthrough sessions. That gap, between what I believe and what I can prove at scale, is my answer.</div></details>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Section Divider: Outcome to Reflection -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- 09 REFLECTION -->
-<section id="reflection">
-  <div class="sec-num">09 / FINAL THOUGHTS</div>
-
-  <h2 class="h reveal">Designing for confidence <span class="mz-highlight" data-action="box">as well as completion</span>.</h2>
-
-  <div class="prose reveal">
-    <p>Redesigning OmnisProof taught me to simplify a workflow by making each step clear, purposeful, and easy to recover from.</p>
-    <p>Legal teams need to send documents quickly and need confidence that the right document reaches the right people, with the right fields, without extra back-and-forth.</p>
-  </div>
-
-  <div class="prose reveal" style="margin-top:36px;">
-    <div class="eyebrow">Three takeaways</div>
-  </div>
-
-  <div class="feature-narrative reveal" style="margin-top:16px;">
-    <div class="narrative-card" style="border-left:3.5px solid var(--accent, #000000);">
-      <span class="narrative-tag" style="color:var(--accent, #000000);">01 · Document at the Center</span>
-      <p class="narrative-text"><b style="color:var(--ink);">Put the document at the center.</b> Users should keep sight of the thing they're working on. Keeping the document visible turned a configuration-heavy process into an understandable workspace.</p>
-    </div>
-    <div class="narrative-card" style="border-left:3.5px solid var(--accent, #000000);">
-      <span class="narrative-tag" style="color:var(--accent, #000000);">02 · System Handles Repetition</span>
-      <p class="narrative-text"><b style="color:var(--ink);">Let AI handle the repetitive work.</b> AI is most useful when it removes tedious tasks while keeping users in control. Suggested fields reduce manual effort, but review and approval remain with the person preparing the document.</p>
-    </div>
-  </div>
-
-  <div class="narrative-card reveal" style="margin-top:16px; border-left:3.5px solid var(--accent, #000000); width:100%; box-sizing:border-box;">
-    <span class="narrative-tag" style="color:var(--accent, #000000);">03 · Clear Structure Over False Simplicity</span>
-    <p class="narrative-text"><b style="color:var(--ink);">Good UX makes complex systems feel simple.</b> The signing workflow involved documents, recipients, fields, permissions, and delivery settings. I organized that complexity so users could move through it.</p>
-  </div>
-
-  <figure class="figure reveal" style="margin-top:40px;">
-    <div class="frame">
-      <img loading="lazy" src="assets/images/omnisproof-before-after-redesign.webp?v=q98" alt="Before vs After Redesign: Comparing the 4-step disconnected setup wizard with the document-first workspace powered by AI suggested fields" />
-    </div>
-    <figcaption><span class="cap-label">Before vs. After Redesign</span>: Collapsing the multi-step configuration wizard into an intuitive, document-centered signing workspace with AI field detection.</figcaption>
-  </figure>
-
-  <div class="prose reveal" style="margin-top:40px;">
-    <div class="eyebrow">What I'd explore next</div>
-    <p>With more time and access to real usage data, I'd focus on:</p>
-    <ul>
-      <li>Testing the redesigned workflow with external law firms.</li>
-      <li>Understanding how users interact with AI suggestions over time.</li>
-      <li>Exploring smarter detection for complex document fields.</li>
-      <li>Measuring setup time, completion rates, and correction patterns.</li>
-    </ul>
-  </div>
-
-  <!-- Closing Thought Banner -->
-  <div class="goal-callout reveal" style="margin-top:40px;">
-    <div class="goal-callout__badge">
-      <span class="goal-callout__dot"></span>
-      CLOSING THOUGHT
-    </div>
-    <p class="goal-callout__text"><span class="mz-highlight" data-action="box">Great product design doesn't remove complexity.</span> It makes complexity feel effortless.</p>
-    <p style="margin-top:14px; font-size:16.5px; line-height:1.7; color:var(--muted);">OmnisProof gave me a chance to rethink how legal teams prepare documents: keep the essential steps and make each interaction clearer, more intentional, and easier to trust.</p>
-    <p style="margin-top:14px; font-size:17px; font-weight:700; color:var(--ink); line-height:1.5;">Less manual work, more clarity, and more confidence in each signature.</p>
-    <p style="margin-top:10px; font-size:15px; color:var(--muted); font-style:italic;">That's the kind of experience I believe legal technology should deliver.</p>
+<!-- ============ NEXT PROJECT ============ -->
+<section class="cs3-section" style="padding-bottom:var(--space-block)">
+  <div class="cs3-wrap">
+    <a class="cs3-next" href="casenotes-case-study.html" data-rv>
+      <div class="cs3-next__body">
+        <span class="eyebrow">Next case study</span>
+        <h3>CaseNotes: AI Meeting Notetaker for Lawyers</h3>
+        <p>I designed an AI transcription and synthesis workspace that anchors client conversations to litigation discovery files.</p>
+        <span class="cs3-link">Read the case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="cs3-next__media"><img src="assets/images/Casenotes_cover page_1.webp" alt="" loading="lazy"></div>
+    </a>
   </div>
 </section>
 
-<!-- Section Divider: Reflection to QA -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
 </div>
-
-<!-- INTERVIEW BRIEF -->
-<section id="qa">
-  <div class="sec-num">10 / QUESTIONS I EXPECT</div>
-  <div class="prose reveal" style="margin-bottom:30px"><div class="eyebrow">Interview Brief</div><h2 class="h">Anticipated questions on these two problems.</h2></div>
-  <div class="faq reveal">
-    <details open><summary><span class="q-text">Why only two problems instead of the whole product?</span></summary><div class="a">Going deep on two hard problems shows how I think better than a product tour. Both had a clear arc: a rejected first attempt, evidence of why, and a validated fix.</div></details>
-    <details><summary><span class="q-text">How confident are you in the 72% AI-acceptance number?</span></summary><div class="a">Moderately. It's from six internal walkthroughs with legal professionals in our own organization, not a controlled study or production telemetry. I treat it as directional evidence the detection is useful, not a validated product metric, and I say that up front.</div></details>
-    <details><summary><span class="q-text">Why didn't you just delete the wizard's steps to simplify it?</span></summary><div class="a">I tried it first: one dense screen with everything visible. A tester called it "a cockpit." The three stages were the right structure; hiding the document behind them was the mistake.</div></details>
-    <details><summary><span class="q-text">What would you do differently with more time or budget?</span></summary><div class="a">Test with external law firm users instead of internal proxies, and instrument real production metrics instead of relying on six walkthrough sessions. That gap, between what I believe and what I can prove at scale, is my answer.</div></details>
-  </div>
-</section>
-
-<!-- Section Divider: QA to Footer -->
-<div class="hatched-divider" aria-hidden="true">
-  <div class="hatched-divider__pattern"></div>
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
-  <div class="lightbox__toolbar">
-    <div class="lightbox__zoom-controls">
-      <button class="lightbox__btn" id="lbZoomOut" aria-label="Zoom out" title="Zoom Out (-)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-      </button>
-      <button class="lightbox__btn lightbox__zoom-val" id="lbZoomVal" aria-label="Current zoom" title="Click to toggle 100% / 200% zoom">100%</button>
-      <button class="lightbox__btn" id="lbZoomIn" aria-label="Zoom in" title="Zoom In (+)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-      </button>
-    </div>
-    <div class="lightbox__tip">💡 Click image to zoom 1:1 · Drag to pan · Scroll to zoom</div>
-    <button class="lightbox__close" id="lightboxClose" aria-label="Close preview" title="Close (Esc)">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-  </div>
-  <button class="lightbox__nav prev" id="lightboxPrev" aria-label="Previous image">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  </button>
-  <button class="lightbox__nav next" id="lightboxNext" aria-label="Next image">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </button>
-  <div class="lightbox__stage" id="lbStage">
-    <img loading="lazy" class="lightbox__img" id="lightboxImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Lightbox Preview" />
-  </div>
-  <div class="lightbox__caption" id="lightboxCaption"></div>
-</div>
-
-<!-- NEXT CASE STUDY -->
-<a href="casenotes-case-study.html" class="next-project-card">
-  <div class="next-project-card__info">
-    <div class="next-project-card__eyebrow">NEXT CASE STUDY</div>
-    <h3 class="next-project-card__title">CaseNotes: AI Meeting Notetaker for Lawyers</h3>
-    <p class="next-project-card__desc">I designed an AI transcription and synthesis workspace that anchors client conversations to litigation discovery files.</p>
-  </div>
-  <div class="next-project-card__cta">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  </div>
-</a>
 
 <!-- FOOTER -->
 <footer class="mz-footer">
@@ -2010,282 +669,9 @@ h3.h3 { font-family:var(--font-display); font-size:17px; font-weight:700; color:
     <div class="mz-footer__copy">&copy; 2026 Muzeeb Urrahaman · All rights reserved</div>
   </div>
 </footer>
+</main>
 
-</main><!-- /#main -->
-
-<script>
-(function() {
-  var mmSections = [
-    ["overview","What we're building"],
-    ["context","Context"],
-    ["signals","Why now"],
-    ["research","Research"],
-    ["constraints","Constraints"],
-    ["problem-ai","AI trust"],
-    ["problem-steps","Step reduction"],
-    ["outcome","Outcome"],
-    ["reflection","Final thoughts"],
-    ["qa","Interview brief"]
-  ];
-  var rail = document.getElementById("mmRail");
-  if (!rail) return;
-  var mmActive = null;
-  mmSections.forEach(function(s, i) {
-    var item = document.createElement("div"); item.className = "mm-item";
-    var btn = document.createElement("button"); btn.className = "mm-bar" + (i === 0 ? " active" : "");
-    btn.setAttribute("type","button"); btn.setAttribute("aria-label","Go to " + s[1]);
-    btn.addEventListener("click", function(){ document.getElementById(s[0]).scrollIntoView({behavior:"smooth",block:"start"}); });
-    item.addEventListener("mouseenter", function(){
-      var tip = document.createElement("div"); tip.className = "mm-tip";
-      tip.innerHTML = '<span class="mm-idx">' + String(i+1).padStart(2,"0") + '</span><span class="mm-lbl">' + s[1] + '</span>';
-      item.appendChild(tip);
-    });
-    item.addEventListener("mouseleave", function(){ var tip = item.querySelector(".mm-tip"); if (tip) tip.remove(); });
-    item.appendChild(btn); rail.appendChild(item);
-  });
-  var mmBars = [].slice.call(document.querySelectorAll(".mm-bar"));
-  function mmUpdate() {
-    var marker = window.innerHeight * 0.32, closest = null, dist = Infinity;
-    mmSections.forEach(function(s) {
-      var el = document.getElementById(s[0]); if (!el) return;
-      var r = el.getBoundingClientRect(); var d = Math.abs(r.top - marker);
-      if (r.bottom > 80 && d < dist) { closest = s[0]; dist = d; }
-    });
-    if (closest && closest !== mmActive) { mmActive = closest; mmBars.forEach(function(b,i){ b.classList.toggle("active", mmSections[i][0] === mmActive); }); }
-  }
-  window.addEventListener("scroll", mmUpdate, {passive:true});
-  window.addEventListener("resize", mmUpdate);
-  mmUpdate();
-})();
-
-  // LIGHTBOX WITH PAN & ZOOM ENGINE
-  (function() {
-    var lightbox = document.getElementById("lightbox");
-    var lbStage = document.getElementById("lbStage");
-    var lbImg = document.getElementById("lightboxImg");
-    var lbCaption = document.getElementById("lightboxCaption");
-    var lbClose = document.getElementById("lightboxClose");
-    var lbPrev = document.getElementById("lightboxPrev");
-    var lbNext = document.getElementById("lightboxNext");
-    var lbZoomIn = document.getElementById("lbZoomIn");
-    var lbZoomOut = document.getElementById("lbZoomOut");
-    var lbZoomVal = document.getElementById("lbZoomVal");
-
-    var allImages = Array.from(document.querySelectorAll(".figure img, .shot img, .hero-cover img, .ui-mockup-wrapper img, .frame img"));
-    // Remove duplicates
-    allImages = allImages.filter(function(img, index, self) {
-      return self.indexOf(img) === index && img !== lbImg;
-    });
-
-    var currentIndex = 0;
-    var lastFocused = null;
-
-    // Zoom & Pan state
-    var scale = 1.0;
-    var panX = 0;
-    var panY = 0;
-    var isDragging = false;
-    var startX = 0;
-    var startY = 0;
-    var initialPanX = 0;
-    var initialPanY = 0;
-    var hasMoved = false;
-
-    function applyTransform(instant) {
-      if (scale <= 1.02) {
-        scale = 1.0;
-        panX = 0;
-        panY = 0;
-        if (lbStage) lbStage.classList.remove("is-zoomed", "is-dragging");
-        lbImg.style.transition = instant ? "none" : "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)";
-        lbImg.style.transform = "scale(1)";
-        if (lbZoomVal) lbZoomVal.textContent = "100%";
-      } else {
-        if (lbStage) lbStage.classList.add("is-zoomed");
-        lbImg.style.transition = instant ? "none" : "transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)";
-        lbImg.style.transform = "translate(" + panX + "px, " + panY + "px) scale(" + scale + ")";
-        if (lbZoomVal) lbZoomVal.textContent = Math.round(scale * 100) + "%";
-      }
-    }
-
-    function zoomTo(newScale, cx, cy) {
-      newScale = Math.max(1.0, Math.min(3.5, newScale));
-      if (newScale === scale) return;
-
-      var rect = lbImg.getBoundingClientRect();
-      var originX = cx - (rect.left + rect.width / 2);
-      var originY = cy - (rect.top + rect.height / 2);
-
-      if (newScale > 1.0) {
-        var factor = newScale / scale;
-        panX = panX - originX * (factor - 1);
-        panY = panY - originY * (factor - 1);
-      } else {
-        panX = 0;
-        panY = 0;
-      }
-
-      scale = newScale;
-      applyTransform(false);
-    }
-
-    function resetZoom() {
-      scale = 1.0;
-      panX = 0;
-      panY = 0;
-      applyTransform(true);
-    }
-
-    function renderImage(idx) {
-      if (idx < 0) idx = allImages.length - 1;
-      if (idx >= allImages.length) idx = 0;
-      currentIndex = idx;
-      var img = allImages[currentIndex];
-      resetZoom();
-      lbImg.src = img.currentSrc || img.src;
-      lbImg.alt = img.alt || "";
-      var caption = img.closest("figure, .shot, .hero-cover, .ui-mockup-frame");
-      var captionEl = caption ? caption.querySelector("figcaption, .sc, .feature-title") : null;
-      lbCaption.textContent = captionEl ? captionEl.textContent : (img.alt || "");
-    }
-
-    function openLightbox(img) {
-      lastFocused = document.activeElement;
-      currentIndex = allImages.indexOf(img);
-      if (currentIndex === -1) currentIndex = 0;
-      renderImage(currentIndex);
-      lightbox.classList.add("open");
-      document.body.style.overflow = "hidden";
-      lbClose.focus();
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("open");
-      document.body.style.overflow = "";
-      resetZoom();
-      if (lastFocused) lastFocused.focus();
-    }
-
-    allImages.forEach(function(img) {
-      img.addEventListener("click", function() { openLightbox(img); });
-    });
-
-    if (lbPrev) {
-      lbPrev.addEventListener("click", function(e) {
-        e.stopPropagation();
-        renderImage(currentIndex - 1);
-      });
-    }
-
-    if (lbNext) {
-      lbNext.addEventListener("click", function(e) {
-        e.stopPropagation();
-        renderImage(currentIndex + 1);
-      });
-    }
-
-    if (lbZoomIn) {
-      lbZoomIn.addEventListener("click", function(e) {
-        e.stopPropagation();
-        zoomTo(scale + 0.5, window.innerWidth / 2, window.innerHeight / 2);
-      });
-    }
-
-    if (lbZoomOut) {
-      lbZoomOut.addEventListener("click", function(e) {
-        e.stopPropagation();
-        zoomTo(scale - 0.5, window.innerWidth / 2, window.innerHeight / 2);
-      });
-    }
-
-    if (lbZoomVal) {
-      lbZoomVal.addEventListener("click", function(e) {
-        e.stopPropagation();
-        if (scale > 1.05) resetZoom();
-        else zoomTo(2.2, window.innerWidth / 2, window.innerHeight / 2);
-      });
-    }
-
-    // Toggle zoom on image click
-    lbImg.addEventListener("click", function(e) {
-      if (hasMoved) return; // Don't toggle zoom if user was dragging
-      e.stopPropagation();
-      if (scale > 1.05) {
-        resetZoom();
-      } else {
-        zoomTo(2.2, e.clientX, e.clientY);
-      }
-    });
-
-    // Drag / Pan mechanics
-    if (lbStage) {
-      lbStage.addEventListener("pointerdown", function(e) {
-        if (scale <= 1.0) return;
-        isDragging = true;
-        hasMoved = false;
-        startX = e.clientX;
-        startY = e.clientY;
-        initialPanX = panX;
-        initialPanY = panY;
-        lbStage.classList.add("is-dragging");
-        lbStage.setPointerCapture(e.pointerId);
-      });
-
-      lbStage.addEventListener("pointermove", function(e) {
-        if (!isDragging) return;
-        var dx = e.clientX - startX;
-        var dy = e.clientY - startY;
-        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
-        panX = initialPanX + dx;
-        panY = initialPanY + dy;
-        applyTransform(true);
-      });
-
-      lbStage.addEventListener("pointerup", function(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        lbStage.classList.remove("is-dragging");
-        try { lbStage.releasePointerCapture(e.pointerId); } catch(err) {}
-      });
-
-      lbStage.addEventListener("pointercancel", function(e) {
-        isDragging = false;
-        lbStage.classList.remove("is-dragging");
-      });
-
-      // Mouse wheel zoom
-      lbStage.addEventListener("wheel", function(e) {
-        e.preventDefault();
-        var delta = e.deltaY < 0 ? 0.25 : -0.25;
-        zoomTo(scale + delta, e.clientX, e.clientY);
-      }, { passive: false });
-    }
-
-    // Close when clicking empty space
-    lightbox.addEventListener("click", function(e) {
-      if (e.target === lightbox || e.target === lbStage) {
-        closeLightbox();
-      }
-    });
-
-    lbClose.addEventListener("click", closeLightbox);
-
-    document.addEventListener("keydown", function(e) {
-      if (!lightbox.classList.contains("open")) return;
-      if (e.key === "Escape") closeLightbox();
-      else if (e.key === "ArrowLeft") renderImage(currentIndex - 1);
-      else if (e.key === "ArrowRight") renderImage(currentIndex + 1);
-      else if (e.key === "+" || e.key === "=") zoomTo(scale + 0.4, window.innerWidth / 2, window.innerHeight / 2);
-      else if (e.key === "-" || e.key === "_") zoomTo(scale - 0.4, window.innerWidth / 2, window.innerHeight / 2);
-      else if (e.key === "0") resetZoom();
-    });
-  })();
-</script>
-<!-- Sound Effects (Commented out for performance, preserved for future use):
-<script src="assets/js/nachi-sfx.js"></script>
-<script src="assets/js/sfx.js"></script>
--->
 <script src="assets/js/site.js?v=561"></script>
-<script src="assets/js/highlighter.js?v=3"></script>
+<script src="assets/js/cs-v3.js?v=1"></script>
 </body>
 </html>
