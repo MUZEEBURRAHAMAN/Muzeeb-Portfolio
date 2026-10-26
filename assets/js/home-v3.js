@@ -1,6 +1,6 @@
 (() => {
-  // Home v3 motion layer: scroll reveals, split headings, card parallax,
-  // cursor-follow pill, magnetic CTAs, hero grid spotlight, blog drag-scroll,
+  // Home v3 motion layer: scroll reveals, split headings,
+  // magnetic CTAs, hero grid spotlight, blog drag-scroll,
   // card spotlight borders and the exit curtain for internal links.
   const body = document.body;
   if (!body.classList.contains("mz-home")) return;
@@ -55,10 +55,6 @@
         if (!e.isIntersecting) return;
         const el = e.target;
         el.classList.add("is-in");
-        if (el.classList.contains("mz-work-card")) {
-          // drop the clip-path after the unclip finishes so hover shadows aren't cut
-          setTimeout(() => el.classList.add("is-settled"), 1150);
-        }
         io.unobserve(el);
       });
     }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
@@ -67,59 +63,7 @@
     revealTargets.forEach(el => el.classList.add("is-in", "is-settled"));
   }
 
-  /* ---------- work card image parallax ---------- */
-  const parallaxImgs = $$(".mz-work-card__img-container > img");
-  if (!reduce && parallaxImgs.length) {
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const vh = window.innerHeight;
-      parallaxImgs.forEach(img => {
-        const r = img.parentElement.getBoundingClientRect();
-        if (r.bottom < -100 || r.top > vh + 100) return;
-        // -1 (entering from bottom) .. 1 (leaving at top)
-        const p = ((r.top + r.height / 2) - vh / 2) / (vh / 2 + r.height / 2);
-        img.style.setProperty("--hv3-py", (p * -24).toFixed(1) + "px");
-      });
-    };
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    update();
-  }
-
   if (fine && !reduce) {
-    /* ---------- cursor-follow pill over work-card images ---------- */
-    const pill = document.createElement("div");
-    pill.className = "hv3-follow";
-    pill.setAttribute("aria-hidden", "true");
-    pill.innerHTML = '<span>View case study</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
-    body.appendChild(pill);
-    let px = 0, py = 0, tx = 0, ty = 0, raf = 0;
-    const loop = () => {
-      px += (tx - px) * 0.2;
-      py += (ty - py) * 0.2;
-      pill.style.setProperty("--x", px.toFixed(1) + "px");
-      pill.style.setProperty("--y", py.toFixed(1) + "px");
-      raf = Math.abs(tx - px) + Math.abs(ty - py) > 0.3 ? requestAnimationFrame(loop) : 0;
-    };
-    $$(".mz-work-card__img-container:not(.mz-work-card__img-container--slider)").forEach(zone => {
-      zone.addEventListener("pointerenter", e => {
-        px = tx = e.clientX; py = ty = e.clientY;
-        loop();
-        pill.classList.add("is-on");
-        body.classList.add("hv3-follow-on");
-      });
-      zone.addEventListener("pointermove", e => {
-        tx = e.clientX; ty = e.clientY;
-        if (!raf) raf = requestAnimationFrame(loop);
-      });
-      zone.addEventListener("pointerleave", () => {
-        pill.classList.remove("is-on");
-        body.classList.remove("hv3-follow-on");
-      });
-    });
-
     /* ---------- magnetic hero CTAs ---------- */
     $$(".mz-hero__cta").forEach(btn => {
       btn.addEventListener("pointermove", e => {
