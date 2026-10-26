@@ -3268,6 +3268,9 @@ html[data-theme="light"] .mz-hero__badge-pill:hover .mz-hero__badge-text {
 [data-theme="light"] .mz-drawer {
     background: #ffffff;
     border-left: 1px solid #ebebeb;
+    box-shadow: none; /* a shadow on the closed, off-screen drawer leaked a grey strip down the right edge */
+}
+[data-theme="light"] .mz-drawer.open {
     box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
 }
 [data-theme="light"] .mz-drawer__head,

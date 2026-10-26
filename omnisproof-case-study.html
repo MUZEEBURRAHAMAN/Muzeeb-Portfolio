@@ -55,12 +55,12 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="assets/css/style.css?v=614">
+<link rel="stylesheet" href="assets/css/style.css?v=615">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
-<link rel="stylesheet" href="assets/css/cs-v3.css?v=2">
+<link rel="stylesheet" href="assets/css/cs-v3.css?v=3">
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
 </head>
 <body class="cs3-page">
@@ -396,7 +396,7 @@
         <figcaption><b>AI-assisted field placement in action.</b> "Detect with AI" scans the document in context, identifies 38 form fields, and renders green visual confirmations with reviewable states so attorneys maintain 100% control without manual fatigue.</figcaption>
       </div></figure>
 
-      <div class="cs3-block cs3-wide" data-rv>
+      <div class="cs3-block" data-rv>
         <h3 class="cs3-h3">Designing for failure and non-standard inputs</h3>
         <div>
           <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>Non-standard or custom field types</b> that fall outside the seven types the model recognizes (signature, date, name, initials, title, email, text) aren't guessed at: they're left for manual placement using the same field library, with no error state implying something went wrong.</p></div>
@@ -506,7 +506,7 @@
         </div>
       </div>
 
-      <div class="cs3-block cs3-wide" data-rv>
+      <div class="cs3-block" data-rv>
         <h3 class="cs3-h3">Handling changes and missing fields</h3>
         <div>
           <div class="cs3-edge"><span class="tag tag-outline" style="width:max-content;height:max-content">Edge case</span><p><b>A recipient is added after fields are already placed.</b> Any field already assigned to a now-invalid configuration is flagged inline in the field panel instead of being reassigned, so the user makes the call on where it belongs.</p></div>
@@ -591,7 +591,7 @@
     <header class="cs3-aside" data-rv><span class="cs3-aside__num">10</span><h2 class="cs3-sec-title">Questions I expect</h2></header>
     <div class="cs3-body">
       <p class="cs3-lead" data-rv>Anticipated questions on these two problems.</p>
-      <div class="cs3-faq cs3-wide" data-rv>
+      <div class="cs3-faq" data-rv>
         <details open><summary>Why only two problems instead of the whole product?<span class="plus" aria-hidden="true"></span></summary><div class="a">Going deep on two hard problems shows how I think better than a product tour. Both had a clear arc: a rejected first attempt, evidence of why, and a validated fix.</div></details>
         <details><summary>How confident are you in the 72% AI-acceptance number?<span class="plus" aria-hidden="true"></span></summary><div class="a">Moderately. It's from six internal walkthroughs with legal professionals in our own organization, not a controlled study or production telemetry. I treat it as directional evidence the detection is useful, not a validated product metric, and I say that up front.</div></details>
         <details><summary>Why didn't you just delete the wizard's steps to simplify it?<span class="plus" aria-hidden="true"></span></summary><div class="a">I tried it first: one dense screen with everything visible. A tester called it "a cockpit." The three stages were the right structure; hiding the document behind them was the mistake.</div></details>
@@ -683,6 +683,6 @@
 </main>
 
 <script src="assets/js/site.js?v=561"></script>
-<script src="assets/js/cs-v3.js?v=2"></script>
+<script src="assets/js/cs-v3.js?v=3"></script>
 </body>
 </html>

@@ -109,44 +109,56 @@ html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3 {
   color: var(--color-text-muted);
 }
 
-/* layout
-   Each section is a named grid: [full] bleed | [content] title column | [col] text column | bleed.
-   Text sits in the text column, wide blocks span the content width (= header width), and
-   image bands run edge to edge. .cs3-body uses display:contents so its children are grid items. */
-.cs3-wrap { width: 100%; max-width: var(--container-max); margin: 0 auto; padding-inline: var(--space-gutter); }
+/* layout — one editorial grid
+   --cw is the content width shared by the header, hero and every section.
+   Left 35%: section number + title only. Right 65%: everything you read.
+   Wide (full --cw): components that need room (step strips, card grids, tables);
+   their headings and copy still start on the right-column edge.
+   Bands: images, edge to edge. .cs3-body is display:contents, so its children
+   are items of the section grid. */
+.cs3-page { --rhythm: clamp(2.5rem, 1.6rem + 2.5vw, 4rem); }
+.cs3-wrap { width: 100%; max-width: calc(var(--container-max) + 2 * var(--space-gutter)); margin: 0 auto; padding-inline: var(--space-gutter); }
 .cs3-section { padding-block: var(--space-section); border-top: 1px solid var(--color-border); }
 .cs3-wrap.cs3-grid {
+  --cw: min(var(--container-max), 100% - 2 * var(--space-gutter));
   max-width: none;
   padding-inline: 0;
   display: grid;
   grid-template-columns:
-    [full-start] minmax(var(--space-gutter), 1fr)
-    [content-start] minmax(0, calc(var(--container-max) * .35))
-    [col-start] minmax(0, calc(var(--container-max) * .65))
-    [content-end] minmax(var(--space-gutter), 1fr) [full-end];
-  row-gap: var(--space-block);
+    [full-start] 1fr
+    [content-start] calc(var(--cw) * .35)
+    [col-start] calc(var(--cw) * .65)
+    [content-end] 1fr [full-end];
+  row-gap: var(--rhythm);
 }
 .cs3-body { display: contents; }
 .cs3-body > * { grid-column: col-start / content-end; min-width: 0; }
-.cs3-body > :first-child { grid-row: 1; }
+.cs3-body > :first-child { grid-row: 1; align-self: baseline; }
 .cs3-body > .cs3-wide { grid-column: content-start / content-end; }
-.cs3-body > .cs3-band { grid-column: full-start / full-end; }
-.cs3-aside { grid-column: content-start / col-start; grid-row: 1; align-self: start; padding-right: var(--space-12); display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--space-4); }
-.cs3-aside::after { content: ""; grid-column: 1 / -1; width: 40px; height: 2px; margin-top: var(--space-5); background: var(--color-text); }
-.cs3-aside__num { font-family: var(--font-code) !important; font-size: var(--text-xs); color: var(--color-text-muted); }
-.cs3 .cs3-sec-title { font-size: var(--text-2xl) !important; line-height: var(--leading-tight); letter-spacing: var(--tracking-snug) !important; }
-.cs3-block { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-6); min-width: 0; }
-.cs3 .cs3-lead { font-family: var(--font-sans) !important; font-size: var(--text-xl); font-weight: 600; line-height: 1.45; letter-spacing: var(--tracking-snug); color: var(--color-text); max-width: 40ch; text-wrap: pretty; }
-.cs3-h3 { font-size: var(--text-2xl) !important; line-height: var(--leading-tight); letter-spacing: var(--tracking-snug) !important; }
-.cs3-prose { display: grid; gap: var(--space-4); max-width: var(--container-narrow); color: var(--color-text-secondary); font-size: var(--text-md); }
+.cs3-body > .cs3-band { grid-column: full-start / full-end; margin-block: calc(var(--rhythm) * .5); }
+/* inside a wide block, headings and copy keep the reading edge */
+.cs3-wide > .cs3-h3, .cs3-wide > .cs3-prose, .cs3-wide > .eyebrow { margin-left: 35%; }
+
+/* section intro: number · title, rule underneath, baseline-aligned with the lead */
+.cs3-aside { grid-column: content-start / col-start; grid-row: 1; align-self: baseline; padding-right: var(--space-12); display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); align-items: baseline; }
+.cs3-aside::after { content: ""; grid-column: 1 / -1; width: 40px; height: 2px; margin-top: var(--space-6); background: var(--color-text); }
+.cs3-aside__num { font-family: var(--font-code) !important; font-size: var(--text-sm); color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.cs3 .cs3-sec-title { font-size: var(--text-2xl) !important; line-height: var(--leading-tight); letter-spacing: var(--tracking-tight) !important; }
+
+/* type hierarchy: section title (2xl) > lead (xl, 600) > sub-heading (lg, 600) > body (md) */
+.cs3-block { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-5); min-width: 0; }
+.cs3 .cs3-lead { font-family: var(--font-sans) !important; font-size: var(--text-xl); font-weight: 600; line-height: 1.4; letter-spacing: var(--tracking-snug); color: var(--color-text); max-width: 34ch; text-wrap: pretty; }
+.cs3 .cs3-h3 { font-family: var(--font-sans) !important; font-size: var(--text-lg) !important; font-weight: 600 !important; line-height: var(--leading-snug); letter-spacing: var(--tracking-snug) !important; max-width: 46ch; }
+.cs3-prose { display: grid; gap: var(--space-4); max-width: 62ch; color: var(--color-text-secondary); font-size: var(--text-md); line-height: 1.6; }
 .cs3-prose ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-3); }
 .cs3-prose li { position: relative; padding-left: var(--space-6); }
-.cs3-prose li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 8px; height: 1px; background: var(--color-text-muted); }
+.cs3-prose li::before { content: ""; position: absolute; left: 4px; top: .8em; width: 8px; height: 1px; background: var(--color-text-muted); }
 @media (max-width: 900px) {
-  .cs3-body > *, .cs3-body > .cs3-wide, .cs3-aside { grid-column: content-start / content-end; }
+  .cs3-wrap.cs3-grid { grid-template-columns: [full-start] var(--space-gutter) [content-start] minmax(0, 1fr) [col-start content-end] var(--space-gutter) [full-end]; }
+  .cs3-body > .cs3-wide, .cs3-body > *, .cs3-aside { grid-column: content-start / content-end; }
   .cs3-body > :first-child { grid-row: auto; }
   .cs3-aside { padding-right: 0; }
-  .cs3-wrap.cs3-grid { row-gap: var(--space-10); }
+  .cs3-wide > .cs3-h3, .cs3-wide > .cs3-prose, .cs3-wide > .eyebrow { margin-left: 0; }
 }
 
 /* image bands: full screen width, image large and centred */
@@ -434,7 +446,7 @@ html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3 {
    ========================================================================== */
 body.cs3-page { background: var(--color-bg) !important; color: var(--color-text); font-family: var(--font-sans); }
 .cs3-page #main { max-width: none !important; padding: 0 !important; border: 0 !important; }
-.cs3-page #main > .mz-footer { max-width: var(--container-max); margin-inline: auto; padding-inline: var(--space-gutter); }
+.cs3-page #main > .mz-footer { max-width: calc(var(--container-max) + 2 * var(--space-gutter)); margin-inline: auto; padding-inline: var(--space-gutter); }
 
 /* announcement bar */
 .cs3-announce {
@@ -450,11 +462,13 @@ html:not([data-theme="light"]) .cs3-announce { background: #000; border-bottom: 
 
 /* header bar: sticky, blur 14px, hairline */
 .cs3-page .site-header {
-  background: color-mix(in srgb, var(--color-bg) 82%, transparent);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  background: var(--color-bg);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
   border-bottom: 1px solid var(--color-border);
 }
-.cs3-page .site-header__inner { max-width: var(--container-max) !important; padding-inline: var(--space-gutter) !important; height: 72px; }
+.cs3-page .site-header__inner { max-width: calc(var(--container-max) + 2 * var(--space-gutter)) !important; padding-inline: var(--space-gutter) !important; height: 68px; }
+.cs3-page .site-header__nav { gap: 2px; }
+.cs3-page .site-header__logo-img { height: 20px; }
 .cs3-page .site-header__link { color: var(--color-text-secondary); font: 500 var(--text-sm)/1 var(--font-sans); padding: 10px 12px; transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out); }
 .cs3-page .site-header__link:hover,
 .cs3-page .site-header__link.active { color: var(--color-text); background: var(--color-fill-subtle); }
