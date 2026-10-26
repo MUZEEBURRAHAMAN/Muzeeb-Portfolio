@@ -573,3 +573,18 @@ body.cs3-page { padding-bottom: 64px; }
 /* LitBox design-system grid: let its columns shrink below their content's min width on phones */
 .cs3 .ds-grid > * { min-width: 0; }
 @media (max-width: 768px) { .cs3 .ds-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* lists inside cards */
+.cs3-card ul { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-secondary); }
+.cs3-card ul li { position: relative; padding-left: var(--space-4); }
+.cs3-card ul li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 1px; background: var(--color-text-muted); }
+/* five-up facts row */
+.cs3-facts--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 0; }
+@media (max-width: 900px) { .cs3-facts--5 { grid-template-columns: 1fr 1fr; } .cs3-facts--5 > div:nth-child(odd) { padding-left: 0; border-left: 0; } .cs3-facts--5 > div:nth-child(n+3) { border-top: 1px solid var(--color-border); margin-top: var(--space-5); } }
+/* fork at the end of a flow: two outcomes stacked in one step */
+.cs3-flow li.cs3-flow__fork { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+.cs3-flow li.cs3-flow__fork h5 + p { margin-bottom: var(--space-2); }
+/* very tall full-page screenshots: a readable column instead of ten screens of scrolling */
+.cs3-band--tall .cs3-band__inner { max-width: 820px; }
+/* Before / After tag leading a caption */
+.cs3-band figcaption .tag { margin-right: 6px; vertical-align: 1px; }

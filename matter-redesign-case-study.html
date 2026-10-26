@@ -617,7 +617,7 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 .lightbox__nav.next { right:24px; top:50%; transform:translateY(-50%); }
 </style>
 <link href="assets/css/ds-v2.css?v=13" rel="stylesheet"/>
-<link href="assets/css/cs-v3.css?v=6" rel="stylesheet"/>
+<link href="assets/css/cs-v3.css?v=7" rel="stylesheet"/>
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
 </head>
 <body class="cs3-page">
@@ -644,96 +644,82 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <main id="main" class="w-full">
 <div class="cs3" data-no-icon-motion>
 
+<!-- ============ HERO ============ -->
 <header class="cs3-hero">
   <div class="cs3-wrap">
     <div class="cs3-hero__top">
       <a class="cs3-back" href="index.html#work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>All work</a>
-      <span class="tag tag-outline">Case study</span><span class="tag tag-blue">Product Designer</span><span class="tag tag-badge">Legal Practice Management SaaS</span>
+      <span class="tag tag-outline">Case study</span>
+      <span class="tag tag-blue">Legal practice management SaaS</span>
+      <span class="tag tag-badge">AI-assisted</span>
     </div>
     <h1 class="cs3-hl">CasePro: rebuilding matter creation around what a client says, not what a form demands.</h1>
-    <div class="cs3-hero__lead cs3-hero__lead--one" data-rv style="--d:3"><p>Intake and matter creation used to be one overloaded form. Now they are two connected systems, one <span class="mark">AI-assisted</span> and one manual.</p></div>
-    <dl class="cs3-facts" data-rv style="--d:4"><div><dt class="eyebrow">Role</dt><dd>Product Designer, System Redesign</dd></div><div><dt class="eyebrow">Domain</dt><dd>Legal Practice Management · CRM</dd></div><div><dt class="eyebrow">Core Problem</dt><dd>Intake Merged Into Matter</dd></div><div><dt class="eyebrow">Outcome</dt><dd>2 Linked Modules, 2 Creation Paths</dd></div></dl>
+    <div class="cs3-hero__lead cs3-hero__lead--one" data-rv style="--d:3">
+      <p>Intake and matter creation used to be one overloaded form. Now they are two connected systems, one <span class="mark">AI-assisted</span> and one manual.</p>
+    </div>
+    <dl class="cs3-facts" data-rv style="--d:4">
+      <div><dt class="eyebrow">Role</dt><dd>Product Designer, System Redesign</dd></div>
+      <div><dt class="eyebrow">Domain</dt><dd>Legal Practice Management · CRM</dd></div>
+      <div><dt class="eyebrow">Core problem</dt><dd>Intake Merged Into Matter</dd></div>
+      <div><dt class="eyebrow">Outcome</dt><dd>2 Linked Modules, 2 Creation Paths</dd></div>
+    </dl>
   </div>
-  <figure class="cs3-band cs3-cover" style="margin-top:var(--space-block)"><div class="cs3-band__inner" data-rv="unfold" style="--d:5"><div class="cs3-media__frame"><img alt="CasePro Create New Matter screen with a modal asking the user to choose between Create with AI Agent and Create Manually" height="2160" loading="eager" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp?v=2" width="3840"/></div></div></figure>
+  <figure class="cs3-band cs3-cover" style="margin-top:var(--space-block)">
+    <div class="cs3-band__inner" data-rv="unfold" style="--d:5">
+      <div class="cs3-media__frame"><img loading="eager" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp?v=2" width="3840" height="2160" alt="CasePro Create New Matter screen with a modal asking the user to choose between Create with AI Agent and Create Manually"></div>
+    </div>
+  </figure>
 </header>
 
-<section class="cs3-section" id="overview">
+<!-- ============ RESULTS BAND ============ -->
+<div class="cs3-wrap">
+  <div class="cs3-results" data-rv>
+    <div><span class="eyebrow">Data model</span><span class="n">1 → 2</span><p>One merged intake-as-matter object became two linked entities: intake and matter.</p></div>
+    <div><span class="eyebrow">Ways to create a matter</span><span class="n">2 paths</span><p>Create with AI Agent, or Create Manually, chosen up front.</p></div>
+    <div><span class="eyebrow">Shared structure</span><span class="n">6 steps</span><p>Both paths use the same six-step architecture and the same review gate.</p></div>
+  </div>
+</div>
+
+<!-- ============ 01 OVERVIEW ============ -->
+<section class="cs3-section" id="overview" style="margin-top:var(--space-section)">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">01</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Overview</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">01</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Overview · What is CasePro</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">A legal CRM where <span class="mark">intake and matter</span> stopped being the same object</h2></div>
-<span class="eyebrow" data-rv>What is CasePro</span>
-<div class="cs3-wide cs3-legacy" data-rv><div class="intro">
-<div>
-<p class="lead">CasePro is the practice-management layer law firms use to run a case from the first client call to close: matters, parties, incident facts, documents, deadlines, and legal-team staffing, all in one system.</p>
-<p class="prose"><b><span class="mark">Designed around two different jobs</span>, instead of one form.</b> Before this redesign, opening a new case meant filling out a single "New Matter" wizard that mixed a client's raw intake story with case metadata, incident facts, legal-team assignment, and outcome tracking, six tabs deep, with the client's intake reduced to a free-text box labeled <span class="mono">Notes or links to intake form</span>.</p>
-<p class="prose"><b>Rebuilt as <span class="mark">two linked systems</span>, instead of one mega-form.</b> Intake became its own structured, firm-customizable questionnaire. Matter creation became a deliberate second step that could pull from that intake or start from a blank slate when a firm chose to build the record by hand.</p>
-</div>
-<aside class="side">
-<div class="g"><div class="k">Category</div><div class="v">Legal Tech SaaS · CRM</div></div>
-<div class="g"><div class="k">Role</div><div class="v">Product Designer</div></div>
-<div class="g"><div class="k">Scope</div><div class="v">Workflow Redesign, IA, Interaction Design</div></div>
-<div class="g"><div class="k">Users</div><div class="v">Intake Specialists, Paralegals, Attorneys, Firm Admins</div></div>
-<div class="g"><div class="k">Status</div><div class="v">Design → Engineering Handoff</div></div>
-</aside>
-</div></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="note">
-<div class="note__badge">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg>
-</div>
-<div class="note__body">
-<span class="note__label">The Opening Insight</span>
-      Sitting with intake specialists, I watched the same sequence three times in one morning: transcribe a client call into a text box, open a brand-new matter, then retype half of what was just written into six more tabs. The form's problem wasn't UI polish: it did the job of two different tools and did neither one well.
-    </div>
-</div></div>
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">A legal CRM where <span class="mark">intake and matter</span> stopped being the same object</h2>
+        <div class="cs3-prose">
+          <p><b>CasePro is the practice-management layer law firms use to run a case from the first client call to close:</b> matters, parties, incident facts, documents, deadlines, and legal-team staffing, all in one system.</p>
+          <p><b>Designed around two different jobs, instead of one form.</b> Before this redesign, opening a new case meant filling out a single "New Matter" wizard that mixed a client's raw intake story with case metadata, incident facts, legal-team assignment, and outcome tracking, six tabs deep, with the client's intake reduced to a free-text box labeled <span class="mono">Notes or links to intake form</span>.</p>
+          <p><b>Rebuilt as two linked systems, instead of one mega-form.</b> Intake became its own structured, firm-customizable questionnaire. Matter creation became a deliberate second step that could pull from that intake or start from a blank slate when a firm chose to build the record by hand.</p>
+        </div>
+      </div>
+      <dl class="cs3-facts cs3-facts--5 cs3-wide" data-rv>
+        <div><dt class="eyebrow">Category</dt><dd>Legal Tech SaaS · CRM</dd></div>
+        <div><dt class="eyebrow">Role</dt><dd>Product Designer</dd></div>
+        <div><dt class="eyebrow">Scope</dt><dd>Workflow Redesign, IA, Interaction Design</dd></div>
+        <div><dt class="eyebrow">Users</dt><dd>Intake Specialists, Paralegals, Attorneys, Firm Admins</dd></div>
+        <div><dt class="eyebrow">Status</dt><dd>Design → Engineering Handoff</dd></div>
+      </dl>
+      <div class="cs3-note cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><span class="eyebrow">The opening insight</span>Sitting with intake specialists, I watched the same sequence three times in one morning: transcribe a client call into a text box, open a brand-new matter, then retype half of what was just written into six more tabs. The form's problem wasn't UI polish: it did the job of two different tools and did neither one well.</div></div>
     </div>
   </div>
 </section>
+
+<!-- ============ 02 PROBLEM ============ -->
 <section class="cs3-section" id="problem">
   <div class="cs3-wrap cs3-grid">
     <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">02</span><i aria-hidden="true"></i><span class="cs3-kicker__label">The problem</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">Each "New Matter" started the same way: <span class="mark">guessing what the client already told someone</span></h2></div>
-<span class="eyebrow" data-rv>The Problem</span>
-<div class="cs3-prose" data-rv><p class="prose">The legacy matter form, still visible below, treated intake as an afterthought and treated every case (a two-car accident, a medical malpractice claim, a commercial dispute) as one identical, generic slog.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="cards">
-<div class="card">
-<div class="card__ic card__ic--red">
-<svg fill="none" height="20" stroke="var(--red)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M12 9v4M12 17h.01"></path><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"></path></svg>
-</div>
-<h3>Intake Was a Text Box</h3>
-<ul>
-<li>The only place client-provided information lived inside a new matter was one freeform field: <span class="mono">Notes or links to intake form</span>.</li>
-<li>Nothing structured, nothing reusable, nothing a downstream workflow could act on.</li>
-<li>Each fact a client had already shared still had to be re-typed by hand, field by field.</li>
-</ul>
-</div>
-<div class="card">
-<div class="card__ic card__ic--amber">
-<svg fill="none" height="20" stroke="var(--amber)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-</div>
-<h3>One Form, Every Practice Area</h3>
-<ul>
-<li>The same generic fields applied whether the matter was an auto accident, a slip-and-fall, or a commercial dispute.</li>
-<li>Firms couldn't tailor intake questions to their own region, county, or practice group.</li>
-<li>Questions that mattered for one case type showed up as clutter on every other case type.</li>
-</ul>
-</div>
-<div class="card">
-<div class="card__ic card__ic--accent">
-<svg fill="none" height="20" stroke="var(--accent)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line></svg>
-</div>
-<h3>Nothing Carried Forward</h3>
-<ul>
-<li>If a client had already answered questions during intake, none of it flowed into the matter.</li>
-<li>Paralegals re-typed names, dates, and incident details a second time, by hand, from scratch.</li>
-<li>There was no signal for who filled in a field, or how confident anyone was that it was correct.</li>
-</ul>
-</div>
-</div></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Each "New Matter" started the same way: <span class="mark">guessing what the client already told someone</span></h2>
+        <div class="cs3-prose"><p>The legacy matter form, still visible below, treated intake as an afterthought and treated every case (a two-car accident, a medical malpractice claim, a commercial dispute) as one identical, generic slog.</p></div>
+      </div>
+      <div class="cs3-cards cs3-cards--3 cs3-wide" data-rv>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><h4>Intake was a text box</h4><ul><li>The only place client-provided information lived inside a new matter was one freeform field: <span class="mono">Notes or links to intake form</span>.</li><li>Nothing structured, nothing reusable, nothing a downstream workflow could act on.</li><li>Each fact a client had already shared still had to be re-typed by hand, field by field.</li></ul></div>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h4>One form, every practice area</h4><ul><li>The same generic fields applied whether the matter was an auto accident, a slip-and-fall, or a commercial dispute.</li><li>Firms couldn't tailor intake questions to their own region, county, or practice group.</li><li>Questions that mattered for one case type showed up as clutter on every other case type.</li></ul></div>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></span><h4>Nothing carried forward</h4><ul><li>If a client had already answered questions during intake, none of it flowed into the matter.</li><li>Paralegals re-typed names, dates, and incident details a second time, by hand, from scratch.</li><li>There was no signal for who filled in a field, or how confident anyone was that it was correct.</li></ul></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Legacy New Matter wizard, step 1 of 6, Matter Overview, with an Intake Questionnaire field that is a single freeform textarea labeled Notes or links to intake form" height="1906" loading="lazy" src="assets/images/case-studies/matter-redesign/before-01-matter-form-freeform-intake.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 1906">
 <rect class="mz-a-glow problem" height="355" rx="20" width="1728" x="269" y="1287"></rect>
@@ -746,13 +732,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text problem" font-size="34" x="496" y="1028">Entire intake = one text box</text>
 <text class="mz-a-support problem" font-size="24" x="496" y="1066">No fields, no structure, just free text.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">Before</span><strong>Legacy "New Matter" wizard, Step 1 of 6.</strong> The entire intake questionnaire is a single freeform textarea, nested inside Matter Overview alongside case type, forecast category, and stage.</figcaption>
-</figure></div></div></figure>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+</div></div><figcaption><span class="tag tag-bad">Before</span> <b>Legacy "New Matter" wizard, Step 1 of 6.</b> The entire intake questionnaire is a single freeform textarea, nested inside Matter Overview alongside case type, forecast category, and stage.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Legacy Matters Details record with an Intake Questionnaires tab open, showing an 8-step wizard nested seven tabs deep inside an already created matter" height="2160" loading="lazy" src="assets/images/case-studies/matter-redesign/before-02-intake-tab-buried.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 2160">
 <rect class="mz-a-glow problem" height="69" rx="14" width="422" x="2035" y="352"></rect>
@@ -765,13 +746,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text problem" font-size="34" x="836" y="228">Buried 7 tabs into an existing matter</text>
 <text class="mz-a-support problem" font-size="24" x="836" y="266">Intake only exists after the matter is created.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">Before</span><strong>Intake, seven tabs deep.</strong> The only structured intake experience in the legacy product lived inside an already-created Matter Details record, after the matter existed, not before it.</figcaption>
-</figure></div></div></figure>
-<figure class="cs3-band cs3-band--narrow"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+</div></div><figcaption><span class="tag tag-bad">Before</span> <b>Intake, seven tabs deep.</b> The only structured intake experience in the legacy product lived inside an already-created Matter Details record, after the matter existed, not before it.</figcaption></div></figure>
+      <figure class="cs3-band cs3-band--tall"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="The full legacy New Matter flow flattened into one continuous scrolling page with eight stacked sections" height="7524" loading="lazy" src="assets/images/case-studies/matter-redesign/before-03-mega-form-scroll.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 7524">
 <rect class="mz-a-glow problem" height="6790" rx="24" width="1000" x="207" y="357"></rect>
@@ -784,190 +760,109 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text problem" font-size="34" x="1326" y="408">8 sections stacked as one</text>
 <text class="mz-a-support problem" font-size="24" x="1326" y="446">No steps, no breaks, no pagination.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">Before</span><strong>The full legacy flow, flattened.</strong> Eight sections (matter overview, parties, incident, legal, deductions, team, media, outcome) stacked as if they were one decision instead of a legal record being assembled step by step.</figcaption>
-</figure></div></div></figure>
-<div class="cs3-wide cs3-legacy" data-rv><div class="note warn">
-<div class="note__badge">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-</div>
-<div class="note__body">
-<span class="note__label">Where It Broke Down</span>
-      Two different jobs, capturing what a client says and building the legal record, were forced through one form. Every matter, regardless of size or complexity, hit the same rigid eight-section sequence, with no way to skip a step, customize a field, or reuse anything a client had already told the firm.
-    </div>
-</div></div>
+</div></div><figcaption><span class="tag tag-bad">Before</span> <b>The full legacy flow, flattened.</b> Eight sections (matter overview, parties, incident, legal, deductions, team, media, outcome) stacked as if they were one decision instead of a legal record being assembled step by step.</figcaption></div></figure>
+      <div class="cs3-note cs3-note--warn cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="eyebrow">Where it broke down</span>Two different jobs, capturing what a client says and building the legal record, were forced through one form. Every matter, regardless of size or complexity, hit the same rigid eight-section sequence, with no way to skip a step, customize a field, or reuse anything a client had already told the firm.</div></div>
     </div>
   </div>
 </section>
+
+<!-- ============ 03 RESEARCH ============ -->
 <section class="cs3-section" id="research">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">03</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Research & diagnosis</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">03</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Research &amp; diagnosis · Root cause</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">The bug was the <span class="mark">data model</span> underneath the form</h2></div>
-<span class="eyebrow" data-rv>Root Cause</span>
-<div class="cs3-prose" data-rv><p class="prose">I sat with the people who processed new matters every day: intake specialists, paralegals building files after client calls, and the ops lead who owned the CRM configuration. Instead of starting from a blank redesign, I traced the existing form field by field: which ones duplicated "intake" and "matter," which ones nobody filled in, and which decisions (statute-of-limitations deadlines, legal-team staffing) had no system support and lived in someone's memory.</p></div>
-<h3 class="cs3-h3" data-rv>Three signals confirmed this was a real cost</h3>
-<div class="cs3-prose" data-rv><p class="prose">A redesign is easy to justify with a strong opinion and one bad screenshot. Before proposing anything, I wanted three independent signals to agree, beyond my own read of the form.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="cards">
-<div class="card">
-<div class="card__ic card__ic--accent"><svg fill="none" height="20" stroke="var(--accent)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-<h3>Shadowing Beyond Interviews</h3>
-<ul>
-<li>Sat through live matter creation with intake specialists and paralegals over two weeks, across several new matters end to end.</li>
-<li>Timed where they paused, backtracked to a client's notes, or pulled in a colleague to ask "wait, did we already ask this?"</li>
-</ul>
-</div>
-<div class="card">
-<div class="card__ic card__ic--green"><svg fill="none" height="20" stroke="var(--green)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><rect height="18" rx="2" width="18" x="3" y="3"></rect><path d="M3 9h18M9 21V9"></path></svg></div>
-<h3>Reading the CRM's Own Data</h3>
-<ul>
-<li>Pulled a sample of recently created matters and checked which fields were populated versus left blank or default.</li>
-<li>The <span class="mono">Intake Questionnaire</span> field was empty, or just a name with no real content, on most of them, so almost nobody opened the structured intake tab downstream.</li>
-</ul>
-</div>
-<div class="card">
-<div class="card__ic card__ic--amber"><svg fill="none" height="20" stroke="var(--amber)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
-<h3>Structured Interviews, Reframed</h3>
-<ul>
-<li>Separate 1:1s with the ops lead and two attorneys. I skipped "what's wrong with the form" and asked "walk me through the last matter you opened."</li>
-<li>That framing surfaced friction people had stopped noticing, because they'd built quiet workarounds for it.</li>
-</ul>
-</div>
-</div></div>
-<div class="cs3-prose" data-rv><p class="prose">All three pointed at the same root cause from three different angles. The form was laid out fine. It answered two different questions, <em>what did the client tell us</em> and <em>what is the legal record</em>, as if they were one, and everyone touching it had adapted around that instead of naming it.</p></div>
-<div class="cs3-prose" data-rv><p class="prose">That trace surfaced the bug. It was a data-model problem, and more validation rules wouldn't have fixed it.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="pullquote">
-    Intake and Matter are different things. Intake is what a client tells you, once, in their own words. A Matter is the legal record your firm builds from it, and firms need to build that record two different ways, depending on how much of the client's story is already captured.
-  </div></div>
-<div class="cs3-wide cs3-legacy" data-rv><figure class="diagram-card reveal">
-<div class="diagram-scroll-wrap">
-<div class="diagram-scroll">
-<svg aria-labelledby="dataModelTitle dataModelDesc" role="img" viewbox="0 0 1000 360">
-<title id="dataModelTitle">Old versus new data model</title>
-<desc id="dataModelDesc">The legacy model merges client call and matter record into one object. The redesigned model separates a customizable intake record from the matter record, linked together, with two paths into matter creation.</desc>
-<text class="dg-sub" font-size="12" letter-spacing="1" x="20" y="34">BEFORE: ONE MERGED OBJECT</text>
-<rect class="dg-node" height="56" rx="10" width="190" x="20" y="52"></rect>
-<text class="dg-title" font-size="13" text-anchor="middle" x="115" y="85">Client Call</text>
-<line class="dg-edge" marker-end="url(#arrowM)" x1="210" x2="256" y1="80" y2="80"></line>
-<rect class="dg-node--amber dg-node" height="80" rx="10" style="fill:var(--amber-soft);stroke:var(--amber)" width="330" x="258" y="40"></rect>
-<text class="dg-title" font-size="13" text-anchor="middle" x="423" y="72">"New Matter" wizard</text>
-<text class="dg-sub" font-size="11" text-anchor="middle" x="423" y="92">intake = one freeform note, buried in step 1 of 6</text>
-<line stroke="var(--line)" stroke-width="1" x1="20" x2="980" y1="150" y2="150"></line>
-<text class="dg-sub" font-size="12" letter-spacing="1" x="20" y="184">AFTER: TWO LINKED ENTITIES</text>
-<rect class="dg-node" height="56" rx="10" width="170" x="20" y="202"></rect>
-<text class="dg-title" font-size="13" text-anchor="middle" x="105" y="235">Client Call</text>
-<line class="dg-edge dg-edge--accent" marker-end="url(#arrowA)" x1="190" x2="234" y1="230" y2="230"></line>
-<rect class="dg-node dg-node--accent" height="60" rx="10" width="230" x="236" y="200"></rect>
-<text class="dg-title" font-size="13" text-anchor="middle" x="351" y="226">Intake Record</text>
-<text class="dg-sub" font-size="10.5" text-anchor="middle" x="351" y="245">customizable per firm / region / county</text>
-<line class="dg-edge dg-edge--accent" marker-end="url(#arrowA)" x1="466" x2="512" y1="230" y2="230"></line>
-<rect class="dg-node dg-node--green" height="60" rx="10" width="176" x="514" y="200"></rect>
-<text class="dg-title" font-size="13" text-anchor="middle" x="602" y="226">Matter Record</text>
-<text class="dg-sub" font-size="10.5" text-anchor="middle" x="602" y="245">the legal case file</text>
-<line class="dg-edge" marker-end="url(#arrowM)" x1="690" x2="736" y1="215" y2="188"></line>
-<rect class="dg-node" height="46" rx="9" width="242" x="738" y="160"></rect>
-<text class="dg-title" font-size="12.5" text-anchor="middle" x="859" y="188">Path A: Create with AI</text>
-<line class="dg-edge" marker-end="url(#arrowM)" x1="690" x2="736" y1="245" y2="272"></line>
-<rect class="dg-node" height="46" rx="9" width="242" x="738" y="254"></rect>
-<text class="dg-title" font-size="12.5" text-anchor="middle" x="859" y="282">Path B: Create Manually</text>
-<defs>
-<marker id="arrowM" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
-<path d="M0 0L10 5L0 10z" fill="var(--soft)"></path>
-</marker>
-<marker id="arrowA" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
-<path d="M0 0L10 5L0 10z" fill="var(--accent)"></path>
-</marker>
-</defs>
-</svg>
-</div>
-</div>
-<figcaption><strong>The redesign in one diagram.</strong> A single merged object became two entities: an intake record a firm can shape to its own practice, linked forward into a matter record the firm can assemble two ways.</figcaption>
-</figure></div>
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">The bug was the <span class="mark">data model</span> underneath the form</h2>
+        <div class="cs3-prose"><p>I sat with the people who processed new matters every day: intake specialists, paralegals building files after client calls, and the ops lead who owned the CRM configuration. Instead of starting from a blank redesign, I traced the existing form field by field: which ones duplicated "intake" and "matter," which ones nobody filled in, and which decisions (statute-of-limitations deadlines, legal-team staffing) had no system support and lived in someone's memory.</p></div>
+      </div>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">Three signals confirmed this was a real cost</h3>
+        <div class="cs3-prose"><p>A redesign is easy to justify with a strong opinion and one bad screenshot. Before proposing anything, I wanted three independent signals to agree, beyond my own read of the form.</p></div>
+        <div class="cs3-cards cs3-cards--3">
+          <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h4>Shadowing beyond interviews</h4><ul><li>Sat through live matter creation with intake specialists and paralegals over two weeks, across several new matters end to end.</li><li>Timed where they paused, backtracked to a client's notes, or pulled in a colleague to ask "wait, did we already ask this?"</li></ul></div>
+          <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span><h4>Reading the CRM's own data</h4><ul><li>Pulled a sample of recently created matters and checked which fields were populated versus left blank or default.</li><li>The <span class="mono">Intake Questionnaire</span> field was empty, or just a name with no real content, on most of them, so almost nobody opened the structured intake tab downstream.</li></ul></div>
+          <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span><h4>Structured interviews, reframed</h4><ul><li>Separate 1:1s with the ops lead and two attorneys. I skipped "what's wrong with the form" and asked "walk me through the last matter you opened."</li><li>That framing surfaced friction people had stopped noticing, because they'd built quiet workarounds for it.</li></ul></div>
+        </div>
+      </div>
+      <div class="cs3-prose" data-rv>
+        <p>All three pointed at the same root cause from three different angles. The form was laid out fine. It answered two different questions, <em>what did the client tell us</em> and <em>what is the legal record</em>, as if they were one, and everyone touching it had adapted around that instead of naming it.</p>
+        <p>That trace surfaced the bug. It was a data-model problem, and more validation rules wouldn't have fixed it.</p>
+      </div>
+      <blockquote class="cs3-quote" data-rv>
+        <span class="eyebrow" style="margin-bottom:var(--space-3)">The reframe</span>
+        <p>Intake and Matter are different things. Intake is what a client tells you, once, in their own words. A Matter is the legal record your firm builds from it, and firms need to build that record two different ways, depending on how much of the client's story is already captured.</p>
+      </blockquote>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">The redesign in one flow: one merged object became two linked entities</h3>
+        <div>
+          <div class="cs3-flow cs3-flow--old">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">Before · one merged object</span>The client's story is buried inside the matter form</span><span class="cs3-flow__stats"><span>1 object</span><span>1 path</span><span>6 tabs</span></span></div>
+            <ol>
+              <li><span class="k">01</span><h5>Client call</h5><p>The client tells the firm what happened.</p></li>
+              <li><span class="k">02</span><h5>"New Matter" wizard</h5><p>Intake = one freeform note, buried in step 1 of 6.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Nothing structured carries forward</span></li>
+              <li><span class="k">03</span><h5>Re-typed by hand</h5><p>Paralegals re-enter names, dates, and incident details into six more tabs.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Same story typed twice</span></li>
+            </ol>
+          </div>
+          <div class="cs3-flow cs3-flow--new">
+            <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">After · two linked entities</span>Intake feeds the matter, and the firm picks how to build it</span><span class="cs3-flow__stats"><span>2 entities</span><span>2 paths</span><span>1 review gate</span></span></div>
+            <ol>
+              <li><span class="k">01</span><h5>Client call</h5><p>Captured by a voice agent, a web form, or a paralegal.</p></li>
+              <li><span class="k">02</span><h5>Intake record</h5><p>Customizable per firm, region, and county.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Structured and reusable</span></li>
+              <li><span class="k">03</span><h5>Matter record</h5><p>The legal case file, linked to its intake.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pulls from intake, never re-typed</span></li>
+              <li class="cs3-flow__fork"><span class="k">04 · choose</span><h5>Path A · Create with AI</h5><p>Best when intake exists.</p><h5>Path B · Create manually</h5><p>Best without intake data.</p></li>
+            </ol>
+            <div class="cs3-flow__foot"><b>The redesign in one flow.</b> A single merged object became two entities: an intake record a firm can shape to its own practice, linked forward into a matter record the firm can assemble two ways.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ============ 04 SOLUTIONS CONSIDERED ============ -->
 <section class="cs3-section" id="alternatives">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">04</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Solutions considered</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">04</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Solutions considered · Options on the table</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">Three ways to fix it. Two were faster to ship, and <span class="mark">wrong</span></h2></div>
-<span class="eyebrow" data-rv>Options on the Table</span>
-<div class="cs3-prose" data-rv><p class="prose">Once the root cause was clear, the fix still wasn't obvious. I brought three real options to stakeholders instead of one polished recommendation, because the fastest option and the AI-forward option were both tempting and would have shipped the same bug under a nicer coat of paint.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="cards">
-<div class="card">
-<div class="card__ic card__ic--red">
-<svg fill="none" height="20" stroke="var(--red)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><circle cx="12" cy="12" r="10"></circle><line x1="15" x2="9" y1="9" y2="15"></line><line x1="9" x2="15" y1="9" y2="15"></line></svg>
-</div>
-<h3>A: Polish the Existing Form</h3>
-<ul>
-<li>Reorganize the same fields into cleaner steps, add validation, keep intake as a field inside Matter.</li>
-<li>Fastest to ship: no data-model change, no migration.</li>
-</ul>
-<p class="prose" style="font-size:13.5px; margin:14px 0 0;"><b>Rejected:</b> a better-looking version of the same bug. Intake still couldn't be customized per firm, still couldn't be reused, still only existed inside a matter that already had to be created first.</p>
-</div>
-<div class="card">
-<div class="card__ic card__ic--red">
-<svg fill="none" height="20" stroke="var(--red)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><circle cx="12" cy="12" r="10"></circle><line x1="15" x2="9" y1="9" y2="15"></line><line x1="9" x2="15" y1="9" y2="15"></line></svg>
-</div>
-<h3>B: One Button, Fully Automatic</h3>
-<ul>
-<li>A single "Generate Matter" action that always builds the record from whatever intake data exists. No manual path at all.</li>
-<li>The most "AI-forward" pitch, and the one stakeholders liked first.</li>
-</ul>
-<p class="prose" style="font-size:13.5px; margin:14px 0 0;"><b>Rejected:</b> assumes every matter starts from a complete intake. Many don't: walk-in clients, a five-minute phone note. Forcing AI-only creation onto those cases meant either blocking the user or letting the model fill gaps in a legal record with no human in the loop.</p>
-</div>
-<div class="card" style="border-color:var(--accent); background:var(--surface); box-shadow:0 0 0 1.5px var(--accent), 0 16px 36px var(--shadow-2);">
-<div class="card__ic card__ic--accent">
-<svg fill="none" height="20" stroke="var(--accent)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><polyline points="20 6 9 17 4 12"></polyline></svg>
-</div>
-<h3>C: Separate Intake, Let the User Choose</h3>
-<ul>
-<li>Intake becomes its own customizable entity, linked to a matter instead of buried inside one.</li>
-<li>Matter creation forks: AI-assisted where intake data supports it, manual where it doesn't.</li>
-</ul>
-<p class="prose" style="font-size:13.5px; margin:14px 0 0;"><b>Chosen:</b> the only option that fixed the data-model root cause and matched how matters start: sometimes with a client's full story already captured, sometimes with almost nothing.</p>
-</div>
-</div></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="note warn">
-<div class="note__badge">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-</div>
-<div class="note__body">
-<span class="note__label">The Case Against Shipping the AI-Forward Version</span>
-      Option B demoed the best. It was also the option where a bad guess would go straight into a legal record with nobody checking it, and the CRM data review had already shown that a large share of matters start with incomplete or missing intake. Shipping it as the <em>only</em> path would have optimized for the confident-data case and broken on the common one.
-    </div>
-</div></div>
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Three ways to fix it. Two were faster to ship, and <span class="mark">wrong</span></h2>
+        <div class="cs3-prose"><p>Once the root cause was clear, the fix still wasn't obvious. I brought three real options to stakeholders instead of one polished recommendation, because the fastest option and the AI-forward option were both tempting and would have shipped the same bug under a nicer coat of paint.</p></div>
+      </div>
+      <div class="cs3-cards cs3-cards--3 cs3-wide" data-rv>
+        <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Option A · rejected</span><h4>Polish the existing form</h4><ul><li>Reorganize the same fields into cleaner steps, add validation, keep intake as a field inside Matter.</li><li>Fastest to ship: no data-model change, no migration.</li></ul><p class="why"><b>Rejected:</b> a better-looking version of the same bug. Intake still couldn't be customized per firm, still couldn't be reused, still only existed inside a matter that already had to be created first.</p></div>
+        <div class="cs3-card"><span class="tag tag-bad" style="width:max-content">Option B · rejected</span><h4>One button, fully automatic</h4><ul><li>A single "Generate Matter" action that always builds the record from whatever intake data exists. No manual path at all.</li><li>The most "AI-forward" pitch, and the one stakeholders liked first.</li></ul><p class="why"><b>Rejected:</b> assumes every matter starts from a complete intake. Many don't: walk-in clients, a five-minute phone note. Forcing AI-only creation onto those cases meant either blocking the user or letting the model fill gaps in a legal record with no human in the loop.</p></div>
+        <div class="cs3-card cs3-card--win"><span class="tag tag-good" style="width:max-content">Option C · chosen</span><h4>Separate intake, let the user choose</h4><ul><li>Intake becomes its own customizable entity, linked to a matter instead of buried inside one.</li><li>Matter creation forks: AI-assisted where intake data supports it, manual where it doesn't.</li></ul><p class="why"><b>Chosen:</b> the only option that fixed the data-model root cause and matched how matters start: sometimes with a client's full story already captured, sometimes with almost nothing.</p></div>
+      </div>
+      <div class="cs3-note cs3-note--warn cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="eyebrow">The case against shipping the AI-forward version</span>Option B demoed the best. It was also the option where a bad guess would go straight into a legal record with nobody checking it, and the CRM data review had already shown that a large share of matters start with incomplete or missing intake. Shipping it as the <em>only</em> path would have optimized for the confident-data case and broken on the common one.</div></div>
     </div>
   </div>
 </section>
+
+<!-- ============ 05 DESIGN THESIS ============ -->
 <section class="cs3-section" id="thesis">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">05</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Design thesis</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">05</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Design thesis · Two principles</span></p>
     <div class="cs3-body">
       <div class="cs3-block" data-rv><h2 class="cs3-title">Two decisions that reshaped the entire system</h2></div>
-<span class="eyebrow" data-rv>Two Principles</span>
-<h3 class="cs3-h3" data-rv>Principle 1: Intake and Matter are separate, linked entities</h3>
-<div class="cs3-prose" data-rv><p class="prose">Intake became its own object, with its own lifecycle, instead of a field inside a matter. That unlocked something the old model couldn't do: <b>a firm can now define its own intake questions</b>, such as the accident-type list for a state that regulates it differently, the statute-of-limitations triggers specific to a county, or the extra fields a personal-injury practice needs and a commercial-litigation practice doesn't. No engineer has to touch the matter schema, and no firm gets forced onto one generic questionnaire.</p></div>
-<div class="cs3-prose" data-rv><p class="prose">To reduce the time it takes a client's story to become usable data, I designed intake capture to be AI-assisted at the source: a voice agent can answer or join a client's call, transcribe it, and populate the structured intake fields, so a paralegal doesn't type rough notes into a blank box afterward and hope nothing was missed. Whether a field comes from that call, a web form the client filled in, or a paralegal's manual entry, it becomes a candidate the matter can pull from later.</p></div>
-<h3 class="cs3-h3" data-rv>Principle 2: Matter creation needs two paths, not one assumption</h3>
-<div class="cs3-prose" data-rv><p class="prose">Not every matter starts with a complete intake. Some arrive from a thorough client call with every field captured; others start from a five-minute phone note or a walk-in client with almost nothing on file yet. A single "AI-generate the matter" button that assumes perfect intake data forces the user to bet on every case, whether or not the data supports it. So matter creation became a deliberate fork: let the person creating the matter tell the system how much is already known, and route them accordingly.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="pullquote">
-    An "AI-generate the matter" button that assumes perfect intake data forces the user to bet on every case.
-  </div></div>
+      <div class="cs3-cards cs3-cards--2 cs3-wide" data-rv>
+        <div class="cs3-card"><span class="cs3-aside__num">Principle 01</span><h4>Intake and Matter are separate, linked entities</h4><p>Intake became its own object, with its own lifecycle, instead of a field inside a matter. That unlocked something the old model couldn't do: <b>a firm can now define its own intake questions</b>, such as the accident-type list for a state that regulates it differently, the statute-of-limitations triggers specific to a county, or the extra fields a personal-injury practice needs and a commercial-litigation practice doesn't. No engineer has to touch the matter schema, and no firm gets forced onto one generic questionnaire.</p><p>To reduce the time it takes a client's story to become usable data, I designed intake capture to be AI-assisted at the source: a voice agent can answer or join a client's call, transcribe it, and populate the structured intake fields, so a paralegal doesn't type rough notes into a blank box afterward and hope nothing was missed. Whether a field comes from that call, a web form the client filled in, or a paralegal's manual entry, it becomes a candidate the matter can pull from later.</p></div>
+        <div class="cs3-card"><span class="cs3-aside__num">Principle 02</span><h4>Matter creation needs two paths, not one assumption</h4><p>Not every matter starts with a complete intake. Some arrive from a thorough client call with every field captured; others start from a five-minute phone note or a walk-in client with almost nothing on file yet. A single "AI-generate the matter" button that assumes perfect intake data forces the user to bet on every case, whether or not the data supports it. So matter creation became a deliberate fork: let the person creating the matter tell the system how much is already known, and route them accordingly.</p></div>
+      </div>
+      <blockquote class="cs3-quote" data-rv><p>An "AI-generate the matter" button that assumes perfect intake data forces the user to bet on every case.</p></blockquote>
     </div>
   </div>
 </section>
+
+<!-- ============ 06 ENTRY POINT ============ -->
 <section class="cs3-section" id="entry">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">06</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Matter creation</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">06</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Matter creation · The entry point</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">Each new matter starts with one question: <span class="mark">how much do we already know?</span></h2></div>
-<span class="eyebrow" data-rv>The Entry Point</span>
-<div class="cs3-prose" data-rv><p class="prose">Instead of hiding the AI-vs-manual decision inside a settings toggle or defaulting to one mode, the first screen after "Create New Matter" asks it, presented as two equally legitimate paths with their tradeoffs stated up front instead of discovered halfway through the flow.</p></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Each new matter starts with one question: <span class="mark">how much do we already know?</span></h2>
+        <div class="cs3-prose"><p>Instead of hiding the AI-vs-manual decision inside a settings toggle or defaulting to one mode, the first screen after "Create New Matter" asks it, presented as two equally legitimate paths with their tradeoffs stated up front instead of discovered halfway through the flow.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Create a New Matter modal with two options: Create with AI Agent, which pulls available intake information, and Create Manually, using a guided six step form" height="2160" loading="lazy" src="assets/images/case-studies/matter-redesign/after-01-choose-path.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 2160">
 <rect class="mz-a-glow solution" height="788" rx="20" width="741" x="1167" y="745"></rect>
@@ -989,64 +884,42 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text solution" font-size="32" x="1881" y="1718">Blank six-step form instead</text>
 <text class="mz-a-support solution" font-size="23" x="1881" y="1756">Best for a matter with little or no intake yet.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">After</span><strong>Choose the fastest path for the information you already have.</strong> The screen presents neither option as the "smart" default; each states what it does and who it's best for.</figcaption>
-</figure></div></div></figure>
-<div class="cs3-wide cs3-legacy" data-rv><div class="comp-grid">
-<div class="comp-card comp-card--distinct">
-<div class="comp-card__header">
-<h3 class="comp-card__title">Create with AI Agent</h3>
-<span class="comp-card__tag">Best when intake exists</span>
-</div>
-<ul>
-<li>Pulls available intake information.</li>
-<li>Organizes it into the right matter sections.</li>
-<li>Saves time and reduces manual re-entry.</li>
-<li>Still stops for review and edits before anything is created.</li>
-</ul>
-</div>
-<div class="comp-card">
-<div class="comp-card__header">
-<h3 class="comp-card__title">Create Manually</h3>
-<span class="comp-card__tag">Best without intake data</span>
-</div>
-<ul>
-<li>Full control over every field, from a blank slate.</li>
-<li>The same guided six-step workflow as the AI path.</li>
-<li>Add details at the user's own pace, save a draft anytime.</li>
-<li>Still reviewed in full before the matter is created.</li>
-</ul>
-</div>
-</div></div>
+</div></div><figcaption><span class="tag tag-good">After</span> <b>Choose the fastest path for the information you already have.</b> The screen presents neither option as the "smart" default; each states what it does and who it's best for.</figcaption></div></figure>
+      <div class="cs3-cards cs3-cards--2 cs3-wide" data-rv>
+        <div class="cs3-card cs3-card--win"><span class="tag tag-blue" style="width:max-content">Best when intake exists</span><h4>Create with AI Agent</h4><ul><li>Pulls available intake information.</li><li>Organizes it into the right matter sections.</li><li>Saves time and reduces manual re-entry.</li><li>Still stops for review and edits before anything is created.</li></ul></div>
+        <div class="cs3-card"><span class="tag tag-outline" style="width:max-content">Best without intake data</span><h4>Create Manually</h4><ul><li>Full control over every field, from a blank slate.</li><li>The same guided six-step workflow as the AI path.</li><li>Add details at the user's own pace, save a draft anytime.</li><li>Still reviewed in full before the matter is created.</li></ul></div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ============ 07 PATH A ============ -->
 <section class="cs3-section" id="path-ai">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">07</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Path a: create with ai</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">07</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Path A · Create with AI</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">The AI path never hides <span class="mark">how confident it is</span></h2></div>
-<span class="eyebrow" data-rv>Letting the Agent Work, in the Open</span>
-<div class="cs3-prose" data-rv><p class="prose">The risk with any "let AI build it for you" flow is that it overpromises or leaves the user unable to tell what came from real data and what came from a guess. I built the AI path to make that distinction visible at every step, from the moment it starts reading the intake record to the final review screen before a matter is created.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="flow-strip-wrap">
-<div class="flow-strip">
-<div class="flow-node flow-node--active">1. Understand intake</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node">2. Prepare draft</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node flow-node--active">3. Review &amp; edit</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node">4. Ask the assistant</div>
-<div class="flow-arrow">→</div>
-<div class="flow-node flow-node--active">5. Review before create</div>
-</div>
-</div></div>
-<h3 class="cs3-h3" data-rv>1. Understanding the intake, before touching the matter</h3>
-<div class="cs3-prose" data-rv><p class="prose">Before drafting anything, the agent scores how usable the linked intake record is: how many fields are ready to use as-is, how many need a human glance, and how many are missing. The user sees that score instead of it sitting in a log.</p></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">The AI path never hides <span class="mark">how confident it is</span></h2>
+        <div class="cs3-prose"><p>The risk with any "let AI build it for you" flow is that it overpromises or leaves the user unable to tell what came from real data and what came from a guess. I built the AI path to make that distinction visible at every step, from the moment it starts reading the intake record to the final review screen before a matter is created.</p></div>
+      </div>
+      <div class="cs3-wide" data-rv>
+        <div class="cs3-flow cs3-flow--new">
+          <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">Path A · Create with AI</span>Letting the agent work, in the open</span><span class="cs3-flow__stats"><span>5 steps</span><span>1 review gate</span></span></div>
+          <ol>
+            <li><span class="k">01</span><h5>Understand intake</h5><p>Scores how usable the linked intake record is.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>17 ready · 2 review · 4 missing</span></li>
+            <li><span class="k">02</span><h5>Prepare draft</h5><p>Narrates each extraction step in the background.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Visible, cancellable progress</span></li>
+            <li><span class="k">03</span><h5>Review &amp; edit</h5><p>Each field labels its source.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>From Intake · AI Matched · AI Suggested</span></li>
+            <li><span class="k">04</span><h5>Ask the assistant</h5><p>Fills gaps where the reviewer is already working.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Actions, not just answers</span></li>
+            <li><span class="k">05</span><h5>Review before create</h5><p>The same review gate as the manual path.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Nothing skips this check</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Understanding the intake, before touching the matter</h3>
+        <div class="cs3-prose"><p>Before drafting anything, the agent scores how usable the linked intake record is: how many fields are ready to use as-is, how many need a human glance, and how many are missing. The user sees that score instead of it sitting in a log.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Understanding your intake modal showing matter information, parties, incident details, legal information, team assignment, and supporting documents each scored, with 17 fields ready, 2 needing review, and 4 missing, at 40 percent overall" height="2160" loading="lazy" src="assets/images/case-studies/matter-redesign/after-02-intake-readiness.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 2160">
 <rect class="mz-a-glow solution" height="302" rx="20" width="1509" x="1167" y="1285"></rect>
@@ -1059,18 +932,19 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text solution" font-size="32" x="1466" y="1098">Scored before drafting starts</text>
 <text class="mz-a-support solution" font-size="23" x="1466" y="1136">17 ready, 2 need review, 4 missing, up front.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">After</span><strong>"I've found information that can be used to start your matter."</strong> Six intake categories, each scored individually (17 fields ready, 2 needing review, 4 missing) instead of one opaque "AI is ready" message.</figcaption>
-</figure></div></div></figure>
-<h3 class="cs3-h3" data-rv>2. Preparing the draft, with visible, cancellable progress</h3>
-<div class="cs3-prose" data-rv><p class="prose">The agent narrates its own work step by step (finding the intake questionnaire, reading client information, identifying parties, extracting incident details, checking legal information) and says it's running in the background, so the user never stares at a spinner or babysits the screen.</p></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Preparing your matter modal listing eight sequential steps with checkmarks and a note that AI is working in the background and the user can continue working elsewhere" height="2160" loading="lazy" src="assets/images/case-studies/matter-redesign/after-03-ai-preparing.webp?v=2" width="3840"/></div><figcaption><span class="figure-badge">After</span><strong>"AI is working in the background."</strong> Each extraction step is named and checked off, with no single ambiguous loading state.</figcaption></div></figure>
-<h3 class="cs3-h3" data-rv>3. A prefilled matter that labels its own sources</h3>
-<div class="cs3-prose" data-rv><p class="prose">This detail makes the whole path trustworthy: each field in the drafted matter carries a provenance tag (<span class="mono">From Intake</span>, <span class="mono">AI Matched</span>, or <span class="mono">AI Suggested</span>), so a reviewer knows at a glance whether a value is a verified fact, a confident inference, or a guess that deserves a second look before the matter goes live.</p></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+</div></div><figcaption><span class="tag tag-good">After</span> <b>"I've found information that can be used to start your matter."</b> Six intake categories, each scored individually (17 fields ready, 2 needing review, 4 missing) instead of one opaque "AI is ready" message.</figcaption></div></figure>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Preparing the draft, with visible, cancellable progress</h3>
+        <div class="cs3-prose"><p>The agent narrates its own work step by step (finding the intake questionnaire, reading client information, identifying parties, extracting incident details, checking legal information) and says it's running in the background, so the user never stares at a spinner or babysits the screen.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Preparing your matter modal listing eight sequential steps with checkmarks and a note that AI is working in the background and the user can continue working elsewhere" height="2160" loading="lazy" src="assets/images/case-studies/matter-redesign/after-03-ai-preparing.webp?v=2" width="3840"/></div><figcaption><span class="tag tag-good">After</span> <b>"AI is working in the background."</b> Each extraction step is named and checked off, with no single ambiguous loading state.</figcaption></div></figure>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">A prefilled matter that labels its own sources</h3>
+        <div class="cs3-prose"><p>This detail makes the whole path trustworthy: each field in the drafted matter carries a provenance tag (<span class="mono">From Intake</span>, <span class="mono">AI Matched</span>, or <span class="mono">AI Suggested</span>), so a reviewer knows at a glance whether a value is a verified fact, a confident inference, or a guess that deserves a second look before the matter goes live.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="AI generated Matter Overview draft with Matter Name, Case Type, Source, and Description all tagged From Intake in green, and Forecast Category tagged AI Suggested in amber" height="2390" loading="lazy" src="assets/images/case-studies/matter-redesign/after-04-matter-prefilled-provenance.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 2390">
 <rect class="mz-a-glow solution" height="77" rx="14" width="288" x="3187" y="1338"></rect>
@@ -1083,18 +957,19 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text solution" font-size="32" x="2126" y="1188">Flagged for a second look</text>
 <text class="mz-a-support solution" font-size="23" x="2126" y="1226">AI Suggested fields are never marked as verified.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">After</span><strong>Field-level provenance instead of a blanket confidence score.</strong> "From Intake" fields are verified client data; "AI Suggested" fields are flagged for a second look before the matter is created.</figcaption>
-</figure></div></div></figure>
-<h3 class="cs3-h3" data-rv>4. An assistant to close the remaining gaps</h3>
-<div class="cs3-prose" data-rv><p class="prose">Instead of sending the user back to the intake readiness score to work out what's missing, an in-context assistant offers next actions (review and suggest changes, fill missing information, generate a case summary, or find similar past matters) where the reviewer is already working.</p></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Chi AI Assistant panel offering to review and suggest changes, fill missing information, generate a case summary, or find similar past matters, alongside the prefilled matter overview" height="2390" loading="lazy" src="assets/images/case-studies/matter-redesign/after-05-ai-chat-assistant.webp?v=2" width="3840"/></div><figcaption><span class="figure-badge">After</span><strong>The assistant offers actions as well as answers.</strong> "Fill missing information" and "Find similar past matters" turn a gap in the readiness score into a next step.</figcaption></div></figure>
-<h3 class="cs3-h3" data-rv>5. Nothing is created without a full review</h3>
-<div class="cs3-prose" data-rv><p class="prose">Regardless of how confident the draft is, the last step of the AI path is identical to the manual path: every section, grouped and labeled, with an explicit <span class="mono">Ready to Create Matter</span> confirmation before the record is written. AI assistance ends where the legal record begins.</p></div>
-<figure class="cs3-band cs3-band--narrow"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+</div></div><figcaption><span class="tag tag-good">After</span> <b>Field-level provenance instead of a blanket confidence score.</b> "From Intake" fields are verified client data; "AI Suggested" fields are flagged for a second look before the matter is created.</figcaption></div></figure>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">An assistant to close the remaining gaps</h3>
+        <div class="cs3-prose"><p>Instead of sending the user back to the intake readiness score to work out what's missing, an in-context assistant offers next actions (review and suggest changes, fill missing information, generate a case summary, or find similar past matters) where the reviewer is already working.</p></div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Chi AI Assistant panel offering to review and suggest changes, fill missing information, generate a case summary, or find similar past matters, alongside the prefilled matter overview" height="2390" loading="lazy" src="assets/images/case-studies/matter-redesign/after-05-ai-chat-assistant.webp?v=2" width="3840"/></div><figcaption><span class="tag tag-good">After</span> <b>The assistant offers actions as well as answers.</b> "Fill missing information" and "Find similar past matters" turn a gap in the readiness score into a next step.</figcaption></div></figure>
+
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">Nothing is created without a full review</h3>
+        <div class="cs3-prose"><p>Regardless of how confident the draft is, the last step of the AI path is identical to the manual path: every section, grouped and labeled, with an explicit <span class="mono">Ready to Create Matter</span> confirmation before the record is written. AI assistance ends where the legal record begins.</p></div>
+      </div>
+      <figure class="cs3-band cs3-band--tall"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Final review screen grouped into Matter Overview, Parties Involved, Incident Details, Legal and Deduction Details, Legal Team Assignment, and Images and Outcome, with a Ready to Create Matter banner and a Create Matter button" height="5421" loading="lazy" src="assets/images/case-studies/matter-redesign/after-06-review-before-create.webp?v=2" width="2880"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 2880 5421">
 <rect class="mz-a-glow solution" height="141" rx="16" width="2448" x="216" y="320"></rect>
@@ -1107,33 +982,38 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text solution" font-size="32" x="996" y="663">Nothing skips this check</text>
 <text class="mz-a-support solution" font-size="23" x="996" y="701">AI or manual, every matter ends here first.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">After</span><strong>Step 6 of 6, Review &amp; Confirm.</strong> Each section is editable inline before the "Create Matter" commit, whether it started from AI or from scratch.</figcaption>
-</figure></div></div></figure>
-<div class="cs3-wide cs3-legacy" data-rv><div class="note good">
-<div class="note__badge">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-</div>
-<div class="note__body">
-<span class="note__label">Why Provenance Tags Mattered Most</span>
-      The other decisions in the AI path (the readiness score, the narrated progress, the review gate) exist to support one rule: <span class="mark">nothing in a matter should look identical whether a human confirmed it or the model guessed it</span>. That rule shaped the field-level tagging system more than any single screen.
-    </div>
-</div></div>
+</div></div><figcaption><span class="tag tag-good">After</span> <b>Step 6 of 6, Review &amp; Confirm.</b> Each section is editable inline before the "Create Matter" commit, whether it started from AI or from scratch.</figcaption></div></figure>
+
+      <div class="cs3-note cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><span class="eyebrow">Why provenance tags mattered most</span>The other decisions in the AI path (the readiness score, the narrated progress, the review gate) exist to support one rule: <span class="mark">nothing in a matter should look identical whether a human confirmed it or the model guessed it</span>. That rule shaped the field-level tagging system more than any single screen.</div></div>
     </div>
   </div>
 </section>
+
+<!-- ============ 08 PATH B ============ -->
 <section class="cs3-section" id="path-manual">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">08</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Path b: create manually</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">08</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Path B · Create manually</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">Manual creation is not a <span class="mark">fallback path</span>. It's the same system, minus the head start</h2></div>
-<span class="eyebrow" data-rv>Same System, No Shortcuts</span>
-<div class="cs3-prose" data-rv><p class="prose">A common failure mode in "AI-assisted" products is treating the non-AI path as a second-class, unmaintained fallback. Here, both paths share the same six-step information architecture (Matter Overview, Parties Involved, Incident Details, Legal &amp; Insurance, Team Assignment, Images &amp; Outcome), so a user's mental model holds no matter which button they click first.</p></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Manual Create New Matter flow, step 1 of 6, Matter Overview, with Core Details and Classification and Tracking grouped into labeled cards on a blank form" height="3082" loading="lazy" src="assets/images/case-studies/matter-redesign/after-07-manual-step1.webp?v=2" width="3840"/></div><figcaption><span class="figure-badge">After</span><strong>Step 1 of 6, the same structure, empty.</strong> Fields are grouped into labeled cards (Core Details, Classification & Tracking) instead of one flat, undifferentiated list of inputs.</figcaption></div></figure>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Manual creation is not a <span class="mark">fallback path</span>. It's the same system, minus the head start</h2>
+        <div class="cs3-prose"><p>A common failure mode in "AI-assisted" products is treating the non-AI path as a second-class, unmaintained fallback. Here, both paths share the same six-step information architecture (Matter Overview, Parties Involved, Incident Details, Legal &amp; Insurance, Team Assignment, Images &amp; Outcome), so a user's mental model holds no matter which button they click first.</p></div>
+      </div>
+      <div class="cs3-wide" data-rv>
+        <div class="cs3-flow cs3-flow--new">
+          <div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-ink" style="margin-right:8px">Shared by both paths</span>The six-step information architecture</span><span class="cs3-flow__stats"><span>6 steps</span><span>Same for AI and manual</span></span></div>
+          <ol>
+            <li><span class="k">01</span><h5>Matter Overview</h5></li>
+            <li><span class="k">02</span><h5>Parties Involved</h5></li>
+            <li><span class="k">03</span><h5>Incident Details</h5></li>
+            <li><span class="k">04</span><h5>Legal &amp; Insurance</h5></li>
+            <li><span class="k">05</span><h5>Team Assignment</h5></li>
+            <li><span class="k">06</span><h5>Images &amp; Outcome</h5></li>
+          </ol>
+          <div class="cs3-flow__foot">Both paths end on the same grouped review screen before "Create Matter".</div>
+        </div>
+      </div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Manual Create New Matter flow, step 1 of 6, Matter Overview, with Core Details and Classification and Tracking grouped into labeled cards on a blank form" height="3082" loading="lazy" src="assets/images/case-studies/matter-redesign/after-07-manual-step1.webp?v=2" width="3840"/></div><figcaption><span class="tag tag-good">After</span> <b>Step 1 of 6, the same structure, empty.</b> Fields are grouped into labeled cards (Core Details, Classification &amp; Tracking) instead of one flat, undifferentiated list of inputs.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Manual flow step 3, Incident Details, with an address search field that automatically populates city, state, and zip code once an address is selected" height="2646" loading="lazy" src="assets/images/case-studies/matter-redesign/after-08-manual-incident-autofill.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 2646">
 <rect class="mz-a-glow solution" height="212" rx="18" width="3360" x="326" y="1416"></rect>
@@ -1146,13 +1026,8 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text solution" font-size="32" x="352" y="1243">Auto-fills from the address</text>
 <text class="mz-a-support solution" font-size="23" x="352" y="1281">City, state, and zip populate from one search.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">After</span><strong>Manual doesn't mean unassisted.</strong> Typing an incident address auto-populates city, state, and zip. The system still removes busywork it can safely automate, even on the manual path.</figcaption>
-</figure></div></div></figure>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><figure class="figure reveal">
-<div class="frame">
-<div class="mz-annot-wrap js-annot">
+</div></div><figcaption><span class="tag tag-good">After</span> <b>Manual doesn't mean unassisted.</b> Typing an incident address auto-populates city, state, and zip. The system still removes busywork it can safely automate, even on the manual path.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><div class="mz-annot-wrap js-annot">
 <img alt="Manual flow step 5, Team Assignment, with Principal Attorney, Senior Case Manager, and other roles each labeled Round Robin as a staffing suggestion" height="3476" loading="lazy" src="assets/images/case-studies/matter-redesign/after-09-manual-team-roundrobin.webp?v=2" width="3840"/>
 <svg aria-hidden="true" class="mz-annot-svg2" preserveaspectratio="none" viewbox="0 0 3840 3476">
 <rect class="mz-a-glow solution" height="222" rx="18" width="3360" x="326" y="737"></rect>
@@ -1165,111 +1040,73 @@ h3.h3, h3 { font-family:var(--font-display); font-size:18px; font-weight:700; co
 <text class="mz-a-bubble-text solution" font-size="32" x="352" y="563">Suggests staffing automatically</text>
 <text class="mz-a-support solution" font-size="23" x="352" y="601">Surfaces the firm's own round-robin logic.</text>
 </svg>
-</div>
-</div>
-<figcaption><span class="figure-badge">After</span><strong>Staffing suggestions instead of empty dropdowns.</strong> Roles like Principal Attorney and Case Manager are labeled "Round Robin," surfacing the firm's own staffing logic instead of leaving every seat blank.</figcaption>
-</figure></div></div></figure>
+</div></div><figcaption><span class="tag tag-good">After</span> <b>Staffing suggestions instead of empty dropdowns.</b> Roles like Principal Attorney and Case Manager are labeled "Round Robin," surfacing the firm's own staffing logic instead of leaving every seat blank.</figcaption></div></figure>
     </div>
   </div>
 </section>
+
+<!-- ============ 09 SHARED DESIGN SYSTEM ============ -->
 <section class="cs3-section" id="system">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">09</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Shared design system</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">09</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Shared design system · Craft details</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">Six small decisions that hold the whole system together</h2></div>
-<span class="eyebrow" data-rv>Craft Details</span>
-<div class="cs3-prose" data-rv><p class="prose">None of these are headline features on their own. Together, they separate a redesign that looks clean in a screenshot from one a paralegal trusts on a real case.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="ai-features">
-<div class="ai-feat ai-feat--blue">
-<div class="ai-feat__title">Field-Level Provenance</div>
-<p class="ai-feat__desc">Each AI-touched field is tagged From Intake, AI Matched, or AI Suggested instead of appearing in one undifferentiated "auto-filled" block.</p>
-</div>
-<div class="ai-feat ai-feat--green">
-<div class="ai-feat__title">Confidence-Based Readiness</div>
-<p class="ai-feat__desc">Intake completeness is scored per category before the AI path even starts drafting, so the user chooses a path with real information, not a guess.</p>
-</div>
-<div class="ai-feat ai-feat--warm">
-<div class="ai-feat__title">Grouped Cards Over Flat Forms</div>
-<p class="ai-feat__desc">Both paths replace the legacy's undifferentiated field list with labeled sections (Core Details, Classification &amp; Tracking), so a long form still reads as a set of decisions.</p>
-</div>
-<div class="ai-feat ai-feat--blue">
-<div class="ai-feat__title">Smart Autofill &amp; Legal Calculations</div>
-<p class="ai-feat__desc">Selecting an incident address auto-fills city, state, and zip; the statute-of-limitations deadline auto-calculates from the incident state and date, with a manual override always available.</p>
-</div>
-<div class="ai-feat ai-feat--green">
-<div class="ai-feat__title">Round-Robin Staffing</div>
-<p class="ai-feat__desc">Team-assignment roles surface the firm's own round-robin logic as a suggestion, so staffing a matter isn't starting from twelve empty dropdowns.</p>
-</div>
-<div class="ai-feat ai-feat--warm">
-<div class="ai-feat__title">One Review Gate, No Exceptions</div>
-<p class="ai-feat__desc">Both paths converge on the identical grouped review screen before "Create Matter". AI assistance speeds up the draft and never skips the confirmation.</p>
-</div>
-</div></div>
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Six small decisions that hold the whole system together</h2>
+        <div class="cs3-prose"><p>None of these are headline features on their own. Together, they separate a redesign that looks clean in a screenshot from one a paralegal trusts on a real case.</p></div>
+      </div>
+      <div class="cs3-cards cs3-cards--3 cs3-wide" data-rv>
+        <div class="cs3-card"><span class="cs3-aside__num">01</span><h4>Field-level provenance</h4><p>Each AI-touched field is tagged From Intake, AI Matched, or AI Suggested instead of appearing in one undifferentiated "auto-filled" block.</p></div>
+        <div class="cs3-card"><span class="cs3-aside__num">02</span><h4>Confidence-based readiness</h4><p>Intake completeness is scored per category before the AI path even starts drafting, so the user chooses a path with real information, not a guess.</p></div>
+        <div class="cs3-card"><span class="cs3-aside__num">03</span><h4>Grouped cards over flat forms</h4><p>Both paths replace the legacy's undifferentiated field list with labeled sections (Core Details, Classification &amp; Tracking), so a long form still reads as a set of decisions.</p></div>
+        <div class="cs3-card"><span class="cs3-aside__num">04</span><h4>Smart autofill &amp; legal calculations</h4><p>Selecting an incident address auto-fills city, state, and zip; the statute-of-limitations deadline auto-calculates from the incident state and date, with a manual override always available.</p></div>
+        <div class="cs3-card"><span class="cs3-aside__num">05</span><h4>Round-robin staffing</h4><p>Team-assignment roles surface the firm's own round-robin logic as a suggestion, so staffing a matter isn't starting from twelve empty dropdowns.</p></div>
+        <div class="cs3-card"><span class="cs3-aside__num">06</span><h4>One review gate, no exceptions</h4><p>Both paths converge on the identical grouped review screen before "Create Matter". AI assistance speeds up the draft and never skips the confirmation.</p></div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ============ 10 RESULTS ============ -->
 <section class="cs3-section" id="results">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">10</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Results & impact</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">10</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Results &amp; impact</span></p>
     <div class="cs3-body">
-      <div class="cs3-block" data-rv><h2 class="cs3-title">Back to the paralegal retyping the same story into six tabs</h2></div>
-<span class="eyebrow" data-rv>Impact on the People Who Use This</span>
-<div class="cs3-prose" data-rv><p class="prose">That's where this case study started: someone doing careful work on a client call, then watching almost none of it survive into the matter they had to build next. This is what changed for each of them.</p></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="cards">
-<div class="card">
-<div class="card__ic card__ic--accent"><svg fill="none" height="20" stroke="var(--accent)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-<h3>Intake Specialists</h3>
-<p class="prose" style="font-size:14px; margin:0;">The notes they capture on the client call are no longer a side note someone else re-types later; they are the record the matter is built from, structured to their firm's own questions from the start.</p>
-</div>
-<div class="card">
-<div class="card__ic card__ic--green"><svg fill="none" height="20" stroke="var(--green)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line></svg></div>
-<h3>Paralegals</h3>
-<p class="prose" style="font-size:14px; margin:0;">No more reconciling "what the client said" against "what the matter form wants." Either they confirm an AI-drafted record field by field with visible provenance, or they fill in one clean guided form. They never do both and never do it twice.</p>
-</div>
-<div class="card">
-<div class="card__ic card__ic--amber"><svg fill="none" height="20" stroke="var(--amber)" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
-<h3>Attorneys &amp; Firm Admins</h3>
-<p class="prose" style="font-size:14px; margin:0;">A matter arrives at the same reviewable, grouped record no matter which button someone clicked to create it, so trust in the system doesn't depend on knowing which path was used. Firms can also reshape their own intake questions without opening an engineering ticket.</p>
-</div>
-</div></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="note warn">
-<div class="note__badge">
-<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-</div>
-<div class="note__body">
-<span class="note__label">What's Designed vs. What's Measured</span>
-      The three outcomes above are what I built the redesign to produce, confirmed through design review and the engineering handoff spec. They are not adoption numbers from production, since the system was at handoff, not live, when I last updated this. I'd rather say that than manufacture a before/after metric that makes this section look more finished than it is.
-    </div>
-</div></div>
-<div class="cs3-wide cs3-legacy" data-rv><h2 class="h-sub">What Changed Structurally</h2></div>
-<div class="cs3-prose" data-rv><p class="prose">The redesign replaced one merged intake-as-matter object with two linked entities, intake and matter, connected by two entry paths instead of a single default. Each field a paralegal sees now carries one of three provenance states (From Intake, AI Matched, AI Suggested), and both entry paths share the same six-step information architecture, so a matter built manually and one built with AI assistance end up structurally identical.</p></div>
-<h3 class="cs3-h3" data-rv>My Role</h3>
-<div class="cs3-prose" data-rv><p class="prose">I led this redesign end to end: the diagnostic work that traced the intake bug back to the data model instead of the form, the three architectural options I scoped and the case for rejecting two of them, the shared information architecture both creation paths now use, and the field-level provenance system that makes AI-assisted matters auditable. I defined the handoff spec, covering component states, provenance logic, and edge cases for partial or conflicting intake data, before engineering picked it up.</p></div>
-<h3 class="cs3-h3" data-rv>What I Learned</h3>
-<div class="cs3-wide cs3-legacy" data-rv><div class="comp-grid">
-<div class="comp-card">
-<div class="comp-card__header"><h3 class="comp-card__title">The bug is rarely the screen</h3></div>
-<ul><li>Every earlier attempt to fix the intake form failed for the same reason: the form was correct for the data model it was built on. The redesign only worked once the model changed first.</li></ul>
-</div>
-<div class="comp-card">
-<div class="comp-card__header"><h3 class="comp-card__title">Confidence needs a visible source</h3></div>
-<ul><li>"The AI got it right" isn't something a paralegal can verify at a glance. Provenance tags and readiness scores exist so trust is checkable, not assumed.</li></ul>
-</div>
-<div class="comp-card">
-<div class="comp-card__header"><h3 class="comp-card__title">A fallback path erodes over time</h3></div>
-<ul><li>Manual creation only stays usable if it's built and maintained as a first-class path. Treat it as a fallback and it drifts from whatever the "real" path does.</li></ul>
-</div>
-<div class="comp-card">
-<div class="comp-card__header"><h3 class="comp-card__title">This hasn't shipped to users yet</h3></div>
-<ul><li>Everything above reflects design review and the engineering handoff spec, not production usage. Whether paralegals trust the provenance tags on a live case remains untested.</li></ul>
-</div>
-</div></div>
-<div class="cs3-wide cs3-legacy" data-rv><div class="pullquote">
-    The old form failed for the same reason most "combine two workflows into one screen" decisions fail: it optimized for fewer clicks in a demo instead of what a paralegal needs to trust on a real case. Splitting intake from matter meant more screens and, for the first time, a system firms could make their own.
-  </div></div>
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Back to the paralegal retyping the same story into six tabs</h2>
+        <div class="cs3-prose"><p>That's where this case study started: someone doing careful work on a client call, then watching almost none of it survive into the matter they had to build next. This is what changed for each of them.</p></div>
+      </div>
+      <div class="cs3-cards cs3-cards--3 cs3-wide" data-rv>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><h4>Intake specialists</h4><p>The notes they capture on the client call are no longer a side note someone else re-types later; they are the record the matter is built from, structured to their firm's own questions from the start.</p></div>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg></span><h4>Paralegals</h4><p>No more reconciling "what the client said" against "what the matter form wants." Either they confirm an AI-drafted record field by field with visible provenance, or they fill in one clean guided form. They never do both and never do it twice.</p></div>
+        <div class="cs3-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><h4>Attorneys &amp; firm admins</h4><p>A matter arrives at the same reviewable, grouped record no matter which button someone clicked to create it, so trust in the system doesn't depend on knowing which path was used. Firms can also reshape their own intake questions without opening an engineering ticket.</p></div>
+      </div>
+      <div class="cs3-note cs3-note--warn cs3-wide" data-rv><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><span class="eyebrow">What's designed vs. what's measured</span>The three outcomes above are what I built the redesign to produce, confirmed through design review and the engineering handoff spec. They are not adoption numbers from production, since the system was at handoff, not live, when I last updated this. I'd rather say that than manufacture a before/after metric that makes this section look more finished than it is.</div></div>
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">What changed structurally</h3>
+        <div class="cs3-prose"><p>The redesign replaced one merged intake-as-matter object with two linked entities, intake and matter, connected by two entry paths instead of a single default. Each field a paralegal sees now carries one of three provenance states (From Intake, AI Matched, AI Suggested), and both entry paths share the same six-step information architecture, so a matter built manually and one built with AI assistance end up structurally identical.</p></div>
+      </div>
+      <div class="cs3-block" data-rv>
+        <h3 class="cs3-h3">My role</h3>
+        <div class="cs3-prose"><p>I led this redesign end to end: the diagnostic work that traced the intake bug back to the data model instead of the form, the three architectural options I scoped and the case for rejecting two of them, the shared information architecture both creation paths now use, and the field-level provenance system that makes AI-assisted matters auditable. I defined the handoff spec, covering component states, provenance logic, and edge cases for partial or conflicting intake data, before engineering picked it up.</p></div>
+      </div>
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">What I learned</h3>
+        <div class="cs3-cards cs3-cards--2">
+          <div class="cs3-card"><h4>The bug is rarely the screen</h4><p>Every earlier attempt to fix the intake form failed for the same reason: the form was correct for the data model it was built on. The redesign only worked once the model changed first.</p></div>
+          <div class="cs3-card"><h4>Confidence needs a visible source</h4><p>"The AI got it right" isn't something a paralegal can verify at a glance. Provenance tags and readiness scores exist so trust is checkable, not assumed.</p></div>
+          <div class="cs3-card"><h4>A fallback path erodes over time</h4><p>Manual creation only stays usable if it's built and maintained as a first-class path. Treat it as a fallback and it drifts from whatever the "real" path does.</p></div>
+          <div class="cs3-card"><h4>This hasn't shipped to users yet</h4><p>Everything above reflects design review and the engineering handoff spec, not production usage. Whether paralegals trust the provenance tags on a live case remains untested.</p></div>
+        </div>
+      </div>
+      <div class="cs3-closing" data-rv>
+        <span class="eyebrow">Closing thought</span>
+        <p class="cs3-closing__big">The old form optimized for fewer clicks in a demo. <span>Splitting intake from matter made a system firms could make their own.</span></p>
+        <div class="cs3-prose"><p>The old form failed for the same reason most "combine two workflows into one screen" decisions fail: it optimized for fewer clicks in a demo instead of what a paralegal needs to trust on a real case. Splitting intake from matter meant more screens and, for the first time, a system firms could make their own.</p></div>
+      </div>
     </div>
   </div>
 </section>
+
 
 <div class="cs3-dock" aria-label="Project summary">
   <div class="cs3-dock__meta"><span class="eyebrow">Product</span><i aria-hidden="true"></i><span>CasePro Matter Redesign</span></div>
