@@ -626,3 +626,15 @@ body.cs3-page { padding-bottom: 64px; }
 html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-more__arrow { border-radius: var(--radius-xs) !important; }
 .cs3 .tag-plain { background: var(--color-fill-subtle); color: var(--color-text-secondary); text-transform: none; letter-spacing: 0; font-size: var(--text-xs); }
 .cs3-more__meta .tag, .cs3-more__name { white-space: nowrap; }
+
+/* the hatched strip separates the case study from the "more case studies" cards */
+.cs3 .cs3-more { border-top: 0; padding-top: 0; }
+.js-cs3 .cs3 .cs3-more::before { display: none; }
+.cs3 .cs3-more .hatched-divider {
+  width: 100% !important;
+  margin: 0 0 var(--space-12) !important;
+  color: var(--color-text) !important;
+  border-top: 1px solid var(--color-border-strong) !important;
+  border-bottom: 1px solid var(--color-border-strong) !important;
+}
+.cs3 .cs3-more .hatched-divider__pattern { opacity: .28 !important; }
