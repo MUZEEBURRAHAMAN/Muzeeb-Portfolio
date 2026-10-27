@@ -540,6 +540,8 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-ba__handle { border-
 .cs3-dock__meta i { flex: none; width: 40px; height: 1px; background: var(--color-border-strong); }
 .cs3-dock__meta span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cs3-dock__actions { display: flex; gap: 0; }
+.cs3-dock__actions .cs3-btn { height: 36px; }
+@media (max-width: 760px) { .cs3-dock__actions { display: none; } }
 @media (max-width: 760px) {
   .cs3-dock__meta:last-child { padding-right: 56px; }
   .cs3-dock__meta .eyebrow, .cs3-dock__meta i { display: none; }
@@ -644,3 +646,39 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-more__arrow { border
   border-bottom: 1px solid var(--color-border-strong) !important;
 }
 .cs3 .cs3-more .hatched-divider__pattern { opacity: .28 !important; }
+
+/* two images side by side inside a band */
+.cs3-duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); align-items: start; }
+.cs3-duo figure { margin: 0; display: grid; gap: var(--space-2); }
+@media (max-width: 760px) { .cs3-duo { grid-template-columns: minmax(0, 1fr); } }
+
+/* stacked share bar with a legend (severity mixes, splits) */
+.cs3-meter { display: flex; height: 14px; overflow: hidden; background: var(--color-fill-subtle); }
+.cs3-meter span { flex: 0 0 var(--w); background: var(--seg); }
+.cs3-meter span + span { box-shadow: inset 2px 0 0 var(--color-bg); }
+.cs3-meter__legend { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); font-size: var(--text-sm); color: var(--color-text-secondary); }
+.cs3-meter__legend li { display: inline-flex; align-items: center; gap: var(--space-2); }
+.cs3-meter__legend li::before { content: ""; width: 10px; height: 10px; background: var(--seg); }
+.cs3-meter__legend b { color: var(--color-text); font-variant-numeric: tabular-nums; }
+.cs3 .is-blocker { --seg: var(--color-danger); }
+.cs3 .is-major { --seg: var(--color-tag-orange); }
+.cs3 .is-minor { --seg: var(--color-tag-blue); }
+.cs3 .is-nit { --seg: var(--color-border-strong); }
+.cs3 .is-praise { --seg: var(--color-good); }
+
+/* download card */
+.cs3-skill { display: grid; gap: var(--space-4); }
+.cs3-skill h4 { font-size: var(--text-xl); }
+.cs3-skill__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3) var(--space-6); font-size: var(--text-sm); color: var(--color-text-secondary); }
+.cs3-skill__list li { display: flex; gap: var(--space-2); align-items: flex-start; padding: 0; }
+.cs3-skill__list li::before { content: none; }
+.cs3-skill__list svg { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--color-good); }
+.cs3-skill__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.cs3-skill__actions .cs3-btn { gap: var(--space-2); }
+.cs3-skill__note { font-size: var(--text-xs); color: var(--color-text-muted); }
+@media (max-width: 760px) { .cs3-skill__list { grid-template-columns: minmax(0, 1fr); } }
+
+/* four-up results row */
+.cs3-results--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) { .cs3-results--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cs3-results--4 > div:nth-child(3) { padding-left: 0; border-left: 0; } }
+@media (max-width: 760px) { .cs3-results--4 { grid-template-columns: 1fr; } }
