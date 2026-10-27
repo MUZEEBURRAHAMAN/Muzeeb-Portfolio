@@ -76,6 +76,16 @@ body { margin: 0; }
 /* ---------- Motion: theme switch (circular reveal from the toggle) ---------- */
 ::view-transition-old(root),
 ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+/* Page-to-page navigation: a short cross-fade instead of a hard white/black flash.
+   Typed so the theme toggle's circle reveal (above) is untouched. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; types: mz-page; }
+  html:active-view-transition-type(mz-page)::view-transition-old(root) { animation: 140ms ease-out both mz-page-out; }
+  html:active-view-transition-type(mz-page)::view-transition-new(root) { animation: 260ms cubic-bezier(0.22, 1, 0.36, 1) both mz-page-in; }
+}
+@keyframes mz-page-out { to { opacity: 0; } }
+@keyframes mz-page-in { from { opacity: 0; transform: translateY(8px); } }
 .mz-theme-btn svg, .site-header__theme svg { transition: transform 500ms var(--dsv-ease-in-out); }
 .mz-theme-switching .mz-theme-btn svg, .mz-theme-switching .site-header__theme svg { transform: rotate(90deg); }
 

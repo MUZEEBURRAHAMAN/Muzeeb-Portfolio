@@ -561,8 +561,27 @@
       margin: 0;
     }
 
+
+    /* ===== case-study shortcut (bottom-left) ===== */
+    .bw-cases { position: fixed; left: 24px; bottom: 24px; z-index: 50; font-family: var(--bwg-sans); }
+    .bw-cases summary { list-style: none; display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 16px; cursor: pointer;
+      background: var(--bwg-panel); color: var(--bwg-ink); border: 1px solid var(--bwg-panel-bd); font-size: 14px; font-weight: 500; }
+    .bw-cases summary::-webkit-details-marker { display: none; }
+    .bw-cases summary:hover { background: var(--bwg-btn-hov); }
+    .bw-cases summary:focus-visible, .bw-cases a:focus-visible { outline: 2px solid var(--bwg-ink); outline-offset: 2px; }
+    .bw-cases summary b { min-width: 20px; height: 20px; display: inline-grid; place-items: center; background: var(--bwg-chip-bg); color: var(--bwg-chip-ink); font-size: 11px; }
+    .bw-cases summary svg { width: 14px; height: 14px; transition: transform .2s; }
+    .bw-cases[open] summary svg { transform: rotate(180deg); }
+    .bw-cases ul { position: absolute; left: 0; bottom: 48px; width: min(340px, calc(100vw - 48px)); margin: 0; padding: 6px; list-style: none;
+      background: var(--bwg-panel); border: 1px solid var(--bwg-panel-bd); }
+    .bw-cases a { display: grid; gap: 2px; padding: 10px 12px; color: var(--bwg-ink); text-decoration: none; }
+    .bw-cases a:hover { background: var(--bwg-btn); }
+    .bw-cases a span { font-size: 14px; font-weight: 600; }
+    .bw-cases a small { font-size: 12px; color: var(--bwg-sub); }
+    body:has(.split.active) .bw-cases { display: none; }
+    @media (max-width: 600px) { .bw-cases { left: 16px; bottom: 16px; } }
   </style>
-<link rel="stylesheet" href="assets/css/ds-v2.css?v=14">
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=15">
 </head>
 
 <body>
@@ -627,6 +646,12 @@
         <path d="m9 18 6-6-6-6" />
       </svg></button>
 
+
+    <!-- CASE STUDIES SHORTCUT -->
+    <details class="bw-cases">
+      <summary>Case studies <b>6</b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></summary>
+      <ul><li><a href="omnisproof-case-study.html"><span>OmnisProof</span><small>E-signature setup: 11 steps to 8</small></a></li><li><a href="casenotes-case-study.html"><span>CaseNotes</span><small>AI notetaker built for legal privilege</small></a></li><li><a href="audit-engine-case-study.html"><span>AI UX Audit Engine</span><small>Design QA in minutes, not a day</small></a></li><li><a href="matter-redesign-case-study.html"><span>CasePro Matter Redesign</span><small>Intake and matters, split and linked</small></a></li><li><a href="gofully-case-study.html"><span>GoFully</span><small>Screenshot extension, rebuilt around privacy</small></a></li><li><a href="litbox-case-study.html"><span>LitBox</span><small>The legal file layer for the Omnis suite</small></a></li></ul>
+    </details>
     <noscript>
       <div class="bw-nojs">
         <div class="sec-num" style="font-family: monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--bwg-sub, #888);">VISUAL ARCHIVE</div>
@@ -1626,6 +1651,15 @@
   <script src="assets/js/sfx.js"></script>
   -->
   <script src="assets/js/site.js?v=561"></script>
+  <script>
+    // close the case-study menu on outside click or Escape
+    (function () {
+      var m = document.querySelector(".bw-cases");
+      if (!m) return;
+      document.addEventListener("pointerdown", function (e) { if (m.open && !m.contains(e.target)) m.open = false; });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && m.open) { m.open = false; m.querySelector("summary").focus(); } });
+    })();
+  </script>
 </body>
 
 </html>

@@ -1,162 +1,172 @@
-# Muzeeb Urrahaman — Portfolio Design System
+# Muzeeb Urrahaman · Portfolio Design System
 
-Source-of-truth for the portfolio's visual + interaction system. Read before adding
-or restyling anything so new work stays consistent.
+Source of truth for the portfolio's visual and interaction system. Read it before
+adding or restyling anything, so new work stays consistent.
 
 Live: https://muzeeb-urrahaman.vercel.app · Static multipage site, no build step on deploy.
 
 ---
 
-## 1. Architecture / how styles work
+## 1. Where the site stands
 
-- **Static multipage** HTML (23 pages in repo root). No SSR/framework.
-- **Tailwind** via a **prebuilt** `assets/css/output.css` (Vercel does NOT build —
-  `vercel.json` has `buildCommand:""`). Any **new arbitrary Tailwind class**
-  (e.g. `max-w-[1320px]`) must be regenerated locally:
-  ```
-  npx tailwindcss@3.4.6 -i ./assets/css/tailwind.css -o ./assets/css/output.css --minify
-  ```
-  then commit `output.css`. Standard classes already present don't need a rebuild.
-- **Custom CSS** in `assets/css/style.css` — all bespoke components are `.mz-*`
-  (site-wide) or `.csd-*` (case-study detail). Loaded on every page.
-- **Shared JS** `assets/js/site.js` — one IIFE on every page: preloader (home only),
-  scroll-reveal, active-nav, custom cursor, AI chat widget, theme toggle.
-- **Cache-busting:** CSS links carry `?v=N`. Bump N when shipping CSS that must
-  propagate immediately.
+Two page systems coexist while the site migrates:
+
+| Pages | System | Stylesheets |
+|---|---|---|
+| 6 case studies (OmnisProof, CaseNotes, Audit Engine, Matter Redesign, GoFully, LitBox) | **cs3**, the current system | `style.css`, `ds-v2.css`, `cs-v3.css` |
+| Home | Legacy layout + home-only styles | `style.css`, `ds-v2.css`, `home-v3.css`, `output.css`, `preloader.css` |
+| About, Resume, Playground | Legacy layout | `style.css`, `ds-v2.css`, `output.css` |
+| Best Work, 404, Coming soon | Legacy layout | `style.css`, `ds-v2.css` |
+
+**New work uses cs3.** Pages leave `style.css` as they migrate; nothing new goes
+into it.
+
+- `assets/css/style.css` (legacy, ~216 KB): `.mz-*` site components, header,
+  footer, and a global zero-radius reset.
+- `assets/css/ds-v2.css`: shared layer on every page. Image ratio rule, page
+  transitions, theme-switch motion, header and footer fixes.
+- `assets/css/cs-v3.css`: the cs3 tokens and components below.
+- `assets/js/cs-v3.js`: reveals, word-split headline, section tick rail, bottom
+  dock, before/after slider, image lightbox.
+- `assets/js/site.js`: on every page. Theme toggle, mobile nav, chat widget, cursor.
+- **Cache busting:** every CSS/JS link carries `?v=N`. Bump N in every page when
+  you ship a change that must reach visitors immediately.
 
 ---
 
-## 2. Theme + color tokens
+## 2. Theme
 
-Theme is driven by `data-theme="dark|light"` on `<html>`. Tokens live in `:root`
-(dark default) with a `[data-theme="light"]` override block. Default is **dark**;
-first visit respects `prefers-color-scheme`; user choice persists in
-`localStorage['mz-theme']`. A FOUC-guard inline script in each `<head>` sets the
-attribute before first paint.
+`data-theme="dark|light"` on `<html>`, set before first paint by an inline
+script; the choice persists in `localStorage['mz-theme']`. **Dark is the default.**
+cs3 defines dark tokens on `.cs3-page` and overrides them under
+`html[data-theme="light"] .cs3-page`.
 
-**Design rule:** the **hero image band** and the **footer** stay dark in BOTH themes
-(they're photographic / accent sections). Light theme flips body, cards, nav, chat,
-and section text only.
+Theme switch: a circular reveal from the toggle (View Transitions, 500 ms
+ease-in-out), skipped under reduced motion.
 
-### Core tokens
+---
+
+## 3. cs3 tokens (`cs-v3.css`)
+
+### Color (semantic, use these, not raw values)
 
 | Token | Dark | Light | Use |
 |---|---|---|---|
-| `--bg` | `#0f0f0f` | `#faf9f7` | page background |
-| `--surface` | `#1a1a1a` | `#ffffff` | cards, pills, panels |
-| `--surface-2` | `#141414` | `#f1f0ec` | insets, media tints |
-| `--surface-3` | `#161616` | `#f4f4f2` | alt card bg |
-| `--text` | `#f4f2ed` | `#17170f` | primary text / headings |
-| `--text-2` | `#cfcfcd` | `#3a3a38` | secondary body text |
-| `--muted` | `#8a8a8a` | `#6a6a66` | captions, meta |
-| `--border` | `#242424` | `#e6e4df` | card borders |
-| `--border-2` | `#2a2a2a` | `#dcdad4` | strong borders |
-| `--line` | `rgba(255,255,255,.09)` | `rgba(0,0,0,.10)` | hairlines / dividers |
+| `--color-bg` | `#0f0f0f` | `#fff` | page |
+| `--color-surface` | `#1a1a1a` | `#f5f5f5` | cards |
+| `--color-text` | `#f5f5f5` | `#03111c` | headings, primary text |
+| `--color-text-secondary` | text @ 75% | text @ 75% | body copy |
+| `--color-text-muted` | text @ 62% | text @ 62% | captions, eyebrows |
+| `--color-border` / `-strong` | text @ 12% / 24% | text @ 10% / 20% | hairlines |
+| `--color-accent` | `#3b8bff` | `#116ff8` | links, focus |
+| `--color-good` / `-fill` | green | green | "after", wins |
+| `--color-danger` / `-fill` | red | red | "before", friction |
+| `--color-tag-blue`, `--color-tag-orange`, `--color-badge` | | | tags |
 
-Always-dark anchors (do not tokenize): `--dark-bg:#0f0f0f`, footer `#161616`,
-hero scrim over image.
+### Type
 
-Legacy: `--primary: 0 0% 100%` (HSL white) — Tailwind `primary` accent; was gold,
-now white. Motion accents (about tooltips) intentionally keep small color pops.
+- **Display:** `--font-display`: Saans (licence pending), falling back to Inter Tight.
+  Used for all headings and big numerals.
+- **Body/UI:** `--font-sans`: Inter. **Code:** `--font-code`: JetBrains Mono.
+- Fluid scale `--text-2xs` … `--text-5xl` (clamp). Headings 600, tracking
+  `--tracking-tight`. Eyebrows: `--text-2xs`, uppercase, `.06em`, muted.
 
----
+### Space, size, shape
 
-## 3. Typography
+- Space `--space-1` (4px) … `--space-24` (96px); `--space-section` and
+  `--space-block` are fluid section and block gaps; `--space-gutter` is the page
+  gutter.
+- Container `--container-max: 1200px`; reading width `--container-narrow: 760px`.
+- Radius: `--radius-xs: 2px`, `--radius-sm: 4px`, cards `0`, pills `999px`.
+  The legacy zero-radius reset in `style.css` is beaten with
+  `html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page …`; remove that hack
+  once `style.css` is retired.
 
-Two families, loaded via Google Fonts `@import` at top of `style.css`.
+### Motion
 
-- **Primary — Inter** (`--font-sans`): body, UI, nav, paragraphs, labels.
-- **Secondary — Geist** (`--font-display`): ALL headings `h1–h6`, hero title,
-  big numerals (`.mz-bento__num`), footer wordmark. Applied globally via the
-  `h1,h2,h3,h4,h5,h6 { font-family: var(--font-display) }` rule.
-- Utility: `.font-geist` to force Geist on a non-heading element.
-
-Weights loaded 300–900 for both. Headings: 500–600, letter-spacing ~ -0.02em.
-Body: 400, line-height ~1.6–1.72. Italic `<em>` used for emphasis in display type.
-
----
-
-## 4. Layout
-
-- **Container max-width: 1320px** for every home section + blog + case-study wrap.
-  Keep new sections at 1320 for grid consistency.
-- Case-study internals: cards/gallery/results `1120`, intro grid `900`,
-  reading prose `~700` (line length), hero title `940`.
-- Section gutters: `px-6`/`px-10`; sections vertically spaced via container `gap`.
-- **Full-bleed** helper `.mz-fullbleed` (and `margin-inline: calc(50% - 50vw)`)
-  breaks an element to viewport edges regardless of padding — used for the
-  case-study footer and the home hero.
-- Responsive: mobile stacks at ≤860px (case-study grids) / component-specific.
+- `--ease-out: cubic-bezier(.22,1,.36,1)`, `--ease-in-out: cubic-bezier(.65,0,.35,1)`.
+- `--duration-fast .15s`, `--duration-base .25s`, `--duration-slow .5s`.
+- Reveal on scroll: `data-rv` (fade/rise) and `data-rv="unfold"` (media bands),
+  enabled only when `html.js-cs3` is set, which the head script skips under reduced motion.
+- Page-to-page navigation: a 140 ms fade out and a 260 ms fade-and-rise in
+  (cross-document View Transitions, typed `mz-page`), off under reduced motion.
+- Lenis smooth scroll (Home, About) and the preloader honour reduced motion.
 
 ---
 
-## 5. Motion
+## 4. cs3 page anatomy
 
-Tokens in `:root`:
 ```
---t-fast:150ms; --t-base:250ms; --t-slow:400ms; --t-reveal:700ms;
---ease:cubic-bezier(0.16,1,0.3,1);
+.cs3-page > main > .cs3
+  .cs3-hero            back link, tags, h1.cs3-hl, lead, dl.cs3-facts, cover band
+  .cs3-results         3 headline numbers (top band)
+  .cs3-glance          at-a-glance: The problem / What I did / Where it stands
+  section.cs3-section  (repeat) .cs3-wrap.cs3-grid > .cs3-kicker + .cs3-body
+  .cs3-dock            sticky bottom bar: product, Next case study, role
+  .cs3-more            "More case studies" row
+footer.mz-footer
 ```
-- One global easing override on all Tailwind transitions.
-- **Scroll reveal:** opt-in `.mz-reveal` (+ `.in` when visible), guarded by
-  `html.js`; IntersectionObserver in site.js.
-- `@media (prefers-reduced-motion: reduce)` kills animation site-wide.
-- Marquees/loops use `@keyframes` (testimonials, tool drop).
+
+Each case study needs: a results band, an at-a-glance block, a facts row
+(role, timeline, team, status), and a Next case study link. Next links follow the Home order
+OmnisProof → CaseNotes → Audit Engine → Matter Redesign → GoFully → LitBox → OmnisProof.
+
+## 5. cs3 components
+
+| Component | Markup | Use |
+|---|---|---|
+| Block | `.cs3-block` (`.cs3-wide` to span) | wraps a heading + prose |
+| Title / sub | `h2.cs3-title`, `h3.cs3-h3`, `.mark` highlight | section and block heads |
+| Prose | `.cs3-prose` | paragraphs and lists |
+| Media band | `figure.cs3-band > .cs3-band__inner[data-rv=unfold] > .cs3-media__frame` (+ `--narrow`, `--tall`) | screenshots, video |
+| Two-up media | `.cs3-duo` inside a band | paired screens |
+| Cards | `.cs3-cards.cs3-cards--2/3 > .cs3-card` (`.ic`, `.eyebrow`, `h4`, `p`, `--win`) | findings, decisions, lessons |
+| Results | `.cs3-results` (`--4` for four) | headline numbers |
+| Before/after list | `.cs3-vs > .cs3-vs__row` (`.gap` / `.good`) | problem vs fix |
+| Flow strip | `.cs3-flow.cs3-flow--old/--new` with `ol > li` (`.k`, `h5`, `p`, `.fx`), `.cs3-flow__fork`, `.cs3-flow__foot` | user flows |
+| Table | `.cs3-table > table` | comparisons, roles, stack |
+| Note | `.cs3-note` (`--warn`) | scope notes, honesty |
+| Quote / statement | `blockquote.cs3-quote` | goal, stakeholder quote |
+| Accordion | `.cs3-faq > details > summary + .plus + .a` | FAQs, long detail |
+| Share bar | `.cs3-meter` + `.cs3-meter__legend` (`.is-blocker/major/minor/nit/praise`) | severity mixes |
+| Before/after slider | `.cs3-ba` | redesign comparisons |
+| Download card | `.cs3-skill` | downloadable assets |
+| Button | `.cs3-btn` (`--primary`, `--ghost`) | actions |
+
+Page-only helpers (LitBox): `.lb-wf-pair` (sketch next to shipped screen),
+`.lb-pins` / `.lb-pin` + `.lb-legend` (numbered callouts), `.lb-xref` (section links).
+Promote one to cs3 when a second page needs it.
 
 ---
 
-## 6. Components (`.mz-*`, `.csd-*`)
+## 6. Images
 
-- **Nav** `.mz-nav` — sticky floating pill (logo + pill links + résumé + mail).
-  `::before` top scrim prevents content bleeding behind it. Theme toggle injected
-  by site.js.
-- **Hero** `.mz-hero` — full-bleed dark image (`hero-04.webp`) + scrim, Geist title,
-  eyebrow **pill** (blurred dark chip, readable over image). Dark in both themes.
-- **Bento** `.mz-bento` — stats + matter.js physics **tool drop** (`.mz-drop`);
-  tools render as icon+label badges (`assets/images/{figma,framer,...}`).
-- **Testimonials** `.mz-tcards` — auto-scroll marquee; one **featured** light card
-  `.mz-tcard.feat` (intentional accent).
-- **Selected work** `.mz-projects` / sticky `.mz-pcard`.
-- **What I bring** `.mz-wib` + magnetic capability pills.
-- **Footer** `.mz-footer` — dark (`#161616`), round avatar `.mz-footer__pic`,
-  wordmark, contact + socials. Dark in both themes.
-- **Case study** `.csd` — hero, intro+meta, 3-up cards, gallery, results cards.
-- **Chat** `.cw-*` — AI widget (launcher orb + panel), site-wide except playground.
-- **Cursor** — custom spring cursor with label (`.mz-cursor-on`).
+- WebP only. Case-study screenshots at 2400 px wide (`cwebp -q 84 -m 6 -resize 2400 0`);
+  Best Work full-size at 2400 px, grid thumbnails `_thumb.webp` at 1200 px.
+- Every `<img>` carries `width` and `height` (the real pixel size) so space is
+  reserved while it loads; `:where(img[width][height]) { height: auto }` in
+  ds-v2 keeps the ratio when CSS sets only the width.
+- `loading="lazy"` below the first screen; the hero cover is `eager`.
+- Social preview: `og:image` 1200 × 630 where possible (`assets/images/og.jpg`).
 
 ---
 
-## 7. Brand assets
+## 7. Voice
 
-- **Avatar (unified):** line-art `assets/images/logo.png` everywhere — nav, favicon,
-  hero eyebrow, footer. One consistent mark. (Color photo `muzeeb.jpg` still used in
-  About carousel / playground contexts only.)
-- **Hero image:** `assets/images/hero/hero-04.webp` (monochrome halftone mountains +
-  silhouette). Converted from PNG → webp (~309KB). Keep hero art dark + on-theme.
-- **Tool icons:** `figma.webp, framer.webp, adobeIllustrator.webp, adobePhotoshop.webp,
-  adobeAfterEffects.webp, webflow.webp, cursor.png, claude.png`.
-- **OG/social:** `assets/images/og.jpg` (1200×630).
-- Images: prefer **webp**; cap large backgrounds ≤1920px wide.
+- Positioning: **Product Designer & Builder for AI & SaaS**, currently Omnis AI.
+- Lead with the outcome. Say what shipped and what didn't; never invent metrics.
+  Prototype numbers are labelled as prototype numbers.
+- One idea per sentence, plain words, no filler.
 
 ---
 
-## 8. Voice / content
+## 8. Conventions / gotchas
 
-- Positioning: **Product Designer & Builder for AI & SaaS**, 4.5+ yrs, currently
-  Omnis AI. "I design the system, then ship it in code."
-- Case studies: LetmeGrab Design System, Zebralearn redesign, 30 Days UI (Omnis =
-  coming soon). Detail pages use the `.csd` Aria-style layout.
-- Tone: confident, concrete, no fluff. Headings lead with the outcome.
-
----
-
-## 9. Conventions / gotchas
-
-- Custom classes are `.mz-*` / `.csd-*`. Match surrounding code style.
-- Verify layout via **DOM measurement** (`getBoundingClientRect`, computed styles),
-  NOT scrolled screenshots — Lenis smooth-scroll desyncs the in-app browser's
-  screenshot from actual scroll position.
-- After adding arbitrary Tailwind classes → rebuild `output.css` + commit.
-- Deploy: commit → push → `vercel deploy --prod`. Working domain
-  `muzeeb-urrahaman.vercel.app`.
-- AI chat key lives ONLY in Vercel env (`GEMINI_API_KEY`), never in code.
+- Verify layout with DOM measurement (`getBoundingClientRect`, computed styles).
+  Screenshots taken while Lenis or smooth scroll is moving show the wrong position.
+- The in-app browser pauses `requestAnimationFrame` when its pane is hidden; front
+  the tab before testing the preloader or Best Work canvas.
+- After adding new Tailwind classes, rebuild `output.css`
+  (`npm run build:css`) and commit it.
+- Deploy: push to `main`; Vercel deploys `main`.
+- The AI chat key lives only in Vercel env (`GEMINI_API_KEY`), never in code.
