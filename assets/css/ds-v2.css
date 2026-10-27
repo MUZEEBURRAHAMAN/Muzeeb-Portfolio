@@ -5,6 +5,10 @@
    Loaded last on every page so it wins over page-level styles.
    ========================================================================== */
 
+/* width/height attributes reserve space while images load; keep the ratio
+   when CSS sizes only the width. Zero specificity so any page rule wins. */
+:where(img[width][height]) { height: auto; }
+
 :root {
   --dsv-text: #000000;
   --dsv-text-2: #333333;

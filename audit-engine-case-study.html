@@ -1983,7 +1983,7 @@ h2.h-sub {
 .results-viz--single { grid-template-columns:minmax(0,1fr) !important; max-width:720px; }
 @media (max-width:700px) { .ae-meta { grid-template-columns:1fr; } .ae-ver { padding:20px; } }
 </style>
-<link href="assets/css/ds-v2.css?v=13" rel="stylesheet"/>
+<link href="assets/css/ds-v2.css?v=14" rel="stylesheet"/>
 <link href="assets/css/cs-v3.css?v=11" rel="stylesheet"/>
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js-cs3");}catch(e){}</script>
 </head>
@@ -1992,8 +1992,8 @@ h2.h-sub {
 <header class="site-header" id="siteHeader">
   <div class="site-header__inner">
     <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
-      <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
-      <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+      <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp" width="2062" height="390">
+      <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp" width="2062" height="390">
     </a>
     <nav class="site-header__nav">
       <a class="site-header__link" href="index.html">Home</a>
@@ -2023,7 +2023,7 @@ h2.h-sub {
   </div>
   <figure class="cs3-band cs3-cover" style="margin-top:var(--space-block)"><div class="cs3-band__inner" data-rv="unfold" style="--d:5"><div class="cs3-media__frame"><picture>
 <source srcset="assets/images/ux-audit-assistant-cover.webp?v=lossless3" type="image/webp"/>
-<img alt="Omnis UX Audit Engine live report preview: CaseNotes dashboard scan with expanded critical contrast findings" loading="eager" src="assets/images/ux-audit-assistant-cover.png?v=lossless3"/>
+<img alt="Omnis UX Audit Engine live report preview: CaseNotes dashboard scan with expanded critical contrast findings" loading="eager" src="assets/images/ux-audit-assistant-cover.webp?v=lossless3" width="2400" height="1050"/>
 </picture></div></div></figure>
 </header>
 
@@ -2062,7 +2062,7 @@ h2.h-sub {
 <p>A screen can pass review when it first loads. The problems show up <b>after someone opens a dropdown, submits a form with an error, or lands on an empty page</b>.</p>
 <p>Nobody had time to click through all of those states before each release, so those bugs reached real users.</p>
 </div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="The same New meeting dialog, closed and open" loading="lazy" src="assets/media/audit/samples/audit-dropdown-states.webp?v=1"/></div><figcaption><b>Left:</b> at first load the form passes review. <b>Right:</b> open the Matter dropdown and three problems appear. The list is cut off by the dialog edge, the options are too faint to read, and the list covers the Schedule button.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="The same New meeting dialog, closed and open" loading="lazy" src="assets/media/audit/samples/audit-dropdown-states.webp?v=1" width="2400" height="1440"/></div><figcaption><b>Left:</b> at first load the form passes review. <b>Right:</b> open the Matter dropdown and three problems appear. The list is cut off by the dialog edge, the options are too faint to read, and the list covers the Schedule button.</figcaption></div></figure>
 <div class="cs3-prose" data-rv>
 <p class="ae-statement">I needed a way to check every state of every screen, <span class="mark">fast enough to run before each release</span>, and accurate enough that engineers would trust it.</p>
 </div>
@@ -2104,7 +2104,7 @@ h2.h-sub {
 <div class="cs3-prose" data-rv>
 <p>A typical manual check meant taking screenshots, drawing red boxes in Figma, listing the design tokens, and writing tickets. When engineers fixed something, I checked everything again. <b>Design QA became the thing holding releases back.</b></p>
 </div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Before: manual screenshot markup in Figma, one note per problem" loading="lazy" src="assets/media/audit/audit-02.webp?v=q95"/></div><figcaption>Before: my manual review in Figma, one note per problem.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Before: manual screenshot markup in Figma, one note per problem" loading="lazy" src="assets/media/audit/audit-02.webp?v=q95" width="1364" height="1153"/></div><figcaption>Before: my manual review in Figma, one note per problem.</figcaption></div></figure>
     </div>
   </div>
 </section>
@@ -2121,7 +2121,7 @@ h2.h-sub {
 </div>
 <div class="cs3-wide cs3-legacy" data-rv><article class="ae-ver reveal">
 <h3 class="ae-ver__title"><span>V1</span>Reading screenshots with AI</h3>
-<figure class="figure"><div class="frame"><img alt="V1 report flagging low contrast on a button that does not exist" loading="lazy" src="assets/media/audit/samples/audit-v1-vision-report.webp?v=1"/></div><figcaption>V1's report flagged low contrast on a button beside the search field. The red box marks that spot: <b>there's no button there.</b></figcaption></figure>
+<figure class="figure"><div class="frame"><img alt="V1 report flagging low contrast on a button that does not exist" loading="lazy" src="assets/media/audit/samples/audit-v1-vision-report.webp?v=1" width="2400" height="1500"/></div><figcaption>V1's report flagged low contrast on a button beside the search field. The red box marks that spot: <b>there's no button there.</b></figcaption></figure>
 <dl class="ae-ver__rows">
 <div><dt>What I built</dt><dd>The tool took screenshots and asked an AI vision model to list problems, each with a location, a severity, and a suggested fix.</dd></div>
 <div><dt>What I saw</dt><dd>On a dashboard I knew well, it reported low contrast on "the secondary button beside the search field." <b>That button didn't exist.</b> The AI had guessed from what dashboards usually look like.</dd></div>
@@ -2130,7 +2130,7 @@ h2.h-sub {
 </article></div>
 <div class="cs3-wide cs3-legacy" data-rv><article class="ae-ver ae-ver--final reveal">
 <h3 class="ae-ver__title"><span>Final</span>Checking the real page, with proof</h3>
-<figure class="figure"><div class="frame"><img alt="Annotated screen: flagged interface elements mapped to numbered finding cards with CSS selectors and diffs" loading="lazy" src="assets/media/audit/audit-08.webp?v=q95"/></div><figcaption>Final: each flagged element maps to a numbered finding with its selector and fix.</figcaption></figure>
+<figure class="figure"><div class="frame"><img alt="Annotated screen: flagged interface elements mapped to numbered finding cards with CSS selectors and diffs" loading="lazy" src="assets/media/audit/audit-08.webp?v=q95" width="1440" height="900"/></div><figcaption>Final: each flagged element maps to a numbered finding with its selector and fix.</figcaption></figure>
 <dl class="ae-ver__rows">
 <div><dt>What I built</dt><dd>The tool works inside a live browser. It runs 229 fixed rules first and uses AI only for layout questions. <b>Any problem that can't point to a real element on the page gets thrown out.</b></dd></div>
 <div><dt>What I saw</dt><dd>Over 90% of findings point to an exact element in the page code, so an engineer can find each problem in one click.</dd></div>
@@ -2171,7 +2171,7 @@ h2.h-sub {
 <div class="vs-row"><div class="gap"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg><span>A Figma screenshot with a red box</span></div><div class="good"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg><span><b>The exact element</b> and a copy-paste fix</span></div></div>
 <div class="vs-row"><div class="gap"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg><span>Check everything again after a fix</span></div><div class="good"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg><span><b>One command</b> re-checks and shows what changed</span></div></div>
 </div></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="After: automated report with annotated screen and DOM-anchored finding cards" loading="lazy" src="assets/media/audit/audit-03.webp?v=q95"/></div><figcaption>After: the tool's report, with the screen annotated and each problem tied to its element.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="After: automated report with annotated screen and DOM-anchored finding cards" loading="lazy" src="assets/media/audit/audit-03.webp?v=q95" width="1919" height="960"/></div><figcaption>After: the tool's report, with the screen annotated and each problem tied to its element.</figcaption></div></figure>
 <div class="cs3-wide cs3-legacy" data-rv><div class="flow old" data-flow="">
 <div class="flow-label"><span class="lozenge outline">Before · by hand</span><span class="flow-title">Every release, every screen, every fix</span></div>
 <div class="flow-pipe">
@@ -2233,12 +2233,12 @@ h2.h-sub {
 <li data-n="1"><h4>Proof before opinion.</h4><p>Fixed rules handle what can be measured: contrast, accessibility attributes, and design tokens. AI handles judgment calls, and only when it can point to the element.</p></li>
 <li data-n="2"><h4>Click before judging.</h4><p>The tool opens each dialog, dropdown, drawer, and tab before it reviews a screen.</p></li>
 </ol></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="State explorer screenshot: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns" loading="lazy" src="assets/media/audit/audit-05.webp?v=q95"/></div><figcaption>The tool going past the first screen to check dialogs, drawers, and open dropdowns.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="State explorer screenshot: crawling beyond the default screen to audit dialogs, drawers, and active dropdowns" loading="lazy" src="assets/media/audit/audit-05.webp?v=q95" width="1920" height="959"/></div><figcaption>The tool going past the first screen to check dialogs, drawers, and open dropdowns.</figcaption></div></figure>
 <div class="cs3-wide cs3-legacy" data-rv><ol class="ae-decisions reveal" start="3">
 <li data-n="3"><h4>Every problem comes with its fix.</h4><p>Each card shows a severity, the rule it broke, a plain-English title, the design principle behind it, a copy-paste CSS fix, and a confidence score.</p></li>
 </ol></div>
-<figure class="cs3-band cs3-band--narrow"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Anatomy of a finding card: verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes" loading="lazy" src="assets/media/audit/audit-04.webp?v=q95"/></div><figcaption>One finding card, from severity to the fix an engineer pastes.</figcaption></div></figure>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="A finding inside a GitHub pull request, with selector, measured colors and a suggested fix" loading="lazy" src="assets/media/audit/samples/audit-pr-handoff.webp?v=1"/></div><figcaption>What the engineer receives: the rule, the exact element, the measured colors, and a fix they can commit in one click.</figcaption></div></figure>
+<figure class="cs3-band cs3-band--narrow"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Anatomy of a finding card: verified DET-CONTRAST-001 finding with rule IDs, selector paths, and token fixes" loading="lazy" src="assets/media/audit/audit-04.webp?v=q95" width="1100" height="1430"/></div><figcaption>One finding card, from severity to the fix an engineer pastes.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="A finding inside a GitHub pull request, with selector, measured colors and a suggested fix" loading="lazy" src="assets/media/audit/samples/audit-pr-handoff.webp?v=1" width="2400" height="1350"/></div><figcaption>What the engineer receives: the rule, the exact element, the measured colors, and a fix they can commit in one click.</figcaption></div></figure>
 <div class="cs3-wide cs3-legacy" data-rv><ol class="ae-decisions reveal" start="4">
 <li data-n="4"><h4>Each role sees its own list.</h4><p>One run, six readers, each filtered to the work they can act on:</p>
 <ul class="ae-roles">
@@ -2251,10 +2251,10 @@ h2.h-sub {
 </ul>
 </li>
 </ol></div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Dashboard showing findings across four products, open blockers and a release gate" loading="lazy" src="assets/media/audit/samples/audit-fleet-dashboard.webp?v=1"/></div><figcaption>One run across four products: finding counts per product, open blockers with an owner, fixes per week, and a release gate.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Dashboard showing findings across four products, open blockers and a release gate" loading="lazy" src="assets/media/audit/samples/audit-fleet-dashboard.webp?v=1" width="2400" height="1140"/></div><figcaption>One run across four products: finding counts per product, open blockers with an owner, fixes per week, and a release gate.</figcaption></div></figure>
 <figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><div class="gallery gallery--match reveal">
-<div class="shot"><div class="shot__frame"><img alt="Content review track: text suggestions reviewed and edited separately from code rules" loading="lazy" src="assets/media/audit/audit-06.webp?v=q95"/></div></div>
-<div class="shot"><div class="shot__frame"><img alt="Product screen index: overview tracking element counts and rule coverage across staging screens" loading="lazy" src="assets/media/audit/audit-07.webp?v=q95"/></div></div>
+<div class="shot"><div class="shot__frame"><img alt="Content review track: text suggestions reviewed and edited separately from code rules" loading="lazy" src="assets/media/audit/audit-06.webp?v=q95" width="941" height="1672"/></div></div>
+<div class="shot"><div class="shot__frame"><img alt="Product screen index: overview tracking element counts and rule coverage across staging screens" loading="lazy" src="assets/media/audit/audit-07.webp?v=q95" width="1920" height="959"/></div></div>
 </div></div></div></figure>
     </div>
   </div>
@@ -2270,7 +2270,7 @@ h2.h-sub {
 
 <p>The <b>engine</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-mcp</span>) captures and checks pages. The <b>service</b> (<span style="font-family:var(--mono);font-size:.85em">ux-audit-service</span>) adds the multi-product dashboard and automation.</p>
 </div>
-<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Terminal output of one audit run, ending with 89 findings and two report files" loading="lazy" src="assets/media/audit/samples/audit-terminal-run.webp?v=1"/></div><figcaption>One command logs in, opens each state, drops findings it can't tie to a real element, and saves an HTML and a Markdown report.</figcaption></div></figure>
+<figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img alt="Terminal output of one audit run, ending with 89 findings and two report files" loading="lazy" src="assets/media/audit/samples/audit-terminal-run.webp?v=1" width="2400" height="1170"/></div><figcaption>One command logs in, opens each state, drops findings it can't tie to a real element, and saves an HTML and a Markdown report.</figcaption></div></figure>
 <div class="cs3-wide cs3-legacy" data-rv><div class="tbl stack reveal">
 <table>
 <tr><th>Layer</th><th>Technology</th></tr>
@@ -2289,11 +2289,11 @@ h2.h-sub {
 </div>
 <figure class="cs3-band"><div class="cs3-band__inner" data-rv=""><div class="cs3-legacy"><div class="gallery gallery--match reveal">
 <div class="shot">
-<div class="shot__frame"><img alt="audit-report.html open in browser" loading="lazy" src="assets/media/audit/export-html-icon.webp"/></div>
+<div class="shot__frame"><img alt="audit-report.html open in browser" loading="lazy" src="assets/media/audit/export-html-icon.webp" width="1920" height="1038"/></div>
 <a class="export-link" href="assets/media/exports/audit-report.html" rel="noopener" target="_blank">Open audit-report.html →</a>
 </div>
 <div class="shot">
-<div class="shot__frame"><img alt="audit-report.md open in an editor" loading="lazy" src="assets/media/audit/export-md-icon.webp"/></div>
+<div class="shot__frame"><img alt="audit-report.md open in an editor" loading="lazy" src="assets/media/audit/export-md-icon.webp" width="905" height="1051"/></div>
 <a class="export-link" href="assets/media/exports/audit-report.md" rel="noopener" target="_blank">Open audit-report.md →</a>
 </div>
 </div></div></div></figure>
@@ -2428,17 +2428,17 @@ h2.h-sub {
     <div class="hatched-divider" aria-hidden="true"><div class="hatched-divider__pattern"></div></div>
     <div class="cs3-more__grid" data-rv>
       <a class="cs3-more__card" href="omnisproof-case-study.html">
-        <span class="cs3-more__media"><img src="assets/images/omnisproof-cover.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__media"><img src="assets/images/omnisproof-cover.webp" alt="" loading="lazy" width="3840" height="2410"></span>
         <span class="cs3-more__meta"><span class="cs3-more__name">OmnisProof</span><span class="tag tag-plain">Legal tech</span><span class="cs3-more__org">Omnis AI</span></span>
         <span class="cs3-more__foot"><span class="cs3-more__line">I replaced OmnisProof's disjointed modal wizard and manual field placement with a persistent canvas and reviewable AI detection.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
       </a>
       <a class="cs3-more__card" href="casenotes-case-study.html">
-        <span class="cs3-more__media"><img src="assets/images/Casenotes_cover page_1.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__media"><img src="assets/images/Casenotes_cover page_1.webp" alt="" loading="lazy" width="7680" height="5184"></span>
         <span class="cs3-more__meta"><span class="cs3-more__name">CaseNotes</span><span class="tag tag-plain">AI product</span><span class="cs3-more__org">Omnis AI</span></span>
         <span class="cs3-more__foot"><span class="cs3-more__line">I designed an AI transcription and synthesis workspace that anchors client conversations to litigation discovery files.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
       </a>
       <a class="cs3-more__card" href="matter-redesign-case-study.html">
-        <span class="cs3-more__media"><img src="assets/images/case-studies/matter-redesign/cover.webp" alt="" loading="lazy"></span>
+        <span class="cs3-more__media"><img src="assets/images/case-studies/matter-redesign/cover.webp" alt="" loading="lazy" width="3840" height="2592"></span>
         <span class="cs3-more__meta"><span class="cs3-more__name">CasePro</span><span class="tag tag-plain">Legal tech</span><span class="cs3-more__org">Omnis AI</span></span>
         <span class="cs3-more__foot"><span class="cs3-more__line">I split a merged intake-and-matter form into two linked systems: an AI-assisted path and a manual path into each new matter.</span><span class="cs3-more__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
       </a>
@@ -2451,8 +2451,8 @@ h2.h-sub {
 <div class="mz-footer__row">
 <div class="mz-footer__id">
 <a aria-label="Muzeeb Urrahaman" class="mz-footer__logo" href="index.html">
-<img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp"/>
-<img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp"/>
+<img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp" width="2062" height="390"/>
+<img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp" width="2062" height="390"/>
 </a>
 </div>
 <div class="mz-footer__socials">

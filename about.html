@@ -421,7 +421,7 @@
             color: #2b2b2b !important;
         }
     </style>
-<link rel="stylesheet" href="assets/css/ds-v2.css?v=13">
+<link rel="stylesheet" href="assets/css/ds-v2.css?v=14">
 </head>
 
 <body class="bg-[#000000] text-[#ffffff]">
@@ -430,8 +430,8 @@
     <header class="site-header" id="siteHeader" role="banner">
         <div class="site-header__inner">
             <a aria-label="Muzeeb Urrahaman" href="index.html" class="site-header__logo">
-                <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
-                <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+                <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--dark" src="assets/images/muzeeb-logo-white.webp" width="2062" height="390">
+                <img alt="Muzeeb Urrahaman" class="site-header__logo-img site-header__logo-img--light" src="assets/images/muzeeb-logo-dark.webp" width="2062" height="390">
             </a>
             <nav class="site-header__nav" aria-label="Main Navigation">
                 <a class="site-header__link" href="index.html">Home</a>
@@ -465,7 +465,7 @@
                     <div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div><div class="mzr-img"></div>
                 </div>
             </div>
-            <img loading="lazy" class="mzr-person" src="assets/images/about-images/muzeeb_about.webp" alt="Muzeeb Urrahaman" decoding="async" onerror="this.style.display='none'">
+            <img loading="lazy" class="mzr-person" src="assets/images/about-images/muzeeb_about.webp" alt="Muzeeb Urrahaman" decoding="async" onerror="this.style.display='none'" width="1536" height="1024">
         </div>
 
         <!-- Section Divider: Hero to Bio -->
@@ -544,7 +544,7 @@
                             </a>
                             <div class="mz-social-popover mz-popover-github">
                                 <div class="mz-popover-gh__head">
-                                    <img loading="lazy" class="mz-popover-gh__avatar" src="assets/images/logo.webp" alt="Muzeeb Urrahaman">
+                                    <img loading="lazy" class="mz-popover-gh__avatar" src="assets/images/logo.webp" alt="Muzeeb Urrahaman" width="170" height="170">
                                     <div class="mz-popover-gh__info">
                                         <span class="mz-popover-gh__user">muzeeburrahaman</span>
                                         <span class="mz-popover-gh__sub">1,760 contributions in the last year</span>
@@ -565,7 +565,7 @@
                                 <div class="mz-popover-tw__banner"></div>
                                 <div class="mz-popover-tw__body">
                                     <div class="mz-popover-tw__toprow">
-                                        <img loading="lazy" class="mz-popover-tw__avatar" src="assets/images/logo.webp" alt="Muzeeb Urrahaman">
+                                        <img loading="lazy" class="mz-popover-tw__avatar" src="assets/images/logo.webp" alt="Muzeeb Urrahaman" width="170" height="170">
                                         <a class="mz-popover-tw__btn" href="https://x.com/Rahamanmuzeeb12" target="_blank">Follow</a>
                                     </div>
                                     <div class="mz-popover-tw__handle">@Rahamanmuzeeb12</div>
@@ -587,8 +587,8 @@
         <div class="mz-footer__row">
             <div class="mz-footer__id">
                 <a aria-label="Muzeeb Urrahaman" href="index.html" class="mz-footer__logo">
-                    <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp">
-                    <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp">
+                    <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--dark" src="assets/images/muzeeb-logo-white.webp" width="2062" height="390">
+                    <img alt="Muzeeb Urrahaman" class="mz-footer__logo-img mz-footer__logo-img--light" src="assets/images/muzeeb-logo-dark.webp" width="2062" height="390">
                 </a>
             </div>
             <div class="mz-footer__socials">
@@ -648,15 +648,16 @@
 
     <!-- Lenis smooth scroll js start -->
     <script>
-        const lenis = new Lenis()
-        lenis.on('scroll', (e) => {
-            // console.log(e)
-        })
-        function raf(time) {
-            lenis.raf(time)
+        // Smooth scroll only when the visitor hasn't asked for reduced motion.
+        if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            const lenis = new Lenis()
+            window.lenis = lenis
+            function raf(time) {
+                lenis.raf(time)
+                requestAnimationFrame(raf)
+            }
             requestAnimationFrame(raf)
         }
-        requestAnimationFrame(raf)
     </script>
     <!-- Lenis smooth scroll js end -->
 

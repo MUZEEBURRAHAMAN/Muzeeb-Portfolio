@@ -1,7 +1,8 @@
 (() => {
   // Preloader v2 — selection frame + real-progress counter, shown on a visitor's
   // first visit only (remembered in localStorage). Markup lives inline at the top of <body> on Home.
-  const MIN_DURATION = 1900;   // ms — never flash; lets the frame finish drawing
+  const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const MIN_DURATION = REDUCED ? 400 : 1900;   // ms — never flash; lets the frame finish drawing
   const MAX_DURATION = 6000;   // ms — never hold the visitor hostage on slow nets
   const STATUS = [
     [0,   "Setting up the canvas"],
