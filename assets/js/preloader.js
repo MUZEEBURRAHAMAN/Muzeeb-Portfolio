@@ -1,6 +1,6 @@
 (() => {
-  // Preloader v2 — selection frame + real-progress counter, once per session
-  // (and on hard reload). Markup lives inline at the top of <body> on Home.
+  // Preloader v2 — selection frame + real-progress counter, shown on a visitor's
+  // first visit only (remembered in localStorage). Markup lives inline at the top of <body> on Home.
   const MIN_DURATION = 1900;   // ms — never flash; lets the frame finish drawing
   const MAX_DURATION = 6000;   // ms — never hold the visitor hostage on slow nets
   const STATUS = [
@@ -18,15 +18,8 @@
   const size = pre.querySelector("[data-pl-size]");
   const stage = pre.querySelector(".pl-stage");
 
-  let isReload = false;
-  try {
-    const nav = performance.getEntriesByType && performance.getEntriesByType("navigation");
-    if (nav && nav.length) isReload = nav[0].type === "reload";
-    else if (performance.navigation) isReload = performance.navigation.type === 1;
-  } catch (e) {}
-
   let seen = false;
-  try { seen = !!sessionStorage.getItem("mz_greeting_seen"); } catch (e) {}
+  try { seen = !!localStorage.getItem("mz_greeting_seen"); } catch (e) {}
 
   const release = () => {
     document.body.classList.remove("preloader-active");
@@ -36,7 +29,7 @@
     if (window.lenis) { try { window.lenis.start(); } catch (e) {} }
   };
 
-  if (seen && !isReload) {
+  if (seen) {
     document.documentElement.classList.add("skip-preloader");
     release();
     pre.remove();
@@ -111,7 +104,7 @@
     await sleep(520);
     pre.classList.add("is-wipe");
     release();
-    try { sessionStorage.setItem("mz_greeting_seen", "true"); } catch (e) {}
+    try { localStorage.setItem("mz_greeting_seen", "true"); } catch (e) {}
 
     await sleep(950);
     pre.remove();

@@ -263,14 +263,7 @@
     <script>
         (function() {
             try {
-                var isReload = false;
-                var navEntries = window.performance && performance.getEntriesByType && performance.getEntriesByType("navigation");
-                if (navEntries && navEntries.length > 0) {
-                    isReload = navEntries[0].type === "reload";
-                } else if (window.performance && window.performance.navigation) {
-                    isReload = window.performance.navigation.type === 1;
-                }
-                if (sessionStorage.getItem("mz_greeting_seen") && !isReload) {
+                if (localStorage.getItem("mz_greeting_seen")) {
                     document.documentElement.classList.add("skip-preloader");
                     document.write('<style id="skip-preloader-style">#preloader{display:none!important;}body.preloader-active{overflow:auto!important;}</style>');
                 }
@@ -315,7 +308,7 @@
         </div>
         <div class="pl-bar"><span></span></div>
     </div>
-    <script src="assets/js/preloader.js?v=2"></script>
+    <script src="assets/js/preloader.js?v=3"></script>
 
     <div class="mz-scroll-progress-bar" aria-hidden="true"></div>
     <a href="#main" class="mz-skip">Skip to content</a>
