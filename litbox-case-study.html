@@ -57,7 +57,7 @@
 <link href="assets/css/style.css?v=615" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
 <link href="assets/css/ds-v2.css?v=13" rel="stylesheet"/>
 <link href="assets/css/cs-v3.css?v=11" rel="stylesheet"/>
 <style>
@@ -86,6 +86,91 @@
 .cs3 .lb-ia__item.is-roadmap b { color: var(--color-text-secondary); font-weight: 500; }
 .cs3 .lb-cap { font-size: var(--text-xs); color: var(--color-text-muted); }
 @media (max-width: 900px) { .cs3 .lb-ia { grid-template-columns: minmax(0, 1fr); } }
+/* LitBox design system showcase: foundations follow the page theme, the component canvas is LitBox's own light UI */
+.cs3 .lbds-swatches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); }
+.cs3 .lbds-sw { background: var(--color-bg); padding: var(--space-4); display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+.cs3 .lbds-sw i { width: 48px; height: 48px; box-shadow: inset 0 0 0 1px rgb(127 127 127 / .3); }
+.cs3 .lbds-sw--lg { grid-template-columns: minmax(0, 1fr); }
+.cs3 .lbds-sw--lg i { width: 100%; height: 88px; }
+.cs3 .lbds-sw b { display: block; font-size: var(--text-sm); font-weight: 600; }
+.cs3 .lbds-sw code { display: block; font: 400 var(--text-xs)/1.5 var(--font-code); color: var(--color-text-secondary); }
+.cs3 .lbds-sw span { display: block; font-size: var(--text-xs); color: var(--color-text-muted); margin-top: 4px; }
+.cs3 .lbds-sampled { display: grid; gap: var(--space-3); }
+.cs3 .lbds-chiprow { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.cs3 .lbds-mini { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px 6px 6px; border: 1px solid var(--color-border); font-size: var(--text-xs); color: var(--color-text); }
+.cs3 .lbds-mini i { width: 20px; height: 20px; box-shadow: inset 0 0 0 1px rgb(127 127 127 / .3); }
+.cs3 .lbds-mini code { font-family: var(--font-code); color: var(--color-text-secondary); }
+.cs3 .lbds-mini em { font-style: normal; color: var(--color-text-muted); }
+.cs3 .lbds-type { border-top: 1px solid var(--color-border); }
+.cs3 .lbds-type__row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--space-6); align-items: baseline; padding: var(--space-5) 0; border-bottom: 1px solid var(--color-border); }
+.cs3 .lbds-type__spec b { display: block; font-size: var(--text-sm); font-weight: 600; }
+.cs3 .lbds-type__spec span { font: 400 var(--text-xs)/1.5 var(--font-code); color: var(--color-text-muted); }
+.cs3 .lbds-type__sample { color: var(--color-text); overflow-wrap: anywhere; }
+.cs3 .lbds {
+  --lb-primary: #3353F8; --lb-ink: #111C53; --lb-dark: #101828; --lb-muted: #667085;
+  --lb-border: #E8ECEC; --lb-tint: #E8ECFC; --lb-purple: #AC46FC; --lb-surface: #FAFAFA;
+  background: var(--lb-surface); color: var(--lb-ink); border: 1px solid #e4e4e7;
+  padding: clamp(16px, 3vw, 32px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2.5vw, 28px);
+  font: 400 14px/1.45 var(--font-sans); color-scheme: light;
+}
+.cs3 .lbds svg { width: 16px; height: 16px; flex: none; }
+.cs3 .lbds-group { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cs3 .lbds-group--wide { grid-column: 1 / -1; }
+.cs3 .lbds-label { font: 500 11px/1.4 var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--lb-muted); }
+.cs3 .lbds-card { background: #fff; border: 1px solid var(--lb-border); border-radius: 12px; padding: 16px; box-shadow: 0 1px 2px rgb(16 24 40 / .05); }
+.cs3 .lbds-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.cs3 .lbds-pagehead { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; background: #fff; border: 1px solid var(--lb-border); border-radius: 12px 12px 0 0; padding: 18px 20px; }
+.cs3 .lbds-pagehead__title { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font: 600 20px/1.3 var(--font-sans); color: var(--lb-ink); }
+.cs3 .lbds-pagehead p { margin: 4px 0 0; color: var(--lb-muted); font-size: 14px; }
+.cs3 .lbds-badge { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px; font: 500 12px/1.5 var(--font-sans); color: var(--lb-primary); background: var(--lb-tint); border: 1px solid #d6dcfb; }
+.cs3 .lbds-badge svg { width: 13px; height: 13px; }
+.cs3 .lbds-badge--purple { color: var(--lb-purple); background: #f6ecff; border-color: #ead7fe; }
+.cs3 .lbds-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cs3 .lbds-btn { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--lb-border); background: #fff; color: var(--lb-ink); font: 500 14px/1 var(--font-sans); box-shadow: 0 1px 2px rgb(16 24 40 / .05); }
+.cs3 .lbds-btn--primary { background: var(--lb-primary); border-color: var(--lb-primary); color: #fff; }
+.cs3 .lbds-toggle { display: inline-flex; gap: 2px; padding: 3px; border-radius: 8px; background: #f2f4f7; }
+.cs3 .lbds-toggle span { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 6px; color: var(--lb-muted); }
+.cs3 .lbds-toggle .is-on { background: #fff; color: var(--lb-dark); box-shadow: 0 1px 3px rgb(16 24 40 / .12); }
+.cs3 .lbds-subbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; background: #fff; border: 1px solid var(--lb-border); border-top: 0; border-radius: 0 0 12px 12px; padding: 12px 20px; }
+.cs3 .lbds-seg { display: inline-flex; border: 1px solid var(--lb-border); border-radius: 8px; overflow: hidden; }
+.cs3 .lbds-seg span { padding: 8px 14px; font: 500 14px/1 var(--font-sans); color: #344054; }
+.cs3 .lbds-seg span + span { border-left: 1px solid var(--lb-border); }
+.cs3 .lbds-seg .is-on { background: #f9fafb; color: var(--lb-dark); }
+.cs3 .lbds-search { display: inline-flex; align-items: center; gap: 8px; min-width: min(320px, 100%); height: 40px; padding: 0 12px; border: 1px solid var(--lb-border); border-radius: 8px; background: #fff; color: var(--lb-muted); font-size: 14px; }
+.cs3 .lbds-search--kbd { min-width: 0; flex: 1; }
+.cs3 .lbds-search kbd { margin-left: auto; font: 500 12px/1 var(--font-sans); color: var(--lb-muted); }
+.cs3 .lbds-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cs3 .lbds-chip { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border: 1px solid var(--lb-border); border-radius: 8px; background: #fff; font: 500 14px/1 var(--font-sans); color: #344054; }
+.cs3 .lbds-chip b { min-width: 20px; height: 20px; display: grid; place-items: center; border-radius: 6px; border: 1px solid var(--lb-border); font: 600 11px/1 var(--font-sans); color: #344054; }
+.cs3 .lbds-chip.is-on { background: var(--lb-primary); border-color: var(--lb-primary); color: #fff; }
+.cs3 .lbds-chip.is-on b { background: #fff; border-color: #fff; color: var(--lb-primary); }
+.cs3 .lbds-input { display: block; height: 40px; padding: 10px 12px; border: 1px solid var(--lb-border); border-radius: 8px; color: #98a2b3; font-size: 14px; }
+.cs3 .lbds-people { list-style: none; margin: 12px 0 0; padding: 0; display: grid; }
+.cs3 .lbds-people li { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid #f2f4f7; }
+.cs3 .lbds-people b { font: 500 14px/1.3 var(--font-sans); color: var(--lb-dark); }
+.cs3 .lbds-people em { font-style: normal; font-size: 13px; color: var(--lb-muted); }
+.cs3 .lbds-av { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 600 11px/1 var(--font-sans); box-shadow: 0 0 0 2px #fff; }
+.cs3 .lbds-av--more { background: #f2f4f7; color: #475467; }
+.cs3 .lbds-stack { display: inline-flex; }
+.cs3 .lbds-stack .lbds-av + .lbds-av { margin-left: -8px; }
+.cs3 .lbds-check { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 6px; border: 1.5px solid var(--lb-primary); background: var(--lb-tint); color: var(--lb-primary); }
+.cs3 .lbds-check svg { width: 14px; height: 14px; }
+.cs3 .lbds-empty { display: grid; justify-items: center; text-align: center; gap: 6px; padding: 28px 16px; }
+.cs3 .lbds-empty__ic { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px; background: var(--lb-tint); color: var(--lb-primary); margin-bottom: 6px; }
+.cs3 .lbds-empty__ic svg { width: 26px; height: 26px; }
+.cs3 .lbds-empty b { font: 600 16px/1.3 var(--font-sans); color: var(--lb-ink); }
+.cs3 .lbds-empty p { margin: 0; color: var(--lb-muted); font-size: 14px; }
+.cs3 .lbds .lb-am { margin-inline: 0; }
+.cs3 .lbds-onwhite { background: #fff; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-card, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-empty__ic { border-radius: 12px !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-pagehead { border-radius: 12px 12px 0 0 !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-subbar { border-radius: 0 0 12px 12px !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-btn, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-chip, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-search, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-seg, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-input, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-toggle { border-radius: 8px !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-toggle span, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-chip b, html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-check { border-radius: 6px !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-badge { border-radius: 999px !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lbds-av { border-radius: 50% !important; }
+@media (max-width: 900px) { .cs3 .lbds-swatches { grid-template-columns: minmax(0, 1fr); } .cs3 .lbds { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .cs3 .lbds-type__row { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); } }
 /* wireframe sketches */
 .cs3 .lb-wf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
 .cs3 .lb-wf .wf-sketch { margin: 0; border: 1px solid var(--color-border); background: var(--color-bg); padding: var(--space-4); display: grid; gap: var(--space-3); }
@@ -121,8 +206,6 @@
 .cs3 .lb-src { font-size: var(--text-xs); color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; width: max-content; }
 .cs3 .lb-src:hover { text-decoration-thickness: 2px; }
 .cs3 .cs3-prose a { color: var(--color-text); text-underline-offset: 3px; }
-/* colour swatch inside a table cell */
-.cs3 .lb-chip { display: inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; box-shadow: inset 0 0 0 1px rgb(127 127 127 / .35); }
 /* proposed account menu, built in HTML */
 .cs3 .lb-am { width: 260px; max-width: 100%; margin-inline: auto; background: #fff; color: #111c53; border: 1px solid #e4e4e7; box-shadow: var(--shadow-md); padding: 8px; font-family: var(--font-sans); font-size: 13px; }
 .cs3 .lb-am__head { display: flex; gap: 10px; align-items: center; padding: 8px 8px 12px; border-bottom: 1px solid #ececf0; margin-bottom: 6px; }
@@ -615,60 +698,136 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lb-am__badge { border-ra
 
       <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">The component language behind every screen</h3>
-        <div class="cs3-prose"><p>LitBox doesn't run its own isolated visual language. It's built on the same shared Omnis AI design system every other product in the ecosystem draws from, with LitBox-specific components (the Storage Widget, the Audit Timeline row, File Request cards) layered on top of the shared tokens and primitives. Everything below is cropped directly from the shipped Figma file, not redrawn.</p></div>
-        <div class="cs3-table">
-          <table>
-            <thead><tr><th>Colour</th><th>Hex</th><th>Used for</th></tr></thead>
-            <tbody>
-              <tr><td><span class="lb-chip" style="background:#3353f8"></span>Primary Blue</td><td class="mono">#3353F8</td><td>Primary actions: Upload New, Create Request</td></tr>
-              <tr><td><span class="lb-chip" style="background:#1b2234"></span>Sidebar Navy</td><td class="mono">#1B2234</td><td>Navigation rail, the one dark surface in an otherwise light UI</td></tr>
-              <tr><td><span class="lb-chip" style="background:#111c53"></span>Ink</td><td class="mono">#111C53</td><td>Headings and primary text</td></tr>
-              <tr><td><span class="lb-chip" style="background:#667085"></span>Muted</td><td class="mono">#667085</td><td>Secondary text, timestamps, helper copy</td></tr>
-              <tr><td><span class="lb-chip" style="background:#fafafa"></span>Surface</td><td class="mono">#FAFAFA</td><td>Page background, card fills</td></tr>
-              <tr><td><span class="lb-chip" style="background:#22c55e"></span>Success Green</td><td class="mono">#22C55E</td><td>Auto-processed tags, search-flow accents</td></tr>
-            </tbody>
-          </table>
+        <div class="cs3-prose"><p>LitBox doesn't run its own isolated visual language. It's built on the same shared Omnis AI design system every other product in the ecosystem draws from, with LitBox-specific components (the Storage Widget, the Audit Timeline row, File Request cards) layered on top of the shared tokens and primitives. Below, the foundations and the core components are rebuilt live in HTML from the shipped Figma file, followed by the original Figma frames they come from.</p></div>
+      </div>
+
+      <div class="cs3-block cs3-wide" data-rv>
+        <p class="eyebrow">Foundations · Colour</p>
+        <div class="lbds-swatches">
+          <div class="lbds-sw lbds-sw--lg"><i style="background:#3353F8"></i><div><b>Primary Blue</b><code>#3353F8</code><span>Primary actions: Upload New, Create Request. Active chip, focus, selection.</span></div></div>
+          <div class="lbds-sw lbds-sw--lg"><i style="background:#1B2234"></i><div><b>Sidebar Navy</b><code>#1B2234</code><span>Navigation rail, the one dark surface in an otherwise light UI.</span></div></div>
+          <div class="lbds-sw lbds-sw--lg"><i style="background:#111C53"></i><div><b>Ink</b><code>#111C53</code><span>Headings and primary text.</span></div></div>
+          <div class="lbds-sw"><i style="background:#667085"></i><div><b>Muted</b><code>#667085</code><span>Secondary text, timestamps, helper copy.</span></div></div>
+          <div class="lbds-sw"><i style="background:#FAFAFA"></i><div><b>Surface</b><code>#FAFAFA</code><span>Page background, card fills.</span></div></div>
+          <div class="lbds-sw"><i style="background:#22C55E"></i><div><b>Success Green</b><code>#22C55E</code><span>Auto-processed tags, search-flow accents.</span></div></div>
         </div>
-        <div class="cs3-table">
-          <table>
-            <thead><tr><th>Type style</th><th>Used for</th></tr></thead>
-            <tbody>
-              <tr><td>Space Grotesk · Bold · 30px</td><td>Stat numbers: Storage Used, Total Files, Total Folders</td></tr>
-              <tr><td>Inter Display · SemiBold · 18–22px</td><td>Section headings: "Welcome Back", "Storage usage", card titles</td></tr>
-              <tr><td>Inter Display · Medium/Regular · 14px</td><td>Body copy: table rows, file names, descriptions</td></tr>
-              <tr><td>Inter Display · Regular · 10–12px</td><td>Metadata: timestamps, helper text, table headers</td></tr>
-            </tbody>
-          </table>
+        <div class="lbds-sampled">
+          <span class="eyebrow">Sampled from the shipped screens</span>
+          <div class="lbds-chiprow">
+            <span class="lbds-mini"><i style="background:#AC46FC"></i>Purple <code>#AC46FC</code><em>Files badge, avatars</em></span>
+            <span class="lbds-mini"><i style="background:#E8ECFC"></i>Tint <code>#E8ECFC</code><em>Badge &amp; chip fills</em></span>
+            <span class="lbds-mini"><i style="background:#E8ECEC"></i>Border <code>#E8ECEC</code><em>Cards, chips, inputs</em></span>
+            <span class="lbds-mini"><i style="background:#101828"></i>Dark ink <code>#101828</code><em>Owner avatar, icons</em></span>
+            <span class="lbds-mini"><i style="background:#404C68"></i>Rail text <code>#404C68</code><em>Sidebar labels</em></span>
+          </div>
         </div>
       </div>
-      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
-        <div class="lb-grid">
-          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/filters-bar.webp" width="4836" height="192" alt="LitBox Audit Timeline filter chips: All Activity, Uploaded, Downloaded, Shared, Deleted, Renamed, Permissions, Restored, each with a count badge"></div><figcaption><b>Filter chips.</b> One active/inactive chip state, reused for every filterable list; this row covers all eight Audit Timeline categories.</figcaption></figure>
-          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/header-frame.webp" width="2880" height="113" alt="LitBox top header bar: logo, a search input with a Cmd+F shortcut hint, a notification bell, an apps grid icon, and the John Doe Admin avatar"></div><figcaption><b>Top header.</b> One header, unchanged across every screen: search on the left, identity and notifications on the right.</figcaption></figure>
-          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/breadcrumb-tabs.webp" width="2430" height="239" alt="LitBox page header for My Folders/Files with count badges, Upload New and Create Folder buttons, a view toggle, tabs and a scoped search"></div><figcaption><b>Page header.</b> Title, actions, view toggle, tabs and a scoped search: the same two-row structure behind every list screen.</figcaption></figure>
-          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/empty-state.webp" width="2411" height="222" alt="LitBox empty state: a calendar icon with an alert badge, No Audit Timeline Found heading, and supporting text"></div><figcaption><b>Empty states.</b> The same icon, heading and subtext pattern across every empty list; more than two dozen exist.</figcaption></figure>
+
+      <div class="cs3-block cs3-wide" data-rv>
+        <p class="eyebrow">Foundations · Type</p>
+        <div class="lbds-type">
+          <div class="lbds-type__row"><div class="lbds-type__spec"><b>Stat number</b><span>Space Grotesk · Bold · 30px</span></div><div class="lbds-type__sample" style="font:700 30px/1.1 'Space Grotesk',var(--font-sans)">99.09 GB</div></div>
+          <div class="lbds-type__row"><div class="lbds-type__spec"><b>Section heading</b><span>Inter Display · SemiBold · 18–22px</span></div><div class="lbds-type__sample" style="font:600 22px/1.25 var(--font-sans)">Storage Management</div></div>
+          <div class="lbds-type__row"><div class="lbds-type__spec"><b>Body</b><span>Inter Display · Medium / Regular · 14px</span></div><div class="lbds-type__sample" style="font:400 14px/1.5 var(--font-sans)">Keep track of uploaded images, videos, documents etc.</div></div>
+          <div class="lbds-type__row"><div class="lbds-type__spec"><b>Metadata</b><span>Inter Display · Regular · 10–12px</span></div><div class="lbds-type__sample" style="font:400 12px/1.4 var(--font-sans);color:#667085">Page 1 of 10</div></div>
         </div>
+      </div>
+
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="lbds" aria-label="LitBox components rebuilt in HTML">
+
+          <div class="lbds-group lbds-group--wide">
+            <span class="lbds-label">Page header · title, count badges, actions</span>
+            <div class="lbds-pagehead">
+              <div>
+                <div class="lbds-pagehead__title">My Folders/Files
+                  <span class="lbds-badge lbds-badge--purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>24 Files</span>
+                  <span class="lbds-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>04 Folders</span>
+                </div>
+                <p>Keep track of uploaded images, videos, documents etc.</p>
+              </div>
+              <div class="lbds-actions">
+                <span class="lbds-btn lbds-btn--primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Upload New</span>
+                <span class="lbds-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Create Folder</span>
+                <span class="lbds-toggle" aria-label="View toggle, list active"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="is-on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><path d="M14 6h6M14 9h4M14 16h6M14 19h4"/></svg></span></span>
+              </div>
+            </div>
+            <div class="lbds-subbar">
+              <span class="lbds-seg"><span class="is-on">View all</span><span>Files</span><span>Folders</span></span>
+              <span class="lbds-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search in files, folders..</span>
+            </div>
+          </div>
+
+          <div class="lbds-group lbds-group--wide">
+            <span class="lbds-label">Filter chips · one active state for every filterable list</span>
+            <div class="lbds-chips">
+              <span class="lbds-chip is-on">All Activity <b>1</b></span>
+              <span class="lbds-chip">Uploaded <b>1</b></span>
+              <span class="lbds-chip">Downloaded <b>1</b></span>
+              <span class="lbds-chip">Shared <b>1</b></span>
+              <span class="lbds-chip">Deleted <b>1</b></span>
+              <span class="lbds-chip">Renamed <b>1</b></span>
+              <span class="lbds-chip">Permissions <b>1</b></span>
+              <span class="lbds-chip">Restored <b>1</b></span>
+            </div>
+          </div>
+
+          <div class="lbds-group">
+            <span class="lbds-label">Shared To · a role per person</span>
+            <div class="lbds-card">
+              <span class="lbds-input">Enter email or name</span>
+              <ul class="lbds-people">
+                <li><span class="lbds-av" style="background:#101828">RK</span><b>Rajesh Kumar</b><em>Owner</em></li>
+                <li><span class="lbds-av" style="background:#3353F8">SK</span><b>Sumit Kumar</b><em>Viewer</em></li>
+                <li><span class="lbds-av" style="background:#AC46FC">HS</span><b>Hardeep Singh</b><em>Viewer</em></li>
+                <li><span class="lbds-av" style="background:#3353F8">AS</span><b>Anjali Sharma</b><em>Editor</em></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lbds-group">
+            <span class="lbds-label">Empty state · icon, heading, one line</span>
+            <div class="lbds-card lbds-empty">
+              <span class="lbds-empty__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="16" height="15" rx="2"/><path d="M3 10h16M8 3v4M14 3v4"/><circle cx="19" cy="18" r="4" fill="#fff"/><path d="M19 16v2.2M19 20h.01"/></svg></span>
+              <b>No Audit Timeline Found</b>
+              <p>You don't have any activity at the moment</p>
+            </div>
+          </div>
+
+          <div class="lbds-group">
+            <span class="lbds-label">Top header · search with a shortcut</span>
+            <div class="lbds-card lbds-row">
+              <span class="lbds-search lbds-search--kbd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search<kbd>⌘ + F</kbd></span>
+            </div>
+            <span class="lbds-label">Avatars · photo, initials or a count</span>
+            <div class="lbds-card lbds-row">
+              <span class="lbds-stack"><span class="lbds-av" style="background:#101828">RK</span><span class="lbds-av" style="background:#3353F8">SK</span><span class="lbds-av" style="background:#AC46FC">HS</span><span class="lbds-av" style="background:#3353F8">AS</span><span class="lbds-av lbds-av--more">+5</span></span>
+              <span class="lbds-check" aria-label="Checked row selection"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+            </div>
+          </div>
+
+          <div class="lbds-group">
+            <span class="lbds-label">Account menu · proposed, not yet in the shipped file</span>
+            <div class="lb-am" aria-label="Proposed account menu">
+              <div class="lb-am__head"><span class="lb-am__avatar">JD</span><div><div class="lb-am__name">John Doe</div><div class="lb-am__role">Admin · JD Law Firm</div></div></div>
+              <div class="lb-am__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Notifications<span class="lb-am__badge">8</span></div>
+              <div class="lb-am__row lb-am__row--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>Settings</div>
+              <div class="lb-am__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Help Center</div>
+              <div class="lb-am__row lb-am__row--danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign Out</div>
+            </div>
+          </div>
+
+        </div>
+        <figcaption><span class="tag tag-blue">Rebuilt</span> <b>The core components, live.</b> Rebuilt in HTML from the shipped Figma components so they can be read at full size; names and roles are the seeded demo data from the Figma file.</figcaption>
       </div></figure>
+
       <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
         <div class="lb-grid lb-grid--3">
           <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/buttons.webp" width="1400" height="1368" alt="LitBox primary Upload New button with a file/folder dropdown, and a context menu of document actions"></div><figcaption><b>Buttons &amp; menus.</b> One primary-button style and one context-menu pattern cover every create and row action.</figcaption></figure>
           <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/storage-widget.webp" width="800" height="1320" alt="LitBox storage usage donut chart showing 104.6 GB of 256 GB used, with a breakdown by type and a Recent Activity feed"></div><figcaption><b>Storage widget.</b> The one data-visualization component: a donut for total usage, plain bars for the type breakdown.</figcaption></figure>
-          <figure><div class="lb-am" aria-label="Proposed account menu">
-            <div class="lb-am__head"><span class="lb-am__avatar">JD</span><div><div class="lb-am__name">John Doe</div><div class="lb-am__role">Admin · JD Law Firm</div></div></div>
-            <div class="lb-am__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>Notifications<span class="lb-am__badge">8</span></div>
-            <div class="lb-am__row lb-am__row--active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>Settings</div>
-            <div class="lb-am__row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Help Center</div>
-            <div class="lb-am__row lb-am__row--danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign Out</div>
-          </div><figcaption><b>Account menu (proposed).</b> Not yet in the shipped Figma file; built here in HTML with LitBox's own tokens to complete the pattern.</figcaption></figure>
+          <figure><div class="cs3-media__frame lbds-onwhite"><img loading="lazy" src="assets/images/case-studies/litbox/figma/header-frame.webp" width="2880" height="113" alt="LitBox top header bar: logo, a search input with a Cmd+F shortcut hint, a notification bell, an apps grid icon, and the John Doe Admin avatar"></div><figcaption><b>Top header.</b> Unchanged across every screen.</figcaption><div class="cs3-media__frame lbds-onwhite"><img loading="lazy" src="assets/images/case-studies/litbox/figma/filters-bar.webp" width="4836" height="192" alt="LitBox Audit Timeline filter chips with count badges"></div><figcaption><b>Filter chips.</b> All eight Audit Timeline categories.</figcaption></figure>
         </div>
-      </div></figure>
-      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
-        <div class="lb-grid lb-grid--3">
-          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/badges.webp" width="884" height="144" alt="LitBox count badges: 24 Files and 04 Folders"></div><figcaption><b>Badges.</b> Icon-plus-count pills for list totals.</figcaption></figure>
-          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/figma/avatar-group.webp" width="526" height="144" alt="LitBox avatar group: four overlapping avatars plus a +5 counter"></div><figcaption><b>Avatars.</b> The same overlapping 32px circle for photos, initials or icons.</figcaption></figure>
-          <figure><div class="cs3-media__frame" style="display:flex;gap:24px;align-items:center;justify-content:center;padding:16px"><img loading="lazy" src="assets/images/case-studies/litbox/figma/checkbox.webp" width="80" height="80" alt="LitBox checked checkbox" style="width:40px"><img loading="lazy" src="assets/images/case-studies/litbox/figma/view-toggle.webp" width="228" height="132" alt="LitBox grid and list view toggle, list view active" style="width:114px"></div><figcaption><b>Controls.</b> Row selection and grid/list switching, with a clear active state and nothing more.</figcaption></figure>
-        </div>
-        <figcaption>A working component set pulled from a shipped product file, not a formal published design system with documented variants, usage guidelines, or accessibility specs. That distinction matters, so I'm not overstating it.</figcaption>
+        <figcaption><span class="tag tag-outline">Source</span> <b>Cropped directly from the shipped Figma file,</b> not redrawn. A working component set pulled from a shipped product file, not a formal published design system with documented variants, usage guidelines, or accessibility specs. That distinction matters, so I'm not overstating it.</figcaption>
       </div></figure>
     </div>
   </div>
@@ -729,7 +888,7 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lb-am__badge { border-ra
       </div>
       <h3 class="cs3-h3" data-rv>How global search actually works</h3>
       <div class="cs3-block cs3-wide" data-rv><div><div class="cs3-flow cs3-flow--new"><div class="cs3-flow__head"><span class="cs3-flow__title"><span class="tag tag-outline" style="margin-right:8px">Search</span>Trigger → query → match → traceable result</span><span class="cs3-flow__stats"><span>4 steps</span><span>1 automatic</span></span></div><ol><li><span class="k">01</span><h5>Press ⌘+F, anywhere</h5><p>In LitBox or inside another product.</p></li><li><span class="k">02</span><h5>Type + pick a tab</h5><p>All, Files, Folders or Content.</p></li><li><span class="k">03</span><span class="tag tag-blue" style="width:max-content">Auto</span><h5>Matched in AutoDoc's index</h5><p>The text AutoDoc already extracted.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Not LitBox's own text</span></li><li><span class="k">04</span><h5>Result: page + snippet</h5><p>Source file, page and highlighted text.</p><span class="fx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Traceable to source</span></li></ol><div class="cs3-flow__foot"><b>Search is a lookup, not a black box.</b> Every result traces back to the exact page and snippet it matched, because the index it searches belongs to AutoDoc, not LitBox.</div></div></div></div>
-      <figure class="cs3-band cs3-band--narrow"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/content-search-results.png" width="1400" height="1600" alt="LitBox global search results in Content mode, showing files like Chiro_Bill_2.pdf with AutoDoc Processing source path, page number, and a highlighted text snippet"></div><figcaption><span class="tag tag-blue">Design</span> <b>The real result screen:</b> path, page, snippet.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/provided/content-search-modal.webp" width="1672" height="941" alt="LitBox global search open over the Storage Management screen with the Content tab selected, listing Chiro_Bill PDFs from AutoDoc Processing, each with its file size, the matching page number and a text snippet"></div><figcaption><span class="tag tag-blue">Design</span> <b>The real result screen: path, page, snippet.</b> Search opens over whatever screen you're on. The Content tab lists each match with its AutoDoc source path and the page it came from, so a user can judge relevance before opening anything.</figcaption></div></figure>
       <h3 class="cs3-h3" data-rv>Why this matters more than it looks</h3>
       <div class="cs3-prose" data-rv><p>"Search inside documents" sounds like a checkbox feature until you consider what it required: LitBox's search only works this way because AutoDoc had already extracted text from the file. Search got meaningfully better specifically <i>because</i> LitBox and AutoDoc share a file, not because of anything search-specific LitBox built on its own. Section 15 shows that sharing from the other direction.</p></div>
       <h3 class="cs3-h3" data-rv>The AI assistant question</h3>
@@ -747,7 +906,7 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .lb-am__badge { border-ra
         <h2 class="cs3-title">One assistant, sitting on top of a search index it doesn't <span class="mark">have to rebuild</span></h2>
         <div class="cs3-prose"><p>Everything in this section is a concept exploration, not a shipped feature. Where the rest of this case study distinguishes "Design" (a real screen from the shipped Figma file) from "Reference" (someone else's product), these screens get their own badge, <b>Concept</b>, because they're neither. They're the current best answer to a real design question: once content search and permissions already work (Sections 12 and 10), what does a conversational layer on top of them need to look like?</p></div>
       </div>
-      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/provided/ai-assistant-overview.webp" width="1672" height="941" alt="LitBox AI Assistant panel docked in the corner of the file workspace, showing a chat conversation"></div><figcaption><span class="tag tag-badge">Concept</span> <b>Docked, not full-screen.</b> The assistant sits alongside the file list rather than replacing it; search stays the fallback a user trusts when they want to see everything themselves.</figcaption></div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/litbox/provided/ai-assistant-panel.webp" width="1493" height="1053" alt="LitBox AI Assistant docked over the Storage Management screen, offering Find a file, Share a file, Check storage and Set up Slack integration, and answering a question with a step-by-step Slack setup card"></div><figcaption><span class="tag tag-badge">Concept</span> <b>Docked, not full-screen.</b> The assistant sits beside the workspace instead of replacing it, opens with four quick actions (find, share, check storage, connect Slack), and answers with a next step rather than a wall of text. Search stays the fallback a user trusts when they want to see everything themselves.</figcaption></div></figure>
       <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Five workflows that build on what's already real</h3>
         <div class="cs3-prose"><p>The module-architecture research (Section 03) sketched twelve possible AI workflows. These five build most directly on what already exists: content search and the permission model.</p></div>
