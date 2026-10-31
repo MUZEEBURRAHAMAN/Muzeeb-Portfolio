@@ -9,19 +9,17 @@ Live: https://muzeeb-urrahaman.vercel.app · Static multipage site, no build ste
 
 ## 1. Where the site stands
 
-Two page systems coexist while the site migrates:
+Every page now shares one shell: the cs3 tokens, header, type and palette, in both themes.
 
-| Pages | System | Stylesheets |
+| Pages | Body class | Content layer |
 |---|---|---|
-| 6 case studies (OmnisProof, CaseNotes, Audit Engine, Matter Redesign, GoFully, LitBox) | **cs3**, the current system | `style.css`, `ds-v2.css`, `cs-v3.css` |
-| Home | Legacy layout + home-only styles | `style.css`, `ds-v2.css`, `home-v3.css`, `output.css`, `preloader.css` |
-| About, Resume, Playground | Legacy layout | `style.css`, `ds-v2.css`, `output.css` |
-| Best Work, 404, Coming soon | Legacy layout | `style.css`, `ds-v2.css` |
+| 6 case studies | `cs3-page` | cs3 components (`cs-v3.css`) |
+| Home, About, Resume, Playground, Best Work, 404, Coming soon | `cs3-site` | cs3 shell + their original layouts (`style.css`, `home-v3.css`, `output.css`); `.cs3-site` points the old `--dsv-*` (and Best Work `--bwg-*`) tokens at cs3 values |
 
-**New work uses cs3.** Pages leave `style.css` as they migrate; nothing new goes
-into it.
+**New work uses cs3 components.** Nothing new goes into `style.css`; unused rules
+were purged from it (222 KB → 137 KB) and the rest goes as those pages are rebuilt.
 
-- `assets/css/style.css` (legacy, ~216 KB): `.mz-*` site components, header,
+- `assets/css/style.css` (legacy, ~137 KB): `.mz-*` site components, header,
   footer, and a global zero-radius reset.
 - `assets/css/ds-v2.css`: shared layer on every page. Image ratio rule, page
   transitions, theme-switch motion, header and footer fixes.

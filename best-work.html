@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=615">
+  <link rel="stylesheet" href="assets/css/style.css?v=616">
   <style>
     /* ===== theme tokens (portfolio colours + Archivo) ===== */
     :root {
@@ -580,11 +580,19 @@
     .bw-cases a small { font-size: 12px; color: var(--bwg-sub); }
     body:has(.split.active) .bw-cases { display: none; }
     @media (max-width: 600px) { .bw-cases { left: 16px; bottom: 16px; } }
+
+    /* share the site palette (cs3 tokens on body.cs3-site) */
+    body.cs3-site {
+      --bwg-bg: var(--color-bg); --bwg-ink: var(--color-text); --bwg-sub: var(--color-text-muted);
+      --bwg-cell: var(--color-surface); --bwg-stroke: var(--color-border);
+      --bwg-panel: var(--color-surface); --bwg-panel-bd: var(--color-border-strong); --bwg-panel-ink: var(--color-text-secondary);
+    }
   </style>
 <link rel="stylesheet" href="assets/css/ds-v2.css?v=15">
+    <link href="assets/css/cs-v3.css?v=15" rel="stylesheet">
 </head>
 
-<body>
+<body class="cs3-site">
   <a href="#main" class="mz-skip">Skip to content</a>
 
   <header class="site-header" id="siteHeader">

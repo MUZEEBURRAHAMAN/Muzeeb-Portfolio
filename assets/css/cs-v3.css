@@ -4,7 +4,7 @@
    rest of the portfolio migrates. Tokens are copied from the DS export.
    ========================================================================== */
 
-.cs3-page, .cs3 {
+.cs3-page, .cs3, .cs3-site {
   /* primitives */
   --navy-950:#03111c; --blue-500:#116ff8; --blue-400:#3b8bff;
   --orange-600:#d93a00; --orange-400:#ff6a33;
@@ -65,7 +65,7 @@
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
 }
-html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3 {
+html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3, html[data-theme="light"] .cs3-site {
   --color-bg:#fff; --color-bg-subtle:#fafafa;
   --color-surface:#f5f5f5; --color-surface-raised:#fff;
   --color-text:var(--navy-950);
@@ -352,6 +352,7 @@ html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3 {
 /* pull quote */
 .cs3-quote { margin: 0; padding-left: var(--space-6); border-left: 2px solid var(--color-accent); }
 .cs3-quote p { font-family: var(--font-display) !important; font-weight: 600; font-size: var(--text-2xl); line-height: var(--leading-snug); letter-spacing: var(--tracking-snug); color: var(--color-text); max-width: none; }
+.cs3-quote footer { margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-text-muted); }
 
 /* metrics */
 .cs3-metrics .n { font-family: var(--font-display) !important; font-weight: 600; font-size: var(--text-3xl); letter-spacing: var(--tracking-tight); line-height: 1; color: var(--color-text); font-variant-numeric: tabular-nums; }
@@ -442,7 +443,7 @@ html[data-theme="light"] .cs3-page, html[data-theme="light"] .cs3 {
 /* ==========================================================================
    Page shell in the new theme: body, header, footer (case study pages only)
    ========================================================================== */
-body.cs3-page { background: var(--color-bg) !important; color: var(--color-text); font-family: var(--font-sans); }
+body.cs3-page, body.cs3-site { background: var(--color-bg) !important; color: var(--color-text); font-family: var(--font-sans); }
 .cs3-page #main { max-width: none !important; padding: 0 !important; border: 0 !important; }
 .cs3-page #main > .mz-footer { max-width: calc(var(--container-max) + 2 * var(--space-gutter)); margin-inline: auto; padding-inline: var(--space-gutter) !important; }
 
@@ -465,48 +466,48 @@ html:not([data-theme="light"]) .cs3-announce { background: #000; border-bottom: 
 .cs3-announce:hover svg { transform: translateX(3px); }
 
 /* header bar: sticky, blur 14px, hairline */
-.cs3-page .site-header {
+:is(.cs3-page, .cs3-site) .site-header {
   background: var(--color-bg);
   -webkit-backdrop-filter: none; backdrop-filter: none;
   border-bottom: 1px solid var(--color-border);
 }
-.cs3-page .site-header__inner { max-width: calc(var(--container-max) + 2 * var(--space-gutter)) !important; padding-inline: var(--space-gutter) !important; height: 68px; }
-.cs3-page .site-header__nav { gap: 2px; }
-.cs3-page .site-header__logo-img { height: 20px; }
-.cs3-page .site-header__link { color: var(--color-text-secondary); font: 500 var(--text-sm)/1 var(--font-sans); padding: 10px 12px; transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out); }
-.cs3-page .site-header__link:hover,
-.cs3-page .site-header__link.active { color: var(--color-text); background: var(--color-fill-subtle); }
-.cs3-page .site-header__theme { color: var(--color-text-secondary); }
-.cs3-page .site-header__theme:hover { color: var(--color-text); background: var(--color-fill-subtle); }
-.cs3-page .cs3-cta {
+:is(.cs3-page, .cs3-site) .site-header__inner { max-width: calc(var(--container-max) + 2 * var(--space-gutter)) !important; padding-inline: var(--space-gutter) !important; height: 68px; }
+:is(.cs3-page, .cs3-site) .site-header__nav { gap: 2px; }
+:is(.cs3-page, .cs3-site) .site-header__logo-img { height: 20px; }
+:is(.cs3-page, .cs3-site) .site-header__link { color: var(--color-text-secondary); font: 500 var(--text-sm)/1 var(--font-sans); padding: 10px 12px; transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out); }
+:is(.cs3-page, .cs3-site) .site-header__link:hover,
+:is(.cs3-page, .cs3-site) .site-header__link.active { color: var(--color-text); background: var(--color-fill-subtle); }
+:is(.cs3-page, .cs3-site) .site-header__theme { color: var(--color-text-secondary); }
+:is(.cs3-page, .cs3-site) .site-header__theme:hover { color: var(--color-text); background: var(--color-fill-subtle); }
+:is(.cs3-page, .cs3-site) .cs3-cta {
   display: inline-flex; align-items: center; gap: var(--space-2);
   height: 40px; padding: 0 16px; margin-left: var(--space-2);
   background: var(--color-accent-fill); color: var(--color-on-accent);
   font: 500 var(--text-sm)/1 var(--font-sans); text-decoration: none; white-space: nowrap;
   transition: background var(--cta-dur) var(--ease-out);
 }
-.cs3-page .cs3-cta:hover { background: #0b5fd9; }
-@media (max-width: 900px) { .cs3-page .site-header__nav .cs3-cta { display: none; } }
+:is(.cs3-page, .cs3-site) .cs3-cta:hover { background: #0b5fd9; }
+@media (max-width: 900px) { :is(.cs3-page, .cs3-site) .site-header__nav .cs3-cta { display: none; } }
 
 /* buttons (design-system .btn) */
-.cs3-page .cs3-btn {
+:is(.cs3-page, .cs3-site) .cs3-btn {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
   height: 40px; padding: 0 16px; border: 0; cursor: pointer; text-decoration: none; white-space: nowrap;
   font: 500 var(--text-sm)/1 var(--font-sans);
   transition: background var(--cta-dur) var(--ease-out), color var(--cta-dur) var(--ease-out), opacity var(--cta-dur) var(--ease-out);
 }
-.cs3-page .cs3-btn--primary { background: var(--color-text); color: var(--color-bg); }
-.cs3-page .cs3-btn--primary:hover { opacity: .88; }
-.cs3-page .cs3-btn--ghost { background: transparent; color: var(--color-text); box-shadow: inset 0 0 0 1px var(--color-border-strong); }
-.cs3-page .cs3-btn--ghost:hover { background: var(--color-fill-subtle); }
+:is(.cs3-page, .cs3-site) .cs3-btn--primary { background: var(--color-text); color: var(--color-bg); }
+:is(.cs3-page, .cs3-site) .cs3-btn--primary:hover { opacity: .88; }
+:is(.cs3-page, .cs3-site) .cs3-btn--ghost { background: transparent; color: var(--color-text); box-shadow: inset 0 0 0 1px var(--color-border-strong); }
+:is(.cs3-page, .cs3-site) .cs3-btn--ghost:hover { background: var(--color-fill-subtle); }
 
 /* Design-system corner radii. The site still carries the old "zero radius everywhere"
    reset (three :not(#id) steps); four steps here outrank it for this page only. */
-html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .tag,
-html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-cta,
-html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-btn { border-radius: var(--radius-xs) !important; }
-html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .site-header__link,
-html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .site-header__theme,
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) :is(.cs3-page, .cs3-site) .tag,
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) :is(.cs3-page, .cs3-site) .cs3-cta,
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) :is(.cs3-page, .cs3-site) .cs3-btn { border-radius: var(--radius-xs) !important; }
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) :is(.cs3-page, .cs3-site) .site-header__link,
+html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) :is(.cs3-page, .cs3-site) .site-header__theme,
 html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-card .ic,
 html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-lb button,
 html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-rail__tip { border-radius: var(--radius-sm) !important; }
@@ -682,3 +683,22 @@ html:not(#r0a):not(#r0b):not(#r0c):not(#r0d) .cs3-page .cs3-more__arrow { border
 .cs3-results--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 900px) { .cs3-results--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cs3-results--4 > div:nth-child(3) { padding-left: 0; border-left: 0; } }
 @media (max-width: 760px) { .cs3-results--4 { grid-template-columns: 1fr; } }
+
+/* ==========================================================================
+   Site shell for pages not yet rebuilt on cs3 (Home, About, Resume, Best Work,
+   Playground, 404, Coming soon). body.cs3-site gets the cs3 tokens, header and
+   type; the old ds-v2 tokens those pages read are pointed at cs3 values, so
+   both page families share one palette in both themes.
+   ========================================================================== */
+.cs3-site {
+  --dsv-bg: var(--color-bg); --dsv-surface: var(--color-surface); --dsv-recess: var(--color-bg-subtle);
+  --dsv-text: var(--color-text); --dsv-text-2: var(--color-text-secondary); --dsv-muted: var(--color-text-muted);
+  --dsv-border: var(--color-border); --dsv-border-2: var(--color-border-strong);
+  --dsv-success: var(--color-good); --dsv-danger: var(--color-danger); --dsv-info: var(--color-accent);
+}
+html:not(#r0a):not(#r0b) .cs3-site :is(h1, h2, h3, h4, h5, h6):not(.sr-only) {
+  font-family: var(--font-display) !important;
+  letter-spacing: var(--tracking-tight);
+}
+.cs3-site :focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.cs3-site ::selection { background: var(--color-accent-fill); color: var(--color-on-accent); }
