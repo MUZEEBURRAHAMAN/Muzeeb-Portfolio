@@ -37,6 +37,14 @@
 <link href="assets/css/cs-v3.css?v=15" rel="stylesheet"/>
 <style>
 /* GoFully page: multi-image layouts inside the shared .cs3-band */
+.cs3 .gf-film video, .cs3 video.gf-loop { display: block; width: 100%; height: auto; background: #03111c; }
+.cs3 .gf-film { position: relative; }
+.cs3 .gf-play { position: absolute; left: 50%; bottom: 14%; transform: translateX(-50%); z-index: 2; display: inline-flex; align-items: center; gap: 10px; height: 48px; padding: 0 20px 0 14px; border: 0; cursor: pointer; background: #fff; color: #03111c; font: 500 var(--text-sm)/1 var(--font-sans); box-shadow: 0 8px 24px rgb(0 0 0 / .25); transition: transform var(--duration-base) var(--ease-out); }
+.cs3 .gf-play:hover { transform: translateX(-50%) scale(1.03); }
+.cs3 .gf-play svg { width: 22px; height: 22px; }
+.cs3 .gf-film.is-playing .gf-play { display: none; }
+.cs3 .gf-play span { white-space: nowrap; }
+@media (max-width: 600px) { .cs3 .gf-play { height: 44px; padding: 0 14px; bottom: 50%; transform: translate(-50%, 50%); } .cs3 .gf-play:hover { transform: translate(-50%, 50%); } .cs3 .gf-play span { display: none; } }
 .cs3 .gf-grid { display: grid; gap: var(--space-4); }
 .cs3 .gf-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .cs3 .gf-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); align-items: start; }
@@ -101,7 +109,9 @@
   </div>
   <figure class="cs3-band cs3-cover" style="margin-top:var(--space-block)">
     <div class="cs3-band__inner" data-rv="unfold" style="--d:5">
-      <div class="cs3-media__frame"><img loading="eager" src="assets/images/case-studies/gofully/after-site-hero.webp" width="1440" height="900" alt="Redesigned GoFully website hero: Screenshot the whole page. Share it ready to go, set in an editorial serif on a soft sky gradient, with one Add to Chrome button"></div>
+      <div class="cs3-media__frame gf-film"><button class="gf-play" type="button" aria-label="Play the launch film"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><span>Watch the launch film · 1:34</span></button><video controls playsinline preload="none" poster="assets/videos/case-studies/gofully/launch-film-poster.webp" width="1920" height="1080" aria-label="GoFully launch film">
+        <source src="assets/videos/case-studies/gofully/launch-film.mp4" type="video/mp4"></video></div>
+      <figcaption><b>The launch film, 1:34, sound on.</b> From "screenshots have always been messy" to the nine capture modes, Redact, Measure and the editor, all in the redesigned UI.</figcaption>
     </div>
   </figure>
 </header>
@@ -119,7 +129,7 @@
   <div class="cs3-cards cs3-cards--3" data-rv>
     <div class="cs3-card"><span class="eyebrow">The problem</span><p>The old extension and website listed every feature at once, so a capable offline screenshot tool felt busy, and its main promise, that nothing leaves your device, got lost.</p></div>
     <div class="cs3-card"><span class="eyebrow">What I did</span><p>Redesigned the brand, the extension and the website end to end: a 41-page brand guide, 70+ extension screens in light and dark, and one primary action per screen.</p></div>
-    <div class="cs3-card"><span class="eyebrow">Where it stands</span><p>The redesign is designed and the new website is in development. No post-launch metrics yet, so this case study shows the design work, not results.</p></div>
+    <div class="cs3-card"><span class="eyebrow">Where it stands</span><p>Designed end to end. The v1.1.3 store screenshots, promo tile and launch film are ready; the new website is in development. No post-launch metrics yet, so this shows the design work, not results.</p></div>
   </div>
 </div>
 
@@ -165,10 +175,10 @@
       <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold"><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-site-hero.webp" width="1440" height="900" alt="Old GoFully website hero: Full Page Screenshot Tool. One Extension. Every Job., with two badge pills, a long feature paragraph and a tablet mockup covered in handwritten callouts"></div><figcaption><span class="tag tag-bad">Before</span> <b>The old website hero.</b> Two badges, a feature-list headline and a 40-word paragraph before the first button. "100% on-device" is the small badge at the top left.</figcaption></div></figure>
       <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
         <div class="gf-grid gf-grid--2">
-          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-capture.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Capture Anything using Gofully, with capture mode chips over a Google homepage"></div>
-          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-entire.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Capture Entire pages in one click, on a navy background with tilted mockups"></div>
-          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-editor.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Edit every detail, your way, with an annotated editor mockup"></div>
-          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/before-store-redact.webp" width="1280" height="800" alt="Old Chrome Web Store screenshot: Hide sensitive information instantly, with a tilted invoice"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-old-01.webp" width="2400" height="1500" alt="Old Chrome Web Store screenshot: Capture Anything using Gofully, with capture mode chips over a Google homepage"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-old-02.webp" width="2400" height="1500" alt="Old Chrome Web Store screenshot: Capture Entire pages in one click, on a navy background with tilted mockups"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-old-03.webp" width="2400" height="1500" alt="Old Chrome Web Store screenshot: Edit every detail, your way, with an annotated editor mockup"></div>
+          <div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-old-04.webp" width="2400" height="1500" alt="Old Chrome Web Store screenshot: Hide sensitive information instantly, with a tilted invoice"></div>
         </div>
         <figcaption><span class="tag tag-bad">Before</span> <b>The old Chrome Web Store screenshots.</b> Four images, four different layouts. Gradients, tilted mockups and callouts compete with the UI they are meant to show.</figcaption>
       </div></figure>
@@ -236,6 +246,10 @@
           <figure><img src="assets/images/case-studies/gofully/r0-mark-b.webp" width="128" height="128" alt="New GoFully icon on deep navy" loading="lazy"><span class="tag tag-outline">Navy</span></figure>
         </div>
         <figcaption><b>The extension icon, at its real store size of 128 px.</b> The old camera blends in with other screenshot tools. The viewfinder G keeps the meaning and adds a name.</figcaption>
+      </div></figure>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="cs3-media__frame"><video class="gf-loop" autoplay muted loop playsinline preload="metadata" poster="assets/videos/case-studies/gofully/logo-reveal-poster.webp" width="1600" height="900" aria-label="GoFully logo reveal animation"><source src="assets/videos/case-studies/gofully/logo-reveal.mp4" type="video/mp4"></video></div>
+        <figcaption><b>The mark in motion.</b> A six-second reveal: the viewfinder G settles, the wordmark follows, then the promise. It opens the launch film and is cut wide, square and vertical for the store and social.</figcaption>
       </div></figure>
       <div class="cs3-block cs3-wide" data-rv>
         <h3 class="cs3-h3">Four parts, each with a job</h3>
@@ -450,10 +464,61 @@
   </div>
 </section>
 
-<!-- ============ 10 WEBSITE ============ -->
+<!-- ============ 10 STORE LISTING ============ -->
+<section class="cs3-section" id="store">
+  <div class="cs3-wrap cs3-grid">
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">10</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Store listing · Screenshots and promo tile</span></p>
+    <div class="cs3-body">
+      <div class="cs3-block" data-rv>
+        <h2 class="cs3-title">Five screenshots and a tile that <span class="mark">read as one set</span></h2>
+        <div class="cs3-prose">
+          <p>Most people meet GoFully in the Chrome Web Store, at thumbnail size, before they ever open the extension. The old listing used five different layouts and the retired camera logo, and still said "5 capture modes".</p>
+          <p>For v1.1.3 I rebuilt the listing from the same components as the extension: one navy panel and browser frame, one headline per image, and the real popup, captured on a made-up demo site. Every layer in Figma stays editable and bound to DS v2 tokens.</p>
+        </div>
+      </div>
+      <div class="cs3-ba cs3-wide" style="aspect-ratio:2400/1500" data-rv>
+        <img src="assets/images/case-studies/gofully/store-new-01-all-modes.webp" width="2400" height="1500" alt="New store screenshot 1: Nine ways to capture. One click each." loading="lazy">
+        <img class="cs3-ba__before" src="assets/images/case-studies/gofully/store-old-01.webp" width="2400" height="1500" alt="Old store screenshot 1: Capture Anything using Gofully" loading="lazy">
+        <span class="tag tag-bad cs3-ba__tag-before">Before</span>
+        <span class="tag tag-good cs3-ba__tag-after">After</span>
+        <span class="cs3-ba__line" aria-hidden="true"></span>
+        <button class="cs3-ba__handle" type="button" role="slider" aria-label="Compare the old and new first store screenshot" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18-6-6 6-6M15 6l6 6-6 6"/></svg></button>
+      </div>
+      <div class="cs3-ba-caps cs3-wide" data-rv><span><span class="tag tag-bad">Before</span> v1.1.2, live on the Web Store: the old camera logo over a Google search page.</span><span><span class="tag tag-good">After</span> v1.1.3, screenshot 01: "Nine ways to capture. One click each." All nine modes in the real popup.</span></div>
+
+      <h3 class="cs3-h3" data-rv>The rest of the set, in the order a visitor swipes it</h3>
+      <div class="cs3-prose" data-rv><p>After what it does (01) comes keeping it safe, pixel-perfect detail, the hard cases, then finishing and sharing.</p></div>
+      <figure class="cs3-band"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-new-02-redact.webp" width="2400" height="1500" alt="New Chrome Web Store screenshot 2: Hide private details before you capture."></div><figcaption><b>02 · Hide private details before you capture.</b> GoFully finds emails, numbers, cards and keys on the live page and covers them.</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-new-03-measure.webp" width="2400" height="1500" alt="New Chrome Web Store screenshot 3: Measure any page, pixel by pixel."></div><figcaption><b>03 · Measure any page, pixel by pixel.</b> Size, padding, the gap between two elements, and any colour as hex.</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-new-04-menus.webp" width="2400" height="1500" alt="New Chrome Web Store screenshot 4: Capture menus and hover states."></div><figcaption><b>04 · Capture menus and hover states.</b> A 3, 5 or 10 second delay catches what disappears on click.</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/store-new-05-edit.webp" width="2400" height="1500" alt="New Chrome Web Store screenshot 5: Mark it up. Share it ready to go."></div><figcaption><b>05 · Mark it up. Share it ready to go.</b> Arrows, steps, blur, text reading and backgrounds, in one on-device editor.</figcaption></figure>
+        </div>
+      </div></figure>
+
+      <div class="cs3-block cs3-wide" data-rv>
+        <h3 class="cs3-h3">Why the new set does more</h3>
+        <div class="cs3-cards cs3-cards--3"><div class="cs3-card"><h4>One set, one system</h4><p>The same navy panel and browser frame on all five, so they read as a series when swiped. The old five each used a different layout and colour.</p></div><div class="cs3-card"><h4>Real product, current UI</h4><p>Built from the Extension UI v2 designs and DS v2 components, updated to v1.1.3: the 9-mode popup, the Redact bar, the Measure overlay, the countdown.</p></div><div class="cs3-card"><h4>Shows what's new</h4><p>Nine modes, Redact page, Measure, Delay, QR codes, Element and Draw on page. The old set said 5 modes and predates all of them.</p></div><div class="cs3-card"><h4>Readable at listing size</h4><p>One headline per image and at most five two-word chips with icons. The old set had 20+ small labels and handwritten notes.</p></div><div class="cs3-card"><h4>Safe, original data</h4><p>Only a made-up demo site (Acme Pay docs). No third-party brands like Google or Gamma, and no real-looking keys.</p></div><div class="cs3-card"><h4>Clean copy</h4><p>No repeated sublines, and the brand is spelled GoFully everywhere.</p></div></div>
+      </div>
+
+      <h3 class="cs3-h3" data-rv>Small promo tile, 440 × 280</h3>
+      <div class="cs3-prose" data-rv><p>The tile shows on Web Store category and search pages, often smaller than the screenshots. It gets one line and one picture, so both have to carry the whole product.</p></div>
+      <figure class="cs3-band cs3-band--narrow"><div class="cs3-band__inner" data-rv="unfold">
+        <div class="gf-grid gf-grid--2">
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/promo-old.webp" width="1320" height="840" alt="Old small promo tile: camera icon, Gofully :Capture Smarter, five feature chips on a blue gradient"></div><figcaption><span class="tag tag-bad">Before</span> "Gofully :Capture Smarter"</figcaption></figure>
+          <figure><div class="cs3-media__frame"><img loading="lazy" src="assets/images/case-studies/gofully/promo-new.webp" width="1320" height="840" alt="New small promo tile: GoFully logo, The screenshot studio that stays on your device, beside the real popup"></div><figcaption><span class="tag tag-good">After</span> "The screenshot studio that stays on your device."</figcaption></figure>
+        </div>
+      </div></figure>
+      <div class="cs3-vs cs3-wide" data-rv><div class="cs3-vs__row cs3-vs__row--head"><div class="gap"><span class="eyebrow">Old tile</span></div><div class="good"><span class="eyebrow">New tile</span></div></div><div class="cs3-vs__row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Retired camera logo.</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>The current viewfinder G, DS v2 colours and type: the same system as the five screenshots.</span></div></div><div class="cs3-vs__row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>A typo and a spacing error in the headline ("Gofully :Capture Smarter").</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>One clean line: "The screenshot studio that stays on your device."</span></div></div><div class="cs3-vs__row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Five plain text chips, no product UI.</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>The real popup with all nine modes, plus the nine mode icons.</span></div></div><div class="cs3-vs__row"><div class="gap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span>Sells capture only, not the studio.</span></div><div class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Leads with the whole product and the privacy promise, not one feature.</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 WEBSITE ============ -->
 <section class="cs3-section" id="website">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">10</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Website · Old and new</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">11</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Website · Old and new</span></p>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
         <h2 class="cs3-title">From a list of features to <span class="mark">one sentence anyone can repeat</span></h2>
@@ -494,13 +559,13 @@
 <!-- ============ 11 RESULTS ============ -->
 <section class="cs3-section" id="results">
   <div class="cs3-wrap cs3-grid">
-    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">11</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Where it stands · And what's next</span></p>
+    <p class="cs3-kicker" data-rv><span class="cs3-kicker__num">12</span><i aria-hidden="true"></i><span class="cs3-kicker__label">Where it stands · And what's next</span></p>
     <div class="cs3-body">
       <div class="cs3-block" data-rv>
         <h2 class="cs3-title">One product, one look, <span class="mark">one promise on every surface</span></h2>
         <div class="cs3-prose">
           <p><b>Designed:</b> the new brand and its 41-page guide, Design System v2, more than 70 extension screens and states in light and dark, and the new website.</p>
-          <p><b>Built:</b> the new website runs in development and is not live yet; the live site and store listing still show the old design. The extension's current release is v1.1.3.</p>
+          <p><b>Built:</b> the new store screenshots, promo tile and launch film are ready for the v1.1.3 listing. The new website runs in development and is not live yet, so the live site still shows the old design.</p>
         </div>
       </div>
       <div class="cs3-block cs3-wide" data-rv>
@@ -587,6 +652,20 @@
 </div>
 </footer>
 </main>
+<script>
+// launch film: a visible play button over the poster; native controls take over once it plays
+(function () {
+  var f = document.querySelector(".gf-film"); if (!f) return;
+  var v = f.querySelector("video"), b = f.querySelector(".gf-play");
+  b.addEventListener("click", function () { v.play(); });
+  v.addEventListener("play", function () { f.classList.add("is-playing"); });
+})();
+// the logo loop is decorative: hold it on its poster for reduced-motion visitors
+(function () {
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  document.querySelectorAll("video.gf-loop").forEach(function (v) { v.removeAttribute("autoplay"); v.pause(); });
+})();
+</script>
 <script src="assets/js/site.js?v=561"></script>
 <script src="assets/js/cs-v3.js?v=5"></script>
 </body>
